@@ -1,0 +1,326 @@
+- name: Azure 데이터 탐색기 설명서
+  href: index.yml
+- name: 개요
+  items:
+    - name: Azure 데이터 탐색기란?
+      href: data-explorer-overview.md
+- name: 빠른 시작
+  expanded: true
+  items:
+    - name: 클러스터 및 데이터베이스 만들기 - Azure Portal
+      href: create-cluster-database-portal.md
+    - name: 샘플 데이터 수집
+      href: ingest-sample-data.md
+    - name: 웹 UI를 사용하여 데이터 쿼리
+      href: web-query-data.md
+- name: 자습서
+  items:
+    - name: 쿼리 쓰기
+      href: write-queries.md
+    - name: E2E 프로그래밍 방식 Blob 수집
+      items:
+        - name: 'C#'
+          href: end-to-end-csharp.md
+        - name: Python
+          href: end-to-end-python.md
+    - name: 모니터링 데이터 수집 및 쿼리
+      href: ingest-data-no-code.md
+    - name: Power BI에서 데이터 시각화
+      href: visualize-power-bi.md
+- name: 개념
+  items:
+    - name: 데이터 수집
+      items:
+        - name: 데이터 수집 개요
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
+        - name: 데이터 수집 속성
+          href: ingestion-properties.md
+        - name: 데이터 수집 형식
+          href: ingestion-supported-formats.md
+    - name: Kusto 쿼리 언어
+      items:
+        - name: 빠른 참조 가이드
+          href: kql-quick-reference.md
+    - name: 데이터 시각화 개요
+      href: viz-overview.md
+    - name: 보안
+      items:
+        - name: 보안 개요
+          href: security.md
+        - name: 보안 기준
+          href: security-baseline.md
+- name: 방법 가이드
+  items:
+    - name: 클러스터 및 데이터베이스 만들기
+      items:
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+        - name: Azure Resource Manager 템플릿
+          href: create-cluster-database-resource-manager.md
+    - name: 데이터 수집
+      items:
+        - name: 한 번 클릭으로 수집
+          items:
+            - name: 한 번 클릭으로 수집 개요
+              href: ingest-data-one-click.md
+            - name: 한 번 클릭으로 새 테이블로 수집
+              href: one-click-ingestion-new-table.md
+            - name: 한 번 클릭으로 기존 테이블로 수집
+              href: one-click-ingestion-existing-table.md
+        - name: 스트리밍 수집
+          href: ingest-data-streaming.md
+        - name: LightIngest 사용
+          href: lightingest.md
+        - name: 이벤트 허브
+          items:
+            - name: Azure portal
+              href: ingest-data-event-hub.md
+            - name: 'C#'
+              href: data-connection-event-hub-csharp.md
+            - name: Python
+              href: data-connection-event-hub-python.md
+            - name: Azure Resource Manager 템플릿
+              href: data-connection-event-hub-resource-manager.md
+        - name: Event Grid
+          items:
+            - name: Azure portal
+              href: ingest-data-event-grid.md
+            - name: 'C#'
+              href: data-connection-event-grid-csharp.md
+            - name: Python
+              href: data-connection-event-grid-python.md
+            - name: Azure Resource Manager 템플릿
+              href: data-connection-event-grid-resource-manager.md
+        - name: IoT Hub
+          items:
+            - name: Azure portal
+              href: ingest-data-iot-hub.md
+            - name: 'C#'
+              href: data-connection-iot-hub-csharp.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
+            - name: Azure Resource Manager 템플릿
+              href: data-connection-iot-hub-resource-manager.md
+        - name: SDK 사용
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET Standard SDK
+              href: net-standard-ingest-data.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Logstash
+          href: ingest-data-logstash.md
+        - name: JSON 형식 데이터
+          href: ingest-json-formats.md
+    - name: 쿼리 데이터
+      items:
+        - name: Azure Data Lake에서 데이터 쿼리
+          href: data-lake-query-data.md
+        - name: Azure Monitor에서 데이터 쿼리
+          href: query-monitor-data.md
+        - name: KQL 인라인 Python 디버그
+          href: debug-inline-python.md
+        - name: SDK 사용
+          items:
+            - name: Python
+              href: python-query-data.md
+        - name: 시계열 분석 및 Machine Learning
+          items:
+            - name: 시계열 분석
+              href: time-series-analysis.md
+            - name: 변칙 검색 및 예측
+              href: anomaly-detection.md
+            - name: 기계 학습
+              href: machine-learning-clustering.md
+    - name: 데이터 시각화
+      items:
+        - name: Power BI
+          items:
+            - name: 모범 사례
+              href: power-bi-best-practices.md
+            - name: 커넥터
+              href: power-bi-connector.md
+            - name: 가져온 쿼리
+              href: power-bi-imported-query.md
+            - name: SQL 쿼리(SQL query)
+              href: power-bi-sql-query.md
+        - name: Excel
+          items:
+            - name: 커넥터
+              href: excel-connector.md
+            - name: 빈 쿼리
+              href: excel-blank-query.md
+        - name: Grafana
+          href: grafana.md
+        - name: ODBC 커넥터
+          href: connect-odbc.md
+        - name: Tableau
+          href: tableau.md
+        - name: Sisense
+          href: sisense.md
+        - name: Redash
+          href: redash.md
+        - name: Kibana(K2Bridge 커넥터)
+          href: k2bridge.md
+    - name: 보안
+      items:
+        - name: 네트워크 격리(VNet)
+          items:
+            - name: VNet에서 클러스터 만들기 - 포털
+              href: vnet-create-cluster-portal.md
+            - name: VNet에 클러스터 배포
+              href: vnet-deployment.md
+            - name: 'VNet 클러스터 만들기, 연결 및 작업 문제 해결'
+              href: vnet-deploy-troubleshoot.md
+        - name: 클러스터 보안 관리
+          href: manage-cluster-security.md
+        - name: 관리되는 ID 구성
+          href: managed-identities.md
+        - name: 고객 관리 키 구성
+          items:
+            - name: 포털
+              href: customer-managed-keys-portal.md
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager 템플릿
+              href: customer-managed-keys-resource-manager.md
+        - name: Azure AD 앱 만들기
+          href: provision-azure-ad-app.md
+    - name: 관리
+      items:
+        - name: 클러스터
+          items:
+            - name: 클러스터 VM SKU 선택
+              href: manage-cluster-choose-sku.md
+            - name: 클러스터 수평적 크기 조정 관리
+              href: manage-cluster-horizontal-scaling.md
+            - name: 클러스터 수직적 크기 조정 관리
+              href: manage-cluster-vertical-scaling.md
+            - name: 클러스터 상태 확인
+              href: check-cluster-health.md
+            - name: 클러스터 보안 주체 추가
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Azure Resource Manager 템플릿
+                  href: cluster-principal-resource-manager.md
+            - name: 클러스터 언어 확장 관리
+              href: language-extensions.md
+        - name: 데이터베이스
+          items:
+            - name: 팔로워 데이터베이스
+              href: follower.md
+            - name: 데이터베이스 권한 관리
+              href: manage-database-permissions.md
+            - name: 데이터베이스 보안 주체 추가
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Azure Resource Manager 템플릿
+                  href: database-principal-resource-manager.md
+            - name: 정책
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: 데이터
+          items:
+            - name: 데이터 삭제
+              href: delete-data.md
+            - name: 중복 데이터 처리
+              href: dealing-with-duplicates.md
+    - name: 모니터
+      items:
+        - name: 진단 로그를 사용하여 수집 모니터링
+          href: using-diagnostic-logs.md
+        - name: 메트릭을 사용하여 클러스터 상태 모니터링
+          href: using-metrics.md
+        - name: 리소스 상태를 사용하여 클러스터 상태 모니터링
+          href: monitor-with-resource-health.md
+    - name: 다른 도구와 통합
+      items:
+        - name: Azure 데이터 팩터리
+          items:
+            - name: Data Factory와 통합
+              href: data-factory-integration.md
+            - name: Azure Data Factory를 사용하여 데이터 복사
+              href: data-factory-load-data.md
+            - name: Azure Data Factory 템플릿을 사용하여 데이터 대량 복사
+              href: data-factory-template.md
+            - name: Azure Data Factory를 사용하여 제어 명령 실행
+              href: data-factory-command-activity.md
+        - name: Microsoft Flow 커넥터
+          items:
+            - name: Microsoft Flow 커넥터
+              href: flow.md
+            - name: Microsoft Flow 커넥터 사용 예
+              href: flow-usage.md
+        - name: Apache Spark 커넥터
+          href: spark-connector.md
+        - name: Python을 사용하여 Databricks에서 연결
+          href: connect-from-databricks.md
+        - name: Jupyter Notebook 및 Kqlmagic에서 데이터 분석
+          href: kqlmagic.md
+        - name: Azure Notebooks에서 데이터 분석
+          href: azure-notebooks.md
+        - name: Azure Pipelines
+          href: devops.md
+    - name: 문제 해결
+      items:
+        - name: 클러스터 만들기
+          href: troubleshoot-create-cluster.md
+        - name: 클러스터에 연결
+          href: troubleshoot-connect-cluster.md
+        - name: 데이터베이스 및 테이블 작업
+          href: troubleshoot-database-table.md
+- name: 참조
+  items:
+    - name: 쿼리 언어
+      href: kusto/query/index.md
+    - name: 관리 명령
+      href: kusto/management/index.md
+    - name: API
+      href: kusto/api/index.md
+    - name: 도구
+      href: kusto/tools/index.md
+    - name: 개념
+      href: kusto/concepts/index.md
+- name: 리소스
+  items:
+    - name: 블로그
+      href: 'https://azure.microsoft.com/blog/tag/azure-data-explorer/'
+    - name: 포럼
+      items:
+        - name: 스택 오버플로
+          href: 'https://stackoverflow.com/questions/tagged/azure-data-explorer'
+        - name: Microsoft 기술 커뮤니티
+          href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
+        - name: MSDN 포럼
+          href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
+    - name: 제품 사용자 의견
+      href: 'https://aka.ms/adefeedback'
+    - name: 가격 및 청구
+      items:
+        - name: 가격 책정 페이지
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: 요금 계산기
+          href: 'https://aka.ms/adecostestimator'
+        - name: 예약 용량
+          href: pricing-reserved-capacity.md
+    - name: 서비스 업데이트
+      href: 'https://azure.microsoft.com/updates/?product=data-explorer'
