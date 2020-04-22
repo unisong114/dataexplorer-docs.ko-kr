@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fe6d3f68f59ae52c96d3e9467cc364d792b13cf3
-ms.sourcegitcommit: 436cd515ea0d83d46e3ac6328670ee78b64ccb05
+ms.openlocfilehash: a7ed7ad7ebef425160b64b792ff75c95d4c4fcee
+ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81664039"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82030326"
 ---
 # <a name="activity_engagement-plugin"></a>activity_engagement 플러그 인
 
@@ -72,7 +72,7 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/queries/activity-engagement-dau-wau.png" border="false" alt-text="활동 참여 다우 와우":::
+:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-wau.png" border="false" alt-text="활동 참여 다우 와우":::
 
 ### <a name="daumau-calculation"></a>DAU/MAU 계산
 
@@ -93,7 +93,7 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/queries/activity-engagement-dau-mau.png" border="false" alt-text="활동 참여 다우 마우":::
+:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="활동 참여 다우 마우":::
 
 ### <a name="daumau-calculation-with-additional-dimensions"></a>추가 치수가 있는 DAU/MAU 계산
 
@@ -115,4 +115,4 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/queries/activity-engagement-dau-mau-mod3.png" border="false" alt-text="활동 참여 dau mau 모드 3":::
+:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="활동 참여 dau mau 모드 3":::

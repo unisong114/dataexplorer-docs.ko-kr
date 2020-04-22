@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 49d024d1deecd8e0c7bf16eda9917cd237fe6319
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 460ad9cfca4f97e6735d30a4d47d6384581e7af7
+ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81523276"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82029993"
 ---
 # <a name="data-purge"></a>데이터 제거
 
@@ -90,6 +90,7 @@ Azure Data Explorer에서 데이터를 선택적으로 제거하는 프로세스
 1. 프로그래밍 방식 호출: 응용 프로그램에서 호출할 단일 단계입니다. 이 명령을 직접 호출하면 제거 실행 시퀀스가 트리거됩니다.
 
     **구문**
+
      ```kusto
      .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
      ```
@@ -101,6 +102,7 @@ Azure Data Explorer에서 데이터를 선택적으로 제거하는 프로세스
     <!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
      **구문**
+
      ```kusto
      // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
      .purge table [TableName] records in database [DatabaseName] <| [Predicate]
@@ -256,8 +258,6 @@ Azure Data Explorer에서 데이터를 선택적으로 제거하는 프로세스
 * ClientRequestId - DM 제거 요청의 클라이언트 활동 ID입니다. 
 * 보안 주체 - 제거 명령 발급자의 ID입니다.
 
-
-
 ## <a name="purging-an-entire-table"></a>전체 테이블 제거
 테이블을 제거하는 것은 테이블을 삭제하고 [제거 프로세스에](#purge-process) 설명된 하드 삭제 프로세스가 실행되도록 제거된 것으로 표시하는 것을 포함합니다. 테이블을 제거하지 않고 삭제해도 모든 저장소 아티팩트가 삭제되지는 않습니다(테이블에 처음 설정된 하드 보존 정책에 따라 삭제됨). 이 `purge table allrecords` 명령은 빠르고 효율적이며 시나리오에 해당하는 경우 제거 레코드 프로세스보다 훨씬 좋습니다. 
 
@@ -270,6 +270,7 @@ Azure Data Explorer에서 데이터를 선택적으로 제거하는 프로세스
 1. 프로그래밍 방식 호출(단일 단계):
 
      **구문**
+
      ```kusto
      .purge table [TableName] in database [DatabaseName] allrecords with (noregrets='true')
      ```
@@ -277,6 +278,7 @@ Azure Data Explorer에서 데이터를 선택적으로 제거하는 프로세스
 2. 인간 호출(2단계):
 
      **구문**
+
      ```kusto
      // Step #1 - retrieve a verification token (the table will not be purged until step #2 is executed)
      .purge table [TableName] in database [DatabaseName] allrecords
@@ -312,6 +314,7 @@ Azure Data Explorer에서 데이터를 선택적으로 제거하는 프로세스
     .purge table MyTable in database MyDatabase allrecords 
     with (verificationtoken='eyJTZXJ2aWNlTmFtZSI6IkVuZ2luZS1pdHNhZ3VpIiwiRGF0YWJhc2VOYW1lIjoiQXp1cmVTdG9yYWdlTG9ncyIsIlRhYmxlTmFtZSI6IkF6dXJlU3RvcmFnZUxvZ3MiLCJQcmVkaWNhdGUiOiIgd2hlcmUgU2VydmVyTGF0ZW5jeSA9PSAyNSJ9')
     ```
+    
     출력은 '.show table' 명령 출력(제거된 테이블 없이 반환됨)과 동일합니다.
 
     **출력**

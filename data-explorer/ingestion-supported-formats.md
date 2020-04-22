@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 530fc02c58b719f29ef43b118fad1ce8f207337b
-ms.sourcegitcommit: 653bfb3edf32553c52ef36b339c8b80713a601b0
+ms.openlocfilehash: 93451dd1237905754ac834cb335f5d8a02157ac7
+ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81502544"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82030058"
 ---
 # <a name="data-formats-supported-by-azure-data-explorer-for-ingestion"></a>수집을 위해 Azure 데이터 탐색기에서 지원하는 데이터 형식
 
@@ -50,7 +50,7 @@ Blob 또는 파일의 이름에 확장을 더하여 압축을 나타냅니다.
 * `MyData.csv.zip`ZIP(아카이브 또는 단일 파일)으로 압축된 BLOB 또는 CSV로 포맷된 파일을 나타냅니다.
 * `MyData.csv.gz`Blob 또는 CSV로 포맷된 파일을 나타내며 GZip으로 압축됩니다.
 
-형식 확장자가 포함되지 않지만 압축(예: 압축)만 포함하는 Blob 또는 파일 이름도 지원됩니다. 이 경우 파일 형식을 유추할 수 없으므로 수집 속성으로 지정해야 합니다.
+형식 확장자가 포함되지 않지만 압축(예: `MyData.zip`압축)만 포함하는 Blob 또는 파일 이름도 지원됩니다. 이 경우 파일 형식을 유추할 수 없으므로 수집 속성으로 지정해야 합니다.
 
 > [!NOTE]
 > 일부 압축 형식은 압축된 스트림의 일부로 원래 파일 확장명을 추적합니다. 이 확장명은 일반적으로 파일 형식을 확인하는 경우에는 무시됩니다. 압축된 Blob 또는 파일의 이름에서 파일 형식을 확인할 수 없는 경우 `format` 수집 속성을 통해 이를 지정해야 합니다.

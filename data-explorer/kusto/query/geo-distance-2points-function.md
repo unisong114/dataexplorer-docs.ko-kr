@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
-ms.openlocfilehash: 4b63ffaee8123b4ee281426f30f757fbe5165e75
-ms.sourcegitcommit: 436cd515ea0d83d46e3ac6328670ee78b64ccb05
+ms.openlocfilehash: 30a26bbcc57ecde2ac3beeeb1483b953a0cc5820
+ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81663715"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82030163"
 ---
 # <a name="geo_distance_2points"></a>geo_distance_2points()
 
@@ -42,7 +42,8 @@ ms.locfileid: "81663715"
 
 다음 예제는 시애틀과 로스앤젤레스 간 가장 짧은 거리를 찾습니다.
 
-:::image type="content" source="images/queries/geo/distance_2points_seattle_los_angeles.png" alt-text="시애틀과 로스앤젤레스 사이의 거리":::
+
+:::image type="content" source="images/geo-distance-2points-function/distance_2points_seattle_los_angeles.png" alt-text="시애틀과 로스앤젤레스 사이의 거리":::
 
 ```kusto
 print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275287, 34.019056)
@@ -54,7 +55,7 @@ print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275
 
 다음은 시애틀에서 런던까지의 가장 짧은 경로에 대한 근사치입니다. 선은 LineString을 따라 500미터 이내의 좌표로 구성됩니다.
 
-:::image type="content" source="images/queries/geo/line_seattle_london.png" alt-text="시애틀 - 런던 라인스트링":::
+:::image type="content" source="images/geo-distance-2points-function/line_seattle_london.png" alt-text="시애틀 - 런던 라인스트링":::
 
 ```kusto
 range i from 1 to 1000000 step 1

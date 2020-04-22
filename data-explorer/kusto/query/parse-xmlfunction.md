@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ace60d0f9652d75b0f55cce4b1b622af20b42dc1
-ms.sourcegitcommit: 436cd515ea0d83d46e3ac6328670ee78b64ccb05
-ms.translationtype: HT
+ms.openlocfilehash: 9743cbcb8d3c25707d97a4a6844f947352e63b0b
+ms.sourcegitcommit: e94be7045d71a0435b4171ca3a7c30455e6dfa57
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81663688"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81744628"
 ---
 # <a name="parse_xml"></a>parse_xml()
 
@@ -52,8 +52,7 @@ XML                                |JSON                                        
  
 **예제**
 
-다음 예제에서 `context_custom_metrics`가 `string`인 경우 다음과 유사합니다.
-<!--check this code formatting-->
+다음 예제에서 `context_custom_metrics`가 `string`인 경우 다음과 유사합니다. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
