@@ -83,7 +83,7 @@
           href: ./query/batches.md
     - name: 테이블 형식 연산자
       items:
-        - name: 테이블 형식 데이터
+        - name: 표 형식 데이터
           href: ./query/queries.md
         - name: as 연산자
           href: ./query/asoperator.md
@@ -739,8 +739,10 @@
       items:
         - name: rolling_percentile()
           href: ./query/rolling-percentile-plugin.md
-    - name: Time Series Analysis
+    - name: 시계열 분석
       items:
+        - name: 시계열 분석 개요
+          href: ./query/machine-learning-and-tsa.md
         - name: make-series 연산자
           href: ./query/make-seriesoperator.md
         - name: series_add()
@@ -803,8 +805,6 @@
           href: ./query/series-stats-dynamicfunction.md
         - name: series_subtract()
           href: ./query/series-subtractfunction.md
-        - name: 시계열 분석 개요
-          href: ./query/machine-learning-and-tsa.md
     - name: Machine Learning
       items:
         - name: autocluster
