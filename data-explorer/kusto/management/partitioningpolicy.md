@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 857756b5be76746c65f58d0d8269c341e6217564
-ms.sourcegitcommit: 2e63c7c668c8a6200f99f18e39c3677fcba01453
+ms.openlocfilehash: ad255c6930e76628a5187fa8d321e3445dbb5f99
+ms.sourcegitcommit: fbe298e88542c0dcea0f491bb53ac427f850f729
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117678"
+ms.locfileid: "82138869"
 ---
 # <a name="data-partitioning-policy-preview"></a>데이터 분할 정책 (미리 보기)
 
@@ -25,7 +25,8 @@ ms.locfileid: "82117678"
 정책의 주된 목적은 분할 된 열에서 작은 값의 하위 집합으로 축소 된 것으로 알려진 쿼리의 성능을 개선 하는 것입니다.
 보조 잠재적인 혜택은 데이터 압축을 향상 시키는 것입니다.
 
-정책을 정의할 수 있는 테이블의 양에는 하드 코드 된 제한이 없지만 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 하 고 클러스터의 추가 리소스가 필요할 수 있습니다. 자세한 내용은 [아래](#capacity)를 참조 하세요.
+> [!WARNING]
+> 정책을 정의할 수 있는 테이블의 양에는 하드 코드 된 제한이 없지만 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 하 고 클러스터의 추가 리소스가 필요할 수 있습니다. [용량](#capacity)을 참조 하세요.
 
 ## <a name="partition-keys"></a>파티션 키
 
@@ -202,8 +203,8 @@ ms.locfileid: "82117678"
 
 #### <a name="capacity"></a>용량
 
-* 데이터 분할 프로세스에서 더 많은 익스텐트가 생성 되므로 [익스텐트](../management/extents-overview.md) 병합 프로세스를 유지할 수 있도록 클러스터의 [익스텐트 병합 용량](../management/capacitypolicy.md#extents-merge-capacity) 을 늘려야 할 수 있습니다.
-* 필요한 경우 (예를 들어 높은 수집 처리량의 경우 또는 분할을 필요로 하는 충분 한 수의 테이블이 필요한 경우), 더 많은 동시 분할 작업을 실행할 수 있도록 클러스터의 [익스텐트 파티션 용량](../management/capacitypolicy.md#extents-partition-capacity) 을 늘릴 수 있습니다.
+* 데이터 분할 프로세스를 수행 하면 더 많은 익스텐트가 생성 될 수 있으므로 [익스텐트](../management/extents-overview.md) 병합 프로세스를 유지할 수 있도록 (점진적이 고 선형) 클러스터의 [익스텐트 병합 용량](../management/capacitypolicy.md#extents-merge-capacity) 을 늘려야 할 수도 있습니다.
+* 필요한 경우 (예를 들어 높은 수집 처리량의 경우 및/또는 분할을 필요로 하는 충분 한 수의 테이블이 필요한 경우) 더 많은 동시 분할 작업을 실행할 수 있도록 클러스터의 [익스텐트 파티션 용량](../management/capacitypolicy.md#extents-partition-capacity) (점진적 및 선형)이 증가할 수 있습니다.
   * 분할을 늘리면 클러스터의 리소스 사용이 크게 증가 하는 경우 수동으로 또는 자동 크기 조정을 사용 하 여 클러스터를 확장/축소할 수 있습니다.
 
 ### <a name="outliers-in-partitioned-columns"></a>분할 된 열의 이상 값
