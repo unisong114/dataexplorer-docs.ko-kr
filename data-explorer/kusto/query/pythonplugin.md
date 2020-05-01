@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 5ceafde1361c87d368237d0f8c71ad8d0708aec1
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 6b33ee0ed9535d512c909dd8de124fc8b1770cee
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108510"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82618992"
 ---
 # <a name="python-plugin"></a>Python 플러그 인
 
@@ -92,7 +92,8 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 )
 | render linechart 
 ```
-:::image type="content" source="images/samples/sine-demo.png" alt-text="사인 데모":::
+
+:::image type="content" source="images/plugin/sine-demo.png" alt-text="사인 데모" border="false":::
 
 ```kusto
 print "This is an example for using 'external_artifacts'"
@@ -226,7 +227,7 @@ range Id from 1 to 3 step 1
     external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?...'))
 ```
 
-| Id | 이름         |
+| Id | 속성         |
 |----|--------------|
 |   1| Gary Tapia   |
 |   2| Emma Evans   |
