@@ -1,6 +1,6 @@
 ---
-title: 제한보기액세스 정책 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 제한된 ViewAccess 정책에 대해 설명합니다.
+title: Kusto RestrictedViewAccess 정책 컨트롤 쿼리-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 RestrictedViewAccess 정책에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,24 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 6f994f5b80632650ab6dbe5dcf28cd82407d688f
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: e44aa2b14aa8babdab95a6ad8c6f7ef5ed026ff9
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81520420"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82617429"
 ---
-# <a name="restrictedviewaccess-policy"></a>제한뷰액세스 정책
+# <a name="restrictedviewaccess-policy"></a>RestrictedViewAccess 정책
 
-*제한ViewAccess* 데이터베이스의 테이블에서 사용할 수 있는 선택적 정책입니다.
+*RestrictedViewAccess* 는 데이터베이스의 테이블에서 사용 하도록 설정할 수 있는 선택적 정책입니다.
 
-테이블에서 이 정책을 사용하도록 설정하면 테이블의 데이터는 데이터베이스의 [Un제한Viewer](../management/access-control/role-based-authorization.md) 역할에 추가된 보안 *주체에 대해서만* 쿼리할 수 있습니다.
+테이블에서이 정책을 사용 하는 경우 테이블의 데이터는 데이터베이스의 [UnrestrictedViewer](../management/access-control/role-based-authorization.md) 역할에 추가 된 보안 주체로 *만* 쿼리할 수 있습니다.
 
-테이블에서 정책을 사용하도록 설정하면 [Un제한Viewer](../management/access-control/role-based-authorization.md) 데이터베이스 수준 역할에 포함되지 않은 보안 주체(테이블/데이터베이스/클러스터 관리자)는 테이블에서 데이터를 쿼리할 수 없습니다.
+테이블에서 정책을 사용 하도록 설정 하면 [UnrestrictedViewer](../management/access-control/role-based-authorization.md) 데이터베이스 수준 역할에 포함 되지 않은 모든 보안 주체 (테이블/데이터베이스/클러스터 관리자)가 테이블의 데이터를 쿼리할 수 없습니다.
 
-[Un무제한Viewer](../management/access-control/role-based-authorization.md) 역할은 현재 주 서버가 데이터베이스(데이터베이스 관리자/사용자/뷰어)를 쿼리할 권한이 이미 있다고 가정하여 정책이 활성화된 데이터베이스의 *모든* 테이블에 대한 보기 권한을 부여합니다. 역할에 또는 역할에서 보안 주체를 추가하거나 제거하는 것은 [DatabaseAdmin](../management/access-control/role-based-authorization.md)에서 수행할 수 있습니다.
+[UnrestrictedViewer](../management/access-control/role-based-authorization.md) 역할은 사용 하도록 설정 된 데이터베이스의 *모든* 테이블에 대 한 보기 권한을 부여 합니다 .이는 현재 보안 주체가 데이터베이스를 쿼리할 수 있는 권한이 이미 부여 된 것으로 가정 합니다 (데이터베이스 관리자/사용자/뷰어). [Databaseadmin](../management/access-control/role-based-authorization.md)에서 역할에 보안 주체를 추가 하거나 제거 하는 작업을 수행할 수 있습니다.
 
 > [!NOTE]
-> 제한ViewAccess 정책은 [행 수준 보안 정책이](./rowlevelsecuritypolicy.md) 활성화된 테이블에서 구성할 수 없습니다.
+> [행 수준 보안 정책을](./rowlevelsecuritypolicy.md) 사용 하는 테이블에는 RestrictedViewAccess 정책을 구성할 수 없습니다.
 
-제한된 ViewAccess 정책을 관리하기 위한 제어 명령에 대한 자세한 내용은 [여기를 참조하십시오.](../management/restrictedviewaccess-policy.md)
+RestrictedViewAccess 정책을 관리 하는 제어 명령에 대 한 자세한 [내용은 여기를 참조](../management/restrictedviewaccess-policy.md)하세요.

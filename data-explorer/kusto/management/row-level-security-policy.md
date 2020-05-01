@@ -1,6 +1,6 @@
 ---
-title: RowLevel보안 정책(미리 보기) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 RowLevelSecurity 정책(미리 보기)에 대해 설명합니다.
+title: RowLevelSecurity 정책 (미리 보기)-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 RowLevelSecurity 정책 (미리 보기)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,20 +8,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: bf8ee8bc4c43c4ed3bcd320ce5b4778f33c3cc64
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: f8f6f820090bde91b9ed6479e0677a893a682983
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81520301"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82617377"
 ---
-# <a name="rowlevelsecurity-policy-preview"></a>로우 레벨 보안 정책(미리 보기)
+# <a name="rowlevelsecurity-policy-preview"></a>RowLevelSecurity 정책 (미리 보기)
 
-이 문서에서는 데이터베이스 테이블에 대한 [row_level_security 정책을](rowlevelsecuritypolicy.md) 구성하는 데 사용되는 명령에 대해 설명합니다.
+이 문서에서는 데이터베이스 테이블에 대 한 [row_level_security 정책을](rowlevelsecuritypolicy.md) 구성 하는 데 사용 되는 명령을 설명 합니다.
 
 ## <a name="displaying-the-policy"></a>정책 표시
 
-정책을 표시하려면 다음 명령을 사용합니다.
+정책을 표시 하려면 다음 명령을 사용 합니다.
 
 ```kusto
 .show table <table_name> policy row_level_security
@@ -29,37 +29,37 @@ ms.locfileid: "81520301"
 
 ## <a name="configuring-the-policy"></a>정책 구성
 
-테이블에서 row_level_security 정책을 사용하도록 설정합니다.
+테이블에 대 한 row_level_security 정책 사용:
 
 ```kusto
 .alter table <table_name> policy row_level_security enable "<query>"
 ```
 
-테이블에서 row_level_security 정책을 사용하지 않도록 설정합니다.
+테이블에 대 한 row_level_security 정책 사용 안 함:
 
 ```kusto
 .alter table <table_name> policy row_level_security disable "<query>"
 ```
 
-정책이 비활성화된 경우에도 단일 쿼리에 적용하도록 강제할 수 있습니다. 쿼리 앞에 다음 줄을 입력합니다.
+정책을 사용 하지 않도록 설정한 경우에도 단일 쿼리에 적용 되도록 강제할 수 있습니다. 쿼리 앞에 다음 줄을 입력 합니다.
 
 `set query_force_row_level_security;`
 
-이 기능은 row_level_security 대한 다양한 쿼리를 시도하려는 경우 유용하지만 실제로 사용자에게 적용되지 않도록 하려는 경우에 유용합니다. 쿼리에 확신이 있으면 정책을 사용하도록 설정합니다.
+Row_level_security에 대 한 다양 한 쿼리를 시도 하지만 실제로 사용자에 게는 적용 하지 않으려는 경우에 유용 합니다. 쿼리에서 확신 하는 경우 정책을 사용 하도록 설정 합니다.
 
 > [!NOTE]
-> 다음 제한 사항은 `query`다음 사항에 적용됩니다.
+> 에는 `query`다음과 같은 제한 사항이 적용 됩니다.
 >
-> * 쿼리는 정책이 정의된 테이블과 정확히 동일한 스키마를 생성해야 합니다. 즉, 쿼리 결과는 동일한 이름과 형식을 가진 원래 테이블과 동일한 열을 동일한 순서로 반환해야 합니다.
-> * 쿼리는 다음 연산자만 `extend`사용할 `where` `project`수 `project-away` `project-rename` `project-reorder` 있습니다. `union`
-> * 쿼리는 정책이 정의된 테이블 이외의 테이블을 참조할 수 없습니다.
-> * 쿼리는 다음 중 어느 한 가지 또는 이들의 조합일 수 있습니다.
->    * `<table_name> | extend CreditCardNumber = "****"`쿼리(예:)
->    * 기능(예: `AnonymizeSensitiveData`)
->    * 데이터 테이블(예: `datatable(Col1:datetime, Col2:string) [...]`)
+> * 쿼리가 정책이 정의 된 테이블과 정확히 동일한 스키마를 생성 해야 합니다. 즉, 쿼리 결과는 동일한 이름 및 형식을 사용 하 여 원래 테이블과 동일한 열을 동일한 순서로 반환 해야 합니다.
+> * 쿼리에서 `extend`는, `where`, `project`, `project-away` `project-rename`, `project-reorder` 및 `union`연산자를 사용할 수 있습니다.
+> * 쿼리가 정책이 정의 된 테이블이 아닌 다른 테이블을 참조할 수 없습니다.
+> * 쿼리는 다음 중 하나 또는 조합 중 하나일 수 있습니다.
+>    * 쿼리 (예: `<table_name> | extend CreditCardNumber = "****"`)
+>    * 함수 (예: `AnonymizeSensitiveData`)
+>    * Datatable (예: `datatable(Col1:datetime, Col2:string) [...]`)
 
 > [!TIP]
-> 이러한 함수는 쿼리를 row_level_security 데 유용합니다.
+> 이러한 함수는 쿼리를 row_level_security 하는 데 유용한 경우가 많습니다.
 > * [current_principal()](../query/current-principalfunction.md)
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
@@ -76,10 +76,11 @@ ms.locfileid: "81520301"
 
 .alter table Customers policy row_level_security enable "TrimCreditCardNumbers"
 ```
-**성능**참고 `UserCanSeeFullNumbers` : 먼저 평가된 `AllData` 다음 `PartialData` 평가되거나 평가되지만 둘 다 평가되지는 않습니다.
-RLS의 성능 영향에 대한 자세한 내용은 여기에서 확인할 수 [있습니다.](rowlevelsecuritypolicy.md#performance-impact-on-queries)
 
-## <a name="deleting-the-policy"></a>정책 삭제
+**성능 정보**: `UserCanSeeFullNumbers` 먼저 평가한 다음 또는 `AllData` `PartialData` 중 하나를 평가 하지만 둘 중 하나는 예상 된 결과입니다.
+RLS의 성능 영향에 대 한 자세한 내용은 [여기](rowlevelsecuritypolicy.md#performance-impact-on-queries)를 참조 하세요.
+
+## <a name="deleting-the-policy"></a>정책을 삭제 하는 중
 
 ```kusto
 .delete table <table_name> policy row_level_security

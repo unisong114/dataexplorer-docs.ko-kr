@@ -1,6 +1,6 @@
 ---
-title: .create 수집 매핑 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 .create 수집 매핑에 대해 설명합니다.
+title: . 수집 매핑 만들기-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 수집 매핑 만들기에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,27 +8,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
-ms.openlocfilehash: 10e656b074516ad8b0018e627d9904251aebbf10
-ms.sourcegitcommit: e94be7045d71a0435b4171ca3a7c30455e6dfa57
+ms.openlocfilehash: 84ab277f5b0d4d1b2e09d31fb7c1254786affe6d
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81744501"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82617734"
 ---
 # <a name="create-ingestion-mapping"></a>.create ingestion mapping
 
-특정 테이블 및 특정 형식과 연관된 인기 맵을 만듭니다.
+특정 테이블 및 특정 형식과 연결 된 수집 매핑을 만듭니다.
 
 **구문**
 
-`.create``table` *테이블 이름* `ingestion` *매핑Kind* `mapping` *매핑이름* *매핑formattedAsJson*
+`.create``table` *TableName* TableName `ingestion` *MappingKind* MappingKind `mapping` *MappingName* *MappingFormattedAsJson*
 
 > [!NOTE]
-> * 생성되면 전체 매핑을 명령의 일부로 지정하는 대신 인베이션 명령에서 매핑이름을 참조할 수 있습니다.
-> * _매핑Kind에_ 대한 유효한 `CSV` `JSON`값은 `parquet`다음과 같습니다. `avro``orc`
-> * 동일한 이름의 매핑이 테이블에 이미 있는 경우:
->    * `.create`실패합니다.
->    * `.create-or-alter`기존 매핑이 변경됩니다.
+> * 생성 된 매핑은 명령의 일부로 전체 매핑을 지정 하는 대신 수집 명령에서 이름으로 참조할 수 있습니다.
+> * _MappingKind_ 에 유효한 값은, `CSV` `JSON`, `avro`, `parquet`및입니다.`orc`
+> * 테이블에 대해 이름이 같은 매핑이 이미 있는 경우:
+>    * `.create`실패 합니다.
+>    * `.create-or-alter`기존 매핑을 변경 합니다.
  
 **예제** 
  
@@ -48,6 +48,9 @@ ms.locfileid: "81744501"
 
 **예제 출력**
 
-| 이름     | 종류 | 매핑                                                                                                                                                                          |
+| 속성     | 종류 | 매핑                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 매핑1 | CSV  | [{"Name":"행 번호","DataType":"int","CsvDataType","int","CsvDataType":null","ConstValue":null},{"이름":"rowguid","데이터 타입":"문자열","CsvDataType":null":1,"ConstValue":null}] |
+| mapping1 | CSV  | [{"Name": "rownumber", "DataType": "int", "CsvDataType": null, "Ordinal": 0, "ConstValue": null}, {"Name": "rowguid", "DataType": "string", "CsvDataType": null, "서 수": 1, "ConstValue": null}] |
+
+## <a name="next-steps"></a>다음 단계
+수집 매핑에 대 한 자세한 내용은 [데이터 매핑](mappings.md)을 참조 하세요.

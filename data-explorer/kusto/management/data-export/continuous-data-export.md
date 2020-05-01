@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/27/2020
-ms.openlocfilehash: 69d8f4e8e0ffa388893c55e447dd3e03ed058380
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 7abcead19e0306853bc6a585a41b5b79657a6842
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108408"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82617717"
 ---
 # <a name="continuous-data-export"></a>연속 데이터 내보내기
 
@@ -60,7 +60,7 @@ Kusto에서 [외부 테이블로](../externaltables.md)데이터를 지속적으
 
 **속성**:
 
-| 속성             | Type     | Description   |
+| 속성             | Type     | 설명   |
 |----------------------|----------|---------------------------------------|
 | ContinuousExportName | String   | 연속 내보내기의 이름입니다. 이름은 데이터베이스 내에서 고유 해야 하며 주기적으로 연속 내보내기를 실행 하는 데 사용 됩니다.      |
 | ExternalTableName    | String   | 내보낼 [외부 테이블](../externaltables.md) 의 이름입니다.  |
@@ -73,7 +73,7 @@ Kusto에서 [외부 테이블로](../externaltables.md)데이터를 지속적으
 
 **예제:**
 
-```
+```kusto
 .create-or-alter continuous-export MyExport
 over (T)
 to table ExternalBlob
@@ -84,7 +84,7 @@ with
 <| T
 ```
 
-| 이름     | ExternalTableName | 쿼리 | ForcedLatency | 간격 끝점 | CursorScopedTables         | ExportProperties                   |
+| 속성     | ExternalTableName | 쿼리 | ForcedLatency | 간격 끝점 | CursorScopedTables         | ExportProperties                   |
 |----------|-------------------|-------|---------------|---------------------|----------------------------|------------------------------------|
 | MyExport | ExternalBlob      | S     | 00:10:00      | 01:00:00            | [<br>  "[' DB ']. ['S '] "<br>] | {<br>  "SizeLimit": 104857600<br>} |
 
@@ -98,7 +98,7 @@ with
 
 **정보의**
 
-| 속성             | Type   | Description                |
+| 속성             | Type   | 설명                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기의 이름입니다. |
 
@@ -109,7 +109,7 @@ with
 
 **출력**
 
-| 출력 매개 변수    | Type     | Description                                                             |
+| 출력 매개 변수    | Type     | 설명                                                             |
 |---------------------|----------|-------------------------------------------------------------------------|
 | CursorScopedTables  | String   | 명시적으로 범위가 지정 된 (팩트) 테이블 목록 (JSON 직렬화)               |
 | ExportProperties    | String   | 속성 내보내기 (JSON 직렬화)                                     |
@@ -121,7 +121,7 @@ with
 | IsRunning           | 부울  | 연속 내보내기가 현재 실행 중인 경우 True입니다.                      |
 | LastRunResult       | String   | 마지막 연속 내보내기 실행 (`Completed` 또는 `Failed`)의 결과 |
 | LastRunTime         | DateTime | 연속 내보내기가 마지막으로 실행 된 시간 (시작 시간)           |
-| 이름                | String   | 연속 내보내기의 이름                                           |
+| 속성                | String   | 연속 내보내기의 이름                                           |
 | 쿼리               | String   | 내보내기 쿼리                                                            |
 | StartCursor         | String   | 이 연속 내보내기에 대 한 첫 번째 실행의 시작 지점         |
 
@@ -135,13 +135,13 @@ with
 
 **정보의**
 
-| 속성             | Type   | Description                |
+| 속성             | Type   | 설명                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기의 이름입니다. |
 
 **출력**
 
-| 출력 매개 변수  | Type     | Description                            |
+| 출력 매개 변수  | Type     | 설명                            |
 |-------------------|----------|----------------------------------------|
 | 타임스탬프         | DateTime | 연속 내보내기 실행의 타임 스탬프 |
 | ExternalTableName | String   | 외부 테이블의 이름             |
@@ -168,28 +168,28 @@ with
 
 **정보의**
 
-| 속성             | Type   | Description                |
+| 속성             | Type   | 설명                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기 이름  |
 
 **출력**
 
-| 출력 매개 변수 | Type      | Description                                         |
+| 출력 매개 변수 | Type      | 설명                                         |
 |------------------|-----------|-----------------------------------------------------|
 | 타임스탬프        | DateTime  | 오류의 타임 스탬프입니다.                           |
 | OperationId      | String    | 오류의 작업 ID입니다.                    |
-| 이름             | String    | 연속 내보내기 이름입니다.                             |
+| 속성             | String    | 연속 내보내기 이름입니다.                             |
 | LastSuccessRun   | 타임스탬프 | 연속 내보내기의 마지막 실행 성공입니다.   |
 | FailureKind      | String    | 실패/PartialFailure입니다. PartialFailure는 오류가 발생 하기 전에 일부 아티팩트가 성공적으로 내보내진 것을 나타냅니다. |
 | 세부 정보          | String    | 오류 세부 정보입니다.                              |
 
 **예제:** 
 
-```
+```kusto
 .show continuous-export MyExport failures 
 ```
 
-| 타임스탬프                   | OperationId                          | 이름     | LastSuccessRun              | FailureKind | 세부 정보    |
+| 타임스탬프                   | OperationId                          | 속성     | LastSuccessRun              | FailureKind | 세부 정보    |
 |-----------------------------|--------------------------------------|----------|-----------------------------|-------------|------------|
 | 2019-01-01 11:07:41.1887304 | ec641435-2505-4532-ba19-d6ab88c96a9d | MyExport | 2019-01-01 11:06:35.6308140 | 실패     | 세부 정보 ... |
 
@@ -201,7 +201,7 @@ with
 
 **정보의**
 
-| 속성             | Type   | Description                |
+| 속성             | Type   | 설명                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기 이름 |
 
@@ -221,7 +221,7 @@ with
 
 **정보의**
 
-| 속성             | Type   | Description                |
+| 속성             | Type   | 설명                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기 이름 |
 
@@ -236,7 +236,7 @@ with
 
 연속 내보내기는 생성 시점 에서만 데이터 내보내기를 시작 합니다. 해당 시간 이전에 수집 레코드는 (연속 되지 않은) [내보내기 명령을](export-data-to-an-external-table.md)사용 하 여 별도로 내보내야 합니다. 연속 내보내기로 내보낸 데이터에 중복 되지 않도록 하려면 [연속 내보내기 표시 명령](#show-continuous-export) 및 내보내기 전용 레코드에서 반환 된 startcursor를 사용 하 여 커서 값을 cursor_before_or_at 합니다. 아래 예제를 참조하세요. 기록 데이터가 너무 커서 단일 내보내기 명령으로 내보낼 수 없습니다. 따라서 쿼리를 몇 개의 작은 일괄 처리로 분할 합니다. 
 
-```
+```kusto
 .show continuous-export MyExport | project StartCursor
 ```
 
@@ -246,7 +246,7 @@ with
 
 다음이 이어집니다. 
 
-```
+```kusto
 .export async to table ExternalBlob
 <| T | where cursor_before_or_at("636751928823156645")
 ```

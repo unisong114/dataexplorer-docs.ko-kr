@@ -1,6 +1,6 @@
 ---
-title: .name table 및 .rename 테이블 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure Data Explorer에서 .rename 테이블 및 .rename 테이블의 이름을 설명합니다.
+title: . 테이블 이름 바꾸기 및 테이블 이름 바꾸기-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 테이블 이름 바꾸기 및 Azure 데이터 탐색기에서 테이블 이름 바꾸기에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,56 +8,56 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
-ms.openlocfilehash: db3e38c562573f52df70979b71fe72d8947158bf
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: a1644021d1e2df294782d3b24e111d3c57af5f91
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81520488"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82617581"
 ---
-# <a name="rename-table-and-rename-tables"></a>.name name table 및 .rename table
+# <a name="rename-table-and-rename-tables"></a>. 테이블 이름 바꾸기 및 테이블 이름 바꾸기
 
-기존 테이블의 이름을 변경합니다.
+기존 테이블의 이름을 변경 합니다.
 
-명령은 `.rename tables` 데이터베이스의 여러 테이블 이름을 단일 트랜잭션으로 변경합니다.
+이 `.rename tables` 명령은 데이터베이스에 있는 여러 테이블의 이름을 단일 트랜잭션으로 변경 합니다.
 
-[데이터베이스 관리자 권한이](../management/access-control/role-based-authorization.md)필요합니다.
+[데이터베이스 관리자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
 **구문**
 
-`.rename``table` *이전 이름* `to` *새 이름*
+`.rename``table` *OldName* OldName `to` *NewName*
 
-`.rename``tables` *새 이름* = *이전 이름* [ [`ifexists`[ [ [ [...]`,`
+`.rename``tables` *NewName*NewName = *OldName* [`ifexists`] [`,` ...]
 
 > [!NOTE]
-> * *OldName은* 기존 테이블의 이름입니다. *OldName이* 지정되지 않는 한(이 `ifexists` 경우 이름 바꾸기 명령의 이 부분은 무시됨) 기존 테이블의 이름을 지정하지 않으면 오류가 발생되고 전체 명령이 실패합니다(아무런 효과 없음).
-> * *NewName은* *OldName*이라고 하는 데 사용 하는 기존 테이블의 새 이름입니다.
-> * `ifexists` 지정하면 존재하지 않는 테이블의 이름 바꾸기 부분을 무시하도록 명령의 동작을 수정합니다.
+> * *OldName* 는 기존 테이블의 이름입니다. *OldName* 가 지정 되지 않은 경우 (이 경우 rename 명령의이 부분이 무시 됨),가 지정 되지 않은 `ifexists` 경우 오류가 발생 하 고 전체 명령이 실패 합니다 (영향을 주지 않음).
+> * *NewName* 은 *OldName*라고 하는 기존 테이블의 새 이름입니다.
+> * 을 `ifexists` 지정 하면 존재 하지 않는 테이블의 이름을 바꾸는 것을 무시 하도록 명령의 동작을 수정 합니다.
 
 **주의**
 
-이 명령은 범위의 데이터베이스 테이블에서만 작동합니다.
+이 명령은 범위 내 에서만 데이터베이스의 테이블에 대해 작동 합니다.
 테이블 이름은 클러스터 또는 데이터베이스 이름으로 한정할 수 없습니다.
 
-이 명령은 새 테이블을 만들지 않으며 기존 테이블을 제거하지도 않습니다.
-명령에 설명된 변환은 데이터베이스의 테이블 수가 변경되지 않도록 해야 합니다.
+이 명령은 새 테이블을 만들지 않으며 기존 테이블도 제거 하지 않습니다.
+명령에서 설명 하는 변환은 데이터베이스의 테이블 수가 변경 되지 않도록 해야 합니다.
 
-**이** 명령은 위의 규칙을 준수하는 한 테이블 이름 교환 또는 보다 복잡한 순열을 지원합니다. 예를 들어 데이터를 여러 스테이징 테이블로 수집한 다음 단일 트랜잭션의 기존 테이블과 교환합니다.
+**이** 명령은 위의 규칙을 준수 하는 한 테이블 이름 또는 더 복잡 한 순열의 스와핑을 지원 합니다. 예를 들어 여러 준비 테이블에 데이터를 수집한 다음 단일 트랜잭션으로 기존 테이블로 바꿉니다.
 
-**예**
+**예제**
 
-`A`다음 테이블이 `B` `C` `A_TEMP`있는 데이터베이스를 상상해 보십시오.
-다음 `A` 명령은 스왑되고 `A_TEMP` (테이블이 `A_TEMP` 이제 호출되고 `A`다른 방법으로 호출되도록) `B` `NEWB`의 이름을 `C` 로 바꾸고 있는 대로 유지합니다. 
+`A` `B`, `C`, 및 `A_TEMP`테이블이 포함 된 데이터베이스를 상상해 보세요.
+`A` 다음 명령은와 `A_TEMP` 를 교환 하 여 `A_TEMP` 테이블을 호출 `A`하 고 다른 방법으로 이름을로 `B` `NEWB`바꾸고 그대로 유지 `C` 합니다. 
 
-```
+```kusto
 .rename tables A=A_TEMP, NEWB=B, A_TEMP=A
 ``` 
 
-다음 명령 시퀀스:
-1. 새 임시 테이블 을 만듭니다.
-1. 기존 또는 기존 테이블 또는 기존 테이블새 테이블으로 바꿉습니다.
+다음과 같은 일련의 명령이 있습니다.
+1. 새 임시 테이블을 만듭니다.
+1. 기존 또는 기존이 아닌 테이블을 새 테이블로 바꿉니다.
 
-```
+```kusto
 // Drop the temporary table if it exists
 .drop table TempTable ifexists
 

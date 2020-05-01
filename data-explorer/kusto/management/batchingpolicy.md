@@ -1,6 +1,6 @@
 ---
-title: 인시션 배치 정책 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 인시션 배치 정책에 대해 설명합니다.
+title: Kusto IngestionBatching 정책에서 일괄 처리 최적화-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 IngestionBatching 정책에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,39 +8,39 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: fa3a4cfd512e3e37ba6b6abf8f8316d6ff12fdec
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 8f079fd7deb6e2b1ef81565aaf591ef4a5d0f020
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81522239"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82617751"
 ---
-# <a name="ingestionbatching-policy"></a>인제션배치 정책
+# <a name="ingestionbatching-policy"></a>IngestionBatching 정책
 
 ## <a name="overview"></a>개요
 
-수집 프로세스 중에 Kusto는 수집을 기다리는 동안 작은 데이터 청크를 함께 일괄 처리하여 처리량을 최적화하려고 시도합니다.
-이러한 종류의 일괄 처리는 수집 프로세스에서 소비되는 리소스를 줄여줄뿐만 아니라 비일괄 수집에서 생성된 작은 데이터 샤드를 최적화하기 위해 수집 후 리소스가 필요하지 않습니다.
+수집 프로세스 중에는 수집을 기다리는 동안 작은 수신 데이터 청크를 일괄 처리 하 여 처리량을 최적화 하려고 시도 합니다.
+이러한 종류의 일괄 처리는 수집 프로세스에서 사용 하는 리소스를 줄이고 일괄 처리 되지 않은 수집에 의해 생성 된 작은 데이터 분할을 최적화 하기 위해 수집 후 리소스가 필요 하지 않습니다.
 
-그러나 강제 지연이 도입된 수집 전에 일괄 처리를 수행하면 쿼리준비가 될 때까지 데이터 수집을 요청하는 종단 간 시간이 커지도록 하는 단점이 있습니다.
+그러나 수집 전에 일괄 처리를 수행 하는 것이 좋습니다 .이는 강제 지연을 도입 하 여 쿼리 준비가 될 때까지 데이터 수집을 요청 하는 것과 같은 종단 간 시간이 더 클 수 있습니다.
 
-이 절충을 제어할 수 있도록 `IngestionBatching` 정책을 사용할 수 있습니다.
-이 정책은 큐에 대기된 정리에만 적용되며 작은 Blob을 함께 일괄 처리할 때 허용하는 최대 강제 지연을 제공합니다.
+이러한 절충에 대 한 제어를 허용 하려면 `IngestionBatching` 정책을 사용할 수 있습니다.
+이 정책은 대기 중인 수집에만 적용 되며, 작은 blob을 함께 일괄 처리할 때 허용 되는 최대 강제 지연을 제공 합니다.
 
 ## <a name="details"></a>세부 정보
 
-위에서 설명한 것처럼 대량으로 수집할 데이터의 최적 크기가 있습니다.
-현재 이 크기는 압축되지 않은 데이터의 약 1GB입니다. 최적의 크기보다 훨씬 적은 데이터를 보유하는 Blob에서 수행되는 수집은 최적이 아니므로 큐에 대기된 섭취에서 Kusto는 이러한 작은 Blob을 함께 배치합니다. 일괄 처리는 첫 번째 조건이 true가 될 때까지 수행됩니다.
+위에서 설명한 것 처럼 대량으로 수집 하는 최적의 데이터 크기를 가집니다.
+현재 크기는 약 1gb의 압축 되지 않은 데이터입니다. 최적의 크기 보다 훨씬 적은 데이터를 보유 하는 blob에서 수행 되는 수집은 최적이 아니므로 대기 중인 수집 Kusto는 이러한 작은 blob을 함께 배치 합니다. 일괄 처리는 첫 번째 조건이 true가 될 때까지 수행 됩니다.
 
-1. 일괄 처리된 데이터의 총 크기가 최적의 크기에 도달하거나
-2. 최대 지연 시간, 총 크기 또는 정책에서 허용하는 `IngestionBatching` Blob 수에 도달했습니다.
+1. 일괄 처리 된 데이터의 총 크기가 최적의 크기에 도달 하거나
+2. `IngestionBatching` 정책에서 허용 하는 최대 지연 시간, 전체 크기 또는 blob 수에 도달 했습니다.
 
-`IngestionBatching` 정책은 데이터베이스 또는 테이블에 설정할 수 있습니다. 기본적으로 정책이 정의되지 않은 경우 Kusto는 최대 지연 시간, **1000개** 항목, 일괄 처리를 위한 총 크기 **1G로** **기본값을 5분으로** 사용합니다.
+데이터베이스 `IngestionBatching` 또는 테이블에서 정책을 설정할 수 있습니다. 기본적으로 정책이 정의 되지 않은 경우 Kusto는 최대 지연 시간, **1000** 항목, 일괄 처리에 대 한 총 **1g** 크기의 기본값을 **5 분** 으로 사용 합니다.
 
 > [!WARNING]
-> 이 정책을 설정하려는 고객은 먼저 Kusto ops 팀에 문의하는 것이 좋습니다. 이 정책을 매우 작은 값으로 설정하는 영향은 클러스터의 COGS가 증가하고 성능이 저하되는 것입니다. 또한 한도에서 이 값을 줄이면 여러 개의 섭취 프로세스를 병렬로 관리하는 오버헤드로 인해 실제로 효과적인 엔드 투 엔드 섭취 대기 시간이 **증가할** 수 있습니다.
+> 이 정책을 설정 하려는 고객은 먼저 Kusto ops 팀에 문의 하는 것이 좋습니다. 이 정책을 매우 작은 값으로 설정 하면 클러스터의 COGS 증가 하 고 성능이 저하 됩니다. 또한이 값을 줄이면 여러 수집 프로세스를 병렬로 관리 하는 오버 헤드로 인해 실제 종단 간 수집 대기 시간이 **늘어날** 수 있습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
-* [인제션배치 정책 명령 참조](../management/batching-policy.md)
-* [섭취 모범 사례 - 처리량 최적화](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
+* [IngestionBatching 정책 명령 참조](../management/batching-policy.md)
+* [수집 모범 사례-처리량 최적화](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)

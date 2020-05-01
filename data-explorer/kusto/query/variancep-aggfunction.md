@@ -1,6 +1,6 @@
 ---
-title: 분산() (집계 함수) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 분산() (집계 함수)에 대해 설명합니다.
+title: vargep () (집계 함수)-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 vargep () (집계 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,34 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 386244806a6fcb3f321eb1a6b40595dc71b2b413
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 80f3f900649d2c4c36c7a50831e011f0ee018860
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81504593"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82618016"
 ---
-# <a name="variancep-aggregation-function"></a>분산() (집계 함수)
+# <a name="variancep-aggregation-function"></a>vargep () (집계 함수)
 
-그룹을 [모집단으로](https://en.wikipedia.org/wiki/Statistical_population)고려하여 그룹 전체의 *Expr* 분산을 계산합니다. 
+그룹을 [모집단](https://en.wikipedia.org/wiki/Statistical_population)으로 간주 하 여 그룹 전체에 대 한 *Expr* 의 분산을 계산 합니다. 
 
-* 사용된 수식: ![대체 텍스트](./images/aggregations/variance-population.png "분산-채우기")
+* 사용 되는 수식:
 
-* 요약 내부 집계의 컨텍스트에서만 사용할 수 [있습니다.](summarizeoperator.md)
+:::image type="content" source="images/variancep-aggfunction/variance-population.png" alt-text="분산 모집단":::
+
+* [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
 **구문**
 
-`variancep(` *예시* 요약`)`
+`variancep(` *식* 요약`)`
 
 **인수**
 
-* *Expr*: 집계 계산에 사용되는 표현식입니다. 
+* *Expr*: 집계 계산에 사용 되는 식입니다. 
 
 **반환**
 
-그룹 전체의 *Expr* 분산 값입니다.
+그룹 전체에 대 한 *Expr* 의 가변성 값입니다.
  
-**예**
+**예제**
 
 ```kusto
 range x from 1 to 5 step 1
@@ -44,4 +46,4 @@ range x from 1 to 5 step 1
 
 |list_x|variance_x|
 |---|---|
-|[ 1, 2, 3, 4, 5]|2|
+|[1, 2, 3, 4, 5]|2|
