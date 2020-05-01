@@ -1,6 +1,6 @@
 ---
-title: 변경 병합 테이블 열-문서 문자열 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 테이블 열-문서 문자열 변경에 대해 설명합니다.
+title: alter-merge 테이블 열-docstrings-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 alter-merge 테이블 열 docstrings에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,39 +8,39 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 75d298f35a215af5da443f673278e4a252c24cc9
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 7dd36181be1140d3960369b1c8a5284ed55e48f5
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81522392"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82616493"
 ---
-# <a name="alter-merge-table-column-docstrings"></a>테이블 열-문서 문자열 변경 병합
+# <a name="alter-merge-table-column-docstrings"></a>alter-merge 테이블 열-docstrings
 
-지정된 `docstring` 테이블의 하나 이상의 열의 속성을 설정합니다. 명시적으로 설정되지 **retain** 않은 열은 이 속성에 대한 기존 값을 유지합니다(열이 있는 경우).
+지정 된 `docstring` 테이블에 있는 하나 이상의 열에 대 한 속성을 설정 합니다. 명시적으로 설정 되지 않은 열에는이 속성에 대 한 기존 값 (있는 경우)이 **유지** 됩니다.
 
-테이블 열-문서 문자열 을 변경하면 [아래를](#alter-table-column-docstrings)참조하십시오.
+Alter table column-docstring의 경우 [아래](#alter-table-column-docstrings)를 참조 하세요.
 
 **구문**
 
-`.alter-merge``table` *표이름* `column-docstring` *Col1* `:` `:` `,` *Col2* *Docstring2* *Docstring1* 콜1 닥스트링1 [ 콜2 닥스트링2]... `(``)`
+`.alter-merge``table` *TableName* `:` *Docstring1* *Col1* `:` *Docstring2*Col1 Docstring1 [`,` *Col2* Docstring2] ... `column-docstring` `(``)`
 
 **예제** 
 
-```
+```kusto
 .alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```
 
-## <a name="alter-table-column-docstrings"></a>테이블 열-문서 문자열 변경
+## <a name="alter-table-column-docstrings"></a>alter table 열-docstrings
 
-지정된 `docstring` 테이블의 하나 이상의 열의 속성을 설정합니다. 명시적으로 설정되지 않은 열에는 이 속성이 **제거됩니다.**
+지정 된 `docstring` 테이블에 있는 하나 이상의 열에 대 한 속성을 설정 합니다. 명시적으로 설정 하지 않은 열에는이 속성이 **제거**됩니다.
 
 **구문**
 
-`.alter``table` *표이름* `column-docstring` *Col1* `:` `:` `,` *Col2* *Docstring2* *Docstring1* 콜1 닥스트링1 [ 콜2 닥스트링2]... `(``)`
+`.alter``table` *TableName* `:` *Docstring1* *Col1* `:` *Docstring2*Col1 Docstring1 [`,` *Col2* Docstring2] ... `column-docstring` `(``)`
 
 **예제** 
 
-```
+```kusto
 .alter table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```
