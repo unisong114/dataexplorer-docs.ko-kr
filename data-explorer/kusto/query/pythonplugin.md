@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 6b33ee0ed9535d512c909dd8de124fc8b1770cee
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 3d88b04220851b8218d0d23fed93ba3627720afd
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618992"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737830"
 ---
 # <a name="python-plugin"></a>Python 플러그 인
 
@@ -115,7 +115,7 @@ print "This is an example for using 'external_artifacts'"
 )
 ```
 
-| 파일                  | 크기 |
+| 파일                  | Size |
 |-----------------------|------|
 | this_is_a_script      | 120  |
 | this_is_my_first_file | 105  |
@@ -129,7 +129,7 @@ print "This is an example for using 'external_artifacts'"
     * 또한 [partition 연산자](partitionoperator.md) 를 사용 하 여 입력 데이터 집합을 분할할 수 있습니다.
 * 가능 하면 Kusto의 쿼리 언어를 사용 하 여 Python 스크립트의 논리를 구현 합니다.
 
-    예제:
+    예:
 
     ```kusto    
     .show operations
@@ -227,7 +227,7 @@ range Id from 1 to 3 step 1
     external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?...'))
 ```
 
-| Id | 속성         |
+| Id | 이름         |
 |----|--------------|
 |   1| Gary Tapia   |
 |   2| Emma Evans   |
@@ -239,6 +239,6 @@ range Id from 1 to 3 step 1
 
 ::: zone pivot="azuremonitor"
 
-이는에서 지원 되지 않습니다 Azure Monitor
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

@@ -1,6 +1,6 @@
 ---
-title: 클러스터() (범위 함수) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 클러스터(범위 함수)에 대해 설명합니다.
+title: cluster () (scope 함수)-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 cluster () (범위 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: c5f537b47006af4035c9db26388c1d4110c69b55
-ms.sourcegitcommit: 01eb9aaf1df2ebd5002eb7ea7367a9ef85dc4f5d
+ms.openlocfilehash: 092915c08b4b3d1e72722a4303e911403b2defd2
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81766109"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737201"
 ---
-# <a name="cluster-scope-function"></a>클러스터() (범위 함수)
+# <a name="cluster-scope-function"></a>cluster () (범위 함수)
 
 ::: zone pivot="azuredataexplorer"
 
-쿼리 참조를 원격 클러스터로 변경합니다. 
+쿼리 참조를 원격 클러스터로 변경 합니다. 
 
 ```kusto
 cluster('help').database('Sample').SomeTable
@@ -29,20 +29,20 @@ cluster('help').database('Sample').SomeTable
 
 **구문**
 
-`cluster(`*문자열 불변*`)`
+`cluster(`*stringConstant*`)`
 
 **인수**
 
-* *stringConstant*: 참조되는 클러스터의 이름입니다. 클러스터 이름은 정규화된 DNS 이름또는 `.kusto.windows.net`에 접미사가 붙일 문자열일 수 있습니다. 인수는 쿼리를 실행하기 전에 _일정해야_ 합니다.
+* *Stringconstant*: 참조 된 클러스터의 이름입니다. 클러스터 이름은 정규화 된 DNS 이름 이거나 접미사로 사용 `.kusto.windows.net`되는 문자열일 수 있습니다. 쿼리를 실행 하기 전에 인수를 _일정_ 해야 합니다. 즉, 하위 쿼리 계산에서 가져올 수 없습니다.
 
 **참고 사항**
 
-* 동일한 클러스터 내에서 데이터베이스에 액세스하는 경우 [- 데이터베이스()](databasefunction.md) 함수를 사용합니다.
-* 클러스터 간 쿼리 및 데이터베이스 간 쿼리에 대한 자세한 내용은 [여기에서](cross-cluster-or-database-queries.md) 확인할 수 있습니다.  
+* 동일한 클러스터 내에서 데이터베이스에 액세스 하는 경우- [database ()](databasefunction.md) 함수를 사용 합니다.
+* 클러스터 간 및 데이터베이스 간 쿼리에 대 한 자세한 내용은 여기를 참조 [하세요](cross-cluster-or-database-queries.md) .  
 
 ## <a name="examples"></a>예
 
-### <a name="use-cluster-to-access-remote-cluster"></a>클러스터()를 사용하여 원격 클러스터에 액세스 
+### <a name="use-cluster-to-access-remote-cluster"></a>클러스터 ()를 사용 하 여 원격 클러스터에 액세스 
 
 다음 쿼리는 Kusto 클러스터에서 실행할 수 있습니다.
 
@@ -56,9 +56,9 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 |---|
 |59066|
 
-### <a name="use-cluster-inside-let-statements"></a>내부 let 문 에서 클러스터() 사용 
+### <a name="use-cluster-inside-let-statements"></a>Let 문 내에서 cluster () 사용 
 
-클러스터() 함수로 전달되는 매개 변수를 `clusterName` 수신하는 인라인 함수(let statement)를 사용하기 위해 위와 동일한 쿼리를 다시 작성할 수 있습니다.
+위와 동일한 쿼리는 cluster () 함수로 전달 되는 매개 변수 `clusterName` 를 받는 인라인 함수 (let 문)를 사용 하도록 다시 작성할 수 있습니다.
 
 ```kusto
 let foo = (clusterName:string)
@@ -72,9 +72,9 @@ foo('help')
 |---|
 |59066|
 
-### <a name="use-cluster-inside-functions"></a>함수 내부의 클러스터() 사용 
+### <a name="use-cluster-inside-functions"></a>함수 내에서 cluster () 사용 
 
-클러스터() 함수로 전달되는 매개 변수를 `clusterName` 수신하는 함수에서 위와 동일한 쿼리를 다시 작성할 수 있습니다.
+위와 동일한 쿼리는 cluster () 함수로 전달 되는 매개 변수 `clusterName` 를 받는 함수에서 사용 하도록 다시 작성할 수 있습니다.
 
 ```kusto
 .create function foo(clusterName:string)
@@ -83,12 +83,12 @@ foo('help')
 };
 ```
 
-**참고:** 이러한 함수는 클러스터 간 쿼리가 아닌 로컬에서만 사용할 수 있습니다.
+**참고:** 이러한 함수는 로컬 에서만 사용할 수 있고 클러스터 간 쿼리에서는 사용할 수 없습니다.
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-Azure 모니터에서는 이 성능이 지원되지 않습니다.
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

@@ -1,6 +1,6 @@
 ---
-title: 제한 문 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 제한 문에 대해 설명합니다.
+title: Restrict 문-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 Restrict 문에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,40 +10,40 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: cbd21c01956f817c5db19a93104028dba2b2b2b4
-ms.sourcegitcommit: 01eb9aaf1df2ebd5002eb7ea7367a9ef85dc4f5d
+ms.openlocfilehash: 094cec5b467c35eb9dbeeb756362bd13c77873ce
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81765978"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737779"
 ---
 # <a name="restrict-statement"></a>Restrict 문
 
 ::: zone pivot="azuredataexplorer"
 
-제한 문은 다음에 있는 쿼리 문에 표시되는 테이블/뷰 엔터티 집합을 제한합니다. 예를 들어 두 개의 테이블(,`A` `B`)을 포함하는 데이터베이스에서 응용 프로그램은 나머지 `B` 쿼리가 액세스하지 못하도록 하고 `A` 뷰를 사용하여 제한된 형식의 테이블만 "볼" 수 있습니다.
+Restrict 문은 쿼리 문 뒤에 표시 되는 테이블/뷰 엔터티 집합을 제한 합니다. 예를 들어 두 개의 테이블이 포함 된 데이터베이스에서 (`A`, `B`) 응용 프로그램은 쿼리의 나머지 부분이 액세스 `B` 하는 것을 방지 하 고 뷰를 사용 하 여 제한 된 형태의 `A` 테이블을 "참조" 하는 것을 방지할 수 있습니다.
 
-제한 문의 주요 시나리오는 사용자의 쿼리를 허용 하 고 이러한 쿼리를 통해 행 수준 보안 메커니즘을 적용 하려는 중간 계층 응용 프로그램에 대 한 것입니다. 중간 계층 응용 프로그램은 사용자의 데이터에 대한 액세스를 제한하는 보기를 정의하는 let 문 집합인 **논리 모델(예:** `T | where UserId == "..."`)으로 사용자의 쿼리를 접두사할 수 있습니다. 마지막 문이 추가되면 논리 모델에 대한 사용자의 액세스만 제한됩니다.
+Restrict 문의 주요 시나리오는 사용자의 쿼리를 수락 하 고 해당 쿼리에 대해 행 수준 보안 메커니즘을 적용 하려는 중간 계층 응용 프로그램에 대 한 것입니다. 중간 계층 응용 프로그램은 사용자의 데이터에 대 한 액세스를 제한 하는 뷰를 정의 하는 let 문의 집합인 **논리 모델**을 사용 하 여 사용자의 쿼리에 접두사를 `T | where UserId == "..."`지정할 수 있습니다 (예:). 마지막으로 추가 되는 문은 사용자의 논리적 모델만 액세스를 제한 합니다.
 
 **구문**
 
-`restrict``access` `,` [*엔티티스스펙티어 [...]]* `to` `(``)`
+`restrict``access` `,` [Entityspecifier [...]]*EntitySpecifier* `to` `(``)`
 
-*EntitySpecifier가* 다음 중 하나인 경우:
-* let 문에 의해 테이블 형식 보기로 정의된 식별자입니다.
-* 공용 구조자 문에서 사용하는 것과 유사한 테이블 참조입니다.
-* 패턴 선언에 의해 정의된 패턴입니다.
+여기서 *Entityspecifier* 는 다음 중 하나입니다.
+* Let 문에 의해 테이블 형식 뷰로 정의 된 식별자입니다.
+* Union 문에 사용 되는 것과 비슷한 테이블 참조입니다.
+* 패턴 선언에 의해 정의 되는 패턴입니다.
 
-제한 문에 의해 지정되지 않은 모든 테이블, 테이블 형식 보기 또는 패턴은 쿼리의 나머지 부분에 "보이지 않음"이 됩니다. 
+Restrict 문으로 지정 되지 않은 모든 테이블, 테이블 형식 뷰 또는 패턴은 쿼리의 나머지 부분에 대해 "보이지 않는" 상태가 됩니다. 
 
 **참고 사항**
 
-제한 문을 사용하여 다른 데이터베이스 또는 클러스터의 엔터티에 대한 액세스를 제한할 수 있습니다(와일드카드는 클러스터 이름에서 지원되지 않음).
+Restrict 문은 다른 데이터베이스 또는 클러스터의 엔터티에 대 한 액세스를 제한 하는 데 사용할 수 있습니다 (와일드 카드는 클러스터 이름에서 지원 되지 않음).
 
 **인수**
 
-limit 문은 엔터티의 이름 확인 중에 허용 제한을 정의하는 하나 이상의 매개 변수를 얻을 수 있습니다. 엔터티는 다음과 같은 것일 수 있습니다.
-- 문 앞에 `restrict` 문장이 [나타나도록 하십시오.](./letstatement.md) 
+Restrict 문은 엔터티 이름을 확인 하는 동안 허용 제한을 정의 하는 하나 이상의 매개 변수를 가져올 수 있습니다. 엔터티는 다음과 같을 수 있습니다.
+- 문 앞 `restrict` 에 [let 문을](./letstatement.md) 표시 합니다. 
 
 ```kusto
 // Limit access to 'Test' let statement only
@@ -51,7 +51,7 @@ let Test = () { print x=1 };
 restrict access to (Test);
 ```
 
-- 데이터베이스 메타데이터에 정의된 [테이블](../management/tables.md) 또는 [함수입니다.](../management/functions.md)
+- 데이터베이스 메타 데이터에 정의 된 [테이블](../management/tables.md) 또는 [함수](../management/functions.md)
 
 ```kusto
 // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
@@ -60,7 +60,7 @@ restrict access to (Test);
 restrict access to (database().Table1, database().Func1, database('DB2').Table2);
 ```
 
-- [let 문](./letstatement.md) 또는 테이블/함수의 배수와 일치시킬 수 있는 와일드카드 패턴  
+- [Let 문이나](./letstatement.md) 테이블/함수의 배수를 일치 시킬 수 있는 와일드 카드 패턴  
 
 ```kusto
 let Test1 = () { print x=1 };
@@ -82,7 +82,7 @@ restricts access to (database('DB2').*);
 
 **예**
 
-다음 예제에서는 중간 계층 응용 프로그램이 사용자가 다른 사용자의 데이터를 쿼리하지 못하도록 하는 논리 모델로 사용자의 쿼리를 준비하는 방법을 보여 주습니다.
+다음 예제에서는 중간 계층 응용 프로그램에서 사용자가 다른 사용자의 데이터를 쿼리할 수 없도록 하는 논리 모델을 사용 하 여 사용자의 쿼리를 추가 하는 방법을 보여 줍니다.
 
 ```kusto
 // Assume the database has a single table, UserData,
@@ -139,6 +139,6 @@ Table1 |  count
 
 ::: zone pivot="azuremonitor"
 
-Azure 모니터에서는 이 성능이 지원되지 않습니다.
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

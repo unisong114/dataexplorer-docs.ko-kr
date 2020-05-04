@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 514c67133980c9ab1c38b65cc51e4592dcb15eda
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 1014b9090fef60816c4bbc0a7fd9b2fdc4c22801
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618968"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737796"
 ---
 # <a name="r-plugin-preview"></a>R 플러그 인 (미리 보기)
 
@@ -95,7 +95,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     * 또한 [partition 연산자](partitionoperator.md) 를 사용 하 여 입력 데이터 집합을 분할할 수 있습니다.
 * 가능 하면 Kusto 쿼리 언어를 사용 하 여 R 스크립트의 논리를 구현 합니다.
 
-    다음은 그 예입니다. 
+    예를 들어:
 
     ```kusto    
     .show operations
@@ -114,7 +114,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 * Kusto 문자열 구분 기호와 R의 충돌을 방지 하려면 kusto 쿼리의 Kusto 문자열`'`리터럴에 작은따옴표 ()를 사용 하 고 r 스크립트에서 r 문자열 리터럴에는 큰따옴표 (`"`)를 사용 하는 것이 좋습니다.
 * [Externaldata 연산자](externaldata-operator.md) 를 사용 하 여 Azure blob storage, 공용 GitHub 리포지토리 등 외부 위치에 저장 한 스크립트의 콘텐츠를 가져올 수 있습니다.
   
-  다음은 그 예입니다. 
+  예를 들어:
 
     ```kusto    
     let script = 
@@ -135,7 +135,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
 ::: zone pivot="azuremonitor"
 
-이는에서 지원 되지 않습니다 Azure Monitor
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end
 

@@ -1,6 +1,6 @@
 ---
-title: extent_tags() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 extent_tags()에 대해 설명합니다.
+title: extent_tags ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 extent_tags ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: d8af7e51c5e2efb16763541db05e9ccc7e2cb95f
-ms.sourcegitcommit: 01eb9aaf1df2ebd5002eb7ea7367a9ef85dc4f5d
+ms.openlocfilehash: 146ab59c1c0cbcb86bfae94fa26c09f5afa0f216
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81765417"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737592"
 ---
 # <a name="extent_tags"></a>extent_tags()
 
 ::: zone pivot="azuredataexplorer"
 
-현재 레코드가 있는 데이터 샤드("익스텐츠")의 [태그가](../management/extents-overview.md#extent-tagging) 있는 동적 배열을 반환합니다. 
+현재 레코드가 있는 데이터 분할 ("익스텐트")의 [태그가](../management/extents-overview.md#extent-tagging) 있는 동적 배열을 반환 합니다. 
 
-이 함수를 데이터 샤드에 연결되지 않은 계산된 데이터에 적용하면 빈 값이 반환됩니다.
+데이터 분할 된 데이터에 연결 되지 않은 계산 된 데이터에이 함수를 적용 하면 빈 값이 반환 됩니다.
 
 **구문**
 
@@ -31,11 +31,11 @@ ms.locfileid: "81765417"
 
 **반환**
 
-현재 레코드의 `dynamic` 익스텐트 태그 또는 빈 값을 보유하는 배열인 형식의 값입니다.
+현재 레코드의 범위 `dynamic` 태그를 포함 하는 배열 또는 빈 값 형식의 값입니다.
 
 **예**
 
-다음 예제에서는 열에 `ActivityId`대한 특정 값으로 한 시간 전에 레코드가 있는 모든 데이터 샤드의 태그를 목록으로 표시하는 방법을 보여 주었습니다. 일부 쿼리 `where` 연산자(여기서는 연산자이지만 이 것도 `extend` `project`마찬가지입니다.) 레코드를 호스팅하는 데이터 샤드에 대한 정보를 보존합니다.
+다음 예에서는 1 시간 전에 레코드를 포함 하는 모든 데이터 분할의 태그를 열 `ActivityId`에 대 한 특정 값으로 나열 하는 방법을 보여 줍니다. 일부 쿼리 연산자 (여기서는 `where` 연산자 이지만 및 `extend` `project`의 경우에도 해당 됨)는 레코드를 호스트 하는 데이터 분할 된 데이터에 대 한 정보를 유지 하는 것을 보여 줍니다.
 
 ```kusto
 T
@@ -45,7 +45,7 @@ T
 | summarize by tostring(tags)
 ```
 
-다음 예제에서는 태그(및 `MyTag` 잠재적으로 다른 태그)로 태그가 지정되지만 태그로 `drop-by:MyOtherTag`태그가 지정되지 않은 익스텐트에 저장되는 마지막 1시간의 모든 레코드 수를 가져오는 방법을 보여 주며.
+다음 예제에서는 마지막 시간부터 모든 레코드의 수를 가져오는 방법을 보여 줍니다 .이는 태그 `MyTag` (및 잠재적으로 다른 태그)로 태그가 지정 되었지만 태그로 `drop-by:MyOtherTag`태그가 지정 되지 않은 익스텐트에 저장 됩니다.
 
 ```kusto
 T
@@ -59,6 +59,6 @@ T
 
 ::: zone pivot="azuremonitor"
 
-Azure 모니터에서는 이 성능이 지원되지 않습니다.
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

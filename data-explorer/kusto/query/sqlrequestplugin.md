@@ -1,6 +1,6 @@
 ---
-title: sql_request 플러그인 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 sql_request 플러그인에 대해 설명합니다.
+title: sql_request 플러그 인-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 sql_request 플러그 인을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,36 +10,36 @@ ms.topic: reference
 ms.date: 02/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: f0c0837c6bb8e4dcd3cf2e28af18d02c19edb676
-ms.sourcegitcommit: 01eb9aaf1df2ebd5002eb7ea7367a9ef85dc4f5d
+ms.openlocfilehash: 725021ad8089d7e9ad4f897bd5a1c68f6912bf7a
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81766167"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737286"
 ---
 # <a name="sql_request-plugin"></a>sql_request 플러그 인
 
 ::: zone pivot="azuredataexplorer"
 
-  `evaluate``sql_request` `,` *Options* *ConnectionString* `,` *SqlQuery* `,` *SqlParameters* 연결 문자열 SqlQuery [ SqlParameters [ 옵션 ]] `(``)`
+  `evaluate``sql_request` `,` *SqlQuery* `,` *Options* *ConnectionString* `,` ConnectionString SqlQuery [sqlparameters [Options]] *SqlParameters* `(``)`
 
-플러그인은 `sql_request` SQL Server 네트워크 끝점으로 SQL 쿼리를 보내고 결과의 첫 번째 행 집합을 반환합니다.
+플러그 `sql_request` 인은 SQL Server 네트워크 끝점으로 SQL 쿼리를 보내고 결과에서 첫 번째 행 집합을 반환 합니다.
 
 **인수**
 
-* *연결 문자열* `string` : SQL Server 네트워크 끝점을 가리키는 연결 문자열을 나타내는 리터럴입니다. 유효한 인증 방법과 네트워크 끝점을 지정하는 방법은 아래를 참조하십시오.
+* *ConnectionString*: SQL Server `string` 네트워크 끝점을 가리키는 연결 문자열을 나타내는 리터럴입니다. 유효한 인증 방법 및 네트워크 끝점을 지정 하는 방법에 대 한 자세한 내용은 아래를 참조 하세요.
 
-* *SqlQuery*: `string` SQL 끝점에 대해 실행될 쿼리를 나타내는 리터럴입니다. 하나 이상의 행 집합을 반환해야 하지만 Kusto 쿼리의 나머지 부분에서는 첫 번째 행 집합만 사용할 수 있습니다.
+* *SqlQuery*: SQL `string` 끝점에 대해 실행할 쿼리를 나타내는 리터럴입니다. 는 하나 이상의 행 집합을 반환 해야 하지만, 첫 번째 행 집합은 Kusto 쿼리의 나머지 부분에서 사용할 수 있습니다.
 
-* *SqlParameters*: 쿼리와 `dynamic` 함께 매개 변수로 전달할 키-값 쌍을 보유하는 형식의 상수 값입니다. (선택 사항)
+* *Sqlparameters*: 쿼리와 함께 매개 변수로 전달할 `dynamic` 키-값 쌍을 보유 하는 형식의 상수 값입니다. 선택 사항입니다.
   
-* *옵션*: 키-값 `dynamic` 쌍으로 고급 설정을 보유하는 형식의 상수 값입니다. 인증을 `token` 위해 SQL 끝점으로 전달되는 발신자가 제공한 AAD 액세스 토큰을 전달하려면 현재만 설정할 수 있습니다. (선택 사항)
+* *Options*: 고급 설정을 키-값 `dynamic` 쌍으로 포함 하는 형식의 상수 값입니다. 현재는 `token` 인증을 위해 SQL 끝점으로 전달 되는 호출자 제공 AAD 액세스 토큰을 전달 하기 위해만 설정할 수 있습니다. 선택 사항입니다.
 
 **예**
 
-다음 예제에서는 에서 모든 레코드를 검색 하는 Azure `[dbo].[Table]`SQL DB 데이터베이스에 SQL 쿼리를 보낸 다음 Kusto 측에서 결과 처리 합니다. 인증은 호출하는 사용자의 AAD 토큰을 다시 사용합니다.
+다음 예에서는에서 `[dbo].[Table]`모든 레코드를 검색 하는 AZURE sql DB 데이터베이스로 sql 쿼리를 보낸 다음 Kusto 쪽에서 결과를 처리 합니다. 인증은 호출 하는 사용자의 AAD 토큰을 다시 사용 합니다.
 
-참고: 이 예제는 이러한 방식으로 데이터를 필터링/프로젝트하는 권장 사항으로 간주해서는 안 됩니다. 현재 Kusto 최적화 프로그램은 Kusto와 SQL 간의 쿼리를 최적화하려고 시도하지 않으므로 가능한 가장 작은 데이터 집합을 반환하기 위해 SQL 쿼리를 구성하는 것이 좋습니다.
+참고:이 예제는 이러한 방식으로 데이터를 필터링/프로젝트 하기 위한 권장 사항으로 사용 하면 안 됩니다. 현재 Kusto 최적화 프로그램은 Kusto와 SQL 간에 쿼리를 최적화 하려고 하지 않으므로 가능한 가장 작은 데이터 집합을 반환 하기 위해 SQL 쿼리를 생성 하는 것이 좋습니다.
 
 ```kusto
 evaluate sql_request(
@@ -51,7 +51,7 @@ evaluate sql_request(
 | project Name
 ```
 
-다음 예제는 SQL 인증이 사용자 이름/암호에 의해 수행된다는 점을 제외하면 이전 예제와 동일합니다. 기밀성을 위해 난독 처리된 문자열을 여기에 사용합니다.
+다음 예제는 사용자 이름/암호를 통해 SQL 인증을 수행 한다는 점을 제외 하 고는 이전 예제와 동일 합니다. 기밀성을 위해 여기에 난독 처리 된 문자열을 사용 합니다.
 
 ```kusto
 evaluate sql_request(
@@ -66,43 +66,43 @@ evaluate sql_request(
 
 **인증**
 
-sql_request 플러그인은 SQL Server 끝점에 대한 세 가지 인증 방법을 지원합니다.
+Sql_request 플러그 인은 SQL Server 끝점에 대 한 세 가지 인증 방법을 지원 합니다.
 
-* **AAD 통합** `Authentication="Active Directory Integrated"`인증 (): 사용자 또는 응용 프로그램이 AAD를 통해 Kusto로 인증하고 동일한 토큰을 사용하여 SQL Server 네트워크 끝점에 액세스하는 데 사용되는 기본 방법입니다.
+* **Aad 통합 인증** (`Authentication="Active Directory Integrated"`): 사용자 또는 응용 프로그램이 aad를 kusto를 통해 인증 하 고, 동일한 토큰을 사용 하 여 SQL Server 네트워크 끝점에 액세스 하는 기본 설정 방법입니다.
 
-* **사용자 이름/암호** `User ID=...; Password=...;`인증 (): AAD 통합 인증을 수행할 수 없는 경우 이 메서드에 대한 지원이 제공됩니다. 비밀 정보가 Kusto를 통해 전송되기 때문에 가능하면이 방법을 피하십시오.
+* **사용자 이름/암호 인증** (`User ID=...; Password=...;`): AAD 통합 인증을 수행할 수 없는 경우이 메서드에 대 한 지원이 제공 됩니다. 암호 정보가 Kusto를 통해 전송 되므로 가능 하면이 메서드를 사용 하지 마십시오.
 
-* **AAD 액세스** `dynamic({'token': h"eyJ0..."})`토큰 ( ): 이 인증 방법을 사용하면 액세스 토큰이 호출자에 의해 생성되고 Kusto가 SQL 끝점으로 전달합니다. 연결 문자열에는 에 `Authentication` `User ID`대한 인증 정보가 `Password`포함되어서는 안 됩니다. 대신 액세스 토큰은 sql_request `token` 플러그인의 `Options` 인수에서 속성으로 전달됩니다.
+* **AAD 액세스 토큰** (`dynamic({'token': h"eyJ0..."})`):이 인증 방법을 사용 하면 액세스 토큰이 호출자에 의해 생성 되 고 kusto에서 SQL 끝점으로 전달 됩니다. 연결 문자열에, `Authentication` `User ID`또는 `Password`와 같은 인증 정보가 포함 되어서는 안 됩니다. 대신 sql_request 플러그 인의 `token` `Options` 인수에서 액세스 토큰이 속성으로 전달 됩니다.
      
 > [!WARNING]
-> 기밀 정보 또는 보호해야 하는 정보가 포함된 연결 문자열 및 쿼리는 Kusto 추적에서 생략되도록 난독 처리해야 합니다.
-> 자세한 내용은 [난독 처리된 문자열 리터럴을](scalar-data-types/string.md#obfuscated-string-literals) 참조하십시오.
+> 기밀 정보나 보호 해야 하는 정보를 포함 하는 연결 문자열 및 쿼리는 모든 Kusto 추적에서 생략 되도록 난독 처리 되어야 합니다.
+> 자세한 내용은 난독 처리 되는 [문자열 리터럴](scalar-data-types/string.md#obfuscated-string-literals) 을 참조 하세요.
 
 **암호화 및 서버 유효성 검사**
 
-보안상의 이유로 SQL Server 네트워크 끝점에 연결할 때 다음 연결 속성이 강제로 수행됩니다.
+다음 연결 속성은 보안상의 이유로 SQL Server 네트워크 끝점에 연결 하는 경우 강제 적용 됩니다.
 
-* `Encrypt`무조건 `true` 설정됩니다.
-* `TrustServerCertificate`무조건 `false` 설정됩니다.
+* `Encrypt`는 무조건로 `true` 설정 됩니다.
+* `TrustServerCertificate`는 무조건로 `false` 설정 됩니다.
 
-따라서 SQL Server는 유효한 SSL/TLS 서버 인증서로 구성해야 합니다.
+따라서 유효한 SSL/TLS 서버 인증서를 사용 하 여 SQL Server를 구성 해야 합니다.
 
 **네트워크 끝점 지정**
 
-SQL 네트워크 끝점을 연결 문자열의 일부로 지정하는 것은 필수입니다.
+연결 문자열의 일부로 SQL 네트워크 끝점을 지정 하는 것은 필수입니다.
 적합한 구문은 다음과 같습니다.
 
-`Server``=` *FQDN* `,` *Port*FQDN [ 포트 ] `tcp:`
+`Server``=` `,` *Port*FQDN [포트] *FQDN* `tcp:`
 
 위치:
 
-* *FQDN은* 끝점의 정규화된 도메인 이름입니다.
+* *FQDN* 은 끝점의 정규화 된 도메인 이름입니다.
 
-* *포트는* 끝점의 TCP 포트입니다. 기본적으로 가정됩니다. `1433`
+* *포트* 는 끝점의 TCP 포트입니다. 기본적으로 `1433` 는로 가정 합니다.
 
 > [!NOTE]
-> 네트워크 끝점을 지정하는 다른 형식은 지원되지 않습니다.
-> 예를 들어 프로그래밍 방식으로 SQL 클라이언트 `tcp:` 라이브러리를 사용할 때 접두사를 생략할 수 없습니다.
+> 네트워크 끝점을 지정 하는 다른 형식은 지원 되지 않습니다.
+> 예를 들어 SQL 클라이언트 라이브러리를 프로그래밍 방식 `tcp:` 으로 사용 하는 경우에도 접두사를 생략할 수 없습니다.
 
 
 
@@ -110,6 +110,6 @@ SQL 네트워크 끝점을 연결 문자열의 일부로 지정하는 것은 필
 
 ::: zone pivot="azuremonitor"
 
-Azure 모니터에서는 이 성능이 지원되지 않습니다.
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

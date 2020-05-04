@@ -1,6 +1,6 @@
 ---
-title: 쿼리 문 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 쿼리 문을 설명합니다.
+title: 쿼리 문-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 쿼리 문을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,59 +10,59 @@ ms.topic: reference
 ms.date: 12/10/2019
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 20eeb1aa755fcf4e3068cba061a2738a375e1847
-ms.sourcegitcommit: 01eb9aaf1df2ebd5002eb7ea7367a9ef85dc4f5d
+ms.openlocfilehash: 6e383ce9fdcf373452c0b7d710302669e7987395
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81765569"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737847"
 ---
 # <a name="query-statements"></a>쿼리 문
 
 ::: zone pivot="azuredataexplorer"
 
-쿼리는 세미콜론()으로`;`구분되는 하나 이상의 **쿼리 문으로**구성됩니다.
-이러한 쿼리 문 중 하나 이상이 [테이블 형식 식 문이어야](./tabularexpressionstatements.md)합니다.
-표식 문은 하나 이상의 테이블 형식 결과를 생성합니다.
-쿼리에 둘 이상의 테이블 형식 식 문이 있는 경우 쿼리에는 테이블 형식 식 문 [일괄 처리가](./batches.md) 있고 이러한 문에서 생성된 테이블 형식 결과는 모두 쿼리에서 반환됩니다.
+쿼리는 세미콜론 (`;`)으로 구분 된 하나 이상의 **쿼리 문으로**구성 됩니다.
+이러한 쿼리 문 중 하나 이상이 [테이블 형식 식 문](./tabularexpressionstatements.md)이어야 합니다.
+테이블 형식 식 문은 하나 이상의 테이블 형식 결과를 생성 합니다.
+쿼리에 테이블 형식 식 문이 두 개 이상 있으면 쿼리에 테이블 형식 식 문이 [일괄 처리](./batches.md) 되 고 이러한 문에 의해 생성 된 표 형식 결과가 모두 쿼리에서 반환 됩니다.
 
-두 가지 유형의 쿼리 문:
+다음과 같은 두 가지 유형의 쿼리 문이 있습니다.
 
-* 사용자가 주로 사용하는 명령문(사용자[쿼리 문)](#user-query-statements)
-* mid 계층 응용 프로그램이 사용자 쿼리를 받아 수정된 버전을 Kusto(응용[프로그램 쿼리 문)로](#application-query-statements)보내는 시나리오를 지원하도록 설계된 명령문입니다.
+* 사용자가 주로 사용 하는 문 ([사용자 쿼리 문](#user-query-statements))
+* 중간 계층 응용 프로그램이 사용자 쿼리를 수행 하 고 수정 된 버전을 Kusto ([application query 문](#application-query-statements))로 보내는 시나리오를 지원 하도록 디자인 된 문입니다.
 
-일부 쿼리 문은 두 시나리오모두에서 유용합니다.
+일부 쿼리 문은 두 시나리오에서 모두 유용 합니다.
 
 > [!NOTE]
-> 쿼리 문의 "효과"는 문이 쿼리에 나타나고 쿼리의 끝에서 끝나는 지점에서 시작됩니다. 쿼리가 완료되면 모든 리소스가 해제되고 향후 쿼리에 영향을 미치지 않습니다(예: 쿼리가 모든 쿼리의 로그에 기록되거나 결과를 캐시하는 등 부작용 제외).
+> 쿼리 문의 "효과"는 문이 쿼리에 표시 되 고 쿼리 끝에서 종료 되는 지점에서 시작 됩니다. 쿼리가 완료 되 면 모든 리소스가 해제 되 고 이후의 쿼리에는 영향을 주지 않습니다. 예를 들어 쿼리를 모든 쿼리의 로그에 기록 하거나 결과를 캐시 하 여 쿼리를 실행 하는 등의 부작용이 발생 하지 않습니다.
 
 ## <a name="user-query-statements"></a>사용자 쿼리 문
 
-다음은 사용자 쿼리 문의 목록입니다.
+다음은 사용자 쿼리 문 목록입니다.
 
-* [let 문은](./letstatement.md) 이름과 식 사이의 바인딩을 정의합니다.
-  문을 사용하여 긴 쿼리를 이해하기 쉬운 작은 명명된 부분으로 나누도록 할 수 있습니다.
+* [Let 문은](./letstatement.md) 이름과 식 간의 바인딩을 정의 합니다.
+  Let 문을 사용 하면 긴 쿼리를 더 쉽게 이해할 수 있는 작은 이름의 작은 부분으로 나눌 수 있습니다.
 
-* [set 문은](./setstatement.md) 쿼리가 처리되고 결과가 반환되는 방식에 영향을 주는 쿼리 옵션을 설정합니다.
+* [Set 문은](./setstatement.md) 쿼리가 처리 되는 방식과 결과가 반환 되는 방법에 영향을 주는 쿼리 옵션을 설정 합니다.
 
-* 가장 중요한 쿼리 [문인 표식 식 문은](./tabularexpressionstatements.md)"흥미로운" 데이터를 결과로 반환합니다.
+* 가장 중요 한 쿼리 문인 [테이블 형식 식 문은](./tabularexpressionstatements.md)"흥미로운" 데이터를 결과로 다시 반환 합니다.
 
-## <a name="application-query-statements"></a>응용 프로그램 쿼리 명령문
+## <a name="application-query-statements"></a>응용 프로그램 쿼리 문
 
-다음은 응용 프로그램 쿼리 문의 목록입니다.
+다음은 응용 프로그램 쿼리 문 목록입니다.
 
-* [별칭 문은](./aliasstatement.md) 동일한 클러스터 또는 원격 클러스터에서 다른 데이터베이스로 별칭을 정의합니다.
+* [별칭 문이](./aliasstatement.md) 동일한 클러스터 또는 원격 클러스터에 있는 다른 데이터베이스에 대 한 별칭을 정의 합니다.
 
-* Kusto 위에 빌드된 응용 프로그램에서 사용할 수 있는 [패턴 문으로](./patternstatement.md)쿼리 언어를 사용자에게 노출하여 쿼리 이름 확인 프로세스에 자신을 삽입할 수 있습니다.
+* Kusto를 기반으로 하는 응용 프로그램에서 사용할 수 있는 [패턴 문으로](./patternstatement.md), 사용자에 게 쿼리 언어를 노출 하 여 쿼리 이름 확인 프로세스에 자신을 삽입할 수 있습니다.
 
-* Kusto 위에 빌드된 응용 프로그램에서 사출 공격으로부터 자신을 보호하는 쿼리 [매개 변수 문(명령](./queryparametersstatement.md)매개 변수가 SQL 주입 공격으로부터 SQL을 보호하는 방법과 유사).
+* [쿼리 매개 변수 문은](./queryparametersstatement.md)삽입 공격 으로부터 자신을 보호 하기 위해 Kusto를 기반으로 하는 응용 프로그램에서 사용 됩니다. 명령 매개 변수가 sql 삽입 공격 으로부터 sql을 보호 하는 방법과 유사 합니다.
 
-* Kusto 위에 빌드된 응용 프로그램에서 Kusto의 특정 데이터 하위 집합으로 쿼리를 제한하는 데 사용되는 [제한 문입니다(특정](./restrictstatement.md)열 및 레코드에 대한 액세스 제한 포함).
+* Kusto를 기반으로 하는 응용 프로그램에서 특정 열과 레코드에 대 한 액세스를 제한 하는 것을 포함 하 여 Kusto의 특정 데이터 하위 집합에 대 한 쿼리를 제한 하는 [restrict 문](./restrictstatement.md)입니다.
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-Azure 모니터에서는 이 성능이 지원되지 않습니다.
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

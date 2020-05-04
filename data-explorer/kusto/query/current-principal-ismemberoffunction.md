@@ -1,6 +1,6 @@
 ---
-title: current_principal_is_member_of() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 current_principal_is_member_of()에 대해 설명합니다.
+title: current_principal_is_member_of ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 current_principal_is_member_of ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 03/09/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 03d565c9eb61703b326a01b31bb6b1a79742f006
-ms.sourcegitcommit: 01eb9aaf1df2ebd5002eb7ea7367a9ef85dc4f5d
+ms.openlocfilehash: 4b6f7d0b9ab4074f16ca00b4a3febb1a17351736
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81766058"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737762"
 ---
 # <a name="current_principal_is_member_of"></a>current_principal_is_member_of()
 
 ::: zone pivot="azuredataexplorer"
 
-쿼리를 실행하는 현재 보안 주체의 그룹 구성원 자격 또는 보안 주체 ID를 확인합니다.
+쿼리를 실행 하는 현재 보안 주체의 그룹 멤버 자격 또는 보안 주체 id를 확인 합니다.
 
 ```kusto
 print current_principal_is_member_of(
@@ -37,8 +37,8 @@ print current_principal_is_member_of(
 
 **인수**
 
-* *식 목록* - 각 리터럴이 다음과 같이 형성된 주 정규 정규 화(FQN) 문자열인 문자열 리터럴의 쉼표 분리 목록입니다.  
-*프린시플라타입*`=`*PrincipalId*`;`*테넌드*
+* *식 목록* -쉼표로 구분 된 문자열 리터럴 목록입니다. 각 리터럴은 다음과 같이 형성 된 FQN (주 정규화 된 이름) 문자열입니다.  
+*PrinciplaType*`=`*principalid*`;`*TenantId*
 
 | PrincipalType   | FQN 접두사  |
 |-----------------|-------------|
@@ -49,12 +49,12 @@ print current_principal_is_member_of(
 **반환**
 
 함수에서 다음을 반환합니다.
-* `true`: 쿼리를 실행하는 현재 주체가 하나 이상의 입력 인수에 대해 성공적으로 일치하는 경우.
-* `false`: 쿼리를 실행하는 현재 주 체가 `aadgroup=` FQN 인수의 멤버가 아니며 `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않은 경우.
-* `(null)`: 쿼리를 실행하는 현재 주 체가 `aadgroup=` FQN 인수의 멤버가 아니고 `aaduser=` `aadapp=` 또는 FQN 인수와 같지 않고 하나 이상의 FQN 인수가 성공적으로 해결되지 않은 경우(AAD에서 미리 지정되지 않음). 
+* `true`: 쿼리를 실행 하는 현재 보안 주체가 하나 이상의 입력 인수와 일치 하는 경우
+* `false`: 쿼리를 실행 하는 현재 보안 주체가 `aadgroup=` FQN 인수의 멤버가 아니고 `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않은 경우
+* `(null)`: 쿼리를 실행 하는 현재 보안 주체가 `aadgroup=` FQN 인수의 멤버가 아니고 `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않고 하나 이상의 FQN 인수가 성공적으로 확인 되지 않은 경우 (AAD에서 제거할 수 없습니다.) 
 
 > [!NOTE]
-> 함수는 트라이 상태 값`true` `false` `null`(및) 반환 하기 때문에 성공적인 멤버 자격을 확인 하려면 양수 반환 값에만 의존 하는 것이 중요 합니다. 즉, 다음 표현식은 동일하지 않습니다.
+> 함수는 세 번째 상태 값 (`true`, `false`및 `null`)을 반환 하기 때문에 성공적인 멤버 자격을 확인 하기 위해 긍정 반환 값만 사용 하는 것이 중요 합니다. 즉, 다음 식은 동일 하지 않습니다.
 > 
 > * `where current_principal_is_member_of('non-existing-group')`
 > * `where current_principal_is_member_of('non-existing-group') != false` 
@@ -74,7 +74,7 @@ print result=current_principal_is_member_of(
 |--------|
 | (null) |
 
-multple 인수 대신 동적 배열 사용:
+Multple 인수 대신 동적 배열을 사용 합니다.
 
 ```kusto
 print result=current_principal_is_member_of(
@@ -93,6 +93,6 @@ print result=current_principal_is_member_of(
 
 ::: zone pivot="azuremonitor"
 
-Azure 모니터에서는 이 성능이 지원되지 않습니다.
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end

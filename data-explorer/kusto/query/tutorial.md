@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/23/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 69e5815fbe14805b0cf3044dafe8691bbea5fb88
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 90d06064069a17d6b1394701bb4ea72483061b9c
+ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618181"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737609"
 ---
 # <a name="tutorial"></a>자습서
 
@@ -141,7 +141,7 @@ StormEvents
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|뇌우를 동반한 바람|그루지야|
 
 열 이름을 다시 사용 하 고 계산 결과를 동일한 열에 할당할 수 있습니다.
-다음은 그 예입니다. 
+예를 들어:
 
 ```kusto
 print x=1
@@ -471,6 +471,6 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 
 ::: zone pivot="azuremonitor"
 
-이는에서 지원 되지 않습니다 Azure Monitor
+이 기능은에서 지원 되지 않습니다 Azure Monitor
 
 ::: zone-end
