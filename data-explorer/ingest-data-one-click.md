@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 03/29/2020
-ms.openlocfilehash: 155c4fadfc2892ddd91cc0c355f4f47fe4ce513c
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 5f424716a9227f22b4ec5b148d29798b0a55fa27
+ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81491648"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82618380"
 ---
 # <a name="what-is-one-click-ingestion"></a>원클릭 수집이란? 
 
@@ -53,10 +53,13 @@ Azure Data Explorer 웹 UI를 사용하여 스토리지(BLOB 파일), 로컬 파
     ![웹 UI에서 원클릭 수집 선택](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
 
 1. 이 마법사는 다음 옵션을 안내합니다.
-       * [기존 테이블](one-click-ingestion-existing-table.md)에 수집
-       * [새 테이블](one-click-ingestion-new-table.md)에 수집
-       * 데이터 수집 위치:      * Blob 스토리지      * 로컬 파일      * 컨테이너
-       * 1~10,000 사이에서 같은 크기 입력(컨테이너만 해당)
+    * [기존 테이블](one-click-ingestion-existing-table.md)에 수집
+    * [새 테이블](one-click-ingestion-new-table.md)에 수집
+    * 다음에서 데이터를 수집합니다.
+      * Blob Storage
+      * 로컬 파일
+      * 컨테이너
+    * 1~10,000 사이에서 같은 크기 입력(컨테이너만 해당)
        
 1. 데이터 원본을 성공적으로 선택하면 데이터 미리 보기가 표시됩니다. 
     컨테이너에서 데이터를 수집하는 경우 특정 접두사 또는 파일 확장명을 가진 파일만 수집하도록 데이터를 필터링할 수 있습니다. 예를 들어 파일 이름이 *Europe*이라는 단어로 시작하는 파일 또는 확장명이 *.json*인 파일만 수집할 수 있습니다. 
