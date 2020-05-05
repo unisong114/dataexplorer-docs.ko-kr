@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 624c0a7f1105ff13642649174f769781f1749598
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: c52f0649531678e31310f5a1f4bfb97f99f15857
+ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108074"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82741934"
 ---
 # <a name="external-table-management"></a>외부 테이블 관리
 
@@ -36,13 +36,13 @@ ms.locfileid: "82108074"
 
 **출력**
 
-| 출력 매개 변수 | Type   | Description                                                         |
+| 출력 매개 변수 | 형식   | 설명                                                         |
 |------------------|--------|---------------------------------------------------------------------|
-| TableName        | 문자열 | 외부 테이블의 이름                                             |
-| TableType        | 문자열 | 외부 테이블의 유형입니다.                                              |
-| 폴더           | 문자열 | 테이블의 폴더                                                     |
-| DocString        | 문자열 | 테이블을 문서화 하는 문자열                                       |
-| 속성       | 문자열 | 테이블의 JSON 직렬화 된 속성 (테이블 형식에만 해당) |
+| TableName        | string | 외부 테이블의 이름                                             |
+| TableType        | string | 외부 테이블의 유형입니다.                                              |
+| 폴더           | string | 테이블의 폴더                                                     |
+| DocString        | string | 테이블을 문서화 하는 문자열                                       |
+| 속성       | string | 테이블의 JSON 직렬화 된 속성 (테이블 형식에만 해당) |
 
 
 **예:**
@@ -70,13 +70,13 @@ ms.locfileid: "82108074"
 
 **출력**
 
-| 출력 매개 변수 | Type   | Description                        |
+| 출력 매개 변수 | 형식   | 설명                        |
 |------------------|--------|------------------------------------|
-| TableName        | 문자열 | 외부 테이블의 이름            |
-| 스키마           | 문자열 | JSON 형식의 테이블 스키마 |
-| DatabaseName     | 문자열 | 테이블의 데이터베이스 이름             |
-| 폴더           | 문자열 | 테이블의 폴더                    |
-| DocString        | 문자열 | 테이블을 문서화 하는 문자열      |
+| TableName        | string | 외부 테이블의 이름            |
+| 스키마           | string | JSON 형식의 테이블 스키마 |
+| DatabaseName     | string | 테이블의 데이터베이스 이름             |
+| 폴더           | string | 테이블의 폴더                    |
+| DocString        | string | 테이블을 문서화 하는 문자열      |
 
 **예:**
 
@@ -173,7 +173,7 @@ ms.locfileid: "82108074"
 
 **선택적 속성**:
 
-| 속성         | Type     | Description       |
+| 속성         | Type     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -182,6 +182,8 @@ ms.locfileid: "82108074"
 | `namePrefix`     | `string` | 설정 하는 경우 blob의 접두사를 나타냅니다. 쓰기 작업 시 모든 blob이이 접두사로 작성 됩니다. 읽기 작업에서는이 접두사가 있는 blob만 읽습니다. |
 | `fileExtension`  | `string` | 설정 하는 경우 blob의 파일 확장명을 나타냅니다. 쓰기에서는 blob 이름이이 접미사로 종료 됩니다. 읽을 때이 파일 확장명을 가진 blob만 읽습니다.           |
 | `encoding`       | `string` | 텍스트를 인코딩하는 방법을 나타냅니다. `UTF8NoBOM` (기본값) 또는 `UTF8BOM`입니다.             |
+
+쿼리의 외부 테이블 매개 변수에 대 한 자세한 내용은 [아티팩트 필터링 논리](#artifact-filtering-logic)를 참조 하세요.
 
 > [!NOTE]
 > * 테이블이 있으면 오류가 발생 하 `.create` 여 명령이 실패 합니다. 기존 `.alter` 테이블을 수정 하는 데 사용 합니다. 
@@ -203,8 +205,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )  
 ```
 
@@ -221,8 +222,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )  
 ```
 
@@ -239,8 +239,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )
 ```
 
@@ -257,8 +256,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )
 ```
 
@@ -286,6 +284,22 @@ with
 |TableName|TableType|폴더|DocString|속성|ConnectionStrings|파티션|
 |---|---|---|---|---|---|---|
 |ExternalMultiplePartitions|Blob|ExternalTables|Docs|{"Format": "Csv", "압축": false, "CompressionType": null, "FileExtension": "Csv", "IncludeHeaders": "None", "Encoding": null, "NamePrefix": null}|["https://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat": "CustomerName ={0}", "ColumnName": "customername", "Ordinal": 0}, PartitionBy ":" 1.00:00:00 "," ColumnName ":" Timestamp "," Ordinal ": 1}]|
+
+#### <a name="artifact-filtering-logic"></a>아티팩트 필터링 논리
+
+외부 테이블을 쿼리할 때 쿼리 엔진은 관련이 없는 외부 저장소 아티팩트 (blob)를 필터링 하 여 쿼리 성능을 향상 시킵니다. Blob을 반복 하 고 blob을 처리 해야 하는지 여부를 결정 하는 프로세스는 아래에 설명 되어 있습니다.
+
+1. Blob이 있는 위치를 나타내는 URI 패턴을 작성 합니다. 처음에 URI 패턴은 외부 테이블 정의의 일부로 제공 되는 연결 문자열과 같습니다. 파티션이 정의 되어 있으면 URI 패턴에 추가 됩니다.
+예를 들어 연결 문자열이이 `https://storageaccount.blob.core.windows.net/container1` 고 datetime 파티션이 정의 `partition by format_datetime="yyyy-MM-dd" bin(Timestamp, 1d)`된 경우 해당 URI 패턴 `https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd`은입니다 .이 패턴과 일치 하는 위치에서 blob을 찾을 것입니다.
+추가 문자열 파티션이 `"CustomerId" customerId` 정의 된 경우 해당 URI 패턴은 `https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd/CustomerId=*`, 등입니다.
+
+2. 만든 URI 패턴 아래에 있는 모든 *직접* blob에 대해 다음을 확인 합니다.
+
+ * 파티션 값이 쿼리에 사용 된 조건자와 일치 합니다.
+ * 이러한 속성이 정의 된 `NamePrefix`경우 Blob 이름은로 시작 합니다.
+ * 이러한 속성이 정의 된 `FileExtension`경우 Blob 이름이로 끝납니다.
+
+모든 조건을 충족 하면 쿼리 엔진에서 blob을 페치 하 고 처리 합니다.
 
 #### <a name="spark-virtual-columns-support"></a>Spark 가상 열 지원
 
@@ -320,9 +334,9 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | Type   | Description                       |
+| 출력 매개 변수 | 형식   | 설명                       |
 |------------------|--------|-----------------------------------|
-| Uri              | 문자열 | 외부 저장소 아티팩트의 URI |
+| URI              | string | 외부 저장소 아티팩트의 URI |
 
 **예:**
 
@@ -332,7 +346,7 @@ dataformat=parquet
 
 **출력**
 
-| Uri                                                                     |
+| URI                                                                     |
 |-------------------------------------------------------------------------|
 | `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
 
@@ -433,7 +447,7 @@ dataformat=parquet
 > 기밀 정보를 포함 하는 연결 문자열 및 쿼리는 모든 Kusto 추적에서 생략 되도록 난독 처리 되어야 합니다. 자세한 내용은 난독 처리 되는 [문자열 리터럴](../query/scalar-data-types/string.md#obfuscated-string-literals) 을 참조 하세요.
 
 **선택적 속성**
-| 속성            | Type            | Description                          |
+| 속성            | Type            | 설명                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | 테이블의 폴더입니다.                  |
 | `docString`         | `string`        | 테이블을 문서화 하는 문자열입니다.      |

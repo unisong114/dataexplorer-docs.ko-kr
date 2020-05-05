@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: eaf42247840bfc5446c61bcefbb205c9e49706c3
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: 834fd81e1832b8ab624da8d99cb5cc32407db84f
+ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737745"
+ms.locfileid: "82741749"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>데이터베이스 간/클러스터 간 쿼리
 
@@ -73,7 +73,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
 ```
 
-위의 작업을 수행 하면 다음 entites에 대 한 쿼리 액세스가 제한 됩니다.
+위의에서는 다음 엔터티에 대 한 쿼리 액세스를 제한 합니다.
 
 * 기본 데이터베이스에서 *my ...* 로 시작 하는 모든 엔터티 이름입니다. 
 * 현재 클러스터의 *Myother ...* 라는 모든 데이터베이스의 모든 테이블
