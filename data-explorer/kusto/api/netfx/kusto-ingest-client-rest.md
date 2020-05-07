@@ -7,13 +7,14 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 02/19/2020
-ms.openlocfilehash: 9e4be7be65b0fe118a99835b24cd9d69ac5a531d
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 2ea7fd33a6e6ed8728fb12d53fbe76eadf8fd6b6
+ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108493"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82862074"
 ---
 # <a name="howto-data-ingestion-without-kustoingest-library"></a>방법 라이브러리를 사용 하지 않고 데이터 수집을 수집 합니다.
 
@@ -303,7 +304,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 
 ```json
 {
-    "Id" : "<Id>", 
+    "Id" : "<Id>",
     "BlobPath" : "https://<AccountName>.blob.core.windows.net/<ContainerName>/<PathToBlob>?<SasToken>",
     "RawDataSize" : "<RawDataSizeInBytes>",
     "DatabaseName": "<DatabaseName>",
@@ -318,7 +319,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 ```
 
 
-|속성 | 설명 |
+|속성 | Description |
 |---------|-------------|
 |Id |메시지 식별자 (GUID) |
 |BlobPath |읽기/쓰기/삭제 권한을 부여 하는 SAS 키를 포함 하는 blob URI (Kusto가 데이터 수집 완료 되 면 blob을 삭제 하는 경우 쓰기/삭제 권한이 필요 함) |
@@ -336,7 +337,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 ## <a name="appendix-b-ingestion-failure-message-structure"></a>부록 B: 수집 실패 메시지 구조
 Kusto 데이터 관리 service에서 입력 Azure 큐를 읽을 것으로 예상 하는 다음 테이블 메시지는 다음과 같은 형식의 JSON 문서입니다.
 
-|속성 | 설명 |
+|속성 | Description |
 |---------|-------------
 |OperationId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 작업 식별자 (GUID)입니다. |
 |데이터베이스 |대상 데이터베이스 이름 |
@@ -345,7 +346,7 @@ Kusto 데이터 관리 service에서 입력 Azure 큐를 읽을 것으로 예상
 |IngestionSourceId |Kusto 수집에 실패 한 데이터 청크를 식별 하는 GUID |
 |IngestionSourcePath |Kusto 수집에 실패 한 데이터 청크의 경로 (URI) |
 |세부 정보 |오류 메시지 |
-|ErrorCode |Kusto 오류 코드 ( [여기](kusto-ingest-client-errors.md#ingestion-error-codes)에서 모든 오류 코드 참조) |
+|오류 코드 |Kusto 오류 코드 ( [여기](kusto-ingest-client-errors.md#ingestion-error-codes)에서 모든 오류 코드 참조) |
 |FailureStatus |오류가 영구적 또는 일시적인 지 여부를 나타냅니다. |
 |RootActivityId |서비스 측에서 작업을 추적 하는 데 사용할 수 있는 kusto 상관 관계 식별자 (GUID)입니다. |
 |OriginatesFromUpdatePolicy |오류가 errorneous [트랜잭션 업데이트 정책](../../management/updatepolicy.md) 으로 인해 발생 했는지 여부를 나타냅니다. |

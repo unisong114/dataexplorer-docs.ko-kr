@@ -7,13 +7,14 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 11/25/2019
-ms.openlocfilehash: 9d72373e8fc5c55740fa3e53a8f850a887517e7b
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: ecdcdf22fe25c855045d90e294597c1abc769c03
+ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490449"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82862108"
 ---
 # <a name="kusto-access-control-overview"></a>Kusto 액세스 제어 개요
 
@@ -30,7 +31,7 @@ Kusto 클러스터, 데이터베이스 또는 테이블에서 쿼리 또는 제�
 
 AAD는 Microsoft에서 Kusto를 인증하는 데 기본적으로 설정되는 방법입니다. 지원하는 여러 인증 시나리오는 다음과 같습니다.
 * **사용자 인증**(대화형 로그온): 사용자 주체를 인증하는 데 사용됩니다.
-* **애플리케이션 인증**(비대화형 로그온): 사용자가 없는 상태에서 실행/인증해야 하는 서비스 및 애플리케이션을 인증하는 데 사용됩니다. 
+* **애플리케이션 인증**(비대화형 로그온): 사용자가 없는 상태에서 실행/인증해야 하는 서비스 및 애플리케이션을 인증하는 데 사용됩니다.
 
 ### <a name="user-authentication"></a>사용자 인증
 사용자 인증은 사용자가 AAD(또는 ADFS와 같은 AAD와 함께 작동하는 일부 ID 공급자)에 자격 증명을 제공하고 Kusto 서비스에 제공할 수 있는 보안 토큰을 받을 때 발생합니다. Kusto 서비스는 보안 토큰을 얻는 방법에는 관심이 없지만, 토큰이 유효한지 여부와 AAD(또는 페더레이션된 IdP)에서 제공하는 정보에 관심이 있습니다.
@@ -94,4 +95,3 @@ Kusto는 [역할 기반 권한 부여 모델](role-based-authorization.md)을 �
 예를 들어 **데이터베이스 사용자 역할**은 특정 데이터베이스의 데이터를 읽고, 테이블을 데이터베이스에 만들고, 함수를 데이터베이스에 만들 수 있는 권한을 보안 주체(사용자 또는 서비스)에 부여합니다.
 
 보안 주체와 보안 역할의 연결은 개별적으로 정의하거나 보안 그룹(AAD에 정의됨)을 사용하여 정의할 수 있습니다. 이러한 작업을 수행하는 개별 명령은 [역할 기반 권한 부여 규칙 설정](../security-roles.md)에 정의되어 있습니다.
-

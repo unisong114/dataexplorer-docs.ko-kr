@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: fac9fd9f218948928e4f91d0d1aa056affcebd11
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 6b2f3b2d75bd964401ae37093405e692cfd64feb
+ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82617666"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82861785"
 ---
 # <a name="ingest-from-event-hub"></a>이벤트 허브에서 수집
 
@@ -33,13 +33,14 @@ ms.locfileid: "82617666"
 
 수집 속성은 수집 프로세스를 지시 합니다. 데이터를 라우팅하는 위치와 데이터를 처리 하는 방법을 설명 합니다. [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트 수집의 수집 [속성](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
 
-|속성 |설명|
+|속성 |Description|
 |---|---|
 | 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Data Connection` 블레이드의 집합을 `Table` 재정의 합니다. |
 | 형식 | 데이터 형식입니다. `Data Connection` 블레이드의 집합을 `Data format` 재정의 합니다. |
 | IngestionMappingReference | 사용할 기존 수집 [매핑의](../create-ingestion-mapping-command.md) 이름입니다. `Data Connection` 블레이드의 집합을 `Column mapping` 재정의 합니다.|
 | 압축 | 데이터 압축 `None` (기본값) 또는 `GZip` 압축|
 | Encoding |  데이터 인코딩입니다. 기본값은 UTF8입니다. 은 [.net에서 지원 되는 인코딩을](https://docs.microsoft.com/dotnet/api/system.text.encoding?view=netframework-4.8#remarks)사용할 수 있습니다. |
+| 태그 (미리 보기) | JSON 배열 문자열로 형식이 지정 된 수집 데이터와 연결할 [태그](../extents-overview.md#extent-tagging) 의 목록입니다. 태그 사용에 대 한 [성능 영향](../extents-overview.md#performance-notes-1) 을 확인 합니다. |
 
 <!--| Database | Name of the existing target database.|-->
 <!--| Tags | String representing [tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
@@ -65,6 +66,7 @@ var eventData = new EventData(Encoding.UTF8.GetBytes(data));
 eventData.Properties.Add("Table", "WeatherMetrics");
 eventData.Properties.Add("Format", "json");
 eventData.Properties.Add("IngestionMappingReference", "mapping1");
+eventData.Properties.Add("Tags", "['mydatatag']");
 
 // Send events
 var eventHubClient = EventHubClient.CreateFromConnectionString(eventHubNamespaceConnectionString, eventHubName);
@@ -83,13 +85,13 @@ eventHubClient.Close();
 
 ### <a name="event-hub-expose-the-following-system-properties"></a>이벤트 허브는 다음 시스템 속성을 노출 합니다.
 
-|속성 |데이터 형식 |설명|
+|속성 |데이터 형식 |Description|
 |---|---|---|
 | x-opt-enqueued-time |Datetime | 이벤트를 큐에 넣은 UTC 시간입니다. |
 | x-opt-sequence-number |long | 이벤트 허브의 파티션 스트림 내에 있는 이벤트의 논리적 시퀀스 번호입니다.
-| x-opt-offset |string | 이벤트 허브 파티션 스트림에 상대적인 이벤트의 오프셋입니다. 오프셋 식별자는 이벤트 허브 스트림의 파티션 내에서 고유 합니다. |
-| x opt-게시자 |string | 메시지를 게시자 끝점으로 보낸 경우 게시자 이름입니다. |
-| x-opt-partition-key |string |이벤트를 저장 한 해당 파티션의 파티션 키입니다. |
+| x-opt-offset |문자열 | 이벤트 허브 파티션 스트림에 상대적인 이벤트의 오프셋입니다. 오프셋 식별자는 이벤트 허브 스트림의 파티션 내에서 고유 합니다. |
+| x opt-게시자 |문자열 | 메시지를 게시자 끝점으로 보낸 경우 게시자 이름입니다. |
+| x-opt-partition-key |문자열 |이벤트를 저장 한 해당 파티션의 파티션 키입니다. |
 
 테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 속성을 포함 해야 합니다.
 

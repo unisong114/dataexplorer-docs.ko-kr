@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 866e9b5d8f076660dfcb453fdb47fb6a6402578b
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: 5505eca4435521ea82c347bcd204ff3d68a14176
+ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741991"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82862125"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -72,7 +72,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 #### <a name="inbound-nsg-configuration"></a>인바운드 NSG 구성
 
-| **사용**   | **From**   | **대상**   | **프로토콜**   |
+| **사용**   | **From**   | **받는 사람**   | **프로토콜**   |
 | --- | --- | --- | --- |
 | 관리  |[Adx management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (servicetag) | ADX 서브넷: 443  | TCP  |
 | 상태 모니터링  | [ADX 상태 모니터링 주소](#health-monitoring-addresses)  | ADX 서브넷: 443  | TCP  |
@@ -81,7 +81,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 #### <a name="outbound-nsg-configuration"></a>아웃 바운드 NSG 구성
 
-| **사용**   | **From**   | **대상**   | **프로토콜**   |
+| **사용**   | **From**   | **받는 사람**   | **프로토콜**   |
 | --- | --- | --- | --- |
 | Azure Storage에 대한 종속성  | ADX 서브넷  | 저장소: 443  | TCP  |
 | Azure Data Lake에 대 한 종속성  | ADX 서브넷  | AzureDataLake: 443  | TCP  |
@@ -112,6 +112,8 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 인도 중부 | 40.81.249.251, 104.211.98.159 |
 | 미국 중부 | 40.67.188.68 |
 | 미국 중부 EUAP | 40.89.56.69 |
+| 중국 동부 2 | 139.217.236.210 |
+| 중국 북부 2 | 40.73.6.21 |
 | 동아시아 | 20.189.74.103 |
 | 미국 동부 | 52.224.146.56 |
 | 미국 동부2 | 52.232.230.201 |
@@ -131,6 +133,11 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 인도 남부 | 40.81.72.110, 104.211.224.189 |
 | 영국 남부 | 40.81.154.254 |
 | 영국 서부 | 40.81.122.39 |
+| USDoD Central | 52.182.33.66 |
+| USDoD 동부 | 52.181.33.69 |
+| USGov 애리조나 | 52.244.33.193 |
+| USGov 텍사스 | 52.243.157.34 |
+| USGov 버지니아 | 52.227.228.88 |
 | 미국 중서부 | 52.159.55.120 |
 | 서유럽 | 51.145.176.215 |
 | 인도 서부 | 40.81.88.112, 104.211.160.120 |
@@ -151,6 +158,8 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 인도 중부 | 23.99.5.162 |
 | 미국 중부 | 168.61.212.201 |
 | 미국 중부 EUAP | 168.61.212.201 |
+| 중국 동부 2 | 40.73.96.39 |
+| 중국 북부 2 | 40.73.33.105 |
 | 동아시아 | 168.63.212.33 |
 | 미국 동부 | 137.116.81.189 |
 | 미국 동부 2 | 137.116.81.189 |
@@ -170,6 +179,11 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 동남아시아 | 168.63.173.234 |
 | 영국 남부 | 23.97.212.5 |
 | 영국 서부 | 23.97.212.5 |
+| USDoD Central | 52.238.116.34 |
+| USDoD 동부 | 52.238.116.34 |
+| USGov 애리조나 | 52.244.48.35 |
+| USGov 텍사스 | 52.238.116.34 |
+| USGov 버지니아 | 23.97.0.26 |
 | 미국 중서부 | 168.61.212.201 |
 | 서유럽 | 23.97.212.5 |
 | 인도 서부 | 23.99.5.162 |
@@ -254,7 +268,7 @@ crl3.digicert.com:80
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| 이름 | 주소 접두사 | 다음 홉 |
+| Name | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |

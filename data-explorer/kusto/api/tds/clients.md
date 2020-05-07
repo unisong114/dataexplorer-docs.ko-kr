@@ -7,13 +7,14 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 10/30/2019
-ms.openlocfilehash: 5e2de0c29c58959ce683518b03bef9164fa9543c
-ms.sourcegitcommit: 061eac135a123174c85fe1afca4d4208c044c678
+ms.openlocfilehash: b41f77fe97ce6adeeade63c00824818f4a3af721
+ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82799631"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82862040"
 ---
 # <a name="ms-tds-clients-and-azure-data-explorer"></a>MS-TDS 클라이언트 및 Azure 데이터 탐색기
 
@@ -83,7 +84,7 @@ ODBC 응용 프로그램에서 DSN 외에 또는 대신 연결 문자열을 허�
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-일부 ODBC 응용 프로그램은 형식에서 `NVARCHAR(MAX)` 제대로 작동 하지 않습니다. 자세한 내용은 https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver를 참조하세요. 
+일부 ODBC 응용 프로그램은 형식에서 `NVARCHAR(MAX)` 제대로 작동 하지 않습니다. 자세한 내용은 https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver를 참조하세요.
 
 일반적인 해결 방법은 반환 된 데이터를 *NVARCHAR (n)* 로 캐스팅 하는 것입니다. 여기에는 n의 값이 있습니다. 예를 들어 *NVARCHAR (4000)* 입니다. 그러나 Azure 데이터 탐색기에는 문자열 유형이 하나 뿐이 고 SQL 클라이언트는 *NVARCHAR (MAX)* 로 인코딩되어 있으므로 azure 데이터 탐색기에 대 한 해결 방법은 작동 하지 않습니다.
 
@@ -104,7 +105,7 @@ $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc")
 $conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 $conn.Open()
 $conn.GetSchema("Tables")
-$conn.Close()  
+$conn.Close()
 ```
 
 ## <a name="linqpad"></a>LINQPad

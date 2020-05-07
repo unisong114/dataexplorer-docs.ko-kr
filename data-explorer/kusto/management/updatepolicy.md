@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 7d2b89e0723bbecb29ffd582ae20c2ee41199e45
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 072c908109fecb695a8961c546deb756caf830ab
+ms.sourcegitcommit: 98eabf249b3f2cc7423dade0f386417fb8e36ce7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618499"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82868708"
 ---
 # <a name="update-policy"></a>정책 업데이트
 
@@ -44,7 +44,7 @@ ms.locfileid: "82618499"
 테이블에는 0 개 이상의 업데이트 정책 개체가 연결 되어 있을 수 있습니다.
 이러한 각 개체는 다음과 같은 속성이 정의 된 JSON 속성 모음으로 표시 됩니다.
 
-|속성 |Type |설명  |
+|속성 |Type |Description  |
 |---------|---------|----------------|
 |IsEnabled                     |`bool`  |업데이트 정책 사용 (true) 또는 사용 안 함 (false)에 대 한 상태                                                                                                                               |
 |원본                        |`string`|호출할 업데이트 정책을 트리거하는 테이블의 이름입니다.                                                                                                                                 |
@@ -52,19 +52,22 @@ ms.locfileid: "82618499"
 |IsTransactional               |`bool`  |업데이트 정책이 트랜잭션 (기본값은 false) 인지 여부를 나타내는입니다. 트랜잭션 업데이트 정책을 실행 하지 않으면 원본 테이블도 새 데이터로 업데이트 되지 않습니다.   |
 |PropagateIngestionProperties  |`bool`  |원본 테이블에 대 한 수집 중에 지정 된 수집 속성 (익스텐트 태그 및 만든 시간)을 파생 테이블의 테이블에도 적용 해야 합니다.                 |
 
-> [!NOTE]
->
-> * 원본 테이블과 업데이트 정책이 정의 된 테이블은 **동일한 데이터베이스에 있어야**합니다.
-> * 이 쿼리에는 데이터베이스 간 및 클러스터 간 쿼리가 포함 **되지** 않을 수 있습니다.
-> * 쿼리가 저장 된 함수를 호출할 수 있습니다.
-> * 쿼리는 새로 수집 레코드를 포함 하도록 자동으로 범위가 지정 됩니다.
-> * Cascade 업데이트를 사용할 수 있습니다. TableA`[update]`----> tablea`[update]`----> TableC`[update]`----> ...)
-> * 업데이트 정책이 순환 방식으로 여러 테이블에 대해 정의 되는 경우이는 런타임에 검색 되 고 업데이트 체인이 잘립니다. 즉, 데이터는 영향을 받는 테이블 체인의 각 테이블에 한 번만 수집 됩니다.
-> * 정책의 `Source` `Query` 일부 (또는 후자에서 참조 하는 함수)에서 테이블을 참조 하는 경우 테이블의 정규화 된 이름을 사용 **하지** 않아야 합니다 (즉, 사용 및 `TableName` 사용 **안** `database("DatabaseName").TableName` `cluster("ClusterName").database("DatabaseName").TableName`함).
-> * 업데이트 정책 쿼리에서는 [행 수준 보안 정책이](./rowlevelsecuritypolicy.md) 설정 된 테이블을 참조할 수 없습니다.
-> * 업데이트 정책의 일부로 실행 되는 쿼리에는 [RestrictedViewAccess 정책이](restrictedviewaccesspolicy.md) 설정 된 테이블에 대 한 읽기 권한이 **없습니다** .
-> * `PropagateIngestionProperties`는 수집 작업에만 적용 됩니다. 업데이트 정책이 `.move extents` 또는 `.replace extents` 명령의 일부로 트리거되면이 옵션은 영향을 주지 **않습니다** .
-> * 업데이트 정책을 `.set-or-replace` 명령의 일부로 호출 하는 경우 기본 동작은 파생 테이블의 데이터도 원본 테이블에 있는 것 처럼 대체 된다는 것입니다.
+## <a name="notes"></a>참고
+
+* 쿼리는 새로 수집 레코드만 포함 하도록 자동으로 범위가 지정 됩니다.
+* 쿼리가 저장 된 함수를 호출할 수 있습니다.
+* 연속 업데이트를 사용할 수`TableA` 있습니다 `TableB` ( `TableC` → → → ...).
+* 업데이트 정책을 `.set-or-replace` 명령의 일부로 호출 하는 경우 기본 동작은 파생 테이블의 데이터도 원본 테이블에 있는 것 처럼 대체 된다는 것입니다.
+
+## <a name="limitations"></a>제한 사항
+
+* 원본 테이블과 업데이트 정책이 정의 된 테이블은 **동일한 데이터베이스에 있어야**합니다.
+* 이 쿼리에는 데이터베이스 간 및 클러스터 간 쿼리가 포함 **되지** 않을 수 있습니다.
+* 업데이트 정책이 순환 방식으로 여러 테이블에 대해 정의 되는 경우이는 런타임에 검색 되 고 업데이트 체인이 잘립니다. 즉, 데이터는 영향을 받는 테이블 체인의 각 테이블에 한 번만 수집 됩니다.
+* 정책의 `Source` `Query` 일부 (또는 후자에서 참조 하는 함수)에서 테이블을 참조 하는 경우 테이블의 정규화 된 이름을 사용 **하지** 않아야 합니다 (즉, 사용 및 `TableName` 사용 **안** `database("DatabaseName").TableName` `cluster("ClusterName").database("DatabaseName").TableName`함).
+* 업데이트 정책의 일부로 실행 되는 쿼리에는 [RestrictedViewAccess 정책이](restrictedviewaccesspolicy.md) 설정 된 테이블에 대 한 읽기 권한이 **없습니다** .
+* 업데이트 정책 쿼리에서는 [행 수준 보안 정책이](./rowlevelsecuritypolicy.md) 설정 된 테이블을 참조할 수 없습니다.
+* `PropagateIngestionProperties`는 수집 작업에만 적용 됩니다. 업데이트 정책이 `.move extents` 또는 `.replace extents` 명령의 일부로 트리거되면이 옵션은 영향을 주지 **않습니다** .
 
 ## <a name="retention-policy-on-the-source-table"></a>원본 테이블에 대 한 보존 정책
 

@@ -7,13 +7,14 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 03/24/2020
-ms.openlocfilehash: 8357bc387ae26fc0dfcc50c5e712a5b39df32942
-ms.sourcegitcommit: 061eac135a123174c85fe1afca4d4208c044c678
+ms.openlocfilehash: c43c6c09ad6da90685c56dc47ebe257a55eaede6
+ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82799716"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82862142"
 ---
 # <a name="kusto-ingest-client-library"></a>Kusto 수집 클라이언트 라이브러리
 
@@ -95,4 +96,3 @@ Kusto 수집 클라이언트 구현은 스레드로부터 안전 하 고 다시 
 
 ### <a name="data-ingestion-rest-apis"></a>데이터 수집 REST Api
 [Kusto. 수집 라이브러리 없이 데이터를 수집](kusto-ingest-client-rest.md) 하는 경우 KUSTO REST api를 사용 하 여 수집 하 고 kusto. 수집 라이브러리에 종속성을 적용 하지 않고도 대기 중인 Kusto 수집을 구현 하는 방법
-
