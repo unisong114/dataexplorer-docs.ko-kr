@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 7440b42599d8559db547762daa5f8edcc24ea46f
-ms.sourcegitcommit: 061eac135a123174c85fe1afca4d4208c044c678
+ms.openlocfilehash: 6ce7cf38c88879b52c4e2e259e3e9a5cade959de
+ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82799444"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82907149"
 ---
 # <a name="data-partitioning-policy-preview"></a>데이터 분할 정책 (미리 보기)
 
@@ -38,7 +38,7 @@ ms.locfileid: "82799444"
 
 ### <a name="hash-partition-key"></a>해시 파티션 키
 
-테이블 `string`의 형식화 된 열에 해시 파티션 키를 적용 하는 것은 *대부분* 의 쿼리에서`==` `in()` `string` `application_ID` `tenant_ID` 또는 `user_ID`등의 *큰 차원* (10M 이상)에 있는 특정 형식의 열에 같음 필터 (,)를 사용 하는 경우에 적합 합니다.
+테이블의 형식화 된 열에 `string`해시 파티션 키를 적용 하는 것은 *대부분* 의 쿼리에서 *큰 차원* (10M 이상의 카디널리티`==`) `in()` `string` `application_ID` `tenant_ID` 의 특정 형식 열에 대해 같음 필터 (,) 및/또는 집계/조인을 사용 하는 경우에 적합 합니다 `user_ID`.
 
 * 해시 모듈로 함수는 데이터를 분할 하는 데 사용 됩니다.
 * 동일한 파티션에 *속하는 모든 동일* (분할 된) 익스텐트는 동일한 데이터 노드에 할당 됩니다.

@@ -1,6 +1,6 @@
 ---
-title: series_decompose() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 series_decompose()에 대해 설명합니다.
+title: series_decompose ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 series_decompose ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,69 +8,69 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 375d63dd050840cd884fca0198511e71ac46f170
-ms.sourcegitcommit: 436cd515ea0d83d46e3ac6328670ee78b64ccb05
+ms.openlocfilehash: 5394eefad37195833c0c5ebb94325bb540d1f520
+ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81663602"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82907226"
 ---
 # <a name="series_decompose"></a>series_decompose()
 
-계열에 분해 변환을 적용합니다.  
+계열에 분해 변환을 적용 합니다.  
 
-계열(동적 숫자 배열)을 포함하는 식을 입력으로 가져와 계절, 추세 및 잔류 구성 요소로 분해합니다.
+계열 (동적 숫자 배열)을 포함 하는 식을 입력으로 사용 하 고 계절, 추세 및 잔여 구성 요소로 분해 합니다.
  
 **구문**
 
-`series_decompose(`*시리즈* `[,` *계절성* `,` *동향* `,` *Test_points* `,` *Seasonality_threshold*`])`
+`series_decompose(`*시리즈* `[,` *계절성* `,` *Seasonality_threshold* *Test_points* *Trend* 추세 Test_points Seasonality_threshold`,` `,``])`
 
 **인수**
 
-* *시리즈*: 숫자 값의 배열인 동적 배열 셀, 일반적으로 [메이크 시리즈](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력
-* *계절성*: 계절별 분석을 제어하는 정수(
-    * -1: series_periods_detect(기본값)를 사용하여 계절성을 자동으로 감지합니다. [series_periods_detect](series-periods-detectfunction.md)
-    * 기간: 수통 수의 예상 기간을 지정하는 양수 정수입니다. 예를 들어 계열이 1시간 저장소에 있는 경우 주간 기간은 168개의 저장소입니다.
-    * 0 : 계절성 없음 (이 구성 요소 추출을 건너 뛰기).    
-* *추세*: 다음 중 하나를 포함하는 추세 분석을 제어하는 문자열:
-    * "평균": 추세 구성요소를 평균(x)으로 정의합니다(기본값)
-    * "linefit": 선형 회귀를 사용하여 추세 구성 요소를 추출합니다.
-    * "없음": 추세가 없으며 이 구성 요소를 추출하지 않습니다.    
-* *Test_points*: 0(기본값) 또는 양수 정수, 학습(회귀) 프로세스에서 제외할 계열 끝의 점 수를 지정합니다. 이 매개 변수는 예측 목적으로 설정되어야 합니다.
-* *Seasonality_threshold*: *계절성이* 자동 감지로 설정된 계절성 점수의 임계값이며 `0.6`기본 점수 임계값은 입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)을 참조하십시오.
+* *Series*: 숫자 값 배열인 동적 배열 셀입니다. 일반적으로 [Series](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력입니다.
+* *계절성*: 다음 중 하나를 포함 하는 계절 분석을 제어 하는 정수입니다.
+    * -1: [series_periods_detect](series-periods-detectfunction.md) 을 사용 하 여 계절성를 자동으로 검색 합니다 (기본값).
+    * period: 예상 기간을 bin 수로 지정 하는 양의 정수입니다. 예를 들어 계열이 1-h bin 이면 주간 기간은 168 bin입니다.
+    * 0: 계절성 되지 않습니다 (이 구성 요소 추출 건너뛰기).    
+* *추세*: 다음 값 중 하나를 포함 하는 추세 분석을 제어 하는 문자열입니다.
+    * "avg": 추세 구성 요소를 평균 (x)으로 정의 합니다 (기본값).
+    * "linefit": 선형 회귀를 사용 하 여 추세 구성 요소를 추출 합니다.
+    * "none": 추세가 없습니다 .이 구성 요소 추출을 건너뜁니다.    
+* *Test_points*: 0 (기본값) 또는 양의 정수 이며, 학습 (재발) 프로세스에서 제외할 계열의 끝에 있는 점의 수를 지정 합니다. 이 매개 변수는 예측을 위해 설정 되어야 합니다.
+* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다 `0.6`. 기본 점수 임계값은입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
 
-**반환**
+**돌려**
 
- 함수는 다음 각 계열을 반환합니다.
+ 함수는 다음의 각 계열을 반환 합니다.
 
-* `baseline`: 계열의 예측값(계절별 및 추세 구성 요소의 합계, 아래 참조)
-* `seasonal`: 계절 구성 요소의 시리즈 :
-    * 기간이 검색되지 않거나 명시적으로 0으로 설정된 경우: 상수 0
-    * 감지되거나 양수 정수로 설정된 경우: 동일한 단계에서 계열 점의 중앙값
-* `trend`: 트렌드 구성 요소 시리즈
-* `residual`: 잔류 구성 요소 의 시리즈 (즉, x - 기준선)
+* `baseline`: 계열의 예측 값 (계절 및 추세 구성 요소의 합계, 아래 참조)
+* `seasonal`: 계절 구성 요소의 시리즈입니다.
+    * 마침표가 검색 되지 않거나 명시적으로 0: 상수 0으로 설정 된 경우
+    * 검색 되거나 양의 정수로 설정 된 경우: 같은 단계에 있는 계열 요소의 중앙값
+* `trend`: 추세 구성 요소의 계열입니다.
+* `residual`: 나머지 구성 요소 (x-기준선)의 시리즈입니다.
   
 
 **참고 사항**
 
 * 구성 요소 실행 순서:
     1. 계절 시리즈 추출
-    2. x에서 빼서 비계절 계열을 생성합니다.
-    3. 디시즌 시리즈에서 트렌드 구성 요소 추출
-    4. 기준 만들기 = 계절 + 추세
-    5. 잔류 = x - 기준선 작성
+    2. X에서 빼서 deseasonal 시리즈 생성
+    3. Deseasonal 시리즈에서 추세 구성 요소 추출
+    4. 기준선 만들기 = 계절 + 추세
+    5. 잔여 = x-기준선 만들기
     
-* 계절성 및/또는 추세를 사용하도록 설정해야 하며, 그렇지 않으면 함수가 중복되고 기준 = 0 및 잔류 = x를 반환합니다.
+* 계절성 and 또는 trend를 사용 하도록 설정 해야 합니다. 그렇지 않으면 함수는 중복 되며 기준선 = 0 및 잔여 = x만 반환 합니다.
 
-**시리즈 분해에 대해 자세히 알아보기**
+**계열 분해에 대 한 자세한 정보**
 
-이 메서드는 일반적으로 향후 메트릭 값을 예측하거나 비정상적인 메트릭을 감지하기 위해 주기적인 및/또는 추세 동작(예: 서비스 트래픽 및 기타 사용 메트릭)을 나타낼 것으로 예상되는 측정항목의 시간계에 적용됩니다. 이 회귀 프로세스의 암시적 가정은 (a-priori 알려진) 계절 및 추세 동작과는 별개로, 상기 열계가 스토크되고 무작위로 분포된다는 것입니다. 따라서 잔류 부품의 이상값 검색을 기반으로 비정상적인 값을 감지할 수 있는 반면 계절 및 추세 구성 요소(잔류 부분 무시)에서 미래의 메트릭 값을 예측할 수 있습니다. 자세한 내용은 이 위대한 책의 [타임시리즈 분해 장에서](https://www.otexts.org/fpp/6) 찾을 수 있습니다.
+이 메서드는 일반적으로 주기 및/또는 추세 동작에 필요한 메트릭의 시계열에 적용 됩니다. 메서드를 사용 하 여 미래 메트릭 값을 예측 하거나 비정상 값을 검색할 수 있습니다. 이 회귀 프로세스의 암시적 가정은 계절 및 추세 동작과는 달리 시계열은 추계 되 고 무작위로 분산 된다는 것입니다. 잔여 부분을 무시 하 고 계절 및 추세 구성 요소에서 향후 메트릭 값을 예측 합니다. 잔여 부분만 해당 하는 이상 값 검색을 기준으로 비정상 값을 검색 합니다. 자세한 내용은 [시계열 분해 챕터](https://www.otexts.org/fpp/6)에서 찾을 수 있습니다.
 
 **예**
 
-**1. 주간 계절성**
+**주간 계절성**
 
-다음 예제에서는 주간 계절성과 추세가 없는 시리즈를 생성한 다음 이상값을 추가합니다. `series_decompose`계절성을 자동으로 감지하고 계절 구성 요소와 거의 동일한 기준선을 생성합니다. 우리가 추가 한 이상치는 잔류 구성 요소에서 명확하게 볼 수 있습니다.
+다음 예제에서는 계절성를 사용 하 여 매주 및 추세 없이 계열을 생성 하 고 그에 대 한 이상 값을 추가 합니다. `series_decompose`계절성를 찾아서 자동으로 검색 하 고 계절 구성 요소와 거의 동일한 기준을 생성 합니다. 추가한 이상 값은 잔차 구성 요소에서 명확 하 게 볼 수 있습니다.
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -84,11 +84,11 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose1.png" alt-text="시리즈 분해 1":::
+:::image type="content" source="images/samples/series-decompose1.png" alt-text="계열 분해 1":::
 
-**2. 추세에 따른 주간 계절성**
+**추세와 함께 주간 계절성**
 
-이 예제에서는 이전 예제의 계열에 추세를 추가합니다. 첫째, 추세 `series_decompose` `avg` 기본값이 평균만을 취하고 추세를 계산하지 않는 기본 매개 변수로 실행되며, 생성된 기준선이 추세를 포함하지 않고 이전 예제와 비교하여 덜 정확하다는 것을 알 수 있으며 잔차의 추세를 관찰할 때 가장 분명합니다.
+이 예제에서는 이전 예제의 계열에 추세를 추가 합니다. 먼저 기본 매개 변수 `series_decompose` 를 사용 하 여를 실행 합니다. 추세 `avg` 기본값은 평균만 사용 하 고 추세를 계산 하지 않습니다. 생성 된 기준선에 추세가 포함 되지 않습니다. 잔차에서 추세를 관찰 하는 경우이 예제가 이전 예제 보다 정확도가 떨어질 수 있습니다.
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -104,7 +104,7 @@ ts
 
 :::image type="content" source="images/samples/series-decompose2.png" alt-text="시리즈 분해 2":::
 
-다음으로 동일한 예제를 실행하지만 시리즈의 추세를 예상하기 때문에 추세 `linefit` 매개 변수에 지정합니다. 긍정적인 추세가 감지되고 기준선이 입력 계열에 훨씬 가깝다는 것을 알 수 있습니다. 잔차는 이상값만 눈에 띄는 0에 가깝습니다. 우리는 차트에서 시리즈의 모든 구성 요소를 볼 수 있습니다.
+다음으로 동일한 예제를 다시 실행 합니다. 계열에서 추세를 예상 하므로 trend 매개 변수에서를 지정 `linefit` 합니다. 긍정 추세가 검색 되 고 기준이 입력 계열에 훨씬 더 가까운 것을 볼 수 있습니다. 잔차는 영 (0)에 가깝습니다. 차트에서 계열의 모든 구성 요소를 볼 수 있습니다.
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -118,4 +118,4 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose3.png" alt-text="시리즈 분해 3":::
+:::image type="content" source="images/samples/series-decompose3.png" alt-text="계열 분해 3":::

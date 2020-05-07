@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 672f924865cab14dff6c7d5319c3c34cca1a67ee
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 1614a04c5e5bff51f45df914174c967ff9c7d8a2
+ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862017"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82907088"
 ---
 # <a name="streaming-ingestion-http-request"></a>스트리밍 수집 HTTP 요청
 
@@ -25,7 +25,7 @@ ms.locfileid: "82862017"
 
 ## <a name="request-parameters"></a>요청 매개 변수
 
-| 매개 변수    | Description                                                                 | 필수/선택 |
+| 매개 변수    | 설명                                                                 | 필수/선택 |
 |--------------|-----------------------------------------------------------------------------|-------------------|
 | `{database}` |   수집 요청에 대 한 대상 데이터베이스의 이름입니다.                     |  필수         |
 | `{table}`    |   수집 요청에 대 한 대상 테이블의 이름입니다.                        |  필수         |
@@ -34,10 +34,10 @@ ms.locfileid: "82862017"
 
 추가 매개 변수는 & 문자로 구분 `{name}={value}` 되는 URL 쿼리 쌍으로 형식이 지정 됩니다.
 
-| 매개 변수    | Description                                                                          | 필수/선택   |
+| 매개 변수    | 설명                                                                          | 필수/선택   |
 |--------------|--------------------------------------------------------------------------------------|---------------------|
-|`streamFormat`| 요청 본문에 있는 데이터의 형식을 지정 합니다. 값 `CSV`은,`TSV`,`SCsv`,`SOHsv``PSV``JSON``MultiJSON``Avro`,,,,, 중 하나 여야 합니다.`SingleJSON` 자세한 내용은 [지원 되는 데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)을 참조 하세요.| 필수 |
-|`mappingName` | 테이블에 정의 된 미리 만든 수집 매핑의 이름입니다. 자세한 내용은 [데이터 매핑](../../management/mappings.md)을 참조 하세요. 테이블에서 미리 생성 된 매핑을 관리 하는 방법은 [여기](../../management/create-ingestion-mapping-command.md)에 설명 되어 있습니다.| 선택 `streamFormat` 사항 이지만이 `JSON`,`SingleJSON`,`MultiJSON`또는 중 하나인 경우에는 필수입니다.`Avro`|  |
+|`streamFormat`| 요청 본문에 있는 데이터의 형식을 지정 합니다. 값은, `CSV` `TSV`, `SCsv`, `SOHsv` `PSV` `JSON`,,, `MultiJSON`, `Avro`중 하나 여야 합니다. 자세한 내용은 [지원 되는 데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)을 참조 하세요.| 필수 |
+|`mappingName` | 테이블에 정의 된 미리 만든 수집 매핑의 이름입니다. 자세한 내용은 [데이터 매핑](../../management/mappings.md)을 참조 하세요. 테이블에서 미리 생성 된 매핑을 관리 하는 방법은 [여기](../../management/create-ingestion-mapping-command.md)에 설명 되어 있습니다.| 선택 사항 이지만가 `streamFormat` `JSON`, `MultiJSON`또는 중 하나인 경우에는 필수입니다.`Avro`|  |
               
 예를 들어 CSV 형식의 데이터를 데이터베이스 `Logs` `Test`의 테이블로 수집 하려면 다음을 사용 합니다.
 
@@ -55,7 +55,7 @@ POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&m
 
 다음 표에는 쿼리 및 관리 작업에 대 한 공용 헤더가 포함 되어 있습니다.
 
-|표준 헤더   | Description                                                                               | 필수/선택 | 
+|표준 헤더   | 설명                                                                               | 필수/선택 | 
 |------------------|-------------------------------------------------------------------------------------------|-------------------|
 |`Accept`          | 이 값을로 `application/json`설정 합니다.                                                     | Optional          |
 |`Accept-Encoding` | 지원 되는 `gzip` 인코딩은 `deflate`및입니다.                                             | Optional          | 
@@ -68,7 +68,7 @@ POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&m
 
 다음 표에서는 쿼리 및 관리 작업에 대 한 일반적인 사용자 지정 헤더를 포함 합니다. 별도로 지정 하지 않는 한 헤더는 원격 분석 용도로만 사용 되며 기능에는 영향을 주지 않습니다.
 
-|사용자 지정 헤더           |Description                                                                           | 필수/선택 |
+|사용자 지정 헤더           |설명                                                                           | 필수/선택 |
 |------------------------|----------------------------------------------------------------------------------------------------------|
 |`x-ms-app`              |요청을 수행 하는 응용 프로그램의 친숙 한 이름입니다.                            | Optional          |
 |`x-ms-user`             |요청을 수행 하는 사용자의 이름입니다.                                   | Optional          |
