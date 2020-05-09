@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 6ce7cf38c88879b52c4e2e259e3e9a5cade959de
-ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
+ms.openlocfilehash: b3293916841eb56da3985f4b388754e7c8057682
+ms.sourcegitcommit: 3393ad86dac455fd182296ffb410b2bd570dbfce
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82907149"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82991874"
 ---
 # <a name="data-partitioning-policy-preview"></a>데이터 분할 정책 (미리 보기)
 
@@ -175,7 +175,7 @@ ms.locfileid: "82907149"
   * 단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다.
   * 이 속성은 *선택 사항이 며*기본값 `0` 은입니다 .이 경우에는 500만 레코드의 기본 대상이 적용 됩니다.
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
@@ -202,9 +202,10 @@ ms.locfileid: "82907149"
 
 #### <a name="capacity"></a>용량
 
-* 데이터 분할 프로세스를 수행 하면 더 많은 익스텐트가 생성 될 수 있으므로 [익스텐트](../management/extents-overview.md) 병합 프로세스를 유지할 수 있도록 (점진적이 고 선형) 클러스터의 [익스텐트 병합 용량](../management/capacitypolicy.md#extents-merge-capacity) 을 늘려야 할 수도 있습니다.
-* 필요한 경우 (예를 들어 높은 수집 처리량의 경우 및/또는 분할을 필요로 하는 충분 한 수의 테이블이 필요한 경우) 더 많은 동시 분할 작업을 실행할 수 있도록 클러스터의 [익스텐트 파티션 용량](../management/capacitypolicy.md#extents-partition-capacity) (점진적 및 선형)이 증가할 수 있습니다.
-  * 분할을 늘리면 클러스터의 리소스 사용이 크게 증가 하는 경우 수동으로 또는 자동 크기 조정을 사용 하 여 클러스터를 확장/축소할 수 있습니다.
+* 데이터 분할 프로세스로 인해 더 많은 익스텐트가 생성 됩니다. 클러스터는 익스텐트 [병합 용량](../management/capacitypolicy.md#extents-merge-capacity)을 점진적으로 늘릴 수 있으므로 [익스텐트](../management/extents-overview.md) 병합 프로세스가 계속 될 수 있습니다.
+* 수집 처리량이 많고 분할 정책이 정의 된 테이블이 많은 경우 클러스터는 파티션 익스텐트의 처리량을 점진적으로 늘릴 수 있으므로 [분할 익스텐트의](#the-data-partitioning-process) [처리량](../management/capacitypolicy.md#extents-partition-capacity)이 증가 합니다.
+* 리소스를 너무 많이 사용 하지 않도록 이러한 동적 증가가 더 이상 사용 되지 않습니다. 최대값 되는 경우 (점차 선형이 고 선형) 캡을 초과 하 여 증가 해야 할 수도 있습니다.
+  * 용량을 늘리면 클러스터의 리소스/[사용이 크게](../../manage-cluster-horizontal-scaling.md)증가 하는 경우 수동으로 또는 자동 크기 조정을 사용 하 [여 클러스터를](../../manage-cluster-vertical-scaling.md)확장할 수 있습니다.
 
 ### <a name="outliers-in-partitioned-columns"></a>분할 된 열의 이상 값
 

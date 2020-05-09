@@ -8,21 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 56150c480d0d5ecfd4d428e51f7bdb4b68e36b0c
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 5a7a1b37c8c50bdff3760ad9222065191a9eb884
+ms.sourcegitcommit: 3393ad86dac455fd182296ffb410b2bd570dbfce
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82617700"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82991891"
 ---
 # <a name="export-data-to-an-external-table"></a>외부 테이블로 데이터 내보내기
 
 [외부 테이블](../externaltables.md) 을 정의 하 고 데이터를 내보내 데이터를 내보낼 수 있습니다.
 테이블 속성은 [외부 테이블을 만들](../externaltables.md#create-or-alter-external-table)때 지정 되므로 내보내기 명령에 테이블의 속성을 포함할 필요가 없습니다. 내보내기 명령은 이름별로 외부 테이블을 참조 합니다.
 데이터 내보내기에는 [데이터베이스 관리자 권한이](../access-control/role-based-authorization.md)필요 합니다.
-
-> [!NOTE] 
-> * 연결 문자열을 사용 `impersonate` 하는 외부 테이블로 내보내기는 현재 지원 되지 않습니다.
 
 **구문:**
 
@@ -31,7 +28,7 @@ ms.locfileid: "82617700"
 
 **출력**
 
-|출력 매개 변수 |Type |설명
+|출력 매개 변수 |유형 |Description
 |---|---|---
 |ExternalTableName  |String |외부 테이블의 이름입니다.
 |경로|String|출력 경로입니다.
