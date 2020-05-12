@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest 클라이언트 참조 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 Kusto.Ingest 클라이언트 참조에 대해 설명합니다.
+title: Kusto. 클라이언트 인터페이스 및 팩터리 클래스 수집-Azure 데이터 탐색기
+description: 이 문서에서는 Kusto. Azure 데이터 탐색기에서 클라이언트 인터페이스 및 팩터리 클래스를 수집 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: e5a9c1fa561fa07df527f17552a3a8f594a4e5d8
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 1d3c3939a5c8b3a5f1e6f1fa0b40f9b927ee5325
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81503114"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83226060"
 ---
-# <a name="kustoingest-client-reference"></a>Kusto.Ingest 클라이언트 참조
+# <a name="kustoingest-client-interfaces-and-factory-classes"></a>Kusto. 클라이언트 인터페이스 및 팩터리 클래스 수집
 
-Kusto.Ingest 라이브러리의 주요 인터페이스 및 공장 클래스는 다음과 같습니다.
+Kusto. 수집 라이브러리의 기본 인터페이스 및 팩터리 클래스는 다음과 같습니다.
 
-* [인터페이스 IKustoIngest클라이언트](#interface-ikustoingestclient): 주요 섭취 인터페이스.
-* [클래스 확장KustoIngestClient](#class-extendedkustoingestclient): 기본 구성 인터페이스에 대한 확장.
-* [클래스 KustoIngest공장](#class-kustoingestfactory): 섭취 클라이언트를위한 주요 공장.
-* [클래스 KustoIngestion속성](#class-kustoingestionproperties): 공통 섭취 속성을 제공하는 데 사용되는 클래스입니다.
-* [클래스 JsonColumnMapping](#class-jsoncolumnmapping): JSON 데이터 원본에서 수집할 때 적용할 스키마 매핑을 설명하는 데 사용되는 클래스입니다.
-* [클래스 CsvColumnMapping](#class-csvcolumnmapping): CSV 데이터 원본에서 수집할 때 적용할 스키마 매핑을 설명하는 데 사용되는 클래스입니다.
-* [열거형 데이터 소스 형식](#enum-datasourceformat): 지원되는 데이터 원본 형식(예: CSV, JSON)
-* [인터페이스 IKustoQueuedingestClient](#interface-ikustoqueuedingestclient): 큐에 대기된 인에대해서만 적용되는 작업을 설명하는 인터페이스입니다.
-* [클래스 KustoQueuedingestion](#class-kustoqueuedingestionproperties)속성 : 큐에 대기된 인에만 적용되는 속성입니다.
+* [인터페이스 IKustoIngestClient](#interface-ikustoingestclient): 기본 수집 인터페이스입니다.
+* [클래스 ExtendedKustoIngestClient](#class-extendedkustoingestclient): 주 수집 인터페이스에 대 한 확장입니다.
+* [클래스 KustoIngestFactory](#class-kustoingestfactory): 수집 클라이언트에 대 한 기본 팩터리입니다.
+* [클래스 KustoIngestionProperties](#class-kustoingestionproperties): 일반적인 수집 속성을 제공 하는 데 사용 되는 클래스입니다.
+* [클래스 JsonColumnMapping](#class-jsoncolumnmapping): JSON 데이터 원본에서 수집 때 적용할 스키마 매핑을 설명 하는 데 사용 되는 클래스입니다.
+* [클래스 CsvColumnMapping](#class-csvcolumnmapping): CSV 데이터 원본에서 수집 때 적용할 스키마 매핑을 설명 하는 데 사용 되는 클래스입니다.
+* [DataSourceFormat 열거형](#enum-datasourceformat): 지원 되는 데이터 원본 형식 (예: CSV, JSON)
+* [인터페이스 IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): 대기 중인 수집에만 적용 되는 작업을 설명 하는 인터페이스입니다.
+* [클래스 KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): 대기 중인 수집에만 적용 되는 속성입니다.
 
-## <a name="interface-ikustoingestclient"></a>인터페이스 IKustoIngest클라이언트
+## <a name="interface-ikustoingestclient"></a>인터페이스 IKustoIngestClient
 
-* 인제스트From데이터리더Async
-* 인제스트From스토리지동기
-* 인제스트From스트림Async
+* IngestFromDataReaderAsync
+* IngestFromStorageAsync
+* IngestFromStreamAsync
 
 ```csharp
 public interface IKustoIngestClient : IDisposable
@@ -68,16 +68,16 @@ public interface IKustoIngestClient : IDisposable
 }
 ```
 
-## <a name="class-extendedkustoingestclient"></a>클래스 확장쿠스토잉스트클라이언트
+## <a name="class-extendedkustoingestclient"></a>클래스 ExtendedKustoIngestClient
 
-* 인제스트에서싱글블B - 더 이상 사용되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하십시오.
-* 인제스트에서싱글블로브Async - 더 이상 사용되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하십시오.
-* 인제스트From데이터리더 - 더 이상 사용되지 않습니다. 대신 `IKustoIngestClient.IngestFromDataReaderAsync`를 사용하십시오.
-* 인제스트From데이터리더Async
-* 인제스트From싱글파일 - 더 이상 사용되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하십시오.
-* 인제스트From싱글파일Async - 더 이상 사용되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하십시오.
-* FromStream에서 인제스트 - 더 이상 사용되지 않습니다. 대신 `IKustoIngestClient.IngestFromStreamAsync`를 사용하십시오.
-* 인제스트From스트림Async
+* IngestFromSingleBlob-사용 되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하세요.
+* IngestFromSingleBlobAsync-사용 되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하세요.
+* IngestFromDataReader-사용 되지 않습니다. 대신 `IKustoIngestClient.IngestFromDataReaderAsync`를 사용하세요.
+* IngestFromDataReaderAsync
+* IngestFromSingleFile-사용 되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하세요.
+* IngestFromSingleFileAsync-사용 되지 않습니다. 대신 `IKustoIngestClient.IngestFromStorageAsync`를 사용하세요.
+* IngestFromStream-사용 되지 않습니다. 대신 `IKustoIngestClient.IngestFromStreamAsync`를 사용하세요.
+* IngestFromStreamAsync
 
 ```csharp
 public static class ExtendedKustoIngestClient
@@ -244,12 +244,12 @@ public static class ExtendedKustoIngestClient
 }
 ```
 
-## <a name="class-kustoingestfactory"></a>클래스 쿠스토잉제스트팩토리
+## <a name="class-kustoingestfactory"></a>클래스 KustoIngestFactory
 
-* 생성직접 작성 클라이언트
-* 큐어작성 클라이언트 만들기
-* 관리되는 스트리밍 클라이언트 만들기
-* 생성 스트리밍 게스트클라이언트
+* CreateDirectIngestClient
+* CreateQueuedIngestClient
+* CreateManagedStreamingIngestClient
+* CreateStreamingIngestClient
 
 ```csharp
 /// <summary>
@@ -342,24 +342,24 @@ public static class KustoIngestFactory
 }
 ```
 
-## <a name="class-kustoingestionproperties"></a>클래스 쿠스토인션프로퍼티
+## <a name="class-kustoingestionproperties"></a>클래스 KustoIngestionProperties
 
-KustoIngestionProperties 클래스는 Kusto 엔진에 의한 섭취 프로세스 및 처리를 정밀하게 제어할 수 있는 기본 섭취 특성을 캡슐화합니다.
+KustoIngestionProperties 클래스에는 수집 프로세스를 세부적으로 제어 하는 기본 수집 속성과 Kusto engine에서이를 처리 하는 방법이 포함 되어 있습니다.
 
 |속성   |의미    |
 |-----------|-----------|
-|DatabaseName |인더잉할 데이터베이스 이름 |
-|TableName |섭취할 테이블 이름 |
-|드롭바이태그 |각 익스텐트는 태그를 갖습니다. DropByTags는 영구적이며 다음과 같이 `.show table T extents where tags has 'some tag'` 사용할 수 있습니다.`.drop extents <| .show table T extents where tags has 'some tag'` |
-|인제스트비태그 |익스텐트에 따라 작성된 태그입니다. 나중에 동일한 데이터를 `IngestIfNotExists` 두 번 수집하지 않도록 속성과 함께 사용할 수 있습니다. |
-|추가 태그 |필요에 따라 추가 태그 |
-|인제스트IfNotExists |다시 원하지 않는 태그 목록(표당) |
-|CSV매핑 |각 열에 대해 데이터 형식과 서수 열 번호를 정의합니다. CSV 사용과 관련이 있습니다(선택 사항) |
-|Json매핑 |각 열에 대해 JSON 경로 및 변환 옵션을 정의합니다. **JSON 섭취에 필수** |
-|아브로 매핑 |각 열에 대해 Avro 레코드에서 필드 이름을 정의합니다. **AVRO 섭취에 필수** |
-|유효성 검사정책 |데이터 유효성 검사 정의. 자세한 내용은 [TODO]를 참조하십시오. |
-|형식 |수집중인 데이터의 형식 |
-|추가 속성 | 모든 인기 속성이 이 클래스의 별도 멤버에 표시되지 않기 때문에 [인기 속성으로](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) 전달되는 다른 속성은 인기 명령으로 전달됩니다.|
+|DatabaseName |수집할 데이터베이스의 이름입니다. |
+|TableName |수집할 테이블의 이름 |
+|DropByTags |각 범위에 포함 되는 태그입니다. DropByTags는 영구적 이며 다음과 같이 사용할 수 있습니다. `.show table T extents where tags has 'some tag'` 또는`.drop extents <| .show table T extents where tags has 'some tag'` |
+|IngestByTags |익스텐트에 따라 작성 된 태그입니다. 나중에 속성을 사용 `IngestIfNotExists` 하 여 동일한 데이터를 두 번 수집 않도록 할 수 있습니다. |
+|AdditionalTags |필요에 따라 추가 태그 |
+|IngestIfNotExists |다시 수집 하지 않으려는 태그 목록 (테이블당) |
+|CSVMapping |각 열에 대해 데이터 형식 및 서 수 열 번호를 정의 합니다. CSV 수집에만 해당 됩니다 (선택 사항). |
+|JsonMapping |각 열에 대해 JSON 경로 및 변환 옵션을 정의 합니다. **JSON 수집에 필수** |
+|AvroMapping |각 열에 대해 Avro 레코드의 필드 이름을 정의 합니다. **AVRO 수집에 필수** |
+|ValidationPolicy |데이터 유효성 검사 정의. 자세한 내용은 [TODO]를 참조 하십시오. |
+|형식 |수집 되는 데이터의 형식입니다. |
+|AdditionalProperties | 수집 [속성](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) 으로 수집 명령에 전달 되는 기타 속성입니다. 수집 속성이이 클래스의 개별 멤버에 표시 되지 않기 때문에 속성이 전달 됩니다.|
 
 ```csharp
 public class KustoIngestionProperties
@@ -382,7 +382,7 @@ public class KustoIngestionProperties
 }
 ```
 
-## <a name="class-jsoncolumnmapping"></a>클래스 Json열 매핑
+## <a name="class-jsoncolumnmapping"></a>클래스 JsonColumnMapping
 
 ```csharp
 public class JsonColumnMapping
@@ -395,7 +395,7 @@ public class JsonColumnMapping
 }
 ```
 
-## <a name="class-csvcolumnmapping"></a>클래스 Csv열 매핑
+## <a name="class-csvcolumnmapping"></a>클래스 CsvColumnMapping
 
 ```csharp
 public class CsvColumnMapping
@@ -418,7 +418,7 @@ public class CsvColumnMapping
 }
 ```
 
-## <a name="enum-datasourceformat"></a>열거형 데이터 소스 형식
+## <a name="enum-datasourceformat"></a>DataSourceFormat 열거형
 
 ```csharp
 public enum DataSourceFormat
@@ -438,7 +438,7 @@ public enum DataSourceFormat
 ```
 
 
-## <a name="example-of-kustoingestionproperties-definition"></a>쿠스토인션속성 정의의 예
+## <a name="example-of-kustoingestionproperties-definition"></a>KustoIngestionProperties 정의의 예
 
 ```csharp
 var guid = new Guid().ToString();
@@ -456,13 +456,13 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
 };
 ```
 
-## <a name="interface-ikustoqueuedingestclient"></a>인터페이스 IKustoQueuedingest클라이언트
+## <a name="interface-ikustoqueuedingestclient"></a>인터페이스 IKustoQueuedIngestClient
 
-IKustoQueuedIngestClient 인터페이스는 인기 작업 결과를 따르는 추적 메서드를 추가하고 인제스트 클라이언트에 대한 RetryPolicy를 노출합니다.
+IKustoQueuedIngestClient 인터페이스는 수집 작업 결과를 따르고 수집 클라이언트에 대해 RetryPolicy를 노출 하는 추적 메서드를 추가 합니다.
 
-* 픽탑링실패
-* GetandDiscardTopingestion실패
-* GetAnd폐기탑화성공
+* PeekTopIngestionFailures
+* GetAndDiscardTopIngestionFailures
+* GetAndDiscardTopIngestionSuccesses
 
 ```csharp
 public interface IKustoQueuedIngestClient : IKustoIngestClient
@@ -496,15 +496,15 @@ public interface IKustoQueuedIngestClient : IKustoIngestClient
 }
 ```
 
-## <a name="class-kustoqueuedingestionproperties"></a>클래스 쿠스토큐디징프로퍼티
+## <a name="class-kustoqueuedingestionproperties"></a>클래스 KustoQueuedIngestionProperties
 
-KustoQueuedingestionProperties 클래스는 섭취 동작을 미세 조정하는 데 사용할 수있는 여러 컨트롤 노브를 사용하여 KustoIngestionProperties를 확장합니다.
+KustoQueuedIngestionProperties 클래스는 수집 동작을 미세 조정 하는 데 사용할 수 있는 여러 컨트롤 노브를 사용 하 여 KustoIngestionProperties를 확장 합니다.
 
 |속성   |의미    |
 |-----------|-----------|
-|플러시즉시 |기본값은 `false`입니다. `true`을 설정하면 데이터 관리 서비스의 집계 메커니즘을 우회합니다. |
-|인제션보고서수준 |인스티온 상태 보고 수준을 제어합니다(기본값으로). `FailuresOnly` 성능 및 저장소 사용량 측면에서 는 IngestionReportLevel을`FailuresAndSuccesses` |
-|인제션보고서방법 |인기 상태 보고의 대상을 제어합니다. 사용 가능한 옵션은 Azure 큐, Azure 테이블 또는 둘 다입니다. 기본값은 `Queue`입니다.
+|즉시 flush |기본값은 `false`입니다. 로 설정 `true` 된 경우 데이터 관리 서비스의 집계 메커니즘을 무시 합니다. |
+|IngestionReportLevel |수집 상태 보고 수준을 제어 합니다 (기본값 `FailuresOnly` ). 성능 및 저장소를 적절 하 게 사용 하려면 IngestionReportLevel을로 설정 하지 않는 것이 좋습니다.`FailuresAndSuccesses` |
+|IngestionReportMethod |수집 상태 보고의 대상을 제어 합니다. 사용할 수 있는 옵션은 Azure 큐, Azure 테이블 또는 둘 다입니다. 기본값은 `Queue`입니다.
 
 ```csharp
 public class KustoQueuedIngestionProperties : KustoIngestionProperties

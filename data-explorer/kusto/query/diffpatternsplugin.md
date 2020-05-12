@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9931b297f5a86c46a8502902a6c396fbb2fd4191
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: b3dece66f3bafae989643afd418557aeaaa7d746
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741746"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83225040"
 ---
 # <a name="diff-patterns-plugin"></a>diff 패턴 플러그 인
 
@@ -51,7 +51,7 @@ T | evaluate diffpatterns(splitColumn)
 
 * WeightColumn - *column_name*
 
-    지정된 가중치(기본적으로 각 행의 가중치는 '1'임)에 따라 입력의 각 행을 고려합니다. 인수는 숫자 열의 이름 이어야 합니다 (예: `int`, `long`, `real`).
+    지정된 가중치(기본적으로 각 행의 가중치는 '1'임)에 따라 입력의 각 행을 고려합니다. 인수는 숫자 열의 이름 이어야 합니다 (예: `int` ,, `long` `real` ).
     이미 각 행에 포함되어 있는 데이터의 계정 샘플링 또는 버킷팅/집계가 가중치 열의 일반적인 용도로 간주됩니다.
     
     예: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", sample_Count) `
@@ -71,7 +71,7 @@ T | evaluate diffpatterns(splitColumn)
 * CustomWildcard 카드- *"형식당 하나의 값"*
 
     현재 패턴이 이 열을 제한하지 않음을 나타내는 특정 형식에 대한 와일드카드 값을 결과 테이블에 설정합니다.
-    기본값은 null이고, 문자열의 경우 기본값은 빈 문자열입니다. 기본값이 데이터에서 실행 가능한 값 이면 다른 와일드 카드 값 (예: `*`)을 사용 해야 합니다.
+    기본값은 null이고, 문자열의 경우 기본값은 빈 문자열입니다. 기본값이 데이터에서 실행 가능한 값 이면 다른 와일드 카드 값 (예:)을 사용 해야 `*` 합니다.
     아래 예제를 참조하세요.
 
     예: `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))`
@@ -80,13 +80,13 @@ T | evaluate diffpatterns(splitColumn)
 
 `Diffpatterns`두 집합에 있는 데이터의 서로 다른 부분 (즉, 첫 번째 데이터 집합에서 높은 비율의 행을 캡처하고 두 번째 집합에 있는 행의 비율이 낮은 패턴)을 캡처하는 작은 패턴 집합을 반환 합니다. 각 패턴은 결과의 행으로 표시됩니다.
 
-결과는 다음 `diffpatterns` 열을 반환 합니다.
+결과는 `diffpatterns` 다음 열을 반환 합니다.
 
 * SegmentId: 현재 쿼리의 패턴에 할당 된 id입니다. 참고: Id는 반복 되는 쿼리에서 동일 하지 않을 수 있습니다.
 
-* CountA: 집합 A의 패턴에 의해 캡처된 행의 수입니다. Set A `where tostring(splitColumn) == SplitValueA`는에 해당 합니다.
+* CountA: 집합 A의 패턴에 의해 캡처된 행의 수입니다. Set A는에 해당 합니다 `where tostring(splitColumn) == SplitValueA` .
 
-* CountB: 집합 B의 패턴에 의해 캡처된 행의 수입니다. 집합 B는와 동일 `where tostring(splitColumn) == SplitValueB`합니다.
+* CountB: 집합 B의 패턴에 의해 캡처된 행의 수입니다. 집합 B는와 동일 합니다 `where tostring(splitColumn) == SplitValueB` .
 
 * PercentA: 패턴에 의해 캡처되는 집합 A의 행 백분율 (100.0 * CountA/count (필요로)).
 
@@ -94,7 +94,7 @@ T | evaluate diffpatterns(splitColumn)
 
 * PercentDiffAB: A와 B 사이의 절대 백분율 점 차이 (| PercentA-PercentB |) 는 두 집합 간의 차이를 설명 하는 패턴의 중요 한 측정값입니다.
 
-* 열의 나머지 부분: 입력의 원래 스키마 이며 패턴을 설명 합니다. 각 행 (패턴)은 열에 대 `where col1==val1 and col2==val2 and ... colN=valN` 한 비 와일드 카드 값의 교집합을 나타냅니다 (행의 와일드 카드 값이 아닌 각 값에 해당).
+* 열의 나머지 부분: 입력의 원래 스키마 이며 패턴을 설명 합니다. 각 행 (패턴)은 열에 대 한 비 와일드 카드 값의 교집합을 나타냅니다 ( `where col1==val1 and col2==val2 and ... colN=valN` 행의 와일드 카드 값이 아닌 각 값에 해당).
 
 각 패턴에 대해 패턴에 설정 되지 않은 열 (특정 값에 대 한 제한 없음)에는 기본적으로 null 인 와일드 카드 값이 포함 됩니다. 와일드 카드를 수동으로 변경 하는 방법은 아래의 인수 섹션을 참조 하십시오.
 
@@ -111,6 +111,7 @@ T | evaluate diffpatterns(splitColumn)
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -119,7 +120,7 @@ StormEvents
 | evaluate diffpatterns(Damage, "0", "1" )
 ```
 
-|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|시스템 상태|EventType|원본|DamageCrops|
+|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|State|EventType|원본|DamageCrops|
 |---|---|---|---|---|---|---|---|---|---|
 |0|2278|93|49.8|7.1|42.7||우박||0|
 |1|779|512|17.03|39.08|22.05||뇌우를 동반한 바람|||

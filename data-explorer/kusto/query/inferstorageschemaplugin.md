@@ -1,6 +1,6 @@
 ---
-title: infer_storage_schema 플러그인 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 infer_storage_schema 플러그인에 대해 설명합니다.
+title: infer_storage_schema 플러그 인-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 infer_storage_schema 플러그 인을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 6c4543a3b029017067867bb70d913509941c332e
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 1b4a917101ad3a35f8fdbc1cccb257b6f3724b69
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81513909"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83224870"
 ---
-# <a name="infer_storage_schema-plugin"></a>infer_storage_schema 플러그인
+# <a name="infer_storage_schema-plugin"></a>infer_storage_schema 플러그 인
 
-이 플러그인은 외부 데이터의 스키마를 추론하고 [외부 테이블을 만들](../management/externaltables.md#create-or-alter-external-table)때 사용할 수 있는 CSL 스키마 문자열로 반환합니다.
+이 플러그 인은 외부 데이터의 스키마를 유추 하 고 CSL 스키마 문자열로 반환 합니다. [외부 테이블을 만들](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table)때 문자열을 사용할 수 있습니다.
 
 ```kusto
 let options = dynamic({
@@ -36,23 +36,23 @@ evaluate infer_storage_schema(options)
 
 **인수**
 
-단일 *Options* 인수는 요청의 `dynamic` 속성을 지정하는 속성 가방을 포함하는 형식의 상수 값입니다.
+단일 *옵션* 인수는 `dynamic` 요청의 속성을 지정 하는 속성 모음을 보유 하는 형식의 상수 값입니다.
 
-|이름                    |필수|Description|
+|속성                    |필수|설명|
 |------------------------|--------|-----------|
-|`StorageContainers`|예|저장된 데이터 [아티팩트에](../api/connection-strings/storage.md) 대한 접두사 URI를 나타내는 저장소 연결 문자열 목록|
-|`DataFormat`|예|지원되는 [데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)중 하나입니다.|
-|`FileExtension`|예|이 파일 확장으로 끝나는 파일만 스캔합니다. 필수는 아니지만 지정하면 프로세스 속도가 빨라질 수 있습니다(또는 데이터 읽기 문제 제거).|
-|`FileNamePrefix`|예|이 접두사로 시작하는 파일만 검색합니다. 필수는 아니지만 지정하면 프로세스 속도가 빨라질 수 있습니다.|
-|`Mode`|예|스키마 추론 전략 중 하나: `any` `last`. `all`. 마지막으로 작성된 파일또는 모든 파일에서 데이터 스키마를 (처음 찾은) 파일에서 유추합니다. 기본값은 `last`입니다.|
+|`StorageContainers`|예|저장 된 데이터 아티팩트의 접두사 URI를 나타내는 [저장소 연결 문자열](../api/connection-strings/storage.md) 목록|
+|`DataFormat`|예|지원 되는 [데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)중 하나입니다.|
+|`FileExtension`|아니요|이 파일 확장명으로 끝나는 파일만 검색 합니다. 필수는 아니지만이를 지정 하 여 프로세스를 가속화 하거나 데이터 읽기 문제를 제거할 수 있습니다.|
+|`FileNamePrefix`|아니요|이 접두사로 시작 하는 파일만 검색 합니다. 필수는 아니지만이를 지정 하면 프로세스의 속도를 높일 수 있습니다.|
+|`Mode`|아니요|스키마 유추 전략,,, 중 하나입니다. `any` `last` `all` 각각의 (첫 번째) 파일, 마지막으로 쓴 파일 또는 모든 파일에서 데이터 스키마를 유추 합니다. 기본값은 `last`입니다.|
 
 **반환**
 
-플러그인은 `infer_storage_schema` CSL 스키마 문자열을 포함하는 단일 행/열이 포함된 단일 결과 테이블을 반환합니다.
+`infer_storage_schema`플러그 인은 CSL 스키마 문자열을 포함 하는 단일 행/열을 포함 하는 단일 결과 테이블을 반환 합니다.
 
 > [!NOTE]
-> * 스키마 추론 전략 'all'은 발견된 *모든* 아티팩트를 읽고 스키마를 병합하는 것을 의미하기 때문에 매우 "비용이 많이 드는" 작업입니다.
-> * 일부 반환 된 형식은 잘못된 형식 추측 (또는 스키마 병합 프로세스의 결과로)의 결과로 실제 형식이 아닐 수 있습니다. 따라서 외부 테이블을 만들기 전에 결과를 주의 깊게 검토하는 것이 좋습니다.
+> * 스키마 유추 전략 ' 모두 '는 검색 된 *모든* 아티팩트를 읽고 해당 스키마를 병합 하는 것을 암시 하므로 매우 "비용이 많이 드는" 작업입니다.
+> * 반환 된 형식이 잘못 된 형식 추측 (또는 스키마 병합 프로세스의 결과로)의 결과로 실제 형식이 아닐 수 있습니다. 이 때문에 외부 테이블을 만들기 전에 결과를 신중 하 게 검토 해야 합니다.
 
 **예제**
 
@@ -72,4 +72,4 @@ evaluate infer_storage_schema(options)
 
 |CslSchema|
 |---|
-|app_id:문자열, user_id:long, event_time:datetime, 국가:문자열, 시티:문자열, device_type:문자열, device_vendor:문자열, ad_network:문자열:문자열: site_id:문자열, event_type:문자열, event_name:문자열, 유기적:문자열, days_from_install:int, 수익:real|
+|app_id: string, user_id: long, event_time: datetime, country: string, city: string, device_type: string, device_vendor: string, ad_network: string, 캠페인: string, site_id: string, event_type: string, event_name: string, 유기적: string, days_from_install: int, 수익: real|

@@ -1,6 +1,6 @@
 ---
-title: bag_unpack 플러그인 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 bag_unpack 플러그인에 대해 설명합니다.
+title: bag_unpack 플러그 인-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 bag_unpack 플러그 인을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,50 +8,51 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/21/2019
-ms.openlocfilehash: 374ff3ca8101e24a53926a78a1b8781447f32dbc
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: fd8b0968d90f1c5239cae80c3be9c2a32d0603d6
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81518227"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83225499"
 ---
-# <a name="bag_unpack-plugin"></a>bag_unpack 플러그인
+# <a name="bag_unpack-plugin"></a>bag_unpack 플러그 인
 
-플러그인은 `bag_unpack` 각 속성 가방 최상위 `dynamic` 슬롯을 열로 처리하여 형식의 단일 열을 압축 해제합니다.
+`bag_unpack`플러그 인은 `dynamic` 각 속성 모음 최상위 슬롯을 열로 처리 하 여 형식의 단일 열을 압축 합니다.
 
     T | evaluate bag_unpack(col1)
 
 **구문**
 
-*T* `|` T `evaluate` `,` *Column* 열 [ *출력열사전픽]* `bag_unpack(``)`
+*T* `|` `evaluate` `bag_unpack(` *열* `,` [ *outputcolumnprefix* ]`)`
 
 **인수**
 
-* *T*: 열 *열을* 풀어야 하는 테이블 형식 입력입니다.
-* *열*: 압축을 풀 *T의* 열입니다. 반드시 `dynamic` 형식이어야 합니다.
-* *OutputColumnPrefix*: 플러그인에서 생성된 모든 열에 추가할 공통 접두사입니다.
-  (선택 사항)
+* *T*: 열 *열* 을 압축을 풀 테이블 형식 입력입니다.
+* *Column*: 압축을 풀 *T* 의 열입니다. 반드시 `dynamic` 형식이어야 합니다.
+* *Outputcolumnprefix*: 플러그 인에서 생성 하는 모든 열에 추가할 일반적인 접두사입니다.
+  선택 사항입니다.
 
 **반환**
 
-플러그인은 `bag_unpack` 테이블*입력(T)만큼*많은 레코드가 있는 테이블을 반환합니다. 테이블의 스키마는 다음과 같은 수정 사항을 통해 테이블 형식 입력의 스키마와 동일합니다.
+`bag_unpack`플러그 인은 레코드를 테이블 형식 입력 (*T*)으로 포함 하는 테이블을 반환 합니다. 테이블의 스키마는 다음과 같은 수정 내용이 있는 테이블 형식 입력의 스키마와 동일 합니다.
 
-* 지정된 입력*열(열)이*제거됩니다.
+* 지정한 입력 열 (*열*)이 제거 됩니다.
 
-* 스키마는 *T의*최상위 속성 bag 값에 고유한 슬롯이 있는 만큼 많은 열로 확장됩니다. 각 열의 이름은 각 슬롯의 이름에 해당하며, 선택적으로 *OutputColumnPrefix에*의해 접두사에 붙어 있습니다. 해당 형식은 슬롯 의 유형(동일한 슬롯의 모든 값이 동일한 형식인 `dynamic` 경우) 또는 (값이 형식이 다른 경우) 형식입니다.
+* 이 스키마는 *T*의 최상위 속성 모음 값에서 고유한 슬롯 수 만큼의 열로 확장 됩니다. 각 열의 이름은 각 슬롯의 이름에 해당 하며 필요에 따라 *Outputcolumnprefix*접두사가 붙습니다. 해당 형식은 슬롯의 형식 (동일한 슬롯의 모든 값이 동일한 형식일 경우) 또는 `dynamic` (값이 형식이 다른 경우)입니다.
 
 **참고 사항**
 
-플러그인의 출력 스키마는 데이터 값에 따라 달라지므로 데이터 자체로 "예측할 수 없는" 스키마가 됩니다. 따라서 다른 데이터 입력을 가진 플러그인의 여러 실행은 다른 출력 스키마를 생성할 수 있습니다.
+플러그 인의 출력 스키마는 데이터 값에 따라 달라 지 며 데이터 자체로 "예측할 수 없음"으로 설정 됩니다. 따라서 데이터 입력이 다른 플러그 인을 여러 번 실행 하면 다른 출력 스키마가 생성 될 수 있습니다.
 
-출력 스키마가 테이블 형식 스키마에 대한 모든 규칙을 준수하도록 플러그인에 대한 입력 데이터가 있어야 합니다. 특히 다음 사항에 주의하십시오.
+플러그 인에 대 한 입력 데이터는 출력 스키마가 테이블 형식 스키마에 대 한 모든 규칙을 준수 해야 합니다. 특히 다음 사항에 주의하십시오.
 
-1. 출력 열 이름은 풀수 있는*열(Column)* 자체가 같지 않으면 테이블 입력 *T의* 기존 열과 같을 수 없습니다.
+1. 출력 열 이름은 같은 이름으로 두 개의 열을 생성 하므로 압축을 푸는 (*열*) 열이 아닌 경우 테이블 *형식 입력의* 기존 열과 같을 수 없습니다.
 
-2. *OutputColumnPrefix에*의해 접두사에 의해 접두사때 모든 슬롯 이름은 유효한 엔터티 이름이어야 하며 [식별자 명명 규칙을](./schema-entities/entity-names.md#identifier-naming-rules)준수해야 합니다.
+2. 모든 슬롯 이름에 대해 *Outputcolumnprefix*접두사가 유효한 엔터티 이름 이어야 하 고 [식별자 명명 규칙](./schema-entities/entity-names.md#identifier-naming-rules)을 준수 해야 합니다.
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 datatable(d:dynamic)
 [
@@ -62,8 +63,8 @@ datatable(d:dynamic)
 | evaluate bag_unpack(d)
 ```
 
-|이름  |Age|
+|속성  |Age|
 |------|---|
 |John  |20 |
 |Dave  |40 |
-|스미다 (미국)|30 |
+|Smitha|30 |

@@ -1,6 +1,6 @@
 ---
-title: percentile_tdigest() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 percentile_tdigest()에 대해 설명합니다.
+title: percentile_tdigest ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 percentile_tdigest ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,43 +8,43 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 655a0693b8e04b1230f6b9e8fe247bd2d77b7ac6
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: f2e5e4aca145e0d78baddd7b1e34ab3ce6d047d1
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81511240"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83225006"
 ---
 # <a name="percentile_tdigest"></a>percentile_tdigest()
 
-tdigest [결과(tdigest()](tdigest-aggfunction.md) 또는 [tdigest_merge()](tdigest-merge-aggfunction.md)생성된 tdigest 결과에서 백분위수 결과를 계산합니다.
+`tdigest` [Tdigest ()](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md)에 의해 생성 된 결과에서 백분위 수 결과를 계산 합니다.
 
 **구문**
 
-`percentile_tdigest(`*Expr* `,` *백분위수1* [`,` *문자Lite]*`)`
+`percentile_tdigest(`*`Expr`*`,`*Percentile1* [ `,` *typeLiteral*]`)`
 
-`percentiles_array_tdigest(`*Expr* `,` *백분위수1* [`,` *백분위수2*] ... [`,` *백분위수*]`)`
+`percentiles_array_tdigest(`*`Expr`*`,`*Percentile1* [ `,` *Percentile2*] ... [ `,` *PercentileN*]`)`
 
-`percentiles_array_tdigest(`*Expr* `,` *동적 배열*`)`
+`percentiles_array_tdigest(`*`Expr`*`,`*동적 배열*`)`
 
 **인수**
 
-* *예시*: [tdigest](tdigest-aggfunction.md) 또는 [tdigest_merge()에](tdigest-merge-aggfunction.md)의해 생성된 식 .
-* *백분위수는* 백분위수를 지정하는 이중 상수입니다.
-* *typeLiteral*: 선택적 문자 리터럴(예: `typeof(long)`)입니다. 제공된 경우 결과 집합은 이 유형입니다. 
-* *동적 배열*: 정수 또는 부동 포인트 번호의 동적 배열의 백분위수 목록
+* *Expr*: [`tdigest`](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md)에서 생성 된 식입니다.
+* *백분위* 수는 백분위 수를 지정 하는 double 상수입니다.
+* *typeLiteral*: 선택적 형식 리터럴 (예: `typeof(long)` )입니다. 제공 된 경우 결과 집합은이 형식이 됩니다. 
+* *동적 배열*: 정수 또는 부동 소수점 숫자의 동적 배열에서 백분위 수의 목록입니다.
 
 **반환**
 
-*Expr의*각 값의 백분위수/백분위수 값입니다.
+의 각 값에 대 한 백분위 수/percentilesw 값입니다 *`Expr`* .
 
 **팁**
 
-1) 함수는 적어도 1 %를 받아야합니다 (그리고 어쩌면 더, 위의`,` 구문을 참조하십시오 : *백분위수1* [ *백분위수2*] ... [`,` *백분위수*]) 결과가 포함된 동적 배열이 됩니다. (등) [`percentiles()`](percentiles-aggfunction.md)
+* 함수는 적어도 1%를 받아야 합니다. *Percentile1* [ `,` *Percentile2*] ... 위의 구문을 참조 하세요. [ `,` *PercentileN*])를 반환 하 고 결과를 포함 하는 동적 배열이 생성 됩니다. (예: [`percentiles()`](percentiles-aggfunction.md) )
   
-2) 1%만 제공되었고 형식도 제공된 경우 결과는 해당 백분율의 결과와 함께 제공되는 동일한 유형의 열이 됩니다(이 경우 모든 tdigests는 해당 형식이어야 합니다).
+* 1%만 제공 되 고 형식이 제공 된 경우 결과는 해당 백분율의 결과와 함께 제공 된 동일한 형식의 열이 됩니다. 이 경우 모든 `tdigest` 함수는 해당 형식 이어야 합니다.
 
-3) *Expr에* 다른 유형의 다이제스트가 포함된 경우 형식을 제공하지 않으며 결과는 동적 형식이 됩니다. (아래 예제 참조).
+* 에 *`Expr`* `tdigest` 다른 형식의 함수가 포함 되어 있으면 형식을 제공 하지 않습니다. 결과는 동적 형식이 됩니다. 아래 예제를 참조하세요.
 
 **예**
 
@@ -57,9 +57,9 @@ StormEvents
 |percentile_tdigest_tdigestRes|
 |---|
 |0|
-|62000000|
-|110000000|
-|1200000|
+|6200만|
+|1억1000만|
+|120만|
 |250000|
 
 
@@ -71,11 +71,11 @@ StormEvents
 
 |percentile_tdigest_tdigestRes|
 |---|
-|[0,0,0]|
-|[0,0,62000000]|
-|[0,0,110000000]|
-|[0,0,1200000]|
-|[0,0,250000]|
+|[0, 0, 0]|
+|[0, 0, 62000000]|
+|[0, 0, 110000000]|
+|[0, 0, 1200000]|
+|[0, 0, 250000]|
 
 
 ```kusto
@@ -88,6 +88,6 @@ StormEvents
 |percentile_tdigest_tdigestRes|
 |---|
 |[0]|
-|[62000000]|
-|["2007-12-20T11:30:00.00000000Z"]|
-|["2007-12-31T23:59:00.00000000Z"]|
+|[6200만]|
+|["2007-12-20T11:30:00.0000000 Z"]|
+|["2007-12-31T23:59:00.0000000 Z"]|

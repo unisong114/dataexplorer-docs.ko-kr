@@ -1,6 +1,6 @@
 ---
-title: binary_all_xor() (집계 함수) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 binary_all_xor(집계 함수)에 대해 설명합니다.
+title: binary_all_xor () (집계 함수)-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 binary_all_xor () (집계 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,35 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/06/2020
-ms.openlocfilehash: a1908fe874576281c9ba45f23709845473b5725c
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: bc4b0bc8a02dd3a8d2a39ffdd27db5817eb8ffdb
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81517700"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83225244"
 ---
-# <a name="binary_all_xor-aggregation-function"></a>binary_all_xor() (집계 함수)
+# <a name="binary_all_xor-aggregation-function"></a>binary_all_xor () (집계 함수)
 
-요약 그룹당 이진 `XOR` 연산을 사용하여 값을 누적합니다(또는 그룹화 없이 요약이 수행되는 경우 전체적으로).
+요약 그룹당 이항 연산을 사용 하 여 값을 누적 `XOR` 합니다 (그룹화 하지 않고 요약이 수행 되는 경우 전체).
 
-* 요약 내부 집계의 컨텍스트에서만 사용할 수 [있습니다.](summarizeoperator.md)
+* [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
 **구문**
 
-`binary_all_xor(` *예시* 요약`)`
+`binary_all_xor(` *식* 요약`)`
 
 **인수**
 
-* *예시*: 긴 수.
+* *Expr*: long 숫자입니다.
 
 **반환**
 
-요약 그룹별 레코드(또는 그룹화 없이 요약이 수행된 경우) 동안 이진 `XOR` 연산을 사용하여 집계된 값을 반환합니다.
+요약 그룹당 레코드에 대해 이항 연산을 사용 하 여 집계 된 값을 반환 `XOR` 합니다. 요약을 그룹화 하지 않고 요약 하는 경우에는 합계를 사용 합니다.
 
 **예제**
 
-바이너리 `XOR` 연산을 사용하여 '카페 음식' 생산:
+이항 연산을 사용 하 여 ' 카페 ' 생성 `XOR` :
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(num:long)
 [
@@ -50,4 +51,4 @@ datatable(num:long)
 
 |result|
 |---|
-|카페프00D|
+|CAFEF00D|
