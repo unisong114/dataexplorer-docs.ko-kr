@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b06b1c137552ba19f9b1ef5367a25bb72eea5c93
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: 167ba8818709f52ccc344452e275405c42b1796e
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82742037"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83227675"
 ---
 # <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics 플러그 인
 
@@ -25,7 +25,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 
 **구문**
 
-*T* `| evaluate` `,` *TimelineColumn* `,` *dim1* *Start* `,` *dim2* *Window* `,` *IdColumn* `,` *End* *Cohort*idcolumn`,` TimelineColumn Start End`,` Window [`,` 코 호트] [dim1 dim2] `activity_counts_metrics(` [`,` *Lookback*]`)`
+*T* `| evaluate` `activity_counts_metrics(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Window* [ `,` *코 호트*] [ `,` *dim1* `,` *dim2* ] `,` [ `,` *Lookback*]`)`
 
 **인수**
 
@@ -34,7 +34,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 * *TimelineColumn*: 타임 라인을 나타내는 열의 이름입니다.
 * *Start*: 분석 시작 기간의 값을 포함 하는 스칼라입니다.
 * *종료*: 분석 종료 기간의 값을 포함 하는 스칼라입니다.
-* *Window*: 분석 기간 값이 포함 된 스칼라입니다. 는 `week` / `month` / `year`숫자/날짜/시간/타임 스탬프 값 이거나 중 하나인 문자열일 수 있으며,이 경우 모든 기간이 [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md) 또는 [startofyear](startofyearfunction.md)가 됩니다. 
+* *Window*: 분석 기간 값이 포함 된 스칼라입니다. 는 숫자/날짜/시간/타임 스탬프 값 이거나 중 하나인 문자열일 수 있으며,이 `week` / `month` / `year` 경우 모든 기간이 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) 또는 [startofyear](startofyearfunction.md)가 됩니다. 
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
 **반환**
@@ -60,6 +60,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 
 다음 쿼리는 제공 된 입력 테이블의 일별 활동 수를 계산 합니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let start=datetime(2017-08-01);
 let end=datetime(2017-08-04);

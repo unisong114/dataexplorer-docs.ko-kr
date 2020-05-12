@@ -1,5 +1,5 @@
 ---
-title: current_principal_is_member_of ()-Azure 데이터 탐색기 | Microsoft Docs
+title: current_principal_is_member_of ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 current_principal_is_member_of ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 4b6f7d0b9ab4074f16ca00b4a3febb1a17351736
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: 521165f5b0af31207d587f3d9514e7538d284258
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737762"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83227343"
 ---
 # <a name="current_principal_is_member_of"></a>current_principal_is_member_of()
 
@@ -38,7 +38,7 @@ print current_principal_is_member_of(
 **인수**
 
 * *식 목록* -쉼표로 구분 된 문자열 리터럴 목록입니다. 각 리터럴은 다음과 같이 형성 된 FQN (주 정규화 된 이름) 문자열입니다.  
-*PrinciplaType*`=`*principalid*`;`*TenantId*
+*PrinciplaType* `=` *Principalid* `;` *TenantId*
 
 | PrincipalType   | FQN 접두사  |
 |-----------------|-------------|
@@ -50,11 +50,11 @@ print current_principal_is_member_of(
 
 함수에서 다음을 반환합니다.
 * `true`: 쿼리를 실행 하는 현재 보안 주체가 하나 이상의 입력 인수와 일치 하는 경우
-* `false`: 쿼리를 실행 하는 현재 보안 주체가 `aadgroup=` FQN 인수의 멤버가 아니고 `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않은 경우
-* `(null)`: 쿼리를 실행 하는 현재 보안 주체가 `aadgroup=` FQN 인수의 멤버가 아니고 `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않고 하나 이상의 FQN 인수가 성공적으로 확인 되지 않은 경우 (AAD에서 제거할 수 없습니다.) 
+* `false`: 쿼리를 실행 하는 현재 보안 주체가 FQN 인수의 멤버가 아니고 `aadgroup=` `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않은 경우
+* `(null)`: 쿼리를 실행 하는 현재 보안 주체가 FQN 인수의 멤버가 아니고 `aadgroup=` `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않고 하나 이상의 FQN 인수가 성공적으로 확인 되지 않은 경우 (AAD에서 제거할 수 없습니다.) 
 
 > [!NOTE]
-> 함수는 세 번째 상태 값 (`true`, `false`및 `null`)을 반환 하기 때문에 성공적인 멤버 자격을 확인 하기 위해 긍정 반환 값만 사용 하는 것이 중요 합니다. 즉, 다음 식은 동일 하지 않습니다.
+> 함수는 세 번째 상태 값 (, 및)을 반환 하기 때문에 `true` `false` `null` 성공적인 멤버 자격을 확인 하기 위해 긍정 반환 값만 사용 하는 것이 중요 합니다. 즉, 다음 식은 동일 하지 않습니다.
 > 
 > * `where current_principal_is_member_of('non-existing-group')`
 > * `where current_principal_is_member_of('non-existing-group') != false` 
@@ -62,6 +62,7 @@ print current_principal_is_member_of(
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print result=current_principal_is_member_of(
     'aaduser=user1@fabrikam.com', 
@@ -74,8 +75,9 @@ print result=current_principal_is_member_of(
 |--------|
 | (null) |
 
-Multple 인수 대신 동적 배열을 사용 합니다.
+여러 인수 대신 동적 배열을 사용 합니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print result=current_principal_is_member_of(
     dynamic([

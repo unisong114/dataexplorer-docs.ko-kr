@@ -1,6 +1,6 @@
 ---
-title: 개수 연산자 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 개수 연산자에 대해 설명합니다.
+title: count 연산자-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 count 연산자에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/16/2020
-ms.openlocfilehash: c0d0286919a68b6e58065e0a6fe7e0d24b1cdd5f
-ms.sourcegitcommit: c4aea69fafa9d9fbb814764eebbb0ae93fa87897
+ms.openlocfilehash: 9a34734ebfee94646b2b2f15730f14f9d2709c6d
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81610231"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83227515"
 ---
 # <a name="count-operator"></a>count 연산자
 
-입력 레코드 집합의 레코드 수를 반환합니다.
+입력 레코드 집합의 레코드 수를 반환 합니다.
 
 **구문**
 
@@ -33,6 +33,7 @@ ms.locfileid: "81610231"
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```

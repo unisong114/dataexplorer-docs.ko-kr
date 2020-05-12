@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/15/2020
-ms.openlocfilehash: f5c47e2ebd2acc0b2ec250d183d65b6536aff756
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: cbe1b0639a0379fe84bc9c100a629bbadd9c3a63
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741820"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83226570"
 ---
 # <a name="hll-aggregation-function"></a>hll () (집계 함수)
 
-요약 내의 집계 컨텍스트에서만 그룹 [`dcount`](dcount-aggfunction.md) 전체에 대 한 중간 결과를 계산 합니다. [summarize](summarizeoperator.md)
+[`dcount`](dcount-aggfunction.md) [요약](summarizeoperator.md)내의 집계 컨텍스트에서만 그룹 전체에 대 한 중간 결과를 계산 합니다.
 
 [기본 알고리즘 (*H*yper*L*og*l*og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)에 대해 읽어 보십시오.
 
@@ -33,23 +33,24 @@ ms.locfileid: "82741820"
   |정확도 값 |정확도  |속도  |Error  |
   |---------|---------|---------|---------|
   |`0` | lowest | 빨리 | 1.6% |
-  |`1` | 기본값  | 조정이 | 0.8% |
+  |`1` | default  | 조정이 | 0.8% |
   |`2` | high | slow | 0.4%  |
   |`3` | high | slow | 0.28% |
   |`4` | 매우 높음 | 최저 | 0.2% |
     
 **반환**
 
-그룹 *`Expr`* 전체에서 고유 카운트의 중간 결과입니다.
+그룹 전체에서 고유 카운트의 중간 결과입니다 *`Expr`* .
  
 **팁**
 
-1. 집계 함수 [`hll_merge`](hll-merge-aggfunction.md) 를 사용 하 여 둘 이상의 `hll` 중간 결과를 병합할 수 있습니다 ( `hll` 출력 에서만 작동).
+1. 집계 함수를 사용 하 여 둘 [`hll_merge`](hll-merge-aggfunction.md) 이상의 중간 결과를 병합할 수 있습니다 `hll` ( `hll` 출력 에서만 작동).
 
-1. [`dcount_hll`](dcount-hllfunction.md)함수를 사용 하 여 집계 함수 `dcount` 에서 `hll`  /  `hll_merge` 를 계산할 수 있습니다.
+1. 함수를 사용 하 여 [`dcount_hll`](dcount-hllfunction.md) `dcount` `hll`  /  집계 함수에서를 계산할 수 있습니다 `hll_merge` .
 
 **예**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | summarize hll(DamageProperty) by bin(StartTime,10m)

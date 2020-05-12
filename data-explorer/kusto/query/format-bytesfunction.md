@@ -1,6 +1,6 @@
 ---
-title: format_bytes() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 format_bytes()에 대해 설명합니다.
+title: format_bytes ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 format_bytes ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 5d5bfa234e001f498737b9df88274096f8592f52
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 4da07433be5a052d71740931d4dedd9df0399f56
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81515167"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83227371"
 ---
 # <a name="format_bytes"></a>format_bytes()
 
-숫자의 형식을 바이트로 데이터 크기를 나타내는 문자열로 지정합니다.
+숫자의 형식을 데이터 크기 (바이트)를 나타내는 문자열로 지정 합니다.
 
 ```kusto
 format_bytes(1024) == '1 KB'"
@@ -25,20 +25,21 @@ format_bytes(1024) == '1 KB'"
 
 **구문**
 
-`format_bytes(``,` *[정밀도* `,` *[단위]]* *value*`)`
+`format_bytes(`*값* [ `,` *전체 자릿수* [ `,` *단위*]]`)`
 
 **인수**
 
-* `value`: 데이터 크기로 서식이 지정되는 숫자입니다.
-* `precision`: (선택 사항) 값이 반올림되는 숫자 수입니다. (기본값은 0)입니다.
-* `units`: (선택 사항) 대상 데이터 크기의 단위 문자열`Bytes` `KB`서식을 사용합니다 ( `MB`, " `GB`, `TB`" `PB`). 매개 변수가 비어 있는 경우 - 단위는 입력 값에 따라 자동으로 선택됩니다.
+* `value`: 데이터 크기 (바이트)로 지정할 숫자입니다.
+* `precision`: (선택 사항) 값이 반올림 될 자릿수입니다. 기본값은 0입니다.
+* `units`: (선택 사항) 문자열 형식에서 ( `Bytes` , `KB` , `MB` ,, `GB` `TB` , `PB` )을 사용 하는 대상 데이터 크기의 단위입니다. 매개 변수가 비어 있으면 입력 값에 따라 단위가 자동으로 선택 됩니다.
 
 **반환**
 
-형식 이 있는 문자열 결과입니다.
+형식 결과를 포함 하는 문자열입니다.
 
 **예**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print 
 v1 = format_bytes(564),
@@ -50,4 +51,4 @@ v5 = format_bytes(20010332, 0, "KB")
 
 |v1|v2|v3|v4|v5|
 |---|---|---|---|---|
-|564바이트|10.1 KB|19 MB|19.08 MB|19541년 KB|
+|564 바이트|10.1 KB|19 MB|19.08 M B|19541 KB|

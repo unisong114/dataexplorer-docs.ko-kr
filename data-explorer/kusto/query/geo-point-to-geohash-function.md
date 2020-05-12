@@ -1,50 +1,50 @@
 ---
-title: geo_point_to_geohash() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 geo_point_to_geohash()에 대해 설명합니다.
+title: geo_point_to_geohash ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 geo_point_to_geohash ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
-ms.openlocfilehash: b69d22c56cef4b54a99aa9aa3e9897a2ef177834
-ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
+ms.openlocfilehash: c37789ac490814288c7331f0b1ae86b8b2178d67
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82030119"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83226927"
 ---
 # <a name="geo_point_to_geohash"></a>geo_point_to_geohash()
 
-지리적 위치에 대한 Geohash 문자열 값을 계산합니다.
+지리적 위치에 대 한 geohash 문자열 값을 계산 합니다.
 
-지오해시에 대한 자세한 내용은 [여기를](https://en.wikipedia.org/wiki/Geohash)참조하십시오.  
+[Geohash](https://en.wikipedia.org/wiki/Geohash)에 대해 자세히 알아보세요.  
 
 **구문**
 
-`geo_point_to_geohash(`*경도*`, `*위도*`, `*[정확도]*`)`
+`geo_point_to_geohash(`*경도* `, ` *위도* `, ` [*정확도*]`)`
 
 **인수**
 
-* *경도*: 지리적 위치의 경도 값입니다. 경도 x는 x가 실제 숫자이고 [-180, +180] 범위에 있는 경우 유효한 것으로 간주됩니다. 
-* *위도*: 지리적 위치의 위도 값입니다. 위도 y는 y가 실제 숫자이고 y가 [-90, +90] 범위에 있는 경우 유효한 것으로 간주됩니다. 
-* *정확도*: `int` 요청된 정확도를 정의하는 선택적 옵션입니다. 지원되는 값은 [1,18]의 범위에 있습니다. 지정되지 않은 경우 `5` 기본값이 사용됩니다.
+* *경도*: 지리적 위치의 경도 값입니다. X가 실수이 고 [-180, + 180] 범위에 있는 경우 경도 x는 유효한 것으로 간주 됩니다. 
+* *위도*: 지리적 위치의 위도 값입니다. Y가 실수이 고 y가 [-90, + 90] 범위 내에 있는 경우 위도 y는 유효한 것으로 간주 됩니다. 
+* *정확도*: 요청 된 `int` 정확도를 정의 하는 선택적입니다. 지원 되는 값은 [1, 18] 범위에 있습니다. 지정 하지 않으면 기본값이 `5` 사용 됩니다.
 
 **반환**
 
-요청된 정확도 길이를 가진 지정된 지리적 위치의 Geohash 문자열 값입니다. 좌표 또는 정확도가 잘못되면 쿼리에 빈 결과가 생성됩니다.
+지정 된 지리적 위치의 geohash 문자열 값으로, 요청 된 정확도 길이입니다. 좌표 또는 정확성이 잘못 된 경우 쿼리에서 빈 결과가 생성 됩니다.
 
 > [!NOTE]
 >
-> * 지오해시는 유용한 지리 공간 클러스터링 도구가 될 수 있습니다.
-> * Geohash는 가장 높은 레벨 1에서 0.6 μ²까지 2,500만 km²에 이르는 면적 커버리지를 가진 18개의 정확도 레벨을 가지고 있습니다 18.
-> * 지오해스의 일반적인 접두사는 서로 점의 근접성을 나타냅니다. 공유 접두사가 길수록 두 장소가 더 가까워진다. 정확도 값은 지오해시 길이로 변환됩니다.
-> * 지오해시는 평면 표면의 직사각형 영역입니다.
-> * 경도 x 및 위도 y에서 계산된 geohash 문자열에서 [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) 함수를 호출하면 반드시 x와 y를 반환할 필요는 없습니다.
-> * Geohash 정의로 인해 두 지리적 위치가 서로 매우 가깝지만 서로 다른 Geohash 코드가 있을 수 있습니다.
+> * Geohash는 유용한 지리 공간적 클러스터링 도구 일 수 있습니다.
+> * Geohash에는 가장 낮은 수준 18에서 2500만 km²부터 0.6 μ ² 까지의 영역 범위가 있는 18 개의 정확도 수준이 있습니다.
+> * Geohash의 일반적인 접두사는 서로의 지점의 유사성을 표시 합니다. 공유 접두사가 길수록 두 위치에 가까울수록 좋습니다. 정확도 값은 geohash length로 변환 됩니다.
+> * Geohash는 평면 표면의 사각형 영역입니다.
+> * 경도 x와 위도 y에서 계산 된 geohash 문자열에 대해 [geo_geohash_to_central_point ()](geo-geohash-to-central-point-function.md) 함수를 호출 하는 것은 x 및 y를 반환할 필요가 없습니다.
+> * Geohash 정의로 인해 두 지리적 위치가 서로 매우 가까이 있지만 geohash 코드가 서로 다를 수 있습니다.
 
-**정확도 값당 지오해시 직사각형 영역 커버리지:**
+**정확도 값 당 geohash 사각형 영역 범위:**
 
 | 정확도 | 너비     | 높이    |
 |----------|-----------|-----------|
@@ -67,14 +67,15 @@ ms.locfileid: "82030119"
 | 17       | 4.55 μ    | 4.55 μ    |
 | 18       | 1.14 μ    | 0.57 μ    |
 
-또한 [geo_point_to_s2cell()](geo-point-to-s2cell-function.md)을 참조하십시오.
+[Geo_point_to_s2cell ()](geo-point-to-s2cell-function.md)도 참조 하세요.
 
 **예**
 
-지오해시에 의해 집계 된 미국 폭풍 이벤트.
+Geohash로 집계 된 US 스톰 이벤트입니다.
 
-:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="미국 지오해시":::
+:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US geohash":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
@@ -83,23 +84,27 @@ StormEvents
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
 ```
 
-| 지오 해시 ()(주)(주)      |
+| geohash      |
 |--------------|
 | xn76m27ty9g4 |
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 ```
 
-|지오 해시 ()(주)(주)|
+|geohash|
 |---|
 |dhwfz15h|
 
-다음 예제는 좌표 그룹을 찾습니다. 그룹의 모든 좌표는 4.88km에 4.88km의 직사각형 영역에 상주합니다.
+다음 예에서는 좌표 그룹을 찾습니다. 그룹의 모든 좌표 쌍은 4.88 km x 4.88 km 사각형 영역에 상주 합니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
 [
@@ -112,25 +117,29 @@ datatable(location_id:string, longitude:real, latitude:real)
             by geohash = geo_point_to_geohash(longitude, latitude)    // geohash of the group
 ```
 
-| 지오 해시 ()(주)(주) | count | 위치  |
+| geohash | count | 위치  |
 |---------|-------|------------|
 | c23n8   | 2     | ["A", "B"] |
 | c23n9   | 1     | ["C"]      |
 
-다음 예제에서는 잘못된 좌표 입력으로 인해 빈 결과가 생성됩니다.
+다음 예에서는 잘못 된 좌표 입력 때문에 빈 결과를 생성 합니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(200,1,8)
 ```
 
-| 지오 해시 ()(주)(주) |
+| geohash |
 |---------|
 |         |
 
-다음 예제에서는 잘못된 정확도 입력으로 인해 빈 결과가 생성됩니다.
+다음 예에서는 잘못 된 정확도 입력 때문에 빈 결과를 생성 합니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(1,1,int(null))
 ```
 
-| 지오 해시 ()(주)(주) |
+| geohash |
 |---------|
 |         |

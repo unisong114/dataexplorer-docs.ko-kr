@@ -1,51 +1,52 @@
 ---
-title: geo_point_in_circle() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 geo_point_in_circle()에 대해 설명합니다.
+title: geo_point_in_circle ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 geo_point_in_circle ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
-ms.openlocfilehash: ca3ca8a1ac2299c43888ac827d46c25d02e4999d
-ms.sourcegitcommit: 436cd515ea0d83d46e3ac6328670ee78b64ccb05
+ms.openlocfilehash: 6e6ef40fcdeb4942dc0924c86862ee8f6222ac12
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81663794"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83227178"
 ---
 # <a name="geo_point_in_circle"></a>geo_point_in_circle()
 
-지리 공간 좌표가 지구의 원 안에 있는지 여부를 계산합니다.
+지리 공간적 좌표가 지구에 원 안에 있는지 여부를 계산 합니다.
 
 **구문**
 
-`geo_point_in_circle(`*c_radius pc_longitude p_longitude*`, `*p_latitude*`, `*pc_latitude pc_longitude*`, `*c_radius* *pc_longitude*`, ``)`
+`geo_point_in_circle(`*p_longitude* `, ` *p_latitude* `, ` *pc_longitude* `, ` *pc_latitude* `, ` *c_radius*`)`
 
 **인수**
 
-* *p_longitude*: 지리 공간 좌표 경도 값을 도. 유효한 값은 실제 숫자이며 범위 [-180, +180]입니다.
-* *p_latitude*: 지리 공간 좌표 위도 도값입니다. 유효한 값은 실제 숫자이며 범위 [-90, +90]입니다.
-* *pc_longitude*: 원 중심 지리 공간 좌표 경도 값을 도에 따라 조정합니다. 유효한 값은 실제 숫자이며 범위 [-180, +180]입니다.
-* *pc_latitude*: 원 중심 지리 공간 좌표 위도 도값입니다. 유효한 값은 실제 숫자이며 범위 [-90, +90]입니다.
-* *c_radius*: 미터의 원 반지름. 유효한 값은 양수여야 합니다.
+* *p_longitude*: 지리 공간적 좌표 경도 값 (도)입니다. 유효한 값은 [-180, + 180] 범위의 실수입니다.
+* *p_latitude*: 지리 공간적 좌표 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
+* *pc_longitude*: 원 중심 지리 공간적 좌표 경도 값 (도)입니다. 유효한 값은 [-180, + 180] 범위의 실수입니다.
+* *pc_latitude*: 원 중심 지리 공간적 좌표 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
+* *c_radius*: 미터 단위의 원 반지름입니다. 유효한 값은 양수 여야 합니다.
 
 **반환**
 
-지리 공간 좌표가 원 안에 있는지 여부를 나타냅니다. 좌표 또는 원이 유효하지 않은 경우 쿼리는 null 결과를 생성합니다.
+지리 공간적 좌표가 원 내에 있는지 여부를 나타냅니다. 좌표가 나 원이 잘못 된 경우 쿼리는 null 결과를 생성 합니다.
 
 > [!NOTE]
->* 지리 공간 좌표는 [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) 좌표 참조 계로 표현된 것으로 해석됩니다.
->* 지구상의 거리를 측정하는 데 사용되는 [측지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구입니다.
->* 원은 지구의 구형 캡입니다. 캡의 반지름은 구의 표면을 따라 측정됩니다.
+>* 지리 공간적 좌표는 [Wgs-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) 좌표 참조 시스템으로 표현 되는 것으로 해석 됩니다.
+>* 지구 거리를 측정 하는 데 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구입니다.
+>* 원은 지구에서 구형 캡입니다. 캡의 반지름은 구의 표면에 따라 측정 됩니다.
 
 **예**
 
-다음 쿼리는 중심이 [-122.317404, 47.609119] 좌표에 있는 반지름이 18km인 원으로 정의된 영역의 모든 장소를 찾습니다.
+다음 쿼리는 다음 원으로 정의 된 영역에 있는 모든 위치를 찾습니다. 예를 들어 반경 18 km, 가운데 맞춤 [-122.317404, 47.609119] 좌표입니다.
 
-:::image type="content" source="images/queries/geo/circle_seattle.png" alt-text="시애틀 근처 장소":::
+:::image type="content" source="images/geo-point-in-circle-function/circle-seattle.png" alt-text="시애틀 근처에 배치":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(longitude:real, latitude:real, place:string)
 [
@@ -65,10 +66,11 @@ datatable(longitude:real, latitude:real, place:string)
 |Kirkland|
 |Redmond|
 
-올랜도에서 폭풍 이벤트. 이벤트는 올랜도 좌표에 의해 필터링되고 100km 이내이며 이벤트 유형 및 해시별로 집계됩니다.
+올랜도의 스톰 이벤트입니다. 이벤트는 올랜도 좌표 내에서 100 km으로 필터링 되 고 이벤트 유형 및 해시로 집계 됩니다.
 
-:::image type="content" source="images/queries/geo/orlando_storm_events.png" alt-text="올랜도의 폭풍 사건":::
+:::image type="content" source="images/geo-point-in-circle-function/orlando-storm-events.png" alt-text="올랜도의 스톰 이벤트":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat, EventType
@@ -78,10 +80,11 @@ StormEvents
 | render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
-다음 예제에서는 일부 위치와 10미터 이내의 거리에 있는 NY 택시 픽업을 보여 주었습니다. 관련 픽업은 해시로 집계됩니다.
+다음 예제에서는 특정 위치의 10 미터 이내에 있는 Taxi pickups를 보여 줍니다. 관련 pickups는 해시에 의해 집계 됩니다.
 
-:::image type="content" source="images/queries/geo/circle_junction.png" alt-text="뉴욕 택시 근처 픽업":::
+:::image type="content" source="images/geo-point-in-circle-function/circle-junction.png" alt-text="Pickups 근처의 Taxi":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 nyc_taxi
 | project pickup_longitude, pickup_latitude
@@ -91,7 +94,9 @@ nyc_taxi
 | render scatterchart with (kind = map) // map rendering available in Kusto Explorer desktop
 ```
 
-다음 예제는 true를 반환합니다.
+다음 예에서는 true를 반환 합니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.527351, 3500)
 ```
@@ -100,7 +105,9 @@ print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.52
 |---|
 |1|
 
-다음 예제는 false를 반환합니다.
+다음 예에서는 false를 반환 합니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.527351, 3500)
 ```
@@ -109,7 +116,9 @@ print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.52
 |---|
 |0|
 
-다음 예제에서는 잘못된 좌표 입력으로 인해 null 결과를 반환합니다.
+다음 예에서는 잘못 된 좌표 입력 때문에 null 결과가 반환 됩니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 ```
@@ -118,7 +127,8 @@ print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 |---|
 ||
 
-다음 예제에서는 잘못된 원 반지름 입력으로 인해 null 결과를 반환합니다.
+다음 예제에서는 잘못 된 원 반경 입력 때문에 null 결과를 반환 합니다.
+
 ```kusto
 print in_circle = geo_point_in_circle(1, 1, 1, 1, -1)
 ```

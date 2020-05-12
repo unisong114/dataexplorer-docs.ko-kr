@@ -7,16 +7,16 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 80936da3e56fe0a73dcf146ba61630ceeb4bcb2a
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: db6b060aee3288fb159e8b1cf7feb8554190fe36
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618516"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83226502"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터 만들기
 
-Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러스터를 배포 하는 것을 지원 합니다. 이 기능을 사용 하면 Azure 가상 네트워크 또는 온-프레미스에서 전용으로 클러스터에 액세스 하 고, 가상 네트워크 내에서 이벤트 허브 및 저장소와 같은 리소스에 액세스 하 고, 인바운드 및 아웃 바운드 트래픽을 제한할 수 있습니다.
+Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러스터를 배포 하는 것을 지원 합니다. 이 기능을 사용 하면 Azure 가상 네트워크 또는 온-프레미스에서 클러스터에 개별적으로 액세스 하 고, 가상 네트워크 내에서 이벤트 허브 및 저장소와 같은 리소스에 액세스 하 고, 인바운드 및 아웃 바운드 트래픽을 제한할 수 있습니다.
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
@@ -149,7 +149,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     |---|---|---|
     | Subscription | 사용자의 구독 | 네트워킹 리소스에 사용 하려는 Azure 구독을 선택 합니다.|
     | Virtual Network | AzureDataExplorerVnet | 이전 단계에서 만든 가상 네트워크를 선택 합니다.
-    | 서브넷 | 기본값 | 이전 단계에서 만든 서브넷을 선택 합니다.
+    | 서브넷 | default | 이전 단계에서 만든 서브넷을 선택 합니다.
     | 공용 IP 쿼리 | 엔진-pip | 이전 단계에서 만든 쿼리 공용 IP를 선택 합니다.
     | 데이터 수집 공용 IP | dm-pip | 이전 단계에서 만든 수집 공용 IP를 선택 합니다.
     | | | |
