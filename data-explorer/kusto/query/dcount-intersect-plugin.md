@@ -1,6 +1,6 @@
 ---
-title: dcount_intersect 플러그인 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 dcount_intersect 플러그인에 대해 설명합니다.
+title: dcount_intersect 플러그 인-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 dcount_intersect 플러그 인을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,41 +8,42 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 7771456ffa75085c79933c2e789e3d98f352b76f
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: c431f17184570b294b9c8077028ac792719b4abd
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81516136"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83225210"
 ---
-# <a name="dcount_intersect-plugin"></a>dcount_intersect 플러그인
+# <a name="dcount_intersect-plugin"></a>dcount_intersect 플러그 인
 
-hll 값([2.16] 범위의 N)을 기준으로 N 세트 간의 교차를 계산하고 N dcount 값을 반환합니다.
+값을 기준으로 N 집합 `hll` 의 교집합을 계산 하 고 ([2.16] 범위의 n) n 값을 반환 `dcount` 합니다.
 
-주어진 세트 S<sub>1,</sub>S<sub>2</sub>, .. S<sub>n</sub> - 반환 값은 다음과 같은 뚜렷한 개수를 나타냅니다.  
-S<sub>1,</sub>S<sub>1</sub> 에 S<sub>2</sub>,  
-S<sub>1</sub> ~S<sub>2</sub> ~S<sub>3</sub>,  
+지정 된 집합 S<sub>1</sub>, s<sub>2</sub>,.. S<sub>n</sub> 반환 값은의 고유 개수를 나타냅니다.  
+S<sub>1,</sub>s<sub>1</sub> ∩ s<sub>2</sub>,  
+S<sub>1</sub> ∩ s<sub>2</sub> ∩ s<sub>3</sub>,  
 ... ,  
-S<sub>1</sub> <sub>~S 2</sub> ~... <sub>(9)</sub>
+S<sub>1</sub> ∩ s<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
 
     T | evaluate dcount_intersect(hll_1, hll_2, hll_3)
 
 **구문**
 
-*T* `| evaluate` T `dcount_intersect(` *hll_1*, *hll_2*,`,` *[hll_3* `,` ...]`)`
+*T* `| evaluate` `dcount_intersect(` *hll_1*, *hll_2*, [ `,` *hll_3* ... `,` ]`)`
 
 **인수**
 
 * *T*: 입력 테이블 형식 식입니다.
-* *hll_i*: [hll()](./hll-aggfunction.md) 함수로 계산된 S<sub>세트 의</sub> 값입니다.
+* *hll_i*: 함수를 사용 하 여<sub>계산 된</sub> set S의 값입니다 [`hll()`](./hll-aggfunction.md) .
 
 **반환**
 
-N dcount 값(열 열당 교차집합을 나타내는)이 있는 테이블을 반환합니다.
+N 개 값이 포함 된 테이블을 반환 `dcount` 합니다 (열 마다 교집합을 나타냄).
 열 이름은 s0, s1, ... (n-1까지).
 
 **예**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Generate numbers from 1 to 100
 range x from 1 to 100 step 1
@@ -58,6 +59,6 @@ range x from 1 to 100 step 1
           even_and_mod3_and_mod5 = s2 - 1   // gcd(2,3,5) is 30, therefore: 100 / 30 = 3 
 ```
 
-|짝수|even_and_mod3|even_and_mod3_and_mod5|
+|evenNumbers|even_and_mod3|even_and_mod3_and_mod5|
 |---|---|---|
 |50|16|3|
