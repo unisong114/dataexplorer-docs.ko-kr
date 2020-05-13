@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 4ef02ab79b0701b4af74744a94e0ff795eb8c26a
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: 4cec053990457a6b33c7446c5b32c63713320de9
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737252"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372757"
 ---
 # <a name="series_fill_linear"></a>series_fill_linear()
 
@@ -23,31 +23,33 @@ ms.locfileid: "82737252"
 
 **구문**
 
-`series_fill_linear(`*x* `[,` *missing_value_placeholder*missing_value_placeholder` [,`*fill_edges*fill_edges` [,`*constant_value*`]]]))`
+`series_fill_linear(`*x* `[,` *missing_value_placeholder* ` [,` *fill_edges* ` [,` *constant_value*`]]]))`
 * 지정 된 매개 변수를 사용 하 여 *x* 의 계열 선형 보간을 반환 합니다.
  
 
 **인수**
 
 * *x*: 숫자 값 배열인 동적 배열 스칼라 식입니다.
-* *missing_value_placeholder*: 대체할 "누락 값"에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double`(*null*)입니다.
+* *missing_value_placeholder*: 대체할 "누락 값"에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
 * *fill_edges*: 배열의 시작과 끝에 있는 *missing_value_placeholder* 를 가장 가까운 값으로 바꾸어야 하는지 여부를 나타내는 부울 값입니다. 기본적으로 *True* 입니다. *False*로 설정 하면 배열의 시작과 끝에 있는 *missing_value_placeholder* 유지 됩니다.
-* *constant_value*: 배열에만 관련 된 선택적 매개 변수는 모두 *null* 값으로 구성 됩니다. 이 매개 변수는 계열을 채울 상수 값을 지정 합니다. 기본값은 *0*입니다. 이 매개 변수를 ( `double`*null*)로 설정 하면 *null* 값은 그대로 유지 됩니다.
+* *constant_value*: 배열에만 관련 된 선택적 매개 변수는 모두 *null* 값으로 구성 됩니다. 이 매개 변수는 계열을 채울 상수 값을 지정 합니다. 기본값은 *0*입니다. 이 매개 변수를 `double` (*null*)로 설정 하면 *null* 값은 그대로 유지 됩니다.
 
 **참고 사항**
 
 * [시리즈](make-seriesoperator.md)를 만든 후에 보간 함수를 적용 하려면 *null* 을 기본값으로 지정 합니다. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
 ```
 
-* 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. 이와 같이 `double`(*null*), `long`(*null*) 또는 `int`(*null*)는 동일한 의미를 갖습니다.
-* *Missing_value_placeholder* 가 ( `double`*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 다른 보간 함수를 사용 하 여 이러한 *null* 값을 채웁니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
+* 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. 이와 같이 `double` (*null*), `long` (*null*) 또는 `int` (*null*)는 동일한 의미를 갖습니다.
+* *Missing_value_placeholder* 가 `double` (*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 다른 보간 함수를 사용 하 여 이러한 *null* 값을 채웁니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
 * 함수는 원래 형식의 배열 요소를 유지 합니다. X에 int 또는 long 요소만 포함 된 경우 선형 보간은 정확한 값이 아니라 반올림 된 보간된 값을 반환 합니다.
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let data = datatable(arr: dynamic)
 [

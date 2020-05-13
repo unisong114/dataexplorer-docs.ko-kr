@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 5dec95e8d4a73bcff4e8ad037577c51a20fcc64c
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: 6c1f836596c27f0e2901e9f7b109d96aab89cdff
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741966"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373514"
 ---
 # <a name="sandboxes"></a>샌드박스
 
@@ -24,9 +24,9 @@ Kusto의 데이터 엔진 서비스는 보안 격리가 필요한 특정 흐름�
 
 샌드박스에서 실행 되는 흐름은 격리 되는 것이 아니라 로컬 (데이터에 근접) 이므로 원격 호출에 추가 대기 시간이 추가 되지 않았음을 의미 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
-* 데이터 엔진에서 [디스크 암호화](https://docs.microsoft.com/azure/data-explorer/security#data-encryption) 를 사용 하도록 설정 **하지** 않아야 합니다.
+* 데이터 엔진에서 [디스크 암호화](../../security.md#data-encryption) 를 사용 하도록 설정 **하지** 않아야 합니다.
   * 나중에 두 기능을 나란히 실행 하는 데 대 한 지원이 필요 합니다.
 * 샌드박스를 실행 하는 데 필요한 패키지 (이미지)는 각 데이터 엔진의 노드에 배포 되며, 실행 하기 위해 전용 SSD 공간이 필요 합니다.
   * 예상 크기는 20GB입니다. 예를 들어, L16_v1 VM의 ssd 용량의 2.5 0.7 D14_v2%는 대략%입니다.
@@ -52,9 +52,9 @@ Kusto의 데이터 엔진 서비스는 보안 격리가 필요한 특정 흐름�
   * 사용 가능한 샌드박스가 없는 상태를 발생 시키는 요청은 제한 됩니다.
 * **네트워크:** 샌드박스는 VM 또는 외부의 리소스와 상호 작용할 수 없습니다.
   * 샌드박스는 다른 샌드박스에 상호 작용할 수 없습니다.
-* **CPU:** 샌드박스에서 호스트 프로세서를 소비할 수 있는 최대 CPU 비율은 제한 됩니다 (기본적으로 `50%`).
+* **CPU:** 샌드박스에서 호스트 프로세서를 소비할 수 있는 최대 CPU 비율은 제한 됩니다 (기본적으로 `50%` ).
   * 이 한도에 도달 하면 샌드박스의 CPU 사용량이 제한 되지만 실행은 계속 됩니다.
-* **메모리:** 샌드박스에서 호스트의 RAM을 사용할 수 있는 최대 RAM 크기는 제한 됩니다 (기본적으로 `20GB`).
+* **메모리:** 샌드박스에서 호스트의 RAM을 사용할 수 있는 최대 RAM 크기는 제한 됩니다 (기본적으로 `20GB` ).
   * 이 제한에 도달 하면 샌드박스 종료 및 쿼리 실행 오류가 발생 합니다.
 * **디스크:** 샌드박스에는 고유한 디렉터리가 연결 되어 있으며,이를 위해 호스트의 파일 시스템에 액세스할 수 없습니다.
   * 이 폴더는 샌드박스 종류 (예: 사용자 지정할 수 없는 Python 또는 R 패키지)와 일치 하는 이미지/패키지에 대 한 액세스를 제공 합니다.

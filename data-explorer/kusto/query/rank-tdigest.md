@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: a849cd496d41ad473768b3f267639eaf8c467880
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: 29b35e5bd7265d89e65fe0129317a9f1672c7cad
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741775"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373092"
 ---
 # <a name="rank_tdigest"></a>rank_tdigest()
 
-집합에 있는 값의 대략적인 순위를 계산 합니다. `v` 집합 `S` 의 값 순위는 보다 작거나 `S` 같은의 멤버 수로 정의 되며 `v` `S` 는로 표시 됩니다 `tdigest`.
+집합에 있는 값의 대략적인 순위를 계산 합니다. `v`집합의 값 순위 `S` 는 보다 작거나 같은의 멤버 수로 정의 되며 `S` `v` 는로 `S` 표시 됩니다 `tdigest` .
 
 **구문**
 
@@ -34,12 +34,13 @@ ms.locfileid: "82741775"
 
 **팁**
 
-1) 순위를 가져오려는 값은와 같은 형식 이어야 합니다 `tdigest`.
+1) 순위를 가져오려는 값은와 같은 형식 이어야 합니다 `tdigest` .
 
 **예**
 
 정렬 된 목록 (1-1000)에서 685의 순위는 인덱스입니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 1000 step 1
 | summarize t_x=tdigest(x)
@@ -52,6 +53,7 @@ range x from 1 to 1000 step 1
 
 이 쿼리는 모든 손상 속성 비용에 대해 $4490 값의 순위를 계산 합니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty)
@@ -65,6 +67,7 @@ StormEvents
 
 크기를 설정 하 여 순위에 대 한 예상 비율을 가져옵니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty), count()
@@ -79,6 +82,7 @@ StormEvents
 
 손상 속성 비용의 백분위 수 85은 $4490입니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty)

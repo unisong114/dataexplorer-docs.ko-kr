@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/12/2020
-ms.openlocfilehash: c0ee38fe77c0957b9ba7fd589115eee20be6a649
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 646ec00531d528efd51b4a168fde3de660a85ced
+ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83224853"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83271097"
 ---
 # <a name="parse-where-operator"></a>parse-where 연산자
 
@@ -95,6 +95,7 @@ T | parse-where Text with "ActivityName=" name ", ActivityType=" type
 
 를 사용 하면 `parse` 계산 열에 null이 포함 됩니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -121,6 +122,7 @@ Traces
 
 ' Parse-where '를 사용 하면 결과에서 구문 분석 된 문자열이 성공적으로 필터링 되지 않습니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -145,6 +147,7 @@ Traces
 
 Context.resourcename 및 totalSlices를 가져오려면 다음 쿼리를 사용 합니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -167,6 +170,7 @@ Traces
 
 세 개의 문자열만 성공적으로 구문 분석 되므로 결과는 3 개의 레코드 (일부 totalSlices는 잘못 된 정수를 보유 함)입니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [

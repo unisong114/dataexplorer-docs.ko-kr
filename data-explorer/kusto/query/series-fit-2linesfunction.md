@@ -1,5 +1,5 @@
 ---
-title: series_fit_2lines ()-Azure 데이터 탐색기 | Microsoft Docs
+title: series_fit_2lines ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 series_fit_2lines ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 6c16b535962271a7aaf4acad63f52da028b49e33
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: d4b4be37f171439b47399ecfbb314b1a9b704afd
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618747"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372718"
 ---
 # <a name="series_fit_2lines"></a>series_fit_2lines()
 
@@ -42,8 +42,8 @@ ms.locfileid: "82618747"
 
 프로젝트 `series_fit_2lines(` *x*`)`
 * 는 series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx 등의 이름으로 위에 언급 된 모든 열을 반환 합니다.
-project (rs, si, v) =`series_fit_2lines(`*x*`)`
-* 는 rs (r-square), si (분할 인덱스), v (분산) 열을 반환 하 고 나머지는 series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit 등으로 표시 됩니다 (rs, si, v) =`series_fit_2lines(`*x*`)`
+project (rs, si, v) = `series_fit_2lines(` *x*`)`
+* 는 rs (r-square), si (분할 인덱스), v (분산) 열을 반환 하 고 나머지는 series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit 등으로 표시 됩니다 (rs, si, v) = `series_fit_2lines(` *x*`)`
 * rs(r 제곱), si(분할 인덱스) 및 v(분산)만 반환합니다.
   
 **인수**
@@ -53,8 +53,9 @@ project (rs, si, v) =`series_fit_2lines(`*x*`)`
 > [!TIP]
 > 이 함수를 사용 하는 가장 편리한 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
-**예제**
+**예**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
 | extend (Slope,Interception,RSquare,Variance,RVariance,LineFit)=series_fit_line(y), (RSquare2, SplitIdx, Variance2,RVariance2,LineFit2)=series_fit_2lines(y)

@@ -7,12 +7,12 @@ ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 7389bfdf437d5fc6e4872f9f35ed40d5cb7b2f16
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 8a4a4e68333255c322708993b1c9429a89ae7a00
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108374"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373759"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>K2Bridge 오픈 소스 커넥터를 사용 하 여 Kibana의 Azure 데이터 탐색기에서 데이터 시각화
 
@@ -46,7 +46,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
 
 * 클라이언트 ID 및 클라이언트 암호를 비롯 하 여 Azure 데이터 탐색기에서 데이터를 볼 수 있는 권한 있는 Azure Active Directory (Azure AD) 서비스 주체입니다.
 
-    뷰어 권한이 있는 서비스 주체를 사용 하 여 더 높은 수준의 사용 권한을 사용 하지 못하도록 하는 것이 좋습니다. [AZURE AD 서비스 주체에 대 한 클러스터의 보기 권한을 설정](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)합니다.
+    뷰어 권한이 있는 서비스 주체를 사용 하 여 더 높은 수준의 사용 권한을 사용 하지 못하도록 하는 것이 좋습니다. [AZURE AD 서비스 주체에 대 한 클러스터의 보기 권한을 설정](manage-database-permissions.md#manage-permissions-in-the-azure-portal)합니다.
 
     Azure AD 서비스 주체에 대 한 자세한 내용은 [AZURE ad 서비스 주체 만들기](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)를 참조 하세요.
 
@@ -114,7 +114,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
         kubectl port-forward service/kibana-kibana 5601 --namespace k2bridge
         ```
 
-    1. 로 http://127.0.0.1:5601이동 하 여 Kibana에 연결 합니다.
+    1. 로 이동 하 여 Kibana에 연결 http://127.0.0.1:5601 합니다.
 
     1. 사용자에 게 Kibana를 노출 합니다. 여러 가지 방법으로이 작업을 수행할 수 있습니다. 사용 하는 방법은 사용 사례에 따라 크게 달라 집니다.
 
@@ -133,7 +133,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
         kibana-kibana   LoadBalancer   xx.xx.xx.xx    <pending>     5601:30128/TCP   4m24s
         ```
 
-        그런 다음 나타나는 생성 된 외부 IP 값을 사용할 수 있습니다. 브라우저를 열고 \<외부 IP\>: 5601으로 이동 하 여 Kibana에 액세스 하는 데 사용 합니다.
+        그런 다음 나타나는 생성 된 외부 IP 값을 사용할 수 있습니다. 브라우저를 열고 \< 외부 IP: 5601으로 이동 하 여 Kibana에 액세스 하는 데 사용 \> 합니다.
 
 1. 인덱스 패턴을 구성 하 여 데이터에 액세스 합니다.
 
@@ -142,7 +142,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
     1. Kibana를 엽니다.
     1. **관리**로 이동 합니다.
     1. **인덱스 패턴**을 선택 합니다.
-    1. 인덱스 패턴을 만듭니다. 인덱스 이름은 별표 (\*) 없이 테이블 이름 또는 함수 이름과 정확히 일치 해야 합니다. 목록에서 관련 선을 복사할 수 있습니다.
+    1. 인덱스 패턴을 만듭니다. 인덱스 이름은 별표 () 없이 테이블 이름 또는 함수 이름과 정확히 일치 해야 합니다 \* . 목록에서 관련 선을 복사할 수 있습니다.
 
 > [!Note]
 > 다른 Kubernetes 공급자에서 K2Bridge를 실행 하려면 공급자가 제안한 것과 일치 하도록 값. yaml의 Elasticsearch **storageClassName** 값을 변경 합니다.
@@ -172,11 +172,11 @@ Azure 데이터 탐색기이 Kibana에 대 한 데이터 원본으로 구성 된
 1. 쿼리 표시줄에서 다음을 수행 하 여 데이터를 검색할 수 있습니다.
 
     * 검색 용어를 입력 합니다.
-    * Lucene 쿼리 구문을 사용 합니다. 예:
+    * Lucene 쿼리 구문을 사용 합니다. 다음은 그 예입니다.
         * "오류"를 검색 하 여이 값을 포함 하는 모든 레코드를 찾습니다.
         * "상태: 200"을 검색 하 여 상태 값이 200 인 모든 레코드를 가져옵니다.
     * 논리 연산자 **and**, **OR**및 **NOT**을 사용 합니다.
-    * 별표 (\*) 및 물음표 (?) 와일드 카드 문자를 사용 합니다. 예를 들어 "destination_city: L *" 쿼리는 대상 city 값이 "L" 또는 "l"로 시작 하는 레코드와 일치 합니다. K2Bridge은 대/소문자를 구분 하지 않습니다.
+    * 별표 ( \* ) 및 물음표 (?) 와일드 카드 문자를 사용 합니다. 예를 들어 "destination_city: L *" 쿼리는 대상 city 값이 "L" 또는 "l"로 시작 하는 레코드와 일치 합니다. K2Bridge은 대/소문자를 구분 하지 않습니다.
 
     ![쿼리 실행](media/k2bridge/k2bridge-run-query.png)
 

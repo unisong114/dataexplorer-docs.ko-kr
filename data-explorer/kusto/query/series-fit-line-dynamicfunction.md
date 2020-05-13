@@ -1,5 +1,5 @@
 ---
-title: series_fit_line_dynamic ()-Azure 데이터 탐색기 | Microsoft Docs
+title: series_fit_line_dynamic ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 series_fit_line_dynamic ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 170348dd530b581f85e0323563be324d5b795511
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 756650db23d531ec37636c0e7bd781a74ef9fdc3
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618720"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372689"
 ---
 # <a name="series_fit_line_dynamic"></a>series_fit_line_dynamic()
 
@@ -27,7 +27,7 @@ ms.locfileid: "82618720"
 * `interception`: 근사 선의 가로채기 (y = ax + b의 b)
 * `line_fit`: 가장 적합 한 선의 값을 포함 하는 숫자 배열입니다. 계열 길이는 입력 배열의 길이와 같습니다. 이 길이는 차트에 주로 사용됩니다.
 
-이 연산자는 [series_fit_line](series-fit-linefunction.md)와 비슷하지만,와는 `series-fit-line` 달리 동적 모음을 반환 합니다.
+이 연산자는 [series_fit_line](series-fit-linefunction.md)와 비슷하지만,와는 달리 `series-fit-line` 동적 모음을 반환 합니다.
 
 **구문**
 
@@ -40,8 +40,9 @@ ms.locfileid: "82618720"
 > [!TIP]
 > 이 함수를 사용 하는 가장 편리한 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
-**예제**
+**예**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
 | extend fit=series_fit_line_dynamic(y)

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: cdf9b84f684a2a4dfdb508f1ac5762039da8275d
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: dc421c8321985d001bb08ba85965cf017b1d51c6
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741699"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372784"
 ---
 # <a name="series_fill_forward"></a>series_fill_forward()
 
@@ -23,28 +23,30 @@ ms.locfileid: "82741699"
 
 **구문**
 
-`series_fill_forward(`*x*`[, `*missing_value_placeholder*`])`
+`series_fill_forward(`*x* `[, ` *missing_value_placeholder*`])`
 * 는 *missing_value_placeholder* 채워진 전달의 모든 인스턴스가 포함 된 series *x* 를 반환 합니다.
 
 **인수**
 
 * *x*: 숫자 값 배열인 동적 배열 스칼라 식입니다. 
-* *missing_value_placeholder*: 대체 될 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double`(*null*)입니다.
+* *missing_value_placeholder*: 대체 될 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
 
 **참고 사항**
 
 * [계열](make-seriesoperator.md)후 보간 함수를 적용 하려면 *null* 을 기본값으로 지정 합니다. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
 ```
 
-* 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. ( `double`Null) `long`(*null**) 및* `int`(*null*) 모두 동일한 의미를 갖습니다.
+* 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. `double`(Null*null*) `long` (*null*) 및 `int` (*null*) 모두 동일한 의미를 갖습니다.
 * Missing_value_placeholder가 (null) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 이러한 *null* 값을 채우려면 다른 보간 함수를 사용 합니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
 * 함수는 원래 형식의 배열 요소를 유지 합니다.
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let data = datatable(arr: dynamic)
 [

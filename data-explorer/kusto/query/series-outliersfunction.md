@@ -1,5 +1,5 @@
 ---
-title: series_outliers ()-Azure 데이터 탐색기 | Microsoft Docs
+title: series_outliers ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 series_outliers ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: 16e82ec68a463b97699f7d02e18c46df65221c7b
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 864638f8e03487a35eefa83fa3951d2ecefc27c7
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618662"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372549"
 ---
 # <a name="series_outliers"></a>series_outliers()
 
@@ -23,17 +23,17 @@ ms.locfileid: "82618662"
 
 **구문**
 
-`series_outliers(`*x*`, `*종류*`, `*max_percentile* *min_percentile**ignore_val*ignore_val min_percentile max_percentile`, ``, ``)`
+`series_outliers(`*x* `, ` *종류* `, ` *ignore_val* `, ` *min_percentile* `, ` *max_percentile*`)`
 
 **인수**
 
 * *x*: 숫자 값의 배열인 동적 배열 셀입니다.
-* *kind*: 이상 값 검색의 알고리즘입니다. 현재 ( `"tukey"` 기존에 지 키) 및 `"ctukey"` (사용자 지정 및 키)를 지원 합니다. 기본값은 `"ctukey"`
-* *ignore_val*: 계열의 누락 값을 나타내는 숫자 값입니다. 기본값은 double (null)입니다. Null 및 무시 값의 점수는로 `0`설정 됩니다.
-* *min_percentile*: normal 변 위치 범위의 계산의 경우 기본값은 10이 고, 지원 되는 사용자 지정 값은 `[2.0, 98.0]` 범위`ctukey` (전용)입니다. 
-* *max_percentile*: 동일, 기본값: 90, 지원 되는 사용자 지정 값 `[2.0, 98.0]` 범위 (ctukey 전용) 
+* *kind*: 이상 값 검색의 알고리즘입니다. 현재 `"tukey"` (기존에 지 키) 및 `"ctukey"` (사용자 지정 및 키)를 지원 합니다. 기본값은 `"ctukey"`
+* *ignore_val*: 계열의 누락 값을 나타내는 숫자 값입니다. 기본값은 double (null)입니다. Null 및 무시 값의 점수는로 설정 됩니다 `0` .
+* *min_percentile*: normal 변 위치 범위의 계산의 경우 기본값은 10이 고, 지원 되는 사용자 지정 값은 범위 `[2.0, 98.0]` ( `ctukey` 전용)입니다. 
+* *max_percentile*: 동일, 기본값: 90, 지원 되는 사용자 지정 값 범위 `[2.0, 98.0]` (ctukey 전용) 
 
-다음 표에서는와 간의 `"tukey"` 차이점을 `"ctukey"`설명 합니다.
+다음 표에서는와 간의 차이점 `"tukey"` 을 설명 합니다 `"ctukey"` .
 
 | 알고리즘 | 기본 변위치 범위 | 사용자 지정 변위치 범위 지원 |
 |-----------|----------------------- |--------------------------------|
@@ -48,6 +48,7 @@ ms.locfileid: "82618662"
 
 이상 값을 만드는 일부 노이즈가 있는 시계열이 있고 이러한 이상 값 (노이즈)을 평균값으로 바꾸려는 경우 series_outliers ()를 사용 하 여 이상 값을 검색 한 후 대체할 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 100 step 1 
 | extend y=iff(x==20 or x==80, 10*rand()+10+(50-x)/2, 10*rand()+10) // generate a sample series with outliers at x=20 and x=80

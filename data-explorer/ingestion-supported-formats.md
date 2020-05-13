@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: fbc67bbc0523b208f717936a184cfa3b4be9db2d
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: c591c4f774f3af99004d398898b288256861bb75
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226247"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373710"
 ---
 # <a name="data-formats-supported-by-azure-data-explorer-for-ingestion"></a>수집을 위해 Azure 데이터 탐색기에서 지 원하는 데이터 형식
 
@@ -47,7 +47,7 @@ ms.locfileid: "83226247"
 
 Blob 또는 파일 이름에 확장을 추가 하 여 압축을 표시 합니다.
 
-예:
+다음은 그 예입니다.
 * `MyData.csv.zip`CSV로 포맷 되 고 ZIP으로 압축 된 (archive 또는 단일 파일) blob 또는 파일을 나타냅니다.
 * `MyData.csv.gz`CSV로 포맷 되 고 GZip으로 압축 된 파일을 나타냅니다.
 
@@ -58,5 +58,5 @@ Blob 또는 파일 이름에 확장을 추가 하 여 압축을 표시 합니다
 
 ## <a name="next-steps"></a>다음 단계
 
-* [데이터](/azure/data-explorer/ingest-data-overview) 수집에 대 한 자세한 정보
+* [데이터](ingest-data-overview.md) 수집에 대 한 자세한 정보
 * [Azure 데이터 탐색기 데이터 수집 속성](ingestion-properties.md) 에 대해 자세히 알아보기

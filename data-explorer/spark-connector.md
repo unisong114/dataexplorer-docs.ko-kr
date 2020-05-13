@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
-ms.openlocfilehash: 6e7879948fb7683210859c84970f31bc5adb4a90
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 28dee67b6ac412a9c0497d5713a69c9617d3ae55
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108323"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83370459"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>Apache Spark 용 Azure 데이터 탐색기 커넥터
 
@@ -29,7 +29,7 @@ Spark에 대 한 Azure 데이터 탐색기 커넥터는 모든 Spark 클러스�
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
-* [Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기](/azure/data-explorer/create-cluster-database-portal) 
+* [Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기](create-cluster-database-portal.md) 
 * Spark 클러스터 만들기
 * Azure 데이터 탐색기 커넥터 라이브러리를 설치 합니다.
     * Spark 2.4에 대 한 미리 빌드된 라이브러리 [, Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 
@@ -89,7 +89,7 @@ mvn clean install
     
 1. Maven에서 최신 spark-kusto 커넥터 라이브러리를 설치 합니다.
     
-    ![라이브러리](media/spark-connector/db-libraries-view.png) ![가져오기 Spark-kusto-커넥터를 선택 합니다.](media/spark-connector/db-dependencies.png)
+    ![라이브러리 가져오기 ](media/spark-connector/db-libraries-view.png) ![ Spark-Kusto-커넥터를 선택 합니다.](media/spark-connector/db-dependencies.png)
 
 1. 모든 필수 라이브러리가 설치 되어 있는지 확인 합니다.
 

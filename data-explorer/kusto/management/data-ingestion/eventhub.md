@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 6b2f3b2d75bd964401ae37093405e692cfd64feb
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: a9308fa762bf7bbda0f57a1c252cf2121253565a
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82861785"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373455"
 ---
 # <a name="ingest-from-event-hub"></a>이벤트 허브에서 수집
 
@@ -22,8 +22,8 @@ ms.locfileid: "82861785"
 ## <a name="data-format"></a>데이터 형식
 
 * [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) 개체의 형태로 이벤트 허브에서 데이터를 읽습니다.
-* 이벤트 페이로드는 [Azure 데이터 탐색기에서 지 원하는 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)중 하나로 수집 될 하나 이상의 레코드를 포함할 수 있습니다.
-* 압축 알고리즘을 사용 하 `GZip` 여 데이터를 압축할 수 있습니다. 수집 `Compression` [속성](#ingestion-properties)으로 지정 해야 합니다.
+* 이벤트 페이로드는 [Azure 데이터 탐색기에서 지 원하는 형식](../../../ingestion-supported-formats.md)중 하나로 수집 될 하나 이상의 레코드를 포함할 수 있습니다.
+* 압축 알고리즘을 사용 하 여 데이터를 압축할 수 있습니다 `GZip` . 수집 속성으로 지정 해야 합니다 `Compression` [ingestion property](#ingestion-properties).
 
 > [!Note]
 > * 압축 형식 (Avro, Parquet, ORC)에는 데이터 압축이 지원 되지 않습니다.
@@ -31,13 +31,13 @@ ms.locfileid: "82861785"
 
 ## <a name="ingestion-properties"></a>수집 속성
 
-수집 속성은 수집 프로세스를 지시 합니다. 데이터를 라우팅하는 위치와 데이터를 처리 하는 방법을 설명 합니다. [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트 수집의 수집 [속성](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
+수집 속성은 수집 프로세스를 지시 합니다. 데이터를 라우팅하는 위치와 데이터를 처리 하는 방법을 설명 합니다. [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트 수집의 수집 [속성](../../../ingestion-properties.md) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
 
-|속성 |Description|
+|속성 |설명|
 |---|---|
-| 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Data Connection` 블레이드의 집합을 `Table` 재정의 합니다. |
-| 형식 | 데이터 형식입니다. `Data Connection` 블레이드의 집합을 `Data format` 재정의 합니다. |
-| IngestionMappingReference | 사용할 기존 수집 [매핑의](../create-ingestion-mapping-command.md) 이름입니다. `Data Connection` 블레이드의 집합을 `Column mapping` 재정의 합니다.|
+| 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Table`블레이드의 집합을 재정의 `Data Connection` 합니다. |
+| 형식 | 데이터 형식입니다. `Data format`블레이드의 집합을 재정의 `Data Connection` 합니다. |
+| IngestionMappingReference | 사용할 기존 수집 [매핑의](../create-ingestion-mapping-command.md) 이름입니다. `Column mapping`블레이드의 집합을 재정의 `Data Connection` 합니다.|
 | 압축 | 데이터 압축 `None` (기본값) 또는 `GZip` 압축|
 | Encoding |  데이터 인코딩입니다. 기본값은 UTF8입니다. 은 [.net에서 지원 되는 인코딩을](https://docs.microsoft.com/dotnet/api/system.text.encoding?view=netframework-4.8#remarks)사용할 수 있습니다. |
 | 태그 (미리 보기) | JSON 배열 문자열로 형식이 지정 된 수집 데이터와 연결할 [태그](../extents-overview.md#extent-tagging) 의 목록입니다. 태그 사용에 대 한 [성능 영향](../extents-overview.md#performance-notes-1) 을 확인 합니다. |
@@ -47,11 +47,11 @@ ms.locfileid: "82861785"
 
 ## <a name="events-routing"></a>이벤트 라우팅
 
-Azure 데이터 탐색기 클러스터에 대 한 이벤트 허브 연결을 설정할 때 대상 테이블 속성 (테이블 이름, 데이터 형식, 압축 및 매핑)을 지정 합니다. 이는 데이터에 대 한 기본 라우팅 이며, 라고도 `static routing`합니다.
+Azure 데이터 탐색기 클러스터에 대 한 이벤트 허브 연결을 설정할 때 대상 테이블 속성 (테이블 이름, 데이터 형식, 압축 및 매핑)을 지정 합니다. 이는 데이터에 대 한 기본 라우팅 이며, 라고도 `static routing` 합니다.
 이벤트 속성을 사용 하 여 각 이벤트에 대 한 대상 테이블 속성을 지정할 수도 있습니다. 연결은 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)에 지정 된 대로 데이터를 동적으로 라우팅하고이 이벤트에 대 한 정적 속성을 재정의 합니다.
 
-다음 샘플에서는 이벤트 허브 세부 정보를 설정 하 고 날씨 메트릭 데이터를 테이블 `WeatherMetrics`에 보냅니다.
-데이터의 `json` 형식입니다. `mapping1`는 테이블 `WeatherMetrics`에 미리 정의 되어 있습니다.
+다음 샘플에서는 이벤트 허브 세부 정보를 설정 하 고 날씨 메트릭 데이터를 테이블에 보냅니다 `WeatherMetrics` .
+데이터의 `json` 형식입니다. `mapping1`는 테이블에 미리 정의 되어 `WeatherMetrics` 있습니다.
 
 ```csharp
 var eventHubNamespaceConnectionString=<connection_string>;
@@ -81,23 +81,23 @@ eventHubClient.Close();
 > [!Note]
 > * 시스템 속성은 단일 레코드 이벤트에 대해 지원 됩니다.
 > * 압축 된 데이터에서는 시스템 속성이 지원 되지 않습니다.
-> * `csv` 매핑의 경우 속성은 레코드의 시작 부분에서 아래 표에 나열 된 순서 대로 추가 됩니다. `json` 매핑의 경우 속성은 다음 표의 속성 이름에 따라 추가 됩니다.
+> * `csv`매핑의 경우 속성은 레코드의 시작 부분에서 아래 표에 나열 된 순서 대로 추가 됩니다. 매핑의 경우 속성 `json` 은 다음 표의 속성 이름에 따라 추가 됩니다.
 
 ### <a name="event-hub-expose-the-following-system-properties"></a>이벤트 허브는 다음 시스템 속성을 노출 합니다.
 
-|속성 |데이터 형식 |Description|
+|속성 |데이터 형식 |설명|
 |---|---|---|
 | x-opt-enqueued-time |Datetime | 이벤트를 큐에 넣은 UTC 시간입니다. |
 | x-opt-sequence-number |long | 이벤트 허브의 파티션 스트림 내에 있는 이벤트의 논리적 시퀀스 번호입니다.
-| x-opt-offset |문자열 | 이벤트 허브 파티션 스트림에 상대적인 이벤트의 오프셋입니다. 오프셋 식별자는 이벤트 허브 스트림의 파티션 내에서 고유 합니다. |
-| x opt-게시자 |문자열 | 메시지를 게시자 끝점으로 보낸 경우 게시자 이름입니다. |
-| x-opt-partition-key |문자열 |이벤트를 저장 한 해당 파티션의 파티션 키입니다. |
+| x-opt-offset |string | 이벤트 허브 파티션 스트림에 상대적인 이벤트의 오프셋입니다. 오프셋 식별자는 이벤트 허브 스트림의 파티션 내에서 고유 합니다. |
+| x opt-게시자 |string | 메시지를 게시자 끝점으로 보낸 경우 게시자 이름입니다. |
+| x-opt-partition-key |string |이벤트를 저장 한 해당 파티션의 파티션 키입니다. |
 
 테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 속성을 포함 해야 합니다.
 
 **테이블 스키마 예제**
 
-데이터에 세 개의`Timespan`열 (, `Metric`및 `Value`)이 포함 되 `x-opt-enqueued-time` 고 포함 된 속성이 및 `x-opt-offset`인 경우이 명령을 사용 하 여 테이블 스키마를 만들거나 변경 합니다.
+데이터에 세 개의 열 ( `Timespan` , `Metric` 및 `Value` )이 포함 되 고 포함 된 속성이 및 인 경우 `x-opt-enqueued-time` `x-opt-offset` 이 명령을 사용 하 여 테이블 스키마를 만들거나 변경 합니다.
 
 ```kusto
     .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:long)
@@ -140,7 +140,7 @@ eventHubClient.Close();
 
 ### <a name="create-an-event-hub"></a>이벤트 허브 만들기
 
-아직 없는 경우 [이벤트 허브를 만듭니다](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). 템플릿은 [이벤트 허브를 만드는](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#create-an-event-hub) 방법 가이드에서 찾을 수 있습니다.
+아직 없는 경우 [이벤트 허브를 만듭니다](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). 템플릿은 [이벤트 허브를 만드는](../../../ingest-data-event-hub.md#create-an-event-hub) 방법 가이드에서 찾을 수 있습니다.
 
 > [!Note]
 > * 파티션 수는 변경할 수 없으므로 파티션 수를 설정할 때 장기적인 규모를 고려해야 합니다.
@@ -148,10 +148,10 @@ eventHubClient.Close();
 
 ### <a name="data-ingestion-connection-to-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 데이터 수집 연결
 
-* Azure Portal을 통해: [이벤트 허브에 연결](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub)합니다.
-* Azure 데이터 탐색기 관리 .NET SDK 사용: [이벤트 허브 데이터 연결 추가](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-csharp#add-an-event-hub-data-connection)
-* Azure 데이터 탐색기 management Python SDK 사용: [이벤트 허브 데이터 연결 추가](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-python#add-an-event-hub-data-connection)
-* ARM 템플릿 사용: [이벤트 허브 데이터 연결을 추가 하기 위한 Azure Resource Manager 템플릿](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-resource-manager#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
+* Azure Portal을 통해: [이벤트 허브에 연결](../../../ingest-data-event-hub.md#connect-to-the-event-hub)합니다.
+* Azure 데이터 탐색기 관리 .NET SDK 사용: [이벤트 허브 데이터 연결 추가](../../../data-connection-event-hub-csharp.md#add-an-event-hub-data-connection)
+* Azure 데이터 탐색기 management Python SDK 사용: [이벤트 허브 데이터 연결 추가](../../../data-connection-event-hub-python.md#add-an-event-hub-data-connection)
+* ARM 템플릿 사용: [이벤트 허브 데이터 연결을 추가 하기 위한 Azure Resource Manager 템플릿](../../../data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
 
 > [!Note]
 > **데이터에 라우팅** 정보가 선택 되어 있는 경우 이벤트 속성의 일부로 필요한 [라우팅](#events-routing) 정보를 제공 *해야* 합니다.

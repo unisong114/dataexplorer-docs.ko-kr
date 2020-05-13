@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 03/24/2020
-ms.openlocfilehash: c43c6c09ad6da90685c56dc47ebe257a55eaede6
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 5770c59ff7298567cad01bb3ed4cc6a684b2378a
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862142"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373705"
 ---
 # <a name="kusto-ingest-client-library"></a>Kusto 수집 클라이언트 라이브러리
 
@@ -47,7 +47,7 @@ Kusto 수집 메서드는 [IKustoIngestClient](kusto-ingest-client-reference.md#
 ![대체 텍스트](../images/queued-ingest.jpg "대기 중인 수집")
 
 ### <a name="direct-ingestion"></a>직접 수집
-IKustoDirectIngestClient에 의해 정의 된이 모드는 Kusto Engine 서비스와 직접 상호 작용 합니다. 이 모드에서 Kusto 수집 서비스는 데이터를 보통 또는 관리 하지 않습니다. 직접 모드의 모든 수집 요청은 결국 Kusto `.ingest` Engine 서비스에서 직접 실행 되는 명령으로 변환 됩니다.
+IKustoDirectIngestClient에 의해 정의 된이 모드는 Kusto Engine 서비스와 직접 상호 작용 합니다. 이 모드에서 Kusto 수집 서비스는 데이터를 보통 또는 관리 하지 않습니다. 직접 모드의 모든 수집 요청은 결국 `.ingest` Kusto Engine 서비스에서 직접 실행 되는 명령으로 변환 됩니다.
 다음 다이어그램은 Kusto와의 직접 수집 클라이언트 상호 작용을 간략하게 설명 합니다.
 
 ![대체 텍스트](../images/direct-ingest.jpg "직접 수집")
@@ -72,10 +72,10 @@ IKustoDirectIngestClient에 의해 정의 된이 모드는 Kusto Engine 서비�
 수집 [모범 사례](kusto-ingest-best-practices.md) 는 수집에 COGs 및 처리량 POV를 제공 합니다.
 
 ### <a name="thread-safety"></a>스레드로부터의 안전성
-Kusto 수집 클라이언트 구현은 스레드로부터 안전 하 고 다시 사용 하기 위한 것입니다. 각 또는 여러 수집 작업에 대해 클래스의 `KustoQueuedIngestClient` 인스턴스를 만들 필요가 없습니다. 사용자 프로세스별 클러스터에서 `KustoQueuedIngestClient` 대상 Kusto 클러스터에는 단일 인스턴스가 필요 합니다. 여러 인스턴스를 실행 하는 것은 생산적 이며 데이터 관리 클러스터를 DoS 할 수 있습니다.
+Kusto 수집 클라이언트 구현은 스레드로부터 안전 하 고 다시 사용 하기 위한 것입니다. `KustoQueuedIngestClient`각 또는 여러 수집 작업에 대해 클래스의 인스턴스를 만들 필요가 없습니다. `KustoQueuedIngestClient`사용자 프로세스별 클러스터에서 대상 Kusto 클러스터에는 단일 인스턴스가 필요 합니다. 여러 인스턴스를 실행 하는 것은 생산적 이며 데이터 관리 클러스터를 DoS 할 수 있습니다.
 
 ### <a name="supported-data-formats"></a>지원 되는 데이터 형식
-네이티브 수집을 사용 하는 경우 해당 데이터를 하나 이상의 Azure Storage blob에 업로드 합니다. 현재 지원 되는 blob 형식은 지원 되는 [데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) 항목에 설명 되어 있습니다.
+네이티브 수집을 사용 하는 경우 해당 데이터를 하나 이상의 Azure Storage blob에 업로드 합니다. 현재 지원 되는 blob 형식은 지원 되는 [데이터 형식](../../../ingestion-supported-formats.md) 항목에 설명 되어 있습니다.
 
 ### <a name="schema-mapping"></a>스키마 매핑
 [스키마 매핑은](../../management/mappings.md) 원본 데이터 필드를 대상 테이블 열에 명확 하 게 바인딩하는 데 도움이 됩니다.

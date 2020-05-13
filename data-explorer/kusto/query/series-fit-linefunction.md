@@ -1,5 +1,5 @@
 ---
-title: series_fit_line ()-Azure 데이터 탐색기 | Microsoft Docs
+title: series_fit_line ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 series_fit_line ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 1694b92293b19cb84e40d38d667c8d67c1cc250f
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 876eeaa4550a5433354d50dd44fae3920177d335
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618696"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372669"
 ---
 # <a name="series_fit_line"></a>series_fit_line()
 
@@ -38,8 +38,9 @@ ms.locfileid: "82618696"
 > [!TIP]
 > 이 함수를 사용 하는 가장 편리한 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
-**예제**
+**예**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
 | extend (RSquare,Slope,Variance,RVariance,Interception,LineFit)=series_fit_line(y)

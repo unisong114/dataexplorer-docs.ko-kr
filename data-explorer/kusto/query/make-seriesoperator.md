@@ -1,5 +1,5 @@
 ---
-title: 시리즈 운영자-Azure 데이터 탐색기 | Microsoft Docs
+title: 시리즈 운영자-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 series 연산자에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: 66211cfcb33f97ba5f58d82e7ee4a8a8c7631e96
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: b4df3d7ea6df9eaec2e71fd3dddd60a1b23a02bd
+ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618441"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83271437"
 ---
 # <a name="make-series-operator"></a>make-series 연산자
 
@@ -25,19 +25,19 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 **구문**
 
-*T* `| make-series` [*MakeSeriesParamters*] [*열* `=`] *집계* [`default` `=` *DefaultValue*] [`,` ...] `on` *AxisColumn* [`from` *시작*] [`to` *end*] `step` *step* [`by` [*Column* `=`] *groupexpression* [`,` ...]]
+*T* `| make-series` [*MakeSeriesParamters*] [*열* `=` ] *집계* [ `default` `=` *DefaultValue*] [ `,` ...] `on` *AxisColumn* [ `from` *start*] [ `to` *end*] `step` *step* [ `by` [*Column* `=` ] *groupexpression* [ `,` ...]]
 
 **인수**
 
 * *Column:* 결과 열에 대한 선택적 이름입니다. 기본적으로 식에서 파생된 이름입니다.
 * *DefaultValue:* 값이 없는 대신 사용 되는 기본값입니다. *AxisColumn* 및 *groupexpression* 의 특정 값이 있는 행이 없으면 결과에 해당 배열의 해당 요소에 *DefaultValue*가 할당 됩니다. `default =` *DefaultValue* 를 생략 하면 0이 가정 됩니다. 
-* *집계:* 열 이름을 인수로 사용 하는 또는 `avg()`와 `count()` 같은 [집계 함수](make-seriesoperator.md#list-of-aggregation-functions) 에 대 한 호출입니다. [집계 함수의 목록](make-seriesoperator.md#list-of-aggregation-functions)을 참조하세요. 숫자 결과를 반환 하는 집계 함수만 연산자와 함께 `make-series` 사용할 수 있습니다.
+* *집계:* 열 이름을 인수로 사용 하는 또는와 같은 [집계 함수](make-seriesoperator.md#list-of-aggregation-functions) 에 대 한 호출 `count()` `avg()` 입니다. [집계 함수의 목록](make-seriesoperator.md#list-of-aggregation-functions)을 참조하세요. 숫자 결과를 반환 하는 집계 함수만 연산자와 함께 사용할 수 있습니다 `make-series` .
 * *AxisColumn:* 계열이 정렬 될 열입니다. 타임 라인으로 간주할 수 있지만 `datetime` 모든 숫자 형식이 허용 됩니다.
 * *start*: (선택 사항) 각 계열에 대 한 *AxisColumn* 의 하위 바인딩 값이 빌드됩니다. *start*, *end* 및 *step* 은 지정 된 범위 내에서 지정 된 *단계*를 사용 하 여 *AxisColumn* 값의 배열을 작성 하는 데 사용 됩니다. 모든 *집계* 값은이 배열로 각각 정렬 됩니다. 이 *AxisColumn* 배열은 *AxisColumn*과 이름이 같은 출력의 마지막 출력 열 이기도 합니다. *시작* 값을 지정 하지 않으면 각 계열의 데이터가 있는 첫 번째 bin (단계)이 시작 됩니다.
 * *end*: (선택 사항) *AxisColumn*의 상한값 (포함 안 됨) 값입니다. 시계열의 마지막 인덱스는이 값 보다 작습니다 (끝에는 *끝*보다 작은 *단계의* 정수 배수). *start* *종료* 값을 제공 하지 않으면 각 계열에 대 한 데이터가 있는 마지막 bin (단계)의 상한이 됩니다.
 * *단계*: *AxisColumn* 배열의 두 연속 요소 (즉, bin 크기) 간의 차이입니다.
 * *GroupExpression:* 고유 값 집합을 제공하는 열에 대한 식입니다. 일반적으로 이미 제한된 값 집합을 제공하는 열 이름입니다. 
-* *MakeSeriesParameters*: 동작을 제어 하는 *이름* `=` *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다. 
+* *MakeSeriesParameters*: *Name* `=` 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다. 
   
   |속성           |값                                        |Description                                                                                        |
   |---------------|-------------------------------------|------------------------------------------------------------------------------|
@@ -45,11 +45,11 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 **반환**
 
-입력 `by` 행은 식 및 `bin_at(` *AxisColumn*`, `*step*`, `*start* `)` 식의 값이 동일한 그룹으로 정렬 됩니다. 그런 다음 지정된 집계 함수를 각 그룹에 대해 계산하여 각 그룹에 대해 한 행을 생성합니다. 결과에는 `by` 열 *AxisColumn* 열과 계산 된 각 집계에 대 한 열이 하나 이상 포함 됩니다. 집계는 여러 열 또는 숫자가 아닌 결과를 지원 하지 않습니다.
+입력 행은 `by` 식 및 `bin_at(` *AxisColumn* `, ` *step* `, ` *start* `)` 식의 값이 동일한 그룹으로 정렬 됩니다. 그런 다음 지정된 집계 함수를 각 그룹에 대해 계산하여 각 그룹에 대해 한 행을 생성합니다. 결과에는 `by` 열 *AxisColumn* 열과 계산 된 각 집계에 대 한 열이 하나 이상 포함 됩니다. 집계는 여러 열 또는 숫자가 아닌 결과를 지원 하지 않습니다.
 
-이 `by` 중간 결과에는 및 `bin_at(` *AxisColumn*`, `*step*`, `*start* `)` 값의 고유 조합이 있으므로 많은 행이 있습니다.
+이 중간 결과에는 `by` 및 `bin_at(` *AxisColumn* `, ` *step* `, ` *start* `)` 값의 고유 조합이 있으므로 많은 행이 있습니다.
 
-마지막으로 `by` 식의 값이 동일한 값이 있는 그룹으로 정렬 된 중간 결과의 행과 모든 집계 된 값은 배열 ( `dynamic` 형식의 값)으로 정렬 됩니다. 각 집계에 대해 이름이 같은 배열을 포함 하는 하나의 열이 있습니다. Range 함수 출력의 마지막 열에는 모든 *AxisColumn* 값이 사용 됩니다. 해당 값은 모든 행에 대해 반복 됩니다. 
+마지막으로 식의 값이 동일한 값이 있는 그룹으로 정렬 된 중간 결과의 행 `by` 과 모든 집계 된 값은 배열 (형식의 값)으로 정렬 됩니다 `dynamic` . 각 집계에 대해 이름이 같은 배열을 포함 하는 하나의 열이 있습니다. Range 함수 출력의 마지막 열에는 모든 *AxisColumn* 값이 사용 됩니다. 해당 값은 모든 행에 대해 반복 됩니다. 
 
 기본적으로 누락 된 bin 채우기로 인해 결과 피벗 테이블에는 모든 계열에 대 한 bin (즉, 집계 값)의 개수가 동일 합니다.  
 
@@ -59,7 +59,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 **대체 구문**
 
-*T* `| make-series` [*Column* `=`] *집계* [`default` `=` *DefaultValue*] [`,` ...] `on` *AxisColumn* `,` *step* `,` *stop* `=`*Column* *start* `by` *GroupExpression* start stop step`)` [[Column] groupexpression [...]]`,` `in` `range(`
+*T* `| make-series` [*column* `=` ] *집계* [ `default` `=` *DefaultValue*] [ `,` ...] `on` *AxisColumn* `in` `range(` *start* `,` *stop* `,` *step* `)` [ `by` [*Column* `=` ] *groupexpression* [ `,` ...]]
 
 대체 구문에서 생성 된 계열은 두 가지 측면에서 주 구문과 다릅니다.
 * *Stop* 값은 포함 되어 있습니다.
@@ -69,7 +69,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 **배포 및 순서 섞기**
 
-`make-series`shufflekey `summarize` 구문을 사용 하 여 [shufflekey 힌트](shufflequery.md) 를 지원 합니다.
+`make-series``summarize`shufflekey 구문을 사용 하 여 [shufflekey 힌트](shufflequery.md) 를 지원 합니다.
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
@@ -103,6 +103,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[series_stats()](series-statsfunction.md)|공통 통계 (min/max/variance/stdev/average)를 사용 하 여 동적 값을 생성 합니다.|
   
 ## <a name="list-of-series-interpolation-functions"></a>계열 보간 함수 목록
+
 |함수|설명|
 |--------|-----------|
 |[series_fill_backward()](series-fill-backwardfunction.md)|계열의 누락 값에 대 한 역방향 채우기 보간을 수행 합니다.|
@@ -110,7 +111,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[series_fill_forward()](series-fill-forwardfunction.md)|계열의 누락 값에 대 한 전방 채우기 보간을 수행 합니다.|
 |[series_fill_linear()](series-fill-linearfunction.md)|계열의 누락 값에 대 한 선형 보간을 수행 합니다.|
 
-* 참고: 기본적으로 보간 함수는 `null` 누락 값으로 가정 합니다. 따라서 계열에 보간 함수를 `default=`사용 하려는`null`경우에 `make-series` 는 *double*()을 지정 하는 것이 좋습니다. 
+* 참고: 기본적으로 보간 함수 `null` 는 누락 값으로 가정 합니다. 따라서 `default=` *double* `null` `make-series` 계열에 보간 함수를 사용 하려는 경우에는 double ()을 지정 하는 것이 좋습니다. 
 
 ## <a name="example"></a>예제
   
@@ -122,7 +123,8 @@ on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplie
 ```
 
 :::image type="content" source="images/make-seriesoperator/makeseries.png" alt-text="Makeseries":::  
-  
+
+ <!-- csl: https://help.kusto.windows.net:443/Samples --> 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [
@@ -153,8 +155,9 @@ data
 |[4.0, 3.0, 5.0, 0.0, 10.5, 4.0, 3.0, 8.0, 6.5]|["2017-01-01T00:00:00.0000000 Z", "2017-01-02T00:00:00.0000000 Z", "2017-01-03T00:00:00.0000000 Z", "2017-01-04T00:00:00.0000000 Z", "2017-01-05T00:00:00.0000000 Z", "2017-01-06T00:00:00.0000000 Z", "2017-01-07T00:00:00.0000000 Z", "2017-01-08T00:00:00.0000000 Z", "2017-01-09T00:00:00.0000000 Z"]|  
 
 
-입력 `make-series` 이 비어 있는 경우의 `make-series` 기본 동작은 빈 결과도 생성 합니다.
+입력 `make-series` 이 비어 있는 경우의 기본 동작은 `make-series` 빈 결과도 생성 합니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [
@@ -187,8 +190,9 @@ data
 |0|
 
 
-에서 `kind=nonempty` `make-series` 를 사용 하면 기본값의 비어 있지 않은 결과가 생성 됩니다.
+에서를 사용 `kind=nonempty` `make-series` 하면 기본값의 비어 있지 않은 결과가 생성 됩니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [

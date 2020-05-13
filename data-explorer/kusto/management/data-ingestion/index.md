@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: f41304ae4ac51081cd61c41856ed5e7e08ed6f7a
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: f0fb68395ec5ed647e1f28cc1c93d46083d405c6
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490381"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373438"
 ---
 # <a name="data-ingestion"></a>데이터 수집
 
@@ -41,8 +41,8 @@ ms.locfileid: "81490381"
 > Kusto의 테이블에 수집되는 데이터에는 테이블의 유효 **보존 정책**이 적용됩니다.
 > 테이블에 명시적으로 설정되지 않은 경우 유효 보존 정책은 데이터베이스의 보존 정책에서 파생됩니다. 따라서 데이터를 Kusto에 수집하는 경우 데이터베이스의 보존 정책이 요구 사항에 적합한지 확인합니다. 그렇지 않으면 테이블 수준에서 명시적으로 재정의합니다. 이렇게 하지 않으면 데이터베이스의 보존 정책으로 인해 데이터가 "자동"으로 삭제될 수 있습니다. 자세한 내용은 [보존 정책](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)을 참조하세요.
 
-데이터 수집 속성은 [데이터 수집 속성](https://docs.microsoft.com/azure/data-explorer/ingestion-properties)을 참조하세요.
-데이터 수집에 대해 지원되는 형식 목록은 [데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)을 참조하세요.
+데이터 수집 속성은 [데이터 수집 속성](../../../ingestion-properties.md)을 참조하세요.
+데이터 수집에 대해 지원되는 형식 목록은 [데이터 형식](../../../ingestion-supported-formats.md)을 참조하세요.
 
 
 

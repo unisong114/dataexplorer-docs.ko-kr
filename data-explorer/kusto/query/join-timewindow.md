@@ -1,6 +1,6 @@
 ---
-title: 시간 내에 가입 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 시간 기간 내에 조인에 대해 설명합니다.
+title: 기간 내에 조인-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 기간 내에서 조인 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,23 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: aa3b81694714ef5af94407cdfdac263af0631e40
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 4741da4367bb1a350c7310ea21ebe5ce9b91b06b
+ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81513365"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83271488"
 ---
-# <a name="joining-within-time-window"></a>시간 내에 가입
+# <a name="joining-within-time-window"></a>시간 창 내에서 조인
 
-일부 높은 카디널리티 키(예: 작업 ID 또는 세션 ID)의 두 개의 큰 데이터 집합 간에 조인하고 왼쪽과 오른쪽의 열 사이의`$right``$left` `datetime` "시간 거리"에 제한을 추가하여 각 왼쪽() 레코드에 대해 일치해야 하는 오른쪽 () 레코드를 추가로 제한하는 것이 유용합니다. 이는 일반적인 Kusto 조인 작업과 는 달리 "equi-join" 부분(하이 카디널리티 키 또는 왼쪽 및 오른쪽 데이터 세트일치)에 더하여, 시스템은 거리 함수를 적용하여 조인 속도를 상당히 높일 수 있습니다. 거리 함수는 같음처럼 작동하지 않습니다(즉, 둘 `dist(x,y)` `dist(y,z)` 다 와 true인 `dist(x,z)` 경우 는 true도 따르지 않습니다.) *내부적으로는 때때로 이를 "대각선 조인"이라고 부릅니다.*
+일부 고급 카디널리티 키 (예: 작업 ID 또는 세션 ID)에서 두 개의 큰 데이터 집합을 조인 하 고 왼쪽 `$right` `$left` 및 오른쪽에 있는 열 사이의 "시간 거리"에 제한을 추가 하 여 각 왼쪽 면 () 레코드에 대해 일치 해야 하는 오른쪽 () 레코드를 추가 하는 것이 유용한 경우가 많습니다 `datetime` . 이는 일반적인 Kusto join 작업과 달리, 높은 카디널리티 키 또는 왼쪽 및 오른쪽 데이터 집합과 일치 하는 "동등 조인" 부분 외에도 거리 함수를 적용 하 고이를 사용 하 여 조인 속도를 크게 높일 수 있습니다. Distance 함수는 같음 처럼 동작 하지 않습니다. 즉,와가 모두 true 이면 `dist(x,y)` `dist(y,z)` 다음에 `dist(x,z)` 도 적용 되지 않습니다. *내부적으로는이를 "대각선 조인"으로 지칭 하기도 합니다.*
 
-예를 들어 비교적 작은 시간 기간 내에 이벤트 시퀀스를 식별하려고 한다고 가정합니다. 이 예제를 보여 주기 위해 `T` 다음 스키마가 있는 테이블이 있다고 가정합니다.
+예를 들어 상대적으로 작은 시간 창 내에서 이벤트 시퀀스를 식별 하려고 한다고 가정 합니다. 이 예를 보여 주기 위해 다음 스키마를 포함 하는 테이블이 있다고 가정 합니다 `T` .
 
-- `SessionId`: 상관 관계 `string` 아이디가 있는 형식의 열입니다.
-- `EventType`: 레코드의 `string` 이벤트 유형을 식별하는 형식의 열입니다.
-- `Timestamp`: 레코드에 `datetime` 의해 설명된 이벤트가 발생한 시기를 나타내는 형식열입니다.
+- `SessionId`: `string` 상관 관계 id가 포함 된 형식의 열입니다.
+- `EventType`: `string` 레코드의 이벤트 유형을 식별 하는 형식의 열입니다.
+- `Timestamp`: `datetime` 레코드에서 설명 하는 이벤트가 발생 한 시기를 나타내는 형식의 열입니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
@@ -50,13 +51,13 @@ T
 
 **문제 설명**
 
-쿼리가 다음 질문에 답하기를 원합니다.
+다음 질문에 대 한 답을 쿼리 하려고 합니다.
 
-   이벤트 유형 `A` 다음에 `B` `1min` 시간 내에 이벤트 유형이 뒤따르는 모든 세션 아이디를 찾습니다.
+   이벤트 유형 뒤에 이벤트 유형이 뒤에 오는 모든 세션 Id를 찾습니다 `A` `B` `1min` .
 
-(위의 샘플 데이터에서 이러한 세션 ID만 `0`.)
+위의 샘플 데이터에서 유일 하 게 이러한 세션 ID는 `0` 입니다.
 
-비효율적이기는 하지만 다음 쿼리가 이 질문에 답변합니다.
+의미상이 질문에 대 한 답변은 다음 쿼리에서는 비효율적입니다.
 
 ```kusto
 T 
@@ -77,12 +78,12 @@ T
 |---|---|---|
 |0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
 
-이 쿼리를 최적화하기 위해 시간 창이 조인 키로 표현되도록 아래에 설명된 대로 다시 작성할 수 있습니다.
+이 쿼리를 최적화 하기 위해 시간 창이 조인 키로 표현 되도록 아래 설명 된 대로 다시 작성할 수 있습니다.
 
-**시간 창을 고려하여 쿼리 다시 작성**
+**시간 창을 고려 하 여 쿼리 다시 작성**
 
-이 아이디어는 `datetime` 값이 시간 창크기의 절반인 버킷에 "불연속화"되도록 쿼리를 다시 작성하는 것입니다.
-그런 다음 Kusto의 등가 를 사용하여 버킷 아이디를 비교할 수 있습니다.
+이 개념은 `datetime` 값이 시간 창의 절반 크기에 해당 하는 버킷으로 "불연속화" 되도록 쿼리를 다시 작성 하는 것입니다.
+그런 다음 Kusto의 동등 조인을 사용 하 여 이러한 버킷 Id를 비교할 수 있습니다.
 
 ```kusto
 let lookupWindow = 1min;
@@ -113,9 +114,9 @@ T
 |---|---|---|
 |0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
 
+**실행 가능한 쿼리 참조 (인라인 테이블 포함)**
 
-**실행 가능한 쿼리 참조(테이블이 인라인처리된 경우)**
-
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
@@ -152,8 +153,9 @@ T
 
 **50M 데이터 쿼리**
 
-다음 쿼리는 50M 레코드 및 ~10M ID의 데이터 집합을 에뮬레이트하고 위에서 설명한 기술로 쿼리를 실행합니다.
+다음 쿼리는 50M 레코드 및 ~ 10M Id의 데이터 집합을 에뮬레이트하 며 위에 설명 된 기술을 사용 하 여 쿼리를 실행 합니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = range x from 1 to 50000000 step 1
 | extend SessionId = rand(10000000), EventType = rand(3), Time=datetime(2017-01-01)+(x * 10ms)

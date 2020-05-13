@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bb0ab7fd0f3508388a29d4931cea770c8619e083
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 80e38c1782a4476181fe73c5f77d6460f2ef539f
+ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226434"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83271233"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
@@ -99,6 +99,7 @@ T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
 
 ## <a name="getting-the-largest-element-from-the-array"></a>배열에서 가장 큰 요소 가져오기
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data =
 range x from 1 to 8 step 1
@@ -117,6 +118,7 @@ _data
 
 ## <a name="calculating-the-sum-of-the-largest-two-elements-in-an-array"></a>배열에서 가장 큰 두 요소의 합계 계산
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data =
 range x from 1 to 8 step 1
@@ -137,6 +139,7 @@ _data
 
 ## <a name="using-with_itemindex-for-working-with-a-subset-of-the-array"></a>`with_itemindex`배열의 하위 집합 작업에 사용
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data =
 range x from 1 to 10 step 1
@@ -159,6 +162,7 @@ _data
 
 ## <a name="using-the-mv-apply-operator-to-sort-the-output-of-makelist-aggregate-by-some-key"></a>연산자를 사용 하 여 `mv-apply` 집계의 출력을 `makelist` 일부 키로 정렬
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(command:string, command_time:datetime, user_id:string)
 [

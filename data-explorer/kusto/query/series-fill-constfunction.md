@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 22e40c810242ee82701cf2d0e382a9f1910ed22d
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: 7f7c6384bb49640890ae4d3cbd5a4f409688bcbe
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741719"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372798"
 ---
 # <a name="series_fill_const"></a>series_fill_const()
 
@@ -23,17 +23,17 @@ ms.locfileid: "82741719"
 
 **구문**
 
-`series_fill_const(`*x*`[, `*constant_value* constant_value`[,` *missing_value_placeholder*`]])`
+`series_fill_const(`*x* `[, ` *constant_value* `[,` *missing_value_placeholder*`]])`
 * 는 *missing_value_placeholder* 의 모든 인스턴스가 *constant_value*로 바뀐 series *x* 를 반환 합니다.
 
 **인수**
 
 * *x*: 숫자 값의 배열인 동적 배열 스칼라 식입니다.
 * *constant_value*: 대체할 누락 값에 대 한 자리 표시자를 지정 하는 매개 변수입니다. 기본값은 *0*입니다. 
-* *missing_value_placeholder*: 교체할 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double`(*null*)입니다.
+* *missing_value_placeholder*: 교체할 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
 
 **참고 사항**
-* `default = ` *DefaultValue* 구문을 사용 하 여 상수 값으로 채워지는 계열을 만들 수 있습니다 (또는 0이 아닌 것으로 가정). 자세한 내용은 [시리즈 만들기](make-seriesoperator.md)를 참조 하세요.
+* DefaultValue 구문을 사용 하 여 상수 값으로 채워지는 계열을 만들 수 있습니다 `default = ` *DefaultValue* (또는 0이 아닌 것으로 가정). 자세한 내용은 [시리즈 만들기](make-seriesoperator.md)를 참조 하세요.
 
 ```kusto
 make-series num=count() default=-1 on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
@@ -45,11 +45,12 @@ make-series num=count() default=-1 on TimeStamp in range(ago(1d), ago(1h), 1h) b
 make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
 ```
   
-* *Missing_value_placeholder* 은 실제 요소 형식으로 변환 되는 모든 형식일 수 있습니다. 이와 같이 `double`(*null*), `long`(*null*) 또는 `int`(*null*)는 동일한 의미를 갖습니다.
+* *Missing_value_placeholder* 은 실제 요소 형식으로 변환 되는 모든 형식일 수 있습니다. 이와 같이 `double` (*null*), `long` (*null*) 또는 `int` (*null*)는 동일한 의미를 갖습니다.
 * 함수는 배열 요소의 원래 형식을 유지 합니다. 
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let data = datatable(`arr`: dynamic)
 [

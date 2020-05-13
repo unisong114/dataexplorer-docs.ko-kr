@@ -1,6 +1,6 @@
 ---
-title: new_activity_metrics 플러그인 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 new_activity_metrics 플러그인에 대해 설명합니다.
+title: new_activity_metrics 플러그 인-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 new_activity_metrics 플러그 인을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,62 +8,62 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 0aad1c91fec6855030544596a08818b80bbf3d18
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 5e02c7ca2874a779cc5a626fd65522392439b491
+ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81512209"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83271590"
 ---
 # <a name="new_activity_metrics-plugin"></a>new_activity_metrics 플러그 인
 
-`New Users`의 코호트에 대한 유용한 활동 메트릭(고유 개 수 값, 새 값의 고유 개수, 보존률 및 이탈률)을 계산합니다. (시간 창에서 `New Users` 1위를 본 모든 사용자)의 각 코호트는 모든 이전 코호트와 비교됩니다. 비교는 이전의 *모든* 시간 창을 고려합니다. 예를 들어 from@T2 및 to=T3에 대한 레코드에서 T1과 T2 모두에서 볼 수 없었던 T3의 고유한 사용자 수가 됩니다. 
+의 코 호트에 대 한 유용한 활동 메트릭 (고유 카운트 값, 새 값의 고유 개수, 보존 률 및 변동 율)을 계산 `New Users` 합니다. 의 각 코 호트 `New Users` (시간 창에 표시 되는 모든 사용자)는 이전 코 호트 모두와 비교 됩니다. 비교는 이전 시간 창을 *모두* 고려 합니다. 예를 들어 from = T2 및 to = T3의 레코드에서 고유 사용자 수는 1과 T2 모두에 표시 되지 않은 T3의 모든 사용자입니다. 
 ```kusto
 T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
 **구문**
 
-*T* `| evaluate` `,` `,` *End* `,` *Window* `,` `,` `,` `,` *IdColumn* `,` *Start* *TimelineColumn* *dim1* *dim2* *Cohort*IdColumn 타임라인열 시작 창 [ 코호트] [ dim1 dim2 ...] `new_activity_metrics(` [`,` *뒤로*]`)`
+*T* `| evaluate` `new_activity_metrics(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Window* [ `,` *코 호트*] [ `,` *dim1* `,` *dim2* ] `,` [ `,` *Lookback*]`)`
 
 **인수**
 
 * *T*: 입력 테이블 형식 식입니다.
-* IdColumn : 사용자 활동을 나타내는 ID 값이 있는 열의 *이름입니다.* 
-* *타임라인열*: 타임라인을 나타내는 열의 이름입니다.
-* *시작*: 분석 시작 기간의 값을 가진 스칼라.
-* *끝*: 분석 종료 기간의 값을 가진 스칼라.
-* *창*: 분석 창 기간의 값을 가진 스칼라. 숫자 /날짜 시간 / 타임 스탬프 값 또는 중 하나인 `week` / `month` / `year`문자열일 수 있으며, 이 경우 모든 마침표는 그에 따라 [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear가](startofyearfunction.md) 됩니다. 
-* *코호트*: (선택 사항) 특정 코호트를 나타내는 스칼라 상수입니다. 제공되지 않으면 분석 시간 창에 해당하는 모든 코호트가 계산되고 반환됩니다.
-* *dim1*, *dim2*, ...: 활동 메트릭 계산을 슬라이스하는 차원 열의 (선택 사항) 목록입니다.
-* *뒤로*: (선택 사항) '뒤로 보기' 기간에 속하는 일련의 아이디가 있는 표식식
+* *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
+* *TimelineColumn*: 타임 라인을 나타내는 열의 이름입니다.
+* *Start*: 분석 시작 기간의 값을 포함 하는 스칼라입니다.
+* *종료*: 분석 종료 기간의 값을 포함 하는 스칼라입니다.
+* *Window*: 분석 기간 값이 포함 된 스칼라입니다. 는 숫자/날짜/시간/타임 스탬프 값 또는 중 하나인 문자열일 수 있으며,이 `week` / `month` / `year` 경우 모든 기간이 적절 한 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) / [startofyear](startofyearfunction.md) 됩니다. 
+* *코 호트*: (선택 사항) 특정 코 호트를 나타내는 스칼라 상수입니다. 지정 하지 않으면 분석 시간 창에 해당 하는 모든 코 호트 계산 되 고 반환 됩니다.
+* *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
+* *Lookback*: (선택 사항) ' 뒤로 ' 기간에 속하는 id 집합이 있는 테이블 형식 식입니다.
 
 **반환**
 
-'from' 및 'to' 타임라인 기간 및 각 기존 차원 조합의 각 조합에 대해 고유한 개수 값, 고유한 새 값 수, 보존율 및 이탈률이 있는 테이블을 반환합니다.
+' From ' 및 ' to ' 및 ' to ' timeline 기간의 각 조합에 대 한 고유 카운트 값, 고유 카운트 수, 보존 률 및 변동 율을 포함 하는 테이블을 반환 하 고 각 기존 차원 조합에 대해
 
-출력 테이블 스키마는 다음과 같은 것입니다.
+출력 테이블 스키마는 다음과 같습니다.
 
-|from_TimelineColumn|to_TimelineColumn|dcount_new_values|dcount_retained_values|dcount_churn_values|retention_rate|churn_rate|어둡게 1|..|dim_n|
+|from_TimelineColumn|to_TimelineColumn|dcount_new_values|dcount_retained_values|dcount_churn_values|retention_rate|churn_rate|dim1|..|dim_n|
 |---|---|---|---|---|---|---|---|---|---|
-|유형: *타임라인열* 현재|동일|long|long|double|double|double|..|..|..|
+|유형: *TimelineColumn*|동일|long|long|double|double|double|..|..|..|
 
-* `from_TimelineColumn`- 새로운 사용자의 코호트. 이 레코드의 메트릭은 이 기간에 처음 본 모든 사용자를 참조합니다. *처음 볼* 수 있는 결정은 분석 기간의 모든 이전 기간을 고려합니다. 
-* `to_TimelineColumn`- 비교되는 기간입니다. 
-* `dcount_new_values`- 이전 및 포함 `to_TimelineColumn` `from_TimelineColumn`하기 전에 *모든* 기간에 볼 수 없는 별개의 사용자의 수입니다. 
-* `dcount_retained_values`- 모든 신규 사용자 중에서 `from_TimelineColumn`처음 본 , 에서 본 `to_TimelineCoumn`별개의 사용자 수 .
-* `dcount_churn_values`- 모든 신규 사용자 중에서 `from_TimelineColumn`처음 본 , 에서 볼 `to_TimelineCoumn`수 *없었던* 별개의 사용자 수 .
-* `retention_rate`- 코호트 `dcount_retained_values` 에서 퍼센트 (사용자가 처음 `from_TimelineColumn`본).
-* `churn_rate`- 코호트 `dcount_churn_values` 에서 퍼센트 (사용자가 처음 `from_TimelineColumn`본).
+* `from_TimelineColumn`-새 사용자의 코 호트. 이 레코드의 메트릭은이 기간에 처음으로 표시 된 모든 사용자를 나타냅니다. *처음 표시* 되는 결정은 분석 기간의 모든 이전 기간을 고려 합니다. 
+* `to_TimelineColumn`-비교 되는 기간입니다. 
+* `dcount_new_values`- `to_TimelineColumn` 및를 포함 하 여 이전에 *모든* 기간에 표시 되지 않은 고유 사용자 수입니다 `from_TimelineColumn` . 
+* `dcount_retained_values`에 처음으로 표시 되는 모든 새 사용자 중 `from_TimelineColumn` 에서 표시 된 고유 사용자 수입니다 `to_TimelineCoumn` .
+* `dcount_churn_values`에 처음으로 표시 되는 모든 새 사용자의 경우 `from_TimelineColumn` 에는 표시 *되지* 않은 고유한 사용자 수가 표시 `to_TimelineCoumn` 됩니다.
+* `retention_rate`- `dcount_retained_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
+* `churn_rate`- `dcount_churn_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
 
 **참고 사항**
 
-정의 `Churn Rate` 및 `Retention Rate` - activity_metrics [플러그인](./activity-metrics-plugin.md) 설명서의 **메모** 섹션을 참조하십시오.
+및에 대 한 정의는 `Retention Rate` `Churn Rate` [activity_metrics 플러그 인](./activity-metrics-plugin.md) 설명서의 **참고** 섹션을 참조 하세요.
 
 
 **예**
 
-다음 샘플 데이터 집합은 어떤 사용자가 어떤 날에 보았는가를 보여 주며, 이 에 대해 보여 주시면 됩니다. 테이블은 다음과 같이 원본 `Users` 테이블을 기반으로 생성되었습니다. 
+다음 샘플 데이터 집합은 어떤 사용자가 어떤 날짜에 표시 되는지 보여 줍니다. 테이블은 다음과 같이 원본 테이블을 기반으로 생성 되었습니다 `Users` . 
 
 ```kusto
 Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Timestamp asc;
@@ -71,13 +71,13 @@ Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Time
 
 |타임스탬프|set_user|
 |---|---|
-|2019-11-01 00:00:00.0000000|[0,2,3,4]|
-|2019-11-02 00:00:00.0000000|[0,1,3,4,5]|
-|2019-11-03 00:00:00.0000000|[0,2,4,5]|
-|2019-11-04 00:00:00.0000000|[0,1,2,3]|
-|2019-11-05 00:00:00.0000000|[0,1,2,3,4]|
+|2019-11-01 00:00:00.0000000|[0, 2, 3, 4]|
+|2019-11-02 00:00:00.0000000|[0, 1, 3, 4, 5]|
+|2019-11-03 00:00:00.0000000|[0, 2, 4, 5]|
+|2019-11-04 00:00:00.0000000|[0, 1, 2, 3]|
+|2019-11-05 00:00:00.0000000|[0, 1, 2, 3, 4]|
 
-원래 테이블에 대 한 플러그인의 출력은 다음과 같은: 
+원본 테이블의 플러그 인 출력은 다음과 같습니다. 
 
 ```kusto
 let StartDate = datetime(2019-11-01 00:00:00);
@@ -101,24 +101,25 @@ Users
 |10|2019-11-02 00:00:00.0000000|2019-11-05 00:00:00.0000000|0|1|1|0.5|0.5|
 |11|2019-11-02 00:00:00.0000000|2019-11-06 00:00:00.0000000|0|0|2|0|1|
 
-다음은 출력에서 몇 가지 레코드를 분석한 것입니다. 
-* 레코드 `R=3` `from_TimelineColumn`  =  `2019-11-01`, `to_TimelineColumn`  =  `2019-11-03`, :
-    * 이 레코드에 대해 고려된 사용자는 모두 11/1에 있는 새로운 사용자입니다. 이 기간은 첫 번째 기간이므로 이 모든 사용자가 해당 저장소에 있습니다 – [0,2,3,4]
-    * `dcount_new_values`– 에 사용자의 수 11/3 누가에 보이지 않았다 11/1. 여기에는 단일 사용자 `5`- . 
-    * `dcount_retained_values`– 에 모든 새로운 사용자 중 11/1, 얼마나 많은 까지 유지 되었다 11/3? 세 가지가`[0,2,4]`있습니다 `count_churn_values` (), 하나`3`(사용자 =)입니다. 
-    * `retention_rate`= 0.75 – 11/1에서 처음 본 4명의 신규 사용자 중 3명이 사용자를 유지했습니다. 
+다음은 출력에서 몇 가지 레코드를 분석 한 것입니다. 
+* 레코드 `R=3` , `from_TimelineColumn`  =  `2019-11-01` , `to_TimelineColumn`  =  `2019-11-03` :
+    * 이 레코드를 고려 하는 사용자는 모두 11/1에 표시 되는 모든 새 사용자입니다. 이것은 첫 번째 기간 이므로 해당 bin의 모든 사용자-[0, 2, 3, 4]입니다.
+    * `dcount_new_values`– 11/1에 표시 되지 않은 11/3 사용자의 수입니다. 여기에는 단일 사용자 ()가 포함 됩니다 `5` . 
+    * `dcount_retained_values`-11/1에 대 한 모든 새 사용자 중에서 11/3까지 보존 된 수는 얼마 인가요? 3 ( `[0,2,4]` )이 있고,는 `count_churn_values` 1 (사용자 = `3` )입니다. 
+    * `retention_rate`= 0.75 – 처음에는 11/1에 표시 된 사용자 4 명에 게 보존 된 세 사용자가 있습니다. 
 
-* 레코드 `R=9` `from_TimelineColumn`  =  `2019-11-02`, `to_TimelineColumn`  =  `2019-11-04`, :
-    * 이 레코드는 11/2에서 처음 보였던 새로운 `1` 사용자에 `5`초점을 맞춥니다. 
-    * `dcount_new_values`– 에 사용자의 수 11/4 누가 모든 기간을 `T0 .. from_Timestamp`통해 볼 수 없습니다 . 의미, 11/4에 볼 수 있지만 11/1 또는 11/2에서 볼 수 없는 사용자 - 그러한 사용자가 없습니다. 
-    * `dcount_retained_values`– 에 모든 새로운 사용자 중`[1,5]`11/2 (), 얼마나 많은 까지 유지 되었다 11/4? 이러한 사용자 ()`[1]`중 하나가 count_churn_values 하나 `5`(사용자)입니다. 
-    * `retention_rate`0.5 – 11/2에 두 개의 새로운 것 들 중 11/4에 유지 된 단일 사용자. 
+* 레코드 `R=9` , `from_TimelineColumn`  =  `2019-11-02` , `to_TimelineColumn`  =  `2019-11-04` :
+    * 이 레코드는 11/2 – 사용자 및에 처음으로 표시 된 새 사용자를 중심으로 설명 `1` `5` 합니다. 
+    * `dcount_new_values`– 모든 기간 동안 표시 되지 않은 11/4의 사용자 수입니다 `T0 .. from_Timestamp` . 즉, 11/4에는 있지만 11/1 또는 11/2에는 표시 되지 않은 사용자는 해당 사용자가 없습니다. 
+    * `dcount_retained_values`-11/2 ()의 모든 새 사용자 중 `[1,5]` 에서 11/4까지 유지 된 수는 얼마 인가요? 이러한 사용자 ()는 하나 `[1]` 이며 count_churn_values (사용자 `5` )입니다. 
+    * `retention_rate`0.5 – 11/2의 새 두 항목 중 11/4에 보존 된 단일 사용자입니다. 
 
 
-### <a name="weekly-retention-rate-and-churn-rate-single-week"></a>주간 유지율 및 이탈률(1주일)
+### <a name="weekly-retention-rate-and-churn-rate-single-week"></a>주간 보존 률 및 변동 률 (1 주)
 
-다음 쿼리는 코호트(첫 주에 도착한 사용자)에 `New Users` 대한 주별 기간의 보존 및 이탈률을 계산합니다.
+다음 쿼리는 `New Users` 코 호트 (첫 번째 주에 도착 한 사용자)에 대 한 주-주 기간의 보존 및 변동 율을 계산 합니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
@@ -142,10 +143,11 @@ range Day from _start to _end  step 1d
 |2017-05-01 00:00:00.0000000|2017-05-29 00:00:00.0000000|0|1|
 
 
-### <a name="weekly-retention-rate-and-churn-rate-complete-matrix"></a>주간 유지율 및 이탈률(전체 매트릭스)
+### <a name="weekly-retention-rate-and-churn-rate-complete-matrix"></a>주간 보존 률 및 변동 률 (전체 행렬)
 
-다음 쿼리는 코호트에 대한 주별 기간의 `New Users` 보존 및 이탈률을 계산합니다. 이전 예제에서 1주일 동안 통계를 계산한 경우 아래는 각 에서/에서 조합에 대한 NxN 테이블을 생성합니다.
+다음 쿼리는 코 호트에 대 한 주-주 기간의 보존 및 변동 율을 계산 합니다 `New Users` . 이전 예제에서 한 주에 대 한 통계를 계산 하는 경우 아래에서 각 from/to 조합에 대해 NxN 테이블을 생성 합니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
@@ -179,10 +181,11 @@ range Day from _start to _end  step 1d
 |2017-05-29 00:00:00.0000000|2017-05-29 00:00:00.0000000|1|0|
 
 
-### <a name="weekly-retention-rate-with-lookback-period"></a>회조회 기간이 있는 주간 유지율
+### <a name="weekly-retention-rate-with-lookback-period"></a>Lookback 기간의 주간 보존 률
 
-다음 쿼리는 코호트를 `New Users` 정의하는 데 사용되는 ID `lookback` 집합이 있는 테이블 형식 쿼리(이 집합에 `New Users` 나타나지 않는 모든 ID는)를 `New Users`고려할 때 코호트의 보존률을 계산합니다. 쿼리는 분석 기간 `New Users` 동안의 보존 동작을 검사합니다.
+다음 쿼리는 기간 고려 시 코 호트의 보존 률을 계산 합니다 `New Users` `lookback` . 코 호트를 정의 하는 데 사용 되는 id 집합이 있는 테이블 형식 쿼리 `New Users` (이 집합에는 표시 되지 않는 모든 id `New Users` )가 있습니다. 이 쿼리는 분석 기간 동안의 보존 동작을 검사 합니다 `New Users` .
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Generate random data of user activities
 let _lookback = datetime(2017-02-01);

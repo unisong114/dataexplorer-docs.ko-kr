@@ -1,5 +1,5 @@
 ---
-title: Kusto 탐색기 도구-Azure 데이터 탐색기 | Microsoft Docs
+title: Kusto 탐색기 도구-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 Kusto 탐색기 도구에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/23/2020
-ms.openlocfilehash: 1a643a282deec5a98230a17e7335fff7638812b8
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 60a414ff871d88de041e8b76671b73d98854fba0
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108442"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83374063"
 ---
 # <a name="kustoexplorer-tool"></a>Kusto 탐색기 도구
 
@@ -23,7 +23,7 @@ Kusto. 탐색기는 Kusto 쿼리 언어를 사용 하 여 데이터를 탐색할
 
 * [Kusto 탐색기 도구를 설치 합니다.](https://aka.ms/Kusto.Explorer)
 
-* 또는에서 브라우저를 사용 하 여 Kusto 클러스터에 액세스 `https://<your_cluster>.kusto.windows.net`합니다. <your_cluster>를 Azure 데이터 탐색기 클러스터 이름으로 바꿉니다.
+* 또는에서 브라우저를 사용 하 여 Kusto 클러스터에 액세스 `https://<your_cluster>.kusto.windows.net` 합니다. <your_cluster>를 Azure 데이터 탐색기 클러스터 이름으로 바꿉니다.
 
 
 
@@ -104,7 +104,7 @@ Kusto 탐색기 메뉴 패널에는 다음과 같은 탭이 있습니다.
 |세로 막대형 차트 | 모든 숫자 열이 다른 계열 (Y 축)에 매핑되고 숫자 앞에 있는 텍스트 열이 X 축 (UI에서 제어 가능) 인 세로 막대형 차트를 표시 합니다.|
 |가로 막대형 차트    | 모든 숫자 열이 다른 계열 (X 축)에 매핑되고 숫자 앞에 있는 텍스트 열이 Y 축 (UI에서 제어 가능) 인 가로 막대형 차트를 표시 합니다.|
 |누적 영역형 차트      | X 축이 첫 번째 열 (숫자 여야 함)이 고 모든 숫자 열이 다른 계열 (Y 축)에 매핑되는 누적 영역형 차트를 표시 합니다. |
-|타임 라인 차트   | X 축이 첫 번째 열 (datetime 이어야 함)이 고 모든 숫자 열이 다른 계열 (Y 축)에 매핑되는 시간 차트를 표시 합니다.|
+|타임라인 차트   | X 축이 첫 번째 열 (datetime 이어야 함)이 고 모든 숫자 열이 다른 계열 (Y 축)에 매핑되는 시간 차트를 표시 합니다.|
 |꺾은선형 차트   | X 축이 첫 번째 열 (숫자 여야 함)이 고 모든 숫자 열이 다른 계열 (Y 축)에 매핑되는 꺾은선형 차트를 표시 합니다.|
 |변칙 차트|    시간 차트와 유사 하지만 기계 학습 이상 알고리즘을 사용 하 여 시계열 데이터의 변칙을 찾습니다. 변칙 검색의 경우, Kusto 탐색기는 [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) 함수를 사용 합니다. (*) 
 |원형 차트    |    색 축이 첫 번째 열이 고 테타 축 (백분율로 변환 된 측정값이 되어야 함)이 두 번째 열인 원형 차트를 표시 합니다.|
@@ -265,7 +265,7 @@ Kusto 탐색기의 왼쪽 창에는 클라이언트에서 구성 된 모든 클�
 실제 스키마가 많은 경우 (예: 수백 개의 테이블이 있는 데이터베이스) CTRL + F를 눌러 스키마를 검색 하 고 찾으려는 엔터티 이름에 대/소문자를 구분 하지 않는 부분 문자열을 입력할 수 있습니다.
 
 Kusto 탐색기는 쿼리 창에서 연결 패널을 제어 하도록 지원 합니다.
-스크립트에 매우 유용 합니다. 예를 들어 명령을 사용 하 여 스크립트 파일을 시작 하면 다음 구문을 사용 하 여 스크립트에서 데이터를 쿼리 하는 클러스터/데이터베이스에 연결 하는 데 사용할 수 있습니다. 일반적으로 또는 유사 하 게를 사용 하 여 `F5` 각 줄을 실행 해야 합니다.
+스크립트에 매우 유용 합니다. 예를 들어 명령을 사용 하 여 스크립트 파일을 시작 하면 다음 구문을 사용 하 여 스크립트에서 데이터를 쿼리 하는 클러스터/데이터베이스에 연결 하는 데 사용할 수 있습니다. 일반적으로 또는 유사 하 게를 사용 하 여 각 줄을 실행 해야 합니다 `F5` .
 
 ```kusto
 #connect cluster('help').database('Samples')
@@ -285,7 +285,7 @@ StormEvents | count
 Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME;AAD Federated Security=True;Authority Id=AAD_TENANT_OF_CLUSTER;User=USER_DOMAIN
 ```
 
-고유한 `AAD_TENANT_OF_CLUSTER` 것은입니다. 즉, 클러스터가 호스트 되는 aad 테 넌 트의 도메인 이름 또는 aad 테 넌 트 ID (GUID)입니다. 즉, `contoso.com` `joe@fabrikam.com`클러스터를 소유 하는 조직 도메인 이름 (예: USER_DOMAIN)은이 테 넌 트에 초대 된 사용자의 id (예:)입니다. 
+고유한 것은입니다 `AAD_TENANT_OF_CLUSTER` . 즉, 클러스터가 호스트 되는 aad 테 넌 트의 도메인 이름 또는 aad 테 넌 트 ID (GUID)입니다. 즉, 클러스터를 소유 하는 조직 도메인 이름 (예: `contoso.com` USER_DOMAIN)은이 테 넌 트에 초대 된 사용자의 id (예: `joe@fabrikam.com` )입니다. 
 
 >[!Note]
 > 사용자의 도메인 이름은 클러스터를 호스트 하는 테 넌 트의 도메인 이름과 같을 필요는 없습니다.
@@ -294,7 +294,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 
 Kusto 탐색기는 결과 창에서 각 행의 심각도 또는 세부 정보 표시 수준을 "추측" 하 여 적절 하 게 색을 표시 하려고 합니다. 이렇게 하려면 각 열의 고유 값을 알려진 패턴 집합 ("경고", "오류" 등)과 일치 합니다.
 
-출력 색 구성표를 수정 하거나이 동작을 해제 하려면 **도구** 메뉴에서 **옵션** > **결과 뷰어** > **자세한 정도 색 구성표**를 선택 합니다.
+출력 색 구성표를 수정 하거나이 동작을 해제 하려면 **도구** 메뉴에서 **옵션**  >  **결과 뷰어**  >  **자세한 정도 색 구성표**를 선택 합니다.
 
 ![대체 텍스트](./Images/KustoTools-KustoExplorer/ke-color-scheme.png)
 
@@ -316,6 +316,7 @@ Kusto. 탐색기에는 임시 쿼리를 작성, 편집 및 실행할 수 있는 
 
 테이블 로그가 있는 경우 다음을 입력 하 여 탐색을 시작할 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | count 
 ```
@@ -324,11 +325,13 @@ StormEvents | count
 
 다음은 몇 가지 추가 예제 쿼리입니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Take 10 lines from the table. Useful to get familiar with the data
 StormEvents | limit 10 
 ```
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
 // and take sample of 10 lines
@@ -343,7 +346,7 @@ Kusto 탐색기는 컴퓨터의 파일을 Kusto 테이블에 업로드 하는 �
 
 1. 파일과 일치 하는 스키마를 사용 하 여 테이블을 만들었는지 확인 합니다. 예를 들어 [create table 명령을 사용 합니다.](../management/tables.md)
 
-1. 파일 확장명이 파일의 내용에 적합 한지 확인 합니다. 예:
+1. 파일 확장명이 파일의 내용에 적합 한지 확인 합니다. 다음은 그 예입니다.
     * 파일에 쉼표로 구분 된 값이 포함 된 경우 파일의 확장명이 .csv 인지 확인 합니다.
     * 파일에 탭으로 구분 된 값이 포함 된 경우 파일의 확장명이 tsv 인지 확인 합니다.
 
@@ -401,7 +404,7 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 작동 방식은 다음과 같습니다.
 
 1. Kusto 탐색기에서 쿼리를 실행 합니다.
-1. **클립보드로 내보내기** 또는 누르기 `Ctrl+Shift+C`를 선택 합니다.
+1. **클립보드로 내보내기** 또는 누르기를 선택 합니다. `Ctrl+Shift+C`
 
     ![대체 텍스트](./Images/KustoTools-KustoExplorer/menu-export.png "메뉴-내보내기")
 
@@ -421,7 +424,7 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 >
 > * 아래에 설명 된 클라이언트 쪽 쿼리 parametrization는 Kusto 탐색기 응용 프로그램의 기능입니다. 서비스에서 실행 되도록 보내기 전에 쿼리에 대해 문자열 바꾸기 작업을 사용 하는 것과 같습니다. 아래에 설명 된 구문은 쿼리 언어 자체에 포함 되지 않으며, Kusto 탐색기 이외의 방법으로 서비스에 쿼리를 보낼 때 사용할 수 없습니다.
 
-여러 쿼리나 여러 탭에서 동일한 값을 사용 하려는 경우에는 변경 하기가 어렵습니다. 그러나 Kusto 탐색기는 쿼리 매개 변수를 지원 합니다. 매개 변수는 {} 대괄호로 표시 됩니다. 예를 들면 다음과 같습니다. `{parameter1}`
+여러 쿼리나 여러 탭에서 동일한 값을 사용 하려는 경우에는 변경 하기가 어렵습니다. 그러나 Kusto 탐색기는 쿼리 매개 변수를 지원 합니다. 매개 변수는 대괄호로 표시 됩니다 {} . 예: `{parameter1}`
 
 스크립트 편집기는 쿼리 매개 변수를 강조 표시 합니다.
 
@@ -452,11 +455,11 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 ### <a name="limitations"></a>제한 사항
 쿼리는 Internet Explorer 제한으로 인해 ~ 2000 자로 제한 됩니다 (클러스터 및 데이터베이스 이름 길이에 따라 달라 지므로 제한이 근사치 임) https://support.microsoft.com/kb/208427 . 문자 제한에 도달할 가능성을 줄이기 위해 아래의 [짧은 링크 가져오기](#getting-shorter-links)를 참조 하세요.
 
-URI 형식은 https://<ClusterCname>입니다. kusto.windows.net/<DatabaseName>? query =<QueryToExecute>
+URI 형식은 https:// <ClusterCname> 입니다. kusto.windows.net/ <DatabaseName> ? query =<QueryToExecute>
 
-예:  https://help.kusto.windows.net/Samples?query=StormEvents+%7c+limit+10
+다음은 그 예입니다.  https://help.kusto.windows.net/Samples?query=StormEvents+%7c+limit+10
  
-이 URI는 Kusto 탐색기를 열고, `help` kusto 클러스터에 연결 하 고, `Samples` 데이터베이스에서 지정 된 쿼리를 실행 합니다. Kusto. 탐색기 인스턴스가 이미 실행 중인 경우 실행 중인 인스턴스는 새 탭을 열고 쿼리를 실행 합니다.
+이 URI는 Kusto 탐색기를 열고, `help` kusto 클러스터에 연결 하 고, 데이터베이스에서 지정 된 쿼리를 실행 합니다. `Samples` Kusto. 탐색기 인스턴스가 이미 실행 중인 경우 실행 중인 인스턴스는 새 탭을 열고 쿼리를 실행 합니다.
 
 **보안 정보**: 보안상의 이유로, 제어 명령에 대해 딥 링크를 사용할 수 없습니다.
 
@@ -478,14 +481,14 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 
 딥 링크와 함께 매개 변수가 있는 쿼리를 사용할 수 있습니다.
 
-1. 매개 변수가 있는 쿼리 (예: `KustoLogs | where Timestamp > ago({Period}) | count`)로 형성 될 쿼리를 만듭니다. 
+1. 매개 변수가 있는 쿼리 (예:)로 형성 될 쿼리를 만듭니다. `KustoLogs | where Timestamp > ago({Period}) | count` 
 2. 이 경우 URI의 모든 쿼리 매개 변수에 대 한 매개 변수를 제공 합니다.
 
 `https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
 ### <a name="getting-shorter-links"></a>짧은 링크 가져오기
 
-쿼리가 길어질 수 있습니다. 쿼리가 최대 길이를 초과 하는 가능성을 줄이려면 Kusto 클라이언트 라이브러리에서 사용할 수 있는 메서드를 `String Kusto.Data.Common.CslCommandGenerator.EncodeQueryAsBase64Url(string query)` 사용 합니다. 이 메서드는 더 간결한 버전의 쿼리를 생성 합니다. 더 짧은 형식은 Kusto 탐색기에서도 인식 됩니다.
+쿼리가 길어질 수 있습니다. 쿼리가 최대 길이를 초과 하는 가능성을 줄이려면 `String Kusto.Data.Common.CslCommandGenerator.EncodeQueryAsBase64Url(string query)` Kusto 클라이언트 라이브러리에서 사용할 수 있는 메서드를 사용 합니다. 이 메서드는 더 간결한 버전의 쿼리를 생성 합니다. 더 짧은 형식은 Kusto 탐색기에서도 인식 됩니다.
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
@@ -501,21 +504,21 @@ Kusto 탐색기는 다음 구문에서 몇 가지 명령줄 인수를 지원 합
 
 [*LocalScriptFile*] [*QueryString*]
 
-위치:
-* *LocalScriptFile* 는 로컬 컴퓨터에서 확장명이 `.kql`있어야 하는 스크립트 파일의 이름입니다. 이러한 파일이 있는 경우 파일을 시작 하면이 파일이 자동으로 로드 됩니다.
+여기서
+* *LocalScriptFile* 는 로컬 컴퓨터에서 확장명이 있어야 하는 스크립트 파일의 이름입니다 `.kql` . 이러한 파일이 있는 경우 파일을 시작 하면이 파일이 자동으로 로드 됩니다.
 * *QueryString* 은 HTTP 쿼리 문자열 형식을 사용 하 여 서식이 지정 된 문자열입니다. 이 메서드는 아래 표에 설명 된 대로 추가 속성을 제공 합니다.
 
-예를 들어 클러스터 `c:\temp\script.kql` `help`, 데이터베이스 `Samples`와 통신 하도록 구성 된 스크립트 파일과 함께 kusto 탐색기를 시작 하려면 다음 명령을 사용 합니다.
+예를 들어 `c:\temp\script.kql` 클러스터, 데이터베이스와 통신 하도록 구성 된 스크립트 파일과 함께 Kusto 탐색기를 시작 하려면 `help` `Samples` 다음 명령을 사용 합니다.
 
 ```
 Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples
 ```
 
-|인수  |Description                                                               |
+|인수  |설명                                                               |
 |----------|--------------------------------------------------------------------------|
 |**실행할 쿼리**                                                                 |
-|`query`   |실행할 쿼리 (base64 인코딩)입니다. 비어 있는 경우를 `querysrc`사용 합니다.          |
-|`querysrc`|실행할 쿼리를 보유 하는 파일 또는 blob의 URL (가 비어 `query` 있는 경우)입니다.|
+|`query`   |실행할 쿼리 (base64 인코딩)입니다. 비어 있는 경우를 사용 `querysrc` 합니다.          |
+|`querysrc`|실행할 쿼리를 보유 하는 파일 또는 blob의 URL ( `query` 가 비어 있는 경우)입니다.|
 |**Kusto 클러스터에 연결**                                                  |
 |`uri`     |연결할 Kusto 클러스터의 연결 문자열입니다.                 |
 |`name`    |Kusto 클러스터에 대 한 연결의 표시 이름입니다.                  |
@@ -526,14 +529,14 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 ## <a name="kustoexplorer-connection-files"></a>Kusto 탐색기 연결 파일
 
-Kusto 탐색기는 `%LOCALAPPDATA%\Kusto.Explorer` 폴더의 연결 설정을 유지 합니다.
-연결 그룹의 목록은 내 `%LOCALAPPDATA%\Kusto.Explorer\UserConnectionGroups.xml`에 유지 되 고 각 연결 그룹은의 전용 파일 내에 유지 됩니다 `%LOCALAPPDATA%\Kusto.Explorer\Connections\`.
+Kusto 탐색기는 폴더의 연결 설정을 유지 합니다. `%LOCALAPPDATA%\Kusto.Explorer`
+연결 그룹의 목록은 내에 유지 되 `%LOCALAPPDATA%\Kusto.Explorer\UserConnectionGroups.xml` 고 각 연결 그룹은의 전용 파일 내에 유지 됩니다 `%LOCALAPPDATA%\Kusto.Explorer\Connections\` .
 
 ### <a name="format-of-connection-group-files"></a>연결 그룹 파일의 형식
 
-파일 위치가 인 `%LOCALAPPDATA%\Kusto.Explorer\UserConnectionGroups.xml`경우  
+파일 `%LOCALAPPDATA%\Kusto.Explorer\UserConnectionGroups.xml` 위치가 인 경우  
 
-다음 속성을 사용 하 여 `ServerGroupDescription` 개체 배열의 XML 직렬화입니다.
+다음 속성을 사용 하 여 개체 배열의 XML 직렬화입니다 `ServerGroupDescription` .
 
 ```
   <ServerGroupDescription>
@@ -556,9 +559,9 @@ Kusto 탐색기는 `%LOCALAPPDATA%\Kusto.Explorer` 폴더의 연결 설정을 �
 
 ### <a name="format-of-connection-list-files"></a>연결 목록 파일의 형식
 
-파일 위치는 `%LOCALAPPDATA%\Kusto.Explorer\Connections\`입니다.
+파일 위치는 `%LOCALAPPDATA%\Kusto.Explorer\Connections\` 입니다.
 
-다음 속성을 사용 하 여 `ServerDescriptionBase` 개체 배열의 XML 직렬화입니다.
+다음 속성을 사용 하 여 개체 배열의 XML 직렬화입니다 `ServerDescriptionBase` .
 
 ```
    <ServerDescriptionBase xsi:type="ServerDescription">
@@ -586,18 +589,18 @@ Kusto 탐색기는 `%LOCALAPPDATA%\Kusto.Explorer` 폴더의 연결 설정을 �
 필요한 경우 Kusto. 탐색기를 완전히 다시 설정할 수 있습니다. 완전히 제거 되 고 처음부터 설치 해야 하는 경우에만 컴퓨터에 배포 된 Explorer를 점진적으로 다시 설정 하려면 다음 절차를 따르십시오.
 
 1. Windows에서 프로그램 **변경 또는 제거** ( **프로그램 및 기능이**라고도 함)를 엽니다.
-1. 이름이로 시작 하는 모든 항목 `Kusto.Explorer`을 선택 합니다.
+1. 이름이로 시작 하는 모든 항목을 선택 `Kusto.Explorer` 합니다.
 1. **제거**를 선택합니다.
 
    응용 프로그램을 제거 하지 못할 경우 (예를 들어 ClickOnce 응용 프로그램을 사용 하는 경우 알려진 문제)이 작업을 수행 하는 방법을 설명 하는 [이 스택 오버플로 문서](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer) 를 참조 하세요.
 
-1. 폴더 `%LOCALAPPDATA%\Kusto.Explorer`를 삭제 합니다. 그러면 모든 연결, 기록 등이 제거 됩니다.
+1. 폴더를 삭제 `%LOCALAPPDATA%\Kusto.Explorer` 합니다. 그러면 모든 연결, 기록 등이 제거 됩니다.
 
-1. 폴더 `%APPDATA%\Kusto`를 삭제 합니다. 그러면 Kusto. 탐색기 토큰 캐시가 제거 됩니다. 모든 클러스터에 다시 인증 해야 합니다.
+1. 폴더를 삭제 `%APPDATA%\Kusto` 합니다. 그러면 Kusto. 탐색기 토큰 캐시가 제거 됩니다. 모든 클러스터에 다시 인증 해야 합니다.
 
 또한 특정 버전의 Kusto. 탐색기로 되돌릴 수 있습니다.
 
-1. `appwiz.cpl`을 실행합니다.
+1. `appwiz.cpl`를 실행합니다.
 1. **Kusto 탐색기** 를 선택 하 고 **제거/변경**을 선택 합니다.
 3. **응용 프로그램을 이전 상태로 복원을**선택 합니다.
 
@@ -609,7 +612,7 @@ Kusto 탐색기는 `%LOCALAPPDATA%\Kusto.Explorer` 폴더의 연결 설정을 �
 
 **증상:**
 
-시작 시 Kusto 탐색기에서 `InvalidOperationException` 오류를 표시 합니다.
+시작 시 Kusto 탐색기에서 오류를 표시 합니다. `InvalidOperationException`
 
 **가능한 해결 방법:**
 
@@ -627,7 +630,7 @@ Kusto. 탐색기를 열 때마다 새 버전를 설치할지 묻는 메시지가
 
 이는 로컬 ClickOnce 저장소의 손상으로 인해 발생할 수 있습니다. 관리자 권한 명령 프롬프트에서 다음 명령을 실행 하 여 로컬 ClickOnce 저장소를 지울 수 있습니다.
 > [!Important]
-> 1. ClickOnce 응용 프로그램의 다른 인스턴스 또는이 있는 경우이 `dfsvc.exe`명령을 실행 하기 전에 해당 인스턴스를 종료 합니다.
+> 1. ClickOnce 응용 프로그램의 다른 인스턴스 또는이 있는 경우 `dfsvc.exe` 이 명령을 실행 하기 전에 해당 인스턴스를 종료 합니다.
 > 2. 앱 바로 가기에 저장 된 원래 설치 위치에 대 한 액세스 권한이 있는 경우 ClickOnce 앱은 다음에 실행할 때 자동으로 다시 설치 됩니다. 앱 바로 가기는 삭제 되지 않습니다.
 
 ```
@@ -645,7 +648,7 @@ rd /q /s %userprofile%\appdata\local\apps\2.0
 * 프로그램이 시작 되지 않으며 다음을 포함 하는 오류를 표시 합니다.`The application binding data format is invalid.` 
 * 프로그램이 시작 되지 않으며 다음을 포함 하는 오류를 표시 합니다.`Exception from HRESULT: 0x800736B2`
 
-다음 오류 대화 상자를 클릭 `Details` 하 여 오류 정보를 탐색할 수 있습니다.
+다음 오류 대화 상자를 클릭 하 여 오류 정보를 탐색할 수 있습니다 `Details` .
 
 ![대체 텍스트](./Images/KustoTools-KustoExplorer/clickonce-err-1.jpg "clickonce-오류-1")
 
@@ -666,9 +669,9 @@ Following errors were detected during this operation.
 
 **제안 된 솔루션 단계:**
 
-1. ( `Programs and Features` `appwiz.cpl`)를 사용 하 여 Kusto. 탐색기 응용 프로그램을 제거 합니다.
+1. `Programs and Features`()를 사용 하 여 Kusto. 탐색기 응용 프로그램을 제거 합니다. `appwiz.cpl`
 
-1. 실행 `CleanOnlineAppCache`을 시도한 후 Kusto 탐색기를 다시 설치 해 보세요. 관리자 권한 명령 프롬프트에서 다음을 수행 합니다. 
+1. 실행 `CleanOnlineAppCache` 을 시도한 후 Kusto 탐색기를 다시 설치 해 보세요. 관리자 권한 명령 프롬프트에서 다음을 수행 합니다. 
     
     ```
     rundll32 %windir%\system32\dfshim.dll CleanOnlineAppCache
@@ -705,7 +708,7 @@ Following errors were detected during this operation.
 
 1. 그래도 오류가 발생 하면 아래에서 LogVerbosityLevel 문자열 값 1을 만들어 자세한 ClickOnce 로깅을 사용 하도록 설정 합니다.
 
-`HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment`다시 재현 하 고 자세한 정보 출력을로 KEBugReport@microsoft.com보냅니다. 
+`HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment`다시 재현 하 고 자세한 정보 출력을로 보냅니다 KEBugReport@microsoft.com . 
 
 #### <a name="clickonce-error-your-administrator-has-blocked-this-application-because-it-potentially-poses-a-security-risk-to-your-computer"></a>ClickOnce 오류: 컴퓨터에 보안 위험이 발생할 수 있으므로 관리자가이 응용 프로그램을 차단 했습니다.
 
@@ -722,7 +725,7 @@ Following errors were detected during this operation.
 
 경우에 따라 이전 문제 해결 단계를 시작 하는 데 도움이 되지 않는 경우 로컬에 저장 된 데이터를 정리 하는 것이 도움이 될 수 있습니다.
 
-Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 `C:\Users\\[your alias]\AppData\Local\Kusto.Explorer`수 있습니다.
+Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 수 `C:\Users\\[your alias]\AppData\Local\Kusto.Explorer` 있습니다.
 
 > [!NOTE]
 > 데이터를 정리 하면 열린 탭 (복구 폴더), 저장 된 연결 (연결 폴더) 및 응용 프로그램 설정 (UserSettings 폴더)이 손실 됩니다.

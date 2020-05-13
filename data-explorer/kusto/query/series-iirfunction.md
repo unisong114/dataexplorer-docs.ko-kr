@@ -1,6 +1,6 @@
 ---
-title: series_iir() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 series_iir()에 대해 설명합니다.
+title: series_iir ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 series_iir ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: 96452265e07a8a8b057dc70bec520be6ab298dd3
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 8b03970aacafef932f6397e64afdf871dc086bc1
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81508299"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372619"
 ---
 # <a name="series_iir"></a>series_iir()
 
-계열에 무한 임펄스 응답 필터를 적용합니다.  
+계열에 무한 임펄스 응답 필터를 적용 합니다.  
 
-동적 숫자 배열을 포함하는 식을 입력으로 가져와 무한 임펄스 응답 필터를 [적용합니다.](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터 계수를 지정하여, 예를 들어, 계열의 누적 합계를 계산하고, 스무딩 연산뿐만 아니라 다양한 [하이패스,](https://en.wikipedia.org/wiki/High-pass_filter) [대역패스](https://en.wikipedia.org/wiki/Band-pass_filter) 및 [로우 패스](https://en.wikipedia.org/wiki/Low-pass_filter) 필터를 적용하는 데 사용할 수 있습니다. 이 함수는 필터 a *및* *b* 계수의 동적 배열과 두 개의 정적 동적 배열을 포함하는 열의 입력으로 사용되며 열에 필터를 적용합니다. 필터링된 출력을 포함하는 새 동적 배열 열을 출력합니다.  
+동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 [무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터를 적용 합니다. 예를 들어 필터 계수를 지정 하 여 계열의 누적 합계를 계산 하 고, 다듬기 작업을 적용 하 고, 다양 한 [높은 패스](https://en.wikipedia.org/wiki/High-pass_filter), [대역 패스](https://en.wikipedia.org/wiki/Band-pass_filter) 및 [낮은 패스](https://en.wikipedia.org/wiki/Low-pass_filter) 의 필터를 적용할 수 있습니다. 함수는 동적 배열과 필터 *a* 및 *b* 계수의 정적 동적 배열 두 개가 포함 된 열을 입력으로 사용 하 고 열에 필터를 적용 합니다. 필터링된 출력을 포함하는 새 동적 배열 열을 출력합니다.  
  
 
 **구문**
@@ -28,27 +28,28 @@ ms.locfileid: "81508299"
 
 **인수**
 
-* *x*: 숫자 값의 배열인 동적 배열 셀로, 일반적으로 [메이크 계열](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력입니다.
-* *b*: 필터의 분자 계수를 포함하는 상수 식입니다(숫자 값의 동적 배열로 저장됨).
-* *a*: *b와*같은 상수 식 . 필터의 분모 계수를 포함합니다.
+* *x*: 숫자 값 배열 (일반적으로 series 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력 [)](make-seriesoperator.md) 인 동적 배열 셀입니다.
+* *b*: 숫자 값의 동적 배열로 저장 된 필터의 분자 계수를 포함 하는 상수 식입니다.
+* *a*: *b*와 같은 상수 식입니다. 필터의 분모 계수를 포함합니다.
 
 > [!IMPORTANT]
-> (즉,)의 `a` `a[0]`첫 번째 요소는 0이 되어서는 안됩니다(0으로 나누기 위해, 아래 수식 참조).
+> 의 첫 번째 요소 `a` (예: `a[0]` )는 0으로 되어서는 안됩니다 (0으로 나누기를 방지 하려면 아래 수식을 참조).
 
-**필터의 재귀 수식에 대해 자세히 알아보기**
+**필터의 재귀 수식에 대 한 자세한 정보**
 
-* 입력 배열 X와 계수 배열a, 길이의 bn_a 각각 과 n_b 감안할 때, 출력 배열 Y를 생성하는 필터의 전달 함수는 정의됩니다(위키백과에서도 참조).
+* 입력 배열 X를 지정 하 고 배열 a, 배열의 계수 n_a 및 n_b 각각에 대해 출력 배열 Y를 생성 하는 필터의 전송 함수는에 의해 정의 됩니다 (위키백과의 참조).
 
 <div align="center">
-Y<sub>i</sub> =<sub>0</sub><sup>-1</sup>(b<sub>0</sub>X<sub>i b</sub> 
- + <sub>1</sub>X<sub>i-1</sub> + ... + b<sub>n<sub>b</sub>-1</sub>X<sub>i-n<sub>b</sub>-1</sub> 
- - <sub>a</sub><sub>2</sub>Y<sub>i-2</sub> - - n<sub><sub>a</sub>-1</sub>Y<sub>i-n<sub>a</sub>-1)</sub><sub>i-1</sub>
+Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>x<sub>i</sub> 
+ + b<sub>1</sub>x i<sub>-1</sub> + ... + b<sub>n<sub>b</sub>-1</sub>x i<sub>-n<sub>b</sub>-1</sub> 
+ - a<sub>1</sub>y i-<sub>1</sub>-a<sub>2</sub>Y<sub>i-2</sub> - ...-a<sub>n-1<sub>a</sub></sub>y<sub>i-n-1<sub>a</sub></sub>)
 </div>
 
 **예제**
 
-누적 합계 계산은 계수 *a*=[1,-1] 및 *b*=[1]를 가진 iir 필터에 의해 수행될 수 있습니다.  
+누적 합계 계산은 계수 *a*= [1,-1] 및 *b*= [1] 인 iir filter로 수행할 수 있습니다.  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let x = range(1.0, 10, 1);
 print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
@@ -64,6 +65,7 @@ print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
 
 함수에서 래핑하는 방법은 다음과 같습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let vector_sum=(x:dynamic)
 {

@@ -1,6 +1,6 @@
 ---
-title: series_stats() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 series_stats()에 대해 설명합니다.
+title: series_stats ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 series_stats ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,42 +8,43 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
-ms.openlocfilehash: 07aa5df7351a5d4be1522d39456423197bde508d
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 3fe88a5d53faaca4512d614d3e62204ac26e6fc5
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81507925"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372441"
 ---
 # <a name="series_stats"></a>series_stats()
 
-`series_stats()`은 여러 열의 계열에 대한 통계를 반환합니다.  
+`series_stats()`여러 열의 계열에 대 한 통계를 반환 합니다.  
 
-함수는 `series_stats()` 동적 숫자 배열을 포함하는 열을 입력으로 사용하여 다음 열을 계산합니다.
-* `min`: 입력 배열의 최소값
-* `min_idx`: 입력 배열의 최소값의 첫 번째 위치
-* `max`: 입력 배열의 최대값
-* `max_idx`: 입력 배열에서 최대값의 첫 번째 위치
-* `avg`: 입력 배열의 평균 값
-* `variance`: 입력 어레이의 샘플 분산
-* `stdev`: 입력 어레이의 샘플 표준 편차
+`series_stats()`함수는 동적 숫자 배열을 포함 하는 열을 입력으로 사용 하 고 다음 열을 계산 합니다.
+* `min`: 입력 배열의 최 솟 값
+* `min_idx`: 입력 배열에서 최 솟 값의 첫 번째 위치입니다.
+* `max`: 입력 배열의 최 댓 값입니다.
+* `max_idx`: 입력 배열에서 최 댓 값의 첫 번째 위치입니다.
+* `avg`: 입력 배열의 평균 값입니다.
+* `variance`: 입력 배열의 표본 분산
+* `stdev`: 입력 배열의 샘플 표준 편차
 
 > [!NOTE] 
-> 이 함수는 여러 열을 반환하므로 다른 함수에 대한 인수로 사용할 수 없습니다.
+> 이 함수는 여러 열을 반환 하므로 다른 함수의 인수로 사용할 수 없습니다.
 
 **구문**
 
-프로젝트 `series_stats(` *x* `[,` *ignore_nonfinite* `])` 또는 `series_stats(`확장 *x* `)` series_stats_x_min, series_stats_x_min_idx 등 위에서 언급 한 모든 열을 반환합니다.
+project `series_stats(` *x* `[,` *ignore_nonfinite* `])` 또는 extend `series_stats(` *x* `)` 는 앞에서 언급 한 모든 열을 series_stats_x_min, series_stats_x_min_idx 등의 이름으로 반환 합니다.
  
-프로젝트 (m,`series_stats(`mi)=*x* `)` 또는 확장`series_stats(`(m, mi)=*x* `)` 다음 열을 반환합니다: m (min) 및 mi (min_idx).
+project (m, mi) = `series_stats(` *x* `)` 또는 extend (m, mi) = `series_stats(` *x* `)` 는 m (min) 및 mi (min_idx) 열을 반환 합니다.
 
 **인수**
 
-* *x*: 숫자 값의 배열인 동적 배열 셀입니다. 
-* *ignore_nonfinite*: Boolean (선택 `false`사항, 기본값 : ) 비유한 값을 무시하고 통계를 계산할지 여부를 지정하는 플래그 *(null,* *NaN*, *inf*등). 을 설정하면 `false`반환된 값은 유한하지 않은 값이 배열에 있는 `null` 경우입니다.
+* *x*: 숫자 값 배열인 동적 배열 셀입니다. 
+* *ignore_nonfinite*: `false` 한정 되지 않은 값 (*null*, *NaN*, *inf*등)을 무시 하 고 통계를 계산할지 여부를 지정 하는 부울 (선택 사항, 기본값:) 플래그입니다. 로 설정 하면 `false` `null` 한정 되지 않은 값이 배열에 있는 경우 반환 되는 값은입니다.
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
 | project series_stats(x)

@@ -1,5 +1,5 @@
 ---
-title: series_decompose_forecast ()-Azure 데이터 탐색기 | Microsoft Docs
+title: series_decompose_forecast ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 series_decompose_forecast ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 97f87a7390ab099886e84642b2eb46a8087b6da9
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 9676da9d12e2654cd4d92538f183a2630971d078
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618849"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372875"
 ---
 # <a name="series_decompose_forecast"></a>series_decompose_forecast()
 
@@ -23,7 +23,7 @@ ms.locfileid: "82618849"
  
 **구문**
 
-`series_decompose_forecast(`*Series* `,` *Points* `[,` *Seasonality* 계절성`,` *Trend* 추세`,` *Seasonality_threshold* 계열 점수`])`
+`series_decompose_forecast(`*계열* `,` *요소* `[,` *계절성* `,` *추세* `,` *Seasonality_threshold*`])`
 
 **인수**
 
@@ -37,7 +37,7 @@ ms.locfileid: "82618849"
     * "linefit": 선형 회귀를 사용 하 여 추세 구성 요소를 추출 합니다 (기본값).    
     * "avg": 추세 구성 요소를 평균 (x)으로 정의 합니다.
     * "none": 추세가 없습니다 .이 구성 요소 추출을 건너뜁니다.   
-* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다 `0.6`. 기본 점수 임계값은입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
+* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 점수 임계값은 `0.6` 입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
 
 **돌려**
 
@@ -52,8 +52,9 @@ ms.locfileid: "82618849"
 
 **예제**
 
-다음 예에서는 주간 계절성 및 작은 상향 추세를 사용 하 여 시간별로 4 주 시리즈를 생성 한 다음 다른 빈 주를 사용 `make-series` 하 고 계열에 추가 합니다. `series_decompose_forecast`는 주 (24 * 7 개 점)를 사용 하 여 호출 되며 계절성 및 추세를 자동으로 검색 하 고 전체 5 주 기간의 예측을 생성 합니다. 
+다음 예에서는 주간 계절성 및 작은 상향 추세를 사용 하 여 시간별로 4 주 시리즈를 생성 한 다음 `make-series` 다른 빈 주를 사용 하 고 계열에 추가 합니다. `series_decompose_forecast`는 주 (24 * 7 개 점)를 사용 하 여 호출 되며 계절성 및 추세를 자동으로 검색 하 고 전체 5 주 기간의 예측을 생성 합니다. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*4 step 1 // generate 4 weeks of hourly data
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 

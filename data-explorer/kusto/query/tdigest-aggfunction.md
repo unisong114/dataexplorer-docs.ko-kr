@@ -1,5 +1,5 @@
 ---
-title: tdigest () (집계 함수)-Azure 데이터 탐색기 | Microsoft Docs
+title: tdigest () (집계 함수)-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 tdigest () (집계 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 1a44945a22d08a1a5a55a5fc130f7ca4247f1fb8
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: b98c551cb1ded8da291d4510b45a86d560f325b1
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83224989"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83371021"
 ---
 # <a name="tdigest-aggregation-function"></a>tdigest () (집계 함수)
 
@@ -46,6 +46,7 @@ ms.locfileid: "83224989"
 
 **예**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | summarize tdigest(DamageProperty) by State

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: db99d1d46c321bff0f5d7b370766900ea7d1d5a0
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 1c7670dfb06e95f227a4b828a86b980005eeeac9
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227726"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373349"
 ---
 # <a name="external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블
 
@@ -40,7 +40,7 @@ ms.locfileid: "83227726"
 * *TableName* -외부 테이블 이름입니다. [엔터티 이름](../query/schema-entities/entity-names.md)규칙을 따라야 합니다. 외부 테이블은 동일한 데이터베이스의 일반 테이블과 동일한 이름을 가질 수 없습니다.
 * *스키마* -형식의 외부 데이터 스키마: `ColumnName:ColumnType[, ColumnName:ColumnType ...]` . 외부 데이터 스키마를 알 수 없는 경우에는 외부 파일 내용에 따라 스키마를 유추할 수 있는 [infer_storage_schema](../query/inferstorageschemaplugin.md) 플러그 인을 사용 합니다.
 * *파티션* -하나 또는 여러 파티션 정의 (옵션). 아래의 파티션 구문을 참조 하세요.
-* *Format* -데이터 형식입니다. 수집 [형식은](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) 쿼리를 위해 지원 됩니다. [내보내기 시나리오](data-export/export-data-to-an-external-table.md) 에 외부 테이블을 사용 하는 것은,, `CSV` `TSV` `JSON` , 형식으로 `Parquet` 제한 됩니다.
+* *Format* -데이터 형식입니다. 수집 [형식은](../../ingestion-supported-formats.md) 쿼리를 위해 지원 됩니다. [내보내기 시나리오](data-export/export-data-to-an-external-table.md) 에 외부 테이블을 사용 하는 것은,, `CSV` `TSV` `JSON` , 형식으로 `Parquet` 제한 됩니다.
 * *StorageConnectionString* -자격 증명을 포함 하 여 Blob 컨테이너 또는 Azure Data Lake Store 파일 시스템 (가상 디렉터리 또는 폴더)을 Azure Blob Storage 하는 하나 또는 여러 경로입니다. 자세한 내용은 [저장소 연결 문자열](../api/connection-strings/storage.md) 을 참조 하세요. 많은 양의 데이터를 외부 테이블로 [내보내는](data-export/export-data-to-an-external-table.md) 동안 저장소 제한을 방지 하기 위해 단일 저장소 계정을 제공 합니다. 내보내기는 제공 된 모든 계정 간에 쓰기를 배포 합니다. 
 
 **파티션 구문**
@@ -60,7 +60,7 @@ ms.locfileid: "83227726"
 
 **선택적 속성**:
 
-| 속성         | 유형     | 설명       |
+| 속성         | Type     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -221,9 +221,9 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | 유형   | 설명                       |
+| 출력 매개 변수 | Type   | 설명                       |
 |------------------|--------|-----------------------------------|
-| URI              | 문자열 | 외부 저장소 아티팩트의 URI |
+| URI              | string | 외부 저장소 아티팩트의 URI |
 
 **예:**
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 211ac6cb078e2f61243f4616f9141a6f4834d464
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: bc26c61b9a94c6f21d2c53cae8fc80805b235f75
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82741814"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372808"
 ---
 # <a name="series_fill_backward"></a>series_fill_backward()
 
@@ -23,13 +23,13 @@ ms.locfileid: "82741814"
 
 **구문**
 
-`series_fill_backward(`*x*`[, `*missing_value_placeholder*`])`
+`series_fill_backward(`*x* `[, ` *missing_value_placeholder*`])`
 * 는 뒤로 채워지는 *missing_value_placeholder* 의 모든 인스턴스가 포함 된 series *x* 를 반환 합니다.
 
 **인수**
 
 * *x*: 숫자 값 배열인 동적 배열 스칼라 식입니다.
-* *missing_value_placeholder*:이 선택적 매개 변수는 누락 값에 대 한 자리 표시자를 지정 합니다. 기본값은 `double`(*null*)입니다.
+* *missing_value_placeholder*:이 선택적 매개 변수는 누락 값에 대 한 자리 표시자를 지정 합니다. 기본값은 `double` (*null*)입니다.
 
 **참고 사항**
 
@@ -39,12 +39,13 @@ ms.locfileid: "82741814"
 make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
 ```
 
-* 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. ( `double`*Null*), `long`(*null*) 및 `int`(*null*) 모두 동일한 의미를 갖습니다.
-* *Missing_value_placeholder* 가 ( `double`*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 이러한 *null* 값을 채우려면 다른 보간 함수를 사용 합니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
+* 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. `double`(*Null*), `long` (*null*) 및 `int` (*null*) 모두 동일한 의미를 갖습니다.
+* *Missing_value_placeholder* 가 `double` (*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 이러한 *null* 값을 채우려면 다른 보간 함수를 사용 합니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
 * 함수는 원래 형식의 배열 요소를 유지 합니다.
 
 **예제**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let data = datatable(arr: dynamic)
 [

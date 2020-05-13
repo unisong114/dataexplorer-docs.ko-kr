@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 5394eefad37195833c0c5ebb94325bb540d1f520
-ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
+ms.openlocfilehash: 4500ec5b58c93901e011ea6dd270563d3405ee01
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82907226"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372860"
 ---
 # <a name="series_decompose"></a>series_decompose()
 
@@ -23,7 +23,7 @@ ms.locfileid: "82907226"
  
 **구문**
 
-`series_decompose(`*시리즈* `[,` *계절성* `,` *Seasonality_threshold* *Test_points* *Trend* 추세 Test_points Seasonality_threshold`,` `,``])`
+`series_decompose(`*계열* `[,` *계절성* `,` *추세* `,` *Test_points* `,` *Seasonality_threshold*`])`
 
 **인수**
 
@@ -37,7 +37,7 @@ ms.locfileid: "82907226"
     * "linefit": 선형 회귀를 사용 하 여 추세 구성 요소를 추출 합니다.
     * "none": 추세가 없습니다 .이 구성 요소 추출을 건너뜁니다.    
 * *Test_points*: 0 (기본값) 또는 양의 정수 이며, 학습 (재발) 프로세스에서 제외할 계열의 끝에 있는 점의 수를 지정 합니다. 이 매개 변수는 예측을 위해 설정 되어야 합니다.
-* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다 `0.6`. 기본 점수 임계값은입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
+* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 점수 임계값은 `0.6` 입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
 
 **돌려**
 
@@ -72,6 +72,7 @@ ms.locfileid: "82907226"
 
 다음 예제에서는 계절성를 사용 하 여 매주 및 추세 없이 계열을 생성 하 고 그에 대 한 이상 값을 추가 합니다. `series_decompose`계절성를 찾아서 자동으로 검색 하 고 계절 구성 요소와 거의 동일한 기준을 생성 합니다. 추가한 이상 값은 잔차 구성 요소에서 명확 하 게 볼 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -88,8 +89,9 @@ ts
 
 **추세와 함께 주간 계절성**
 
-이 예제에서는 이전 예제의 계열에 추세를 추가 합니다. 먼저 기본 매개 변수 `series_decompose` 를 사용 하 여를 실행 합니다. 추세 `avg` 기본값은 평균만 사용 하 고 추세를 계산 하지 않습니다. 생성 된 기준선에 추세가 포함 되지 않습니다. 잔차에서 추세를 관찰 하는 경우이 예제가 이전 예제 보다 정확도가 떨어질 수 있습니다.
+이 예제에서는 이전 예제의 계열에 추세를 추가 합니다. 먼저 `series_decompose` 기본 매개 변수를 사용 하 여를 실행 합니다. 추세 `avg` 기본값은 평균만 사용 하 고 추세를 계산 하지 않습니다. 생성 된 기준선에 추세가 포함 되지 않습니다. 잔차에서 추세를 관찰 하는 경우이 예제가 이전 예제 보다 정확도가 떨어질 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -104,8 +106,9 @@ ts
 
 :::image type="content" source="images/samples/series-decompose2.png" alt-text="시리즈 분해 2":::
 
-다음으로 동일한 예제를 다시 실행 합니다. 계열에서 추세를 예상 하므로 trend 매개 변수에서를 지정 `linefit` 합니다. 긍정 추세가 검색 되 고 기준이 입력 계열에 훨씬 더 가까운 것을 볼 수 있습니다. 잔차는 영 (0)에 가깝습니다. 차트에서 계열의 모든 구성 요소를 볼 수 있습니다.
+다음으로 동일한 예제를 다시 실행 합니다. 계열에서 추세를 예상 하므로 `linefit` trend 매개 변수에서를 지정 합니다. 긍정 추세가 검색 되 고 기준이 입력 계열에 훨씬 더 가까운 것을 볼 수 있습니다. 잔차는 영 (0)에 가깝습니다. 차트에서 계열의 모든 구성 요소를 볼 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 

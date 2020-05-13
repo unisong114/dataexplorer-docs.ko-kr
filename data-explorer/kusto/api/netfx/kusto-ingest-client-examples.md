@@ -1,6 +1,6 @@
 ---
-title: Kusto. 수집 참조 수집 코드 예제-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Kusto를 설명 합니다. Azure 데이터 탐색기에서 참조 수집 코드 예제를 수집 합니다.
+title: Kusto. 수집 수집 코드 예제-Azure 데이터 탐색기
+description: 이 문서에서는 Kusto. Azure 데이터 탐색기의 수집 코드 예제를 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,26 +8,25 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/15/2019
-ms.openlocfilehash: ba3232ca1c8a3f587f53ee1c3c6aad3fc12283ad
-ms.sourcegitcommit: 061eac135a123174c85fe1afca4d4208c044c678
+ms.openlocfilehash: caeebf0a94d4e8144f1d00f84ea78f8727947416
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82799682"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373638"
 ---
-# <a name="kustoingest-reference---ingestion-code-examples"></a>Kusto. 수집 참조 수집 코드 예제
-이는 데이터를 Kusto 테이블로 수집 하는 다양 한 기술을 보여 주는 짧은 코드 조각의 모음입니다.
+# <a name="kustoingest-ingestion-code-examples"></a>Kusto. 수집 수집 코드 예제
 
->미리 알림: 이러한 샘플은 수집 하는 즉시 수집 클라이언트를 삭제 하는 것 처럼 보입니다. 이를 그대로 사용 하지 마세요.<BR>수집 클라이언트는 재진입, 스레드로부터 안전 하며, 많은 숫자로 생성 되어서는 안 됩니다. 수집 클라이언트 인스턴스의 권장 카디널리티는 대상 Kusto 클러스터 당 호스트 프로세스별 하나입니다.
+이 짧은 코드 조각 컬렉션은 데이터를 Kusto 테이블로 수집 하는 다양 한 기술을 보여 줍니다.
 
-### <a name="useful-references"></a>유용한 참조
-* [Kusto. 수집 클라이언트 참조](kusto-ingest-client-reference.md)
-* [Kusto 수집 작업 상태](kusto-ingest-client-errors.md)
-* [Kusto. 수집 예외](kusto-ingest-client-errors.md)
-* [Kusto 연결 문자열](../connection-strings/kusto.md)
-* [Kusto 권한 부여 모델](../../management/security-roles.md)
+> [!NOTE]
+> 이러한 예제는 수집 하는 즉시 수집 클라이언트를 삭제 하는 것과 같습니다. 이를 그대로 사용 하지 마십시오.
+> 수집 클라이언트는 재진입 및 스레드로부터 안전 하며, 많은 숫자로 생성 되어서는 안 됩니다. 수집 클라이언트 인스턴스의 권장 카디널리티는 대상 Kusto 클러스터 당 호스트 프로세스별 하나입니다.
 
-### <a name="async-ingestion-from-a-single-azure-blob-using-kustoqueuedingestclient-with-optional-retrypolicy"></a>KustoQueuedIngestClient를 사용 하 여 단일 Azure Blob에서 비동기 수집 (선택 사항) RetryPolicy:
+## <a name="async-ingestion-from-a-single-azure-blob"></a>단일 Azure blob에서 비동기 수집
+
+단일 Azure blob에서 비동기 수집을 위해 선택적 RetryPolicy과 함께 KustoQueuedIngestClient를 사용 합니다.
+
 ```csharp
 //Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderDM =
@@ -56,9 +55,13 @@ await client.IngestFromStorageAsync(uri: @"BLOB-URI-WITH-SAS-KEY", ingestionProp
 client.Dispose();
 ```
 
-### <a name="ingest-from-local-file-using-kustodirectingestclient"></a>KustoDirectIngestClient를 사용 하 여 로컬 파일에서 수집 
+## <a name="ingest-from-local-file"></a>로컬 파일에서 수집 
 
-이 방법은 제한 된 볼륨 및 낮은 빈도 수집에 권장 됩니다.
+KustoDirectIngestClient를 사용 하 여 로컬 파일에서 수집 합니다.
+
+
+> [!NOTE]
+> 제한 된 볼륨 및 낮은 빈도 수집에이 방법을 권장 합니다.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -78,7 +81,10 @@ using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(k
 }
 ```
 
-### <a name="ingest-from-local-files-using-kustoqueuedingestclient-and-ingestion-validation"></a>KustoQueuedIngestClient 및 수집 유효성 검사를 사용 하 여 로컬 파일에서 수집 
+## <a name="ingest-from-local-files-and-validate-ingestion"></a>로컬 파일에서 수집 및 수집 유효성 검사
+
+KustoQueuedIngestClient를 사용 하 여 로컬 파일에서 수집한 다음 수집의 유효성을 검사 합니다.
+
 ```csharp
 // Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderDM =
@@ -110,7 +116,9 @@ Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
 client.Dispose();
 ```
 
-### <a name="ingest-from-a-local-files-using-kustoqueuedingestclient-and-report-status-to-a-queue"></a>KustoQueuedIngestClient를 사용 하 여 로컬 파일에서 수집 및 큐에 상태 보고
+### <a name="ingest-from-local-files-and-report-status-to-a-queue"></a>로컬 파일에서 수집 하 고 큐에 상태를 보고 합니다.
+
+KustoQueuedIngestClient를 사용 하 여 로컬 파일에서 수집한 다음 상태를 큐에 보고 합니다.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -157,7 +165,9 @@ Ensure.ConditionIsMet((ingestionSuccesses.Count() > 0),
 client.Dispose();
 ```
 
-### <a name="ingest-from-a-local-file-using-kustoqueuedingestclient-and-report-status-to-a-table"></a>KustoQueuedIngestClient를 사용 하 여 로컬 파일에서 수집 및 테이블에 상태 보고
+### <a name="ingest-from-local-files-and-report-status-to-a-table"></a>로컬 파일에서 수집 및 보고서 상태를 테이블로 수집
+
+KustoQueuedIngestClient를 사용 하 여 로컬 파일 및 보고서 상태를 테이블로 수집 합니다.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -206,3 +216,11 @@ Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded,
 // Dispose of the client
 client.Dispose();
 ```
+
+## <a name="next-steps"></a>다음 단계
+
+* [Kusto. 수집 클라이언트 참조](kusto-ingest-client-reference.md)
+* [Kusto 수집 작업 상태](kusto-ingest-client-errors.md)
+* [Kusto. 수집 예외](kusto-ingest-client-errors.md)
+* [Kusto 연결 문자열](../connection-strings/kusto.md)
+* [Kusto 권한 부여 모델](../../management/security-roles.md)

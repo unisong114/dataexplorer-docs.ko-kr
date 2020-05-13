@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: db6b060aee3288fb159e8b1cf7feb8554190fe36
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 097e175ff28d334532e85715f1f6401a96fa8f8c
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226502"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83374322"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터 만들기
 
@@ -68,7 +68,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     | 속성 | AllowAzureDataExplorerManagement
     | | |
     
-1. [VNet 배포에 대 한 종속성](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)에 따라 모든 인바운드 및 아웃 바운드 종속성에 대해 이전 두 단계를 반복 합니다. 또는 아웃 바운드 규칙을 단일 규칙으로 대체 하 여 포트 443 및 80에 대 한 *인터넷* 을 허용할 수 있습니다.
+1. [VNet 배포에 대 한 종속성](vnet-deployment.md#dependencies-for-vnet-deployment)에 따라 모든 인바운드 및 아웃 바운드 종속성에 대해 이전 두 단계를 반복 합니다. 또는 아웃 바운드 규칙을 단일 규칙으로 대체 하 여 포트 443 및 80에 대 한 *인터넷* 을 허용할 수 있습니다.
     
     인바운드 및 아웃 바운드 종속성에 대 한 NSG 규칙은 다음과 같습니다.
 
@@ -121,7 +121,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     | | | |
 
     > [!NOTE]
-    > 프로덕션 워크 로드의 경우 [VNet의 계획 서브넷 크기](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet) 에 따라 서브넷 크기를 계획 합니다.
+    > 프로덕션 워크 로드의 경우 [VNet의 계획 서브넷 크기](vnet-deployment.md#plan-subnet-size-in-your-vnet) 에 따라 서브넷 크기를 계획 합니다.
 
 1. **검토 + 만들기**를 선택하여 클러스터 세부 정보를 검토하고 **만들기**를 선택하여 클러스터를 프로비저닝합니다.
 

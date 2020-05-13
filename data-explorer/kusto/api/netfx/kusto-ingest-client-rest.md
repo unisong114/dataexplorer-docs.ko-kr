@@ -9,43 +9,39 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 02/19/2020
-ms.openlocfilehash: 2ea7fd33a6e6ed8728fb12d53fbe76eadf8fd6b6
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 80fe504311ee847afa7244e179974d80485efe46
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862074"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373568"
 ---
-# <a name="howto-data-ingestion-without-kustoingest-library"></a>방법 라이브러리를 사용 하지 않고 데이터 수집을 수집 합니다.
+# <a name="ingestion-without-kustoingest-library"></a>Kusto 수집 라이브러리 없이 수집
 
-## <a name="when-to-consider-not-using-kustoingest-library"></a>Kusto. 수집 라이브러리를 사용 하지 않는 것이 좋습니다.
-일반적으로 kusto. 수집 라이브러리를 사용 하 여 수집 데이터를 Kusto로 간주할 때마다 선호 해야 합니다.<BR>
-이 옵션이 아닌 경우 (일반적으로 OS 제약 조건으로 인해) 거의 동일한 기능을 수행할 수 있는 몇 가지 노력이 필요 합니다.<BR>
-이 문서에서는 Kusto. 수집 패키지에 종속성을 적용 하지 않고 Kusto에 **대기 중인** 수집을 구현 하는 방법을 보여 줍니다.
+Kusto. 수집 라이브러리는 데이터를 Azure 데이터 탐색기로 수집 하는 데 기본 설정 되어 있습니다. 그러나 Kusto. 수집 패키지에 종속 되지 않고도 거의 동일한 기능을 달성할 수 있습니다.
+이 문서에서는 프로덕션 등급 파이프라인에 대 한 Azure 데이터 탐색기에 대 한 *큐* 에 수집을 사용 하 여 방법을 보여 줍니다.
 
->**참고:** 아래 코드는 샘플 코드를 간소화 하기 위해 Azure Storage SDK, ADAL 인증 라이브러리 및 Newtonsoft.json 패키지를 사용 하 여 c #으로 작성 되었습니다.<BR>필요한 경우 해당 코드를 적절 한 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 호출, [non-.NET ADAL 패키지](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) 및 사용 가능한 모든 JSON 처리 패키지로 바꿀 수 있습니다.
+> [!NOTE]
+> 아래 코드는 c #으로 작성 되었으며 Azure Storage SDK, ADAL 인증 라이브러리 및 Newtonsoft.json 패키지를 사용 하 여 샘플 코드를 간소화 합니다. 필요한 경우 해당 코드를 적절 한 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 호출, [non-.NET ADAL 패키지](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)및 사용 가능한 모든 JSON 처리 패키지로 바꿀 수 있습니다.
 
-## <a name="overview"></a>개요
-다음 코드 샘플에서는 Kusto. 수집 라이브러리를 사용 하지 않고, kusto로의 지연 (Kusto 데이터 관리 서비스로 이동)을 보여 줍니다.<BR>
-이는 환경 또는 기타 제한으로 인해 전체 .NET을 액세스할 수 없거나 사용할 수 없는 경우에 유용할 수 있습니다.<BR>
+이 문서에서는 권장 되는 수집 모드를 다룹니다. Kusto. 수집 라이브러리의 경우 해당 엔터티는 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) 인터페이스입니다. 여기서 클라이언트 코드는 azure 큐에 수집 알림 메시지를 게시 하 여 Azure 데이터 탐색기 서비스와 상호 작용 합니다. 메시지에 대 한 참조는 Kusto 데이터 관리 (수집) 서비스에서 가져옵니다. 서비스와의 상호 작용은 Azure Active Directory (Azure AD)를 사용 하 여 인증 되어야 합니다.
 
-> 이 문서에서는 **대기 중인** 수집이 라고도 하는 프로덕션 등급 파이프라인에 대 한 수집의 권장 된 모드를 다룹니다 (Kusto. 수집 라이브러리에서 해당 엔터티는 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) 인터페이스). 이 모드에서 클라이언트 코드는 Azure 큐에 수집 알림 메시지를 게시 하 여 Kusto 서비스와 상호 작용 합니다. 여기서는 Kusto 데이터 관리 (즉, 수집) 서비스. 데이터 관리 서비스와의 상호 작용은 **AAD**로 인증 되어야 합니다.
+다음 코드는 kusto 데이터 관리 서비스에서 Kusto. 수집 라이브러리를 사용 하지 않고 대기 중인 데이터 수집을 처리 하는 방법을 보여 줍니다. 이 예제는 환경 또는 기타 제한 사항으로 인해 전체 .NET을 액세스할 수 없거나 사용할 수 없는 경우에 유용할 수 있습니다.
 
-이 흐름의 개요는 아래 코드 샘플에 설명 되어 있으며 다음과 같이 구성 됩니다.
-1. Azure Storage 클라이언트 만들기 및 blob에 데이터 업로드
-1. Kusto 수집 서비스에 액세스 하기 위한 인증 토큰 가져오기
-2. 다음을 얻기 위해 Kusto 수집 서비스를 쿼리 합니다.
-    * 수집 리소스 (큐 및 blob 컨테이너)
-    * 모든 수집 메시지에 추가 되는 kusto id 토큰
-3. Kusto in (2)에서 가져온 blob 컨테이너 중 하나의 blob에 데이터 업로드
-4. 대상 DB와 테이블을 식별 하 고에서 blob을 가리키는 수집 메시지를 작성 합니다 (3).
-5. (4)에 구성 된 수집 메시지를 Kusto in (2)에서 가져온 수집 큐 중 하나에 게시 합니다.
-6. 수집 중에 서비스에서 발생 한 오류를 검색 합니다.
+이 코드에는 Azure Storage 클라이언트를 만들고 blob에 데이터를 업로드 하는 단계가 포함 되어 있습니다.
+각 단계에 대 한 자세한 내용은 샘플 코드 뒤에 자세히 설명 되어 있습니다.
 
-이후 섹션에서는 각 단계에 대해 자세히 설명 합니다.
+1. [Azure 데이터 탐색기 수집 서비스에 액세스 하기 위한 인증 토큰 가져오기](#obtain-authentication-evidence-from-azure-ad)
+1. Azure 데이터 탐색기 수집 서비스를 쿼리하여 다음을 확인 합니다.
+    * [수집 리소스 (큐 및 blob 컨테이너)](#retrieve-azure-data-explorer-ingestion-resources)
+    * [모든 수집 메시지에 추가 되는 Kusto id 토큰입니다.](#obtain-a-kusto-identity-token)
+1. [Kusto in (2)에서 가져온 blob 컨테이너 중 하나의 blob에 데이터 업로드](#upload-data-to-the-azure-blob-container)
+1. [대상 데이터베이스 및 테이블을 식별 하 고의 blob을 가리키는 수집 메시지를 작성 합니다 (3).](#compose-the-azure-data-explorer-ingestion-message)
+1. [(4)에서 작성 한 수집 메시지를 Azure 데이터 탐색기 (2)에서 가져온 수집 큐에 게시 합니다.](#post-the-azure-data-explorer-ingestion-message-to-the-azure-data-explorer-ingestion-queue)**
+1. [수집 중에 서비스에서 발견 한 오류 검색](#check-for-error-messages-from-the-azure-queue)
 
 ```csharp
-// A container class for ingestion resources we are going to obtain from Kusto
+// A container class for ingestion resources we are going to obtain from Azure Data Explorer
 internal class IngestionResourcesSnapshot
 {
     public IList<string> IngestionQueues { get; set; } = new List<string>();
@@ -57,7 +53,7 @@ internal class IngestionResourcesSnapshot
 
 public static void IngestSingleFile(string file, string db, string table, string ingestionMappingRef)
 {
-    // Your Kusto ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
+    // Your Azure Data Explorer ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
     string DmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
 
     // 1. Authenticate the interactive user (or application) to access Kusto ingestion service
@@ -69,7 +65,7 @@ public static void IngestSingleFile(string file, string db, string table, string
     // 2b. Retrieve Kusto identity token
     string identityToken = RetrieveKustoIdentityToken(DmServiceBaseUri, bearerToken);
 
-    // 3. Upload file to one of the blob containers we got from Kusto.
+    // 3. Upload file to one of the blob containers we got from Azure Data Explorer.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the containers in order to prevent throttling
     long blobSizeBytes = 0;
@@ -80,7 +76,7 @@ public static void IngestSingleFile(string file, string db, string table, string
     // 4. Compose ingestion command
     string ingestionMessage = PrepareIngestionMessage(db, table, blobUriWithSas, blobSizeBytes, ingestionMappingRef, identityToken);
 
-    // 5. Post ingestion command to one of the ingestion queues we got from Kusto.
+    // 5. Post ingestion command to one of the ingestion queues we got from Azure Data Explorer.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the queues in order to prevent throttling
     PostMessageToQueue(ingestionResources.IngestionQueues.First(), ingestionMessage);
@@ -103,17 +99,21 @@ public static void IngestSingleFile(string file, string db, string table, string
 }
 ```
 
-## <a name="1-obtain-authentication-evidence-from-aad"></a>1. AAD에서 인증 증명 정보 가져오기
-여기서는 ADAL을 사용 하 여 입력 큐를 요청 하기 위해 Kusto 데이터 관리 서비스에 액세스 하는 AAD 토큰을 가져옵니다.
+## <a name="using-queued-ingestion-to-azure-data-explorer-for-production-grade-pipelines"></a>프로덕션 등급 파이프라인에 대 한 Azure 데이터 탐색기에 대기 중인 수집 사용
+
+### <a name="obtain-authentication-evidence-from-azure-ad"></a>Azure AD에서 인증 증명 정보 가져오기
+
+여기서는 ADAL을 사용 하 여 Kusto 데이터 관리 서비스에 액세스 하 고 해당 입력 큐를 요청 하는 Azure AD 토큰을 가져옵니다.
 ADAL은 필요한 경우 [비 Windows 플랫폼](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) 에서 사용할 수 있습니다.
+
 ```csharp
-// Authenticates the interactive user and retrieves AAD Access token for specified resource
+// Authenticates the interactive user and retrieves Azure AD Access token for specified resource
 internal static string AuthenticateInteractiveUser(string resource)
 {
-    // Create Auth Context for MSFT AAD:
-    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{AAD Tenant ID or name}");
+    // Create Auth Context for MSFT Azure AD:
+    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{Azure AD Tenant ID or name}");
 
-    // Acquire user token for the interactive user for Kusto:
+    // Acquire user token for the interactive user for Azure Data Explorer:
     AuthenticationResult result =
         authContext.AcquireTokenAsync(resource, "<your client app ID>", new Uri(@"<your client app URI>"),
                                         new PlatformParameters(PromptBehavior.Auto), UserIdentifier.AnyUser, "prompt=select_account").Result;
@@ -121,12 +121,13 @@ internal static string AuthenticateInteractiveUser(string resource)
 }
 ```
 
-## <a name="2-retrieve-kusto-ingestion-resources"></a>2. Kusto 수집 리소스를 검색 합니다.
-여기서는 흥미로운 작업을 수행 합니다. 여기서는 수집 리소스를 반환 하도록 요청 하는 Kusto 데이터 관리 서비스에 대 한 HTTP POST 요청을 수동으로 생성 합니다.
-여기에는 DM 서비스가 수신 대기 하는 큐 및 데이터 업로드를 위한 blob 컨테이너가 포함 됩니다.
+### <a name="retrieve-azure-data-explorer-ingestion-resources"></a>Azure 데이터 탐색기 수집 리소스 검색
+
+수집 리소스의 반환을 요청 하 여 데이터 관리 서비스에 대 한 HTTP POST 요청을 수동으로 생성 합니다. 이러한 리소스에는 DM 서비스가 수신 대기 하는 큐 및 데이터 업로드를 위한 blob 컨테이너가 포함 됩니다.
 데이터 관리 서비스는 이러한 큐 중 하나에 도착 하는 수집 요청을 포함 하는 모든 메시지를 처리 합니다.
+
 ```csharp
-// Retrieve ingestion resources (queues and blob containers) with SAS from specified Kusto Ingestion service using supplied Access token
+// Retrieve ingestion resources (queues and blob containers) with SAS from specified Azure Data Explorer Ingestion service using supplied Access token
 internal static IngestionResourcesSnapshot RetrieveIngestionResources(string ingestClusterBaseUri, string accessToken)
 {
     string ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";
@@ -191,8 +192,10 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 }
 ```
 
-## <a name="obtaining-kusto-identity-token"></a>Kusto Id 토큰 가져오기
-데이터 수집에 대 한 권한을 부여 하는 중요 한 단계는 id 토큰을 가져오고 모든 수집 메시지에 연결 하는 것입니다. 수집 메시지는 비 직접적인 채널 (Azure 큐)을 통해 Kusto에 전달 되므로 대역내 권한 부여 유효성 검사를 수행할 방법이 없습니다. Id 토큰 메커니즘에서는 수집 메시지를 받은 후 Kusto 서비스에서 유효성을 검사할 수 있는 Kusto 서명 id 증명을 발급 하 여이를 허용 합니다.
+### <a name="obtain-a-kusto-identity-token"></a>Kusto id 토큰 가져오기
+
+수집 메시지는 비 직접적인 채널 (Azure 큐)을 통해 Azure 데이터 탐색기에 전달 되므로 Azure 데이터 탐색기 수집 서비스에 액세스 하기 위해 대역 외 권한 부여 유효성 검사를 수행할 수 없습니다. 해결 방법은 모든 수집 메시지에 id 토큰을 연결 하는 것입니다. 토큰은 대역내 권한 부여 유효성 검사를 사용 하도록 설정 합니다. 그러면 수집 메시지를 받을 때 Azure 데이터 탐색기 서비스에서이 서명 된 토큰의 유효성을 검사할 수 있습니다.
+
 ```csharp
 // Retrieves a Kusto identity token that will be added to every ingest message
 internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, string accessToken)
@@ -213,8 +216,10 @@ internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, s
 }
 ```
 
-## <a name="3-upload-data-to-azure-blob-container"></a>3. Azure Blob 컨테이너에 데이터 업로드
-이 단계에서는 나중에 수집을 위해 전달 되는 Azure Blob에 로컬 파일을 업로드 하는 방법에 대해 알아봅니다. 이 코드는 Azure Storage SDK를 사용 하지만이 종속성을 사용할 수 없는 경우 [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-rest-api)를 사용 하 여 동일 하 게 달성할 수 있습니다.
+### <a name="upload-data-to-the-azure-blob-container"></a>Azure Blob 컨테이너에 데이터 업로드
+
+이 단계에서는 수집을 위해 전달 되는 Azure Blob에 로컬 파일을 업로드 하는 방법에 대해 알아봅니다. 이 코드는 Azure Storage SDK를 사용 합니다. 종속성을 사용할 수 없는 경우 [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-rest-api)를 사용 하 여 구현할 수 있습니다.
+
 ```csharp
 // Uploads a single local file to an Azure Blob container, returns blob URI and original data size
 internal static string UploadFileToBlobContainer(string filePath, string blobContainerUri, string containerName, string blobName, out long blobSize)
@@ -233,13 +238,21 @@ internal static string UploadFileToBlobContainer(string filePath, string blobCon
 }
 ```
 
-## <a name="4-compose-kusto-ingestion-message"></a>4. Kusto 수집 메시지 작성
-여기서 Newtonsoft.json 패키지를 다시 사용 하 여 Azure 큐에 게시 되는 올바른 Kusto 데이터 관리 서비스에서 수신 대기 하는 올바른 수집 요청 메시지를 작성 합니다.
-* 수집 메시지의 최소 최소값입니다.
-* 해당 id 토큰은 필수 이며 `AdditionalProperties` JSON 개체에 상주해 야 합니다.
-* 필요할 때마다 `CsvMapping` 또는 `JsonMapping` 속성도 제공 해야 합니다.
-* 자세한 내용은 수집 [매핑 사전 생성 문서를](../../management/create-ingestion-mapping-command.md) 참조 하세요.
-* [부록 a](#appendix-a-ingestion-message-internal-structure) 는 수집 메시지 구조에 대 한 설명을 제공 합니다.
+### <a name="compose-the-azure-data-explorer-ingestion-message"></a>Azure 데이터 탐색기 수집 메시지 작성
+
+Newtonsoft.json 패키지는 대상 데이터베이스 및 테이블을 식별 하는 유효한 수집 요청을 다시 작성 하며이는 blob을 가리킵니다.
+이 메시지는 관련 Kusto 데이터 관리 서비스가 수신 대기 하는 Azure 큐에 게시 됩니다.
+
+다음은 고려해 야 할 몇 가지 사항입니다.
+
+* 이 요청은 수집 메시지의 최소 최소값입니다.
+
+> [!NOTE]
+> Id 토큰은 필수 이며 **AdditionalProperties** JSON 개체의 일부 여야 합니다.
+
+* 필요한 경우 CsvMapping 또는 JsonMapping 속성도 제공 해야 합니다.
+* 자세한 내용은 수집 [매핑 미리 만들기 문서](../../management/create-ingestion-mapping-command.md)를 참조 하세요.
+* 섹션 수집 [메시지 내부 구조](#ingestion-message-internal-structure) 는 수집 메시지 구조에 대 한 설명을 제공 합니다.
 
 ```csharp
 internal static string PrepareIngestionMessage(string db, string table, string dataUri, long blobSizeBytes, string mappingRef, string identityToken)
@@ -264,10 +277,12 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 }
 ```
 
-## <a name="5-post-kusto-ingestion-message-to-kusto-ingestion-queue"></a>5. kusto 수집 큐에 Kusto 수집 메시지 게시
-마지막으로, deed 자체는 자신이 선택한 큐에 생성 한 메시지를 게시 합니다.<BR>
-참고: .Net 저장소 클라이언트를 사용 하는 경우 기본적으로 base64로 메시지를 인코딩합니다. [저장소 문서](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage)를 참조 하세요.<BR>
-해당 클라이언트를 사용 하지 않는 경우 메시지 콘텐츠를 제대로 인코딩해야 합니다.
+### <a name="post-the-azure-data-explorer-ingestion-message-to-the-azure-data-explorer-ingestion-queue"></a>Azure 데이터 탐색기 수집 큐에 Azure 데이터 탐색기 수집 메시지 게시
+
+마지막으로, 생성 한 메시지를 Azure 데이터 탐색기에서 가져온 선택 된 수집 큐에 게시 합니다.
+
+> [!NOTE]
+> .Net 저장소 클라이언트를 사용 하면 기본적으로 base64로 메시지를 인코딩합니다. 자세한 내용은 [저장소 문서](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage)를 참조 하세요. 해당 클라이언트를 사용 하지 않는 경우 메시지 콘텐츠를 올바르게 인코딩해야 합니다.
 
 ```csharp
 internal static void PostMessageToQueue(string queueUriWithSas, string message)
@@ -279,9 +294,9 @@ internal static void PostMessageToQueue(string queueUriWithSas, string message)
 }
 ```
 
-## <a name="6-pop-messages-from-an-azure-queue"></a>6. Azure 큐에서 메시지를 팝 합니다.
-사후 수집에서이 메서드를 사용 하 여 Kusto 데이터 관리 service에 의해 작성 된 적절 한 큐에서 오류 메시지를 읽습니다.<BR>
-[부록 B](#appendix-b-ingestion-failure-message-structure) 는 오류 메시지 구조에 대 한 설명을 제공 합니다.
+### <a name="check-for-error-messages-from-the-azure-queue"></a>Azure 큐에서 오류 메시지를 확인 합니다.
+
+수집 후에는 데이터 관리에서 기록 하는 관련 큐에서 오류 메시지를 확인 합니다. 실패 메시지 구조에 대 한 자세한 내용은 수집 [실패 메시지 구조](#ingestion-failure-message-structure)를 참조 하세요. 
 
 ```csharp
 internal static IEnumerable<string> PopTopMessagesFromQueue(string queueUriWithSas, int count)
@@ -299,10 +314,13 @@ internal static IEnumerable<string> PopTopMessagesFromQueue(string queueUriWithS
 }
 ```
 
-## <a name="appendix-a-ingestion-message-internal-structure"></a>부록 A: 메시지 내부 구조 수집
-Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예상 하는 메시지는 다음과 같은 형식의 JSON 문서입니다.
+## <a name="ingestion-messages---json-document-formats"></a>수집 메시지-JSON 문서 형식
 
-```json
+### <a name="ingestion-message-internal-structure"></a>수집 메시지 내부 구조
+
+Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예상 하는 메시지는 다음 형식의 JSON 문서입니다.
+
+```JSON
 {
     "Id" : "<Id>",
     "BlobPath" : "https://<AccountName>.blob.core.windows.net/<ContainerName>/<PathToBlob>?<SasToken>",
@@ -318,36 +336,35 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 }
 ```
 
-
-|속성 | Description |
+|속성 | 설명 |
 |---------|-------------|
 |Id |메시지 식별자 (GUID) |
-|BlobPath |읽기/쓰기/삭제 권한을 부여 하는 SAS 키를 포함 하는 blob URI (Kusto가 데이터 수집 완료 되 면 blob을 삭제 하는 경우 쓰기/삭제 권한이 필요 함) |
-|RawDataSize |압축 되지 않은 데이터의 크기 (바이트)입니다. 이 값을 제공 하면 Kusto에서 여러 blob을 함께 집계할 수 있으므로 수집을 최적화할 수 있습니다. 이 속성은 선택 사항 이지만 제공 되지 않은 경우 Kusto는 blob에 액세스 하 여 크기를 검색 합니다. |
+|BlobPath |Blob에 대 한 경로 (URI)입니다. 여기에는 읽기/쓰기/삭제에 대 한 Azure 데이터 탐색기 권한을 부여 하는 SAS 키가 포함 됩니다. Azure 데이터 탐색기가 데이터 수집 완료 되 면 blob을 삭제할 수 있도록 사용 권한이 필요 합니다.|
+|RawDataSize |압축 되지 않은 데이터의 크기 (바이트)입니다. 이 값을 제공 하면 Azure 데이터 탐색기는 잠재적으로 여러 blob을 집계 하 여 수집을 최적화할 수 있습니다. 이 속성은 선택 사항 이지만 지정 하지 않는 경우 Azure 데이터 탐색기는 blob에 액세스 하 여 크기를 검색 합니다. |
 |DatabaseName |대상 데이터베이스 이름 |
 |TableName |대상 테이블 이름 |
-|RetainBlobOnSuccess |로 `true`설정 된 경우 수집이 성공적으로 완료 되 면 blob이 삭제 되지 않습니다. 기본값은 `false`입니다. |
+|RetainBlobOnSuccess |로 설정 된 경우 수집이 `true` 성공적으로 완료 되 면 blob이 삭제 되지 않습니다. 기본값은 `false` |
 |형식 |압축 되지 않은 데이터 형식 |
-|즉시 flush |로 `true`설정 하면 모든 집계가 생략 됩니다. 기본값은 `false`입니다. |
+|즉시 flush |로 설정 하면 `true` 모든 집계가 생략 됩니다. 기본값은 `false` |
 |ReportLevel |성공/오류 보고 수준: 0-실패, 1-없음, 2-모두 |
 |ReportMethod |보고 메커니즘: 0-큐, 1-테이블 |
-|AdditionalProperties |추가 속성 (태그 등) |
+|AdditionalProperties |태그와 같은 추가 속성 |
 
+### <a name="ingestion-failure-message-structure"></a>수집 실패 메시지 구조
 
-## <a name="appendix-b-ingestion-failure-message-structure"></a>부록 B: 수집 실패 메시지 구조
-Kusto 데이터 관리 service에서 입력 Azure 큐를 읽을 것으로 예상 하는 다음 테이블 메시지는 다음과 같은 형식의 JSON 문서입니다.
+입력 Azure 큐에서 읽을 것으로 예상 되는 데이터 관리 메시지는 다음 형식의 JSON 문서입니다.
 
-|속성 | Description |
+|속성 | 설명 |
 |---------|-------------
 |OperationId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 작업 식별자 (GUID)입니다. |
 |데이터베이스 |대상 데이터베이스 이름 |
 |테이블 |대상 테이블 이름 |
 |FailedOn |오류 타임 스탬프 |
-|IngestionSourceId |Kusto 수집에 실패 한 데이터 청크를 식별 하는 GUID |
-|IngestionSourcePath |Kusto 수집에 실패 한 데이터 청크의 경로 (URI) |
+|IngestionSourceId |Azure 데이터 탐색기 수집에 실패 한 데이터 청크를 식별 하는 GUID |
+|IngestionSourcePath |Azure 데이터 탐색기 수집에 실패 한 데이터 청크의 경로 (URI) |
 |세부 정보 |오류 메시지 |
-|오류 코드 |Kusto 오류 코드 ( [여기](kusto-ingest-client-errors.md#ingestion-error-codes)에서 모든 오류 코드 참조) |
+|오류 코드 |Azure 데이터 탐색기 오류 코드 ( [여기](kusto-ingest-client-errors.md#ingestion-error-codes)의 모든 오류 코드 참조) |
 |FailureStatus |오류가 영구적 또는 일시적인 지 여부를 나타냅니다. |
-|RootActivityId |서비스 측에서 작업을 추적 하는 데 사용할 수 있는 kusto 상관 관계 식별자 (GUID)입니다. |
-|OriginatesFromUpdatePolicy |오류가 errorneous [트랜잭션 업데이트 정책](../../management/updatepolicy.md) 으로 인해 발생 했는지 여부를 나타냅니다. |
+|RootActivityId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 Azure 데이터 탐색기 상관 관계 식별자 (GUID) |
+|OriginatesFromUpdatePolicy |오류가 발생 한 [트랜잭션 업데이트 정책](../../management/updatepolicy.md) 으로 인해 오류가 발생 했는지 여부를 나타냅니다. |
 |ShouldRetry | 로 다시 시도 하는 경우 수집이 성공할 수 있는지 여부를 나타냅니다. |

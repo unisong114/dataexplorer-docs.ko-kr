@@ -1,6 +1,6 @@
 ---
-title: ipv4_is_match() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 ipv4_is_match()에 대해 설명합니다.
+title: ipv4_is_match ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 ipv4_is_match ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: aa0646321af2d467c1e4af07fba81ccdc58eff37
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: b63a73efe73223ba7c6bd2b42c6e05a6c60e94b6
+ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81513739"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83271454"
 ---
-# <a name="ipv4_is_match"></a>ipv4_is_match()
+# <a name="ipv4_is_match"></a>ipv4_is_match ()
 
-두 개의 IPv4 문자열을 일치시다.
+두 IPv4 문자열을 찾습니다.
 
 ```kusto
 ipv4_is_match("127.0.0.1", "127.0.0.1") == true
@@ -28,35 +28,36 @@ ipv4_is_match('192.168.1.1', '192.168.1.255', 24) == true
 
 **구문**
 
-`ipv4_is_match(`*Expr1*`, `*Expr2*`[ ,`*접두사 마스크*`])`
+`ipv4_is_match(`*Expr1* `, ` *Expr2* `[ ,` *PrefixMask*`])`
 
 **인수**
 
-* *Expr1*, *Expr2*: IPv4 주소를 나타내는 문자열 표현식입니다. IPv4 문자열은 [IP 접두사 표기술을](#ip-prefix-notation)사용하여 마스커링할 수 있습니다.
-* *접두사 마스크*: 0에서 32까지의 정수는 고려되는 가장 중요한 비트수를 나타냅니다.
+* *Expr1*, *Expr2*: IPv4 주소를 나타내는 문자열 식입니다. [IP 접두사 표기법](#ip-prefix-notation)을 사용 하 여 IPv4 문자열을 마스킹할 수 있습니다.
+* *PrefixMask*: 고려 되는 가장 중요 한 비트 수를 나타내는 0에서 32 사이의 정수입니다.
 
-### <a name="ip-prefix-notation"></a>IP 접두사 표기
+### <a name="ip-prefix-notation"></a>IP 접두사 표기법
 
-슬래시 () `IP-prefix notation` `/`문자를 사용하여 IP 주소를 정의하는 것이 일반적입니다. 슬래시의 왼쪽에 있는 IP`/`주소() 는 기본 IP 주소이고 슬래시()의`/`오른쪽에 있는 숫자(1~32)는 넷마스크의 연속 1비트수입니다. 
+`IP-prefix notation`슬래시 () 문자를 사용 하 여 IP 주소를 정의 하는 것이 일반적인 방법입니다 `/` . 슬래시 ()의 왼쪽에 있는 IP 주소는 `/` 기본 ip 주소이 고, 슬래시 ()의 오른쪽에 있는 숫자 (1 ~ 32)는 `/` 네트워크 마스크에서 연속 된 1 비트의 수입니다. 
 
-예: 192.168.2.0/24에는 연속 비트 24개 또는 점선 소수점 255.255.0을 포함하는 연결된 순/서브넷마스크가 있습니다.
+예: 192.168.2.0/24에는 24 개의 연속 비트를 포함 하는 네트워크/subnetmask와 점으로 구분 된 10 진수 형식의 255.255.255.0이 포함 됩니다.
 
 **반환**
 
-인수 접두사및 선택적 `PrefixMask` 인수에서 계산된 결합된 IP 접두사 마스크를 고려하면서 두 개의 IPv4 문자열은 구문 분석및 비교됩니다.
+인수 접두사에서 계산 된 결합 된 IP 접두사 마스크와 선택적 인수를 고려 하는 동안 두 IPv4 문자열이 구문 분석 되 고 비교 됩니다 `PrefixMask` .
 
 HRESULT = NO_ERROR를
-* `true`: 첫 번째 IPv4 문자열 인수의 긴 표현이 두 번째 IPv4 문자열 인수와 동일한 경우.
-*  `false`: 그렇지 않은 경우.
+* `true`: 첫 번째 IPv4 문자열 인수의 긴 표현이 두 번째 IPv4 문자열 인수와 동일한 경우
+*  `false`그렇지.
 
-두 IPv4 문자열 중 하나에 대한 변환이 성공적이지 `null`않으면 결과가 됩니다.
+두 IPv4 문자열 중 하나에 대 한 변환이 실패 한 경우 결과는가 됩니다 `null` .
 
 **예**
 
-## <a name="ipv4-comparison-equality-cases"></a>IPv4 비교 평등 사례
+## <a name="ipv4-comparison-equality-cases"></a>IPv4 비교 같음 사례
 
-다음 예제는 IPv4 문자열 내에 지정된 IP 접두사 표기와 함께 다양한 IP를 비교합니다.
+다음 예에서는 IPv4 문자열 내에 지정 된 IP 접두사 표기법을 사용 하 여 다양 한 ip를 비교 합니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
 [
@@ -75,8 +76,9 @@ datatable(ip1_string:string, ip2_string:string)
 |192.168.1.1|192.168.1.255/24|1|
 |192.168.1.1/30|192.168.1.255/24|1|
 
-다음 예제는 IPv4 문자열 내에 지정된 IP 접두사 표기법과 `ipv4_is_match()` 함수의 추가 인수로 다양한 IP를 비교합니다.
+다음 예에서는 IPv4 문자열 내에 지정 된 IP 접두사 표기법을 사용 하는 다양 한 IP와 함수의 추가 인수를 비교 합니다 `ipv4_is_match()` .
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)
 [

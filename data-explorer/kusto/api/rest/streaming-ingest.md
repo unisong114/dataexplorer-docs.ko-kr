@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1614a04c5e5bff51f45df914174c967ff9c7d8a2
-ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
+ms.openlocfilehash: 87b68e4a9de42a9a7085238db5919066d577ed1f
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82907088"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373549"
 ---
 # <a name="streaming-ingestion-http-request"></a>스트리밍 수집 HTTP 요청
 
@@ -32,20 +32,20 @@ ms.locfileid: "82907088"
 
 ## <a name="additional-parameters"></a>추가 매개 변수
 
-추가 매개 변수는 & 문자로 구분 `{name}={value}` 되는 URL 쿼리 쌍으로 형식이 지정 됩니다.
+추가 매개 변수는 & 문자로 구분 되는 URL 쿼리 쌍으로 형식이 지정 됩니다 `{name}={value}` .
 
 | 매개 변수    | 설명                                                                          | 필수/선택   |
 |--------------|--------------------------------------------------------------------------------------|---------------------|
-|`streamFormat`| 요청 본문에 있는 데이터의 형식을 지정 합니다. 값은, `CSV` `TSV`, `SCsv`, `SOHsv` `PSV` `JSON`,,, `MultiJSON`, `Avro`중 하나 여야 합니다. 자세한 내용은 [지원 되는 데이터 형식](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)을 참조 하세요.| 필수 |
-|`mappingName` | 테이블에 정의 된 미리 만든 수집 매핑의 이름입니다. 자세한 내용은 [데이터 매핑](../../management/mappings.md)을 참조 하세요. 테이블에서 미리 생성 된 매핑을 관리 하는 방법은 [여기](../../management/create-ingestion-mapping-command.md)에 설명 되어 있습니다.| 선택 사항 이지만가 `streamFormat` `JSON`, `MultiJSON`또는 중 하나인 경우에는 필수입니다.`Avro`|  |
+|`streamFormat`| 요청 본문에 있는 데이터의 형식을 지정 합니다. 값은,,,,, `CSV` , `TSV` `SCsv` `SOHsv` `PSV` `JSON` `MultiJSON` , `Avro` 중 하나 여야 합니다. 자세한 내용은 [지원 되는 데이터 형식](../../../ingestion-supported-formats.md)을 참조 하세요.| 필수 |
+|`mappingName` | 테이블에 정의 된 미리 만든 수집 매핑의 이름입니다. 자세한 내용은 [데이터 매핑](../../management/mappings.md)을 참조 하세요. 테이블에서 미리 생성 된 매핑을 관리 하는 방법은 [여기](../../management/create-ingestion-mapping-command.md)에 설명 되어 있습니다.| 선택 사항 이지만 `streamFormat` 가 `JSON` , 또는 중 하나인 경우에는 필수입니다. `MultiJSON``Avro`|  |
               
-예를 들어 CSV 형식의 데이터를 데이터베이스 `Logs` `Test`의 테이블로 수집 하려면 다음을 사용 합니다.
+예를 들어 CSV 형식의 데이터를 데이터베이스의 테이블로 수집 하려면 `Logs` 다음을 사용 합니다 `Test` .
 
 ```
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Csv HTTP/1.1
 ```
 
-미리 만든 매핑을 `mylogmapping`사용 하 여 JSON 형식 데이터를 수집 하려면 다음을 사용 합니다.
+미리 만든 매핑을 사용 하 여 JSON 형식 데이터를 수집 하려면 `mylogmapping` 다음을 사용 합니다.
 
 ```
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&mappingName=mylogmapping HTTP/1.1
@@ -57,14 +57,14 @@ POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&m
 
 |표준 헤더   | 설명                                                                               | 필수/선택 | 
 |------------------|-------------------------------------------------------------------------------------------|-------------------|
-|`Accept`          | 이 값을로 `application/json`설정 합니다.                                                     | Optional          |
-|`Accept-Encoding` | 지원 되는 `gzip` 인코딩은 `deflate`및입니다.                                             | Optional          | 
+|`Accept`          | 이 값을로 설정 `application/json` 합니다.                                                     | Optional          |
+|`Accept-Encoding` | 지원 되는 인코딩은 `gzip` 및 `deflate` 입니다.                                             | Optional          | 
 |`Authorization`   | [인증](./authentication.md)을 참조 하세요.                                                | 필수          |
 |`Connection`      | `Keep-Alive`을 사용하도록 설정합니다.                                                                      | Optional          |
 |`Content-Length`  | 알려진 경우 요청 본문 길이를 지정 합니다.                                              | Optional          |
-|`Content-Encoding`| 로 `gzip` 설정 되지만 본문은 gzip으로 압축 되어야 합니다.                                        | Optional          |
+|`Content-Encoding`| 로 설정 `gzip` 되지만 본문은 gzip으로 압축 되어야 합니다.                                        | Optional          |
 |`Expect`          | `100-Continue`로 설정합니다.                                                                    | Optional          |
-|`Host`            | 을 요청을 보낸 도메인 이름 (예:, `help.kusto.windows.net`)으로 설정 합니다. | 필수          |
+|`Host`            | 을 요청을 보낸 도메인 이름 (예:,)으로 설정 `help.kusto.windows.net` 합니다. | 필수          |
 
 다음 표에서는 쿼리 및 관리 작업에 대 한 일반적인 사용자 지정 헤더를 포함 합니다. 별도로 지정 하지 않는 한 헤더는 원격 분석 용도로만 사용 되며 기능에는 영향을 주지 않습니다.
 

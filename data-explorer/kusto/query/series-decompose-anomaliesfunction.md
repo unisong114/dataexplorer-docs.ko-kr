@@ -1,5 +1,5 @@
 ---
-title: series_decompose_anomalies ()-Azure 데이터 탐색기 | Microsoft Docs
+title: series_decompose_anomalies ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 series_decompose_anomalies ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019
-ms.openlocfilehash: 51ac499690323b1d2bafb4dc20ab7773f5c99c63
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 0cd2fc2e395ad47cff29589298ba7ae694fce941
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618913"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83372899"
 ---
 # <a name="series_decompose_anomalies"></a>series_decompose_anomalies()
 
@@ -23,7 +23,7 @@ ms.locfileid: "82618913"
 
 **구문**
 
-`series_decompose_anomalies (`*계열* `[, ` *임계값* `,` *Trend* *AD_method* *Seasonality* `,` *Seasonality_threshold* *Test_points* 계절성 추세`, ` Test_points`, ` AD_method Seasonality_threshold`,``])`
+`series_decompose_anomalies (`*계열* `[, ` *임계값* `,` *계절성* `,` *추세* `, ` *Test_points* `, ` *AD_method* `,` *Seasonality_threshold*`])`
 
 **인수**
 
@@ -41,7 +41,7 @@ ms.locfileid: "82618913"
 * *AD_method*: 남아 있는 시계열에서 변칙 검색 방법 ( [series_outliers](series-outliersfunction.md)참조)을 제어 하는 문자열입니다.    
     * " [ctukey": 사용자](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) 지정 10-90 백분위 범위를 사용 하는.
     * 표준 25-75 번째 백분위 수 범위를 사용 하는 백분위 수 범위를 사용 하는 " [고 키"](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) :.
-* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 `0.6` 점수 임계값은입니다 (자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)참조).
+* *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 점수 임계값은입니다 `0.6` (자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)참조).
 
 
 **돌려**
@@ -59,12 +59,13 @@ ms.locfileid: "82618913"
 2. 잔차 시리즈에서 선택한 변칙 검색 방법과 [series_outliers ()](series-outliersfunction.md) 를 적용 하 여 ad_score 계열을 계산 합니다.
 3. Ad_score에 임계값을 적용 하 여 ad_flag 계열을 계산 합니다.
  
-**예제**
+**예**
 
 **1. 주간 계절성의 변칙 검색**
 
 다음 예에서는 주간 계절성를 사용 하 여 계열을 생성 한 다음, 일부 이상 값을 추가 합니다. `series_decompose_anomalies`계절성를 자동으로 검색 하 고 반복 패턴을 캡처하는 기준선을 생성 합니다. 추가한 이상 값은 ad_score 구성 요소에서 명확 하 게 파악할 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -81,8 +82,9 @@ ts
 
 **2. 추세를 사용 하 여 주간 계절성의 변칙 검색**
 
-이 예제에서는 이전 예제의 계열에 추세를 추가 합니다. 먼저 추세 `avg` 기본값 값 `series_decompose_anomalies` 이 평균을 취하고 추세를 계산 하지 않는 기본 매개 변수를 사용 하 여를 실행 합니다. 생성 된 기준선에 추세가 포함 되지 않고 추세를 계산 하지 않는 것을 볼 수 있습니다. 따라서 데이터에 삽입 된 이상 값 중 일부는 더 높은 분산으로 인해 검색 되지 않습니다.
+이 예제에서는 이전 예제의 계열에 추세를 추가 합니다. 먼저 `series_decompose_anomalies` 추세 기본값 값이 평균을 취하고 추세를 계산 하지 않는 기본 매개 변수를 사용 하 여를 실행 합니다 `avg` . 생성 된 기준선에 추세가 포함 되지 않고 추세를 계산 하지 않는 것을 볼 수 있습니다. 따라서 데이터에 삽입 된 이상 값 중 일부는 더 높은 분산으로 인해 검색 되지 않습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -99,8 +101,9 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 
 :::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="추세와 함께 주간 계절성 이상 값" border="false":::
 
-다음으로 동일한 예제를 실행 하지만 계열에서 추세를 예상 하므로 trend 매개 변수에서를 지정 `linefit` 합니다. 기준이 입력 계열에 훨씬 더 가까운 것을 볼 수 있습니다. 삽입 한 모든 이상 값이 검색 되 고 일부 거짓 긍정도 검색 됩니다 (임계값을 조정 하는 다음 예제 참조).
+다음으로 동일한 예제를 실행 하지만 계열에서 추세를 예상 하므로 `linefit` trend 매개 변수에서를 지정 합니다. 기준이 입력 계열에 훨씬 더 가까운 것을 볼 수 있습니다. 삽입 한 모든 이상 값이 검색 되 고 일부 거짓 긍정도 검색 됩니다 (임계값을 조정 하는 다음 예제 참조).
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -121,6 +124,7 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 
 이전 예제에서는 잘못 된 수 만큼의 소음이 발생 한 것으로 감지 되었습니다 .이 예제에서는 변칙 검색 임계값을 기본값인 1.5에서 2.5로 늘려 더 강력한 변칙만 검색 되도록 합니다. 이제 데이터에 삽입 된 이상 값만 검색 됨을 확인할 수 있습니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 

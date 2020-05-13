@@ -1,6 +1,6 @@
 ---
-title: 쿼리 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 쿼리에 대해 설명합니다.
+title: 쿼리-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 쿼리를 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,23 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 2ac338600320d3f83a92e22e405f630ee308df2f
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: fb842bcda70c2986bd754f55184413eec594d412
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81510781"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373123"
 ---
 # <a name="queries"></a>쿼리
 
-쿼리는 Kusto Engine 클러스터의 수집된 데이터에 대한 읽기 전용 작업입니다. 쿼리는 항상 클러스터의 특정 데이터베이스컨텍스트에서 실행됩니다(다른 데이터베이스또는 다른 클러스터의 데이터도 참조할 수 있음).
+쿼리는 Kusto Engine 클러스터의 수집 데이터에 대 한 읽기 전용 작업입니다. 쿼리는 항상 클러스터에 있는 특정 데이터베이스의 컨텍스트에서 실행 됩니다 (다른 데이터베이스의 데이터 또는 다른 클러스터 에서도 참조 될 수도 있음).
 
-Kusto의 최상위 시나리오인 Kusto 쿼리 언어 구문은 데이터에 대한 쿼리를 작성하고 실행하고 각 쿼리가 수행하는 작업을 논리적으로 명확하게 이해할 수 있도록 최적화되어 있습니다.
+데이터의 임시 쿼리는 Kusto에 대 한 우선 순위가 가장 높은 시나리오로, Kusto 쿼리 언어 구문은 데이터에 대해 쿼리를 작성 하 고 실행 하는 비 전문 사용자에 게 최적화 되어 있으며 각 쿼리가 수행 하는 작업 (논리적)을 명확 하 게 파악할 수 있습니다.
 
-언어 구문은 "데이터"가 실제로 "테이블 형식 데이터"(하나 이상의 행/열 직사각형 모양의 데이터)를 의미하는 데이터 흐름의 구문입니다. 최소한 쿼리는 소스 데이터 참조(Kusto 테이블에 대한 참조)와 연산자 구분을 구분하기 위해 파이프 문자()를`|`사용하여 시각적으로 표시된 하나 이상의 **쿼리 연산자로** 구성됩니다.
+언어 구문은 데이터 흐름의 의미입니다. 여기서 "data"는 "테이블 형식 데이터" (하나 이상의 행/열 직사각형 모양의 데이터)를 의미 합니다. 최소한 쿼리는 원본 데이터 참조 (Kusto 테이블에 대 한 참조)와 시퀀스에서 적용 되는 하나 이상의 **쿼리 연산자로** 구성 됩니다 .이는 파이프 문자 ()를 사용 하 여 연산자를 구분 하 여 시각적으로 표시 `|` 합니다.
 
 다음은 그 예입니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State == 'FLORIDA' and StartTime > datetime(2000-01-01)

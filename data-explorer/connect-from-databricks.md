@@ -7,21 +7,21 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 7e1c7dd313f42884132fe014367c0402418be708
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 1853b85215da63a753a7867cb9d4354c5b99731a
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81497201"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373971"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Python을 사용하여 Azure Databricks에서 Azure Data Explorer에 연결
 
 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)는 Microsoft Azure 플랫폼에 대해 최적화된 Apache Spark 기반 분석 플랫폼입니다. 이 문서에서는 Azure Databricks에서 Python 라이브러리를 사용하여 Azure Data Explorer에서 데이터에 액세스하는 방법을 보여 줍니다. 디바이스 로그인 및 Azure AD(Azure Active Directory) 앱을 포함하여 Azure Data Explorer로 인증하는 방법에는 여러 가지가 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
-- [Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기.](/azure/data-explorer/create-cluster-database-portal)
-- [Azure 데이터 브릭 작업 영역을 만듭니다.](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace) **Azure Databricks 서비스** 아래 **가격 책정 계층** 드롭다운 목록에서 **프리미엄**을 선택합니다. 이를 선택하면 Azure Databricks 비밀을 사용하여 자격 증명을 저장하고 Notebook 및 작업에서 이를 참조할 수 있습니다.
+- [Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다](create-cluster-database-portal.md).
+- [Azure Databricks 작업 영역을 만듭니다](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). **Azure Databricks 서비스** 아래 **가격 책정 계층** 드롭다운 목록에서 **프리미엄**을 선택합니다. 이를 선택하면 Azure Databricks 비밀을 사용하여 자격 증명을 저장하고 Notebook 및 작업에서 이를 참조할 수 있습니다.
 
 - 다음 사양(샘플 Notebook을 실행하는 데 필요한 최소 설정)을 사용하여 Azure Databricks에서 [클러스터](https://docs.azuredatabricks.net/user-guide/clusters/create.html)를 만듭니다.
 
@@ -73,9 +73,9 @@ https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Azure AD 앱 ID 및 키 저장 및 보호 
 
 Azure Databricks [비밀](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets)을 사용하여 다음과 같이 Azure AD 앱 ID 및 키를 저장하고 보호합니다.
-1. [CLI를 설정합니다.](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli)
-1. [CLI를 설치합니다.](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) 
-1. [인증 설정](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
+1. [CLI를 설정](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli)합니다.
+1. [CLI를 설치](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)합니다. 
+1. [인증을 설정](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication)합니다.
 1. 다음 샘플 명령을 사용하여 [비밀](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets)을 구성합니다.
 
     ```databricks secrets create-scope --scope adx```

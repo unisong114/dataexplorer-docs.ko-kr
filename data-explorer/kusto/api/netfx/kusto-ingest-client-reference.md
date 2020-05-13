@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1d3c3939a5c8b3a5f1e6f1fa0b40f9b927ee5325
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: d2e42ce3de656a3e137245786596e454c36ccbef
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226060"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373618"
 ---
 # <a name="kustoingest-client-interfaces-and-factory-classes"></a>Kusto. 클라이언트 인터페이스 및 팩터리 클래스 수집
 
@@ -359,7 +359,7 @@ KustoIngestionProperties 클래스에는 수집 프로세스를 세부적으로 
 |AvroMapping |각 열에 대해 Avro 레코드의 필드 이름을 정의 합니다. **AVRO 수집에 필수** |
 |ValidationPolicy |데이터 유효성 검사 정의. 자세한 내용은 [TODO]를 참조 하십시오. |
 |형식 |수집 되는 데이터의 형식입니다. |
-|AdditionalProperties | 수집 [속성](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) 으로 수집 명령에 전달 되는 기타 속성입니다. 수집 속성이이 클래스의 개별 멤버에 표시 되지 않기 때문에 속성이 전달 됩니다.|
+|AdditionalProperties | 수집 [속성](../../../ingestion-properties.md) 으로 수집 명령에 전달 되는 기타 속성입니다. 수집 속성이이 클래스의 개별 멤버에 표시 되지 않기 때문에 속성이 전달 됩니다.|
 
 ```csharp
 public class KustoIngestionProperties
