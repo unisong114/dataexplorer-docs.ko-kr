@@ -1,5 +1,5 @@
 ---
-title: Kusto SDK 클라이언트 쪽 추적 제어 및 억제-Azure 데이터 탐색기
+title: SDK 클라이언트 쪽 추적 제어 또는 표시 안 함-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 Kusto SDK 클라이언트 쪽 추적을 제어 하 고 억제 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/23/2018
-ms.openlocfilehash: 159036bbbe6e0415f56b36827b1913cba90fb705
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 8ef966cb2be70ddca6fb5ab10813abe12cb5bce1
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226179"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83382355"
 ---
 # <a name="controlling-and-suppressing-kusto-sdk-client-side-tracing"></a>Kusto SDK 클라이언트 쪽 추적 제어 및 억제
 

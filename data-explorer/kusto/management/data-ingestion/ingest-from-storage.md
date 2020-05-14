@@ -1,5 +1,5 @@
 ---
-title: 명령 수집 (저장소에서 데이터 끌어오기)-Azure 데이터 탐색기 | Microsoft Docs
+title: Kusto 명령 (저장소에서 데이터 끌어오기)-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 명령을 수집 (저장소에서 데이터 끌어오기) 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 05d62aaa7b123f7f6d02b784402fd06335e155b2
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: fcab02ee032d1009cf31e36963c44cc6b12358e3
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373419"
+ms.locfileid: "83382015"
 ---
 # <a name="the-ingest-into-command-pull-data-from-storage"></a>명령 수집 (저장소에서 데이터 끌어오기)
 
@@ -45,7 +45,7 @@ ms.locfileid: "83373419"
 명령의 결과는 명령에 의해 생성 된 데이터 분할 ("익스텐트") 만큼의 레코드를 포함 하는 테이블입니다.
 데이터 분할 생성 되지 않은 경우에는 빈 (0 값) 익스텐트 ID를 사용 하 여 단일 레코드가 반환 됩니다.
 
-|속성       |Type      |설명                                                                |
+|속성       |Type      |Description                                                                |
 |-----------|----------|---------------------------------------------------------------------------|
 |ExtentId   |`guid`    |명령으로 생성 된 데이터 분할에 대 한 고유 식별자입니다.|
 |ItemLoaded |`string`  |이 레코드와 관련 된 하나 이상의 저장소 아티팩트입니다.             |

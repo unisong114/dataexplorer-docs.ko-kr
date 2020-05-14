@@ -1,5 +1,5 @@
 ---
-title: Kusto. 수집 권한 수집-Azure 데이터 탐색기
+title: Kusto. 수집 권한-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 Kusto 수집 사용 권한을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 3fd516b7201c5e857417ca13bade668f32f25161
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 6b649a06262153f80c4c35374e55a206be02c781
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226162"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83382287"
 ---
 # <a name="kustoingest---ingestion-permissions"></a>Kusto. 수집-수집 권한
 
 이 문서에서는 수집 작업을 위해 서비스에 설정 하는 데 필요한 권한을 설명 `Native` 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Kusto 서비스 및 데이터베이스에서 권한 부여 설정을 확인 하 고 수정 하려면 [kusto 제어 명령을](../../management/security-roles.md)참조 하세요.
 

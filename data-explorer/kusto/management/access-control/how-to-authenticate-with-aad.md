@@ -1,5 +1,5 @@
 ---
-title: Azure 데이터 탐색기 Access에 대해 AAD를 사용 하 여 인증 하는 방법-Azure 데이터 탐색기 | Microsoft Docs
+title: 액세스를 위해 AAD를 사용 하 여 인증 하려면 kusto 인증-Azure 데이터 탐색기
 description: 이 문서에서는 azure 데이터 탐색기에서 Azure 데이터 탐색기 액세스에 대해 AAD를 사용 하 여 인증 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 09/13/2019
-ms.openlocfilehash: b7e2120f158093e07e096b200b96ac3e265ae2e0
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 34a0e5cd7107827cd97eb0baf9a3d40b408b2024
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82861989"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83382080"
 ---
 # <a name="how-to-authenticate-with-aad-for-azure-data-explorer-access"></a>Azure 데이터 탐색기 액세스를 위해 AAD를 사용 하 여 인증 하는 방법
 
@@ -46,7 +46,7 @@ Azure 데이터 탐색기에 액세스 하는 데 권장 되는 방법은 **Azur
 
 ## <a name="specifying-the-aad-resource-for-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 AAD 리소스 지정
 
-AAD에서 액세스 토큰을 획득 하는 경우 클라이언트는 토큰을 발급 해야 하는 **aad 리소스** 를 aad에 알려야 합니다. Azure 데이터 탐색기 끝점의 AAD 리소스는 포트 정보와 경로를 제외 하 고 끝점의 URI입니다. 예를 들면 다음과 같습니다.
+AAD에서 액세스 토큰을 획득 하는 경우 클라이언트는 토큰을 발급 해야 하는 **aad 리소스** 를 aad에 알려야 합니다. Azure 데이터 탐색기 끝점의 AAD 리소스는 포트 정보와 경로를 제외 하 고 끝점의 URI입니다. 다음은 그 예입니다.
 
 ```txt
 https://help.kusto.windows.net
@@ -58,16 +58,16 @@ https://help.kusto.windows.net
 
 AAD는 다중 테 넌 트 서비스 이며, 모든 조직은 AAD에서 **디렉터리** 라는 개체를 만들 수 있습니다. 디렉터리 개체는 사용자 계정, 응용 프로그램 및 그룹과 같은 보안 관련 개체를 포함 합니다. AAD는 종종 디렉터리를 **테 넌 트**로 참조 합니다. AAD 테 넌 트가 GUID (**테 넌 트 ID**)로 식별 됩니다. 대부분의 경우에는 AAD 테 넌 트가 조직의 도메인 이름으로 식별 될 수도 있습니다.
 
-예를 들어 "Contoso" 라는 조직에는 테 넌 트 ID `4da81d62-e0a8-4899-adad-4349ca6bfe24` 및 도메인 이름이 `contoso.com`있을 수 있습니다.
+예를 들어 "Contoso" 라는 조직에는 테 넌 트 ID `4da81d62-e0a8-4899-adad-4349ca6bfe24` 및 도메인 이름이 있을 수 있습니다 `contoso.com` .
 
 ## <a name="specifying-the-aad-authority"></a>AAD 인증 기관 지정
 
 AAD에는 인증을 위한 여러 끝점이 있습니다.
 
-* 인증 되는 보안 주체를 호스트 하는 테 넌 트를 알고 있는 경우 즉, 사용자 또는 응용 프로그램이 있는 AAD 디렉터리를 알고 있는 경우 AAD 끝점은 `https://login.microsoftonline.com/{tenantId}`입니다.
-  여기서 `{tenantId}` 는 AAD의 조직의 테 넌 트 ID 또는 해당 도메인 이름 (예: `contoso.com`)입니다.
+* 인증 되는 보안 주체를 호스트 하는 테 넌 트를 알고 있는 경우 즉, 사용자 또는 응용 프로그램이 있는 AAD 디렉터리를 알고 있는 경우 AAD 끝점은 `https://login.microsoftonline.com/{tenantId}` 입니다.
+  여기서 `{tenantId}` 는 AAD의 조직의 테 넌 트 ID 또는 해당 도메인 이름 (예: `contoso.com` )입니다.
 
-* 인증 되는 보안 주체를 호스트 하는 테 넌 트를 알 수 없는 경우 "common" 끝점은 `{tenantId}` 위의 값을 값 `common`으로 바꿔 사용할 수 있습니다.
+* 인증 되는 보안 주체를 호스트 하는 테 넌 트를 알 수 없는 경우 "common" 끝점은 위의 값을 값으로 바꿔 사용할 수 있습니다 `{tenantId}` `common` .
 
 > [!NOTE]
 > 인증에 사용 되는 AAD 끝점은 **aad AUTHORITY URL** 또는 단순히 **aad authority**라고도 합니다.
@@ -83,11 +83,11 @@ Azure 데이터 탐색기 SDK를 사용 하는 경우 AAD 토큰은 사용자 �
 
 ## <a name="user-authentication"></a>사용자 인증
 
-사용자 인증을 사용 하 여 Azure 데이터 탐색기에 액세스 하는 가장 쉬운 방법은 Azure 데이터 탐색기 SDK를 사용 `Federated Authentication` 하 고 azure 데이터 탐색기 연결 문자열의 속성 `true`을로 설정 하는 것입니다. SDK를 처음 사용 하 여 서비스에 요청을 보낼 때 사용자에 게 AAD 자격 증명을 입력 하는 로그인 양식이 표시 되 고 인증에 성공 하면 요청이 전송 됩니다.
+사용자 인증을 사용 하 여 Azure 데이터 탐색기에 액세스 하는 가장 쉬운 방법은 Azure 데이터 탐색기 SDK를 사용 하 고 `Federated Authentication` azure 데이터 탐색기 연결 문자열의 속성을로 설정 하는 것입니다 `true` . SDK를 처음 사용 하 여 서비스에 요청을 보낼 때 사용자에 게 AAD 자격 증명을 입력 하는 로그인 양식이 표시 되 고 인증에 성공 하면 요청이 전송 됩니다.
 
-Azure 데이터 탐색기 SDK를 사용 하지 않는 응용 프로그램은 AAD 서비스 보안 프로토콜 클라이언트를 구현 하는 대신 AAD 클라이언트 라이브러리 (ADAL)를 계속 사용할 수 있습니다. .NET 응용 프로그램https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet에서 작업을 수행 하는 예제는 []를 참조 하세요.
+Azure 데이터 탐색기 SDK를 사용 하지 않는 응용 프로그램은 AAD 서비스 보안 프로토콜 클라이언트를 구현 하는 대신 AAD 클라이언트 라이브러리 (ADAL)를 계속 사용할 수 있습니다. https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet.Net 응용 프로그램에서 작업을 수행 하는 예제는 []를 참조 하세요.
 
-Azure 데이터 탐색기 액세스에 대 한 사용자를 인증 하려면 먼저 응용 프로그램에 위임 `Access Kusto` 된 권한을 부여 해야 합니다. 자세한 내용은 [Kusto의 AAD 응용 프로그램 프로 비전 가이드](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application) 를 참조 하세요.
+Azure 데이터 탐색기 액세스에 대 한 사용자를 인증 하려면 먼저 응용 프로그램에 위임 된 권한을 부여 해야 합니다 `Access Kusto` . 자세한 내용은 [Kusto의 AAD 응용 프로그램 프로 비전 가이드](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application) 를 참조 하세요.
 
 다음 간단한 코드 조각은 ADAL을 사용 하 여 Azure 데이터 탐색기에 액세스 하는 AAD 사용자 토큰을 획득 하는 방법을 보여 줍니다 (로그온 UI 시작).
 
@@ -195,7 +195,7 @@ Native client 흐름과 마찬가지로 두 개의 AAD 응용 프로그램 (서�
 
 AdalJs는 access_token 호출을 수행 하기 전에 id_token을 받아야 합니다.
 
-액세스 토큰은 `AuthenticationContext.login()` 메서드를 호출 하 여 가져오며, access_tokens은를 호출 `Authenticationcontext.acquireToken()`하 여 가져옵니다.
+액세스 토큰은 메서드를 호출 하 여 가져오며 `AuthenticationContext.login()` , access_tokens은를 호출 하 여 가져옵니다 `Authenticationcontext.acquireToken()` .
 
 * 올바른 구성을 사용 하 여 AuthenticationContext를 만듭니다.
 
@@ -210,9 +210,9 @@ var config = {
 var authContext = new AuthenticationContext(config);
 ```
 
-* 에 `authContext.login()` 로그인 하지 않은 `acquireToken()` 경우를 시도 하기 전에를 호출 합니다. 로그인 했는지 여부를 확인 하는 좋은 방법은를 호출 `authContext.getCachedUser()` 하 고 반환 `false`되는지 확인 하는 것입니다.
-* 페이지가 `authContext.handleWindowCallback()` 로드 될 때마다를 호출 합니다. 이는 AAD에서 리디렉션을 다시 가로채서 조각 URL에서 토큰을 가져와서 캐시 하는 코드 부분입니다.
-* 이제 `authContext.acquireToken()` 를 호출 하 여 유효한 ID 토큰이 있는 실제 액세스 토큰을 가져옵니다. AcquireToken에 대 한 첫 번째 매개 변수는 Kusto 서버 AAD 응용 프로그램 리소스 URL이 됩니다.
+* 에 `authContext.login()` 로그인 하지 않은 경우를 시도 하기 전에를 호출 `acquireToken()` 합니다. 로그인 했는지 여부를 확인 하는 좋은 방법은를 호출 하 `authContext.getCachedUser()` 고 반환 되는지 확인 하는 것입니다 `false` .
+* `authContext.handleWindowCallback()`페이지가 로드 될 때마다를 호출 합니다. 이는 AAD에서 리디렉션을 다시 가로채서 조각 URL에서 토큰을 가져와서 캐시 하는 코드 부분입니다.
+* 이제를 호출 `authContext.acquireToken()` 하 여 유효한 ID 토큰이 있는 실제 액세스 토큰을 가져옵니다. AcquireToken에 대 한 첫 번째 매개 변수는 Kusto 서버 AAD 응용 프로그램 리소스 URL이 됩니다.
 
 ```javascript
  authContext.acquireToken("<Kusto cluster URL>", callbackThatUsesTheToken);

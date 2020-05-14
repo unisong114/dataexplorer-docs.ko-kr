@@ -1,5 +1,5 @@
 ---
-title: AAD (Azure Active Directory) 인증-Azure 데이터 탐색기 | Microsoft Docs
+title: AAD (kusto Azure Active Directory) 인증-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 AAD (Azure Active Directory) 인증을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 09/13/2019
-ms.openlocfilehash: 17da89206af12e2e4f7d9867372c8babf0c4aea1
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 85d01c9192c71b3274907e5f93e4155b4c98accf
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862091"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83382219"
 ---
 # <a name="azure-active-directory-aad-authentication"></a>AAD (Azure Active Directory) 인증
 
@@ -71,7 +71,7 @@ Kusto 클라이언트 라이브러리는 ADAL(AAD 클라이언트 라이브러�
 2. AAD 클라이언트 애플리케이션 ID
 3. AAD 클라이언트 리소스 ID
 4. AAD ReplyUrl (AAD 서비스가 인증 후에 리디렉션되는 URL이 성공적으로 완료 됩니다. 그런 다음 ADAL은이 리디렉션을 캡처하고 인증 코드를 추출 합니다.
-5. 클러스터 URI ('https://Cluster-and-region.kusto.windows.net')입니다.
+5. 클러스터 URI (' https://Cluster-and-region.kusto.windows.net ')입니다.
 
 ADAL에서 Kusto 클라이언트 라이브러리로 반환 되는 토큰은 Kusto AAD 서버 응용 프로그램을 대상으로 하며 "Access Kusto" 권한을 범위로 사용 합니다.
 

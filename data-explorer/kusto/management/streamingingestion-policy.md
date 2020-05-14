@@ -1,5 +1,5 @@
 ---
-title: 스트리밍 수집 정책 관리-Azure 데이터 탐색기 | Microsoft Docs
+title: Kusto streaming 수집 정책 관리-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 스트리밍 수집 정책 관리에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 76844b764a8e21629c7d936f4c269d7d3ab1ec8c
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 1c3ce0c0d383d07375333b08de336503d1578b1a
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373324"
+ms.locfileid: "83381998"
 ---
 # <a name="streaming-ingestion-policy-management"></a>스트리밍 수집 정책 관리
 
@@ -34,7 +34,7 @@ ms.locfileid: "83373324"
 
 이 명령은 다음 열이 있는 테이블을 반환 합니다.
 
-|Column    |Type    |설명
+|Column    |형식    |Description
 |---|---|---
 |PolicyName|`string`|정책 이름-StreamingIngestionPolicy
 |EntityName|`string`|데이터베이스 또는 테이블 이름
@@ -53,7 +53,7 @@ ms.locfileid: "83373324"
 
 ### <a name="streaming-ingestion-policy-object"></a>스트리밍 수집 정책 개체
 
-|속성  |Type    |설명                                                       |
+|속성  |형식    |Description                                                       |
 |----------|--------|------------------------------------------------------------------|
 |NumberOfRowStores |`int`  |엔터티에 할당 된 행 저장소 수|
 |SealIntervalLimit|`TimeSpan?`|테이블에서 밀봉 작업 사이의 간격에 대 한 제한 (옵션)입니다. 유효한 범위는 1 시간에서 24 시간 사이입니다. 기본값: 24시간.|

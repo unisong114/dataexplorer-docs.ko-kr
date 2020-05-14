@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: 76ae07e2e7bdbb15900385b1e2feab0c9ff97d01
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 41c6f7868d5300dc6a7234ee774ad8c78b08c36e
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373624"
+ms.locfileid: "83382185"
 ---
 # <a name="kustoingest-ingestion-status-reporting"></a>Kusto 수집 수집 상태 보고
 
@@ -139,7 +139,7 @@ public class IngestionStatus
 
 ### <a name="status-enumeration"></a>상태 열거
 
-|Value              |의미                                                                                     |임시/영구
+|값              |의미                                                                                     |임시/영구
 |-------------------|-----------------------------------------------------------------------------------------------------|---------|
 |Pending            |수집 작업의 결과에 따라 수집 중에 값이 변경 될 수 있습니다. |임시|
 |성공          |데이터가 성공적으로 수집.                                                              |영구| 
@@ -202,7 +202,7 @@ public enum IngestionReportMethod
 
 `IKustoIngestionResult`메서드는 Azure 테이블의 상태를 확인 하는 경우에만 해당 됩니다. Azure 큐에 보고 된 상태를 쿼리하려면 다음 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) 메서드를 사용 합니다.
 
-|방법                                  |용도     |
+|메서드                                  |목적     |
 |----------------------------------------|------------|
 |PeekTopIngestionFailures                |요청 된 메시지에 대 한 제한으로 인해 아직 삭제 되지 않은 가장 이른 수집 오류에 대 한 정보를 반환 하는 비동기 메서드입니다. |
 |GetAndDiscardTopIngestionFailures       |요청 된 메시지에 대 한 제한으로 인해 아직 삭제 되지 않은 가장 이른 수집 오류를 반환 하 고 삭제 하는 비동기 메서드입니다. |

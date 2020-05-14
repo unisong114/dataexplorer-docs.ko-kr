@@ -1,5 +1,5 @@
 ---
-title: 방법 라이브러리를 사용 하지 않고 데이터 수집을 수집 합니다.-Azure 데이터 탐색기 | Microsoft Docs
+title: 수집 라이브러리 없이 kusto 데이터 수집-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 Kusto. 수집 라이브러리 없이 방법 데이터 수집을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 02/19/2020
-ms.openlocfilehash: 80fe504311ee847afa7244e179974d80485efe46
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 96409849823850ef9fd939f9e359d75d3e6d5bf1
+ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373568"
+ms.locfileid: "83382151"
 ---
 # <a name="ingestion-without-kustoingest-library"></a>Kusto 수집 라이브러리 없이 수집
 
@@ -336,7 +336,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 }
 ```
 
-|속성 | 설명 |
+|속성 | Description |
 |---------|-------------|
 |Id |메시지 식별자 (GUID) |
 |BlobPath |Blob에 대 한 경로 (URI)입니다. 여기에는 읽기/쓰기/삭제에 대 한 Azure 데이터 탐색기 권한을 부여 하는 SAS 키가 포함 됩니다. Azure 데이터 탐색기가 데이터 수집 완료 되 면 blob을 삭제할 수 있도록 사용 권한이 필요 합니다.|
@@ -344,7 +344,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 |DatabaseName |대상 데이터베이스 이름 |
 |TableName |대상 테이블 이름 |
 |RetainBlobOnSuccess |로 설정 된 경우 수집이 `true` 성공적으로 완료 되 면 blob이 삭제 되지 않습니다. 기본값은 `false` |
-|형식 |압축 되지 않은 데이터 형식 |
+|서식 |압축 되지 않은 데이터 형식 |
 |즉시 flush |로 설정 하면 `true` 모든 집계가 생략 됩니다. 기본값은 `false` |
 |ReportLevel |성공/오류 보고 수준: 0-실패, 1-없음, 2-모두 |
 |ReportMethod |보고 메커니즘: 0-큐, 1-테이블 |
@@ -354,7 +354,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 
 입력 Azure 큐에서 읽을 것으로 예상 되는 데이터 관리 메시지는 다음 형식의 JSON 문서입니다.
 
-|속성 | 설명 |
+|속성 | Description |
 |---------|-------------
 |OperationId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 작업 식별자 (GUID)입니다. |
 |데이터베이스 |대상 데이터베이스 이름 |
