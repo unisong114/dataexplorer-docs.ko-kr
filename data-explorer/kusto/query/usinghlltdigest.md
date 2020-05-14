@@ -1,5 +1,5 @@
 ---
-title: 집계의 중간 결과 분할 및 작성-Azure 데이터 탐색기
+title: 중간 집계 결과를 작성 하 & kusto 파티션-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 집계의 중간 결과를 분할 하 고 작성 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
@@ -10,16 +10,16 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 8085f2347501c313c857a262bc9de6ec7280c90c
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: ce86e24fbd13221fe333f281dac3ba3b6ac73a1f
+ms.sourcegitcommit: da7c699bb62e1c4564f867d4131d26286c5223a8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83224547"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83404239"
 ---
 # <a name="partitioning-and-composing-intermediate-results-of-aggregations"></a>집계의 중간 결과 분할 및 작성
 
-지난 7 일 동안 매일 고유한 사용자 수를 계산 하려는 경우 `summarize dcount(user)`지난 7 일간 필터링 된 범위를 사용 하 여 하루에 한 번 실행할 수 있습니다. 이 방법은 계산을 실행할 때마다 6 일이 이전 계산과 중복 되기 때문에 비효율적입니다. 또한 각 날짜에 대 한 집계를 계산한 다음 이러한 집계를 결합할 수 있습니다. 이 메서드를 사용 하려면 마지막 6 개 결과를 "명심" 해야 하지만 훨씬 더 효율적입니다.
+지난 7 일 동안 매일 고유한 사용자 수를 계산 하려는 경우를 가정해 보겠습니다. `summarize dcount(user)`지난 7 일간 필터링 된 범위를 사용 하 여 하루에 한 번 실행할 수 있습니다. 이 방법은 비효율적입니다. 계산이 실행 될 때마다 이전 계산과 6 일이 겹칩니다. 또한 각 날짜에 대 한 집계를 계산한 다음 이러한 집계를 결합할 수 있습니다. 이 메서드를 사용 하려면 마지막 6 개 결과를 "명심" 해야 하지만 훨씬 더 효율적입니다.
 
 에 설명 된 대로 쿼리를 분할 하는 것은 및와 같은 간단한 집계에 쉽게 사용할 수 `count()` `sum()` 있습니다. 및 등의 복잡 한 집계에도 유용할 수 있습니다 `dcount()` `percentiles()` . 이 항목에서는 Kusto에서 이러한 계산을 지 원하는 방법을 설명 합니다.
 
@@ -27,7 +27,7 @@ ms.locfileid: "83224547"
 
 > [!NOTE]
 > 일부 경우에는 또는 집계 함수에 의해 생성 된 동적 개체가 `hll` `tdigest` 크고 인코딩 정책의 기본 MaxValueSize 속성을 초과할 수 있습니다. 이 경우 개체는 null로 수집 됩니다.
-예를 들어 정확도 수준 4를 사용 하 여 함수의 출력을 유지 하는 경우 `hll` 개체의 크기가 `hll` 1mb 인 기본 MaxValueSize를 초과 합니다.
+예를 들어 정확도 수준 4를 사용 하 여 함수의 출력을 유지 하는 경우 `hll` 개체의 크기는 `hll` 기본 MaxValueSize (1mb)를 초과 합니다.
 
 ```kusto
 range x from 1 to 1000000 step 1
@@ -39,7 +39,7 @@ range x from 1 to 1000000 step 1
 |---|
 |1.0000524520874|
 
-이러한 종류의 정책을 적용 하기 전에이를 테이블로 수집 null을 수집 합니다.
+이러한 종류의 정책을 적용 하기 전에이 개체를 테이블에 수집 null을 수집 합니다.
 
 ```kusto
 .set-or-append MyTable <| range x from 1 to 1000000 step 1
@@ -143,7 +143,7 @@ PageViewsHllTDigest
 
 ::: zone-end
 
-이러한 값의 최종 결과를 가져와야 하는 경우 쿼리에서 hll/tdigest 인수를 사용할 수 있습니다. [`hll-merge()`](hll-merge-aggfunction.md) / [`tdigest_merge()`](tdigest-merge-aggfunction.md) 그런 다음 병합 된 값을 가져온 후 [`percentile_tdigest()`](percentile-tdigestfunction.md)  /  [`dcount_hll()`](dcount-hllfunction.md) 이러한 병합 된 값에 대해를 호출 하 여 또는 백분위 수의 최종 결과를 가져올 `dcount` 수 있습니다.
+이러한 값의 최종 결과를 가져와야 하는 경우 쿼리에는 인수를 사용할 수 있습니다 `hll` / `tdigest` [`hll-merge()`](hll-merge-aggfunction.md) / [`tdigest_merge()`](tdigest-merge-aggfunction.md) . 그런 다음 병합 된 값을 가져온 후 [`percentile_tdigest()`](percentile-tdigestfunction.md)  /  [`dcount_hll()`](dcount-hllfunction.md) 이러한 병합 된 값에 대해를 호출 하 여 최종 결과 또는 백분위 수를 가져올 수 있습니다 `dcount` .
 
 데이터를 매일 수집 하는 테이블, 즉 매일 1 분에 표시 되는 페이지의 고유 개수를 계산 하고자 하는 테이블을 가정 합니다 (2016-05-01 18:00:00.0000000).
 
@@ -176,12 +176,12 @@ PageViewsHllTDigest
 |2016-05-02 00:00:00.0000000|83486|64135183|
 |2016-05-03 00:00:00.0000000|72247|13685621|
 
-이는 성능이 더 우수 하 고 쿼리가 더 작은 테이블에 대해 실행 됩니다 .이 예에서는 첫 번째 쿼리가 ~ 215M 개의 레코드를 실행 하는 반면 두 번째 쿼리는 32 개 이상의 레코드를 실행 합니다.
+이 쿼리는 더 작은 테이블에서 실행 되므로 성능이 더 우수 합니다. 이 예에서 첫 번째 쿼리는 215M 개 이상의 레코드를 실행 하는 반면 두 번째 쿼리는 32 개 레코드를 초과 하 여 실행 됩니다.
 
 **예제**
 
 보존 쿼리입니다.
-각 위키백과 페이지가 표시 된 시간을 요약 하는 테이블이 있다고 가정 합니다 (샘플 크기는 10M). 각 날짜/시간을 찾으려면 date1 (date1 < date2)에 표시 된 페이지를 기준으로 날짜 1과 날짜 2 모두에서 검토 된 페이지의 비율을 확인 합니다.
+각 위키백과 페이지가 표시 되는 시간을 요약 하는 테이블이 있다고 가정 합니다 (샘플 크기는 10M). 각 날짜/시간을 찾으려면 date1 (date1 < date2)에 표시 된 페이지를 기준으로 날짜 1과 날짜 2 모두에서 검토 된 페이지의 백분율을 찾으려고 합니다.
   
 간단한 방법은 join 및 요약 연산자를 사용 하는 것입니다.
 
@@ -220,7 +220,7 @@ on $left.Day1 == $right.Day
  
 위의 쿼리는 18 초 정도 걸렸습니다.
 
-, 및의 함수를 사용 하는 경우 [`hll()`](hll-aggfunction.md) [`hll_merge()`](hll-merge-aggfunction.md) [`dcount_hll()`](dcount-hllfunction.md) 해당 쿼리는 ~ 1.3 초 후에 종료 되 고 `hll` 함수는 위의 쿼리를 ~ 14 회까지 속도를 보여 줍니다.
+, 및 함수를 사용 하는 경우 [`hll()`](hll-aggfunction.md) [`hll_merge()`](hll-merge-aggfunction.md) [`dcount_hll()`](dcount-hllfunction.md) 해당 쿼리는 ~ 1.3 초 후에 종료 되 고 `hll` 함수에서 쿼리 속도를
 
 ```kusto
 let Stats=PageViewsSample | summarize pagehll=hll(Page, 2) by day=startofday(Timestamp); // saving the hll values (intermediate results of the dcount values)
@@ -248,4 +248,4 @@ Stats
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.5160020350006|
 
 > [!NOTE] 
-> 함수의 오류로 인해 쿼리 결과가 100% 정확 하지 않습니다 `hll` . ( 오류에 대 한 자세한 내용은를 참조 하십시오 [`dcount()`](dcount-aggfunction.md) .
+> 함수의 오류로 인해 쿼리 결과가 100% 정확 하지 않습니다 `hll` . 오류에 대 한 자세한 내용은을 참조 하십시오 [`dcount()`](dcount-aggfunction.md) .

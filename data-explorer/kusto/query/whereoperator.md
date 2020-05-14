@@ -1,6 +1,6 @@
 ---
-title: where operator-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Azure 데이터 탐색기의 where 연산자 (, contains, startswith, endswith, matches regex)를 설명 합니다.
+title: Kusto 쿼리 언어의 where 연산자-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 where 연산자에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fadf8aa8c21dac364793c73a38e68d55fc2a6f6d
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 7dc9d7166a1f286e14c81f269f32f894cbe9ff9d
+ms.sourcegitcommit: da7c699bb62e1c4564f867d4131d26286c5223a8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83370364"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83404171"
 ---
 # <a name="where-operator"></a>where 연산자
 
@@ -61,9 +61,9 @@ Traces
     and ActivityId == SubActivityId 
 ```
 
-1 시간 보다 오래 된 레코드 이며 "MyCluster" 라는 원본에서 가져온 것 이며 값이 같은 두 개의 열이 있습니다. 
+이 예제에서는 1 시간 보다 오래 된 레코드를 검색 하 고, 라는 소스에서 가져온 `MyCluster` 다음, 값이 같은 두 개의 열을 포함 합니다. 
 
-참고로 마지막 두 열은 인덱스를 이용할 수 없고 스캔을 강제로 실행하므로 해당 두 열 사이에 비교를 넣습니다.
+인덱스를 사용할 수 없고 검색을 강제 적용할 수 없기 때문에 두 열을 마지막에 비교 합니다.
 
 **예제**
 
