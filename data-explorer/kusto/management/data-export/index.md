@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/09/2019
-ms.openlocfilehash: e779571251baa6e87953e546d71adb98e7cfde61
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 88bb9e6541d9dc5c934affc8f777f836aad86ae1
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490398"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373487"
 ---
 # <a name="data-export"></a>데이터 내보내기
 
@@ -21,10 +21,7 @@ ms.locfileid: "81490398"
 
 데이터를 내보내는 몇 가지 방법은 다음과 같습니다.
 
-* **클라이언트 쪽 내보내기**: 가장 간단한 형태의 데이터 내보내기는 클라이언트 쪽에서 수행할 수 있습니다. 즉 클라이언트에서 서비스에 대해 쿼리를 실행하고, 결과를 다시 읽은 다음, 어딘가에 기록합니다. 이 형태의 데이터 내보내기는 가장 일반적으로 도구가 실행되는 로컬 파일 시스템으로 내보내는 클라이언트 도구에 따라 달라집니다. 이 모델을 지원하는 도구 중에는 [Kusto.Explorer](../../tools/kusto-explorer.md), [웹 UI](https://docs.microsoft.com/azure/data-explorer/web-query-data) 
-
-
- 등이 있습니다.
+* **클라이언트 쪽 내보내기**: 가장 간단한 형태의 데이터 내보내기는 클라이언트 쪽에서 수행할 수 있습니다. 즉 클라이언트에서 서비스에 대해 쿼리를 실행하고, 결과를 다시 읽은 다음, 어딘가에 기록합니다. 이 형태의 데이터 내보내기는 가장 일반적으로 도구가 실행되는 로컬 파일 시스템으로 내보내는 클라이언트 도구에 따라 달라집니다. 이 모델을 지원하는 도구 중에는 [Kusto.Explorer](../../tools/kusto-explorer.md), [웹 UI](../../../web-query-data.md) 등이 있습니다.
 
 * **서비스 쪽 내보내기(끌어오기)** : 내보내기 대상이 Kusto 테이블(쿼리와 동일한 클러스터/데이터베이스에 있거나 다른 클러스터/데이터베이스에 있음)인 경우 대상 테이블에서 "쿼리에서 수집" 흐름을 사용합니다. 이 흐름에서는 쿼리가 실행되고, 해당 결과가 Kusto 테이블에 즉시 수집됩니다. [데이터 수집](../data-ingestion/index.md)을 참조하세요.
 

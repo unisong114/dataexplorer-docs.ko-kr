@@ -1,5 +1,5 @@
 ---
-title: 개요 - Azure Data Explorer | Microsoft Docs
+title: 개요 - Azure Data Explorer
 description: 이 문서에서는 Azure Data Explorer의 개요를 설명합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/07/2019
-ms.openlocfilehash: 1c6c3cafef35c1292292e86da69a4d6ec03bb87c
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 7f36e5239ba183b87ab04349b873a0182363def7
+ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490279"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83226485"
 ---
 # <a name="overview"></a>개요
 
@@ -26,6 +26,7 @@ Kusto 쿼리는 데이터를 처리하고 결과를 반환하기 위한 읽기 �
 
 예를 들어 다음 Kusto 쿼리에는 테이블 형식 식 명령문인 단일 명령문이 포함되어 있습니다. 이 문은 `StormEvents` 테이블에 대한 참조로 시작됩니다. 이 테이블을 호스트하는 데이터베이스는 연결 문자열의 일부인 암시적 항목입니다. 해당 테이블의 데이터(행)는 `StartTime` 열의 값과 `State` 열의 값을 기준으로 하여 차례로 필터링됩니다. 그리고 나면 쿼리가 필터링 후에 남은 행의 개수를 반환합니다.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)
