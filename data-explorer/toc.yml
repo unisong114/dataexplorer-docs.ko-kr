@@ -1572,53 +1572,53 @@
                 - name: 코드 분석기
                   href: ./kusto/tools/kusto-explorer-code-analyzer.md
             - name: 웹 UI
-              href: 'https://docs.microsoft.com/azure/data-explorer/web-query-data'
+              href: ./web-query-data.md
             - name: Kusto.Cli
               href: ./kusto/tools/kusto-cli.md
         - name: '시각화, 대시보드 및 보고'
           items:
             - name: Azure Notebooks
-              href: 'https://docs.microsoft.com/azure/data-explorer/azure-notebooks'
+              href: ./azure-notebooks.md
             - name: Excel
               items:
                 - name: Excel 빈 쿼리
-                  href: 'https://docs.microsoft.com/azure/data-explorer/excel-blank-query'
+                  href: ./excel-blank-query.md
                 - name: Excel 커넥터
-                  href: 'https://docs.microsoft.com/azure/data-explorer/excel-connector'
+                  href: ./excel-connector.md
             - name: Grafana
-              href: 'https://docs.microsoft.com/azure/data-explorer/grafana'
+              href: ./grafana.md
             - name: Power BI
               items:
                 - name: Power BI 모범 사례
-                  href: 'https://docs.microsoft.com/azure/data-explorer/power-bi-best-practices'
+                  href: ./power-bi-best-practices.md
                 - name: Power BI 커넥터
-                  href: 'https://docs.microsoft.com/azure/data-explorer/power-bi-connector'
+                  href: ./power-bi-connector.md
                 - name: 가져온 Power BI 쿼리
-                  href: 'https://docs.microsoft.com/azure/data-explorer/power-bi-imported-query'
+                  href: ./power-bi-imported-query.md
                 - name: Power BI SQL 쿼리
-                  href: 'https://docs.microsoft.com/azure/data-explorer/power-bi-sql-query'
+                  href: ./power-bi-sql-query.md
         - name: 오케스트레이션
           items:
             - name: Microsoft Flow(미리 보기)
               items:
                 - name: Microsoft Flow 커넥터
-                  href: 'https://docs.microsoft.com/azure/data-explorer/flow'
+                  href: ./flow.md
                 - name: Microsoft Flow 커넥터 사용 예
-                  href: 'https://docs.microsoft.com/azure/data-explorer/flow-usage'
+                  href: ./flow-usage.md
             - name: Microsoft Logic Apps(미리 보기)
               href: ./kusto/tools/logicapps.md
         - name: 데이터 수집
           items:
             - name: LightIngest
-              href: 'https://docs.microsoft.com/azure/data-explorer/lightingest'
+              href: ./lightingest.md
             - name: Apache Spark 커넥터
-              href: 'https://docs.microsoft.com/azure/data-explorer/spark-connector'
+              href: ./spark-connector.md
         - name: 소스 제어 통합
           items:
             - name: Kusto 동기화
               href: ./kusto/tools/synckusto.md
             - name: Azure Pipelines/DevOps
-              href: 'https://docs.microsoft.com/azure/data-explorer/devops'
+              href: ./devops.md
 - name: 리소스
   items:
     - name: 블로그
