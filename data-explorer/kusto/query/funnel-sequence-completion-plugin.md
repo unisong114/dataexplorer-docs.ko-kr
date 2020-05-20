@@ -48,7 +48,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 * `Period`: 깔때기형 시퀀스의 단계를 완료 하는 데 허용 되는 최대 기간 (기간)으로 시퀀스의 첫 번째 단계에서 측정 됩니다. *MaxSequenceStepWindows* 의 각 값은 별도의 기간을 사용 하 여 깔때기형 분석을 생성 합니다. 
 * `dcount`: `IdColumn` 첫 번째 시퀀스 상태에서 값으로 전환 된의 고유 카운트 기간입니다 `StateColumn` .
 
-**예**
+**예제**
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 

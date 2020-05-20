@@ -51,7 +51,7 @@ T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), st
 |유형: *TimelineColumn*|..|..|..|long|long|
 
 
-**예**
+**예제**
 
 `dcounts`지난 주에 분석 기간의 각 날짜에 대 한 개수와 사용자의 수를 계산 합니다. 
 

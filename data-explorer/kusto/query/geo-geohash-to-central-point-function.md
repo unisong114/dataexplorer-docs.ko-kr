@@ -36,7 +36,7 @@ Geohash 사각형 영역의 중심을 나타내는 지리 공간적 좌표를 �
 > [!NOTE]
 > GeoJSON 형식은 경도 first와 위도 second를 지정 합니다.
 
-**예**
+**예제**
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: fc3fa6b081e48e09ed246144cd72785446395883
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: e6f103d8957416c55a4562fb646e8ccb17ddf1e5
+ms.sourcegitcommit: 9810acae3f1c83b8efe7b952d3bada2ff496b024
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373335"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83444718"
 ---
 # <a name="data-partitioning-policy-preview"></a>데이터 분할 정책 (미리 보기)
 
@@ -178,7 +178,7 @@ ms.locfileid: "83373335"
   * 단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다.
   * 이 속성은 *선택 사항이 며*기본값은입니다 `0` .이 경우에는 500만 레코드의 기본 대상이 적용 됩니다.
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
@@ -212,8 +212,8 @@ ms.locfileid: "83373335"
 
 ### <a name="outliers-in-partitioned-columns"></a>분할 된 열의 이상 값
 
-* 해시 파티션 키에 다른 항목 보다 더 많이 significnatly 값이 포함 된 경우, 예를 들어, 빈 문자열, 제네릭 값 (예: `null` 또는 `N/A` ) 또는 데이터 집합에서 더 많이 발생 하는 엔터티 (예:)를 나타내는 값을 포함 하는 경우 `tenant_id` 클러스터의 노드 간에 분산 된 데이터 배포에 영향을 주어 쿼리 성능이 저하 될 수 있습니다.
-* 균일 범위의 datetime 파티션 키에 열에 포함 된 대부분의 값 (예: 과거 또는 미래의 날짜/시간 값)에서 "far"로 충분 한 비율의 값이 있는 경우 데이터 분할 프로세스가 지나치게 증가 하 고 클러스터에서 추적을 유지 해야 하는 작은 익스텐트가 늘어날 수 있습니다.
+* 해시 파티션 키에 다른 값 보다 훨씬 더 많은 값이 포함 된 경우 (예: 빈 문자열, 일반 값 (예: `null` 또는 `N/A` ) 또는 데이터 집합에서 더 많이 발생 하는 엔터티 (예:)를 나타내는 경우 `tenant_id` , 클러스터의 노드 간에 분산 된 데이터 배포에 영향을 미칠 수 있으며 쿼리 성능이 저하 될 수 있습니다.
+* 균일 범위의 datetime 파티션 키에 열에 포함 된 대부분의 값 (예: 과거 또는 미래의 시간 값)에서 "far"로 충분 한 비율의 값이 있는 경우 데이터 분할 프로세스의 오버 헤드가 증가 하 고 클러스터에서 추적을 유지 해야 하는 작은 익스텐트가 늘어날 수 있습니다.
 
 이러한 두 경우 모두 데이터를 "수정" 하거나 수집 시간 이전 또는 수집 시간 (예: [업데이트 정책](updatepolicy.md)사용)의 모든 관련이 없는 레코드를 필터링 하 여 클러스터에서 데이터 분할의 오버 헤드를 줄여야 합니다.
 

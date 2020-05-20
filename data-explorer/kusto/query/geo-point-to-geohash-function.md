@@ -69,7 +69,7 @@ ms.locfileid: "83226927"
 
 [Geo_point_to_s2cell ()](geo-point-to-s2cell-function.md)도 참조 하세요.
 
-**예**
+**예제**
 
 Geohash로 집계 된 US 스톰 이벤트입니다.
 

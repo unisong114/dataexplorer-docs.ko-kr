@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6a9596b71afabe1e80e866fef7f2a22f6b288631
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 1e173dcba48e8748562bad61e0f16786e957ca83
+ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372399"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83550557"
 ---
 # <a name="session_count-plugin"></a>session_count 플러그 인
 
@@ -35,7 +35,7 @@ T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday
 * *Start*: 분석 시작 기간의 값을 포함 하는 스칼라입니다.
 * *종료*: 분석 종료 기간의 값을 포함 하는 스칼라입니다.
 * *Bin*: 세션 분석 단계 기간의 스칼라 상수 값입니다.
-* *LookBackWindow*: session lookback period를 나타내는 스칼라 상수 값입니다. 의 id가 `IdColumn` 내 시간 창에 표시 되는 경우 `LookBackWindow` 세션은 기존로 간주 되 고, 그렇지 않으면 세션이 새 것으로 간주 됩니다.
+* *LookBackWindow*: session lookback period를 나타내는 스칼라 상수 값입니다. 의 ID가 `IdColumn` 내에서 기간에 표시 되는 경우 `LookBackWindow` 세션은 기존 항목으로 간주 됩니다. ID가 표시 되지 않으면 세션이 새로운 것으로 간주 됩니다.
 * *dim1*, *dim2*, ...: (선택 사항) 세션 수 계산을 조각화 하는 차원 열의 목록입니다.
 
 **반환**
@@ -49,16 +49,15 @@ T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday
 |유형: *TimelineColumn*|..|..|..|long|
 
 
-**예**
+**예제**
 
-
-이 예에서는 다음과 같은 두 개의 열이 있는 테이블에 데이터를 결정적으로 만듭니다.
+이 예에서는 데이터가 결정적 이며 두 개의 열이 있는 테이블을 사용 합니다.
 - 타임 라인: 1에서 1만 사이의 실행 수
 - Id: 사용자의 Id는 1 ~ 50입니다.
 
-`Id``Timeline` `Timeline` (타임 라인% Id = = 0)의 구분선 인 경우 특정 슬롯에 표시 됩니다.
+`Id`는 `Timeline` `Timeline` (타임 라인% Id = = 0)의 구분선 인 경우 특정 슬롯에 표시 됩니다.
 
-즉,를 사용 하는 이벤트는 `Id==1` 모든 슬롯에 표시 되 `Timeline` 고, 이벤트는 `Id==2` 두 번째 슬롯 마다 표시 됩니다 `Timeline` .
+가 있는 이벤트는 `Id==1` 모든 `Timeline` 슬롯, 모든 `Id==2` 초 슬롯에 있는 이벤트 등에 표시 됩니다 `Timeline` .
 
 데이터의 20 줄은 다음과 같습니다.
 

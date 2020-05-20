@@ -32,7 +32,7 @@ ms.locfileid: "83225558"
 
 의 범위에 있는 값이 포함 된 N + 1 배열을 포함 하는 동적 배열입니다 `[0..i1), [i1..i2), ... [iN..array_length)` `arr` . 여기서 n은 입력 인덱스의 수이 고 `i1...iN` 인덱스입니다.
 
-**예**
+**예제**
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

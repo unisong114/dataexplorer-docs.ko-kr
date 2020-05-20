@@ -30,7 +30,7 @@ ms.locfileid: "83225499"
 * *T*: 열 *열* 을 압축을 풀 테이블 형식 입력입니다.
 * *Column*: 압축을 풀 *T* 의 열입니다. 반드시 `dynamic` 형식이어야 합니다.
 * *Outputcolumnprefix*: 플러그 인에서 생성 하는 모든 열에 추가할 일반적인 접두사입니다.
-  선택 사항입니다.
+  (선택 사항)
 
 **반환**
 
@@ -63,7 +63,7 @@ datatable(d:dynamic)
 | evaluate bag_unpack(d)
 ```
 
-|속성  |Age|
+|이름  |Age|
 |------|---|
 |John  |20 |
 |Dave  |40 |

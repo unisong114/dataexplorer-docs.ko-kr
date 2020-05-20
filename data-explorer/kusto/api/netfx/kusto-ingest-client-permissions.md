@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6b649a06262153f80c4c35374e55a206be02c781
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: 2e88ba9af0b9563274e15eff8d1c1f6e997fb45c
+ms.sourcegitcommit: e66c5f4b833b4f6269bb7bfa5695519fcb11d9fa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382287"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83629998"
 ---
-# <a name="kustoingest---ingestion-permissions"></a>Kusto. 수집-수집 권한
+# <a name="kustoingest---ingestion-permissions"></a>Kusto. 수집-수집 권한 
 
 이 문서에서는 수집 작업을 위해 서비스에 설정 하는 데 필요한 권한을 설명 `Native` 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
-
+## <a name="prerequisites"></a>필수 구성 요소
+ 
 * Kusto 서비스 및 데이터베이스에서 권한 부여 설정을 확인 하 고 수정 하려면 [kusto 제어 명령을](../../management/security-roles.md)참조 하세요.
 
 * 다음 예제에서 샘플 보안 응용 프로그램으로 사용 되는 Azure Active Directory (Azure AD) 응용 프로그램:
     * 테스트 Azure AD 앱 (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
     * Kusto 내부 수집 Azure AD 앱 (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
-
+ 
 ## <a name="ingestion-permission-mode-for-queued-ingestion"></a>큐에 있는 수집에 대 한 수집 권한 모드
 
 수집 권한 모드는 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient)에 정의 되어 있습니다. 이 모드는 Azure 데이터 탐색기 서비스에 대 한 클라이언트 코드 종속성을 제한 합니다. 수집은 Kusto 수집 메시지를 Azure 큐에 게시 하 여 수행 됩니다. 수집 서비스 라고도 하는 큐는 Azure 데이터 탐색기 서비스에서 가져온 것입니다. Azure 데이터 탐색기 서비스에서 할당 한 리소스를 사용 하 여 수집 클라이언트에서 중간 저장소 아티팩트를 만듭니다.
 
 이 다이어그램은 Kusto와의 대기 중인 수집 클라이언트 상호 작용을 간략하게 설명 합니다.
 
-:::image type="content" source="../images/queued-ingest.jpg" alt-text="대기 중인 수집":::
+:::image type="content" source="../images/kusto-ingest-client-permissions/queued-ingest.png" alt-text="대기 중인 큐 수집":::
 
 ### <a name="permissions-on-the-engine-service"></a>엔진 서비스에 대 한 사용 권한
 
@@ -55,3 +55,4 @@ ms.locfileid: "83382287"
 .add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 .add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 ```
+ 

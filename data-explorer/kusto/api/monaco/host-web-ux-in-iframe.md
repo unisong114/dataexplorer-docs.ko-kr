@@ -8,20 +8,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: c6b9d1d5cb971b5c9c51cf9f9918562f12323a03
-ms.sourcegitcommit: 061eac135a123174c85fe1afca4d4208c044c678
+ms.openlocfilehash: 348a614c8b3336085a59a113f18f6858f024e8c7
+ms.sourcegitcommit: e66c5f4b833b4f6269bb7bfa5695519fcb11d9fa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82799665"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83630238"
 ---
 # <a name="embed-web-ui-in-an-iframe"></a>웹 UI를 iframe에 포함
 
 Azure 데이터 탐색기 웹 UI는 iframe에 포함 되 고 타사 웹 사이트에서 호스팅될 수 있습니다.
+ 
+:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Azure 데이터 탐색기 웹 UI":::
 
-![대체 텍스트](../images/web-ux.jpg "Azure 데이터 탐색기 웹 UI")
-
-웹 사이트에 Azure 데이터 탐색기 웹 UX를 포함 하면 사용자가 다음을 수행할 수 있습니다.
+사용자는 웹 사이트에 Azure 데이터 탐색기 웹 UX를 포함 하 여 다음과 같은 작업을 수행할 수 있습니다.
 
 - 쿼리 편집 (색 지정 및 intellisense와 같은 모든 언어 기능 포함)
 - 시각적으로 테이블 스키마 탐색
@@ -36,9 +36,9 @@ Azure 데이터 탐색기 웹 UI는 iframe에 포함 되 고 타사 웹 사이�
 
 ## <a name="use-monaco-kusto-or-embed-the-web-ui"></a>모나코를 사용 하 여 웹 UI를 포함 하 시겠습니까?
 
-모나코-Kusto 사용 하면 완성, 색 지정, 리팩터링, 이름 바꾸기 및 정의로 이동으로 편집 환경을 개선할 수 있습니다. 이를 통해 인증, 쿼리 실행, 결과 표시 및 스키마 탐색을 위한 솔루션을 빌드할 수 있습니다. 모나코-Kusto는 사용자의 요구에 맞게 사용자 환경을 완벽 하 게 제공할 수 있는 유연성을 제공 합니다.
+모나코-Kusto는 완료, 색 지정, 리팩터링, 이름 바꾸기, 정의로 이동 등의 편집 환경을 제공 합니다. 이 기능을 사용 하려면 인증, 쿼리 실행, 결과 표시 및 스키마 탐색을 위한 솔루션을 빌드해야 하지만 사용자의 요구에 맞는 사용자 환경을 구현 하는 것은 완벽 한 유연성을 제공 합니다.
 
-Azure 데이터 탐색기 웹 UI를 포함 하면 약간의 노력으로 광범위 한 기능을 제공 합니다. 그러나 포함을 사용 하면 사용자 환경의 유연성이 제한 됩니다. 시스템의 모양과 동작에 대 한 제한 된 제어를 제공 하는 고정 쿼리 매개 변수 집합이 있습니다.
+Azure 데이터 탐색기 웹 UI를 포함 하면 약간의 노력으로 광범위 한 기능을 제공 하지만 사용자 환경에 대해 제한 된 유연성을 제공 합니다. 시스템의 모양과 동작을 제한 하 여 제어할 수 있는 고정 쿼리 매개 변수 집합이 있습니다.
 
 ## <a name="how-to-embed-the-web-ui-in-an-iframe"></a>웹 UI를 iframe에 포함 하는 방법
 
@@ -52,13 +52,13 @@ Azure 데이터 탐색기 웹 UI를 포함 하면 약간의 노력으로 광범�
 ></iframe>
 ```
 
-쿼리 `ibizaPortal` 매개 변수는 인증 토큰을 가져오기 위해 리디렉션하지 *않도록* Azure 데이터 탐색기 웹 UI에 지시 합니다. 호스팅 웹 사이트에서 포함 된 iframe에 인증 토큰을 제공 하는 작업을 담당 하므로이 작업은 필수입니다.
+`ibizaPortal`쿼리 매개 변수는 인증 토큰을 가져오기 위해 리디렉션하지 *않도록* AZURE 데이터 탐색기 웹 UI에 지시 합니다. 호스팅 웹 사이트에서 포함 된 iframe에 인증 토큰을 제공 하는 작업을 담당 하므로이 작업은 필수입니다.
 
-을 `<cluster>` 연결 창에 로드 하려는 클러스터의 호스트 이름으로 바꿉니다 (예: `help.kusto.windows.net`). 기본적으로 iframe 포함 모드는 호스팅 웹 사이트가 필요한 클러스터를 인식 하는 것으로 가정 하므로 UI에서 클러스터를 추가 하는 방법을 제공 하지 않습니다.
+을 `<cluster>` 연결 창에 로드 하려는 클러스터의 호스트 이름 (예:)으로 바꿉니다 `help.kusto.windows.net` . 기본적으로 iframe 포함 모드는 호스팅 웹 사이트가 필요한 클러스터를 인식 하는 것으로 가정 하므로 UI에서 클러스터를 추가 하는 방법을 제공 하지 않습니다.
 
 ### <a name="handle-authentication"></a>인증 처리
 
-1. ' Iframe mode ' (`ibizaPortal=true`)로 설정 되 면 Azure 데이터 탐색기 웹 UI는 인증을 위해 리디렉션을 시도 하지 않습니다. 웹 UI는 브라우저에서 사용 하는 메시지 게시 메커니즘을 사용 하 여 토큰을 요청 하 고 수신 합니다. 페이지를 로드 하는 동안 다음 메시지가 부모 창에 게시 됩니다.
+1. ' Iframe mode ' ()로 설정 되 면 `ibizaPortal=true` Azure 데이터 탐색기 웹 UI는 인증을 위해 리디렉션을 시도 하지 않습니다. 웹 UI는 브라우저에서 사용 하는 메시지 게시 메커니즘을 사용 하 여 토큰을 요청 하 고 수신 합니다. 페이지를 로드 하는 동안 다음 메시지가 부모 창에 게시 됩니다.
 
    ```javascript
    window.parent.postMessage(
@@ -91,26 +91,26 @@ Azure 데이터 탐색기 웹 UI를 포함 하면 약간의 노력으로 광범�
 
 ### <a name="feature-flags"></a>기능 플래그
 
-호스팅 응용 프로그램은 연결 창을 숨기 거 나 다른 클러스터에 대 한 연결을 사용 하지 않도록 설정 하는 등 사용자 환경의 특정 측면을 제어할 수 있습니다.
-이 시나리오에서 웹 탐색기는 기능 플래그를 지원 합니다.
+호스팅 응용 프로그램은 사용자 환경의 특정 측면을 제어할 수 있습니다. 예를 들어 연결 창을 숨기 거 나 다른 클러스터에 대 한 연결을 사용 하지 않도록 설정할 수 있습니다.
+이 시나리오의 경우 웹 탐색기는 기능 플래그를 지원 합니다.
 
-기능 플래그는 url에서 쿼리 매개 변수로 사용할 수 있습니다. 예를 들어 호스팅 응용 프로그램에서 사용 해야 하는 다른 클러스터 추가를 사용 하지 않도록 설정 하려는 경우https://dataexplorer.azure.com/?ShowConnectionButtons=false
+기능 플래그는 url에서 쿼리 매개 변수로 사용할 수 있습니다. 호스팅 응용 프로그램에서 다른 클러스터 추가를 사용 하지 않도록 설정 하려는 경우 다음을 사용 해야 합니다.https://dataexplorer.azure.com/?ShowConnectionButtons=false
 
-| Setting                 | Description                    | 기본값 |
-| ----------------------- | ------------------------------ | ------------- |
-| ShowShareMenu           | 공유 메뉴 항목 표시       | true          |
-| ShowConnectionButtons   | 새 클러스터를 추가 하는 **연결 추가** 단추 표시                                                                                                              | true          |
-| ShowOpenNewWindowButton | 새 브라우저 창을 여는 **웹에 열기** 단추를 표시 합니다. 창이 올바른 클러스터와 범위 https://dataexplorer.azure.com 내 데이터베이스를 가리킵니다.                                                                                                                        | false         |
-| ShowFileMenu            | 파일 메뉴 표시 (**다운로드**, **탭**, **콘텐츠**등)                                                                                                      | true          |
-| ShowToS                 | 설정 대화 상자에서 **Azure 데이터 탐색기에 대 한 서비스 약관에 대 한 링크를** 표시 합니다.                                                                                  | true          |
-| ShowPersona 사용자             | 설정 메뉴의 오른쪽 위 모서리에 사용자 이름을 표시 합니다.                                                                                                      | true          |
-| I프레임 인증              | True 이면 웹 탐색기에서 iframe이 인증을 처리 하 고 메시지를 통해 토큰을 제공 하는 것으로 간주 합니다. 이 프로세스는 iframe 시나리오에서 항상 true입니다.      | false         |
-| PersistAfterEachRun     | 일반적으로 웹 탐색기는 언로드 이벤트에서 유지 됩니다 (iframe에서 호스팅할 때 항상 발생 하지는 않음). 그러면이 플래그는 각 쿼리를 실행 한 후에 **로컬 상태 유지** 를 트리거합니다. 데이터 손실이 발생 하는 경우에만 실행 된 적이 없는 텍스트에만 영향을 주고 영향을 제한 합니다. | false         |
-| ShowSmoothIngestion     | True 이면 데이터베이스를 마우스 오른쪽 단추로 클릭할 때 1 클릭 수집 환경을 표시 합니다.                                                                                        | true          |
-| RefreshConnection       | True 이면 항상 페이지를 로드할 때 스키마를 새로 고치고 로컬 저장소에 종속 되지 않습니다.                                                                          | false         |
-| ShowPageHeader          | True 이면 Azure 데이터 탐색기 제목과 설정을 포함 하는 페이지 머리글을 표시 합니다.                                                                              | true          |
-| HideConnectionPane      | True 이면 왼쪽 연결 창이 표시 되지 않습니다.                                                                                                                      | false         |
-| SkipMonacoFocusOnInit   | Iframe에서 호스팅할 때 포커스 문제를 수정 합니다.                                                                                                                            | false         |
+| 설정                 | Description                                                                                                        | 기본값 |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------- |
+| ShowShareMenu           | 공유 메뉴 항목 표시                                                                                           | true          |
+| ShowConnectionButtons   | 새 클러스터를 추가 하는 **연결 추가** 단추 표시                                                            | true          |
+| ShowOpenNewWindowButton | 웹 UI **에 열기** 단추를 표시 합니다 .이 단추는 새 브라우저 창을 열고 https://dataexplorer.azure.com 범위 내에서 올바른 클러스터 및 데이터베이스를 가리킵니다.           | false         |
+| ShowFileMenu            | 파일 메뉴 표시 (**다운로드**, **탭**, **콘텐츠**등)                                                 | true          |
+| ShowToS                 | 설정 대화 상자에서 **Azure 데이터 탐색기에 대 한 서비스 약관에 대 한 링크를** 표시 합니다.                             | true          |
+| ShowPersona 사용자             | 설정 메뉴의 오른쪽 위 모서리에 사용자 이름을 표시 합니다.                                                 | true          |
+| I프레임 인증              | True 이면 웹 탐색기에서 iframe이 인증을 처리 하 고 메시지를 통해 토큰을 제공 하는 것으로 간주 합니다. 이 프로세스는 iframe 시나리오에서 항상 true입니다.                                                                                                                                      | false         |
+| PersistAfterEachRun     | 일반적으로 웹 탐색기는 unload 이벤트에서 유지 됩니다. Iframe에서 호스트 하는 경우 항상 발생 하지는 않습니다. 그러면이 플래그는 각 쿼리를 실행 한 후에 **로컬 상태 유지** 를 트리거합니다. 결과적으로 발생 하는 데이터 손실은 실행 되지 않은 텍스트에만 영향을 주므로 영향을 제한 합니다.          | false         |
+| ShowSmoothIngestion     | True 이면 데이터베이스를 마우스 오른쪽 단추로 클릭할 때 1 클릭 수집 환경을 표시 합니다.                                   | true          |
+| RefreshConnection       | True 이면 항상 페이지를 로드할 때 스키마를 새로 고치고 로컬 저장소에 종속 되지 않습니다.                      | false         |
+| ShowPageHeader          | True 이면 Azure 데이터 탐색기 제목 및 설정을 포함 하는 페이지 머리글을 표시 합니다.                            | true          |
+| HideConnectionPane      | True 이면 왼쪽 연결 창이 표시 되지 않습니다.                                                                  | false         |
+| SkipMonacoFocusOnInit   | Iframe에서 호스팅할 때 포커스 문제를 수정 합니다.                                                                       | false         |
 
 ### <a name="feature-flag-presets"></a>기능 플래그 사전 설정
 
@@ -127,4 +127,4 @@ ShowPageHeader: false,                                 |
 ```
 
 > [!WARNING]
-> 미리 설정을 사용 하는 경우이를 기반으로 기능 플래그를 더 추가할 수 없습니다. 이 유연성이 필요한 경우 개별 기능 플래그를 사용 해야 합니다.
+> 미리 설정을 사용 하는 경우 그 위에 추가 기능 플래그를 추가할 수 없습니다. 이 유연성이 필요한 경우 개별 기능 플래그를 사용 해야 합니다.

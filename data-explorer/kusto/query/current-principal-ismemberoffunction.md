@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 521165f5b0af31207d587f3d9514e7538d284258
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: fdd062abc02ff1d98ba935fc9016d0a1505e69c3
+ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227343"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83550404"
 ---
 # <a name="current_principal_is_member_of"></a>current_principal_is_member_of()
 
@@ -37,7 +37,7 @@ print current_principal_is_member_of(
 
 **인수**
 
-* *식 목록* -쉼표로 구분 된 문자열 리터럴 목록입니다. 각 리터럴은 다음과 같이 형성 된 FQN (주 정규화 된 이름) 문자열입니다.  
+* *식 목록* -쉼표로 구분 된 문자열 리터럴의 목록이 며 각 리터럴은 다음과 같이 형성 된 FQN (주 정규화 된 이름) 문자열입니다.  
 *PrinciplaType* `=` *Principalid* `;` *TenantId*
 
 | PrincipalType   | FQN 접두사  |
@@ -47,11 +47,11 @@ print current_principal_is_member_of(
 | AAD 응용 프로그램 | `aadapp=`   |
 
 **반환**
-
+  
 함수에서 다음을 반환합니다.
 * `true`: 쿼리를 실행 하는 현재 보안 주체가 하나 이상의 입력 인수와 일치 하는 경우
 * `false`: 쿼리를 실행 하는 현재 보안 주체가 FQN 인수의 멤버가 아니고 `aadgroup=` `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않은 경우
-* `(null)`: 쿼리를 실행 하는 현재 보안 주체가 FQN 인수의 멤버가 아니고 `aadgroup=` `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않고 하나 이상의 FQN 인수가 성공적으로 확인 되지 않은 경우 (AAD에서 제거할 수 없습니다.) 
+* `(null)`: 쿼리를 실행 하는 현재 보안 주체가 FQN 인수의 멤버가 아니고 `aadgroup=` `aaduser=` 또는 `aadapp=` FQN 인수와 같지 않고 하나 이상의 FQN 인수가 성공적으로 확인 되지 않은 경우 (Azure AD에서 누르지 않음) 
 
 > [!NOTE]
 > 함수는 세 번째 상태 값 (, 및)을 반환 하기 때문에 `true` `false` `null` 성공적인 멤버 자격을 확인 하기 위해 긍정 반환 값만 사용 하는 것이 중요 합니다. 즉, 다음 식은 동일 하지 않습니다.
