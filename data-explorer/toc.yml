@@ -272,6 +272,8 @@
               href: flow.md
             - name: Microsoft Flow 커넥터 사용 예
               href: flow-usage.md
+        - name: Logic Apps
+          href: kusto/tools/logicapps.md
         - name: Apache Spark 커넥터
           href: spark-connector.md
         - name: Python을 사용하여 Databricks에서 연결
