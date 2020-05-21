@@ -6,19 +6,19 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: 24c32467b3d8f9a5ab0caae812d766e14e135544
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.date: 05/19/2020
+ms.openlocfilehash: 856749fc15a89ffe18c6b0cba92b62579c3ea8b0
+ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373740"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722136"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON 형식의 샘플 데이터를 Azure 데이터 탐색기 수집
 
 이 문서에서는 JSON 형식의 데이터를 Azure 데이터 탐색기 데이터베이스에 수집 하는 방법을 보여 줍니다. 원시 및 매핑된 JSON의 간단한 예제를 시작 하 고, 여러 줄로 된 JSON을 계속 진행 하 고, 배열 및 사전을 포함 하는 더 복잡 한 JSON 스키마를 다룰 수 있습니다.  이 예에서는 KQL (Kusto query language), c # 또는 Python을 사용 하 여 JSON 형식의 데이터를 수집 하는 프로세스를 자세히 설명 합니다. Kusto 쿼리 언어 `ingest` 제어 명령은 엔진 끝점에 직접 실행 됩니다. 프로덕션 시나리오에서 수집은 클라이언트 라이브러리 또는 데이터 연결을 사용 하 여 데이터 관리 서비스에 대해 실행 됩니다. Azure [데이터 탐색기 Python 라이브러리를 사용 하 여 데이터 수집](python-ingest-data.md) 을 읽고 [AZURE 데이터 탐색기 .NET Standard SDK를 사용 하 여 데이터를 수집 하 여](net-standard-ingest-data.md) 이러한 클라이언트 라이브러리와의 수집 데이터에 대 한 연습을 진행 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)
 
@@ -30,7 +30,7 @@ Azure 데이터 탐색기는 다음과 같은 두 가지 JSON 파일 형식을 �
 
 ### <a name="ingest-and-map-json-formatted-data"></a>JSON 형식의 데이터 수집 및 매핑
 
-JSON 형식 데이터를 수집 하려면 수집 [속성](ingestion-properties.md)을 사용 하 여 *형식을* 지정 해야 합니다. JSON 데이터를 수집 하려면 [매핑이](kusto/management/mappings.md)필요 하며,이는 json 원본 항목을 대상 열에 매핑합니다. 수집 데이터를 사용 하는 경우 미리 정의 된 수집 속성을 사용 `jsonMappingReference` 하거나 수집 속성을 지정 합니다 `jsonMapping` . 이 문서에서는 수집 `jsonMappingReference` 에 사용 되는 테이블에 미리 정의 된 수집 속성을 사용 합니다. 아래 예제에서는 JSON 레코드를 단일 열 테이블에 원시 데이터로 수집 하 여 시작 합니다. 그런 다음 매핑을 사용 하 여 각 속성을 매핑된 열에 수집 합니다. 
+JSON 형식 데이터를 수집 하려면 수집 [속성](ingestion-properties.md)을 사용 하 여 *형식을* 지정 해야 합니다. JSON 데이터를 수집 하려면 [매핑이](kusto/management/mappings.md)필요 하며,이는 json 원본 항목을 대상 열에 매핑합니다. 데이터를 수집 때 속성에 `IngestionMapping` `ingestionMappingReference` (미리 정의 된 매핑의 경우) 수집 속성 또는 해당 속성을 사용 `IngestionMappings` 합니다. 이 문서에서는 수집 `ingestionMappingReference` 에 사용 되는 테이블에 미리 정의 된 수집 속성을 사용 합니다. 아래 예제에서는 JSON 레코드를 단일 열 테이블에 원시 데이터로 수집 하 여 시작 합니다. 그런 다음 매핑을 사용 하 여 각 속성을 매핑된 열에 수집 합니다. 
 
 ### <a name="simple-json-example"></a>간단한 JSON 예
 
@@ -71,7 +71,7 @@ Kusto 쿼리 언어를 사용 하 여 원시 JSON 형식으로 데이터를 수�
 1. JSON 매핑을 만듭니다.
 
     ```kusto
-    .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","path":"$"}]'
+    .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","Properties":{"path":"$"}}]'
     ```
 
     이 명령은 매핑을 만들고 JSON 루트 경로를 `$` 열에 매핑합니다 `Event` .
@@ -79,7 +79,7 @@ Kusto 쿼리 언어를 사용 하 여 원시 JSON 형식으로 데이터를 수�
 1. 데이터를 테이블에 수집 `RawEvents` 합니다.
 
     ```kusto
-    .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
+    .ingest into table RawEvents (h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D') with '{"format":json, "ingestionMappingReference":"DiagnosticRawRecordsMapping"}'
     ```
 
 # <a name="c"></a>[C#](#tab/c-sharp)
@@ -118,13 +118,14 @@ C #을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
     ```csharp
     var tableMapping = "RawEventMapping";
     var command =
-        CslCommandGenerator.GenerateTableJsonMappingCreateCommand(
+        CslCommandGenerator.GenerateTableMappingCreateCommand(
+            Data.Ingestion.IngestionMappingKind.Json,
             tableName,
             tableMapping,
-            new[]
-            {
-                new JsonColumnMapping {ColumnName = "Events", JsonPath = "$"},
-            });
+            new[] {
+            new ColumnMapping {ColumnName = "Events", Properties = new Dictionary<string, string>() {
+                {"path","$"} }
+            } });
 
     kustoClient.ExecuteControlCommand(command);
     ```
@@ -150,10 +151,13 @@ C #을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.json,
-            IngestionMappingReference = tableMapping
+            IngestionMapping = new IngestionMapping()
+            {
+                IngestionMappingReference = tableMapping
+            }
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 > [!NOTE]
@@ -219,7 +223,7 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
 1. JSON 매핑을 만듭니다.
 
     ```kusto
-    .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'
+    .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","Properties":{"path":"$.timestamp"}},{"column":"Device","Properties":{"path":"$.deviceId"}},{"column":"MessageId","Properties":{"path":"$.messageId"}},{"column":"Temperature","Properties":{"path":"$.temperature"}},{"column":"Humidity","Properties":{"path":"$.humidity"}}]'
     ```
 
     테이블 스키마에 정의 된 대로이 매핑에서 항목은 열에 `timestamp` `Time` 데이터 형식으로 수집 됩니다 `datetime` .
@@ -227,7 +231,7 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
 1. 데이터를 테이블에 수집 `Events` 합니다.
 
     ```kusto
-    .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=FlatEventMapping)
+    .ingest into table Events (h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D') with '{"format":"json", "ingestionMappingReference":"FlatEventMapping"}'
     ```
 
     ' Simple. json ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.
@@ -258,16 +262,17 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
     ```csharp
     var tableMapping = "FlatEventMapping";
     var command =
-        CslCommandGenerator.GenerateTableJsonMappingCreateCommand(
-            tableName,
+         CslCommandGenerator.GenerateTableMappingCreateCommand(
+            Data.Ingestion.IngestionMappingKind.Json,
+            "",
             tableMapping,
             new[]
             {
-                        new JsonColumnMapping {ColumnName = "Time", JsonPath = "$.timestamp"},
-                        new JsonColumnMapping {ColumnName = "Device", JsonPath = "$.deviceId"},
-                        new JsonColumnMapping {ColumnName = "MessageId", JsonPath = "$.messageId"},
-                        new JsonColumnMapping {ColumnName = "Temperature", JsonPath = "$.temperature"},
-                        new JsonColumnMapping {ColumnName = "Humidity", JsonPath = "$.humidity"},
+               new ColumnMapping() {ColumnName = "Time", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.timestamp"} } },
+               new ColumnMapping() {ColumnName = "Device", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.deviceId" } } },
+               new ColumnMapping() {ColumnName = "MessageId", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.messageId" } } },
+               new ColumnMapping() {ColumnName = "Temperature", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.temperature" } } },
+               new ColumnMapping() { ColumnName= "Humidity", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.humidity" } } },
             });
 
     kustoClient.ExecuteControlCommand(command);
@@ -283,10 +288,13 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.json,
-            IngestionMappingReference = tableMapping
+            IngestionMapping = new IngestionMapping()
+            {
+                IngestionMappingReference = tableMapping
+            }
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
     ' Simple. json ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.
@@ -306,7 +314,7 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
 
     ```python
     MAPPING = "FlatEventMapping"
-    CREATE_MAPPING_COMMAND = ".create table Events ingestion json mapping '" + MAPPING + """' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'""" 
+    CREATE_MAPPING_COMMAND = ".create table Events ingestion json mapping '" + MAPPING + """' '[{"column":"Time","Properties":{"path":"$.timestamp"}},{"column":"Device","Properties":{"path":"$.deviceId"}},{"column":"MessageId","Properties":{"path":"$.messageId"}},{"column":"Temperature","Properties":{"path":"$.temperature"}},{"column":"Humidity","Properties":{"path":"$.humidity"}}]'""" 
     RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_MAPPING_COMMAND)
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
@@ -334,7 +342,7 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
 데이터를 테이블에 수집 `Events` 합니다.
 
 ```kusto
-.ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
+.ingest into table Events (h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D') with '{"format":"multijson", "ingestionMappingReference":"FlatEventMapping"}'
 ```
 
 # <a name="c"></a>[C#](#tab/c-sharp)
@@ -348,10 +356,13 @@ var properties =
     new KustoQueuedIngestionProperties(database, table)
     {
         Format = DataSourceFormat.multijson,
-        IngestionMappingReference = tableMapping
+        IngestionMapping = new IngestionMapping()
+        {
+            IngestionMappingReference = tableMapping
+        }
     };
 
-ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+ingestClient.IngestFromStorageAsync(blobPath, properties);
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -427,7 +438,7 @@ INGESTION_CLIENT.ingest_from_blob(
 1. 데이터를 테이블에 수집 `RawEvents` 합니다.
 
     ```kusto
-    .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
+    .ingest into table RawEvents (h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D') with '{"format":"multijson", "ingestionMappingReference":"RawEventMapping"}'
     ```
 
 1. 테이블의 데이터를 검토 `Events` 합니다.
@@ -482,10 +493,13 @@ INGESTION_CLIENT.ingest_from_blob(
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.multijson,
-            IngestionMappingReference = tableMapping
+            IngestionMapping = new IngestionMapping()
+            {
+                IngestionMappingReference = tableMapping
+            }
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
     
 1. 테이블의 데이터를 검토 `Events` 합니다.
@@ -575,13 +589,13 @@ INGESTION_CLIENT.ingest_from_blob(
 1. JSON 매핑을 만듭니다.
 
     ```kusto
-    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'
+    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"a","Properties":{"path":"$.event[?(@.Key == \'timestamp\')]"}},{"column":"b","Properties":{"path":"$.event[?(@.Key == \'deviceId\')]"}},{"column":"c","Properties":{"path":"$.event[?(@.Key == \'messageId\')]"}},{"column":"d","Properties":{"path":"$.event[?(@.Key == \'temperature\')]"}},{"column":"Humidity","datatype":"string","Properties":{"path":"$.event[?(@.Key == \'humidity\')]"}}]'
     ```
 
 1. 데이터를 테이블에 수집 `Events` 합니다.
 
     ```kusto
-    .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
+    .ingest into table Events (h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D') with '{"format":"multijson", "ingestionMappingReference":"KeyValueEventMapping"}'
     ```
 
 # <a name="c"></a>[C#](#tab/c-sharp)
@@ -592,16 +606,29 @@ INGESTION_CLIENT.ingest_from_blob(
     var tableName = "Events";
     var tableMapping = "KeyValueEventMapping";
     var command =
-        CslCommandGenerator.GenerateTableJsonMappingCreateCommand(
-            tableName,
+         CslCommandGenerator.GenerateTableMappingCreateCommand(
+            Data.Ingestion.IngestionMappingKind.Json,
+            "",
             tableMapping,
             new[]
             {
-                        new JsonColumnMapping {ColumnName = "Time", JsonPath = "$.event[?(@.Key == 'timestamp')]"},
-                        new JsonColumnMapping {ColumnName = "Device", JsonPath = "$.event[?(@.Key == 'deviceId')]"},
-                        new JsonColumnMapping {ColumnName = "MessageId", JsonPath = "$.event[?(@.Key == 'messageId')]"},
-                        new JsonColumnMapping {ColumnName = "Temperature", JsonPath = "$.event[?(@.Key == 'temperature')]"},
-                        new JsonColumnMapping {ColumnName = "Humidity", JsonPath = "$.event[?(@.Key == 'humidity')]"},
+                new ColumnMapping() { ColumnName = "Time", Properties = new Dictionary<string, string>() { {
+                    MappingConsts.Path,
+                    "$.event[?(@.Key == 'timestamp')]"
+                } } },
+                    new ColumnMapping() { ColumnName = "Device", Properties = new Dictionary<string, string>() { {
+                    MappingConsts.Path,
+                    "$.event[?(@.Key == 'deviceId')]"
+                } } }, new ColumnMapping() { ColumnName = "MessageId", Properties = new Dictionary<string, string>() { {
+                    MappingConsts.Path,
+                    "$.event[?(@.Key == 'messageId')]"
+                } } }, new ColumnMapping() { ColumnName = "Temperature", Properties = new Dictionary<string, string>() { {
+                    MappingConsts.Path,
+                    "$.event[?(@.Key == 'temperature')]"
+                } } }, new ColumnMapping() { ColumnName = "Humidity", Properties = new Dictionary<string, string>() { {
+                    MappingConsts.Path,
+                    "$.event[?(@.Key == 'humidity')]"
+                } } },
             });
 
     kustoClient.ExecuteControlCommand(command);
@@ -615,10 +642,12 @@ INGESTION_CLIENT.ingest_from_blob(
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.multijson,
-            IngestionMappingReference = tableMapping
+            IngestionMapping = new IngestionMapping()
+            {
+                IngestionMappingReference = tableMapping
+            }
         };
-
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 # <a name="python"></a>[Python](#tab/python)

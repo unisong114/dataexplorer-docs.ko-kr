@@ -1,18 +1,18 @@
 ---
-title: Azure 데이터 탐색기 .NET 표준 SDK(미리 보기)로 데이터 수집
-description: 이 문서에서는 .NET 표준 SDK를 사용하여 Azure 데이터 탐색기로 데이터를 수집(로드)하는 방법을 알아봅니다.
+title: Azure 데이터 탐색기 .NET Standard SDK (미리 보기)를 사용 하 여 데이터 수집
+description: 이 문서에서는 .NET Standard SDK를 사용 하 여 데이터를 Azure 데이터 탐색기 수집 (로드) 하는 방법에 대해 알아봅니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 84eb95e818251e0812703700a8cfdd97f9b0561a
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.date: 05/19/2020
+ms.openlocfilehash: e24ebc2b89c7890f8818b0491c0cd6b8fbfd85fe
+ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81502245"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722153"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Azure Data Explorer .NET Standard SDK(미리 보기)를 사용하여 데이터 수집
 
@@ -74,7 +74,7 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>소스 파일 정보 설정
 
-원본 파일의 경로를 설정합니다. 이 예제에서는 Azure Blob Storage에 호스트된 예제 파일을 사용합니다. **StormEvents** 샘플 데이터 세트에는 [국립 환경 정보 센터의](https://www.ncdc.noaa.gov/stormevents/)날씨 관련 데이터가 포함되어 있습니다.
+원본 파일의 경로를 설정합니다. 이 예제에서는 Azure Blob Storage에 호스트된 예제 파일을 사용합니다. **Stormevents** 샘플 데이터 집합에는 [환경적 정보에 대 한 국가별 센터](https://www.ncdc.noaa.gov/stormevents/)의 날씨 관련 데이터가 포함 되어 있습니다.
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -130,34 +130,34 @@ var tableMapping = "StormEvents_CSV_Mapping";
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
     var command =
-        CslCommandGenerator.GenerateTableCsvMappingCreateCommand(
+        CslCommandGenerator.GenerateTableMappingCreateCommand(
+            Data.Ingestion.IngestionMappingKind.Csv,
             table,
             tableMapping,
-            new[]
-            {
-                new CsvColumnMapping { ColumnName = "StartTime", Ordinal = 0 },
-                new CsvColumnMapping { ColumnName = "EndTime", Ordinal = 1 },
-                new CsvColumnMapping { ColumnName = "EpisodeId", Ordinal = 2 },
-                new CsvColumnMapping { ColumnName = "EventId", Ordinal = 3 },
-                new CsvColumnMapping { ColumnName = "State", Ordinal = 4 },
-                new CsvColumnMapping { ColumnName = "EventType", Ordinal = 5 },
-                new CsvColumnMapping { ColumnName = "InjuriesDirect", Ordinal = 6 },
-                new CsvColumnMapping { ColumnName = "InjuriesIndirect", Ordinal = 7 },
-                new CsvColumnMapping { ColumnName = "DeathsDirect", Ordinal = 8 },
-                new CsvColumnMapping { ColumnName = "DeathsIndirect", Ordinal = 9 },
-                new CsvColumnMapping { ColumnName = "DamageProperty", Ordinal = 10 },
-                new CsvColumnMapping { ColumnName = "DamageCrops", Ordinal = 11 },
-                new CsvColumnMapping { ColumnName = "Source", Ordinal = 12 },
-                new CsvColumnMapping { ColumnName = "BeginLocation", Ordinal = 13 },
-                new CsvColumnMapping { ColumnName = "EndLocation", Ordinal = 14 },
-                new CsvColumnMapping { ColumnName = "BeginLat", Ordinal = 15 },
-                new CsvColumnMapping { ColumnName = "BeginLon", Ordinal = 16 },
-                new CsvColumnMapping { ColumnName = "EndLat", Ordinal = 17 },
-                new CsvColumnMapping { ColumnName = "EndLon", Ordinal = 18 },
-                new CsvColumnMapping { ColumnName = "EpisodeNarrative", Ordinal = 19 },
-                new CsvColumnMapping { ColumnName = "EventNarrative", Ordinal = 20 },
-                new CsvColumnMapping { ColumnName = "StormSummary", Ordinal = 21 },
-            });
+            new[] {
+                new ColumnMapping() { ColumnName = "StartTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
+                new ColumnMapping() { ColumnName = "EndTime", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
+                new ColumnMapping() { ColumnName = "EpisodeId", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
+                new ColumnMapping() { ColumnName = "EventId", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "3" } } },
+                new ColumnMapping() { ColumnName = "State", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "4" } } },
+                new ColumnMapping() { ColumnName = "EventType", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "5" } } },
+                new ColumnMapping() { ColumnName = "InjuriesDirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "6" } } },
+                new ColumnMapping() { ColumnName = "InjuriesIndirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "7" } } },
+                new ColumnMapping() { ColumnName = "DeathsDirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "8" } } },
+                new ColumnMapping() { ColumnName = "DeathsIndirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "9" } } },
+                new ColumnMapping() { ColumnName = "DamageProperty", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "10" } } },
+                new ColumnMapping() { ColumnName = "DamageCrops", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "11" } } },
+                new ColumnMapping() { ColumnName = "Source", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "12" } } },
+                new ColumnMapping() { ColumnName = "BeginLocation", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "13" } } },
+                new ColumnMapping() { ColumnName = "EndLocation", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "14" } } },
+                new ColumnMapping() { ColumnName = "BeginLat", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "15" } } },
+                new ColumnMapping() { ColumnName = "BeginLon", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "16" } } },
+                new ColumnMapping() { ColumnName = "EndLat", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "17" } } },
+                new ColumnMapping() { ColumnName = "EndLon", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "18" } } },
+                new ColumnMapping() { ColumnName = "EpisodeNarrative", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "19" } } },
+                new ColumnMapping() { ColumnName = "EventNarrative", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "20" } } },
+                new ColumnMapping() { ColumnName = "StormSummary", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "21" } } }
+        });
 
     kustoClient.ExecuteControlCommand(command);
 }
@@ -185,11 +185,14 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.csv,
-            CSVMappingReference = tableMapping,
+            IngestionMapping = new IngestionMapping()
+            { 
+                IngestionMappingReference = tableMapping
+            },
             IgnoreFirstRecord = true
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath ingestionProperties: properties);
 }
 ```
 
@@ -209,7 +212,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="run-troubleshooting-queries"></a>쿼리 문제 해결 실행
 
-클러스터에 [https://dataexplorer.azure.com](https://dataexplorer.azure.com) 로그인하여 클러스터에 연결합니다. 데이터베이스에서 다음 명령을 실행하여 지난 4시간 동안 수집 실패가 있었는지 확인합니다. 실행하기 전에 데이터베이스 이름을 바꿉니다.
+에 로그인 하 [https://dataexplorer.azure.com](https://dataexplorer.azure.com) 고 클러스터에 연결 합니다. 데이터베이스에서 다음 명령을 실행하여 지난 4시간 동안 수집 실패가 있었는지 확인합니다. 실행하기 전에 데이터베이스 이름을 바꿉니다.
 
 ```Kusto
 .show ingestion failures
@@ -226,7 +229,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="clean-up-resources"></a>리소스 정리
 
-다른 기사를 팔로우하려면 만든 리소스를 보관하십시오. 그렇지 않으면 데이터베이스에서 다음 명령을 실행하여 `StormEvents` 테이블을 정리합니다.
+다른 문서를 따르려면 만든 리소스를 유지 합니다. 그렇지 않으면 데이터베이스에서 다음 명령을 실행하여 `StormEvents` 테이블을 정리합니다.
 
 ```Kusto
 .drop table StormEvents
