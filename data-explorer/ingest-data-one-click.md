@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 03/29/2020
-ms.openlocfilehash: 5f424716a9227f22b4ec5b148d29798b0a55fa27
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 16db3eb2d925d12ba8eefa605b27566e9b4c1b04
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618380"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83373811"
 ---
 # <a name="what-is-one-click-ingestion"></a>원클릭 수집이란? 
 
@@ -26,7 +26,7 @@ Azure Data Explorer 웹 UI를 사용하여 스토리지(BLOB 파일), 로컬 파
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md)를 만듭니다.
-* [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com/)에 로그인하여 [클러스터에 연결을 추가](/azure/data-explorer/web-query-data#add-clusters)합니다.
+* [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com/)에 로그인하여 [클러스터에 연결을 추가](web-query-data.md#add-clusters)합니다.
 
 ## <a name="file-formats"></a>파일 형식
 
@@ -74,5 +74,5 @@ Azure Data Explorer 웹 UI를 사용하여 스토리지(BLOB 파일), 로컬 파
 ## <a name="next-steps"></a>다음 단계
 
 * 원클릭 수집을 사용하여 데이터를 [기존 테이블](one-click-ingestion-existing-table.md)에 수집할 것인지 아니면 [새 테이블](one-click-ingestion-new-table.md)에 수집할 것인지 결정하세요.
-* [Azure Data Explorer 웹 UI에서 데이터 쿼리](/azure/data-explorer/web-query-data)
-* [Kusto 쿼리 언어를 사용하여 Azure Data Explorer에 대한 쿼리 작성](/azure/data-explorer/write-queries)
+* [Azure Data Explorer 웹 UI에서 데이터 쿼리](web-query-data.md)
+* [Kusto 쿼리 언어를 사용하여 Azure Data Explorer에 대한 쿼리 작성](write-queries.md)

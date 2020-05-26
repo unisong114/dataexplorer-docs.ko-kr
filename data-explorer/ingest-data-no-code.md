@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 01/29/2020
-ms.openlocfilehash: 59a42c2a3e4efa8c8642bccf96b0040767753e65
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.date: 05/19/2020
+ms.openlocfilehash: 0808d0dadd410ae6d220b03ef54191192b925a21
+ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108340"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722187"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>자습서: Azure Data Explorer에서 모니터링 데이터 수집 및 쿼리 
 
@@ -196,7 +196,7 @@ Azure 활동 로그는 구독에 있는 리소스에 대해 수행되는 작업�
 
 ## <a name="set-up-an-ingestion-pipeline-in-azure-data-explorer"></a>Azure Data Explorer에서 수집 파이프라인 설정
 
-Azure Data Explorer 파이프라인을 설정하려면 [테이블 생성 및 데이터 수집](/azure/data-explorer/ingest-sample-data#ingest-data)과 같은 여러 단계가 필요합니다. 데이터를 조작, 매핑 및 업데이트할 수도 있습니다.
+Azure Data Explorer 파이프라인을 설정하려면 [테이블 생성 및 데이터 수집](ingest-sample-data.md#ingest-data)과 같은 여러 단계가 필요합니다. 데이터를 조작, 매핑 및 업데이트할 수도 있습니다.
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Azure Data Explorer 웹 UI에 연결
 
@@ -290,7 +290,7 @@ Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이�
 진단 메트릭 및 로그 데이터를 테이블에 매핑하려면 다음 쿼리를 사용합니다.
 
 ```kusto
-.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 
 # <a name="activity-logs"></a>[활동 로그](#tab/activity-logs)
@@ -299,7 +299,7 @@ Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이�
 활동 로그 데이터를 테이블에 매핑하려면 다음 쿼리를 사용합니다.
 
 ```kusto
-.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 ---
 
@@ -336,7 +336,7 @@ Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이�
 # <a name="diagnostic-logs"></a>[진단 로그](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>진단 로그에 대한 데이터 업데이트 정책 만들기
 
-1. 컬렉션의 각 값에서 별도의 행을 받도록 진단 로그 레코드의 해당 컬렉션을 확장하는 [함수](kusto/management/functions.md)를 만듭니다. Azure Data Explorer 클러스터에서 수신 로그를 사용하도록 설정하고 [수집 로그 스키마](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)를 사용합니다. 성공하고 실패한 수집을 위해 테이블을 하나씩 만들지만, 필드 중 일부는 성공한 수집에 대비하여 비어 있습니다(예: ErrorCode). [`mv-expand`](kusto/query/mvexpandoperator.md) 연산자를 사용합니다.
+1. 컬렉션의 각 값에서 별도의 행을 받도록 진단 로그 레코드의 해당 컬렉션을 확장하는 [함수](kusto/management/functions.md)를 만듭니다. Azure Data Explorer 클러스터에서 수신 로그를 사용하도록 설정하고 [수집 로그 스키마](using-diagnostic-logs.md#diagnostic-logs-schema)를 사용합니다. 성공하고 실패한 수집을 위해 테이블을 하나씩 만들지만, 필드 중 일부는 성공한 수집에 대비하여 비어 있습니다(예: ErrorCode). [`mv-expand`](kusto/query/mvexpandoperator.md) 연산자를 사용합니다.
 
     ```kusto
     .create function DiagnosticLogsExpand() {

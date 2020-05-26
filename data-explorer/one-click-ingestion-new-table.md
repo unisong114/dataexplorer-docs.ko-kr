@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 03/29/2020
-ms.openlocfilehash: 07303130bbe33472f85e3d620ecd2eace555dbe2
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 24f22c2dd4a8e159e4d85c1917b1852e1eb039f4
+ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81491308"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83374385"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-to-a-new-table-in-azure-data-explorer"></a>원클릭 수집을 사용하여 Azure Data Explorer의 새 테이블에 데이터 수집
 
@@ -109,5 +109,5 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Azure Data Explorer 웹 UI에서 데이터 쿼리](/azure/data-explorer/web-query-data)
-* [Kusto 쿼리 언어를 사용하여 Azure Data Explorer에 대한 쿼리 작성](/azure/data-explorer/write-queries)
+* [Azure Data Explorer 웹 UI에서 데이터 쿼리](web-query-data.md)
+* [Kusto 쿼리 언어를 사용하여 Azure Data Explorer에 대한 쿼리 작성](write-queries.md)
