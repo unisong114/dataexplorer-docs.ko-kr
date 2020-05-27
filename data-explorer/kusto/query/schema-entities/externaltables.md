@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
-ms.openlocfilehash: 7f74732ed38d0b41a857fc549f549ce54ad4dce6
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: a3d95d3cb90b6a834b1f1538aa28da1f1ac2a97f
+ms.sourcegitcommit: a562ce255ac706ca1ca77d272a97b5975235729d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/26/2020
-ms.locfileid: "83863713"
+ms.locfileid: "83867055"
 ---
 # <a name="external-tables"></a>외부 테이블
 
@@ -21,7 +21,7 @@ ms.locfileid: "83863713"
 
 [테이블과](tables.md)마찬가지로 외부 테이블에는 잘 정의 된 스키마 (열 이름 및 데이터 형식 쌍의 정렬 된 목록)가 있습니다. 테이블과 달리 데이터는 Kusto 클러스터 외부에 저장 되 고 관리 됩니다. 가장 일반적으로 데이터는 CSV, Parquet, Avro와 같은 일부 표준 형식으로 저장 되며, Kusto로 수집 되지 않습니다.
 
-**외부 테이블** 은 한 번 생성 됩니다 ( [외부 테이블 일반 제어 명령](../../management/externaltables.md), [create 및 alter external SQL tables](../../management/external-sql-tables.md), create [및 alter table in storage](../../management/external-tables-azurestorage-azuredatalake.md)). 그리고 [external_table ()](../../query/externaltablefunction.md) 함수를 사용 하 여 이름으로 참조할 수 있습니다. 
+**외부 테이블** 은 한 번 생성 됩니다. [(외부 테이블 일반 제어 명령](../../management/externaltables.md), [create 및 alter external SQL tables](../../management/external-sql-tables.md), [Azure Storage 또는 Azure Data Lake에서 테이블 만들기 및 변경](../../management/external-tables-azurestorage-azuredatalake.md)) 및 [external_table ()](../../query/externaltablefunction.md) 함수를 사용 하 여 이름으로 참조할 수 있습니다. 
 
 **참고 사항**
 
