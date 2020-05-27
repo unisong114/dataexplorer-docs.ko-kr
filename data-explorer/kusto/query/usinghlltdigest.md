@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: ce86e24fbd13221fe333f281dac3ba3b6ac73a1f
-ms.sourcegitcommit: da7c699bb62e1c4564f867d4131d26286c5223a8
+ms.openlocfilehash: 3f1371fe298b2d0e066fc3a278cc3b560050416c
+ms.sourcegitcommit: 283cce0e7635a2d8ca77543f297a3345a5201395
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83404239"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84011587"
 ---
 # <a name="partitioning-and-composing-intermediate-results-of-aggregations"></a>집계의 중간 결과 분할 및 작성
 
@@ -133,7 +133,7 @@ PageViewsHllTDigest
 
 ::: zone pivot="azuredataexplorer"
 
-이 문제를 해결 하기 위해 `hll` `tdigest` [`hll()`](hll-aggfunction.md) 필요한 작업이 `dcount` 이거나 [`tdigest()`](tdigest-aggfunction.md) 또는를 사용 하 여 필요한 작업이 백분위 수 인 경우 [`set/append`](../management/data-ingestion/index.md) 를 사용 하 여 [`update policy`](../management/updatepolicy.md) 새로 추가 된 데이터를 임시 테이블에 또는 값으로 추가할 수 있습니다. 이 경우 또는의 중간 결과는 `dcount` `tdigest` 다른 데이터 집합에 저장 됩니다 .이 데이터 집합은 대상 보다 작아야 합니다.
+이 문제를 해결 하기 위해 `hll` `tdigest` [`hll()`](hll-aggfunction.md) 필요한 작업이 `dcount` 이거나 [`tdigest()`](tdigest-aggfunction.md) 또는를 사용 하 여 필요한 작업이 백분위 수 인 경우 [`set/append`](../../ingest-data-overview.md) 를 사용 하 여 [`update policy`](../management/updatepolicy.md) 새로 추가 된 데이터를 임시 테이블에 또는 값으로 추가할 수 있습니다. 이 경우 또는의 중간 결과는 `dcount` `tdigest` 다른 데이터 집합에 저장 됩니다 .이 데이터 집합은 대상 보다 작아야 합니다.
 
 ::: zone-end
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: d46a8669c523955f74d3f489c7b10e5b0f7ccef6
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: e35245cf767e3cf82ab61d5ce0704015d996cd7c
+ms.sourcegitcommit: 283cce0e7635a2d8ca77543f297a3345a5201395
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373295"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84011380"
 ---
 # <a name="externaldata-operator"></a>externaldata 연산자
 
@@ -33,7 +33,7 @@ ms.locfileid: "83373295"
 
 * *StorageConnectionString*: [저장소 연결 문자열](../api/connection-strings/storage.md) 은 반환할 데이터를 보유 하는 저장소 아티팩트를 설명 합니다.
 
-* *Prop1*, *Value1*, ...: 수집 [속성](../management/data-ingestion/index.md)에 나열 된 대로 저장소에서 검색 된 데이터를 해석 하는 방법을 설명 하는 추가 속성입니다.
+* *Prop1*, *Value1*, ...: 수집 [속성](../../ingestion-properties.md)에 나열 된 대로 저장소에서 검색 된 데이터를 해석 하는 방법을 설명 하는 추가 속성입니다.
     * 현재 지원 되는 속성은 `format` 및 `ignoreFirstRecord` 입니다.
     * 지원 되는 데이터 형식:, [ingestion data formats](../../ingestion-supported-formats.md) ,, `csv` `tsv` `json` `parquet` , `avro` 등의 수집 데이터 형식이 지원 됩니다.
 
