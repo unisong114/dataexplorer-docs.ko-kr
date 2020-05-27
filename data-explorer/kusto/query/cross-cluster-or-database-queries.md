@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: bb25fd556ab59dc5bdf5c533435f99deb6b32fdb
-ms.sourcegitcommit: da7c699bb62e1c4564f867d4131d26286c5223a8
+ms.openlocfilehash: 26c6d660cb254ec2df6600e90437d7db7ca748f4
+ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83404230"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83863152"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>데이터베이스 간/클러스터 간 쿼리
 
 ::: zone pivot="azuredataexplorer"
 
 모든 Kusto 쿼리는 현재 클러스터와 기본 데이터베이스의 컨텍스트에서 작동 합니다.
-* [Kusto 탐색기](../tools/kusto-explorer.md)에서 기본 데이터베이스는 [연결 패널](../tools/kusto-explorer.md#connections-panel) 에서 선택 하 고 현재 클러스터는 해당 데이터베이스를 포함 하는 연결입니다.
-* [Kusto 클라이언트 라이브러리](../api/netfx/about-kusto-data.md)를 사용 하는 경우 현재 클러스터와 기본 데이터베이스는 `Data Source` `Initial Catalog` 각각 [kusto 연결 문자열](../api/connection-strings/kusto.md) 의 및 속성으로 지정 됩니다.
+* [Kusto 탐색기](../tools/kusto-explorer.md) 에서 기본 데이터베이스는 [연결 패널](../tools/kusto-explorer.md#connections-panel) 에서 선택 하 고 현재 클러스터는 해당 데이터베이스를 포함 하는 연결입니다.
+* [Kusto 클라이언트 라이브러리](../api/netfx/about-kusto-data.md) 를 사용 하는 경우 현재 클러스터와 기본 데이터베이스는 `Data Source` `Initial Catalog` 각각 [kusto 연결 문자열](../api/connection-strings/kusto.md) 의 및 속성으로 지정 됩니다.
 
 ## <a name="queries"></a>쿼리
 기본값이 아닌 다른 데이터베이스의 테이블에 액세스 하려면 *정규화 된 이름* 구문을 사용 해야 합니다. 현재 클러스터의 데이터베이스에 액세스 하려면

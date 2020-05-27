@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: 9cf2ec4371f4aeef8a68cb65fb2b946b9c393054
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 8e96b97754600d308526a4cb059907521fda0521
+ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372366"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83862931"
 ---
 # <a name="set_has_element"></a>set_has_element()
 
@@ -46,4 +46,4 @@ print arr=dynamic(["this", "is", "an", "example"])
 
 **참고 항목**
 
-배열에 값이 있는 위치에도 관심이 있는 경우 [array_index_of (arr, value)](arrayindexoffunction.md)를 사용할 수 있습니다. 두 함수는 성능 면에서 동일 합니다.
+[`array_index_of(arr, value)`](arrayindexoffunction.md)를 사용 하 여 배열에 값이 있는 위치를 찾습니다. 두 함수는 모두 동일 하 게 작동 합니다.

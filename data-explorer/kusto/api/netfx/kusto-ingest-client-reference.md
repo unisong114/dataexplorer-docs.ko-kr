@@ -8,12 +8,12 @@ ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: 3a89af281b2376e7fc06d07643af8e95a6c97cd2
-ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
+ms.openlocfilehash: 49a689b88e508285f2876f2e86208afceda0872b
+ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722102"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83863254"
 ---
 # <a name="kustoingest-client-interfaces-and-classes"></a>Kusto. 클라이언트 인터페이스 및 클래스 수집
 
@@ -23,7 +23,7 @@ Kusto. 수집 라이브러리의 기본 인터페이스 및 클래스는 다음�
 * [클래스 ExtendedKustoIngestClient](#class-extendedkustoingestclient): 주 수집 인터페이스에 대 한 확장입니다.
 * [클래스 KustoIngestFactory](#class-kustoingestfactory): 수집 클라이언트에 대 한 기본 팩터리입니다.
 * [클래스 KustoIngestionProperties](#class-kustoingestionproperties): 일반적인 수집 속성을 제공 하는 데 사용 되는 클래스입니다.
-* 클래스 IngestionMapping: 수집에 대 한 데이터 매핑을 설명 하는 데 사용 되는 클래스입니다.
+* [클래스 IngestionMapping](#class-ingestionmapping): 수집에 대 한 데이터 매핑을 설명 하는 데 사용 되는 클래스입니다.
 * [DataSourceFormat 열거형](#enum-datasourceformat): 지원 되는 데이터 원본 형식 (예: CSV, JSON)
 * [인터페이스 IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): 대기 중인 수집에만 적용 되는 작업을 설명 하는 인터페이스입니다.
 * [클래스 KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): 대기 중인 수집에만 적용 되는 속성입니다.
@@ -355,7 +355,7 @@ KustoIngestionProperties 클래스에는 수집 프로세스를 세부적으로 
 |AdditionalTags |필요에 따라 추가 태그 |
 |IngestIfNotExists |다시 수집 하지 않으려는 태그 목록 (테이블당) |
 |ValidationPolicy |데이터 유효성 검사 정의. 자세한 내용은 [TODO]를 참조 하십시오. |
-|서식 |수집 되는 데이터의 형식입니다. |
+|형식 |수집 되는 데이터의 형식입니다. |
 |AdditionalProperties | 수집 [속성](../../../ingestion-properties.md) 으로 수집 명령에 전달 되는 기타 속성입니다. 수집 속성이이 클래스의 개별 멤버에 표시 되지 않기 때문에 속성이 전달 됩니다.|
 
 ```csharp
@@ -374,6 +374,28 @@ public class KustoIngestionProperties
     public IDictionary<string, string> AdditionalProperties { get; set; }
 
     public KustoIngestionProperties(string databaseName, string tableName);
+}
+```
+
+## <a name="class-ingestionmapping"></a>클래스 IngestionMapping
+
+기존 매핑 또는 열 매핑 목록에 대 한 참조를 포함 합니다.
+
+|속성   |의미    |
+|-----------|-----------|
+|IngestionMappings | 열 매핑-각각 대상 열 데이터와 해당 원본을 설명 합니다. |
+|IngestionMappingKind | IngestionMappings 속성에 설명 된 매핑 종류-Csv, Json, Avro, Parquet, SStream, Orc, ApacheAvro 또는 W3CLogFile 중 하나입니다. |
+|IngestionMappingReference | 미리 만든 매핑 이름 |
+
+```csharp
+public class IngestionMapping
+{
+    public IEnumerable<ColumnMapping> IngestionMappings { get; set; }
+    public IngestionMappingKind IngestionMappingKind { get; set; }
+    public string IngestionMappingReference { get; set; }
+
+    public IngestionMapping()
+    public IngestionMapping(IngestionMapping ingestionMapping)
 }
 ```
 
@@ -416,7 +438,6 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
             Properties = new Dictionary<string, string>() {
             { MappingConsts.Ordinal, "1"} }
         } },
-        // IngestionMappingReference = mappingName, the pre-created mapping name
     },
     ValidationPolicy = new ValidationPolicy { ValidationImplications = ValidationImplications.Fail, ValidationOptions = ValidationOptions.ValidateCsvInputConstantColumns },
     Format = DataSourceFormat.csv

@@ -1,6 +1,6 @@
 ---
-title: Azure Storage 또는 Azure Data Lake의 외부 테이블-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 외부 테이블 관리에 대해 설명 합니다.
+title: Azure Storage 또는 Azure Data Lake에서 외부 테이블 만들기 및 변경-Azure 데이터 탐색기
+description: 이 문서에서는 Azure Storage 또는 Azure Data Lake에서 외부 테이블을 만들고 변경 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1c7670dfb06e95f227a4b828a86b980005eeeac9
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 2ef238d863f2f3fe181814ac14e3605de21a5aff
+ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373349"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83863373"
 ---
-# <a name="external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블
+# <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake에서 외부 테이블 만들기 및 변경
 
 다음 명령은 외부 테이블을 만드는 방법을 설명 합니다. 테이블은 Azure Blob Storage, Azure Data Lake Store Gen1 또는 Azure Data Lake Store Gen2에서 찾을 수 있습니다. 
 [저장소 연결 문자열](../api/connection-strings/storage.md) 에서는 이러한 각 옵션에 대 한 연결 문자열을 만드는 방법을 설명 합니다. 
@@ -60,7 +60,7 @@ ms.locfileid: "83373349"
 
 **선택적 속성**:
 
-| 속성         | Type     | 설명       |
+| 속성         | Type     | Description       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -170,7 +170,7 @@ with
 
 |TableName|TableType|폴더|DocString|속성|ConnectionStrings|파티션|
 |---|---|---|---|---|---|---|
-|ExternalMultiplePartitions|Blob|ExternalTables|Docs|{"Format": "Csv", "압축": false, "CompressionType": null, "FileExtension": "Csv", "IncludeHeaders": "None", "Encoding": null, "NamePrefix": null}|["https://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat": "CustomerName = {0} ", "ColumnName": "customername", "Ordinal": 0}, PartitionBy ":" 1.00:00:00 "," ColumnName ":" Timestamp "," Ordinal ": 1}]|
+|ExternalMultiplePartitions|Blob|ExternalTables|문서|{"Format": "Csv", "압축": false, "CompressionType": null, "FileExtension": "Csv", "IncludeHeaders": "None", "Encoding": null, "NamePrefix": null}|["https://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat": "CustomerName = {0} ", "ColumnName": "customername", "Ordinal": 0}, PartitionBy ":" 1.00:00:00 "," ColumnName ":" Timestamp "," Ordinal ": 1}]|
 
 ### <a name="artifact-filtering-logic"></a>아티팩트 필터링 논리
 
@@ -217,13 +217,13 @@ dataformat=parquet
 
 **구문:** 
 
-`.show``external` `table` *TableName*`artifacts`
+`.show` `external` `table` *TableName* `artifacts`
 
 **출력**
 
 | 출력 매개 변수 | Type   | 설명                       |
 |------------------|--------|-----------------------------------|
-| URI              | string | 외부 저장소 아티팩트의 URI |
+| URI              | 문자열 | 외부 저장소 아티팩트의 URI |
 
 **예:**
 
@@ -306,3 +306,7 @@ dataformat=parquet
 ```kusto
 .drop external table MyExternalTable JSON mapping "Mapping1" 
 ```
+## <a name="next-steps"></a>다음 단계
+
+* [외부 테이블 일반 제어 명령](externaltables.md)
+* [외부 SQL 테이블 만들기 및 변경](external-sql-tables.md)

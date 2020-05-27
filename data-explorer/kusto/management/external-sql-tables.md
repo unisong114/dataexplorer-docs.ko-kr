@@ -1,6 +1,6 @@
 ---
-title: 외부 SQL 테이블-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 외부 SQL 테이블 생성에 대해 설명 합니다.
+title: 외부 SQL 테이블 만들기 및 변경-Azure 데이터 탐색기
+description: 이 문서에서는 외부 SQL 테이블을 만들고 변경 하는 방법을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 9de01863ddb832421c5b6dbfe65b8ae451382fb7
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 235c68a8a04fd76dd3a9e25abac63db09e00919a
+ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373379"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83863339"
 ---
-# <a name="external-sql-table"></a>외부 SQL 테이블
+# <a name="create-and-alter-external-sql-tables"></a>외부 SQL 테이블 만들기 및 변경
 
 명령이 실행 되는 데이터베이스에서 외부 SQL 테이블을 만들거나 변경 합니다.  
 
@@ -40,7 +40,7 @@ ms.locfileid: "83373379"
 
 ## <a name="optional-properties"></a>선택적 속성
 
-| 속성            | Type            | 설명                          |
+| 속성            | Type            | Description                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | 테이블의 폴더입니다.                  |
 | `docString`         | `string`        | 테이블을 문서화 하는 문자열입니다.      |
@@ -77,7 +77,7 @@ with
 
 | TableName   | TableType | 폴더         | DocString | 속성                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
-| ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable '",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server = tcp: myserver. net.tcp, 1433; Authentication = Active Directory Integrated; 초기 카탈로그 = mydatabase; ",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
+| ExternalSql | Sql       | ExternalTables | 문서      | {<br>  "TargetEntityKind": "sqltable '",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server = tcp: myserver. net.tcp, 1433; Authentication = Active Directory Integrated; 초기 카탈로그 = mydatabase; ",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
 ## <a name="querying-an-external-table-of-type-sql"></a>SQL 유형의 외부 테이블 쿼리 
 
@@ -95,3 +95,8 @@ external_table('MySqlExternalTable') | count
 Kusto는 SQL database에 대 한 ' SELECT * from TABLE ' 쿼리를 실행 한 다음, Kusto side의 수를 계산 합니다. 이러한 경우에는 외부 테이블 함수를 사용 하는 대신 T-sql을 사용 하 여 직접 작성 하는 경우 (' SELECT COUNT (1) FROM TABLE ') 및 [sql_request 플러그 인](../query/sqlrequestplugin.md)을 사용 하 여 실행 하는 경우 성능이 향상 될 것으로 예상 됩니다. 마찬가지로 필터는 SQL 쿼리로 푸시되 지 않습니다.  
 
 외부 테이블을 사용 하 여 쿼리에서 전체 테이블 (또는 관련 열)을 읽어야 할 때 Kusto side에서 추가 실행을 위해 SQL 테이블을 쿼리할 수 있습니다. SQL 쿼리를 T-sql에서 최적화할 수 있는 경우 [sql_request 플러그 인](../query/sqlrequestplugin.md)을 사용 합니다.
+
+## <a name="next-steps"></a>다음 단계
+
+* [외부 테이블 일반 제어 명령](externaltables.md)
+* [Azure Storage 또는 Azure Data Lake에서 외부 테이블 만들기 및 변경](external-tables-azurestorage-azuredatalake.md)
