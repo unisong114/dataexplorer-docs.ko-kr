@@ -144,6 +144,8 @@
               href: machine-learning-clustering.md
     - name: 데이터 시각화
       items:
+        - name: Azure Data Explorer 대시보드
+          href: azure-data-explorer-dashboards.md
         - name: Power BI
           items:
             - name: 모범 사례
@@ -1383,7 +1385,6 @@
         - name: 보안 역할
           href: ./kusto/management/security-roles.md
         - name: 데이터 수집
-          href: ./kusto/management/data-ingestion/index.md
           items:
             - name: 스토리지에서 수집
               href: ./kusto/management/data-ingestion/ingest-from-storage.md
@@ -1438,8 +1439,6 @@
               href: ./kusto/management/access-control/role-based-authorization.md
             - name: AAD 인증 방법
               href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
-            - name: AAD 애플리케이션 프로비전 방법
-              href: ./kusto/management/access-control/how-to-provision-aad-app.md
         - name: 고급 데이터 관리
           items:
             - name: 익스텐트(데이터 분할) 개요
