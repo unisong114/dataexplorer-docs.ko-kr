@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: e6f103d8957416c55a4562fb646e8ccb17ddf1e5
-ms.sourcegitcommit: 9810acae3f1c83b8efe7b952d3bada2ff496b024
+ms.openlocfilehash: b2bb03511afed386e4c7519471481b7ecf5b6291
+ms.sourcegitcommit: e82e1bcfcb456e89a1afb19fc6e874ca9d70c575
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83444718"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84110909"
 ---
 # <a name="data-partitioning-policy-preview"></a>데이터 분할 정책 (미리 보기)
 
@@ -24,7 +24,7 @@ ms.locfileid: "83444718"
 
 정책의 주된 목적은 분할 된 열에 있는 값의 작은 하위 집합으로 축소 되는 것으로 알려진 쿼리 성능 및 높은 카디널리티 문자열 열에 대 한 집계/조인을 개선 하는 것입니다. 보조 잠재적인 혜택은 데이터 압축을 향상 시키는 것입니다.
 
-> [!WARNING]
+> [!CAUTION]
 > 정책을 정의할 수 있는 테이블의 양에는 하드 코드 된 제한이 없지만 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 하 고 클러스터의 추가 리소스가 필요할 수 있습니다. [용량](#capacity)을 참조 하세요.
 
 ## <a name="partition-keys"></a>파티션 키
@@ -33,7 +33,7 @@ ms.locfileid: "83444718"
 
 |종류                                                   |열 유형 |파티션 속성                    |파티션 값                                        |
 |-------------------------------------------------------|------------|----------------------------------------|-------------------------------------------------------|
-|[해시](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
+|[Hash](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
 |[균일 범위](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`                | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
 
 ### <a name="hash-partition-key"></a>해시 파티션 키
@@ -178,7 +178,7 @@ ms.locfileid: "83444718"
   * 단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다.
   * 이 속성은 *선택 사항이 며*기본값은입니다 `0` .이 경우에는 500만 레코드의 기본 대상이 적용 됩니다.
 
-## <a name="notes"></a>메모
+## <a name="notes"></a>참고
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
