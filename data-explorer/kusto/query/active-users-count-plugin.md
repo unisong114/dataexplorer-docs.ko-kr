@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 22d3744cfa83a003830acc07710fd459003dbf20
-ms.sourcegitcommit: 9fe6ee7db15a5cc92150d3eac0ee175f538953d2
+ms.openlocfilehash: b40ca669df7671b1451166f6bfc1c7c680713166
+ms.sourcegitcommit: 1f50c6688a2b8d8a3976c0cd0ef40cde2ef76749
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82907195"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84202962"
 ---
 # <a name="active_users_count-plugin"></a>active_users_count 플러그 인
 
 Lookback 기간의 최소 기간 이상에 각 값이 표시 되는 고유 값 수를 계산 합니다.
 
-"팬이 아닌"의 모양새를 포함 하지 않고 "팬"의 고유 개수를 계산 하는 데 유용 합니다. 사용자는 lookback 기간 동안 활성화 된 경우에만 "팬"으로 계산 됩니다. Lookback 기간은 사용자가 ("팬")로 간주 `active` 되는지 여부를 결정 하는 데만 사용 됩니다. 집계 자체는 lookback 창의 사용자를 포함 하지 않습니다. 반면 [sliding_window_counts](sliding-window-counts-plugin.md) 집계는 lookback 기간의 슬라이딩 윈도우에 대해 수행 됩니다.
+"팬이 아닌"의 모양새를 포함 하지 않고 "팬"의 고유 개수를 계산 하는 데 유용 합니다. 사용자는 lookback 기간 동안 활성화 된 경우에만 "팬"으로 계산 됩니다. Lookback 기간은 사용자가 `active` ("팬")로 간주 되는지 여부를 결정 하는 데만 사용 됩니다. 집계 자체는 lookback 창의 사용자를 포함 하지 않습니다. 반면 [sliding_window_counts](sliding-window-counts-plugin.md) 집계는 lookback 기간의 슬라이딩 윈도우에 대해 수행 됩니다.
 
 ```kusto
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
@@ -27,7 +27,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 
 **구문**
 
-*T* `| evaluate` `,` *TimelineColumn* `,` *LookbackWindow* `,` *dim2* *End* `,` *Start* `,` *dim1* *IdColumn* `,` *Period* *ActivePeriodsCount* *Bin* idcolumn TimelineColumn`,` Start`,` End LookbackWindow Period`,` ActivePeriodsCount`,` Bin [dim1 dim2 ...] `active_users_count(``)`
+*T* `| evaluate` `active_users_count(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *LookbackWindow* `,` *Period* `,` *ActivePeriodsCount* `,` *Bin* `,` [*dim1* `,` *dim2* `,` ...]`)`
 
 **인수**
 
@@ -39,7 +39,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 * *LookbackWindow*: 사용자 모양을 확인 하는 기간을 정의 하는 슬라이딩 시간 창입니다. Lookback period는 ([current 모양새]-[Lookback])에서 시작 하 여 ([current 모양새])에 끝납니다. 
 * *기간*: 단일 모양으로 계산 되는 스칼라 상수 timespan (사용자는이 timespan의 최소 고유 ActivePeriodsCount에 표시 되는 경우 활성으로 계산 됨)
 * *ActivePeriodsCount*: 사용자가 활성 상태 인지 여부를 결정할 최소 고유 활성 기간 수입니다. 활성 사용자는 최소 (크거나 같음) 활성 기간 수에 나타난 사용자입니다.
-* *Bin*: 분석 단계 기간의 스칼라 상수 값입니다. 는 숫자/날짜/시간/타임 스탬프 `week` / `month` / `year`값 이거나 인 문자열일 수 있습니다. 모든 기간은 해당 하는 [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) 함수입니다.
+* *Bin*: 분석 단계 기간의 스칼라 상수 값입니다. 는 숫자/날짜/시간/타임 스탬프 값 이거나 인 문자열일 수 있습니다 `week` / `month` / `year` . 모든 기간은 해당 하는 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) / [startofyear](startofyearfunction.md) 함수입니다.
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
 **반환**
@@ -88,7 +88,7 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 |2018-07-01 00:00:00.0000000|1|
 |2018-07-15 00:00:00.0000000|1|
 
-사용자는 다음 조건 중 하나를 충족 하는 경우 활성 상태인 것으로 간주 됩니다. 
+사용자는 다음 조건을 모두 충족 하는 경우 활성 상태인 것으로 간주 됩니다. 
 * 사용자가 3 개 이상의 고유 요일 (Period = 1d, ActivePeriods = 3)에 표시 되었습니다.
 * 사용자가 8d의 lookback 창에 표시 되었으며 현재 모양을 포함 하 고 있습니다.
 
