@@ -8,21 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 80e38c1782a4476181fe73c5f77d6460f2ef539f
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 8fd83615de466c238a590273b228c118e2cd1b46
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271233"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84257843"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
-`mv-apply`연산자는 입력 테이블의 각 레코드를 하위 테이블로 확장 하 고 각 하위 테이블에 하위 쿼리를 적용 한 다음 모든 하위 쿼리 결과의 합집합을 반환 합니다.
+각 레코드에 하위 쿼리를 적용 하 고 모든 하위 쿼리 결과의 합집합을 반환 합니다.
 
 예를 들어 테이블에 `T` `Metric` 값이 숫자 배열인 형식의 열이 있다고 가정 합니다 `dynamic` `real` . 다음 쿼리는 각 값에서 가장 큰 값 두 개를 찾고 `Metric` 이러한 값에 해당 하는 레코드를 반환 합니다.
 
 ```kusto
-T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
+T | mv-apply Metric to typeof(real) on 
+(
+   top 2 by Metric desc
+)
 ```
 
 연산자에는 `mv-apply` 다음과 같은 처리 단계가 있습니다.

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 지속적인 데�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/27/2020
-ms.openlocfilehash: e1978746eaac35b96b05131e79378c391b5e138b
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 4ea4532d8547011b2b281988ff1534cd1d49da86
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227777"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258082"
 ---
 # <a name="continuous-data-export"></a>연속 데이터 내보내기
 
@@ -22,12 +22,13 @@ Kusto에서 [외부 테이블로](../externaltables.md)데이터를 지속적으
 연속 데이터 내보내기를 사용 하려면 [외부 테이블을 만든](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) 다음 외부 테이블을 가리키는 [연속 내보내기 정의를 만들어야](#create-or-alter-continuous-export) 합니다. 
 
 > [!NOTE] 
-> * Kusto는 연속 내보내기의 일부로 연속 내보내기를 만들기 전에 수집 기록 레코드 내보내기를 지원 하지 않습니다. 연속 되지 않은 [내보내기 명령을](export-data-to-an-external-table.md)사용 하 여 기록 레코드를 별도로 내보낼 수 있습니다. 자세한 내용은 [기록 데이터 내보내기](#exporting-historical-data)를 참조 하세요. 
+> * Kusto는 연속 내보내기의 일부로 연속 내보내기를 만들기 전에 수집 기록 레코드 내보내기를 지원 하지 않습니다. 연속 되지 않은 [내보내기 명령을](export-data-to-an-external-table.md)사용 하 여 기록 레코드를 별도로 내보낼 수 있습니다. 자세한 내용은 [기록 데이터 내보내기](#exporting-historical-data)를 참조 하세요.
 > * 연속 내보내기는 스트리밍 수집을 사용 하는 데이터 수집 작동 하지 않습니다. 
 > * 현재 [행 수준 보안 정책이](../../management/rowlevelsecuritypolicy.md) 설정 된 테이블에서는 연속 내보내기를 구성할 수 없습니다.
 > * 연속 내보내기는 `impersonate` [연결 문자열](../../api/connection-strings/storage.md)에 있는 외부 테이블에 대해서는 지원 되지 않습니다.
- 
-## <a name="notes"></a>참고
+> * 연속 내보내기에 사용 되는 아티팩트가 Event Grid 알림을 트리거하기 위한 것 이라면 [Event Grid 설명서의 알려진 문제 섹션](../data-ingestion/eventgrid.md#known-issues)을 참조 하세요.
+
+## <a name="notes"></a>메모
 
 * "정확히 한 번" 내보내기는 [내보낸 아티팩트 표시 명령](#show-continuous-export-artifacts)에 보고 된 파일에 대해서만 보장 됩니다. 
 연속 내보내기는 각 레코드가 외부 테이블에 한 번만 기록 되는 것을 보장 하지 않습니다. 내보내기가 시작 된 후에도 오류가 발생 하 고 일부 아티팩트가 이미 외부 테이블에 기록 된 경우에는 외부 테이블에 중복 된 파일이 나 손상 된 파일이 있을 _수 있습니다_ .이 경우 쓰기 작업이 완료 되기 전에 중단 된 경우에도 마찬가지입니다. 이러한 경우 아티팩트는 외부 테이블에서 삭제 되지 않지만 [내보낸 아티팩트 표시 명령](#show-continuous-export-artifacts)에는 보고 *되지* 않습니다. `show exported artifacts command`를 사용 하 여 내보낸 파일 사용 
@@ -61,7 +62,7 @@ Kusto에서 [외부 테이블로](../externaltables.md)데이터를 지속적으
 
 **속성**:
 
-| 속성             | 유형     | 설명   |
+| 속성             | Type     | Description   |
 |----------------------|----------|---------------------------------------|
 | ContinuousExportName | String   | 연속 내보내기의 이름입니다. 이름은 데이터베이스 내에서 고유 해야 하며 주기적으로 연속 내보내기를 실행 하는 데 사용 됩니다.      |
 | ExternalTableName    | String   | 내보낼 [외부 테이블](../externaltables.md) 의 이름입니다.  |
@@ -99,7 +100,7 @@ with
 
 **정보의**
 
-| 속성             | 유형   | 설명                |
+| 속성             | Type   | Description                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기의 이름입니다. |
 
@@ -110,7 +111,7 @@ with
 
 **출력**
 
-| 출력 매개 변수    | 유형     | 설명                                                             |
+| 출력 매개 변수    | Type     | Description                                                             |
 |---------------------|----------|-------------------------------------------------------------------------|
 | CursorScopedTables  | String   | 명시적으로 범위가 지정 된 (팩트) 테이블 목록 (JSON 직렬화)               |
 | ExportProperties    | String   | 속성 내보내기 (JSON 직렬화)                                     |
@@ -136,13 +137,13 @@ with
 
 **정보의**
 
-| 속성             | 유형   | 설명                |
+| 속성             | Type   | Description                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기의 이름입니다. |
 
 **출력**
 
-| 출력 매개 변수  | 유형     | 설명                            |
+| 출력 매개 변수  | Type     | Description                            |
 |-------------------|----------|----------------------------------------|
 | 타임스탬프         | DateTime | 연속 내보내기 실행의 타임 스탬프 |
 | ExternalTableName | String   | 외부 테이블의 이름             |
@@ -169,20 +170,20 @@ with
 
 **정보의**
 
-| 속성             | 유형   | 설명                |
+| 속성             | Type   | Description                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기 이름  |
 
 **출력**
 
-| 출력 매개 변수 | 유형      | 설명                                         |
+| 출력 매개 변수 | Type      | Description                                         |
 |------------------|-----------|-----------------------------------------------------|
 | 타임스탬프        | DateTime  | 오류의 타임 스탬프입니다.                           |
 | OperationId      | String    | 오류의 작업 ID입니다.                    |
 | 속성             | String    | 연속 내보내기 이름입니다.                             |
 | LastSuccessRun   | 타임스탬프 | 연속 내보내기의 마지막 실행 성공입니다.   |
 | FailureKind      | String    | 실패/PartialFailure입니다. PartialFailure는 오류가 발생 하기 전에 일부 아티팩트가 성공적으로 내보내진 것을 나타냅니다. |
-| 세부 정보          | String    | 오류 세부 정보입니다.                              |
+| 설명          | String    | 오류 세부 정보입니다.                              |
 
 **예제:** 
 
@@ -190,7 +191,7 @@ with
 .show continuous-export MyExport failures 
 ```
 
-| 타임스탬프                   | OperationId                          | 속성     | LastSuccessRun              | FailureKind | 세부 정보    |
+| 타임스탬프                   | OperationId                          | 속성     | LastSuccessRun              | FailureKind | 설명    |
 |-----------------------------|--------------------------------------|----------|-----------------------------|-------------|------------|
 | 2019-01-01 11:07:41.1887304 | ec641435-2505-4532-ba19-d6ab88c96a9d | MyExport | 2019-01-01 11:06:35.6308140 | 실패     | 세부 정보 ... |
 
@@ -202,7 +203,7 @@ with
 
 **정보의**
 
-| 속성             | 유형   | 설명                |
+| 속성             | Type   | Description                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기 이름 |
 
@@ -222,7 +223,7 @@ with
 
 **정보의**
 
-| 속성             | 유형   | 설명                |
+| 속성             | Type   | Description                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | 연속 내보내기 이름 |
 

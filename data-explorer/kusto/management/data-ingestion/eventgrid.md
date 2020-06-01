@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 7673b50a8d1ff401f8c2fa086b7eec34c0517238
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: e8c5642e59999c7a1bd547bfcb17cc18bf5d9e15
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373478"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258048"
 ---
 # <a name="ingest-from-storage-using-event-grid-subscription"></a>Event Grid 구독을 사용하여 스토리지에서 수집
 
@@ -34,7 +34,7 @@ Azure 데이터 탐색기는 blob 생성 알림에 대 한 [Azure Event Grid](ht
 Blob 메타 데이터를 통해 blob 수집의 수집 [속성](../../../ingestion-properties.md) 을 지정할 수 있습니다.
 다음 속성을 설정할 수 있습니다.
 
-|속성 | 설명|
+|속성 | Description|
 |---|---|
 | rawSizeBytes | 원시 (압축 되지 않은) 데이터의 크기입니다. Avro/ORC/Parquet의 경우 서식 지정 압축을 적용 하기 전의 크기입니다.|
 | kustoTable |  기존 대상 테이블의 이름입니다. `Table`블레이드의 집합을 재정의 `Data Connection` 합니다. |
@@ -46,7 +46,7 @@ Blob 메타 데이터를 통해 blob 수집의 수집 [속성](../../../ingestio
 
 ## <a name="events-routing"></a>이벤트 라우팅
 
-Azure 데이터 탐색기 클러스터에 대 한 blob 저장소 연결을 설정할 때 대상 테이블 속성 (테이블 이름, 데이터 형식 및 매핑)을 지정 합니다. 이는 데이터에 대 한 기본 라우팅 이며로 라고도 `static routig` 합니다.
+Azure 데이터 탐색기 클러스터에 대 한 blob 저장소 연결을 설정할 때 대상 테이블 속성 (테이블 이름, 데이터 형식 및 매핑)을 지정 합니다. 이는 데이터에 대 한 기본 라우팅 이며, 라고도 `static routing` 합니다.
 Blob 메타 데이터를 사용 하 여 각 blob에 대 한 대상 테이블 속성을 지정할 수도 있습니다. 수집 [속성](#ingestion-properties)에 지정 된 대로 데이터를 동적으로 라우팅합니다.
 
 다음은 blob 메타 데이터를 업로드 하기 전에 수집 속성을 blob 메타 데이터에 설정 하는 예입니다. Blob은 다른 테이블로 라우팅됩니다.
@@ -68,7 +68,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 > [!Note]
 > 최상의 성능을 위해 Azure 데이터 탐색기 클러스터와 동일한 지역에 모든 리소스를 만듭니다.
 
-### <a name="prerequisites"></a>필수 구성 요소
+### <a name="prerequisites"></a>사전 요구 사항
 
 * [스토리지 계정 만들기](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) 
   또는 종류의 Azure Storage 계정에 Event Grid 알림 구독을 설정할 수 있습니다 `BlobStorage` `StorageV2` . 
@@ -77,9 +77,9 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ### <a name="event-grid-subscription"></a>Event Grid 구독
 
-* `Event Hub`Blob 저장소 이벤트 알림을 전송 하는 데 사용 되는 endpoind 형식으로 선택 된 kusto입니다. `Event Grid schema`알림에 대해 선택한 스키마입니다. 각 짝수 허브는 하나의 연결을 제공할 수 있습니다.
+* `Event Hub`Blob 저장소 이벤트 알림을 전송 하는 데 사용 되는 끝점 형식으로 선택 된 kusto. `Event Grid schema`알림에 대해 선택한 스키마입니다. 각 짝수 허브는 하나의 연결을 제공할 수 있습니다.
 * Blob storage 구독 연결에서 형식의 알림을 처리 합니다 `Microsoft.Storage.BlobCreated` . 구독을 만들 때 선택 해야 합니다. 선택한 경우 다른 유형의 알림이 무시 됩니다.
-* 한 구독은 한 컨테이너 이상에서 저장소 이벤트에 대해 알림을 받을 수 있습니다. 특정 컨테이너에서 파일을 추적 하려는 경우 다음과 같이 알림에 대 한 필터를 설정 합니다. 연결을 설정 하는 경우 다음 값을 speciel 합니다. 
+* 한 구독은 한 컨테이너 이상에서 저장소 이벤트에 대해 알림을 받을 수 있습니다. 특정 컨테이너에서 파일을 추적 하려는 경우 다음과 같이 알림에 대 한 필터를 설정 합니다. 연결을 설정 하는 경우 다음 값을 특별히 주의 해야 합니다. 
    * **Subject는 필터로 시작** 하며 blob 컨테이너의 *리터럴* 접두사입니다. 적용된 패턴이 *startswith*이므로, 여러 컨테이너를 포함할 수 있습니다. 와일드카드는 허용되지 않습니다.
      다음과 같이 설정 *해야* 합니다 *`/blobServices/default/containers/<prefix>`* . 예: */blobServices/default/containers/StormEvents-2020-*
    * **제목 종료 문자** 필드는 Blob의 *리터럴* 접미사입니다. 와일드카드는 허용되지 않습니다. 파일 확장명 필터링에 유용 합니다.
@@ -88,7 +88,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ### <a name="data-ingestion-connection-to-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 데이터 수집 연결
 
-* Azure Portal을 통해: [azure 데이터 탐색기에서 Event Grid 데이터 연결을 만듭니다](../../../ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+* Azure Portal를 통해 [Azure 데이터 탐색기에서 Event Grid 데이터 연결을 만듭니다](../../../ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
 * Kusto 관리 .NET SDK 사용: [Event Grid 데이터 연결 추가](../../../data-connection-event-grid-csharp.md#add-an-event-grid-data-connection)
 * Kusto management Python SDK를 사용 하 여 [Event Grid 데이터 연결 추가](../../../data-connection-event-grid-python.md#add-an-event-grid-data-connection)
 * ARM 템플릿 사용: [Event Grid 데이터 연결을 추가 하기 위한 Azure Resource Manager 템플릿](../../../data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
@@ -125,3 +125,10 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 ## <a name="blob-lifecycle"></a>Blob 수명 주기
 
 Azure 데이터 탐색기는 blob 사후 수집을 삭제 하지 않지만 3 ~ 5 일 동안 유지 됩니다. [Azure blob 저장소 수명 주기](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) 를 사용 하 여 blob 삭제를 관리 합니다.
+
+## <a name="known-issues"></a>알려진 문제
+
+Azure 데이터 탐색기을 사용 하 여 event grid 수집에 사용 되는 파일을 [내보내는](../data-export/export-data-to-storage.md) 경우 다음 사항을 유의 해야 합니다. 
+* 내보내기 명령에 *not* 제공 된 연결 문자열이 나 [외부 테이블](../data-export/export-data-to-an-external-table.md) 에 제공 된 연결 문자열이 [ADLS Gen2 형식](../../api/connection-strings/storage.md#azure-data-lake-store)(예:)의 연결 문자열이 고 `abfss://filesystem@accountname.dfs.core.windows.net` *저장소 계정에서 계층적 네임 스페이스를 사용할 수*없는 경우 Event Grid 알림이 트리거되지 않습니다. 
+ * 계층 구조 네임 스페이스에 대해 계정을 사용 하지 않는 경우 연결 문자열은 [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) 형식 (예:)을 사용 해야 합니다. `https://accountname.blob.core.windows.net` 
+ * 이 경우 ADLS Gen2 연결 문자열을 사용 하는 경우에도 내보내기가 정상적으로 작동 하지만 알림이 트리거되지 않으므로 Event Grid 수집은 작동 하지 않습니다. 

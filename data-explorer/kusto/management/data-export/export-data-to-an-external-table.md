@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 7b4bade1ca874157ec843103a8bcf5236b49abfe
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 28aca460089c6dc3b70aecaff11b26cfe1c1baf4
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227794"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258065"
 ---
 # <a name="export-data-to-an-external-table"></a>외부 테이블로 데이터 내보내기
 
@@ -27,7 +27,7 @@ ms.locfileid: "83227794"
 
 **출력**
 
-|출력 매개 변수 |유형 |설명
+|출력 매개 변수 |Type |Description
 |---|---|---
 |ExternalTableName  |String |외부 테이블의 이름입니다.
 |경로|String|출력 경로입니다.
@@ -42,7 +42,8 @@ ms.locfileid: "83227794"
 * 다음 속성은 내보내기 명령의 일부로 지원 됩니다. 자세한 내용은 [저장소로 내보내기](export-data-to-storage.md) 섹션을 참조 하세요. 
    * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
 
-   * 외부 테이블이 분할 된 경우 내보낸 아티팩트는 [예제](#partitioned-external-table-example)에 표시 된 파티션 정의에 따라 해당 디렉터리에 기록 됩니다. 
+* 외부 테이블이 분할 된 경우 내보낸 아티팩트는 [예제](#partitioned-external-table-example)에 표시 된 파티션 정의에 따라 해당 디렉터리에 기록 됩니다. 
+  * 파티션 값이 null 이거나 비어 있거나 잘못 된 디렉터리 값 인 경우 대상 저장소의 정의에 따라이 값은 기본값으로 대체 됩니다 `__DEFAULT_PARTITION__` . 
 
 * 파티션당 기록 되는 파일 수는 설정에 따라 달라 집니다.
    * 외부 테이블에 datetime 파티션만 포함 되어 있거나 파티션이 없는 경우 (각 파티션에 대해 기록 된 파일 수)는 클러스터의 노드 수를 기준으로 해야 합니다 (또는에 도달 하는 경우 `sizeLimit` ). 내보내기 작업을 배포 하는 경우 클러스터의 모든 노드가 동시에 내보냅니다. 배포를 사용 하지 않도록 설정 하 여 단일 노드만 쓰기를 수행 하도록 하려면를 `distributed` false로 설정 합니다. 이 프로세스는 더 작은 파일을 만들지만 내보내기 성능을 저하 시킵니다.

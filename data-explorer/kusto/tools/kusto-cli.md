@@ -1,6 +1,6 @@
 ---
-title: 쿠스토 CLI - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 Kusto CLI에 대해 설명합니다.
+title: Kusto CLI-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 Kusto CLI에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,83 +8,83 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 7443ad32b78a48f6b35be4f4b680ac6c728aedd2
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: ab82698054e4bcb851f9f05acdd62af569e0704b
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81524245"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258116"
 ---
-# <a name="kusto-cli"></a>쿠스토 클리
+# <a name="kusto-cli"></a>Kusto CLI
 
-Kusto.Cli는 Kusto에 요청을 보내고 결과를 표시하는 데 사용할 수 있는 명령줄 유틸리티입니다. Kusto.Cli는 여러 모드 중 하나에서 실행할 수 있습니다.
+Kusto. Cli는 Kusto에 요청을 보내고 결과를 표시 하는 데 사용할 수 있는 명령줄 유틸리티입니다. Kusto. Cli는 다음과 같은 몇 가지 모드 중 하나에서 실행할 수 있습니다.
 
-* *REPL 모드*: 사용자가 Kusto에 대해 실행할 쿼리 및 명령을 입력하고 도구가 결과를 표시한 다음 다음 사용자 쿼리 /명령을 기다립니다.
-  ("REPL"은 "읽기/평가/인쇄/루프"를 의미합니다.)
+* *REPL 모드*: Kusto에 대해 실행 하는 쿼리 및 명령의 사용자 형식입니다. 그러면 도구에서 결과를 표시 한 후 다음 사용자 쿼리/명령을 기다립니다 합니다.
+  "REPL"은 "읽기/평가/인쇄/루프"를 나타냅니다.
 
-* *실행 모드*: 사용자는 도구에 대한 명령줄 인수로 실행할 하나 이상의 쿼리 및 명령을 제공합니다. 이러한 순서대로 자동으로 실행되며 결과가 콘솔에 출력됩니다. 선택적으로 모든 입력 쿼리 및 명령을 실행하면 도구가 REPL 모드로 전환됩니다.
+* *실행 모드*: 사용자는 도구에 명령줄 인수로 실행할 하나 이상의 쿼리와 명령을 제공 합니다. 이러한 설정은 자동으로 순서 대로 실행 되며 그 결과는 콘솔에 출력 됩니다. 모든 입력 쿼리와 명령을 실행 하는 경우 도구는 REPL 모드로 전환 됩니다.
 
-* *스크립트 모드*: 실행 모드와 유사하지만 파일을 통해 지정된 쿼리 및 명령 ("스크립트"라고 함).
+* *스크립트 모드*: 실행 모드와 비슷하지만 파일 ("스크립트" 라고 함)을 통해 지정 된 쿼리 및 명령을 사용 합니다.
 
-Kusto.Cli는 주로 코드를 작성하는 데 일반적으로 필요한 Kusto 서비스에 대한 작업을 자동화하기 위해 제공됩니다(예: C# 프로그램 또는 PowerShell 스크립트).
+Kusto. Cli는 주로 코드를 작성 하는 데 필요한 Kusto 서비스에 대 한 작업을 자동화 하기 위해 제공 됩니다 (예: c # 프로그램 또는 PowerShell 스크립트).
 
-## <a name="getting-the-tool"></a>도구 얻기
+## <a name="getting-the-tool"></a>도구 가져오기
 
-Kusto.Cli는 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)패키지의 `Microsoft.Azure.Kusto.Tools`일부로 여기에서 다운로드 할 수 있습니다.
-다운로드되면 패키지의 `tools` 폴더를 대상 폴더로 추출할 수 있습니다. 추가 설치가 필요하지 않습니다(예: xcopy 설치 가능).
+Kusto. Cli는 NuGet 패키지의 일부 이며 `Microsoft.Azure.Kusto.Tools` [여기](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)에서 다운로드할 수 있습니다.
+다운로드 한 후에는 패키지의 `tools` 폴더를 대상 폴더로 추출할 수 있습니다. 추가 설치는 필요 하지 않습니다 (즉, xcopy로 설치 가능 함).
 
 
 
 ## <a name="running-the-tool"></a>도구 실행
 
-Kusto.Cli를 실행하려면 하나 이상의 명령줄 인수가 필요합니다. 일반적으로 해당 인수는 도구가 연결해야 하는 Kusto 서비스에 대한 연결 문자열입니다. [Kusto 연결 문자열을](../api/connection-strings/kusto.md)참조하십시오. 명령줄 인수가 없거나 알 수 없는 인수 집합또는 `/help` 스위치를 사용하여 도구를 실행하면 콘솔로 도움말 메시지가 내보내게 됩니다.
+Kusto Cli를 실행 하려면 명령줄 인수가 하나 이상 필요 합니다. 일반적으로 해당 인수는 도구에서 연결 해야 하는 Kusto 서비스에 대 한 연결 문자열입니다. [Kusto 연결 문자열](../api/connection-strings/kusto.md)을 참조 하세요. 명령줄 인수를 사용 하지 않거나 알 수 없는 인수 집합을 사용 하거나 스위치를 사용 하 여 도구를 실행 `/help` 하면 도움말 메시지를 콘솔로 내보냅니다.
 
-예를 들어 다음 명령을 사용하여 Kusto.Cli를 실행하고 `help` Kusto 서비스에 연결하고 데이터베이스 컨텍스트를 `Samples` 데이터베이스에 설정합니다.
+예를 들어 다음 명령을 사용 하 여 Kusto Cli를 실행 하 고 `help` kusto 서비스에 연결 하 고 데이터베이스 컨텍스트를 데이터베이스에 설정 합니다. `Samples`
 
 ```
 Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 ```
 
 > [!NOTE]
-> 연결 문자열 주위에 따옴표를 사용하여 PowerShell과 같은 셸 응용 프로그램이 연결`;`문자열의 세미콜론 () 및 유사한 문자를 해석하지 못하도록 했습니다.
+> PowerShell과 같은 셸 응용 프로그램에서 `;` 연결 문자열의 세미콜론 () 및 유사한 문자를 해석 하지 못하도록 연결 문자열 주위에 따옴표를 사용 했습니다.
 
 ## <a name="command-line-arguments"></a>명령줄 인수
 
-`Kusto.Cli.exe`*연결 스트링* [*스위치*]
+`Kusto.Cli.exe`*ConnectionString* [*스위치*]
 
-*Connectionstring*
-* 모든 [Kusto 연결](../api/connection-strings/kusto.md) 정보를 보유 하는 Kusto 연결 문자열입니다.
+*ConnectionString*
+* 모든 Kusto 연결 정보를 포함 하는 [Kusto 연결 문자열](../api/connection-strings/kusto.md) 입니다.
   기본값은 `net.tcp://localhost/NetDefaultDB`입니다.
 
-`-execute:`*쿼리Or 명령*
-* 지정된 경우 실행 모드에서 Kusto.Cli를 실행합니다. 지정된 쿼리 또는 명령이 실행됩니다. 이 스위치는 반복될 수 있으며, 이 경우 쿼리/명령이 모양 순서대로 순차적으로 실행됩니다.
-  이 스위치는 `-script` 함께 사용할 `-scriptml`수 없습니다.
+`-execute:`*QueryOrCommand*
+* 지정 된 경우 실행 모드에서 Kusto. Cli를 실행 합니다. 지정 된 쿼리 또는 명령이 실행 됩니다. 이 스위치는 반복 될 수 있으며,이 경우 쿼리/명령이 모양 순서 대로 순차적으로 실행 됩니다.
+  이 스위치는 또는와 함께 사용할 수 없습니다 `-script` `-scriptml` .
 
-`-keepRunning:`*사용 유지 실행*
-* (또는 둘 `true` 중 `false`하나)로 지정하면 모든 `-script` 값이 처리된 후 REPL 모드로 전환하거나 `-execute` 비활성화할 수 있습니다.
+`-keepRunning:`*EnableKeepRunning*
+* 또는로 지정 된 경우 `true` `false` , 또는 값이 모두 처리 된 후에는 REPL 모드로의 전환을 사용 하거나 사용 하지 않도록 설정 `-script` `-execute` 합니다.
 
-`-script:`*스크립트 파일*
-* 지정한 경우 스크립트 모드에서 Kusto.Cli를 실행합니다. 지정된 스크립트 파일이 로드되고 쿼리 또는 명령이 순차적으로 실행됩니다.
-  줄 바호는 아래에 설명된 대로 줄이 `&` 끝나거나 `&&` 조합하는 경우를 제외하고 쿼리/명령을 구분하는 데 사용됩니다.
-  이 스위치는 함께 `-execute`사용할 수 없습니다.
+`-script:`*ScriptFile*
+* 지정 하는 경우 스크립트 모드에서 Kusto. Cli를 실행 합니다. 지정 된 스크립트 파일이 로드 되 고 쿼리 또는 명령이 순차적으로 실행 됩니다.
+  줄바꿈는 아래에 설명 된 대로 줄이 또는 조합으로 끝나는 경우를 제외 하 고 쿼리/명령을 구분 하는 데 사용 됩니다 `&` `&&` .
+  이 스위치는와 함께 사용할 수 없습니다 `-execute` .
 
-`-scriptml:`*스크립트 파일*
-* 지정한 경우 스크립트 모드에서 Kusto.Cli를 실행합니다. 지정된 스크립트 파일이 로드되고 쿼리 또는 명령이 순차적으로 실행됩니다.
-  전체 스크립트 파일은 단일 쿼리 또는 명령으로 간주됩니다.
-  이 스위치는 함께 `-execute`사용할 수 없습니다.
+`-scriptml:`*ScriptFile*
+* 지정 하는 경우 스크립트 모드에서 Kusto. Cli를 실행 합니다. 지정 된 스크립트 파일이 로드 되 고 쿼리 또는 명령이 순차적으로 실행 됩니다.
+  전체 스크립트 파일은 단일 쿼리 또는 명령으로 간주 됩니다.
+  이 스위치는와 함께 사용할 수 없습니다 `-execute` .
 
-`-echo:`*인에이블에코모드*
-* (또는 둘 `true` 중 `false`하나)를 지정하면 에코 모드를 활성화하거나 사용하지 않도록 설정합니다.
-  에코 모드가 활성화되면 모든 쿼리 또는 명령이 출력에서 반복됩니다.
+`-echo:`*EnableEchoMode*
+* 또는로 지정 하면 `true` `false` 에코 모드를 사용 하거나 사용 하지 않도록 설정 합니다.
+  Echo 모드를 사용 하도록 설정 하면 모든 쿼리 또는 명령이 출력에 반복 됩니다.
 
-`-transcript:`*대본 파일*  
-* 지정한 경우 프로그램 출력을 *TranscriptFile*에 씁니다.
+`-transcript:`*TranscriptFile*  
+* 지정 하면 프로그램 출력을 *TranscriptFile*에 씁니다.
 
-`-logToConsole:`*인에이블로그토콘솔*
-* (또는 둘 `true` 중 `false`하나)를 지정하면 콘솔에 프로그램 출력을 작성하거나 사용하지 않도록 설정합니다.
+`-logToConsole:`*EnableLogToConsole*
+* 지정 된 경우 ( `true` 또는 `false` )로 설정 하면 프로그램 출력을 콘솔에 쓰는 기능이 사용 되거나 사용 되지 않습니다.
 
-`-lineMode:`*인에이블라인모드*
-* 이 지정하면 라인 입력 모드(기본값 또는 `true`설정시)와 블록 입력 모드(설정된 경우)를 전환합니다. `false` 줄 바선이 처리되는 방법을 결정하는 이 두 모드에 대한 설명은 아래를 참조하십시오.
+`-lineMode:`*EnableLineMode*
+* 지정 된 경우 줄 입력 모드 (기본값 `true` )와 블록 입력 모드 (로 설정 된 경우) 사이를 전환 `false` 합니다. 줄바꿈를 처리 하는 방법을 결정 하는 이러한 두 모드에 대 한 설명은 아래를 참조 하십시오.
 
 **예제**
 
@@ -92,82 +92,82 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 Kusto.Cli.exe "https://kustolab.kusto.windows.net/;Fed=true" -script:"c:\mycommands.txt"
 ```
 
-대장과 인수 값 사이에는 공백이 없어야 합니다.
+콜론과 인수 값 사이에 공백이 없어야 합니다.
 
 ## <a name="directives"></a>지시문
 
-Kusto.Cli는 처리를 위해 서비스로 전송되는 대신 도구에서 실행되는 여러 지시문을 지원합니다.
+Kusto. Cli는 처리를 위해 서비스로 전송 되는 것이 아니라 도구에서 실행 되는 다양 한 지시문을 지원 합니다.
 
-|지시문                      |Description|
+|지시문                      |설명|
 |-------------------------------|-----------|
-|`?`<br>`#h`<br>`#help`         |짧은 도움말 메시지를 받습니다.|
-|`q`<br>`#quit`<br>`#exit`      |도구를 종료합니다.|
-|`#a`<br>`#abort`               |도구를 중단하여 종료합니다.|
-|`#clip`                        |다음 쿼리 또는 명령의 결과가 클립보드에 복사됩니다.|
-|`#cls`                         |콘솔 화면을 지웁습니다.|
-|`#connect`*[연결 문자열]*|다른 Kusto 서비스에 연결합니다(연결 *문자열을* 생략하면 현재 서비스가 표시됩니다.)|
-|`#crp`[*Name* 이름`=` [ *값*]]   |클라이언트 요청 속성의 값을 설정합니다(또는 표시하거나 모든 값을 표시).|
-|`#crp` (`-list` | `-doc`) [*접두사*]|클라이언트 요청 속성(접두사 또는 모두)을 나열합니다.|
-|`#dbcontext`[*데이터베이스 이름*]  |쿼리 및 명령에서 사용하는 "컨텍스트" 데이터베이스를 *DatabaseName으로* 변경합니다(생략된 경우 현재 컨텍스트가 표시됩니다.)|
-|`ke` *텍스트*                    |지정된 텍스트를 실행 중인 Kusto.Explorer 프로세스로 보냅니다.|
-|`#loop`*Count* *텍스트* 수         |텍스트를 여러 번 실행합니다.|
-|`#qp`[*Name* 이름`=` [ *값*]]   |쿼리 매개 변수의 값을 설정합니다(또는 쿼리 매개 변수를 표시하거나 모든 값을 표시). 시작/끝에서 단일/큰따옴표가 잘립니다.|
-|`#save`*파일 이름*             |다음 쿼리 또는 명령의 결과가 표시된 CSV 파일에 저장됩니다.|
-|`#script`*파일 이름*           |표시된 스크립트를 실행합니다.|
-|`#scriptml`*파일 이름*         |표시된 다중 줄 스크립트를 실행합니다.|
+|`?`<br>`#h`<br>`#help`         |짧은 도움말 메시지를 가져옵니다.|
+|`q`<br>`#quit`<br>`#exit`      |도구를 종료 합니다.|
+|`#a`<br>`#abort`               |Abortively 도구를 종료 합니다.|
+|`#clip`                        |다음 쿼리 또는 명령의 결과가 클립보드에 복사 됩니다.|
+|`#cls`                         |콘솔 화면을 지웁니다.|
+|`#connect`*[ConnectionString*]|다른 Kusto 서비스에 연결 합니다. *ConnectionString* 이 생략 되 면 현재 항목을 표시 합니다.|
+|`#crp`[*이름* [ `=` *값*]]   |클라이언트 요청 속성의 값을 설정 하거나, 표시 하거나, 모든 값을 표시 합니다.|
+|`#crp`( `-list` \| `-doc` ) [*Prefix*]|클라이언트 요청 속성 (접두사 또는 모두)을 나열 합니다.|
+|`#dbcontext`[*DatabaseName*]  |쿼리 및 명령에 사용 되는 "context" 데이터베이스를 *DatabaseName* 으로 변경 합니다 (생략 하면 현재 컨텍스트가 표시 됨).|
+|`ke` *텍스트*                    |실행 중인 Kusto 탐색기 프로세스에 지정 된 텍스트를 보냅니다.|
+|`#loop`*개수* *텍스트*         |텍스트를 여러 번 실행 합니다.|
+|`#qp`[*이름* [ `=` *값*]]   |쿼리 매개 변수의 값을 설정 (또는 표시만 하거나 모든 값을 표시) 합니다. 시작/끝에서 작은따옴표 (1/2)가 잘립니다.|
+|`#save`*파일 이름*             |다음 쿼리 또는 명령의 결과는 지정 된 CSV 파일에 저장 됩니다.|
+|`#script`*파일 이름*           |표시 된 스크립트를 실행 합니다.|
+|`#scriptml`*파일 이름*         |표시 된 여러 줄 스크립트를 실행 합니다.|
 
-## <a name="line-input-mode-and-block-input-mode"></a>라인 입력 모드 및 블록 입력 모드
+## <a name="line-input-mode-and-block-input-mode"></a>줄 입력 모드 및 블록 입력 모드
 
-기본적으로 Kusto.Cli는 줄 **입력 모드에서**실행됩니다: 각 줄 바호 문자는 쿼리/명령 사이의 구분 기호로 해석되고 줄은 실행을 위해 즉시 전송됩니다.
+기본적으로 Kusto Cli는 **줄 입력 모드**에서 실행 되 고 있습니다. 각 줄 바꿈 문자는 쿼리/명령 사이에 구분 기호로 해석 되 고 줄은 실행을 위해 즉시 전송 됩니다.
 
-이 모드에서는 긴 쿼리 또는 명령을 여러 줄로 나누을 수 있습니다. 문자가 `&` 줄 바호 앞에 있는 줄의 마지막 문자로 나타나면 Kusto.Cli가 다음 줄을 계속 읽게 됩니다. 문자가 `&&` 줄 바호 앞에 있는 줄의 마지막 문자로 나타나면 Kusto.Cli가 줄 바선을 무시하고 다음 줄을 계속 읽게 됩니다.
+이 모드에서는 긴 쿼리나 명령을 여러 줄로 나눌 수 있습니다. `&`줄의 마지막 문자 (줄 바꿈 앞)로 문자 모양 (줄 바꿈 전)은 Kusto Cli를 통해 다음 줄을 계속 읽습니다. `&&`줄의 마지막 문자 (줄 바꿈 앞)로 문자 모양 (줄 바꿈 전)은 Kusto. Cli에서 줄 바꿈 문자를 무시 하 고 다음 줄을 계속 읽습니다.
 
-또는 Kusto.Cli는 **블록 입력 모드에서**실행지원 : 명령줄 스위치를 `-lineMode:false` 사용하거나 `#blockmode`명령을 사용하여 Kusto.Cli에게 모든 줄이 이전 줄의 연속이라고 가정하도록 지시하여 쿼리와 명령이 빈 입력 줄로만 구분되도록 할 수 있습니다.
+또는 Kusto. Cli는 **블록 입력 모드**에서의 실행도 지원 합니다. 명령줄 스위치를 사용 `-lineMode:false` 하거나 명령을 사용 하 여 `#blockmode` 모든 줄이 이전 줄의 연속으로 가정 하 여 쿼리 및 명령이 빈 입력 줄로만 구분 되도록 하는 cli를 지시할 수 있습니다.
 
 ## <a name="comments"></a>주석
 
-Kusto.Cli는 새 `//` 줄을 주석 줄로 시작하는 문자열을 해석합니다. 나머지 줄은 무시하고 다음 줄을 계속 읽습니다.
+Kusto. Cli는 `//` 새 줄을 주석 줄로 시작 하는 문자열을 해석 합니다. 나머지 줄을 무시 하 고 다음 줄을 계속 읽습니다.
 
-## <a name="tool-only-options"></a>공구 전용 옵션
+## <a name="tool-only-options"></a>도구 전용 옵션
 
-명령                        | 영향                                                                            | 현재
+명령                        | 영향                                                                            | 중인
 --------------------------------|-----------------------------------------------------------------------------------|-----------
-#timeon|#timeoff                | 사용 /비활성화 옵션 '타이밍': 요청이 걸린 시간을 표시                    | TRUE
-#tableon|#tableoff              | 사용 설정/비활성화 옵션 'tableView': 형식 결과가 테이블로 설정                  | TRUE
-#marson|#marsoff                | 활성화/비활성화 옵션 'marsView': 2차~마지막 결과 세트 표시             | FALSE
-#resultson|#resultsoff          | 사용/비활성화 옵션 'outputResultsSet': 결과 세트 표시                 | TRUE
-#prettyon|#prettyoff            | 사용 /비활성화 옵션 '예쁜 오류': 오류에서 불필요한 끈적 끈적한 이동을 제거          | TRUE
-#markdownon|#markdownoff        | 사용 /비활성화 옵션 '마크 다운보기': 마크 다운으로 테이블 형식                   | FALSE
-#progressiveon|#progressiveoff  | 사용 /비활성화 옵션 '프로그레시브보기': 요청 및 점진적 결과를 표시  | FALSE
-#linemode|#blockmode            | 활성화/비활성화 옵션 'lineMode': 한 줄 입력 모드                          | TRUE
+#timeon|#timeoff                | ' 타이밍 ' 옵션 사용/사용 안 함: 요청 된 시간을 표시 합니다.                    | TRUE
+#tableon|#tableoff              | ' tableView ' 옵션 사용/사용 안 함: 결과 집합을 테이블로 서식 지정                  | TRUE
+#marson|#marsoff                | ' marsView ' 옵션 사용/사용 안 함: 두 번째-마지막 결과 집합을 표시 합니다.             | FALSE
+#resultson|#resultsoff          | ' outputResultsSet ' 옵션 사용/사용 안 함: 결과 집합을 표시 합니다.                 | TRUE
+#prettyon|#prettyoff            | ' prettyErrors ' 옵션 사용/사용 안 함: 오류에서 불필요 한 goo 제거          | TRUE
+#markdownon|#markdownoff        | ' markdownView ' 옵션 사용/사용 안 함: MarkDown로 테이블 서식 지정                   | FALSE
+#progressiveon|#progressiveoff  | ' progressiveView ' 옵션 사용/사용 안 함: 프로그레시브 결과를 요청 하 고 표시 합니다.  | FALSE
+#linemode|#blockmode            | ' lineMode ' 옵션 사용/사용 안 함: 한 줄 입력 모드                          | TRUE
 
 명령                              | 영향                                                                                                         | 기본
 --------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------
-#cridon|#cridoff                      | (사용|비활성화 옵션 'crid': 요청을 보내기 전에 ClientRequestId표시)                         | FALSE
-#csvheaderson|#csvheadersoff          | (사용|비활성화 옵션 'csvHeaders': CSV 출력에 헤더포함)                                            | TRUE
-#focuson|#focusoff                    | (사용|옵션 '포커스'를 사용하지 않도록 설정 : 모든 여분의 보풀을 제거하고 오른쪽 물건에 초점을)                       | FALSE
-#linemode|#blockmode                  | (사용|비활성화 옵션 'lineMode': 한 줄 입력 모드)                                                     | TRUE
-#markdownon|#markdownoff              | (사용|비활성화 옵션 '마크다운뷰': 테이블 형식을 마크다운으로 지정)                                              | FALSE
-#marson|#marsoff                      | (사용|비활성화 옵션 'marsView': 2차~마지막 결과 세트 표시)                                        | FALSE
-#prettyon|#prettyoff                  | (사용|비활성화 옵션 'prettyErrors': 오류에서 불필요한 끈적 끈적한 이동을 제거)                                     | TRUE
-#querystreamingon|#querystreamingoff  | (사용|비활성화 옵션 '쿼리 스트리밍': 쿼리 스트리밍 끝점 사용 (Kusto 팀만))                    | FALSE
-#resultson|#resultsoff                | (사용|사용 안 함 옵션 'outputResultsSet': 결과 집합 표시)                                            | TRUE
-#tableon|#tableoff                    | (사용|사용 안 함 옵션 'tableView': 형식 결과 테이블로 설정)                                             | TRUE
-#timeon|#timeoff                      | (사용|비활성화 옵션 '타이밍': 요청이 걸린 시간을 표시)                                               | TRUE
-#typeon|#typeoff                      | (사용|비활성화 옵션 'typeView': 테이블 보기에 각 열의 형식을 표시합니다(Streaming=true를 강제로 입력합니다))  | TRUE
-#v2protocolon|#v2protocoloff          | (사용|비활성화 옵션 'v2protocol': v2 쿼리 프로토콜을 사용 하 여, v1)                                        | TRUE
+#cridon|#cridoff                      | (사용|' crid ' 옵션 사용 안 함: 요청을 보내기 전에 ClientRequestId를 표시 합니다.                         | FALSE
+#csvheaderson|#csvheadersoff          | (사용|' csvHeaders ' 옵션 사용 안 함: CSV 출력에 헤더 포함)                                            | TRUE
+#focuson|#focusoff                    | (사용|' focus ' 옵션 사용 안 함: 모든 추가 유익을 제거 하 고 올바른 기능에 집중 합니다.                       | FALSE
+#linemode|#blockmode                  | (사용|' lineMode ' 옵션 사용 안 함: 한 줄 입력 모드)                                                     | TRUE
+#markdownon|#markdownoff              | (사용|' markdownView ' 옵션 사용 안 함: 테이블 형식을 MarkDown로 지정 합니다.                                              | FALSE
+#marson|#marsoff                      | (사용|' marsView ' 옵션 사용 안 함: 두 번째-마지막 결과 집합을 표시 합니다.                                        | FALSE
+#prettyon|#prettyoff                  | (사용|' prettyErrors ' 옵션 사용 안 함: 오류에서 불필요 한 goo 제거                                     | TRUE
+#querystreamingon|#querystreamingoff  | (사용|' queryStreaming ' 옵션 사용 안 함: queryStreaming 끝점을 사용 합니다 (Kusto 팀에만 해당)).                    | FALSE
+#resultson|#resultsoff                | (사용|' outputResultsSet ' 옵션을 사용 하지 않도록 설정: 결과 집합을 표시 합니다.                                            | TRUE
+#tableon|#tableoff                    | (사용|' tableView ' 옵션 사용 안 함: 결과 집합을 테이블로 서식 지정                                             | TRUE
+#timeon|#timeoff                      | (사용|' 타이밍 ' 옵션 사용 안 함: 요청이 걸린 시간을 표시 합니다.                                               | TRUE
+#typeon|#typeoff                      | (사용|' typeView ' 옵션을 사용 하지 않도록 설정: 테이블 뷰에 각 열의 유형을 표시 합니다 (강제 스트리밍 = true 임).  | TRUE
+#v2protocolon|#v2protocoloff          | (사용|' v2protocol ' 옵션을 사용 하지 않도록 설정 합니다. v1이 아닌 v2 쿼리 프로토콜을 사용 합니다.                                        | TRUE
 
-## <a name="using-kustocli-to-export-results-as-csv"></a>Kusto.Cli를 사용하여 결과를 CSV로 내보내기
+## <a name="using-kustocli-to-export-results-as-csv"></a>Kusto. Cli를 사용 하 여 결과를 CSV로 내보내기
 
-Kusto.Cli는 다음 쿼리 결과를 `#save`CSV 형식으로 **next** 로컬 파일로 내보내기 위해 특수 클라이언트 측 명령을 지원합니다. 예를 들어 Kusto.Cli의 다음 호출은 클러스터(데이터베이스)의 `StormEvents` `Samples` 테이블에서 `help.kusto.windows.net` 10개의 레코드를 내보냅니다.
+Kusto. Cli는 `#save` **다음** 쿼리 결과를 CSV 형식의 로컬 파일로 내보내는 특수 한 클라이언트 쪽 명령를 지원 합니다. 예를 들어 다음은 Kusto. Cli를 호출 하 여 `StormEvents` `help.kusto.windows.net` 클러스터 (데이터베이스)의 테이블에서 10 개의 레코드를 내보내는 것입니다. `Samples`
 
 ```
 Kusto.Cli.exe @help/Samples -execute:"#save c:\temp\test.log" -execute:"StormEvents | take 10"
 ```
 
-## <a name="using-kustocli-to-control-a-running-instance-of-kustoexplorer"></a>Kusto.Cli를 사용하여 Kusto.Explorer의 실행 중인 인스턴스를 제어합니다.
+## <a name="using-kustocli-to-control-a-running-instance-of-kustoexplorer"></a>Kusto Cli를 사용 하 여 실행 중인 Kusto 탐색기 인스턴스 제어
 
-Kusto.Cli에게 컴퓨터에서 실행 중인 Kusto.Explorer의 "기본" 인스턴스와 통신하고 실행하도록 쿼리를 보낼 수 있습니다. 이것은 Kusto 쿼리의 숫자를 실행 하려는 프로그램에 대 한 매우 유용할 수 있습니다., 하지만 Kusto.Explorer 프로세스를 다시 시작 하 고 싶지 않아. 다음 예제에서 Kusto.Cli는 도움말 클러스터를 다시 쿼리를 실행하는 데 사용됩니다.
+Kusto. Cli를 사용 하 여 컴퓨터에서 실행 중인 "기본" 인스턴스와 통신 하 고 실행 하는 데 사용할 수 있습니다. 이는 여러 Kusto 쿼리를 실행 하려는 프로그램에 매우 유용할 수 있지만, Kusto 탐색기 프로세스를 다시 시작 하지 않으려고 합니다. 다음 예제에서 Kusto. Cli는 도움말 클러스터 기입 쿼리를 실행 하는 데 사용 됩니다.
 
 ```
 #connect cluster('help').database('Samples')
@@ -175,5 +175,5 @@ Kusto.Cli에게 컴퓨터에서 실행 중인 Kusto.Explorer의 "기본" 인스�
 #ke StormEvents | count
 ```
 
-구문은 매우 간단합니다. `#ke`
-그런 다음 쿼리는 Kusto.Cli에서 현재 클러스터/데이터베이스 집합을 사용하여 Kusto.Explorer의 기본 인스턴스로 전송됩니다.
+구문은 매우 간단 `#ke` 하며, 그 뒤에 공백 및 실행할 쿼리가 있습니다.
+그런 다음이 쿼리는 Kusto. s e r v e r. c o m에 설정 된 현재 클러스터/데이터베이스를 사용 하 여 .Iito 탐색기 (있는 경우)의 주 인스턴스로 전송 됩니다.

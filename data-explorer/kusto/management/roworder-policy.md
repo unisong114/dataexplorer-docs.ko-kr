@@ -1,6 +1,6 @@
 ---
-title: 행 순서 정책 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 RowOrder 정책에 대해 설명합니다.
+title: RowOrder 정책-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 RowOrder 정책에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: cda4c9a6017071878832fab376a0376d250f3ed6
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 63aad71854c73a3d1f1837c3665a152db8b48d13
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81520250"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258031"
 ---
-# <a name="roworder-policy"></a>행오더 정책
+# <a name="roworder-policy"></a>RowOrder 정책
 
-이 문서에서는 [행 순서 정책을](../management/roworderpolicy.md)만들고 변경하는 데 사용되는 제어 명령에 대해 설명합니다.
+이 문서에서는 [행 순서 정책을](../management/roworderpolicy.md)만들고 변경 하는 데 사용 되는 제어 명령을 설명 합니다.
 
-## <a name="show-roworder-policy"></a>행순서 정책 표시
+## <a name="show-roworder-policy"></a>RowOrder 정책 표시
 
 ```kusto
 .show table <table_name> policy roworder
@@ -27,13 +27,13 @@ ms.locfileid: "81520250"
 .show table * policy roworder
 ```
 
-## <a name="delete-roworder-policy"></a>행순서 삭제 정책
+## <a name="delete-roworder-policy"></a>RowOrder 정책 삭제
 
 ```kusto
 .delete table <table_name> policy roworder
 ```
 
-## <a name="alter-roworder-policy"></a>행순서 정책 변경
+## <a name="alter-roworder-policy"></a>Alter RowOrder policy
 
 ```kusto
 .alter table <table_name> policy roworder (<row_order_policy>)
@@ -43,9 +43,9 @@ ms.locfileid: "81520250"
 .alter-merge table <table_name> policy roworder (<row_order_policy>)
 ```
 
-**예**
+**예** 
 
-다음 예제에서는 `TenantId` 열(오름차순)에 있는 행 순서 정책을 기본 키로 설정하고 `Timestamp` 열(오름차순)에 보조 키로 설정합니다. 그런 다음 정책을 쿼리합니다.
+다음 예에서는 `TenantId` 열 (오름차순)의 행 순서 정책을 기본 키로, `Timestamp` 열 (오름차순)을 보조 키로 설정 합니다. 그런 다음 정책을 쿼리 합니다.
 
 ```kusto
 .alter table events policy roworder (TenantId asc, Timestamp desc)
@@ -55,6 +55,6 @@ ms.locfileid: "81520250"
 .show table events policy roworder 
 ```
 
-|TableName|행 순서 정책| 
+|TableName|RowOrderPolicy| 
 |---|---|
-|events|(테넌트ID asc, 타임스탬프 desc)| 
+|events|(TenantId asc, Timestamp desc)|

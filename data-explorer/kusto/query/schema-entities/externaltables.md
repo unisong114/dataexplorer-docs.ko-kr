@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
-ms.openlocfilehash: a3d95d3cb90b6a834b1f1538aa28da1f1ac2a97f
-ms.sourcegitcommit: a562ce255ac706ca1ca77d272a97b5975235729d
+ms.openlocfilehash: 2b03f4e0ef426b07f88d7c179caecca6e7dd3034
+ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83867055"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84257827"
 ---
 # <a name="external-tables"></a>외부 테이블
 
@@ -29,4 +29,5 @@ ms.locfileid: "83867055"
 * 외부 테이블 이름은 Kusto 테이블 이름과 겹칠 수 없습니다.
 * 외부 테이블 이름은 [엔터티 이름](./entity-names.md)에 대 한 규칙을 따릅니다.
 * 데이터베이스당 최대 외부 테이블 제한은 1000입니다.
-* Kusto [는 외부 테이블로 데이터를 내보내고](../../management/data-export/export-data-to-an-external-table.md) 외부 테이블을 [쿼리](../../../data-lake-query-data.md)하는 것을 지원 합니다.
+* Kusto는 외부 테이블을 [쿼리](../../../data-lake-query-data.md)하는 것 뿐만 아니라 외부 테이블에 대 한 [내보내기](../../management/data-export/export-data-to-an-external-table.md) 및 [연속 내보내기를](../../management/data-export/continuous-data-export.md) 지원 합니다.
+    * 외부 테이블에는 [데이터 제거가](../../concepts/data-purge.md) 적용 되지 않습니다. 레코드는 외부 테이블에서 삭제 되지 않습니다.
