@@ -7,19 +7,29 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b1d888471c93409826abe523ae6ae4df39e120c3
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.date: 06/02/2020
+ms.openlocfilehash: b1351ceb9fe4b81a818ca41728a588dddfb4c5a2
+ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374256"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84294681"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Azure 데이터 탐색기를 사용 하 여 데이터 시각화 
 
 Azure 데이터 탐색기은 방대한 양의 데이터에 대 한 복잡 한 분석 솔루션을 빌드하는 데 사용 되는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스입니다. Azure 데이터 탐색기는 다양 한 시각화 도구와 통합 되므로 데이터를 시각화 하 고 조직 전체에서 결과를 공유할 수 있습니다. 이 데이터를 실행 가능한 정보로 변환 하 여 비즈니스에 영향을 줄 수 있습니다.
 
 데이터 시각화 및 보고는 데이터 분석 프로세스에서 매우 중요 한 단계입니다. Azure 데이터 탐색기는 시나리오 및 예산에 가장 적합 한 서비스를 사용할 수 있도록 많은 BI 서비스를 지원 합니다.
+
+## <a name="azure-data-explorer-dashboards"></a>Azure Data Explorer 대시보드
+
+Azure 데이터 탐색기 대시보드는 독립 실행형 웹 응용 프로그램, [웹 UI](web-query-data.md)에서 쿼리를 실행 하 고 대시보드를 작성할 수 있도록 하는 웹 응용 프로그램입니다. Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합니다.
+
+* 기본적으로 웹 UI에서 Azure 데이터 탐색기 대시보드로 쿼리를 내보냅니다. 
+* 웹 UI에서 데이터를 탐색 합니다.
+* 최적화 된 대시보드 렌더링 성능.
+
+자세한 내용은 [Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화](azure-data-explorer-dashboards.md)를 참조 하세요.
 
 ## <a name="kusto-query-language-visualizations"></a>Kusto 쿼리 언어 시각화
 
@@ -45,7 +55,7 @@ Azure 데이터 탐색기는 [기본 제공 기본 Excel 커넥터](excel-connec
 
 ## <a name="kibana"></a>Kibana
 
-Azure 데이터 탐색기는 오픈 소스 커넥터용 K2Bridge를 사용 하 여 [Kibana (검색 페이지)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) 에 연결 하는 기능을 제공 합니다. [Kibana에 대 한 데이터 원본으로 Azure 데이터 탐색기를 설정 하 고 데이터를 시각화](k2bridge.md)합니다.
+Azure 데이터 탐색기는 오픈 소스 커넥터용 K2Bridge를 사용 하 여 [Kibana](https://www.elastic.co/guide/en/kibana/6.8/discover.html) 에 연결 하는 기능을 제공 합니다. [Kibana에 대 한 데이터 원본으로 Azure 데이터 탐색기를 설정 하 고 데이터를 시각화](k2bridge.md)합니다.
 
 ## <a name="odbc-connector"></a>ODBC 커넥터
 

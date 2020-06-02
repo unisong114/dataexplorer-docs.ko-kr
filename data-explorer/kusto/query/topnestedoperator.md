@@ -8,62 +8,86 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f87606442dcc5d7c9e7e0fceec379c37169757c3
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: a2a8f4fa92a7b8722097ec3595674b855a90f216
+ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83370780"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84294664"
 ---
 # <a name="top-nested-operator"></a>top-nested 연산자
 
-각 수준이 이전 수준 값을 기준으로 하는 드릴다운인 계층적 상위 결과를 생성합니다. 
+계층 집계 및 상위 값 선택 영역을 생성 합니다. 여기서 각 수준은 이전 수준에 대 한 구체화입니다.
 
 ```kusto
 T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-nested 4 of bin(Timestamp,5m) by sum(MachinesNumber)
 ```
 
-이는 대시보드 시각화 시나리오에서 유용 하거나, "K1의 상위 N 개 값 (일부 집계 사용)에 대 한 대답을 찾을 필요가 있는 경우에 유용 합니다. 각 항목에 대해 K2의 상위-M 값 (다른 집계 사용)을 찾습니다. ..."
+`top-nested`연산자는 테이블 형식 데이터를 입력으로, 하나 이상의 집계 절을 허용 합니다.
+첫 번째 집계 절 (맨 왼쪽)은 해당 레코드에 대 한 일부 식의 고유한 값에 따라 입력 레코드를 파티션으로 세분 합니다. 그러면 절은 레코드에 대해이 식을 최대화 하거나 최소화 하는 특정 개수의 레코드를 유지 합니다. 그런 다음, 다음 집계 절은 유사한 함수를 중첩 된 방식으로 적용 합니다. 다음 절은 모두 이전 절에서 생성 된 파티션에 적용 됩니다. 이 프로세스는 모든 집계 절에 대해 계속 됩니다.
+
+예를 들어 `top-nested` 다음 질문에 대답 하는 데 연산자를 사용할 수 있습니다. "국가, 영업 사원 및 판매 금액 등 판매 수치를 포함 하는 테이블의 경우 판매액 별 상위 5 개 국가는 무엇 인가요? 이러한 각 국가에서 상위 3 개 직원은 무엇 인가요? "
 
 **구문**
 
-*T* `|` `top-nested` [*N1*] `of` *Expression1* [ `with others=` *ConstExpr1*] `by` [*AggName1* `=` ] *Aggregation1* [ `asc`  |  `desc` ] [ `,` ...]
+*T* `|` `top-nested` *TopNestedClause2* [ `,` *TopNestedClause2*]
+
+여기서 *TopNestedClause* 에는 다음 구문이 있습니다.
+
+[*N*] `of` [ *`ExprName`* `=` ] *`Expr`* [ `with` `others` `=` *`ConstExpr`* ] `by` [ *`AggName`* `=` ] *`Aggregation`* [ `asc`  |  `desc` ]
 
 **인수**
 
-각 상위 중첩 규칙에 대해 다음을 수행 합니다.
-* *N1*: 각 계층 구조 수준에 대해 반환할 상위 값의 수입니다. 선택 사항입니다. 생략 하면 모든 고유 값이 반환 됩니다.
-* *Expression1*: 상위 값을 선택 하는 기준이 되는 식입니다. 일반적으로 *T*의 열 이름 이거나 이러한 열에 대 한 일부 범주화 작업 (예: `bin()` )입니다. 
-* *ConstExpr1*: 지정 된 경우 적용 가능한 중첩 수준에 대해 상위 값에 포함 되지 않은 다른 값에 대 한 집계 된 결과를 포함 하는 추가 행이 추가 됩니다.
-* *Aggregation1*: [sum ()](sum-aggfunction.md), [count ()](count-aggfunction.md), [max ()](max-aggfunction.md), [min ()](min-aggfunction.md), [dcount ()](dcountif-aggfunction.md), [avg ()](avg-aggfunction.md), [백분위](percentiles-aggfunction.md)수 (), [percentilew ()](percentiles-aggfunction.md)또는 이러한 집계의 algebric 조합 중 하나일 수 있는 집계 함수에 대 한 호출입니다.
-* 선택이 실제로 범위의 "맨 아래"에서 시작되는지 아니면 "맨 위"에서 시작되는지를 제어하기 위해 `asc` 또는 `desc`(기본값)가 나타날 수 있습니다.
+각 *TopNestedClause*:
+
+* *`N`*: `long` 이 계층 구조 수준에 대해 반환할 상위 값의 수를 나타내는 형식의 리터럴입니다.
+  생략 하면 모든 고유 값이 반환 됩니다.
+
+* *`ExprName`*: 지정 된 경우의 값에 해당 하는 출력 열의 이름을 설정 합니다 *`Expr`* .
+
+* *`Expr`*:이 계층 구조 수준에 대해 반환할 값을 나타내는 입력 레코드에 대 한 식입니다.
+  일반적으로이 열은 테이블 형식 입력 (*T*) 또는 이러한 열에 대 한 일부 계산 (예:)에 대 한 열 참조 `bin()` 입니다.
+
+* *`ConstExpr`*: 지정 된 경우 각 계층 수준 1 레코드에 대해 "맨 위로 이동" 하지 않은 모든 레코드에 대 한 집계 값을 사용 하 여 레코드를 추가 합니다.
+
+* *`AggName`*: 지정 하는 경우이 식별자는 *집계*값에 대 한 출력에 열 이름을 설정 합니다.
+
+* *`Aggregation`*: 같은 값을 공유 하는 모든 레코드에 적용할 집계를 나타내는 숫자 식입니다 *`Expr`* . 이 집계의 값은 "top"의 결과 레코드를 결정 합니다.
+  
+  지원 되는 집계 함수는 다음과 같습니다.
+   * [sum ()](sum-aggfunction.md),
+   * [count ()](count-aggfunction.md),
+   * [max ()](max-aggfunction.md),
+   * [min ()](min-aggfunction.md),
+   * [dcount ()](dcountif-aggfunction.md),
+   * [avg ()](avg-aggfunction.md),
+   * [백분위 수 ()](percentiles-aggfunction.md)및
+   * [percentilew ()](percentiles-aggfunction.md). 집계의 대 수 조합도 지원 됩니다.
+
+* `asc`또는 `desc` (기본값)을 선택 하 여 선택 항목이 실제로 집계 된 값 범위의 "아래쪽" 또는 "위쪽" 중 어디에 있는지를 제어할 수 있습니다.
 
 **반환**
 
-입력 열을 포함 하는 계층적 테이블 및 각 요소에 대해 동일한 수준의 집계 결과를 포함 하는 새 열이 생성 됩니다.
-열이 입력 열의 순서와 동일 하 게 정렬 되 고 새 생성 된 열은 집계 된 열에 가깝습니다. 각 레코드에는 모든 이전 수준에서 모든 이전 상위 중첩 규칙을 적용 한 후에 각 값이 선택 되 고이 출력에 현재 수준의 규칙이 적용 되는 계층적 구조가 있습니다.
-즉, 수준 i에 대 한 상위 n 개 값은 수준 i-1의 각 값에 대해 계산 됩니다.
- 
-**팁**
+이 연산자는 각 집계 절에 대해 두 개의 열이 있는 테이블을 반환 합니다.
 
-* *집계* 결과에 대해에서 열 이름 바꾸기 사용: T | MachinesNumberForLocation = sum (MachinesNumber)에의 한 상위 중첩 3 위치
+* 한 열에는 절 계산의 고유 값 *`Expr`* (지정 된 경우 *ExprName* 열 이름)이 포함 됩니다.
 
-* 반환 된 레코드 수는 매우 클 수 있습니다. 최대 (*N1*+ 1) \* (*N2*+ 1) \* ... \* (*Nm*+ 1) (여기서 m은 수준 수이 고 *Ni* 은 수준 i의 상위 수)입니다.
+* 한 열에는 *집계* 계산 결과가 포함 됩니다 (지정 된 경우 *AggregationName* 열 이름 포함).
 
-* 집계는 위에서 언급 한 중 하나인 집계 함수를 사용 하 여 숫자 열을 받아야 합니다.
+**설명**
 
-* `with others=`특정 수준에서 상위 N 개 값이 아닌 다른 모든 값의 집계 된 값을 가져오려면 옵션을 사용 합니다.
+값으로 지정 되지 않은 입력 열은 *`Expr`* 출력 되지 않습니다.
+특정 수준에서 모든 값을 가져오려면 다음을 수행 하는 집계 수를 추가 합니다.
 
-* 특정 수준에 대해 관심이 없는 경우에는 `with others=` null 값이 추가 됩니다 (aggreagated 열 및 수준 키에 대 한 자세한 내용은 아래 예제 참조).
+* *N* 값을 생략 합니다.
+* 열 이름을 값으로 사용 합니다.*`Expr`*
+* 는를 `Ignore=max(1)` 집계로 사용 하 고 열을 무시 (또는 프로젝트) `Ignore` 합니다.
 
+집계 절 ((N1 + 1) \* (N2 + 1) ...)의 수를 사용 하 여 레코드 수가 급격 하 게 증가할 수 있습니다. \* *N* 제한이 지정 되지 않은 경우에는 레코드 증가가 훨씬 더 빨라집니다. 이 연산자는 상당한 양의 리소스를 사용할 수 있다는 것을 고려 합니다.
 
-* 다음과 같이 상위 중첩 된 추가 문을 추가 하 여 선택한 상위 중첩 후보에 대 한 추가 열을 반환할 수 있습니다 (아래 예제 참조).
+집계 분포가 균일 하지 않은 경우에는 *N*을 사용 하 여 반환할 고유 값 수를 제한 하 고 `with others=` *ConstExpr* 옵션을 사용 하 여 다른 모든 사례에 대 한 "가중치"의 표시를 가져옵니다.
 
-```kusto
-top-nested 2 of ...., ..., ..., top-nested of <additionalRequiredColumn1> by max(1), top-nested of <additionalRequiredColumn2> by max(1)
-```
-
-**예제**
+**예**
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -73,7 +97,7 @@ StormEvents
   top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-|State|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -82,8 +106,7 @@ StormEvents
 |텍사스|123400.5101|사법 기관|37228.5966|PERRYTON|289.3178|
 |텍사스|123400.5101|숙련된 관찰자|13997.7124|CLAUDE|421.44|
 
-
-* 다른 예제를 사용 하는 경우:
+' 기타 사용 ' 옵션을 사용 합니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -95,7 +118,7 @@ StormEvents
 
 ```
 
-|State|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -128,7 +151,7 @@ StormEvents
 |1149279.5923|
 
 
-상위 중첩 결과에 다른 열 (EventType) 요청: 
+상위 중첩 결과에 다른 열 (EventType)을 요청 합니다. 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -137,7 +160,7 @@ StormEvents
 | project-away tmp
 ```
 
-|State|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
+|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
 |---|---|---|---|---|---|---|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|뇌우를 동반한 바람|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|우박|
@@ -150,7 +173,7 @@ StormEvents
 |텍사스|123400.5101|사법 기관|37228.5966|PERRYTON|289.3178|홍수|
 |텍사스|123400.5101|사법 기관|37228.5966|PERRYTON|289.3178|갑작스러운 홍수|
 
-결과를 마지막 중첩 된 수준 (이 예제에서는 EndLocation)으로 정렬 하 고이 수준 (그룹별)의 각 값에 대해 인덱스 정렬 순서를 지정 하려면 다음을 수행 합니다.
+이 수준 (그룹별)의 각 값에 대해 인덱스 정렬 순서를 지정 하 여 결과를 마지막 중첩 된 수준 (이 예제에서는 EndLocation)으로 정렬 합니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -162,7 +185,7 @@ StormEvents
 | mv-expand EndLocations, endLocationSums, indicies
 ```
 
-|State|원본|EndLocations|endLocationSums|인덱스|
+|주|원본|EndLocations|endLocationSums|인덱스|
 |---|---|---|---|---|
 |텍사스|숙련된 관찰자|CLAUDE|421.44|0|
 |텍사스|숙련된 관찰자|AMARILLO|316.8892|1|

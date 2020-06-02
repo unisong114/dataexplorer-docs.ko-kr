@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 35fd37db22b2f07dcee9d7f67c700414a4cfc5d3
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 942c0577b8fb784af74cf09aec4c8a68a7be8dda
+ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373842"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84294562"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>종동체 데이터베이스를 사용 하 여 Azure 데이터 탐색기에 데이터베이스 연결
 
@@ -26,7 +26,7 @@ ms.locfileid: "83373842"
 * 단일 클러스터는 여러 개의 리더 클러스터에서 데이터베이스를 따라갈 수 있습니다. 
 * 클러스터에는 종동체 데이터베이스와 리더 데이터베이스가 모두 포함 될 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 1. Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.microsoft.com/free/) 계정을 만듭니다.
 1. 리더 및 종동체에 대 한 [클러스터 및 DB를 만듭니다](create-cluster-database-portal.md) .
@@ -34,7 +34,7 @@ ms.locfileid: "83373842"
 
 ## <a name="attach-a-database"></a>데이터베이스 연결
 
-데이터베이스를 연결 하는 데 사용할 수 있는 여러 가지 방법이 있습니다. 이 문서에서는 c # 또는 Azure Resource Manager 템플릿을 사용 하 여 데이터베이스를 연결 하는 방법을 설명 합니다. 데이터베이스를 연결 하려면 리더 클러스터 및 종동체 클러스터에 대 한 권한이 있어야 합니다. 사용 권한에 대 한 자세한 내용은 [권한 관리](#manage-permissions)를 참조 하세요.
+데이터베이스를 연결 하는 데 사용할 수 있는 여러 가지 방법이 있습니다. 이 문서에서는 c #, Python 또는 Azure Resource Manager 템플릿을 사용 하 여 데이터베이스를 연결 하는 방법을 설명 합니다. 데이터베이스를 연결 하려면 리더 클러스터 및 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다. [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) 및 [ARM 템플릿을](/azure/role-based-access-control/role-assignments-template)사용 하 여 역할 할당을 추가 하거나 제거할 수 있습니다. Azure [RBAC (역할 기반 액세스 제어)](/azure/role-based-access-control/overview) 및 [다른 역할](/azure/role-based-access-control/rbac-and-directory-admin-roles)에 대해 자세히 알아볼 수 있습니다. 
 
 ### <a name="attach-a-database-using-c"></a>C를 사용 하 여 데이터베이스 연결 #
 
@@ -252,6 +252,9 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
+종동체 쪽에서 데이터베이스를 분리 하려면 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다.
+위의 예제에서는 서비스 주체를 사용 합니다.
+
 ### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>연결 된 종동체 데이터베이스를 리더 클러스터에서 분리 합니다.
 
 리더 클러스터는 연결 된 모든 데이터베이스를 다음과 같이 분리할 수 있습니다.
@@ -281,6 +284,8 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
+
+주 서버에서 데이터베이스를 분리 하려면 리더 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다. 위의 예제에서는 서비스 주체를 사용 합니다.
 
 ## <a name="detach-the-follower-database-using-python"></a>Python을 사용 하 여 종동체 데이터베이스 분리
 
@@ -314,6 +319,8 @@ attached_database_configurationName = "uniqueName"
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
+종동체 쪽에서 데이터베이스를 분리 하려면 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다.
+위의 예제에서는 서비스 주체를 사용 합니다.
 
 ### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>연결 된 종동체 데이터베이스를 리더 클러스터에서 분리 합니다.
 
@@ -354,6 +361,9 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
+주 서버에서 데이터베이스를 분리 하려면 리더 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다.
+위의 예제에서는 서비스 주체를 사용 합니다.
+
 ## <a name="manage-principals-permissions-and-caching-policy"></a>보안 주체, 권한 및 캐싱 정책 관리
 
 ### <a name="manage-principals"></a>보안 주체 관리
@@ -362,13 +372,13 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 |**종류** |**설명**  |
 |---------|---------|
-|**Union**     |   연결 된 데이터베이스 보안 주체에는 항상 원래 데이터베이스 보안 주체와 종동체 데이터베이스에 추가 된 새 보안 주체가 모두 포함 됩니다.      |
+|**부분**     |   연결 된 데이터베이스 보안 주체에는 항상 원래 데이터베이스 보안 주체와 종동체 데이터베이스에 추가 된 새 보안 주체가 모두 포함 됩니다.      |
 |**바꾸십시오**   |    원본 데이터베이스의 보안 주체를 상속 하지 않습니다. 연결 된 데이터베이스에 대 한 새 보안 주체를 만들어야 합니다.     |
 |**없음**   |   연결 된 데이터베이스 보안 주체에는 추가 보안 주체가 없는 원래 데이터베이스의 보안 주체만 포함 됩니다.      |
 
 제어 명령을 사용 하 여 권한이 부여 된 보안 주체를 구성 하는 방법에 대 한 자세한 내용은 [종동체 클러스터를 관리 하기 위한 제어 명령](kusto/management/cluster-follower.md)을 참조 하세요.
 
-### <a name="manage-permissions"></a>사용 권한 관리
+### <a name="manage-permissions"></a>권한 관리
 
 읽기 전용 데이터베이스 권한을 관리 하는 것은 모든 데이터베이스 유형의 경우와 동일 합니다. [Azure Portal에서 관리 권한을](manage-database-permissions.md#manage-permissions-in-the-azure-portal)참조 하세요.
 
