@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/26/2020
-ms.openlocfilehash: a08f1f154c0efa17164d15a075456e2b6fab3212
-ms.sourcegitcommit: a562ce255ac706ca1ca77d272a97b5975235729d
+ms.openlocfilehash: 293ee468f31fafafdf08da1632c93b04b0a8adf2
+ms.sourcegitcommit: f7101c6b41ec250d05f4cb6092e2939958b37b40
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83867089"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84329013"
 ---
 # <a name="external-table-general-control-commands"></a>외부 테이블 일반 제어 명령
 
@@ -112,7 +112,7 @@ ms.locfileid: "83867089"
 
 **출력**
 
-삭제 된 테이블의 속성을 반환 합니다. 을 참조 하십시오 [. 외부 테이블을 표시](#show-external-tables)합니다.
+삭제 된 테이블의 속성을 반환 합니다. 자세한 내용은를 참조 하십시오 [. 외부 테이블을 표시](#show-external-tables)합니다.
 
 **예:**
 
@@ -126,5 +126,5 @@ ms.locfileid: "83867089"
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Azure Storage 또는 Azure Data Lake에서 외부 테이블 만들기 및 변경](external-tables-azurestorage-azuredatalake.md)
+* [Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경](external-tables-azurestorage-azuredatalake.md)
 * [외부 SQL 테이블 만들기 및 변경](external-sql-tables.md)
