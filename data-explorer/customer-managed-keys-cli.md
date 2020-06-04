@@ -7,12 +7,12 @@ ms.reviewer: astauben
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 570ec818a330074cdf46075571d831c718273e64
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: 7a4d1bd4f6f112bbe4129e48ddc59886b8b6a12b
+ms.sourcegitcommit: 8953d09101f4358355df60ab09e55e71bc255ead
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262129"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84420886"
 ---
 # <a name="configure-customer-managed-keys-using-azure-cli"></a>Azure CLI를 사용 하 여 고객 관리 키 구성
 
@@ -24,8 +24,7 @@ ms.locfileid: "84262129"
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](includes/data-explorer-configure-customer-managed-keys.md)]
 
-## <a name="enable-encryption-with-customer-managed-keys-in-the-azure-portal"></a>Azure Portal에서 고객이 관리 하는 키로 암호화 사용
-
+## <a name="enable-encryption-with-customer-managed-keys-using-azure-cli"></a>Azure CLI를 사용 하 여 고객이 관리 하는 키로 암호화 사용
 이 문서에서는 Azure CLI 클라이언트를 사용 하 여 고객이 관리 하는 키 암호화를 사용 하도록 설정 하는 방법을 보여 줍니다. 기본적으로 Azure 데이터 탐색기 암호화는 Microsoft 관리 키를 사용 합니다. Azure 데이터 탐색기 클러스터가 고객이 관리 하는 키를 사용 하도록 구성 하 고 클러스터와 연결할 키를 지정 합니다.
 
 1. 다음 명령을 실행하여 Azure에 로그인합니다.
