@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
-ms.openlocfilehash: f8cf59e3aa263aef224301d871a2e1e15e1a290b
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: de0b2696ba5974a7261b4f397214e3ade59fc9cb
+ms.sourcegitcommit: 31af2dfa75b5a2f59113611cf6faba0b45d29eb5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550524"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84454102"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
@@ -49,7 +49,7 @@ ms.locfileid: "83550524"
 * `bagexpansion=bag`: 속성 모음이 단일 항목 속성 모음으로 확장됩니다. 이 모드는 기본 확장입니다.
 * `bagexpansion=array`: 속성 모음은 두 요소 `[` *키* `,` *값* `]` 배열 구조로 확장 되어 키와 값에 대 한 균일 한 액세스를 허용 합니다 (예: 속성 이름에 대 한 고유 카운트 집계 실행). 
 
-**예제**
+**예**
 
 단일 열의 간단한 확장입니다.
 
@@ -111,7 +111,7 @@ range x from 1 to 4 step 1
 
 **추가 예제**
 
-[시간별 라이브 활동의 차트 수](./samples.md#concurrent-activities)를 참조 하세요.
+[시간별 라이브 활동의 차트 수](./samples.md#chart-concurrent-sessions-over-time)를 참조 하세요.
 
 **참고 항목**
 

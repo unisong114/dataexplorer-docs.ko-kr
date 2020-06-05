@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fe44323dabb246438f18c9ab01eec0008ad4fe97
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: ffb14b110904bcf94a69d3abeed2fc0b542b0448
+ms.sourcegitcommit: 31af2dfa75b5a2f59113611cf6faba0b45d29eb5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372960"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84454136"
 ---
 # <a name="samples"></a>샘플
 
@@ -38,7 +38,6 @@ StormEvents
 
 :::image type="content" source="images/samples/060.png" alt-text="060":::
 
-<a name="activities"></a>
 ## <a name="get-sessions-from-start-and-stop-events"></a>시작 및 정지 입네트에서 세션 가져오기
 
 이벤트 로그가 있고 일부 이벤트가 확장된 활동 또는 세션의 시작 또는 끝을 표시한다고 가정해 보겠습니다. 
@@ -185,7 +184,6 @@ on UnitOfWorkId
 | extend SaveFactor = sum_NormalizedLoad / sum_CurrentLoad 
 ```
 
-<a name="concurrent-activities"><a/>
 ## <a name="chart-concurrent-sessions-over-time"></a>시간 경과에 따른 동시 세션 차트 작성
 
 시작 및 종료 시간이 포함된 활동의 테이블이 있다고 가정합니다.  임의 시기에 동시에 실행할 수 있는 양을 표시하는 시간 경과에 따른 차트를 확인하려고 합니다.
@@ -295,7 +293,7 @@ T
    이 테이블은 `mv-expand` 에서 작업을 수행 하는 데 사용 되지 않습니다.
 3. 함수에 연산자를 사용 하 여 `mv-expand` `range` 및 사이에 5 분의 계급 수 만큼의 행을 `StartTime` 만듭니다 `EndTime` .
 4. 가 인 모든 `Count` `0` 입니다.
-5. 마지막으로 연산자를 사용 `summarize` 하 여 원래 (왼쪽 또는 외부) 인수에서로 그룹을 그룹화 하 `union` 고 내부 인수 (즉, null bin 행)에서 bin으로 묶습니다. 이렇게 하면 출력에 bin 당 한 개의 행이 포함 되 고 값은 0 또는 원래 수로 유지 됩니다.  
+5. 마지막으로 연산자를 사용 `summarize` 하 여 원래 (왼쪽 또는 외부) 인수에서로 그룹을 그룹화 하 `union` 고 내부 인수 (즉, null bin 행)에서 bin으로 묶습니다. 이렇게 하면 출력에 bin 당 하나의 행이 포함 되 고 해당 값은 0 또는 원래 개수가 됩니다.  
 
 ## <a name="get-more-out-of-your-data-in-kusto-using-machine-learning"></a>Machine Learning를 사용 하 여 Kusto 데이터 가져오기 
 
@@ -345,7 +343,7 @@ Logs
 | project Count, Pattern
 ```
 
-|개수|패턴
+|개수|무늬
 |---|---
 |7125|' RunCycleFromInterimData ' 메서드에 대 한 ExecuteAlgorithmMethod가 실패 했습니다.
 |  7125|InferenceHostService 호출에 실패 했습니다.. NullReferenceException: 개체 참조가 개체의 인스턴스로 설정 되지 않았습니다.
@@ -545,7 +543,7 @@ datatable(id:string, timestamp:datetime, bla:string)           // (1)
 | project-away dummy0, dummy1, dummy2                          // (5)
 ```
 
-참고
+메모
 1. 은 `datatable` 데모용으로 일부 테스트 데이터를 생성 하는 방법일 뿐입니다. 물론 실제로 여기에 데이터를 포함 합니다.
 2. 이 줄은 기본적으로 "모든 고유 값 반환 `id` "을 의미 합니다.
 3. 그런 다음이 줄은 열을 최대화 하는 상위 2 개 레코드에 대해, `timestamp` 이전 수준의 열 (여기서는 `id` ) 및이 수준에서 지정 된 열 (여기서는)을 반환 합니다 `timestamp` .
@@ -559,14 +557,14 @@ datatable(id:string, timestamp:datetime, bla:string)           // (1)
 |SomeSeries|SomeInt|
 |----------|-------|
 |Foo       |    100|
-|가로 막대형       |    200|
+|막대형       |    200|
 
 이 테이블을 다음과 같이 표시 하려고 합니다.
 
 |SomeSeries|SomeInt|.P |
 |----------|-------|----|
 |Foo       |    100|33.3|
-|가로 막대형       |    200|66.6|
+|막대형       |    200|66.6|
 
 이렇게 하려면 열의 합계 (합계)를 계산한 `SomeInt` 다음이 열의 각 값을 합계로 나눕니다. [As 연산자](asoperator.md)를 사용 하 여 이러한 결과에 이름을 지정 하면 임의의 결과에 대해이 작업을 수행할 수 있습니다.
 
