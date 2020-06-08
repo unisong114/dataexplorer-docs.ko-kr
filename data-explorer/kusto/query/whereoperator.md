@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7dc9d7166a1f286e14c81f269f32f894cbe9ff9d
-ms.sourcegitcommit: da7c699bb62e1c4564f867d4131d26286c5223a8
+ms.openlocfilehash: 116f585fe8a09b4befddd7d1429229ad1bac886f
+ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83404171"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84512473"
 ---
 # <a name="where-operator"></a>where 연산자
 
@@ -38,7 +38,9 @@ T | where fruit=="apple"
 
 *Predicate*가 `true`인 *T*의 행입니다.
 
-**참고** Null 값: 모든 필터링 함수는 null 값과 비교 했을 때 false를 반환 합니다. 특수 null 인식 함수를 사용 하 여 null 값을 고려 하는 쿼리를 [isnull ()](./isnullfunction.md), [isnotnull ()](./isnotnullfunction.md), [isempty ()](./isemptyfunction.md), [isnotempty ()](./isnotemptyfunction.md)로 작성할 수 있습니다. 
+**참고** Null 값: 모든 필터링 함수는 null 값과 비교 했을 때 false를 반환 합니다. 특수 null 인식 함수를 사용 하 여 null 값을 처리 하는 쿼리를 작성할 수 있습니다.
+
+[isnull ()](./isnullfunction.md), [isnotnull ()](./isnotnullfunction.md), [isempty ()](./isemptyfunction.md), [isnotempty ()](./isnotemptyfunction.md). 
 
 **팁**
 
@@ -72,3 +74,4 @@ Traces | where * has "Kusto"
 ```
 
 "Kusto" 라는 단어가 모든 열에 표시 되는 모든 행입니다.
+ 

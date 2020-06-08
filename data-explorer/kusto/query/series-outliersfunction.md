@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: 864638f8e03487a35eefa83fa3951d2ecefc27c7
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 80e20e70bc51045f68fd3ef2068f099d750b2b3f
+ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372549"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84512438"
 ---
 # <a name="series_outliers"></a>series_outliers()
 
 계열에서 변칙 점수를 점수가 있습니다.
 
-동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 길이가 같은 동적 숫자 배열을 생성 합니다. 배열의 각 값은이에 대 한 [테스트](https://en.wikipedia.org/wiki/Outlier#Tukey.27s_test)를 사용 하 여 변칙의 점수를 나타냅니다. 1.5보다 크거나 -1.5보다 작은 값은 각각 입력의 같은 요소에서 증가 또는 감소 비정상을 나타냅니다.   
+함수는 동적 숫자 배열을 입력으로 사용 하는 식을 사용 하 고 길이가 같은 동적 숫자 배열을 생성 합니다. 배열의 각 값은 ["이 키의 테스트"](https://en.wikipedia.org/wiki/Outlier#Tukey.27s_test)를 사용 하 여 가능한 변칙의 점수를 나타냅니다. 입력의 동일한 요소에서 1.5 보다 큰 값은 비정상 또는 거부를 나타냅니다. -1.5 보다 작은 값은 변칙을 거부 함을 나타냅니다.
 
 **구문**
 
@@ -28,25 +28,24 @@ ms.locfileid: "83372549"
 **인수**
 
 * *x*: 숫자 값의 배열인 동적 배열 셀입니다.
-* *kind*: 이상 값 검색의 알고리즘입니다. 현재 `"tukey"` (기존에 지 키) 및 `"ctukey"` (사용자 지정 및 키)를 지원 합니다. 기본값은 `"ctukey"`
-* *ignore_val*: 계열의 누락 값을 나타내는 숫자 값입니다. 기본값은 double (null)입니다. Null 및 무시 값의 점수는로 설정 됩니다 `0` .
-* *min_percentile*: normal 변 위치 범위의 계산의 경우 기본값은 10이 고, 지원 되는 사용자 지정 값은 범위 `[2.0, 98.0]` ( `ctukey` 전용)입니다. 
-* *max_percentile*: 동일, 기본값: 90, 지원 되는 사용자 지정 값 범위 `[2.0, 98.0]` (ctukey 전용) 
+* *kind*: 이상 값 검색의 알고리즘입니다. 는 현재 `"tukey"` (기존 "고 키") 및 `"ctukey"` (사용자 지정 "의 키")를 지원 합니다. 기본값은 `"ctukey"`
+* *ignore_val*: 계열의 누락 값을 나타내는 숫자 값입니다. 기본값은 double (null)입니다. Null 및 무시 값의 점수는로 설정 됩니다.`0`
+* *min_percentile*: 일반적인 변 위치 범위를 계산 하는 데 사용할입니다. 기본값은 10이 고, 지원 되는 사용자 지정 값은 범위 `[2.0, 98.0]` ( `ctukey` 전용)입니다.
+* *max_percentile*: 동일, 기본값: 90, 지원 되는 사용자 지정 값 범위 `[2.0, 98.0]` (ctukey 전용)
 
 다음 표에서는와 간의 차이점 `"tukey"` 을 설명 합니다 `"ctukey"` .
 
 | 알고리즘 | 기본 변위치 범위 | 사용자 지정 변위치 범위 지원 |
 |-----------|----------------------- |--------------------------------|
-| `"tukey"` | 25%/75%              | 예                             |
+| `"tukey"` | 25%/75%              | 아니요                             |
 | `"ctukey"`| 10%/90%              | 예                            |
 
-
 > [!TIP]
-> 이 함수를 사용 하는 가장 편리한 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
+> 이 함수를 사용 하는 가장 좋은 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
 **예제**
 
-이상 값을 만드는 일부 노이즈가 있는 시계열이 있고 이러한 이상 값 (노이즈)을 평균값으로 바꾸려는 경우 series_outliers ()를 사용 하 여 이상 값을 검색 한 후 대체할 수 있습니다.
+약간의 노이즈가 있는 시계열은 이상 값을 만듭니다. 이러한 이상 값 (노이즈)을 평균값으로 바꾸려면 series_outliers ()를 사용 하 여 이상 값을 검색 한 후 대체 합니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

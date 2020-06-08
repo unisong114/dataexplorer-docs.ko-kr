@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/09/2019
-ms.openlocfilehash: 55864dd408f35c59398ea1b93f18c0834a611a90
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: 071658bf2277dd0ddb4734aaf0b59a7a44c8fe27
+ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258099"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84512353"
 ---
 # <a name="kql-over-tds"></a>TDS를 통한 KQL
 
@@ -25,7 +25,7 @@ Kusto는 SQL 저장 프로시저 호출과 같이 [저장 된 함수](../../quer
 
 예를 들어 저장 된 함수 MyFunction는 다음과 같습니다.
 
-|속성 |매개 변수|본문|폴더|DocString
+|Name |매개 변수|본문|폴더|DocString
 |---|---|---|---|---
 |MyFunction |(myLimit: long)| {StormEvents &#124; 제한 myLimit}|MyFolder|매개 변수가 있는 Demo 함수||
 
@@ -49,7 +49,8 @@ Kusto는 SQL 저장 프로시저 호출과 같이 [저장 된 함수](../../quer
   }
 ```
 
-> [! 참고:]는 이라는 명시적 스키마를 사용 하 여 저장 된 함수를 호출 `kusto` 하 여 Kusto 저장 된 함수와 에뮬레이트된 SQL 시스템 저장 프로시저를 구분 합니다.
+> [!NOTE]
+> 이라는 명시적 스키마를 사용 하 여 저장 된 함수를 호출 `kusto` 하 여 Kusto 저장 된 함수와 에뮬레이트된 SQL 시스템 저장 프로시저를 구분 합니다.
 
 SQL 테이블 형식 함수와 같은 T-sql에서 Kusto 저장 함수를 호출할 수도 있습니다.
 
@@ -65,7 +66,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 의 첫 번째 매개 변수는 `sp_execute_kql` KQL 쿼리입니다. 추가 매개 변수를 도입할 수 있으며, [쿼리 매개 변수](../../query/queryparametersstatement.md)처럼 작동 합니다.
 
-다음은 그 예입니다.
+예를 들어:
 
 ```csharp
   using (var connection = new SqlConnection(csb.ToString()))

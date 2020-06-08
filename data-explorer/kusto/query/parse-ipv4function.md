@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 459b94d4fdb8dbd9d294367b2cee49aab9800406
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: b0377cd8af302d2680c0ee451d05f4b4b083ccec
+ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294596"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84512608"
 ---
 # <a name="parse_ipv4"></a>parse_ipv4()
 
@@ -35,9 +35,11 @@ parse_ipv4('192.1.168.1') < parse_ipv4('192.1.168.2') == true
 ## <a name="ip-prefix-notation"></a>IP 접두사 표기법
 
 IP 주소 `IP-prefix notation` 는 슬래시 () 문자를 사용 하 여 정의할 수 있습니다 `/` .
-슬래시 ()의 왼쪽에 있는 IP 주소는 `/` 기본 ip 주소입니다. 슬래시 (/)의 오른쪽에 있는 숫자 (1 ~ 32)는 네트워크 마스크에서 연속 된 1 비트의 수입니다. 
+슬래시 ()의 왼쪽에 있는 IP 주소는 `/` 기본 ip 주소입니다. 슬래시 (/)의 오른쪽에 있는 숫자 (1 ~ 32)는 네트워크 마스크에서 연속 된 1 비트의 수입니다.
 
-**예:** 192.168.2.0/24에는 24 개의 연속 비트를 포함 하는 네트워크/subnetmask와 점으로 구분 된 10 진수 형식의 255.255.255.0이 포함 됩니다.
+**예제**
+
+192.168.2.0/24에는 24 개의 연속 비트를 포함 하는 네트워크/subnetmask와 점으로 구분 된 10 진수 형식의 255.255.255.0이 포함 됩니다.
 
 **반환**
 

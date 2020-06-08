@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: bfa44859987d8f3c4f11221fd8370290f08f9a67
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: cd9d0f9156387f3a42d41b000aefc9eac0793f9d
+ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382049"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84512506"
 ---
 # <a name="ingest-from-query-set-append-set-or-append-set-or-replace"></a>쿼리에서 수집 (. set,. append,. set 또는-append,. set 또는-replace)
 
@@ -38,7 +38,7 @@ ms.locfileid: "83382049"
 
 **인수**
 
-* `async`: 지정 된 경우 명령은 즉시 반환 되 고 백그라운드에서 계속 수집 됩니다. 명령의 결과에는 명령을 사용 하 여 수집 `OperationId` `.show operation` 완료 상태 및 결과를 검색 하는 데 사용할 수 있는 값이 포함 됩니다.
+* `async`: 지정 된 경우 명령은 즉시 반환 되 고 백그라운드에서 계속 수집 됩니다. 명령의 결과에는 명령을 사용 하 여 수집 `OperationId` `.show operations` 완료 상태 및 결과를 검색 하는 데 사용할 수 있는 값이 포함 됩니다.
 * *TableName*: 데이터를 수집 하는 테이블의 이름입니다.
   테이블 이름은 항상 컨텍스트의 데이터베이스를 기준으로 합니다.
 * *PropertyName*, *PropertyValue*: 수집 프로세스에 영향을 주는 수집 속성 수입니다.
@@ -58,7 +58,7 @@ ms.locfileid: "83382049"
 
   또한 명령 자체의 동작을 제어 하는 속성도 있습니다.
 
-|속성        |형식    |설명|
+|속성        |유형    |설명|
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
 |`distributed`   |`bool`  |명령이 쿼리를 병렬로 실행 하는 모든 노드에서 수집을 나타냅니다. 기본값은 `false` 입니다.  아래 설명 부분을 참조 하십시오.|
 
