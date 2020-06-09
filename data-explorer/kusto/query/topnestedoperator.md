@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a2a8f4fa92a7b8722097ec3595674b855a90f216
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: 3fc4cfa307a283c4eb21ba60e3b83ba89b574757
+ms.sourcegitcommit: aaada224e2f8824b51e167ddb6ff0bab92e5485f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294664"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84626688"
 ---
 # <a name="top-nested-operator"></a>top-nested 연산자
 
@@ -48,7 +48,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 * *`Expr`*:이 계층 구조 수준에 대해 반환할 값을 나타내는 입력 레코드에 대 한 식입니다.
   일반적으로이 열은 테이블 형식 입력 (*T*) 또는 이러한 열에 대 한 일부 계산 (예:)에 대 한 열 참조 `bin()` 입니다.
 
-* *`ConstExpr`*: 지정 된 경우 각 계층 수준 1 레코드에 대해 "맨 위로 이동" 하지 않은 모든 레코드에 대 한 집계 값을 사용 하 여 레코드를 추가 합니다.
+* *`ConstExpr`*: 지정 된 경우 각 계층 구조 수준에 대해 1 개의 레코드가 "위쪽으로 설정 하지 않은" 모든 레코드에 대 한 집계 값과 함께 추가 됩니다.
 
 * *`AggName`*: 지정 하는 경우이 식별자는 *집계*값에 대 한 출력에 열 이름을 설정 합니다.
 
@@ -72,7 +72,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 * 한 열에는 절 계산의 고유 값 *`Expr`* (지정 된 경우 *ExprName* 열 이름)이 포함 됩니다.
 
-* 한 열에는 *집계* 계산 결과가 포함 됩니다 (지정 된 경우 *AggregationName* 열 이름 포함).
+* 하나의 열에 *집계* 계산 결과가 포함 됩니다 (지정 된 경우 *AggregationName* 열 이름 포함).
 
 **설명**
 
@@ -85,7 +85,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 집계 절 ((N1 + 1) \* (N2 + 1) ...)의 수를 사용 하 여 레코드 수가 급격 하 게 증가할 수 있습니다. \* *N* 제한이 지정 되지 않은 경우에는 레코드 증가가 훨씬 더 빨라집니다. 이 연산자는 상당한 양의 리소스를 사용할 수 있다는 것을 고려 합니다.
 
-집계 분포가 균일 하지 않은 경우에는 *N*을 사용 하 여 반환할 고유 값 수를 제한 하 고 `with others=` *ConstExpr* 옵션을 사용 하 여 다른 모든 사례에 대 한 "가중치"의 표시를 가져옵니다.
+집계 분포가 균일 하지 않은 경우 *N*을 사용 하 여 반환할 고유 값의 수를 제한 하 고 `with others=` *ConstExpr* 옵션을 사용 하 여 다른 모든 사례의 "가중치"에 대 한 표시를 가져옵니다.
 
 **예**
 
@@ -97,7 +97,7 @@ StormEvents
   top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -118,7 +118,7 @@ StormEvents
 
 ```
 
-|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -136,7 +136,6 @@ StormEvents
 |텍사스|123400.5101|||다른 모든 끝 위치|58523.2932000001|
 |기타 모든 상태|1149279.5923|||다른 모든 끝 위치|1149279.5923|
 
-
 다음 쿼리는 위의 예제에서 사용 된 첫 번째 수준에 대해 동일한 결과를 보여 줍니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
@@ -151,7 +150,7 @@ StormEvents
 |1149279.5923|
 
 
-상위 중첩 결과에 다른 열 (EventType)을 요청 합니다. 
+상위 중첩 결과에 다른 열 (EventType)을 요청 합니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -160,7 +159,7 @@ StormEvents
 | project-away tmp
 ```
 
-|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
+|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
 |---|---|---|---|---|---|---|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|뇌우를 동반한 바람|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|우박|
@@ -185,7 +184,7 @@ StormEvents
 | mv-expand EndLocations, endLocationSums, indicies
 ```
 
-|주|원본|EndLocations|endLocationSums|인덱스|
+|시스템 상태|원본|EndLocations|endLocationSums|색인|
 |---|---|---|---|---|
 |텍사스|숙련된 관찰자|CLAUDE|421.44|0|
 |텍사스|숙련된 관찰자|AMARILLO|316.8892|1|
