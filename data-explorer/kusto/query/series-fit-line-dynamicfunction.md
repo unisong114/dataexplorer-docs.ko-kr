@@ -8,24 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 756650db23d531ec37636c0e7bd781a74ef9fdc3
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: f3fb8361cfb281ad39dee7a15a690c2b94c79bea
+ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372689"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84664928"
 ---
 # <a name="series_fit_line_dynamic"></a>series_fit_line_dynamic()
 
 계열에 선형 회귀를 적용 하 여 동적 개체를 반환 합니다.  
 
-동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 가장 적합 한 선을 찾기 위해 [선형 회귀](https://en.wikipedia.org/wiki/Line_fitting) 를 수행 합니다. 이 함수는 시계열 배열에 사용되며, make-series 연산자의 출력에 적합합니다. 다음 콘텐츠를 사용 하 여 동적 값을 생성 합니다.
-* `rsquare`: [r 제곱](https://en.wikipedia.org/wiki/Coefficient_of_determination) 은 맞춤 품질의 표준 측정값입니다. [0-1] 범위의 숫자입니다. 여기서 1은 가장 적합할 가능성이 높은 경우이고 0은 데이터 순서가 완전히 잘못되었으며 어떤 선에도 맞지 않음을 의미합니다. 
-* `slope`: 근사 선의 기울기입니다 (y = ax + b의 a).
+동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 [선형 회귀](https://en.wikipedia.org/wiki/Line_fitting) 를 사용 하 여 가장 적합 한 줄을 찾습니다. 이 함수는 시계열 배열에 사용되며, make-series 연산자의 출력에 적합합니다. 다음 콘텐츠를 사용 하 여 동적 값을 생성 합니다.
+* `rsquare`: [r 제곱](https://en.wikipedia.org/wiki/Coefficient_of_determination) 은 맞춤 품질의 표준 측정값입니다. [0-1] 범위의 숫자입니다. 여기서 1은 가장 적합 한 맞춤 이며 0은 데이터가 정렬 되지 않고 아무 줄에도 있지 않음을 의미 합니다.
+* `slope`: 근사 선의 기울기입니다 ( *y = ax + b*의 *a*값).
 * `variance`: 입력 데이터의 분산
-* `rvariance`: 입력 데이터 값 간의 분산 인 잔여 분산입니다.
-* `interception`: 근사 선의 가로채기 (y = ax + b의 b)
-* `line_fit`: 가장 적합 한 선의 값을 포함 하는 숫자 배열입니다. 계열 길이는 입력 배열의 길이와 같습니다. 이 길이는 차트에 주로 사용됩니다.
+* `rvariance`: 입력 데이터 값과 근사 값 간의 차이를 나타내는 잔여 분산입니다.
+* `interception`: 근사 선의 가로채기 ( *y = ax + b*의 *b*-값)
+* `line_fit`: 최적 줄의 값을 포함 하는 숫자 배열입니다. 계열 길이는 입력 배열의 길이와 같습니다. 주로 차트를 작성 하는 데 사용 됩니다.
 
 이 연산자는 [series_fit_line](series-fit-linefunction.md)와 비슷하지만,와는 달리 `series-fit-line` 동적 모음을 반환 합니다.
 
@@ -49,9 +49,10 @@ print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,
 | extend RSquare=fit.rsquare, Slope=fit.slope, Variance=fit.variance,RVariance=fit.rvariance,Interception=fit.interception,LineFit=fit.line_fit
 | render timechart
 ```
-
+ 
 :::image type="content" source="images/series-fit-line/series-fit-line.png" alt-text="계열 맞춤 선":::
 
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|
 | 0.982   | 2.730 | 98.628   | 1.686     | -1.666       | 1.064, 3.7945, 6.526, 9.256, 11.987, 14.718, 17.449, 20.180, 22.910, 25.641, 28.371, 31.102 |
+ 

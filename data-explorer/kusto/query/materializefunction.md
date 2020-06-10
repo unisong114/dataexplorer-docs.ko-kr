@@ -1,28 +1,27 @@
 ---
 title: 구체화 ()-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 구체화 ()에 대해 설명 합니다.
+description: 이 문서에서는 Azure 데이터 탐색기의 구체화 () 함수에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/21/2019
-ms.openlocfilehash: 0cf510a8a7a6042d99587b51ee62eb30d4b7b7a7
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.date: 06/06/2020
+ms.openlocfilehash: f5ea896d4701aa5aec1b22c1ff20853aea18f065
+ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271301"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84664945"
 ---
 # <a name="materialize"></a>materialize()
 
 다른 하위 쿼리가 부분 결과를 참조할 수 있는 방식으로 쿼리 실행 시 하위 쿼리 결과를 캐시할 수 있습니다.
-
  
 **구문**
 
-`materialize(`*식*`)`
+`materialize(`*expression*`)`
 
 **인수**
 
@@ -36,6 +35,7 @@ ms.locfileid: "83271301"
 
 * 구체화는 캐시 된 결과에 이름을 지정 하는 경우 let 문에서만 사용할 수 있습니다.
 
+**참고**
 
 * 구체화의 캐시 크기 제한은 **5gb**입니다. 
   이 제한은 클러스터 노드당 이며 동시에 실행 되는 모든 쿼리에 대해 상호 합니다.
@@ -43,22 +43,68 @@ ms.locfileid: "83271301"
 
 **예**
 
-임의의 값 집합을 생성 하 고 다음을 알아야 합니다. 
- * 보유 한 고유 값 수 
- * 이러한 모든 값의 합계입니다. 
- * 상위 3 개 값
+다음 예에서는를 사용 하 여 `materialize()` 쿼리 성능을 향상 시키는 방법을 보여 줍니다.
+식은 `_detailed_data` 함수를 사용 하 여 정의 `materialize()` 되므로 한 번만 계산 됩니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let _detailed_data = materialize(StormEvents | summarize Events=count() by State, EventType);
+_detailed_data
+| summarize TotalStateEvents=sum(Events) by State
+| join (_detailed_data) on State
+| extend EventPercentage = Events*100.0 / TotalStateEvents
+| project State, EventType, EventPercentage, Events
+| top 10 by EventPercentage
+```
+
+|시스템 상태|EventType|EventPercentage|이벤트|
+|---|---|---|---|
+|하와이 중인지|Waterspout|100|2|
+|LAKE ONTARIO|해병대 뇌우 바람|100|8|
+|알래스카 GULF|Waterspout|100|4|
+|대서양 북부|해병대 뇌우 바람|95.2127659574468|179|
+|LAKE E|해병대 뇌우 바람|92.5925925925926|25|
+|동부 태평양|Waterspout|90|9|
+|LAKE MICHIGAN|해병대 뇌우 바람|85.1648351648352|155|
+|LAKE HURON|해병대 뇌우 바람|79.3650793650794|50|
+|멕시코의 GULF|해병대 뇌우 바람|71.7504332755633|414|
+|하와이|높은 서피스|70.0218818380744|320|
+
+
+다음 예에서는 난수 집합을 생성 하 고를 계산 합니다. 
+* 집합에 있는 고유 값의 수 (Dcount)
+* 집합에서 상위 3 개 값 
+* 집합에 있는 이러한 모든 값의 합계입니다. 
+ 
 [일괄 처리](batches.md) 및 구체화를 사용 하 여이 작업을 수행할 수 있습니다.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
- ```kusto
-let randomSet = materialize(range x from 1 to 30000000 step 1
-| project value = rand(10000000));
-randomSet
-| summarize dcount(value);
-randomSet
-| top 3 by value;
-randomSet
-| summarize sum(value)
-
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let randomSet = 
+    materialize(
+        range x from 1 to 3000000 step 1
+        | project value = rand(10000000));
+randomSet | summarize Dcount=dcount(value);
+randomSet | top 3 by value;
+randomSet | summarize Sum=sum(value)
 ```
+
+결과 집합 1:  
+
+|구해집니다|
+|---|
+|2578351|
+
+결과 집합 2: 
+
+|값|
+|---|
+|9999998|
+|9999998|
+|9999997|
+
+결과 집합 3: 
+
+|합계|
+|---|
+|15002960543563|

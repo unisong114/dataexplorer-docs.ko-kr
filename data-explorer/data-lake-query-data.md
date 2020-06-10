@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b7ca4a41bb15e9fb8a4f55a9d674b1536dddd5ae
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: a4a1d1f507f0b76ba1647eb3db78a4fe8a2bd944
+ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226400"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84665064"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure 데이터 탐색기를 사용 하 여 Azure Data Lake에서 데이터 쿼리
 
@@ -65,12 +65,6 @@ Json 형식의 외부 테이블을 만들 수 있습니다. 자세한 내용은 
     ( 
        h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
     )
-    with 
-    (
-       docstring = "Docs",
-       folder = "ExternalTables",
-       namePrefix="Prefix"
-    ) 
     ```
  
 1. Json 형식에는 아래와 같이 열에 대 한 매핑을 만드는 두 번째 단계가 있습니다. 다음 쿼리에서 *mappingName*이라는 특정 json 매핑을 만듭니다.
