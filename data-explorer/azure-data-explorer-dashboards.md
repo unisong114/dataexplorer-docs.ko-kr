@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 46e3821514ca5b06852f7e8428b12cf9f80e29a4
-ms.sourcegitcommit: a562ce255ac706ca1ca77d272a97b5975235729d
+ms.openlocfilehash: 7f012b5b99cdf12ab1ace452838860aff312a28d
+ms.sourcegitcommit: b0cbb89e88b64a36880e6d34b4d6779283174456
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83867873"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84633753"
 ---
 # <a name="visualize-data-with-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화
 
@@ -56,7 +56,7 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
 ## <a name="use-parameters"></a>매개 변수 사용
 
-매개 변수를 사용 하 여 대시보드 필터를 사용할 수 있습니다. 매개 변수를 사용 하면 대시보드 렌더링 성능이 크게 향상 되며 쿼리에서 가능한 한 빨리 필터 값을 사용할 수 있습니다.
+매개 변수를 사용 하 여 대시보드 필터를 사용할 수 있습니다. 매개 변수를 사용 하면 대시보드 렌더링 성능이 크게 향상 되며 쿼리에서 가능한 한 빨리 필터 값을 사용할 수 있습니다. 매개 변수 사용에 대 한 자세한 내용은 [Azure 데이터 탐색기 대시보드에서 매개 변수 사용](dashboard-parameters.md)을 참조 하세요.
 
 1. 위쪽 막대에서 **매개 변수** 를 선택 합니다. **매개 변수** 창에서 **+ 새 매개 변수** 단추를 선택 합니다.
 
@@ -73,7 +73,7 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 |**변수 이름**     |   쿼리에서 사용 되는 매개 변수의 이름입니다.      |
 |**데이터 형식**    |    매개 변수 값의 데이터 형식입니다.     |
 |**대시보드 필터로 고정**   |   매개 변수 기반 필터를 대시보드에 고정 하거나 대시보드에서 고정 해제 합니다.       |
-|**소스**     |    매개 변수 값의 소스입니다. <ul><li>**고정 값**: 정적 필터 값을 수동으로 도입 했습니다. </li><li>**쿼리**: KQL 쿼리를 사용 하 여 동적으로 값을 도입 했습니다.  </li></ul>    |
+|**원본**     |    매개 변수 값의 소스입니다. <ul><li>**고정 값**: 정적 필터 값을 수동으로 도입 했습니다. </li><li>**쿼리**: KQL 쿼리를 사용 하 여 동적으로 값을 도입 했습니다.  </li></ul>    |
 |**"모두 선택" 값 추가**    |   단일 선택 및 다중 선택 매개 변수 형식에만 적용할 수 있습니다. 모든 매개 변수 값에 대 한 데이터를 검색 하는 데 사용 됩니다.      |
 
 ## <a name="add-query"></a>쿼리 추가
@@ -102,4 +102,5 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
 ## <a name="next-steps"></a>다음 단계
 
+* [Azure 데이터 탐색기 대시보드에서 매개 변수 사용](dashboard-parameters.md)
 * [Azure 데이터 탐색기에서 데이터 쿼리](web-query-data.md)
