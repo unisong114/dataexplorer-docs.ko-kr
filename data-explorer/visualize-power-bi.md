@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: d37cef094bfc1200182f7cf23dc68d396c126eb2
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.date: 06/02/2020
+ms.openlocfilehash: bde567a3c41a226ca0a8304d7ab4ed42f3fa65bf
+ms.sourcegitcommit: 8953d09101f4358355df60ab09e55e71bc255ead
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81491958"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84420920"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>자습서: Power BI에서 Azure Data Explorer의 데이터 시각화
 
@@ -29,7 +29,7 @@ Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](h
 > * 시각적 개체 관련 보고서 만들기
 > * 보고서 게시 및 공유
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 자습서를 완료하려면 Azure 및 Power BI 구독 외에 다음 항목이 필요합니다.
 
@@ -85,7 +85,7 @@ Power BI에 들어가기 전에 Azure Data Explorer에서 시각적 개체를 �
 
     ![데이터 가져오기](media/visualize-power-bi/get-data-more.png)
 
-1. *Azure Data Explorer*를 검색한 다음, **Azure Data Explorer(베타)** , **연결**을 차례로 선택합니다.
+1. *Azure Data Explorer*를 검색한 다음, **Azure Data Explorer**, **연결**을 차례로 선택합니다.
 
     ![데이터 검색 및 가져오기](media/visualize-power-bi/search-get-data.png)
 
