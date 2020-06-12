@@ -8,17 +8,29 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 16b80c86f526cb05514577359603e9e21de80064
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: ba74b7c1e78d568cc34845d56dc9768f2628192f
+ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83224887"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717379"
 ---
 # <a name="parse_path"></a>parse_path()
 
-파일 경로를 구문 분석 `string` 하 고 [`dynamic`](./scalar-data-types/dynamic.md) path의 다음 부분을 포함 하는 개체를 반환 합니다. Scheme, rootpath, DirectoryPath, DirectoryName, FileName, Extension, AlternateDataStreamName.
-에서는 두 가지 유형의 단순 경로 외에도 스키마 (예: "file://"), 공유 경로 (예: " \\ shareddrive\users..."), 긴 경로 (예 \\ : "? \c: ..." "), 대체 데이터 스트림 (예:" file1: file2 .exe ")의 경로를 지원 합니다.
+파일 경로를 구문 분석 `string` 하 고 [`dynamic`](./scalar-data-types/dynamic.md) 경로의 다음 부분을 포함 하는 개체를 반환 합니다.
+* 구성표
+* RootPath
+* DirectoryPath
+* DirectoryName
+* FileName
+* 확장명
+* AlternateDataStreamName
+
+함수는 두 가지 형식의 슬래시가 있는 간단한 경로 외에도 다음과 같은 경로를 지원 합니다.
+* 스키마. 예: "file://"
+* 공유 경로. 예: " \\ shareddrive\users..."
+* 긴 경로. 예 \\ : "? \c: ..." "
+* 대체 데이터 스트림 예: "file1.exe:file2.exe"
 
 **구문**
 
@@ -50,8 +62,8 @@ datatable(p:string)
 
 |p|path_parts
 |---|---
-|C:\temp\file.txt|{"Scheme": "", "RootPath": "C:", "DirectoryPath": "C: \\ temp", "DirectoryName": "temp", "Filename": ".txt", "Extension": "txt", "AlternateDataStreamName": ""}
-|temp\file.txt|{"Scheme": "", "RootPath": "", "DirectoryPath": "temp", "DirectoryName": "temp", "Filename": "", "Extension": "txt", "AlternateDataStreamName": ""}
-|file://C:/temp/file.txt:some.exe|{"Scheme": "file", "RootPath": "C:", "DirectoryPath": "C:/temp", "DirectoryName": "temp", "Filename": "", "Extension": "txt", "AlternateDataStreamName": ""}
-|\\shared\users\temp\file.txt.gz|{"Scheme": "", "RootPath": "", "DirectoryPath": " \\ \\ 공유 \\ 사용자 \\ 임시 "," DirectoryName ":" temp "," Filename ":" release.tar.gz "," Extension ":" release.tar.gz "," AlternateDataStreamName ":" "}
-|/usr/lib/temp/file.txt|{"Scheme": "", "RootPath": "", "DirectoryPath": "/usr/lib/temp", "DirectoryName": "temp", "Filename": "", "Extension": "txt", "AlternateDataStreamName": ""}
+|C:\temp\file.txt|{"Scheme": "", "RootPath": "C:", "DirectoryPath": "C: \\ temp", "DirectoryName": "temp", "Filename": "file.txt", "Extension": "txt", "AlternateDataStreamName": ""}
+|temp\file.txt|{"Scheme": "", "RootPath": "", "DirectoryPath": "temp", "DirectoryName": "temp", "Filename": "file.txt", "Extension": "txt", "AlternateDataStreamName": ""}
+|file://C:/temp/file.txt:some.exe|{"Scheme": "file", "RootPath": "C:", "DirectoryPath": "C:/temp", "DirectoryName": "temp", "Filename": "file.txt", "Extension": "txt", "AlternateDataStreamName": "some.exe"}
+|\\shared\users\temp\file.txt release.tar.gz|{"Scheme": "", "RootPath": "", "DirectoryPath": " \\ \\ 공유 \\ 사용자 \\ 임시 "," DirectoryName ":" temp "," Filename ":" file.txt. release.tar.gz "," Extension ":" release.tar.gz "," AlternateDataStreamName ":" "}
+|/usr/lib/temp/file.txt|{"Scheme": "", "RootPath": "", "DirectoryPath": "/usr/lib/temp", "DirectoryName": "temp", "Filename": "file.txt", "Extension": "txt", "AlternateDataStreamName": ""}

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
-ms.openlocfilehash: eda367dfeaab15dc5249fd860596964c597a1bcd
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: df10ea2bbdf4e48d32c087d35eb9361fc4d697b8
+ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225414"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717209"
 ---
 # <a name="base64_decode_toarray"></a>base64_decode_toarray()
 
@@ -25,14 +25,14 @@ Base64 문자열을 long 값 배열로 디코딩합니다.
 
 **인수**
 
-* *문자열*: BASE64에서 UTF8-8 문자열로 디코딩할 입력 문자열입니다.
+* *문자열*: BASE64에서 UTF8 문자열로 디코딩할 입력 문자열입니다.
 
 **반환**
 
-Base64 문자열에서 ecoded 긴 값의 배열을 반환 합니다.
+Base64 문자열에서 디코딩된 long 값의 배열을 반환 합니다.
 
-* UTF-8 문자열로 base64 문자열을 디코딩하려면 [base64_decode_tostring ()](base64_decode_tostringfunction.md) 를 참조 하세요.
-* Base64 문자열에 문자열을 인코딩하기 위해 [base64_encode_tostring ()](base64_encode_tostringfunction.md) 를 참조 하세요.
+* Base64 문자열을 UTF-8 문자열로 디코딩하려면 [base64_decode_tostring ()](base64_decode_tostringfunction.md) 를 참조 하세요.
+* 문자열을 base64 문자열로 인코딩하려면 [base64_encode_tostring ()](base64_encode_tostringfunction.md) 를 참조 하세요.
 
 **예제**
 
@@ -46,7 +46,7 @@ print Quine=base64_decode_toarray("S3VzdG8=")
 |-----|
 |[75117115116111]|
 
-잘못 된 UTF-8 인코딩으로 생성 된 base64 문자열을 디코딩하 려 면 null이 반환 됩니다.
+잘못 된 UTF-8 인코딩에서 생성 된 base64 문자열을 디코딩하 려 면 "null"이 반환 됩니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

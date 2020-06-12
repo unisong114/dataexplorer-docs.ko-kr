@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 768f07307a6f43c2af2db79bc1221c140b7c9a6f
-ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
+ms.openlocfilehash: 2a54d6e8bdb891500778f2043f2b1aa4094162d2
+ms.sourcegitcommit: 743e8b1def28bc8f875b22b857ec345eeb7e5acc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84664979"
+ms.locfileid: "84671447"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -187,19 +187,18 @@ ms.locfileid: "84664979"
 
 [. 진단 표시](../management/diagnostics.md#show-diagnostics) 명령을 사용 하 여 클러스터에서의 분할 상태를 모니터링할 수 있습니다.
 
-    ```kusto
-    .show diagnostics
-    | project MinPartitioningPercentageInSingleTable,
-              TableWithMinPartitioningPercentage
-    ```
+```kusto
+.show diagnostics
+| project MinPartitioningPercentageInSingleTable, TableWithMinPartitioningPercentage
+```
 
-    The output includes:
+출력에는 다음이 포함 됩니다.
 
-    * `MinPartitioningPercentageInSingleTable`: 클러스터에 데이터 분할 정책이 있는 모든 테이블에서 분할 된 데이터의 최소 비율입니다.
-      * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 용량 ( [용량](partitioningpolicy.md#capacity)참조)을 평가 합니다.
-    * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
+  * `MinPartitioningPercentageInSingleTable`: 클러스터에 데이터 분할 정책이 있는 모든 테이블에서 분할 된 데이터의 최소 비율입니다.
+    * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 용량 ( [용량](partitioningpolicy.md#capacity)참조)을 평가 합니다.
+  * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 다음은 그 예입니다.
 
 ```kusto
 .show commands 

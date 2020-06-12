@@ -8,24 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 876eeaa4550a5433354d50dd44fae3920177d335
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: f0401a5b10d2feb74c629e6b04b127e6d36057ad
+ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372669"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717179"
 ---
 # <a name="series_fit_line"></a>series_fit_line()
 
 계열에 선형 회귀를 적용 하 여 여러 열을 반환 합니다.  
 
-동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 가장 적합 한 선을 찾기 위해 [선형 회귀](https://en.wikipedia.org/wiki/Line_fitting) 를 수행 합니다. 이 함수는 시계열 배열에 사용되며, make-series 연산자의 출력에 적합합니다. 다음 열을 생성 합니다.
-* `rsquare`: [r 제곱](https://en.wikipedia.org/wiki/Coefficient_of_determination) 은 맞춤 품질의 표준 측정값입니다. [0-1] 범위의 숫자입니다. 여기서 1은 가장 적합할 가능성이 높은 경우이고 0은 데이터 순서가 완전히 잘못되었으며 어떤 선에도 맞지 않음을 의미합니다. 
-* `slope`: 근사 선의 기울기입니다 (y = ax + b의 a).
-* `variance`: 입력 데이터의 분산
+동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 [선형 회귀](https://en.wikipedia.org/wiki/Line_fitting) 를 사용 하 여 가장 적합 한 줄을 찾습니다. 이 함수는 시계열 배열에 사용되며, make-series 연산자의 출력에 적합합니다. 함수는 다음 열을 생성 합니다.
+* `rsquare`: [r 제곱](https://en.wikipedia.org/wiki/Coefficient_of_determination) 은 맞춤 품질의 표준 측정값입니다. 값은 [0-1] 범위의 숫자입니다. 여기서 1은 가장 적합 한 맞춤입니다. 0은 데이터가 정렬 되지 않고 어떠한 줄에도 맞지 않음을 의미 합니다. 
+* `slope`: 근사 선의 기울기입니다 (y = ax + b의 "a").
+* `variance`: 입력 데이터의 분산입니다.
 * `rvariance`: 입력 데이터 값 간의 분산 인 잔여 분산입니다.
-* `interception`: 근사 선의 가로채기 (y = ax + b의 b)
-* `line_fit`: 가장 적합 한 선의 값을 포함 하는 숫자 배열입니다. 계열 길이는 입력 배열의 길이와 같습니다. 이 길이는 차트에 주로 사용됩니다.
+* `interception`: 대략적인 줄 (y = ax + b의 "b")을 가로채기 위한 것입니다.
+* `line_fit`: 가장 적합 한 선의 값을 포함 하는 숫자 배열입니다. 계열 길이는 입력 배열의 길이와 같습니다. 차트에 사용 되는 값입니다.
 
 **구문**
 

@@ -1,6 +1,6 @@
 ---
-title: 팩() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 pack()에 대해 설명합니다.
+title: pack ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 pack ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,27 +8,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a7b43be96f272ab929434f10cac910bd4072e650
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: a94629ae8f4795e28cbfb0c41f06596731cdd8d9
+ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81511835"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717328"
 ---
 # <a name="pack"></a>pack()
 
-이름과 `dynamic` 값 목록에서 개체(속성 가방)를 만듭니다.
+`dynamic`이름 및 값 목록에서 개체 (속성 모음)를 만듭니다.
 
-기능할 `pack_dictionary()` 별칭입니다.
+함수에 대 한 별칭 `pack_dictionary()` 입니다.
 
 **구문**
 
-`pack(`*key1* `,` *value1* `,` *key2* `,` *값2*`,... )`
+`pack(`*key1* `,` *value1* `,` *key2* `,` *value2*`,... )`
 
 **인수**
 
-* 키와 값의 교대 목록(목록의 총 길이가 짝수여야 함)
-* 모든 키는 비어 없는 상수 문자열이어야 합니다.
+* 키와 값의 교대로 반복 되는 목록입니다. 목록의 전체 길이는 짝수 여야 합니다.
+* 모든 키는 비어 있지 않은 상수 문자열 이어야 합니다.
 
 **예**
 
@@ -38,11 +38,11 @@ ms.locfileid: "81511835"
 pack("Level", "Information", "ProcessID", 1234, "Data", pack("url", "www.bing.com"))
 ```
 
-2 테이블, SmsMessages 및 MmsMessages를 취할 수 있습니다 :
+2 개의 테이블, SmsMessages 및 MmsMessages를 사용 합니다.
 
 테이블 SmsMessages 
 
-|소스 번호 |대상 번호| 차스카운트
+|SourceNumber |TargetNumber| CharsCount
 |---|---|---
 |555-555-1234 |555-555-1212 | 46 
 |555-555-1234 |555-555-1213 | 50 
@@ -50,11 +50,11 @@ pack("Level", "Information", "ProcessID", 1234, "Data", pack("url", "www.bing.co
 
 테이블 MmsMessages 
 
-|소스 번호 |대상 번호| 어태치먼트엠넷사이즈 | 어태치먼트엠타입 | 첨부 망 이름
+|SourceNumber |TargetNumber| AttachmentSize | 첨부 파일 유형이 | AttachmentName
 |---|---|---|---|---
-|555-555-1212 |555-555-1213 | 200 | JPEG | 그림 1
-|555-555-1234 |555-555-1212 | 250 | JPEG | 그림 2
-|555-555-1234 |555-555-1213 | 300 | png | 그림 3
+|555-555-1212 |555-555-1213 | 200 | jpeg | Pic1
+|555-555-1234 |555-555-1212 | 250 | jpeg | Pic2
+|555-555-1234 |555-555-1213 | 300 | png | Pic3
 
 다음 쿼리:
 ```kusto
@@ -62,15 +62,15 @@ SmsMessages
 | extend Packed=pack("CharsCount", CharsCount) 
 | union withsource=TableName kind=inner 
 ( MmsMessages 
-  | extend Packed=pack("AttachmnetSize", AttachmnetSize, "AttachmnetType", AttachmnetType, "AttachmnetName", AttachmnetName))
+  | extend Packed=pack("AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName))
 | where SourceNumber == "555-555-1234"
 ``` 
 
 HRESULT = NO_ERROR를
 
-|TableName |소스 번호 |대상 번호 | 점심
+|TableName |SourceNumber |TargetNumber | 채워집니다
 |---|---|---|---
-|SmsMessages|555-555-1234 |555-555-1212 | {"차스카운트": 46}
-|SmsMessages|555-555-1234 |555-555-1213 | {"차스카운트": 50}
-|MmsMessages|555-555-1234 |555-555-1212 | {"AttachmnetSize": 250, "AttachmnetType": "jpeg", "AttachmnetName": "Pic2"}
-|MmsMessages|555-555-1234 |555-555-1213 | {"AttachmnetSize": 300, "AttachmnetType": "png", "AttachmnetName": "Pic3"}
+|SmsMessages|555-555-1234 |555-555-1212 | {"CharsCount": 46}
+|SmsMessages|555-555-1234 |555-555-1213 | {"CharsCount": 50}
+|MmsMessages|555-555-1234 |555-555-1212 | {"AttachmentSize": 250, "첨부 파일 유형이": "jpeg", "AttachmentName": "Pic2"}
+|MmsMessages|555-555-1234 |555-555-1213 | {"AttachmentSize": 300, "첨부 파일 유형이": "png", "AttachmentName": "Pic3"}

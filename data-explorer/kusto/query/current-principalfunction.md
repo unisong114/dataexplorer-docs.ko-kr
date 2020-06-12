@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: b1d45fb8b0749a4be30854dd9b0120a7eb127bf2
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 43e92edd74861acc8207a855243f9ec1e012070a
+ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227301"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717362"
 ---
 # <a name="current_principal"></a>current_principal()
 
@@ -29,8 +29,8 @@ ms.locfileid: "83227301"
 
 **반환**
 
-현재 보안 주체의 정규화 된 이름 (FQN) `string` 입니다.  
-문자열은 다음과 같이 구성 됩니다.  
+현재 보안 주체의 FQN (정규화 된 이름) `string` 입니다.  
+문자열 형식은 다음과 같습니다.  
 *PrinciplaType* `=` *Principalid* `;` *TenantId*
 
 **예제**
