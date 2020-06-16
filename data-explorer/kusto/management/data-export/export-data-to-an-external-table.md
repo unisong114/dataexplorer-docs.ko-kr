@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 28aca460089c6dc3b70aecaff11b26cfe1c1baf4
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: ebead1ee5dbe458fc9c517d6bf20fc99ca27dd66
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258065"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780680"
 ---
 # <a name="export-data-to-an-external-table"></a>외부 테이블로 데이터 내보내기
 
@@ -25,7 +25,7 @@ ms.locfileid: "84258065"
 `.export`[ `async` ] `to` `table` *Externaltablename* <br>
 [ `with` `(` *PropertyName* `=` *PropertyValue* `,` ... `)` ] <| *쿼리*
 
-**출력**
+**출력:**
 
 |출력 매개 변수 |Type |Description
 |---|---|---
@@ -42,19 +42,20 @@ ms.locfileid: "84258065"
 * 다음 속성은 내보내기 명령의 일부로 지원 됩니다. 자세한 내용은 [저장소로 내보내기](export-data-to-storage.md) 섹션을 참조 하세요. 
    * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
 
-* 외부 테이블이 분할 된 경우 내보낸 아티팩트는 [예제](#partitioned-external-table-example)에 표시 된 파티션 정의에 따라 해당 디렉터리에 기록 됩니다. 
-  * 파티션 값이 null 이거나 비어 있거나 잘못 된 디렉터리 값 인 경우 대상 저장소의 정의에 따라이 값은 기본값으로 대체 됩니다 `__DEFAULT_PARTITION__` . 
+* 외부 테이블이 분할 된 경우에는 [분할 된 외부 테이블 예제](#partitioned-external-table-example)에 표시 된 대로 파티션 정의에 따라 내보낸 아티팩트가 해당 디렉터리에 기록 됩니다. 
+  * 파티션 값이 null 이거나 비어 있거나 잘못 된 디렉터리 값 이면 대상 저장소의 정의에 따라 파티션 값이 기본값인로 바뀝니다 `__DEFAULT_PARTITION__` . 
 
 * 파티션당 기록 되는 파일 수는 설정에 따라 달라 집니다.
-   * 외부 테이블에 datetime 파티션만 포함 되어 있거나 파티션이 없는 경우 (각 파티션에 대해 기록 된 파일 수)는 클러스터의 노드 수를 기준으로 해야 합니다 (또는에 도달 하는 경우 `sizeLimit` ). 내보내기 작업을 배포 하는 경우 클러스터의 모든 노드가 동시에 내보냅니다. 배포를 사용 하지 않도록 설정 하 여 단일 노드만 쓰기를 수행 하도록 하려면를 `distributed` false로 설정 합니다. 이 프로세스는 더 작은 파일을 만들지만 내보내기 성능을 저하 시킵니다.
+   * 외부 테이블에 datetime 파티션만 포함 되어 있거나 파티션이 없는 경우 각 파티션에 대해 기록 된 파일 수 (있는 경우)는 클러스터의 노드 수와 유사 해야 합니다 `sizeLimit` . 내보내기 작업을 배포 하는 경우 클러스터의 모든 노드가 동시에 내보냅니다. 배포를 사용 하지 않도록 설정 하 여 단일 노드만 쓰기를 수행 하도록 하려면를 `distributed` false로 설정 합니다. 이 프로세스는 더 작은 파일을 만들지만 내보내기 성능을 저하 시킵니다.
 
-   * 외부 테이블에 문자열 열을 기준으로 하는 파티션이 포함 된 경우 내보낸 파일의 수는 파티션당 단일 파일 이어야 합니다 (또는에 도달 하 `sizeLimit` 는 경우). 모든 노드는 내보내기 (작업 분산)에 계속 참여 하지만 각 파티션은 특정 노드에 할당 됩니다. `distributed`이 경우를 false로 설정 하면 단일 노드만 내보내기를 수행 하지만 동작은 동일 하 게 유지 됩니다 (파티션당 단일 파일 기록).
+   * 외부 테이블에 문자열 열을 기준으로 하는 파티션이 포함 된 경우 내보낸 파일의 수는 파티션당 단일 파일 이어야 합니다 (또는에 도달 하 `sizeLimit` 는 경우). 모든 노드는 내보내기 (작업 분산)에 계속 참여 하지만 각 파티션은 특정 노드에 할당 됩니다. 을 `distributed` false로 설정 하면 단일 노드만 내보내기를 수행 하지만 동작은 동일 하 게 유지 됩니다 (파티션당 단일 파일 기록).
 
 ## <a name="examples"></a>예
 
 ### <a name="non-partitioned-external-table-example"></a>분할 되지 않은 외부 테이블 예제
 
 ExternalBlob은 분할 되지 않은 외부 테이블입니다. 
+
 ```kusto
 .export to table ExternalBlob <| T
 ```

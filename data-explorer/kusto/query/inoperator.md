@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: cd11362c15e5ecfb80eab57b57b22f190f47da05
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 3f45f579ad47dbdc9bf1fca707826948a598f63d
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271573"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780170"
 ---
 # <a name="in-and-in-operators"></a>in 및 !in 연산자
 
@@ -45,19 +45,19 @@ Table1 | where col in ('value1', 'value2')
 
 * *T* -레코드를 필터링 할 테이블 형식 입력입니다.
 * *col* -필터링 할 열입니다.
-* *식 목록* -쉼표로 구분 된 테이블 형식, 스칼라 또는 리터럴 식 목록입니다.  
-* *테이블 형식 식* -값 집합을 포함 하는 테이블 형식 식입니다. 사례 식에는 여러 열이 있고 첫 번째 열은 사용 됩니다.
+* *식 목록* -테이블 형식, 스칼라 또는 리터럴 식의 쉼표로 구분 된 목록입니다.
+* *테이블 형식 식* -값 집합이 있는 테이블 형식 식입니다. 식에 여러 열이 있는 경우 첫 번째 열이 사용 됩니다.
 
 **반환**
 
-조건자가 인 *T* 의 행`true`
+조건자가 인 *T* 의 행 `true` 입니다.
 
 **참고 사항**
 
-* 식 목록에 최대 값이 생성 될 수 있습니다. `1,000,000`    
-* 중첩 된 배열은 값의 단일 목록으로 평면화 됩니다. 예를 `x in (dynamic([1,[2,3]]))` 들어`x in (1,2,3)` 
-* 테이블 형식 식의 경우 결과 집합의 첫 번째 열이 선택 됩니다.   
-* 연산자에 ' ~ '를 추가 하면 값이 검색 대/소문자를 구분 하지 `x in~ (expression)` 않습니다. 또는 `x !in~ (expression)` 입니다.
+* 식 목록에는 최대 값이 생성 될 수 있습니다 `1,000,000` .
+* 중첩 된 배열은 값의 단일 목록으로 결합 됩니다. 예를 들어 `x in (dynamic([1,[2,3]]))`는 `x in (1,2,3)`가 됩니다.
+* 테이블 형식 식에서 결과 집합의 첫 번째 열이 선택 됩니다.
+* 연산자에 ' ~ '를 추가 하면 값에서 대/소문자를 구분 하지 않고 검색 `x in~ (expression)` `x !in~ (expression)` 합니다.
 
 **예:**  
 
@@ -160,7 +160,7 @@ Lightning_By_State
 | summarize sum(lightning_events) by State 
 ```
 
-| State     | sum_lightning_events |
+| 주     | sum_lightning_events |
 |-----------|----------------------|
 | ALABAMA   | 29                   |
 | 위스콘신 | 31                   |
@@ -181,8 +181,7 @@ StormEvents | where State in (InterestingStates()) | count
 |---|
 |4775|  
 
-
-함수 정의는 다음과 같습니다.  
+함수 정의입니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

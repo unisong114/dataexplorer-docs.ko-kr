@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4bbb076b4c21ac2f93b2bdaf775d513483332934
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: 66118ad7b91d1bcfdd52679d4bfa3dc5ebc4c281
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84257963"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780238"
 ---
 # <a name="streaming-ingestion-preview"></a>스트리밍 수집 (미리 보기)
 
@@ -75,7 +75,7 @@ ms.locfileid: "84257963"
 * 스트리밍 수집에 사용할 [데이터 매핑을](kusto/management/mappings.md) [미리 만들어야](kusto/management/create-ingestion-mapping-command.md) 합니다. 개별 스트리밍 수집 요청은 인라인 데이터 매핑을 허용 하지 않습니다.
 * VM 및 클러스터 크기를 늘려 스트리밍 수집 성능 및 용량을 확장 합니다. 동시 수집 요청 수는 코어 당 6 개로 제한 됩니다. 예를 들어 D14 및 L16와 같은 16 개 코어 Sku의 경우 지원 되는 최대 부하는 동시 수집 요청 96입니다. 코어 2와 같은 두 코어 Sku의 경우 지원 되는 최대 부하는 12 개의 동시 수집 요청입니다.
 * 스트리밍 수집 요청에 대 한 데이터 크기 제한은 4mb입니다.
-* 스트리밍 수집 서비스에서 스키마 업데이트를 사용할 수 있게 되는 데 최대 5 분이 걸릴 수 있습니다. 이러한 업데이트의 예로는 테이블 생성 및 수정과 수집 매핑이 있습니다. 
+* 테이블 생성 및 수정과 수집 매핑 등의 스키마 업데이트는 스트리밍 수집 서비스에 대해 최대 5 분이 걸릴 수 있습니다. 자세한 내용은 스트리밍 수집 [및 스키마 변경](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md)을 참조 하세요.
 * 데이터가 스트리밍을 통해 수집 않는 경우에도 클러스터에서 스트리밍 수집을 사용 하도록 설정 하면에서 클러스터 컴퓨터의 로컬 SSD 디스크의 일부를 사용 하 여 수집 데이터를 스트리밍하 고 핫 캐시에 사용할 수 있는 저장소를 줄입니다.
 * 스트리밍 수집 데이터에 [익스텐트 태그](kusto/management/extents-overview.md#extent-tagging) 를 설정할 수 없습니다.
 

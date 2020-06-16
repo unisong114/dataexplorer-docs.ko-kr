@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 296c6e245b7157c09c7af59132fd8bfa686fc9f7
-ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
+ms.openlocfilehash: 7bcba1cbcbcbd712278696d897febaee5714703f
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84665047"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780595"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -282,7 +282,7 @@ dataformat=parquet
 .show external table T artifacts
 ```
 
-**출력**
+**출력:**
 
 | URI                                                                     |
 |-------------------------------------------------------------------------|
@@ -297,14 +297,14 @@ dataformat=parquet
 **예제** 
  
 ```kusto
-.create external table MyExternalTable JSON mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.create external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                           |
+| 속성     | 종류 | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
-| mapping1 | JSON | [{"ColumnName": "rownumber", "ColumnType": "int", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "ColumnType": "", "Properties": {"Path": "$. rowguid"}}] |
+| mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
 ## <a name="alter-external-table-mapping"></a>. 외부 테이블 매핑 변경
 
@@ -315,14 +315,14 @@ dataformat=parquet
 **예제** 
  
 ```kusto
-.alter external table MyExternalTable JSON mapping "Mapping1" '[{ "column" : "rownumber", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.alter external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                                |
+| 속성     | 종류 | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
-| mapping1 | JSON | [{"ColumnName": "rownumber", "ColumnType": "", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "ColumnType": "", "Properties": {"Path": "$. rowguid"}}] |
+| mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
 ## <a name="show-external-table-mappings"></a>. 외부 테이블 매핑 표시
 
@@ -335,16 +335,16 @@ dataformat=parquet
 **예제** 
  
 ```kusto
-.show external table MyExternalTable JSON mapping "Mapping1" 
+.show external table MyExternalTable json mapping "Mapping1" 
 
-.show external table MyExternalTable JSON mappings 
+.show external table MyExternalTable json mappings 
 ```
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                                         |
+| 속성     | 종류 | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
-| mapping1 | JSON | [{"ColumnName": "rownumber", "ColumnType": "", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "ColumnType": "", "Properties": {"Path": "$. rowguid"}}] |
+| mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
 ## <a name="drop-external-table-mapping"></a>. 외부 테이블 매핑 삭제
 
@@ -355,7 +355,7 @@ dataformat=parquet
 **예제** 
  
 ```kusto
-.drop external table MyExternalTable JSON mapping "Mapping1" 
+.drop external table MyExternalTable json mapping "Mapping1" 
 ```
 ## <a name="next-steps"></a>다음 단계
 

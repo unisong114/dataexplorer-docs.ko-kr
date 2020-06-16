@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: f8f6f820090bde91b9ed6479e0677a893a682983
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 3f36fa4c35ceb88c82b4dfcb7557e4839fed4aa2
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82617377"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780544"
 ---
 # <a name="rowlevelsecurity-policy-preview"></a>RowLevelSecurity 정책 (미리 보기)
 
@@ -48,15 +48,15 @@ ms.locfileid: "82617377"
 Row_level_security에 대 한 다양 한 쿼리를 시도 하지만 실제로 사용자에 게는 적용 하지 않으려는 경우에 유용 합니다. 쿼리에서 확신 하는 경우 정책을 사용 하도록 설정 합니다.
 
 > [!NOTE]
-> 에는 `query`다음과 같은 제한 사항이 적용 됩니다.
+> 에는 다음과 같은 제한 사항이 적용 됩니다 `query` .
 >
 > * 쿼리가 정책이 정의 된 테이블과 정확히 동일한 스키마를 생성 해야 합니다. 즉, 쿼리 결과는 동일한 이름 및 형식을 사용 하 여 원래 테이블과 동일한 열을 동일한 순서로 반환 해야 합니다.
-> * 쿼리에서 `extend`는, `where`, `project`, `project-away` `project-rename`, `project-reorder` 및 `union`연산자를 사용할 수 있습니다.
-> * 쿼리가 정책이 정의 된 테이블이 아닌 다른 테이블을 참조할 수 없습니다.
+> * 쿼리에서는 `extend` , `where` ,,,, `project` `project-away` `project-rename` `project-reorder` `join` 및 `union` 연산자를 사용할 수 있습니다.
+> * 이 쿼리는 RLS를 사용 하는 다른 테이블을 참조할 수 없습니다.
 > * 쿼리는 다음 중 하나 또는 조합 중 하나일 수 있습니다.
->    * 쿼리 (예: `<table_name> | extend CreditCardNumber = "****"`)
->    * 함수 (예: `AnonymizeSensitiveData`)
->    * Datatable (예: `datatable(Col1:datetime, Col2:string) [...]`)
+>    * 쿼리 (예: `<table_name> | extend CreditCardNumber = "****"` )
+>    * 함수 (예: `AnonymizeSensitiveData` )
+>    * Datatable (예: `datatable(Col1:datetime, Col2:string) [...]` )
 
 > [!TIP]
 > 이러한 함수는 쿼리를 row_level_security 하는 데 유용한 경우가 많습니다.
@@ -77,7 +77,7 @@ Row_level_security에 대 한 다양 한 쿼리를 시도 하지만 실제로 �
 .alter table Customers policy row_level_security enable "TrimCreditCardNumbers"
 ```
 
-**성능 정보**: `UserCanSeeFullNumbers` 먼저 평가한 다음 또는 `AllData` `PartialData` 중 하나를 평가 하지만 둘 중 하나는 예상 된 결과입니다.
+**성능 정보**: `UserCanSeeFullNumbers` 먼저 평가한 다음 또는 중 하나를 `AllData` `PartialData` 평가 하지만 둘 중 하나는 예상 된 결과입니다.
 RLS의 성능 영향에 대 한 자세한 내용은 [여기](rowlevelsecuritypolicy.md#performance-impact-on-queries)를 참조 하세요.
 
 ## <a name="deleting-the-policy"></a>정책을 삭제 하는 중

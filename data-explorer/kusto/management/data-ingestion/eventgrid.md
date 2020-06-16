@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: e8c5642e59999c7a1bd547bfcb17cc18bf5d9e15
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: 43012752889d534d8f74943cfa6c528b2c72cd8b
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258048"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780646"
 ---
 # <a name="ingest-from-storage-using-event-grid-subscription"></a>Event Grid 구독을 사용하여 스토리지에서 수집
 
@@ -36,7 +36,7 @@ Blob 메타 데이터를 통해 blob 수집의 수집 [속성](../../../ingestio
 
 |속성 | Description|
 |---|---|
-| rawSizeBytes | 원시 (압축 되지 않은) 데이터의 크기입니다. Avro/ORC/Parquet의 경우 서식 지정 압축을 적용 하기 전의 크기입니다.|
+| rawSizeBytes | 원시 (압축 되지 않은) 데이터의 크기입니다. Avro/ORC/Parquet의 경우이 값은 서식 지정 압축을 적용 하기 전의 크기입니다.|
 | kustoTable |  기존 대상 테이블의 이름입니다. `Table`블레이드의 집합을 재정의 `Data Connection` 합니다. |
 | kustoDataFormat |  데이터 형식입니다. `Data format`블레이드의 집합을 재정의 `Data Connection` 합니다. |
 | kustoIngestionMappingReference |  사용할 기존 수집 매핑의 이름입니다. `Column mapping`블레이드의 집합을 재정의 `Data Connection` 합니다.|
@@ -46,7 +46,7 @@ Blob 메타 데이터를 통해 blob 수집의 수집 [속성](../../../ingestio
 
 ## <a name="events-routing"></a>이벤트 라우팅
 
-Azure 데이터 탐색기 클러스터에 대 한 blob 저장소 연결을 설정할 때 대상 테이블 속성 (테이블 이름, 데이터 형식 및 매핑)을 지정 합니다. 이는 데이터에 대 한 기본 라우팅 이며, 라고도 `static routing` 합니다.
+Azure 데이터 탐색기 클러스터에 대 한 blob 저장소 연결을 설정할 때 대상 테이블 속성 (테이블 이름, 데이터 형식 및 매핑)을 지정 합니다. 이 설정은 데이터에 대 한 기본 라우팅으로, 라고도 `static routing` 합니다.
 Blob 메타 데이터를 사용 하 여 각 blob에 대 한 대상 테이블 속성을 지정할 수도 있습니다. 수집 [속성](#ingestion-properties)에 지정 된 대로 데이터를 동적으로 라우팅합니다.
 
 다음은 blob 메타 데이터를 업로드 하기 전에 수집 속성을 blob 메타 데이터에 설정 하는 예입니다. Blob은 다른 테이블로 라우팅됩니다.
@@ -124,11 +124,10 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 ## <a name="blob-lifecycle"></a>Blob 수명 주기
 
-Azure 데이터 탐색기는 blob 사후 수집을 삭제 하지 않지만 3 ~ 5 일 동안 유지 됩니다. [Azure blob 저장소 수명 주기](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) 를 사용 하 여 blob 삭제를 관리 합니다.
+Azure 데이터 탐색기는 blob 사후 수집을 삭제 하지 않습니다. [Azure blob 저장소 수명 주기](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) 를 사용 하 여 blob 삭제를 관리 합니다. 3 ~ 5 일간 blob을 유지 하는 것이 좋습니다.
 
 ## <a name="known-issues"></a>알려진 문제
 
-Azure 데이터 탐색기을 사용 하 여 event grid 수집에 사용 되는 파일을 [내보내는](../data-export/export-data-to-storage.md) 경우 다음 사항을 유의 해야 합니다. 
-* 내보내기 명령에 *not* 제공 된 연결 문자열이 나 [외부 테이블](../data-export/export-data-to-an-external-table.md) 에 제공 된 연결 문자열이 [ADLS Gen2 형식](../../api/connection-strings/storage.md#azure-data-lake-store)(예:)의 연결 문자열이 고 `abfss://filesystem@accountname.dfs.core.windows.net` *저장소 계정에서 계층적 네임 스페이스를 사용할 수*없는 경우 Event Grid 알림이 트리거되지 않습니다. 
- * 계층 구조 네임 스페이스에 대해 계정을 사용 하지 않는 경우 연결 문자열은 [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) 형식 (예:)을 사용 해야 합니다. `https://accountname.blob.core.windows.net` 
- * 이 경우 ADLS Gen2 연결 문자열을 사용 하는 경우에도 내보내기가 정상적으로 작동 하지만 알림이 트리거되지 않으므로 Event Grid 수집은 작동 하지 않습니다. 
+Azure 데이터 탐색기을 사용 하 여 event grid 수집에 사용 되는 파일을 [내보내는](../data-export/export-data-to-storage.md) 경우 다음을 참고 하세요. 
+* 내보내기 명령에 제공 된 연결 문자열이 나 [외부 테이블](../data-export/export-data-to-an-external-table.md) 에 제공 된 연결 문자열이 [ADLS Gen2 형식](../../api/connection-strings/storage.md#azure-data-lake-store)(예:)의 연결 문자열이 고 `abfss://filesystem@accountname.dfs.core.windows.net` 저장소 계정에서 계층적 네임 스페이스를 사용할 수 없는 경우 Event Grid 알림이 트리거되지 않습니다. 
+* 계층 구조 네임 스페이스에 대해 계정을 사용 하지 않는 경우 연결 문자열은 [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) 형식을 사용 해야 합니다 (예: `https://accountname.blob.core.windows.net` ). 내보내기는 ADLS Gen2 연결 문자열을 사용 하는 경우에도 정상적으로 작동 하지만 알림이 트리거되지 않으며 Event Grid 수집은 작동 하지 않습니다.

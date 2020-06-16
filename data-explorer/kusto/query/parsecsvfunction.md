@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f01faae3d9339aa23e7e2bb2b1fdae7a652db360
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: b61934ec2efbfb22c17fe93a4f3969a1592cefab
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271216"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780663"
 ---
 # <a name="parse_csv"></a>parse_csv()
 

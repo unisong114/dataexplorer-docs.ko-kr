@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/04/2020
-ms.openlocfilehash: 1ad9b359422b51084f1be1c64d27d656313d9296
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 51068a63adb16626c8b2812fde40782d2ac4a8f1
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82616323"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780578"
 ---
 # <a name="data-partitioning-policy-management"></a>데이터 분할 정책 관리
 
@@ -25,7 +25,7 @@ ms.locfileid: "82616323"
 .show table [table_name] policy partitioning
 ```
 
-`.show` 명령은 테이블에 적용 된 분할 정책을 표시 합니다.
+`.show`명령은 테이블에 적용 된 분할 정책을 표시 합니다.
 
 ### <a name="output"></a>출력
 
@@ -41,7 +41,7 @@ ms.locfileid: "82616323"
 .alter-merge table [table_name] policy partitioning @'partial policy object, serialized as JSON'
 ```
 
-명령을 `.alter` 사용 하 여 테이블에 적용 된 분할 정책을 변경할 수 있습니다.
+`.alter`명령을 사용 하 여 테이블에 적용 된 분할 정책을 변경할 수 있습니다.
 
 이 명령에는 [Databaseadmin](access-control/role-based-authorization.md) 권한이 필요 합니다.
 
@@ -49,7 +49,41 @@ ms.locfileid: "82616323"
 
 ### <a name="examples"></a>예
 
-#### <a name="setting-all-properties-of-the-policy-explicitly-at-table-level"></a>테이블 수준에서 정책에 대 한 모든 속성을 명시적으로 설정
+#### <a name="setting-a-policy-with-a-hash-partition-key"></a>해시 파티션 키를 사용 하 여 정책 설정
+
+```kusto
+.alter table [table_name] policy partitioning @'{'
+  '"PartitionKeys": ['
+    '{'
+      '"ColumnName": "my_string_column",'
+      '"Kind": "Hash",'
+      '"Properties": {'
+        '"Function": "XxHash64",'
+        '"MaxPartitionCount": 256,'
+      '}'
+    '}'
+  ']'
+'}'
+```
+
+#### <a name="setting-a-policy-with-a-uniform-range-datetime-partition-key"></a>균일 범위의 datetime 파티션 키로 정책 설정
+
+```kusto
+.alter table [table_name] policy partitioning @'{'
+  '"PartitionKeys": ['
+    '{'
+      '"ColumnName": "my_datetime_column",'
+      '"Kind": "UniformRange",'
+      '"Properties": {'
+        '"Reference": "1970-01-01T00:00:00",'
+        '"RangeSize": "1.00:00:00"'
+      '}'
+    '}'
+  ']'
+'}'
+```
+
+#### <a name="setting-a-policy-with-both-kinds-of-partition-keys"></a>두 종류의 파티션 키를 사용 하 여 정책 설정
 
 ```kusto
 .alter table [table_name] policy partitioning @'{'
@@ -76,7 +110,7 @@ ms.locfileid: "82616323"
 
 #### <a name="setting-a-specific-property-of-the-policy-explicitly-at-table-level"></a>테이블 수준에서 정책의 특정 속성을 명시적으로 설정
 
-정책의를 `EffectiveDateTime` 다른 값으로 설정 하려면 다음 명령을 사용 합니다.
+`EffectiveDateTime`정책의를 다른 값으로 설정 하려면 다음 명령을 사용 합니다.
 
 ```kusto
 .alter-merge table [table_name] policy partitioning @'{"EffectiveDateTime":"2020-01-01"}'
@@ -88,4 +122,4 @@ ms.locfileid: "82616323"
 .delete table [table_name] policy partitioning
 ```
 
-`.delete` 명령은 지정 된 테이블의 파티션 정책을 삭제 합니다.
+`.delete`명령은 지정 된 테이블의 파티션 정책을 삭제 합니다.

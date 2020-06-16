@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a046cc369dd466defa50916ee78b2c29f5f88ea0
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 4662b1bd9f68778cab1f799f564499e23add5812
+ms.sourcegitcommit: 6a0bd5b84f9bd739510c6a75277dec3a9e851edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373228"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84788905"
 ---
 # <a name="pivot-plugin"></a>피벗 플러그 인
 
@@ -30,7 +30,7 @@ T | evaluate pivot(PivotColumn)
 **인수**
 
 * *pivotColumn*: 회전할 열입니다. 이 열의 각 고유 값은 출력 테이블의 열이 됩니다.
-* *집계 함수*: (선택 사항) 입력 테이블의 여러 행을 출력 테이블의 단일 행에 집계 합니다. 현재 지원 되는 함수는 `min()` , `max()` ,,,,,, `any()` `sum()` `dcount()` `avg()` `stdev()` `variance()` 및 `count()` 입니다 (기본값은 `count()` ).
+* *집계 함수*: (선택 사항) 입력 테이블의 여러 행을 출력 테이블의 단일 행에 집계 합니다. 현재 지원 되는 함수:,,,,,,,,,, `min()` `max()` `any()` `sum()` `dcount()` `avg()` `stdev()` `variance()` `make_list()` `make_bag()` `make_set()` , `count()` (기본값은 `count()` ).
 * *column1*, *column2*, ...: (옵션) 열 이름 출력 테이블에는 지정 된 각 열 마다 추가 열이 포함 됩니다. 기본값: 피벗 열 및 집계 열 이외의 모든 열
 
 **반환**
