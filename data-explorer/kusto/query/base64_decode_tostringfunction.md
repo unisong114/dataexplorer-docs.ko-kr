@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
-ms.openlocfilehash: d2e1c5dbb845e67a5306ccb16c234de383d3ca69
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: ffef2fd609075b0d5e5af5c4064e079c27cd8c94
+ms.sourcegitcommit: 3848b8db4c3a16bda91c4a5b7b8b2e1088458a3a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225346"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84818496"
 ---
 # <a name="base64_decode_tostring"></a>base64_decode_tostring()
 
@@ -32,7 +32,7 @@ Base64 문자열을 UTF-8 문자열로 디코딩합니다.
 Base64 문자열에서 디코딩된 UTF-8 문자열을 반환 합니다.
 
 * Base64 문자열을 long 값 배열로 디코딩하려면 [base64_decode_toarray ()](base64_decode_toarrayfunction.md) 를 참조 하세요.
-* Base64 문자열에 문자열을 인코딩하기 위해 [base64_encode_tostring ()](base64_encode_tostringfunction.md) 를 참조 하세요.
+* 문자열을 base64 문자열로 디코딩하려면 [base64_encode_tostring ()](base64_encode_tostringfunction.md) 를 참조 하세요.
 
 **예제**
 

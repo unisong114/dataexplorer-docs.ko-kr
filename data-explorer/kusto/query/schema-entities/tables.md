@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: f51e05abac44b85ab328e7df5645eeab51d2a274
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: fa97777da8173034098037f1aceec385a4c206de
+ms.sourcegitcommit: 3848b8db4c3a16bda91c4a5b7b8b2e1088458a3a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550625"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84818610"
 ---
 # <a name="tables"></a>테이블
 
@@ -54,9 +54,12 @@ cluster("https://help.kusto.windows.net").database("Samples").StormEvents
 | count
 ```
 
-이 함수에 대 한 인수가 상수로 계산 되는 [한 table () 특수 함수](../tablefunction.md)를 사용 하 여 테이블을 참조할 수도 있습니다. 다음은 그 예입니다.
+이 함수에 대 한 인수가 상수로 계산 되는 [한 table () 특수 함수](../tablefunction.md)를 사용 하 여 테이블을 참조할 수도 있습니다. 예를 들어:
 
 ```kusto
 let counter=(TableName:string) { table(TableName) | count };
 counter("StormEvents")
 ```
+
+> [!NOTE]
+> `table()`특수 함수를 사용 하 여 테이블 데이터 범위를 명시적으로 지정 합니다. 예를 들어이 함수를 사용 하 여 핫 캐시에 있는 테이블의 데이터로 처리를 제한할 수 있습니다.
