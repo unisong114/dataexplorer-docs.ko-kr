@@ -325,6 +325,8 @@
               href: ./kusto/query/best-practices.md
             - name: 데이터베이스 간/클러스터 간 쿼리
               href: ./kusto/query/cross-cluster-or-database-queries.md
+            - name: 쿼리 결과 캐시
+              href: ./kusto/query/query-results-cache.md
         - name: 엔터티
           items:
             - name: 엔터티 형식
@@ -1447,6 +1449,13 @@
               href: ./kusto/management/data-export/continuous-data-export.md
         - name: 데이터베이스 커서
           href: ./kusto/management/databasecursor.md
+        - name: 쿼리 결과 캐시
+          href: ./kusto/management/query-results-cache-commands.md
+          items:
+            - name: 캐시 표시
+              href: ./kusto/management/show-query-results-cache-command.md
+            - name: 캐시 지우기
+              href: ./kusto/management/clear-query-results-cache-command.md
         - name: 시스템 정보
           href: ./kusto/management/systeminfo.md
           items:
