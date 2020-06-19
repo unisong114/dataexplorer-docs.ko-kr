@@ -4,20 +4,21 @@ description: 이 문서에서는 Azure 데이터 탐색기의 구문 분석 연�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8255f3d0c3dc0006029f06c7a0da4b41dfbaa1b7
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 07318a64781678410374f902ff8fe5514a4bdd17
+ms.sourcegitcommit: f9d3f54114fb8fab5c487b6aea9230260b85c41d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271340"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85071900"
 ---
 # <a name="parse-operator"></a>parse 연산자
 
-문자열 식을 평가하고 해당 값을 계산 열 하나 이상으로 구문 분석합니다. 구문 분석에 실패 한 문자열의 경우 계산 열에 null이 포함 됩니다.
+문자열 식을 평가하고 해당 값을 계산 열 하나 이상으로 구문 분석합니다. 구문 분석에 실패 한 문자열의 경우 계산 열에 null이 포함 됩니다. 
+
 구문 분석 되지 않은 문자열을 필터링 하는 [구문 분석-where](parsewhereoperator.md) 연산자를 참조 하세요.
 
 ```kusto

@@ -4,20 +4,21 @@ description: 이 문서에서는 Azure 데이터 탐색기의 구문 분석-wher
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/12/2020
-ms.openlocfilehash: 646ec00531d528efd51b4a168fde3de660a85ced
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 48231d24ca1e49938629dd9912804c5858d11ae1
+ms.sourcegitcommit: f9d3f54114fb8fab5c487b6aea9230260b85c41d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271097"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85071882"
 ---
 # <a name="parse-where-operator"></a>parse-where 연산자
 
-문자열 식을 계산 하 고 해당 값을 하나 이상의 계산 된 열로 구문 분석 합니다. 결과는 성공적으로 구문 분석 된 문자열입니다.
+문자열 식을 계산 하 고 해당 값을 하나 이상의 계산 된 열로 구문 분석 합니다. 결과는 성공적으로 구문 분석 된 문자열입니다. 
+
 구문 분석 되지 않은 문자열에 대해 null을 생성 하는 [parse 연산자](parseoperator.md)를 참조 하세요.
 
 ```kusto
@@ -83,11 +84,11 @@ T | parse-where Text with "ActivityName=" name ", ActivityType=" type
         
     - `long`가로 변환 되었습니다 `\-\d+` .
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 `parse-where`연산자는 `extend` 동일한 식에서 여러 응용 프로그램을 사용 하 여 테이블에 간소화 된 방법을 제공 `extract` `string` 합니다. 이는 테이블에 `string` 개별 열로 나눌 여러 값이 포함 된 열이 있는 경우에 가장 유용 합니다. 예를 들어 개발자 추적 (" `printf` "/"") 문에 의해 생성 된 열을 나눌 수 있습니다 `Console.WriteLine` .
 
-### <a name="using-parse"></a>`parse` 사용
+### <a name="using-parse"></a>`parse` 시작
 
 아래 예에서는 테이블의 열에 형식의 `EventText` `Traces` 문자열이 포함 되어 있습니다 `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})` . 아래 작업을 수행 하면 테이블에,,,,,, `resourceName` `totalSlices` `sliceNumber` `lockTime ` `releaseTime` `previouLockTime` `Month` 및 `Day` 열이 6 개 있는 것으로 확장 됩니다. 
 
@@ -118,7 +119,7 @@ Traces
 |PipelineScheduler|27|20|02/17/2016 08:40:01|2016-02-17 08:40:01.0000000|2016-02-17 08:39:01.0000000|
 |PipelineScheduler|27|22|02/17/2016 08:41:01|2016-02-17 08:41:00.0000000|2016-02-17 08:40:01.0000000|
 
-### <a name="using-parse-where"></a>`parse-where` 사용 
+### <a name="using-parse-where"></a>`parse-where` 시작 
 
 ' Parse-where '를 사용 하면 결과에서 구문 분석 된 문자열이 성공적으로 필터링 되지 않습니다.
 

@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 02/19/2020
-ms.openlocfilehash: 96409849823850ef9fd939f9e359d75d3e6d5bf1
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: 83af540389087f0e1d9fdbd04266ab7ecaca0c5a
+ms.sourcegitcommit: b12e03206c79726d5b4055853ec3fdaa8870c451
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382151"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85069167"
 ---
 # <a name="ingestion-without-kustoingest-library"></a>Kusto 수집 라이브러리 없이 수집
 
@@ -22,7 +22,7 @@ Kusto. 수집 라이브러리는 데이터를 Azure 데이터 탐색기로 수�
 이 문서에서는 프로덕션 등급 파이프라인에 대 한 Azure 데이터 탐색기에 대 한 *큐* 에 수집을 사용 하 여 방법을 보여 줍니다.
 
 > [!NOTE]
-> 아래 코드는 c #으로 작성 되었으며 Azure Storage SDK, ADAL 인증 라이브러리 및 Newtonsoft.json 패키지를 사용 하 여 샘플 코드를 간소화 합니다. 필요한 경우 해당 코드를 적절 한 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 호출, [non-.NET ADAL 패키지](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)및 사용 가능한 모든 JSON 처리 패키지로 바꿀 수 있습니다.
+> 아래 코드는 c #으로 작성 되었으며 Azure Storage SDK, ADAL 인증 라이브러리 및 패키지의 NewtonSoft.JS를 사용 하 여 샘플 코드를 간소화 합니다. 필요한 경우 해당 코드를 적절 한 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 호출, [non-.NET ADAL 패키지](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)및 사용 가능한 모든 JSON 처리 패키지로 바꿀 수 있습니다.
 
 이 문서에서는 권장 되는 수집 모드를 다룹니다. Kusto. 수집 라이브러리의 경우 해당 엔터티는 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) 인터페이스입니다. 여기서 클라이언트 코드는 azure 큐에 수집 알림 메시지를 게시 하 여 Azure 데이터 탐색기 서비스와 상호 작용 합니다. 메시지에 대 한 참조는 Kusto 데이터 관리 (수집) 서비스에서 가져옵니다. 서비스와의 상호 작용은 Azure Active Directory (Azure AD)를 사용 하 여 인증 되어야 합니다.
 
@@ -240,7 +240,7 @@ internal static string UploadFileToBlobContainer(string filePath, string blobCon
 
 ### <a name="compose-the-azure-data-explorer-ingestion-message"></a>Azure 데이터 탐색기 수집 메시지 작성
 
-Newtonsoft.json 패키지는 대상 데이터베이스 및 테이블을 식별 하는 유효한 수집 요청을 다시 작성 하며이는 blob을 가리킵니다.
+패키지에 대 한 NewtonSoft.JS는 대상 데이터베이스 및 테이블을 식별 하는 유효한 수집 요청을 다시 작성 하며이는 blob을 가리킵니다.
 이 메시지는 관련 Kusto 데이터 관리 서비스가 수신 대기 하는 Azure 큐에 게시 됩니다.
 
 다음은 고려해 야 할 몇 가지 사항입니다.
@@ -265,14 +265,15 @@ internal static string PrepareIngestionMessage(string db, string table, string d
     message.Add("DatabaseName", db);
     message.Add("TableName", table);
     message.Add("RetainBlobOnSuccess", true);   // Do not delete the blob on success
-    message.Add("Format", "json");              // Data is in JSON format
     message.Add("FlushImmediately", true);      // Do not aggregate
     message.Add("ReportLevel", 2);              // Report failures and successes (might incur perf overhead)
     message.Add("ReportMethod", 0);             // Failures are reported to an Azure Queue
 
     message.Add("AdditionalProperties", new JObject(
                                             new JProperty("authorizationContext", identityToken),
-                                            new JProperty("jsonMappingReference", mappingRef)));
+                                            new JProperty("jsonMappingReference", mappingRef),
+                                            // Data is in JSON format
+                                            new JProperty("format", "json")));
     return message.ToString();
 }
 ```
@@ -344,7 +345,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 |DatabaseName |대상 데이터베이스 이름 |
 |TableName |대상 테이블 이름 |
 |RetainBlobOnSuccess |로 설정 된 경우 수집이 `true` 성공적으로 완료 되 면 blob이 삭제 되지 않습니다. 기본값은 `false` |
-|서식 |압축 되지 않은 데이터 형식 |
+|형식 |압축 되지 않은 데이터 형식 |
 |즉시 flush |로 설정 하면 `true` 모든 집계가 생략 됩니다. 기본값은 `false` |
 |ReportLevel |성공/오류 보고 수준: 0-실패, 1-없음, 2-모두 |
 |ReportMethod |보고 메커니즘: 0-큐, 1-테이블 |
