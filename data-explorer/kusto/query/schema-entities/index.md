@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: d31765d72d37b0146cf7ba8a42e02722296bf80e
-ms.sourcegitcommit: 436cd515ea0d83d46e3ac6328670ee78b64ccb05
+ms.openlocfilehash: a69362b590acee99fbe9b57d9303099f0033d458
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81663479"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128498"
 ---
-# <a name="entities"></a>엔터티
+# <a name="entity-types"></a>엔터티 형식
 
 Kusto 쿼리는 Kusto 클러스터에 연결된 일부 Kusto 데이터베이스의 컨텍스트에서 실행됩니다. 데이터베이스의 데이터는 쿼리에서 참조할 수 있는 테이블에 정렬되며, 테이블 내에서 열과 행의 사각형 그리드로 구성됩니다. 또한 쿼리는 다시 사용할 수 있는 쿼리 조각인 데이터베이스의 저장 함수를 참조할 수 있습니다.
 
