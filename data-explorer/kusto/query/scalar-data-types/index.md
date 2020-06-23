@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure Data Explorer의 스칼라 데이터 형�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020
-ms.openlocfilehash: 3ef87217beee62fe4cecf7ee95dfe8daba49af7a
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 95bb28c81ec3221569758ead8a289bdf81d32d3d
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490245"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128651"
 ---
 # <a name="scalar-data-types"></a>스칼라 데이터 형식
 
@@ -26,22 +26,22 @@ Kusto는 Kusto에서 사용할 수 있는 모든 형식의 데이터를 정의�
 
 다음 표에는 Kusto가 지원하는 데이터 형식과 이를 참조하는 데 사용할 수 있는 추가 별칭 및 거의 동등한 .NET Framework 형식이 나와 있습니다.
 
-| Type       | 추가 이름   | 해당하는.NET 형식              | gettype()   |스토리지 유형(내부 이름)|
-| ---------- | -------------------- | --------------------------------- | ----------- |----------------------------|
-| `bool`     | `boolean`            | `System.Boolean`                  | `int8`      |`I8`                        |
-| `datetime` | `date`               | `System.DateTime`                 | `datetime`  |`DateTime`                  |
-| `dynamic`  |                      | `System.Object`                   | `array`, `dictionary` 또는 다른 값 중 하나 |`Dynamic`|
-| `guid`     | `uuid`, `uniqueid`   | `System.Guid`                     | `guid`      |`UniqueId`                  |
-| `int`      |                      | `System.Int32`                    | `int`       |`I32`                       |
-| `long`     |                      | `System.Int64`                    | `long`      |`I64`                       |
-| `real`     | `double`             | `System.Double`                   | `real`      |`R64`                       |
-| `string`   |                      | `System.String`                   | `string`    |`StringBuffer`              |
-| `timespan` | `time`               | `System.TimeSpan`                 | `timespan`  |`TimeSpan`                  |
-| `decimal`  |                      | `System.Data.SqlTypes.SqlDecimal` | `decimal`   | `Decimal`                  |
+| Type       | 추가 이름   | 해당하는.NET 형식              | gettype()   |
+| ---------- | -------------------- | --------------------------------- | ----------- |
+| `bool`     | `boolean`            | `System.Boolean`                  | `int8`      |
+| `datetime` | `date`               | `System.DateTime`                 | `datetime`  |
+| `dynamic`  |                      | `System.Object`                   | `array`, `dictionary` 또는 다른 값 중 하나 |
+| `guid`     | `uuid`, `uniqueid`   | `System.Guid`                     | `guid`      |
+| `int`      |                      | `System.Int32`                    | `int`       |
+| `long`     |                      | `System.Int64`                    | `long`      |
+| `real`     | `double`             | `System.Double`                   | `real`      |
+| `string`   |                      | `System.String`                   | `string`    |
+| `timespan` | `time`               | `System.TimeSpan`                 | `timespan`  |
+| `decimal`  |                      | `System.Data.SqlTypes.SqlDecimal` | `decimal`   |
 
-모든 데이터 형식에는 데이터 부족 또는 데이터 불일치를 나타내는 특별한 "null" 값이 포함됩니다. 예를 들어 `"abc"` 문자열을 `int` 열에 수집하려고 하면 이 값이 반환됩니다.
+문자열이 아닌 모든 데이터 형식에는 데이터 부족 또는 데이터 불일치를 나타내는 특별한 "null" 값이 포함됩니다. 예를 들어 `"abc"` 문자열을 `int` 열에 수집하려고 하면 이 값이 반환됩니다.
 이 값을 명시적으로 구체화할 수는 없지만, `isnull()` 함수를 사용하여 식이 이 값으로 평가되는지 여부를 검색할 수 있습니다.
 
 > [!WARNING]
-> 이 문서를 작성할 당시에는 `guid` 형식에 대한 지원이 완전하지 않습니다. 대신 팀에서 `string` 형식의 값을 사용하는 것이 좋습니다.
-
+> `guid` 형식에 대한 지원이 완전하지 않습니다.
+> 대신 팀에서 `string` 형식의 값을 사용하는 것이 좋습니다.

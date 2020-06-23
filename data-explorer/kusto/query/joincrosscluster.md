@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 10c31a249ddd0ad8151f8a6e4a76fde7f87c2400
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: dc22d44bd861a02d0db7fd0d8f7cc80ddcb5c8d4
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83863169"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128467"
 ---
 # <a name="cross-cluster-join"></a>클러스터 간 조인
 
@@ -23,7 +23,7 @@ ms.locfileid: "83863169"
 
 클러스터 간 쿼리에 대 한 일반적인 설명은 [클러스터 간 또는 데이터베이스 간 쿼리](cross-cluster-or-database-queries.md) 를 참조 하세요.
 
-다른 클러스터에 있는 데이터 집합에 대 한 조인 작업을 수행할 수 있습니다. 다음은 그 예입니다.
+다른 클러스터에 있는 데이터 집합에 대 한 조인 작업을 수행할 수 있습니다. 예를 들어:
 
 ```kusto
 T | ... | join (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1 // (1)

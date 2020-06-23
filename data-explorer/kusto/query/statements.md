@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 12/10/2019
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 6e383ce9fdcf373452c0b7d710302669e7987395
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: 778b8c276d6264b890c0b0be7b127f578663a64d
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737847"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129059"
 ---
-# <a name="query-statements"></a>쿼리 문
+# <a name="query-statement-types"></a>쿼리 문 형식
 
 ::: zone pivot="azuredataexplorer"
 
-쿼리는 세미콜론 (`;`)으로 구분 된 하나 이상의 **쿼리 문으로**구성 됩니다.
+쿼리는 세미콜론 ()으로 구분 된 하나 이상의 **쿼리 문으로**구성 됩니다 `;` .
 이러한 쿼리 문 중 하나 이상이 [테이블 형식 식 문](./tabularexpressionstatements.md)이어야 합니다.
 테이블 형식 식 문은 하나 이상의 테이블 형식 결과를 생성 합니다.
 쿼리에 테이블 형식 식 문이 두 개 이상 있으면 쿼리에 테이블 형식 식 문이 [일괄 처리](./batches.md) 되 고 이러한 문에 의해 생성 된 표 형식 결과가 모두 쿼리에서 반환 됩니다.

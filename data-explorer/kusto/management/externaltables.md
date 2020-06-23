@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/26/2020
-ms.openlocfilehash: 293ee468f31fafafdf08da1632c93b04b0a8adf2
-ms.sourcegitcommit: f7101c6b41ec250d05f4cb6092e2939958b37b40
+ms.openlocfilehash: 8e419d471419a291b3680c4b91d3e6908b2e7f2e
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84329013"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128838"
 ---
 # <a name="external-table-general-control-commands"></a>외부 테이블 일반 제어 명령
 
@@ -28,11 +28,11 @@ ms.locfileid: "84329013"
 
 `.show` `external` `tables`
 
-`.show` `external` `table` *TableName*
+`.show``external` `table` *TableName*
 
 **출력**
 
-| 출력 매개 변수 | Type   | Description                                                         |
+| 출력 매개 변수 | Type   | 설명                                                         |
 |------------------|--------|---------------------------------------------------------------------|
 | TableName        | 문자열 | 외부 테이블의 이름                                             |
 | TableType        | 문자열 | 외부 테이블의 유형입니다.                                              |
@@ -50,7 +50,7 @@ ms.locfileid: "84329013"
 
 | TableName | TableType | 폴더         | DocString | 속성 |
 |-----------|-----------|----------------|-----------|------------|
-| T         | Blob      | ExternalTables | 문서      | {}         |
+| T         | Blob      | ExternalTables | Docs      | {}         |
 
 
 ## <a name="show-external-table-schema"></a>. 외부 테이블 스키마 표시
@@ -62,11 +62,11 @@ ms.locfileid: "84329013"
 
 `.show``external` `table` *TableName* `schema` `as` ( `json`  |  `csl` )
 
-`.show` `external` `table` *TableName* `cslschema`
+`.show``external` `table` *TableName*`cslschema`
 
 **출력**
 
-| 출력 매개 변수 | Type   | Description                        |
+| 출력 매개 변수 | Type   | 설명                        |
 |------------------|--------|------------------------------------|
 | TableName        | 문자열 | 외부 테이블의 이름            |
 | 스키마           | 문자열 | JSON 형식의 테이블 스키마 |
@@ -85,20 +85,20 @@ ms.locfileid: "84329013"
 .show external table T cslschema
 ```
 
-**출력**
+**출력:**
 
 *n*
 
 | TableName | 스키마    | DatabaseName | 폴더         | DocString |
 |-----------|----------------------------------|--------------|----------------|-----------|
-| T         | {"Name": "ExternalBlob",<br>"폴더": "ExternalTables",<br>"DocString": "Docs",<br>"OrderedColumns": [{"Name": "x", "Type": "system.string", "CslType": "long", "DocString": ""}, {"Name": "s", "Type": "system.string", "CslType": "String", "DocString": ""}]} | DB           | ExternalTables | 문서      |
+| T         | {"Name": "ExternalBlob",<br>"폴더": "ExternalTables",<br>"DocString": "Docs",<br>"OrderedColumns": [{"Name": "x", "Type": "system.string", "CslType": "long", "DocString": ""}, {"Name": "s", "Type": "system.string", "CslType": "String", "DocString": ""}]} | DB           | ExternalTables | Docs      |
 
 
 *csl:*
 
 | TableName | 스키마          | DatabaseName | 폴더         | DocString |
 |-----------|-----------------|--------------|----------------|-----------|
-| T         | x:long, 토 문자열 | DB           | ExternalTables | 문서      |
+| T         | x:long, 토 문자열 | DB           | ExternalTables | Docs      |
 
 ## <a name="drop-external-table"></a>. drop external table
 
@@ -108,7 +108,7 @@ ms.locfileid: "84329013"
 
 **구문:**  
 
-`.drop` `external` `table` *TableName*
+`.drop``external` `table` *TableName* [ `ifexists` ]
 
 **출력**
 
@@ -122,7 +122,7 @@ ms.locfileid: "84329013"
 
 | TableName | TableType | 폴더         | DocString | 스키마       | 속성 |
 |-----------|-----------|----------------|-----------|-----------------------------------------------------|------------|
-| T         | Blob      | ExternalTables | 문서      | [{"Name": "x", "CslType": "long"},<br> {"Name": "s", "CslType": "string"}] | {}         |
+| T         | Blob      | ExternalTables | Docs      | [{"Name": "x", "CslType": "long"},<br> {"Name": "s", "CslType": "string"}] | {}         |
 
 ## <a name="next-steps"></a>다음 단계
 

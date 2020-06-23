@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: e951e56589824acd6dd74160c9ab61778fbce45e
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 213b69d1458d234e987c8a378ade82441e578d5e
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271556"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128617"
 ---
-# <a name="between-operator"></a>! between 연산자
+# <a name="not-between-operator-between"></a>not-between 연산자(!between)
 
 포괄 범위를 벗어난 입력을 찾습니다.
 
@@ -39,7 +39,7 @@ Table1 | where Time !between (datetime(2017-01-01) .. datetime(2017-01-01))
 * *T* -레코드를 일치 시킬 테이블 형식 입력입니다.
 * *expr* -필터링 할 식입니다.
 * *leftRange* -왼쪽 범위의 식 (포함)입니다.
-* *rightRange* -rihgt 범위 (포함)의 식입니다.
+* *rightRange* -오른쪽 범위의 식 (포함)입니다.
 
 **반환**
 

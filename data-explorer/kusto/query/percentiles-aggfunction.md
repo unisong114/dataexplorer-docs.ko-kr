@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: dfb957189eb0d9be552cf12b32ef57452a375c51
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: b70ee322d4718f78a37144b650a147c5c9965a60
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512557"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129025"
 ---
-# <a name="percentile-percentiles"></a>백분위 수 (), 백분위 수 ()
+# <a name="percentile-percentiles-aggregation-function"></a>백분위 수 (), 백분위 수 () (집계 함수)
 
 에서 정의한 모집단의 지정 된 [가장 가까운 순위 백분위](#nearest-rank-percentile) 수에 대 한 예상 값을 반환 합니다 `*Expr*` .
 정확도는 백분위수 지역의 인구 밀도에 따라 달라집니다. 이 함수는 [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.

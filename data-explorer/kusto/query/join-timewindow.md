@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4741da4367bb1a350c7310ea21ebe5ce9b91b06b
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: d23d76fdcc592435a8ec7fa24ef5d0dfd5186c68
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271488"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128469"
 ---
-# <a name="joining-within-time-window"></a>시간 창 내에서 조인
+# <a name="time-window-join"></a>시간 범위 조인
 
 일부 고급 카디널리티 키 (예: 작업 ID 또는 세션 ID)에서 두 개의 큰 데이터 집합을 조인 하 고 왼쪽 `$right` `$left` 및 오른쪽에 있는 열 사이의 "시간 거리"에 제한을 추가 하 여 각 왼쪽 면 () 레코드에 대해 일치 해야 하는 오른쪽 () 레코드를 추가 하는 것이 유용한 경우가 많습니다 `datetime` . 이는 일반적인 Kusto join 작업과 달리, 높은 카디널리티 키 또는 왼쪽 및 오른쪽 데이터 집합과 일치 하는 "동등 조인" 부분 외에도 거리 함수를 적용 하 고이를 사용 하 여 조인 속도를 크게 높일 수 있습니다. Distance 함수는 같음 처럼 동작 하지 않습니다. 즉,와가 모두 true 이면 `dist(x,y)` `dist(y,z)` 다음에 `dist(x,z)` 도 적용 되지 않습니다. *내부적으로는이를 "대각선 조인"으로 지칭 하기도 합니다.*
 

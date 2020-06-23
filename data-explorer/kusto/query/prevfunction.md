@@ -1,6 +1,6 @@
 ---
-title: prev() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 prev()에 대해 설명합니다.
+title: prev ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 prev ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,33 +8,35 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 33f6045333826b21ddc0092e2cc7d5e033c12a96
-ms.sourcegitcommit: e94be7045d71a0435b4171ca3a7c30455e6dfa57
+ms.openlocfilehash: 4216f691345c7dffd3bb1974e5f82e877ffb70f2
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81744604"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128991"
 ---
 # <a name="prev"></a>prev()
 
-[직렬화된](./windowsfunctions.md#serialized-row-set)행 집합의 현재 행 앞에 있는 일부 오프셋에서 열 값을 반환합니다.
+지정 된 행에 있는 특정 열의 값을 반환 합니다.
+지정 된 행이 [직렬화 된 행 집합](./windowsfunctions.md#serialized-row-set)의 현재 행에서 지정 된 오프셋에 있습니다.
 
 **구문**
 
-`prev(column)`
+여러 가지 가능성이 있습니다.
 
-`prev(column, offset)`
+* `prev(column)`
 
-`prev(column, offset, default_value)`
+* `prev(column, offset)`
+
+* `prev(column, offset, default_value)`
 
 **인수**
 
-* `column`: 값을 얻을 수있는 열입니다.
+* `column`: 값을 가져올 열입니다.
 
-* `offset`: 행으로 돌아갈 오프셋입니다. 오프셋이 지정되지 않은 경우 기본 오프셋 1이 사용됩니다.
+* `offset`: 행으로 다시 이동 하는 오프셋입니다. 오프셋을 지정 하지 않으면 기본 오프셋 1이 사용 됩니다.
 
-* `default_value`: 값을 취할 이전 행이 없을 때 사용할 기본값입니다. 기본값을 지정하지 않은 경우 null이 사용됩니다.
-
+* `default_value`: 값을 가져올 이전 행이 없을 때 사용 되는 기본값입니다. 기본값을 지정 하지 않으면 null이 사용 됩니다.
 
 **예**
 

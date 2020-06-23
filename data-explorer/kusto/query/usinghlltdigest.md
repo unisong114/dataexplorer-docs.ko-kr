@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 3f1371fe298b2d0e066fc3a278cc3b560050416c
-ms.sourcegitcommit: 283cce0e7635a2d8ca77543f297a3345a5201395
+ms.openlocfilehash: 8da464bca228df5a813f50e68fab5ddb2aa926cf
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84011587"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128668"
 ---
-# <a name="partitioning-and-composing-intermediate-results-of-aggregations"></a>집계의 중간 결과 분할 및 작성
+# <a name="using-hll-and-tdigest"></a>hll() 및 tdigest() 사용
 
 지난 7 일 동안 매일 고유한 사용자 수를 계산 하려는 경우를 가정해 보겠습니다. `summarize dcount(user)`지난 7 일간 필터링 된 범위를 사용 하 여 하루에 한 번 실행할 수 있습니다. 이 방법은 비효율적입니다. 계산이 실행 될 때마다 이전 계산과 6 일이 겹칩니다. 또한 각 날짜에 대 한 집계를 계산한 다음 이러한 집계를 결합할 수 있습니다. 이 메서드를 사용 하려면 마지막 6 개 결과를 "명심" 해야 하지만 훨씬 더 효율적입니다.
 

@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: d876f26de796008e83b620e4511a31cdb4e23888
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: 1e93764058c6d890568e90f67472ec4306a092f8
+ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550693"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85128702"
 ---
-# <a name="window-functions"></a>창 함수
+# <a name="window-functions-overview"></a>창 함수 개요
 
 창 함수는 한 번에 행 집합에서 여러 행 (레코드)에 대해 작동 합니다. 집계 함수와 달리 창 함수는 행 집합의 행을 serialize 해야 합니다 (특정 순서로 정렬). 창 함수는 결과를 확인 하는 순서에 따라 달라질 수 있습니다.
 

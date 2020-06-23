@@ -310,23 +310,20 @@
           href: troubleshoot-database-table.md
 - name: 참조
   items:
-    - name: 쿼리 언어
-      href: ./kusto/query/index.md
+    - name: Kusto 쿼리
       items:
         - name: 개요
-          items:
-            - name: Kusto 쿼리
-              href: ./kusto/query/index.md
-            - name: 자습서
-              href: ./kusto/query/tutorial.md
-            - name: 샘플
-              href: ./kusto/query/samples.md
-            - name: 모범 사례
-              href: ./kusto/query/best-practices.md
-            - name: 데이터베이스 간/클러스터 간 쿼리
-              href: ./kusto/query/cross-cluster-or-database-queries.md
-            - name: 쿼리 결과 캐시
-              href: ./kusto/query/query-results-cache.md
+          href: ./kusto/query/index.md
+        - name: 자습서
+          href: ./kusto/query/tutorial.md
+        - name: 샘플
+          href: ./kusto/query/samples.md
+        - name: 모범 사례
+          href: ./kusto/query/best-practices.md
+        - name: 데이터베이스 간/클러스터 간 쿼리
+          href: ./kusto/query/cross-cluster-or-database-queries.md
+        - name: 쿼리 결과 캐시
+          href: ./kusto/query/query-results-cache.md
         - name: 엔터티
           items:
             - name: 엔터티 형식
@@ -347,7 +344,7 @@
               href: ./kusto/query/schema-entities/externaltables.md
         - name: 데이터 형식
           items:
-            - name: 스칼라 데이터 형식 개요
+            - name: 스칼라 데이터 형식
               href: ./kusto/query/scalar-data-types/index.md
             - name: bool
               href: ./kusto/query/scalar-data-types/bool.md
@@ -372,7 +369,7 @@
             - name: Null 값
               href: ./kusto/query/scalar-data-types/null-values.md
             - name: 지원되지 않는 스칼라 데이터 형식
-              href: /kusto/query/scalar-data-types/unsupported-data-types.md
+              href: ./kusto/query/scalar-data-types/unsupported-data-types.md
         - name: Functions
           items:
             - name: 함수 형식
@@ -401,7 +398,7 @@
               href: ./kusto/query/batches.md
         - name: 테이블 형식 연산자
           items:
-            - name: 표 형식 데이터
+            - name: 쿼리 연산자
               href: ./kusto/query/queries.md
             - name: as 연산자
               href: ./kusto/query/asoperator.md
@@ -415,7 +412,7 @@
               href: ./kusto/query/distinctoperator.md
             - name: evaluate 연산자
               items:
-                - name: evaluate plugin 연산자
+                - name: 연산자 플러그 인 평가
                   href: ./kusto/query/evaluateoperator.md
                 - name: autocluster
                   href: ./kusto/query/autoclusterplugin.md
@@ -465,9 +462,9 @@
               href: ./kusto/query/invokeoperator.md
             - name: join 연산자
               items:
-                - name: join 연산자 개요
+                - name: join 연산자
                   href: ./kusto/query/joinoperator.md
-                - name: 순서 섞기
+                - name: 쿼리 순서 섞기
                   href: ./kusto/query/shufflequery.md
                 - name: 클러스터 간 조인
                   href: ./kusto/query/joincrosscluster.md
