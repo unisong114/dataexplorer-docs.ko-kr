@@ -8,41 +8,42 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: b98c551cb1ded8da291d4510b45a86d560f325b1
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 5a8ce5a66da871dfaa6f65a0fbc8addeb0f42926
+ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83371021"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85264594"
 ---
 # <a name="tdigest-aggregation-function"></a>tdigest () (집계 함수)
 
-그룹 전체에 대 한 중간 결과를 계산 합니다 [`percentiles()`](percentiles-aggfunction.md) . 
+그룹 전체에 대 한 중간 결과를 계산 합니다 [`percentiles()`](percentiles-aggfunction.md) .
 
-* [요약](summarizeoperator.md)내의 집계 컨텍스트에서만 사용할 수 있습니다.
+> [!NOTE]
+> [요약](summarizeoperator.md)내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-[기본 알고리즘 (T-다이제스트) 및 예상 오류](percentiles-aggfunction.md#estimation-error-in-percentiles)에 대해 자세히 알아보세요.
+자세한 내용은 [기본 알고리즘 (T-다이제스트) 및 예상 오류](percentiles-aggfunction.md#estimation-error-in-percentiles)를 참조 하세요.
 
 **구문**
 
-`summarize``tdigest(` *Expr* [ `,` *WeightExpr*]`)`
+`summarize` `tdigest`(*`Expr`* [`,` *`WeightExpr`*])
 
 **인수**
 
-* *Expr*: 집계 계산에 사용 되는 식입니다. 
+* *Expr*: 집계 계산에 사용 되는 식입니다.
 * *WeightExpr*: 집계 계산에 대 한 값의 가중치로 사용 되는 식입니다.
 
     
 **반환**
 
-그룹에서 *Expr* 의 가중치가 적용 된 백분위 수의 중간 결과입니다.
+그룹 전체에서가 중 백분위 수의 중간 결과입니다 `*Expr*` .
  
  
 **팁**
 
-1) 집계 함수 [tdigest_merge ()](tdigest-merge-aggfunction.md) 를 사용 하 여 tdigest의 출력을 다른 그룹에서 다시 병합할 수 있습니다.
+* 집계 함수 [tdigest_merge ()](tdigest-merge-aggfunction.md) 를 사용 하 여의 출력을 `tdigest` 다른 그룹에서 다시 병합 합니다.
 
-2) 함수 [percentile_tdigest ()](percentile-tdigestfunction.md) 를 사용 하 여 tdigest 결과의 백분위 수/percentilew을 계산할 수 있습니다.
+* 함수 [percentile_tdigest ()](percentile-tdigestfunction.md) 를 사용 하 여 결과의 백분위 수/percentilew을 계산 `tdigest` 합니다.
 
 **예**
 
@@ -52,7 +53,7 @@ StormEvents
 | summarize tdigest(DamageProperty) by State
 ```
 
-|State|tdigest_DamageProperty|
+|시스템 상태|tdigest_DamageProperty|
 |---|---|
 |대서양 남부|[[5], [0], [193]]|
 |플로리다|[[5], [250, 10, 600000, 5000, 375000, 15000000, 20000, 6000000, 0, 110000, 150000, 500, 12000, 30000, 15000, 46000000, 7000000, 6200000, 200000, 40000, 8000, 52000000, 62000000, 1200000, 130000, 1500000, 4000000, 7000, 250000, 875000, 3000, 100000, 10600000, 300000, 1000000, 25000, 75000, 2000, 60000, 10000, 170000, 350000, 50000, 1000, 16000, 80000, 2500, 400000], [9, 1, 1, 22, 1, 1, 9, 1842, 1, 3, 7, 2, 4, 7, 1, 1, 1, 2, 5, 3, 3, 1, 1, 1, 1, 2, 2, 1, 1, 9, 7, 1, 1, 2, 5, 2, 9, 2, 27, 1, 1, 7, 27, 1, 1, 1, 1]]|

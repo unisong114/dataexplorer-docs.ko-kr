@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/02/2019
-ms.openlocfilehash: 7e719ffa448ce3060a0a520de2c031b7d4b7d109
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 19c7b47318d0748510aba146968149cd0eb246a2
+ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372329"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85264575"
 ---
 # <a name="set_union"></a>set_union()
 
-`dynamic`배열 (arr1 ∪ arr2 ∪ ...)에 있는 모든 고유 값 집합의 (JSON) 배열을 반환 합니다.
+`dynamic`배열 (arr1 ∪ arr2 ∪ ...)에 있는 모든 고유 값 집합의 배열을 반환 합니다.
 
 **구문**
 

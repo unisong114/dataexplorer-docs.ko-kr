@@ -8,19 +8,23 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: 8b03970aacafef932f6397e64afdf871dc086bc1
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: fbdf7b1a9a9f5b65e6c6ee7a78fe64afba2893af
+ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372619"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85264796"
 ---
 # <a name="series_iir"></a>series_iir()
 
 계열에 무한 임펄스 응답 필터를 적용 합니다.  
 
-동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 [무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터를 적용 합니다. 예를 들어 필터 계수를 지정 하 여 계열의 누적 합계를 계산 하 고, 다듬기 작업을 적용 하 고, 다양 한 [높은 패스](https://en.wikipedia.org/wiki/High-pass_filter), [대역 패스](https://en.wikipedia.org/wiki/Band-pass_filter) 및 [낮은 패스](https://en.wikipedia.org/wiki/Low-pass_filter) 의 필터를 적용할 수 있습니다. 함수는 동적 배열과 필터 *a* 및 *b* 계수의 정적 동적 배열 두 개가 포함 된 열을 입력으로 사용 하 고 열에 필터를 적용 합니다. 필터링된 출력을 포함하는 새 동적 배열 열을 출력합니다.  
- 
+함수는 동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 [무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터를 적용 합니다. 필터 계수를 지정 하 여 함수를 사용할 수 있습니다.
+* 계열의 누적 합계를 계산 하려면
+* 다듬기 작업을 적용 하려면
+* 다양 한 [높은 통과](https://en.wikipedia.org/wiki/High-pass_filter), [대역 외](https://en.wikipedia.org/wiki/Band-pass_filter)통과 필터 및 [낮은 패스](https://en.wikipedia.org/wiki/Low-pass_filter) 의 필터를 적용 하려면
+
+함수는 동적 배열과 필터 *a* 및 *b* 계수의 정적 동적 배열 두 개가 포함 된 열을 입력으로 사용 하 고 열에 필터를 적용 합니다. 필터링된 출력을 포함하는 새 동적 배열 열을 출력합니다.  
 
 **구문**
 
@@ -28,16 +32,16 @@ ms.locfileid: "83372619"
 
 **인수**
 
-* *x*: 숫자 값 배열 (일반적으로 series 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력 [)](make-seriesoperator.md) 인 동적 배열 셀입니다.
+* *x*: 숫자 값의 배열인 동적 배열 셀입니다. 일반적으로 [series](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력입니다.
 * *b*: 숫자 값의 동적 배열로 저장 된 필터의 분자 계수를 포함 하는 상수 식입니다.
 * *a*: *b*와 같은 상수 식입니다. 필터의 분모 계수를 포함합니다.
 
 > [!IMPORTANT]
-> 의 첫 번째 요소 `a` (예: `a[0]` )는 0으로 되어서는 안됩니다 (0으로 나누기를 방지 하려면 아래 수식을 참조).
+> `a`0으로 나누기를 방지 하려면의 첫 번째 요소 (즉, `a[0]` )가 0 되어서는 안됩니다. [아래 수식을](#the-filters-recursive-formula)참조 하십시오.
 
-**필터의 재귀 수식에 대 한 자세한 정보**
+## <a name="the-filters-recursive-formula"></a>필터의 재귀 수식입니다.
 
-* 입력 배열 X를 지정 하 고 배열 a, 배열의 계수 n_a 및 n_b 각각에 대해 출력 배열 Y를 생성 하는 필터의 전송 함수는에 의해 정의 됩니다 (위키백과의 참조).
+* 입력 배열 X를 고려 하 고 배열 a와 b의 길이를 각각 n_a 및 n_b 계수 합니다. 출력 배열 Y를 생성 하는 필터의 전송 함수는 다음에 의해 정의 됩니다.
 
 <div align="center">
 Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>x<sub>i</sub> 
@@ -45,9 +49,9 @@ Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>x<sub>i</sub>
  - a<sub>1</sub>y i-<sub>1</sub>-a<sub>2</sub>Y<sub>i-2</sub> - ...-a<sub>n-1<sub>a</sub></sub>y<sub>i-n-1<sub>a</sub></sub>)
 </div>
 
-**예제**
+## <a name="example"></a>예제
 
-누적 합계 계산은 계수 *a*= [1,-1] 및 *b*= [1] 인 iir filter로 수행할 수 있습니다.  
+누적 합계를 계산 합니다. 계수 *a*= [1,-1] 및 *b*= [1] 인 iir 필터를 사용 합니다.  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -76,6 +80,6 @@ print d=dynamic([0, 1, 2, 3, 4])
 | extend dd=vector_sum(d)
 ```
 
-|d            |dd  |
+|일            |dd  |
 |-------------|----|
 |`[0,1,2,3,4]`|`10`|

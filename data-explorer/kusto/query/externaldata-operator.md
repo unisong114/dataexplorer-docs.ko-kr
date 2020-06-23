@@ -1,6 +1,6 @@
 ---
-title: externaldata 연산자-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Azure 데이터 탐색기의 externaldata 연산자에 대해 설명 합니다.
+title: externaldata 연산자-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 외부 데이터 운영자에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: f8878a3c4589dca3cfacf935a787e8c754ab3ede
-ms.sourcegitcommit: a8575e80c65eab2a2118842e59f62aee0ff0e416
+ms.openlocfilehash: 4534705156669447a89cb5d85c360071dfcb2b2a
+ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84942678"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85265000"
 ---
 # <a name="externaldata-operator"></a>externaldata 연산자
 
@@ -25,7 +25,7 @@ ms.locfileid: "84942678"
 
 **인수**
 
-* *ColumnName*, *ColumnType*: 테이블의 스키마를 정의 합니다.
+* *ColumnName*, *ColumnType*: 인수는 테이블의 스키마를 정의 합니다.
   구문은 [create table](../management/create-table-command.md)에서 테이블을 정의할 때 사용 되는 구문과 같습니다.
 
 * *StorageConnectionString*: [저장소 연결 문자열](../api/connection-strings/storage.md) 은 반환할 데이터를 보유 하는 저장소 아티팩트를 설명 합니다.
@@ -39,7 +39,7 @@ ms.locfileid: "84942678"
 
 **반환**
 
-`externaldata`연산자는 저장소 연결 문자열이 나타내는 지정 된 저장소 아티팩트에서 데이터를 구문 분석 한 지정 된 스키마의 데이터 테이블을 반환 합니다.
+`externaldata`연산자는 저장소 연결 문자열에 표시 된 지정 된 저장소 아티팩트에서 데이터를 구문 분석 한 지정 된 스키마의 데이터 테이블을 반환 합니다.
 
 **예**
 
@@ -68,7 +68,7 @@ with(format="csv")
 | summarize count() by ProductId
 ```
 
-위의 예는 [외부 테이블](schema-entities/externaltables.md)을 정의 하지 않고 여러 데이터 파일을 쿼리 하는 빠른 방법으로 간주할 수 있습니다. 
+위의 예는 [외부 테이블](schema-entities/externaltables.md)을 정의 하지 않고 여러 데이터 파일을 쿼리 하는 빠른 방법으로 간주할 수 있습니다.
 
->[!NOTE]
->연산자가 데이터 분할을 인식 하지 못합니다 `externaldata()` .
+> [!NOTE]
+> 연산자는 데이터 분할을 인식 하지 못합니다 `externaldata()` .
