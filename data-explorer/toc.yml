@@ -414,37 +414,37 @@
               items:
                 - name: 연산자 플러그 인 평가
                   href: ./kusto/query/evaluateoperator.md
-                - name: autocluster
+                - name: autocluster 플러그 인
                   href: ./kusto/query/autoclusterplugin.md
-                - name: bag_unpack
+                - name: bag_unpack 플러그 인
                   href: ./kusto/query/bag-unpackplugin.md
-                - name: basket
+                - name: basket 플러그 인
                   href: ./kusto/query/basketplugin.md
-                - name: dcount_intersect
+                - name: dcount_intersect 플러그 인
                   href: ./kusto/query/dcount-intersect-plugin.md
-                - name: diffpatterns
+                - name: diffpatterns 플러그 인
                   href: ./kusto/query/diffpatternsplugin.md
-                - name: diffpatterns_text
+                - name: diffpatterns_text 플러그 인
                   href: ./kusto/query/diffpatterns-textplugin.md
-                - name: infer_storage_schema
+                - name: infer_storage_schema 플러그 인
                   href: ./kusto/query/inferstorageschemaplugin.md
-                - name: narrow
+                - name: narrow 플러그 인
                   href: ./kusto/query/narrowplugin.md
-                - name: pivot
+                - name: pivot 플러그 인
                   href: ./kusto/query/pivotplugin.md
-                - name: 미리 보기
+                - name: preview 플러그 인
                   href: ./kusto/query/previewplugin.md
-                - name: python
+                - name: python 플러그 인
                   href: ./kusto/query/pythonplugin.md
-                - name: R
+                - name: R 플러그 인
                   href: ./kusto/query/rplugin.md
-                - name: rolling_percentile
+                - name: rolling_percentile 플러그 인
                   href: ./kusto/query/rolling-percentile-plugin.md
-                - name: schema_merge
+                - name: schema_merge 플러그 인
                   href: ./kusto/query/schemamergeplugin.md
-                - name: sql_request
+                - name: sql_request 플러그 인
                   href: ./kusto/query/sqlrequestplugin.md
-                - name: sequence_detect
+                - name: sequence_detect 플러그 인
                   href: ./kusto/query/sequence-detect-plugin.md
             - name: extend 연산자
               href: ./kusto/query/extendoperator.md
@@ -1060,10 +1060,6 @@
               href: ./kusto/query/rownumberfunction.md
             - name: row_window_session()
               href: ./kusto/query/row-window-session-function.md
-        - name: 롤링 기간 집계
-          items:
-            - name: rolling_percentile()
-              href: ./kusto/query/rolling-percentile-plugin.md
         - name: 시계열 분석
           items:
             - name: 시계열 분석 개요
@@ -1132,13 +1128,13 @@
               href: ./kusto/query/series-subtractfunction.md
         - name: Machine Learning
           items:
-            - name: autocluster
+            - name: autocluster 플러그 인
               href: ./kusto/query/autoclusterplugin.md
-            - name: basket
+            - name: basket 플러그 인
               href: ./kusto/query/basketplugin.md
-            - name: diffpatterns
+            - name: diffpatterns 플러그 인
               href: ./kusto/query/diffpatternsplugin.md
-            - name: diffpatterns_text
+            - name: diffpatterns_text 플러그 인
               href: ./kusto/query/diffpatterns-textplugin.md
         - name: 지리 공간적
           items:
@@ -1164,23 +1160,23 @@
           items:
             - name: 사용자 분석 플러그 인
               href: ./kusto/query/useranalytics.md
-            - name: 활성 사용자 수
+            - name: 활성 사용자 수 플러그 인
               href: ./kusto/query/active-users-count-plugin.md
-            - name: '활동 수 메트릭(전체 값, 고유 값, 새 값)'
+            - name: 활동 수 메트릭 플러그 인
               href: ./kusto/query/activity-counts-metrics-plugin.md
-            - name: '활동 참여(DAU, WAU, MAU)'
+            - name: 활동 참여 플러그 인
               href: ./kusto/query/activity-engagement-plugin.md
-            - name: '활동 메트릭(보존, 변동, 새 값)'
+            - name: 활동 메트릭 플러그 인
               href: ./kusto/query/activity-metrics-plugin.md
-            - name: '활동 메트릭-신규(보존, 변동, 새 값)'
+            - name: 활동 메트릭 플러그 인 - 신규
               href: ./kusto/query/new-activity-metrics-plugin.md
-            - name: 깔때기형 시퀀스 완료
+            - name: 깔때기형 시퀀스 완료 플러그 인
               href: ./kusto/query/funnel-sequence-completion-plugin.md
-            - name: 깔때기형 시퀀스
+            - name: 깔때기형 시퀀스 플러그 인
               href: ./kusto/query/funnel-sequence-plugin.md
-            - name: 세션 수
+            - name: 세션 수 플러그 인
               href: ./kusto/query/session-count-plugin.md
-            - name: 슬라이딩 윈도우 수
+            - name: 슬라이딩 윈도우 수 플러그 인
               href: ./kusto/query/sliding-window-counts-plugin.md
         - name: Kusto 쿼리 언어에 대한 참조 자료
           items:

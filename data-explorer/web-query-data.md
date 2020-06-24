@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 07/04/2019
-ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.date: 06/15/2020
+ms.openlocfilehash: 05c9a805e1391a34fe2d751c33178fcac16d15a9
+ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81491298"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780136"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
@@ -20,7 +20,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
 Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 빠른 시작을 완료하려면 Azure 구독 외에 [테스트 클러스터와 데이터베이스](create-cluster-database-portal.md)가 필요합니다.
 
@@ -163,25 +163,62 @@ Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](h
 
 ## <a name="share-queries"></a>쿼리 공유
 
-대부분의 경우에는 직접 만든 쿼리를 공유하게 됩니다. 클러스터 액세스 권한이 있는 다른 사용자들이 쿼리를 실행할 수 있도록 딥 링크를 제공할 수 있습니다.
+대부분의 경우에는 직접 만든 쿼리를 공유하게 됩니다. 
 
 1. 쿼리 창에서 복사한 첫 번째 쿼리를 선택합니다.
 
-1. 쿼리 창 위쪽에서 **공유**를 선택합니다.
+1. 쿼리 창 위쪽에서 **공유**를 선택합니다. 
 
-1. **쿼리를 클립보드에 연결**을 선택합니다.
+:::image type="content" source="media/web-query-data/share-menu.png" alt-text="공유 메뉴":::
+
+드롭다운에서 사용할 수 있는 옵션은 다음과 같습니다.
+* 클립보드에 링크
+* [클립보드에 쿼리 연결](#provide-a-deep-link)
+* 클립보드에 연결, 쿼리, 결과 복사
+* [대시보드에 고정](#pin-to-dashboard)
+* [Power BI로 쿼리](power-bi-imported-query.md)
+
+### <a name="provide-a-deep-link"></a>딥 링크 제공
+
+클러스터 액세스 권한이 있는 다른 사용자들이 쿼리를 실행할 수 있도록 딥 링크를 제공할 수 있습니다.
+
+1. **공유**에서 **클립보드에 연결, 쿼리**를 선택합니다.
 
 1. 링크와 쿼리를 텍스트 파일에 복사합니다.
 
 1. 새 브라우저 창에 링크를 붙여넣습니다. 쿼리가 실행된 후의 결과는 다음과 같이 표시됩니다.
 
-    ![공유된 쿼리](media/web-query-data/shared-query.png)
+    :::image type="content" source="media/web-query-data/shared-query.png" alt-text="공유된 쿼리 딥 링크":::
+
+### <a name="pin-to-dashboard"></a>대시보드에 고정
+
+웹 UI에서 쿼리를 사용하여 데이터 탐색을 완료하고 필요한 데이터를 찾으면 이를 지속적으로 모니터링하기 위해 대시보드에 고정할 수 있습니다. 
+
+쿼리를 고정하려면:
+
+1. **공유**에서 **대시보드에 고정**을 선택합니다.
+
+1. **대시보드에 고정** 창에서:
+    1. **쿼리 이름**을 입력합니다.
+    1. **기존 항목 사용** 또는 **새로 만들기**를 선택합니다.
+    1. **대시보드 이름** 입력
+    1. **만든 후 대시보드 보기** 확인란(새 대시보드인 경우)을 선택합니다.
+    1. **고정**을 선택합니다.
+
+    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="대시보드에 고정 창":::
+    
+> [!NOTE]
+> **대시보드에 고정**은 선택한 쿼리만 고정합니다. 대시보드 데이터 원본을 만들고 대시보드의 시각적 개체에 렌더링 명령을 변환하려면 데이터베이스 목록에서 관련 데이터베이스를 선택해야 합니다.
+
+## <a name="export-query-results"></a>쿼리 결과 내보내기
+
+쿼리 결과를 CSV 파일로 내보내려면 **파일** > **CSV로 내보내기**를 선택합니다.
+
+:::image type="content" source="media/web-query-data/export-results.png" alt-text="CSV 파일로 결과 내보내기":::
 
 ## <a name="provide-feedback"></a>피드백 제공
 
-데이터 탐색기는 현재 미리 보기 상태입니다. Microsoft는 여러분의 사용 경험에 대한 피드백을 기다리고 있습니다. 지금 피드백을 제공할 수도 있고 데이터 탐색기를 더 사용해 본 후에 제공할 수도 있습니다.
-
-1. 피드백을 제공하려면 애플리케이션 오른쪽 위의 피드백 아이콘을 선택합니다. ![피드백 아이콘](media/web-query-data/icon-feedback.png).
+1. 애플리케이션의 오른쪽 위에서 피드백 아이콘을 선택합니다. ![피드백 아이콘](media/web-query-data/icon-feedback.png).
 
 1. 피드백을 입력하고 **제출**을 선택합니다.
 
