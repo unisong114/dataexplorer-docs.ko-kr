@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 7bcba1cbcbcbd712278696d897febaee5714703f
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 828f2450db7f6afabf33f72d813af6f0007ada6b
+ms.sourcegitcommit: c3bbb9a6bfd7c5506f05afb4968fdc2043a9fbbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780595"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85332603"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -89,7 +89,7 @@ ms.locfileid: "84780595"
 
 &nbsp;&nbsp;[*Stringseparator*] *파티션* [*stringseparator*] [*파티션* [*stringseparator*] ...]  
 
-여기서 *partition* 은 절에 선언 된 파티션을 참조 하 `partition` `by` 고 *stringseparator* 는 따옴표로 묶인 텍스트입니다.
+여기서 *partition* 은 절에 선언 된 파티션을 참조 하 `partition` `by` 고 *stringseparator* 는 따옴표로 묶인 텍스트입니다. 연속 된 파티션 요소는 *Stringseparator*를 사용 하 여 별도로 설정 해야 합니다.
 
 원래 파일 경로 접두사는 문자열로 렌더링 되 고 해당 텍스트 구분 기호로 구분 된 파티션 요소를 사용 하 여 생성할 수 있습니다. Datetime 파티션 값을 렌더링 하는 데 사용 되는 형식을 지정 하려면 다음 매크로를 사용할 수 있습니다.
 
@@ -133,7 +133,7 @@ ms.locfileid: "84780595"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | Type     | Description       |
+| 속성         | 유형     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -236,6 +236,9 @@ dataformat=parquet
 )
 ```
 
+> [!NOTE]
+> 현재 가상 열은,,,,, `CSV` `TSV` `TSVE` `SCsv` `SOHsv` `PSV` `RAW` 및 `TXT` 데이터 형식에 대해 지원 되지 않습니다.
+
 <a name="file-filtering"></a>
 **파일 필터링 논리**
 
@@ -269,7 +272,7 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | Type   | 설명                       |
+| 출력 매개 변수 | 유형   | 설명                       |
 |------------------|--------|-----------------------------------|
 | URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
 
@@ -302,7 +305,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 속성     | 종류 | 매핑                                                           |
+| 이름     | 종류 | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -320,7 +323,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 속성     | 종류 | 매핑                                                                |
+| 이름     | 종류 | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -342,7 +345,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 속성     | 종류 | 매핑                                                                         |
+| 이름     | 종류 | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 

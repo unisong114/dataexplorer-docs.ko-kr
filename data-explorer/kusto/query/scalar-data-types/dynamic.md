@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 606d48c4bda583ad82404a1b25119ec9beb4c5a9
-ms.sourcegitcommit: 6f56b169fda0b74f9569004555a574d8973b1021
+ms.openlocfilehash: 8a979d91b008be7a93626aa7f58865cb5466076b
+ms.sourcegitcommit: c3bbb9a6bfd7c5506f05afb4968fdc2043a9fbbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84748948"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85332572"
 ---
 # <a name="the-dynamic-data-type"></a>동적 데이터 형식
 
@@ -166,8 +166,9 @@ Cast 함수는 다음과 같습니다.
 |---|---|
 | *value* `in` *array*| == *value*인 *array*의 요소가 있으면 True<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| == *value*인 *array*의 요소가 없으면 True
-|[`array_length(`배열과`)`](../arraylengthfunction.md)| 배열이 아니면 Null
+|[`array_length(`array`)`](../arraylengthfunction.md)| 배열이 아니면 Null
 |[`bag_keys(`백`)`](../bagkeysfunction.md)| 동적 속성 모음 개체의 모든 루트 키를 열거 합니다.
+|[`bag_merge(`bag1,..., bagN`)`](../bag-merge-function.md)| 모든 속성을 병합 하 여 동적 속성 모음에 동적 속성 모음을 병합 합니다.
 |[`extractjson(`경로, 개체`)`](../extractjsonfunction.md)|path를 사용하여 object를 탐색합니다.
 |[`parse_json(`원본`)`](../parsejsonfunction.md)| JSON 개체를 동적 개체로 변환합니다.
 |[`range(`부터,까지 단계`)`](../rangefunction.md)| 값의 배열
@@ -179,4 +180,3 @@ Cast 함수는 다음과 같습니다.
 |[`summarize make_list_if(`열, 조건자 `)`](../makelistif-aggfunction.md)| 행 그룹을 평면화 하 고 열의 값을 배열에 배치 합니다 (조건자 포함).
 |[`summarize make_list_with_nulls(`열 `)`](../make-list-with-nulls-aggfunction.md)| 행 그룹을 평면화 하 고 열의 값을 null 값을 포함 하 여 배열에 넣습니다.
 |[`summarize make_set(`열의`)`](../makeset-aggfunction.md) | 행 그룹을 평면화하고 열의 값을 중복 없이 배열에 넣습니다.
-|[`summarize make_bag(`열의`)`](../make-bag-aggfunction.md) | 키 중복 없이 열의 속성 모음 (사전) 값을 하나의 속성 모음으로 병합 합니다.
