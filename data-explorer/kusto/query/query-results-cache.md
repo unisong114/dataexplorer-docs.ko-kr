@@ -8,14 +8,12 @@ ms.reviewer: amitof
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 7373af48ef581e4b64f1cfc34ece0c16a416fc08
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: 4bfc7b591683940e10d2737ec776421f65d1427a
+ms.sourcegitcommit: 93510ef1e5570ce4da2cbf76eb77946c93a7dec8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128906"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85372471"
 ---
 # <a name="query-results-cache"></a>쿼리 결과 캐시
 
@@ -23,7 +21,7 @@ Kusto에는 쿼리 결과 캐시가 포함 됩니다. 쿼리를 실행할 때 �
 
 ## <a name="use-the-cache"></a>캐시 사용
 
-쿼리 `query_results_cache_max_age` 결과 캐시를 사용 하도록 옵션을 쿼리의 일부로 설정 합니다. 이 옵션은 쿼리 텍스트 또는 클라이언트 요청 속성에서 설정할 수 있습니다. 예를 들어:
+쿼리 `query_results_cache_max_age` 결과 캐시를 사용 하도록 옵션을 쿼리의 일부로 설정 합니다. 이 옵션은 쿼리 텍스트 또는 클라이언트 요청 속성에서 설정할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 set query_results_cache_max_age = time(5m);
@@ -38,7 +36,7 @@ GithubEvent
 
 ### <a name="identical-queries"></a>동일한 쿼리
 
-Query_results_cache은 이전에 캐시 된 쿼리와 "동일한" 것으로 간주 되는 쿼리에 대해서만 결과를 반환 합니다. 다음 조건이 모두 충족 되는 경우 두 개의 쿼리가 동일한 것으로 간주 됩니다.
+쿼리 결과 캐시는 이전에 캐시 된 쿼리와 "동일" 하 게 간주 되는 쿼리에 대해서만 결과를 반환 합니다. 다음 조건이 모두 충족 되는 경우 두 개의 쿼리가 동일한 것으로 간주 됩니다.
 
 * 두 쿼리에는 UTF-8 문자열과 동일한 표현이 있습니다.
 * 두 쿼리는 동일한 데이터베이스에 대해 수행 됩니다.
@@ -51,7 +49,7 @@ Query_results_cache은 이전에 캐시 된 쿼리와 "동일한" 것으로 간�
 
 다음 조건 중 하나가 충족 되는 경우 쿼리 결과가 캐시 되지 않습니다.
  
-* 이 쿼리는 [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) 정책이 설정 된 테이블을 참조 합니다.
+* 쿼리가 [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) 정책을 사용 하는 테이블을 참조 합니다.
 * 쿼리가 [Rowlevelsecurity](../management/rowlevelsecuritypolicy.md) 정책을 사용 하도록 설정 된 테이블을 참조 합니다.
 * 이 쿼리에서는 다음 함수 중 하나를 사용 합니다.
     * [current_principal](current-principalfunction.md)
@@ -78,7 +76,7 @@ Query_results_cache은 이전에 캐시 된 쿼리와 "동일한" 것으로 간�
    * `OriginalClientRequestId`-원래 요청의 [Clientrequestid](../api/netfx/request-properties.md#the-clientrequestid-x-ms-client-request-id-named-property)를 지정 합니다.
    * `OriginalStartedOn`-원래 요청의 실행 시작 시간을 지정 합니다.
 
-## <a name="distribution"></a>배포
+## <a name="distribution"></a>분포
 
 캐시는 클러스터 노드에서 공유 되지 않습니다. 모든 노드에는 자체의 전용 저장소에 전용 캐시가 있습니다. 두 개의 동일한 쿼리가 서로 다른 노드에 있으면 쿼리가 실행 되 고 두 노드에서 모두 캐시 됩니다. 이 프로세스는 [약한 일관성](../concepts/queryconsistency.md) 을 사용 하는 경우에 발생할 수 있습니다.
 

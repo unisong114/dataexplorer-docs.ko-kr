@@ -1,6 +1,6 @@
 ---
-title: 데이터 분할 정책 (미리 보기)-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 데이터 분할 정책 (미리 보기)에 대해 설명 합니다.
+title: 데이터 분할 정책-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 데이터 분할 정책에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 2a54d6e8bdb891500778f2043f2b1aa4094162d2
-ms.sourcegitcommit: 743e8b1def28bc8f875b22b857ec345eeb7e5acc
+ms.openlocfilehash: 3ab402833e4aebd5499fcb383dd803e9a6a815ed
+ms.sourcegitcommit: 93510ef1e5570ce4da2cbf76eb77946c93a7dec8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84671447"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85372488"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -173,6 +173,7 @@ ms.locfileid: "84671447"
 * **Maxrowcountperoperation**:
   * 단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다.
   * 이 속성은 선택 사항입니다. 기본값은 이며 `0` 기본 대상은 500만 레코드입니다.
+    * 5 m 보다 낮은 값을 설정 하는 것을 고려할 수 있습니다. 분할 작업은 작업당 매우 많은 양의 메모리/CPU를 사용 하는 것을 볼 수 있습니다 (#monitoring 참조).
 
 ## <a name="notes"></a>메모
 
@@ -198,7 +199,7 @@ ms.locfileid: "84671447"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 용량 ( [용량](partitioningpolicy.md#capacity)참조)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 다음은 그 예입니다.
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 .show commands 
