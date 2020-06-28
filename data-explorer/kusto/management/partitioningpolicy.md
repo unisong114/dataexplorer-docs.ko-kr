@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 3ab402833e4aebd5499fcb383dd803e9a6a815ed
-ms.sourcegitcommit: 93510ef1e5570ce4da2cbf76eb77946c93a7dec8
+ms.openlocfilehash: 433d8786ad3664d02387efacd7dcd3865b4deb13
+ms.sourcegitcommit: ddafa58deb79417bd6f36e8bb3ad106d375b63e1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85372488"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85448505"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -22,7 +22,7 @@ ms.locfileid: "85372488"
 정책의 주요 목적은 분할 된 열에 있는 값의 데이터 집합 범위를 좁히는 것으로 알려진 쿼리 성능을 향상 시키는 것이 고, 높은 카디널리티 문자열 열에는 집계/조인 하는 것입니다. 이로 인해 데이터 압축이 향상 될 수도 있습니다.
 
 > [!CAUTION]
-> 정책을 정의할 수 있는 테이블의 수에는 하드 코드 된 제한이 설정 되어 있지 않습니다. 그러나 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 합니다. 이로 인해 더 많은 클러스터 리소스가 사용 될 수 있습니다. 자세한 내용은 [용량](#capacity)을 참조 하세요.
+> 정책을 정의할 수 있는 테이블의 수에는 하드 코드 된 제한이 설정 되어 있지 않습니다. 그러나 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 합니다. 이로 인해 더 많은 클러스터 리소스가 사용 될 수 있습니다. 자세한 내용은 [모니터링](#monitoring) 및 [용량](#capacity)을 참조 하세요.
 
 ## <a name="partition-keys"></a>파티션 키
 
@@ -175,7 +175,7 @@ ms.locfileid: "85372488"
   * 이 속성은 선택 사항입니다. 기본값은 이며 `0` 기본 대상은 500만 레코드입니다.
     * 5 m 보다 낮은 값을 설정 하는 것을 고려할 수 있습니다. 분할 작업은 작업당 매우 많은 양의 메모리/CPU를 사용 하는 것을 볼 수 있습니다 (#monitoring 참조).
 
-## <a name="notes"></a>메모
+## <a name="notes"></a>참고
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
