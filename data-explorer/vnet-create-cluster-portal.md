@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 097e175ff28d334532e85715f1f6401a96fa8f8c
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 753c2a21812c850613c2c2462394b6b0bde8b740
+ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374322"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517956"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터 만들기
 
@@ -40,7 +40,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     |---|---|---|
     | Subscription | 사용자의 구독 | 클러스터에 사용할 Azure 구독을 선택합니다.|
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
-    | 속성 | AzureDataExplorerNsg | 리소스 그룹에서 NSG (네트워크 보안 그룹)를 식별 하는 이름을 선택 합니다.  |
+    | 이름 | AzureDataExplorerNsg | 리소스 그룹에서 NSG (네트워크 보안 그룹)를 식별 하는 이름을 선택 합니다.  |
     | 지역 | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
     | | | |
 
@@ -65,7 +65,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     | 프로토콜 | TCP
     | 작업 | Allow
     | 우선 순위 | 100
-    | 속성 | AllowAzureDataExplorerManagement
+    | 이름 | AllowAzureDataExplorerManagement
     | | |
     
 1. [VNet 배포에 대 한 종속성](vnet-deployment.md#dependencies-for-vnet-deployment)에 따라 모든 인바운드 및 아웃 바운드 종속성에 대해 이전 두 단계를 반복 합니다. 또는 아웃 바운드 규칙을 단일 규칙으로 대체 하 여 포트 443 및 80에 대 한 *인터넷* 을 허용할 수 있습니다.
@@ -89,7 +89,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     |---|---|---|
     | IP 버전 | IPv4 | IP 버전을 선택 합니다. IPv4만 지원 합니다.|
     | SKU | Standard | **Standard** for Query (엔진) URI 끝점이 필요 합니다. |
-    | 속성 | 엔진-pip | 리소스 그룹에서 공용 IP 주소를 식별 하는 이름을 선택 합니다.
+    | 이름 | 엔진-pip | 리소스 그룹에서 공용 IP 주소를 식별 하는 이름을 선택 합니다.
     | Subscription | 사용자의 구독 | 공용 IP에 사용 하려는 Azure 구독을 선택 합니다.|
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
     | 위치 | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
@@ -97,9 +97,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
 
 1. **만들기** 를 선택 하 여 공용 IP 주소를 만듭니다.
 
-1. 수집 (데이터 관리) 공용 IP 주소를 만들려면 동일한 지침에 따라 다음을 선택 합니다. 
-    * **Sku**: 기본
-    * **IP 주소 할당**: 정적
+1. 수집 (데이터 관리) 공용 IP 주소를 만들려면 동일한 지침을 따릅니다.
 
 ## <a name="create-virtual-network-and-subnet"></a>Virtual Network 및 서브넷 만들기
 
@@ -116,7 +114,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     |---|---|---|
     | Subscription | 사용자의 구독 | 클러스터에 사용할 Azure 구독을 선택합니다.|
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
-    | 속성 | AzureDataExplorerVnet | 리소스 그룹에서 가상 네트워크를 식별 하는 이름을 선택 합니다.
+    | 이름 | AzureDataExplorerVnet | 리소스 그룹에서 가상 네트워크를 식별 하는 이름을 선택 합니다.
     | 지역 | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
     | | | |
 

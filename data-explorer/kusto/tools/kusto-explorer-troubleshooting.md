@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 8fe86f16eef79fca0db22fd3048cc3841c57d189
-ms.sourcegitcommit: 8953d09101f4358355df60ab09e55e71bc255ead
+ms.openlocfilehash: 19ffbe2f5e14a2c003c24d145b713970e6bb31b8
+ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84420903"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517769"
 ---
 # <a name="troubleshooting"></a>문제 해결
 
@@ -26,7 +26,7 @@ ms.locfileid: "84420903"
 
 시작 시 Kusto 탐색기에서 오류를 표시 합니다. `InvalidOperationException`
 
-**가능한 해결 방법**
+**가능한 솔루션**
 
 이 오류가 발생 하면 운영 체제가 손상 되거나 일부 필수 모듈이 누락 될 수 있습니다.
 누락 되거나 손상 된 시스템 파일을 확인 하려면 여기에 설명 된 단계를 따르세요.   
@@ -38,7 +38,7 @@ ms.locfileid: "84420903"
 
 Kusto. 탐색기를 열 때마다 새 버전을 설치 하 라는 메시지가 표시 됩니다. Kusto 탐색기는 이미 설치 된 버전을 업데이트 하지 않고 전체 패키지를 다운로드 합니다.
 
-**가능한 해결 방법**
+**가능한 솔루션**
 
 이 증상은 로컬 ClickOnce 저장소의 손상으로 인해 발생할 수 있습니다. 관리자 권한 명령 프롬프트에서 다음 명령을 실행 하 여 로컬 ClickOnce 저장소를 지울 수 있습니다.
 
@@ -165,7 +165,7 @@ Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 
 1. 로 시작 하는 모든 항목을 선택 `Kusto.Explorer` 합니다.
 1. **제거**를 선택합니다.
 
-   이 프로시저가 응용 프로그램을 제거 하지 못한 경우 (ClickOnce 응용 프로그램의 알려진 문제)을 참조 하십시오 .이 작업을 수행 하는 방법을 설명 하는이 스택 오버플로 문서를 참조 하세요.
+   이 절차에서 응용 프로그램을 제거 하지 못한 경우 (ClickOnce 응용 프로그램의 알려진 문제) 자세한 내용은 [이 문서](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer)를 참조 하세요.
 
 1. `%LOCALAPPDATA%\Kusto.Explorer`모든 연결, 기록 등을 제거 하는 폴더를 삭제 합니다.
 
@@ -173,7 +173,7 @@ Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 
 
 또한 특정 버전의 Kusto. 탐색기로 되돌릴 수 있습니다.
 
-1. `appwiz.cpl`를 실행합니다.
+1. `appwiz.cpl`을 실행합니다.
 1. **Kusto 탐색기** 를 선택 하 고 **제거/변경**을 선택 합니다.
 1. **응용 프로그램을 이전 상태로 복원을**선택 합니다.
 

@@ -1,6 +1,6 @@
 ---
-title: 연산자 걸릴 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 연산자 수행에 대해 설명합니다.
+title: take operator-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 take operator에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,49 +8,49 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0c8f724e139e13bf9ece00d5af09f2a3cf25b03a
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 98586f8f8380d4c1fc36a88b288b47798c10e09e
+ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81506599"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517923"
 ---
 # <a name="take-operator"></a>take 연산자
 
-지정된 행 수로 되돌아갑니다.
+지정한 수 만큼의 행을 반환 합니다.
 
 ```kusto
 T | take 5
 ```
 
-원본 데이터가 정렬되지 않는 한 반환되는 레코드를 보장할 수 없습니다.
+원본 데이터가 정렬 되지 않은 경우 레코드가 반환 되는 것을 보장 하지 않습니다.
 
 **구문**
 
-`take`*번호Ofrows* 
- `limit` *번호Ofrows*
+`take`*Numberofrows* 
+ `limit` *Numberofrows*
 
-(동의어입니다.)`take` `limit`
+`take`및 `limit` 는 동의어입니다.
 
 **참고 사항**
 
-`take`데이터를 대화식으로 탐색할 때 작은 레코드 샘플을 볼 수 있는 간단하고 빠르며 효율적인 방법이지만 데이터 집합이 변경되지 않은 경우에도 여러 번 실행해도 결과의 일관성이 보장되지 는 않습니다.
+`take`는 데이터 집합이 변경 되지 않은 경우에도 데이터를 대화형으로 검색할 때 작은 레코드 샘플을 볼 수 있는 간단 하 고 빠르고 효율적인 방법 이지만 여러 번 실행 하는 경우 결과의 일관성을 보장 하지는 않습니다.
 
-심지어 쿼리에 의해 반환되는 행의 수는 쿼리에 의해 `take` 명시적으로 제한되지 않습니다 (연산자가 사용되지 않음), Kusto는 기본적으로 해당 숫자를 제한합니다.
-자세한 내용은 [Kusto 쿼리 제한을](../concepts/querylimits.md) 참조하십시오.
+쿼리에서 반환 되는 행 수가 쿼리에 의해 명시적으로 제한 되지 않더라도 (연산자 사용 안 함 `take` ) Kusto 기본적으로 해당 수를 제한 합니다.
+자세한 내용은 [Kusto 쿼리 제한을](../concepts/querylimits.md) 참조 하세요.
 
-참조: [정렬 연산자](sortoperator.md)
-[상단 연산자](topoperator.md)
-[상위 중첩 연산자](topnestedoperator.md)
+참조: [sort operator](sortoperator.md) 
+ [top operator](topoperator.md) 
+ [top-nested operator](topnestedoperator.md)
 
-## <a name="does-kusto-support-paging-of-query-results"></a>Kusto는 쿼리 결과의 페이징을 지원합니까?
+## <a name="does-kusto-support-paging-of-query-results"></a>Kusto 쿼리 결과의 페이징을 지원 하나요?
 
-Kusto는 내장 페이징 메커니즘을 제공하지 않습니다.
+Kusto는 기본 제공 페이징 메커니즘을 제공 하지 않습니다.
 
-Kusto는 거대한 데이터 집합에 비해 우수한 쿼리 성능을 제공하기 위해 저장하는 데이터를 지속적으로 최적화하는 복잡한 서비스입니다. 페이징은 제한된 리소스를 가진 상태 비수기 클라이언트에 유용한 메커니즘이지만 클라이언트 상태 정보를 추적해야 하는 백 엔드 서비스로 부담을 이동합니다. 그 후 백 엔드 서비스의 성능과 확장성은 심각하게 제한됩니다.
+Kusto는 대용량 데이터 집합 보다 뛰어난 쿼리 성능을 제공 하기 위해 저장 하는 데이터를 지속적으로 최적화 하는 복잡 한 서비스입니다. 페이징은 리소스가 제한 된 상태 비저장 클라이언트에 유용한 메커니즘 이지만 클라이언트 상태 정보를 추적 해야 하는 백 엔드 서비스로 부담을 이동 합니다. 이후에는 백 엔드 서비스의 성능 및 확장성이 심각 하 게 제한 됩니다.
 
-페이징 지원의 경우 다음 기능 중 하나를 구현합니다.
+페이징을 지원 하기 위해 다음 기능 중 하나를 구현 합니다.
 
-* 쿼리 결과를 외부 저장소로 내보내고 생성된 데이터를 페이징합니다.
+* 쿼리 결과를 외부 저장소로 내보내고 생성 된 데이터를 페이징 합니다.
 
-* Kusto 쿼리의 결과를 캐싱하여 상태 조정 API를 제공하는 중간 계층 응용 프로그램을 작성합니다.
+* Kusto 쿼리 결과를 캐시 하 여 상태 저장 페이징 API를 제공 하는 중간 계층 응용 프로그램을 작성 합니다.
