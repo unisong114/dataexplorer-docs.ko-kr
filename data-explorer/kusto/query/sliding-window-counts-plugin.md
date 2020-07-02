@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fbc870eafc45c8c63bea98a64f492d161af4c9b
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 4d90bc3b6222896d45374d771ce5f87f4bdf6786
+ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85902020"
 ---
 # <a name="sliding_window_counts-plugin"></a>sliding_window_counts 플러그 인
 
-[여기](samples.md#performing-aggregations-over-a-sliding-window)에 설명 된 기술을 사용 하 여 lookback 기간 동안 슬라이딩 윈도우에서 개수 및 고유 값 수를 계산 합니다.
+[여기](samples.md#perform-aggregations-over-a-sliding-window)에 설명 된 기술을 사용 하 여 lookback 기간 동안 슬라이딩 윈도우에서 개수 및 고유 값 수를 계산 합니다.
 
 예를 들어 *매일*에 대해 이전 *주*에 사용자의 수 및 고유 수를 계산 합니다. 
 
@@ -51,7 +51,7 @@ T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), st
 |유형: *TimelineColumn*|..|..|..|long|long|
 
 
-**예제**
+**예**
 
 `dcounts`지난 주에 분석 기간의 각 날짜에 대 한 개수와 사용자의 수를 계산 합니다. 
 

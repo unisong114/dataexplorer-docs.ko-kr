@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 02/19/2020
-ms.openlocfilehash: 83af540389087f0e1d9fdbd04266ab7ecaca0c5a
-ms.sourcegitcommit: b12e03206c79726d5b4055853ec3fdaa8870c451
+ms.openlocfilehash: eb13b53ba5f6785c79aaa586de50478074901c8d
+ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85069167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85901917"
 ---
 # <a name="ingestion-without-kustoingest-library"></a>Kusto 수집 라이브러리 없이 수집
 
@@ -283,7 +283,7 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 마지막으로, 생성 한 메시지를 Azure 데이터 탐색기에서 가져온 선택 된 수집 큐에 게시 합니다.
 
 > [!NOTE]
-> .Net 저장소 클라이언트를 사용 하면 기본적으로 base64로 메시지를 인코딩합니다. 자세한 내용은 [저장소 문서](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage)를 참조 하세요. 해당 클라이언트를 사용 하지 않는 경우 메시지 콘텐츠를 올바르게 인코딩해야 합니다.
+> .Net 저장소 클라이언트를 사용 하면 기본적으로 base64로 메시지를 인코딩합니다. 자세한 내용은 [저장소 문서](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage)를 참조 하세요. 해당 클라이언트를 사용 하지 않는 경우 메시지 콘텐츠를 올바르게 인코딩해야 합니다.
 
 ```csharp
 internal static void PostMessageToQueue(string queueUriWithSas, string message)
@@ -329,7 +329,6 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
     "DatabaseName": "<DatabaseName>",
     "TableName" : "<TableName>",
     "RetainBlobOnSuccess" : "<RetainBlobOnSuccess>",
-    "Format" : "<csv|tsv|...>",
     "FlushImmediately": "<true|false>",
     "ReportLevel" : <0-Failures, 1-None, 2-All>,
     "ReportMethod" : <0-Queue, 1-Table>,
@@ -337,7 +336,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 }
 ```
 
-|속성 | Description |
+|속성 | 설명 |
 |---------|-------------|
 |Id |메시지 식별자 (GUID) |
 |BlobPath |Blob에 대 한 경로 (URI)입니다. 여기에는 읽기/쓰기/삭제에 대 한 Azure 데이터 탐색기 권한을 부여 하는 SAS 키가 포함 됩니다. Azure 데이터 탐색기가 데이터 수집 완료 되 면 blob을 삭제할 수 있도록 사용 권한이 필요 합니다.|
@@ -345,17 +344,16 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 |DatabaseName |대상 데이터베이스 이름 |
 |TableName |대상 테이블 이름 |
 |RetainBlobOnSuccess |로 설정 된 경우 수집이 `true` 성공적으로 완료 되 면 blob이 삭제 되지 않습니다. 기본값은 `false` |
-|형식 |압축 되지 않은 데이터 형식 |
 |즉시 flush |로 설정 하면 `true` 모든 집계가 생략 됩니다. 기본값은 `false` |
 |ReportLevel |성공/오류 보고 수준: 0-실패, 1-없음, 2-모두 |
 |ReportMethod |보고 메커니즘: 0-큐, 1-테이블 |
-|AdditionalProperties |태그와 같은 추가 속성 |
+|AdditionalProperties |`format`,, 등의 추가 `tags` 속성 `creationTime` 자세한 내용은 [데이터 수집 속성](../../../ingestion-properties.md)을 참조 하세요.|
 
 ### <a name="ingestion-failure-message-structure"></a>수집 실패 메시지 구조
 
 입력 Azure 큐에서 읽을 것으로 예상 되는 데이터 관리 메시지는 다음 형식의 JSON 문서입니다.
 
-|속성 | Description |
+|속성 | 설명 |
 |---------|-------------
 |OperationId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 작업 식별자 (GUID)입니다. |
 |데이터베이스 |대상 데이터베이스 이름 |
@@ -363,7 +361,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 |FailedOn |오류 타임 스탬프 |
 |IngestionSourceId |Azure 데이터 탐색기 수집에 실패 한 데이터 청크를 식별 하는 GUID |
 |IngestionSourcePath |Azure 데이터 탐색기 수집에 실패 한 데이터 청크의 경로 (URI) |
-|세부 정보 |오류 메시지 |
+|설명 |오류 메시지 |
 |오류 코드 |Azure 데이터 탐색기 오류 코드 ( [여기](kusto-ingest-client-errors.md#ingestion-error-codes)의 모든 오류 코드 참조) |
 |FailureStatus |오류가 영구적 또는 일시적인 지 여부를 나타냅니다. |
 |RootActivityId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 Azure 데이터 탐색기 상관 관계 식별자 (GUID) |

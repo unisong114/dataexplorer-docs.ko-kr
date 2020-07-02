@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/29/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 20e512d55568f39ea21d3ddcb383adaf0fa7dab3
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 90b2a08d4fdde6ab6a74b12632c9310029f8fc1b
+ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85902095"
 ---
 # <a name="render-operator"></a>render 연산자
 
@@ -34,7 +34,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 
 *T* `|` `render` *시각화* [ `with` `(` *PropertyName* `=` *PropertyValue* [ `,` ...] `)` ]
 
-여기서
+위치:
 
 * *시각화* 는 사용할 시각화의 종류를 나타냅니다. 지원되는 값은
 
@@ -42,7 +42,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 
 |*시각화*     |설명|
 |--------------------|-|
-| `anomalychart`     | 시간 차트와 비슷하지만 [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) 함수를 사용 하 여 [변칙을 강조 표시](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) 합니다. |
+| `anomalychart`     | 시간 차트와 비슷하지만 [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) 함수를 사용 하 여 [변칙을 강조 표시](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning) 합니다. |
 | `areachart`        | 영역 그래프입니다. 첫 번째 열은 x 축 이며 숫자 열 이어야 합니다. 다른 숫자 열은 y 축입니다. |
 | `barchart`         | 첫 번째 열은 x 축 이며 텍스트, 날짜/시간 또는 숫자일 수 있습니다. 다른 열은 숫자 이며 가로 줄무늬로 표시 됩니다.|
 | `card`             | 첫 번째 결과 레코드는 스칼라 값 집합으로 처리 되 고 카드로 표시 됩니다. |
@@ -170,6 +170,6 @@ range x from -2 to 2 step 0.1
 
 [자습서의 렌더링 예제](./tutorial.md#render-display-a-chart-or-table)
 
-[변칙 탐지](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning)
+[이상 감지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
 
 ::: zone-end

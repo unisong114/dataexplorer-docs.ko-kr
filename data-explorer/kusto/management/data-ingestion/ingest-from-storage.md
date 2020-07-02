@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: fcab02ee032d1009cf31e36963c44cc6b12358e3
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: 1d8766c1fb09ceb64cf4196a92030163eed63694
+ms.sourcegitcommit: d40fe44e7581d87f63cc0cb939f3aa9c3996fc08
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382015"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85839414"
 ---
 # <a name="the-ingest-into-command-pull-data-from-storage"></a>명령 수집 (저장소에서 데이터 끌어오기)
 
@@ -45,11 +45,11 @@ ms.locfileid: "83382015"
 명령의 결과는 명령에 의해 생성 된 데이터 분할 ("익스텐트") 만큼의 레코드를 포함 하는 테이블입니다.
 데이터 분할 생성 되지 않은 경우에는 빈 (0 값) 익스텐트 ID를 사용 하 여 단일 레코드가 반환 됩니다.
 
-|속성       |Type      |Description                                                                |
+|이름       |유형      |설명                                                                |
 |-----------|----------|---------------------------------------------------------------------------|
 |ExtentId   |`guid`    |명령으로 생성 된 데이터 분할에 대 한 고유 식별자입니다.|
 |ItemLoaded |`string`  |이 레코드와 관련 된 하나 이상의 저장소 아티팩트입니다.             |
-|Duration   |`timespan`|수집을 수행 하는 데 걸리는 시간입니다.                                     |
+|기간   |`timespan`|수집을 수행 하는 데 걸리는 시간입니다.                                     |
 |HasErrors  |`bool`    |이 레코드가 수집 오류를 나타내는지 여부를 나타냅니다.                |
 |OperationId|`guid`    |작업을 나타내는 고유 ID입니다. 명령과 함께 사용할 수 있습니다 `.show operation` .|
 
@@ -73,8 +73,7 @@ ms.locfileid: "83382015"
 
 ```kusto
 .ingest into table T (
-  'abfss://myfilesystem@contoso.dfs.core.windows.net/path/to/file1.csv;'
-    h'...'
+  'abfss://myfilesystem@contoso.dfs.core.windows.net/path/to/file1.csv;...'
 )
 ```
 

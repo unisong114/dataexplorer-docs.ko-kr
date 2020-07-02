@@ -94,7 +94,7 @@ ms.locfileid: "83373981"
 
 ## <a name="execute-a-kusto-query"></a>Kusto 쿼리 실행
 
-1. Kusto 쿼리를 입력 하 고 **실행**을 선택 합니다. 다음은 그 예입니다.
+1. Kusto 쿼리를 입력 하 고 **실행**을 선택 합니다. 예를 들면 다음과 같습니다.
 
     ```python
     query= "StormEvents | project State, EventType | take 10"

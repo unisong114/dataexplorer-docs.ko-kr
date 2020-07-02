@@ -8,21 +8,22 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/05/2020
-ms.openlocfilehash: 0e6564e6c27c62621678ae350514bf1df39c73ae
-ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
+ms.openlocfilehash: 6963c118742593d2402d5ae81d8ff4373a2ff600
+ms.sourcegitcommit: d40fe44e7581d87f63cc0cb939f3aa9c3996fc08
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85839429"
 ---
 # <a name="data-ingestion-with-the-kustoingest-library"></a>Kusto. 수집 라이브러리를 사용 하 여 데이터 수집
 
-이 문서에서는 데이터 수집을 위해 Kusto. 수집 클라이언트 라이브러리를 사용 하는 샘플 코드를 제공 합니다. 이 코드는 지연 된 수집 이라고 하는 프로덕션 등급 파이프라인에 대 한 수집의 권장 된 모드를 자세히 설명 합니다. Kusto. 수집 라이브러리의 경우 해당 엔터티는 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) 인터페이스입니다. 클라이언트 코드는 azure 큐에 수집 알림을 게시 하 여 Azure 데이터 탐색기 서비스와 상호 작용 합니다. 수집을 담당 하는 데이터 관리 엔터티에서 큐에 대 한 참조를 가져옵니다. 
+이 문서에서는 데이터 수집을 위해 Kusto. 수집 클라이언트 라이브러리를 사용 하는 샘플 코드를 제공 합니다. 이 코드는 지연 된 수집 이라고 하는 프로덕션 등급 파이프라인에 대 한 수집의 권장 된 모드를 자세히 설명 합니다. Kusto. 수집 라이브러리의 경우 해당 엔터티는 [IKustoQueuedIngestClient 인터페이스](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient)입니다.
+클라이언트 코드는 azure 큐에 수집 알림을 게시 하 여 Azure 데이터 탐색기 서비스와 상호 작용 합니다. 수집을 담당 하는 데이터 관리 엔터티에서 큐에 대 한 참조를 가져옵니다. 
 
 > [!NOTE]
 > 데이터 관리 서비스와의 상호 작용은 Azure Active Directory (Azure AD)를 사용 하 여 인증 되어야 합니다.
 
-이 샘플은 Azure AD 사용자 인증을 사용 하 고 대화형 사용자의 id로 실행 됩니다.
+샘플 코드는 Azure AD 사용자 인증을 사용 하 고 대화형 사용자의 id로 실행 됩니다.
 
 ## <a name="dependencies"></a>종속성
 

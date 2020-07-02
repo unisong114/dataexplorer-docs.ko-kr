@@ -1,6 +1,6 @@
 ---
-title: parse_version() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 parse_version()에 대해 설명합니다.
+title: parse_version ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 parse_version ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 5cb35c12849568f24a6bde42461e8af66058f48f
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 5e4b318743380b13a26e90a7e83549c998926bd8
+ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81511716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85902116"
 ---
 # <a name="parse_version"></a>parse_version()
 
-버전의 입력 문자열 표현을 비슷한 소수 자릿수로 변환합니다.
+버전의 입력 문자열 표현을 비교할 수 있는 10 진수로 변환 합니다.
 
 ```kusto
 parse_version("0.0.0.1")
@@ -25,26 +25,25 @@ parse_version("0.0.0.1")
 
 **구문**
 
-`parse_version``(` *예시*`)`
+`parse_version``(` *Expr*`)`
 
 **인수**
 
-* *ExPR*: 구문 분석할 `string` 버전을 지정하는 형식의 스칼라 식입니다.
+* *`Expr`*: `string` 구문 분석할 버전을 지정 하는 형식의 스칼라 식입니다.
 
 **반환**
 
-변환에 성공하면 결과는 소수점입니다.
-변환에 성공하지 못하면 결과가 `null`됩니다.
+성공적으로 변환 되 면 10 진수가 반환 됩니다.
+변환에 실패 하면 결과는가 됩니다 `null` .
 
-**참고 사항**
+**참고**
 
-입력 문자열은 숫자로 표시되고 점으로 구분된 1~4버전 파트를 포함해야 합니다('.').
+입력 문자열은 숫자로 표시 되 고 마침표 ('. ')로 구분 된 1 ~ 4 개의 버전 부분을 포함 해야 합니다.
 
-버전의 각 부분에는 최대 8자리(최대 값 - 9999999)가 포함될 수 있습니다.
+버전의 각 부분에는 최대 8 개의 숫자가 포함 될 수 있으며 최대 값은 99999999입니다.
 
-부품의 양이 4보다 적으면 모든 누락된 부품이 후행()으로`1.0` == `1.0.0.0`간주됩니다.
+파트 수가 4 보다 작은 경우 누락 된 부분은 모두 후행 ()으로 간주 됩니다 `1.0`  ==  `1.0.0.0` .
 
- 
 **예제**
 ```kusto
 let dt = datatable(v:string)
@@ -86,7 +85,3 @@ dt | project v1=v, _key=1
 |99999999.0.0.0|1.2.3.4|99999999.0.0.0|
 |1.2.3.4|1|1.2.3.4|
 |99999999.0.0.0|1|99999999.0.0.0|
-
-
-
-
