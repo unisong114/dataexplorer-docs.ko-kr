@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: dc421c8321985d001bb08ba85965cf017b1d51c6
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 7ea5210f0370b495c48615d28e763bf6e396d46e
+ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372784"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85763696"
 ---
 # <a name="series_fill_forward"></a>series_fill_forward()
 
@@ -31,13 +31,13 @@ ms.locfileid: "83372784"
 * *x*: 숫자 값 배열인 동적 배열 스칼라 식입니다. 
 * *missing_value_placeholder*: 대체 될 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
 
-**참고 사항**
+**참고**
 
 * [계열](make-seriesoperator.md)후 보간 함수를 적용 하려면 *null* 을 기본값으로 지정 합니다. 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
+make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
 ```
 
 * 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. `double`(Null*null*) `long` (*null*) 및 `int` (*null*) 모두 동일한 의미를 갖습니다.

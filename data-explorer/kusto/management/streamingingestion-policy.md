@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 55ed390a1c98a307d2bb38476458f29fc9c92997
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: e8d02634ad0c56b2e1e369d4c2cd86c63bdad155
+ms.sourcegitcommit: 56bb7b69654900ed63310ac9537ae08b72bf7209
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258014"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85814197"
 ---
 # <a name="streaming-ingestion-policy-management"></a>스트리밍 수집 정책 관리
 
@@ -33,7 +33,7 @@ ms.locfileid: "84258014"
 
 이 명령은 다음 열이 있는 테이블을 반환 합니다.
 
-|Column    |Type    |Description
+|Column    |형식    |설명
 |---|---|---
 |PolicyName|`string`|정책 이름-StreamingIngestionPolicy
 |EntityName|`string`|데이터베이스 또는 테이블 이름
@@ -114,7 +114,8 @@ ms.locfileid: "84258014"
 ### <a name="streaming-ingestion-policy-object"></a>스트리밍 수집 정책 개체
 
 관리 명령의 입력 및 출력에서 스트리밍 수집 정책 개체는 다음 속성을 포함 하는 JSON 형식 문자열입니다.
-|속성  |Type    |Description                                                       |필수/선택 |
-|----------|--------|------------------------------------------------------------------|-------|
-|IsEnabled |`bool`  |엔터티에 대해 스트리밍 수집을 사용 하도록 설정 되어 있습니다.| 필수|
-|HintAllocatedRate|`double`|데이터 조절기의 예상 률 (Gb/시간)| 옵션|
+
+|속성|형식|설명|필수/선택
+|---|---|---|---
+|IsEnabled|`bool`|엔터티에 대해 스트리밍 수집을 사용 하도록 설정 되어 있습니다.| 필수
+|HintAllocatedRate|`double`|데이터 조절기의 예상 률 (Gb/시간)|선택 사항

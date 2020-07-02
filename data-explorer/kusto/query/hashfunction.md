@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a44f817ea57a114400f45e9ca2a841150b4590a6
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: b0a8f1b2a72ceb154b7252b3218718a9c23968cb
+ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226808"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85763859"
 ---
 # <a name="hash"></a>hash()
 
@@ -35,7 +35,7 @@ ms.locfileid: "83226808"
 > [!WARNING]
 > 해시를 계산 하는 데 사용 되는 알고리즘은 xxhash입니다.
 > 이 알고리즘은 나중에 변경 될 수 있으며 단일 쿼리 내에서이 메서드를 호출할 때마다 동일한 알고리즘을 사용 한다는 것만을 보장 합니다.
-> 따라서 사용자는의 결과를 테이블에 저장 하지 않는 것이 좋습니다 `hash()` . 해시 값을 유지 해야 하는 경우에는 대신 [hash_sha256 ()](./sha256hashfunction.md) 를 사용 하는 것이 좋습니다. 그러나 보다 계산 하기가 훨씬 복잡 `hash()` 합니다.
+> 따라서의 결과를 테이블에 저장 하지 않는 것이 좋습니다 `hash()` . 해시 값을 유지 해야 하는 경우 [hash_sha256 ()](./sha256hashfunction.md) 또는 [hash_md5 ()](./md5hashfunction.md) 를 대신 사용 합니다. 이러한 함수는 보다 계산 하기 더 복잡 `hash()` 합니다.
 
 **예**
 

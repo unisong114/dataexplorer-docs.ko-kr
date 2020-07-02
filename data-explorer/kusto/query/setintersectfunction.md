@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/02/2019
-ms.openlocfilehash: f611f660a791117159ad5fce4c024914d9e6909b
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 6739b01f996c04829a1fdb78eab96f6e51b011bb
+ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264745"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85763666"
 ---
 # <a name="set_intersect"></a>set_intersect()
 
@@ -25,7 +25,7 @@ ms.locfileid: "85264745"
 
 **인수**
 
-* *arr1 ... arrN*: 교차 집합을 만들기 위한 입력 배열입니다 (적어도 두 개의 배열). 모든 인수는 동적 배열 이어야 합니다 ( [pack_array](packarrayfunction.md)참조). 
+* *arr1 ... arrN*: 교차 집합을 만들기 위한 입력 배열입니다 (적어도 두 개의 배열). 모든 인수는 동적 배열 이어야 합니다. 자세한 내용은 [pack_array](packarrayfunction.md)를 참조 하세요. 
 
 **반환**
 

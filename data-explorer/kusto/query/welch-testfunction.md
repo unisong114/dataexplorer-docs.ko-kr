@@ -1,6 +1,6 @@
 ---
-title: welch_test() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 welch_test()에 대해 설명합니다.
+title: welch_test ()-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기에서 welch_test ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a9f4b3d86bf3d679fd4fdd320b394956c71d3e97
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 1bb995874bf6ac552350c602c6d3742a08b1273b
+ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81504491"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85763684"
 ---
 # <a name="welch_test"></a>welch_test()
 
-[웰치 테스트 함수의](https://en.wikipedia.org/wiki/Welch%27s_t-test) p_value 계산
+[Welch 함수의](https://en.wikipedia.org/wiki/Welch%27s_t-test) p_value 계산 합니다.
 
 ```kusto
 // s1, s2 values are from https://en.wikipedia.org/wiki/Welch%27s_t-test
@@ -33,19 +33,19 @@ print
 
 **구문**
 
-`welch_test(`*mean1*`, `*분산1 카운트1*`, `*count1*`, `*평균2*`, `*분산2*`, `*카운트2*`)`
+`welch_test(`*mean1* `, ` *variance1* `, ` *count1* `, ` *mean2* `, ` *variance2* `, ` *count2*`)`
 
 **인수**
 
-* *mean1*: 첫 번째 계열의 평균(평균) 값을 나타내는 표현식
-* *분산1*: 첫 번째 계열의 분산 값을 나타내는 표현식
-* *count1*: 첫 번째 계열의 값 수를 나타내는 표현식
-* *mean2*: 2번째 계열의 평균(평균) 값을 나타내는 표현식
-* *분산2*: 2번째 계열의 분산 값을 나타내는 표현식
-* *count2*: 2시리즈의 값 수를 나타내는 표현식
+* *mean1*: 첫 번째 계열의 평균 (평균) 값을 나타내는 식입니다.
+* *variance1*: 첫 번째 계열의 분산 값을 나타내는 식입니다.
+* *count1*: 첫 번째 계열의 값 수를 나타내는 식입니다.
+* *mean2*: 두 번째 계열의 평균 (평균) 값을 나타내는 식입니다.
+* *variance2*: 두 번째 계열의 분산 값을 나타내는 식입니다.
+* *count2*: 두 번째 계열의 값 수를 나타내는 식입니다.
 
 **반환**
 
-[위키백과에서](https://en.wikipedia.org/wiki/Welch%27s_t-test):
+[위키백과](https://en.wikipedia.org/wiki/Welch%27s_t-test)에서:
 
-통계에서 Welch의 t 검정 또는 불평등 한 분산 t-test는 두 모집단이 동일한 수단을 가지고 있다는 가설을 테스트하는 데 사용되는 두 표본 위치 테스트입니다. 웰치의 t-시험은 학생의 t-검정, 즉 학생의 t-검정을 통해 파생되었으며 두 표본의 차이가 불평등하고 표본 크기가 같지 않을 때 더 신뢰할 수 있습니다. 이러한 테스트는 일반적으로 비교되는 두 샘플의 기본 통계 단위가 겹치지 않을 때 적용되기 때문에 "페어링되지 않은" 또는 "독립적인 샘플" t 검정이라고합니다. 웰치의 t-시험은 학생의 t-테스트보다 덜 인기가 있고 독자들에게 덜 익숙할 수 있다는 점을 감안할 때, 더 유익한 이름은 "웰치의 불평등 한 차이 t-테스트"또는 "불평등 분산 t-테스트"입니다.
+통계에서 Welch의 t-테스트는 두 모집단의 의미가 동일한 가설을 테스트 하는 데 사용 되는 2 표본 위치 테스트입니다. Welch의 t-테스트는 학생의 t 테스트를 조정 하는 것으로, 두 샘플의 분산이 동일 하지 않으며 샘플 크기가 같지 않은 경우 더 안정적입니다. 이러한 테스트를 종종 "페어링되지 않음" 또는 "독립적인 샘플" t-테스트 라고 합니다. 테스트는 일반적으로 비교할 두 샘플의 기본 통계 단위가 겹치지 않는 경우에 적용 됩니다. Welch의 t-테스트는 학생의 t 테스트 보다 인기가 적고 독자에 게 더 친숙 하지 않을 수 있습니다. 테스트를 "Welch의 동일 하지 않은 분산 t-테스트" 또는 "같지 않음 분산 t-테스트" 라고도 합니다.

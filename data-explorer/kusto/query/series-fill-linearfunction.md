@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 4cec053990457a6b33c7446c5b32c63713320de9
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 4bf68800cc10bf301f6a5738d47e670905c2c46d
+ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372757"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85763644"
 ---
 # <a name="series_fill_linear"></a>series_fill_linear()
 
@@ -34,13 +34,13 @@ ms.locfileid: "83372757"
 * *fill_edges*: 배열의 시작과 끝에 있는 *missing_value_placeholder* 를 가장 가까운 값으로 바꾸어야 하는지 여부를 나타내는 부울 값입니다. 기본적으로 *True* 입니다. *False*로 설정 하면 배열의 시작과 끝에 있는 *missing_value_placeholder* 유지 됩니다.
 * *constant_value*: 배열에만 관련 된 선택적 매개 변수는 모두 *null* 값으로 구성 됩니다. 이 매개 변수는 계열을 채울 상수 값을 지정 합니다. 기본값은 *0*입니다. 이 매개 변수를 `double` (*null*)로 설정 하면 *null* 값은 그대로 유지 됩니다.
 
-**참고 사항**
+**참고**
 
 * [시리즈](make-seriesoperator.md)를 만든 후에 보간 함수를 적용 하려면 *null* 을 기본값으로 지정 합니다. 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
+make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
 ```
 
 * 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. 이와 같이 `double` (*null*), `long` (*null*) 또는 `int` (*null*)는 동일한 의미를 갖습니다.

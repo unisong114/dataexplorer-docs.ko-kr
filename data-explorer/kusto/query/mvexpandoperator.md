@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
-ms.openlocfilehash: bba3c4e82c3c1ac53a6ebafcb9de4c327da77e37
-ms.sourcegitcommit: 4986354cc1ba25c584e4f3c7eac7b5ff499f0cf1
+ms.openlocfilehash: ee9c4b236344e21bbbc1da68b76710b15b519baa
+ms.sourcegitcommit: 56bb7b69654900ed63310ac9537ae08b72bf7209
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84856192"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85814214"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
 다중 값 배열 또는 속성 모음을 확장 합니다.
 
-`mv-expand`는 [동적](./scalar-data-types/dynamic.md)형식의 열에 적용 되므로 컬렉션의 각 값은 별도의 행을 가져옵니다. 확장된 행의 다른 열은 모두 중복됩니다. 
+`mv-expand`는 컬렉션의 각 값이 개별 행을 가질 수 있도록 [동적](./scalar-data-types/dynamic.md)으로 형식화 된 배열 또는 속성 모음 열에 적용 됩니다. 확장된 행의 다른 열은 모두 중복됩니다. 
 
 **구문**
 
@@ -34,8 +34,10 @@ ms.locfileid: "84856192"
 * *Name:* 새 열에 대한 이름입니다.
 * 형식 *이름:* 연산자가 생성 하는 열의 형식이 되는 배열의 요소에 대 한 내부 형식을 나타냅니다. 배열에서 순응 하지 않는 값은 변환 되지 않습니다. 대신, 이러한 값은 값을 사용 `null` 합니다.
 * *RowLimit:* 각각의 원래 행에서 생성되는 최대 행 수입니다. 기본값은 2147483647입니다. 
-  > [!Note] 
+
+  > [!Note]
   > 연산자의 레거시 및 사용 되지 않는 형식에는 `mvexpand` 기본 행 제한인 128이 있습니다.
+
 * *인덱스 columnname:* `with_itemindex`이 지정 된 경우 출력에는 원래 확장 된 컬렉션에 있는 항목의 인덱스 (0부터 시작)를 포함 하는 추가 열 (명명 된 *indexcolumnname*)이 포함 됩니다. 
 
 **반환**
@@ -49,7 +51,9 @@ ms.locfileid: "84856192"
 * `bagexpansion=bag`: 속성 모음이 단일 항목 속성 모음으로 확장됩니다. 이 모드는 기본 확장입니다.
 * `bagexpansion=array`: 속성 모음은 두 요소 `[` *키* `,` *값* `]` 배열 구조로 확장 되어 키와 값에 대 한 균일 한 액세스를 허용 합니다 (예: 속성 이름에 대 한 고유 카운트 집계 실행). 
 
-**예**
+## <a name="examples"></a>예제
+
+### <a name="single-column"></a>단일 열
 
 단일 열의 간단한 확장입니다.
 
@@ -64,18 +68,23 @@ datatable (a:int, b:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"})]
 |1|{"prop1": "a"}|
 |1|{"prop2": "b"}|
 
+### <a name="zipped-two-columns"></a>압축 두 열
+
 두 열을 확장 하면 먼저 해당 열을 ' zip ' 한 다음 확장 합니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mv-expand b, c 
+datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5, 4, 3])]
+| mv-expand b, c
 ```
 
 |a|b|c|
 |---|---|---|
 |1|{"prop1": "a"}|5|
-|1|{"prop2": "b"}||
+|1|{"prop2": "b"}|4|
+|1||3|
+
+### <a name="cartesian-product-of-two-columns"></a>두 열의 데카르트 곱
 
 두 열을 확장 하는 데카르트 곱을 얻으려면 다른 열 다음에 하나씩을 확장 합니다.
 
@@ -91,6 +100,26 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 |1|{"prop1": "a"}|5|
 |1|{"prop2": "b"}|5|
 
+### <a name="convert-output"></a>출력 변환
+
+Mv-expand의 출력을 특정 형식으로 강제 적용 하려면 (기본값은 동적) 다음을 사용 합니다 `to typeof` .
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+datatable (a:string, b:dynamic, c:dynamic)["Constant", dynamic([1,2,3,4]), dynamic([6,7,8,9])]
+| mv-expand b, c to typeof(int)
+| getschema 
+```
+
+ColumnName|ColumnOrdinal|DateType|ColumnType
+-|-|-|-
+a|0|System.String|문자열
+b|1|System.Object|동적
+c|2|System.Int32|int
+
+가로 제공 되는 `b` 동안 열이 표시 됩니다 `dynamic` `c` `int` .
+
+### <a name="using-with_itemindex"></a>With_itemindex 사용
 
 다음을 사용 하 여 배열 확장 `with_itemindex` :
 
@@ -107,14 +136,10 @@ range x from 1 to 4 step 1
 |2|1|
 |3|2|
 |4|3|
+ 
+## <a name="see-also"></a>참고 항목
 
-
-**추가 예제**
-
-[시간별 라이브 활동의 차트 수](./samples.md#chart-concurrent-sessions-over-time)를 참조 하세요.
-
-**참고 항목**
-
-- [mv-](./mv-applyoperator.md) 연산자를 적용 합니다.
-- 반대쪽 함수를 수행 하는 [make_list ()를 요약](makelist-aggfunction.md)합니다.
-- 속성 모음 키를 사용 하 여 동적 JSON 개체를 열로 확장 하는 [bag_unpack ()](bag-unpackplugin.md) 플러그 인입니다.
+* 더 많은 예제는 [시간별 라이브 활동의 차트 수](./samples.md#chart-concurrent-sessions-over-time) 를 참조 하세요.
+* [mv-](./mv-applyoperator.md) 연산자를 적용 합니다.
+* mv 확장의 반대 함수인 [make_list ()를 요약](makelist-aggfunction.md)합니다.
+* 속성 모음 키를 사용 하 여 동적 JSON 개체를 열로 확장 하는 [bag_unpack ()](bag-unpackplugin.md) 플러그 인입니다.
