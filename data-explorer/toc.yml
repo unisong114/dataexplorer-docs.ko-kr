@@ -1,4 +1,4 @@
-- name: Azure 데이터 탐색기 설명서
+- name: Azure Data Explorer 설명서
   href: index.yml
 - name: 개요
   items:
@@ -229,6 +229,7 @@
                 - name: Azure Resource Manager 템플릿
                   href: cluster-principal-resource-manager.md
             - name: 클러스터 언어 확장 관리
+              displayName: 'Python, R'
               href: language-extensions.md
         - name: 데이터베이스
           items:
@@ -742,6 +743,8 @@
               href: ./kusto/query/hash_combinefunction.md
             - name: hash_many()
               href: ./kusto/query/hash_manyfunction.md
+            - name: hash_md5()
+              href: ./kusto/query/md5hashfunction.md
             - name: hash_sha256()
               href: ./kusto/query/sha256hashfunction.md
             - name: hll_merge()
