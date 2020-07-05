@@ -1,4 +1,4 @@
-- name: Azure Data Explorer 설명서
+- name: Azure 데이터 탐색기 설명서
   href: index.yml
 - name: 개요
   items:
@@ -283,16 +283,18 @@
               href: data-factory-template.md
             - name: Azure Data Factory를 사용하여 제어 명령 실행
               href: data-factory-command-activity.md
-        - name: Microsoft Flow 커넥터
+        - name: Power Automate
           items:
-            - name: Microsoft Flow 커넥터
+            - name: Power Automate 흐름 커넥터
               href: flow.md
-            - name: Microsoft Flow 커넥터 사용 예
+            - name: Power Automate 커넥터 사용 예
               href: flow-usage.md
         - name: Logic Apps
           href: kusto/tools/logicapps.md
         - name: Apache Spark 커넥터
           href: spark-connector.md
+        - name: Cosmos DB
+          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
         - name: Python을 사용하여 Databricks에서 연결
           href: connect-from-databricks.md
         - name: Jupyter Notebook 및 Kqlmagic에서 데이터 분석
