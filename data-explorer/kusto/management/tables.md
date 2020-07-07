@@ -8,20 +8,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/27/2020
-ms.openlocfilehash: ed70e01f7d955ba92806e7e11f740490e87cc664
-ms.sourcegitcommit: 283cce0e7635a2d8ca77543f297a3345a5201395
+ms.openlocfilehash: 4de0e749ad47b8f2e3f2c0f26d5d18466efaff97
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84011451"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967301"
 ---
 # <a name="tables-management"></a>테이블 관리
 
-이 항목에서는 테이블 및 연결 된 제어 명령의 수명 주기에 대해 설명 합니다.
+이 항목에서는 테이블을 탐색, 생성 및 변경 하는 데 도움이 되는 테이블 및 연결 된 제어 명령의 수명 주기에 대해 설명 합니다.
 
 아래 표에서 링크를 선택 하 여 자세한 내용을 참조 하십시오.
 
-| 명령                                                                                                                 | 작업(Operation)                       |
+| 명령                                                                                                                 | 작업                       |
 |--------------------------------------------------------------------------------------------------------------------------|---------------------------------|
 | [`.alter table docstring`](alter-table-docstring-command.md), [`.alter table folder`](alter-table-folder-command.md)                                                                                                                                                                                                   | 테이블 표시 속성 관리 |
 | [`.create ingestion mapping`](create-ingestion-mapping-command.md), [`.show ingestion mappings`](show-ingestion-mapping-command.md), [`.alter ingestion mapping`](alter-ingestion-mapping-command.md), [`.drop ingestion mapping`](drop-ingestion-mapping-command.md)                                                                    | 수집 매핑 관리        |

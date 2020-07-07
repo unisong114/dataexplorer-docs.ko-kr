@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 3bbd14031adbfee3b5fac07194f5ff879ff33693
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 6bdf666b46adea8105b61fc2b907fc060530ba96
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373066"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967590"
 ---
-# <a name="regular-expressions"></a>정규식
+# <a name="re2-syntax"></a>RE2 구문
 
 RE2 regular expression 구문은 Kusto (RE2)에서 사용 하는 정규식 라이브러리의 구문을 설명 합니다.
 정규식을 사용 하 여 문자열 일치, 선택 및 추출을 수행 하는 Kusto에는 몇 가지 함수가 있습니다.
@@ -25,8 +25,8 @@ RE2 regular expression 구문은 Kusto (RE2)에서 사용 하는 정규식 라�
 - [extract_all()](extractallfunction.md)
 - [matches regex](datatypes-string-operators.md)
 - [parse 연산자](parseoperator.md)
-- [replace ()](replacefunction.md)
-- [trim ()](trimfunction.md)
+- [replace()](replacefunction.md)
+- [trim()](trimfunction.md)
 - [trimend ()](trimendfunction.md)
 - [trimstart ()](trimstartfunction.md)
 

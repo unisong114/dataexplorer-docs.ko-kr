@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: cf6724a0f363eda510b5aa9cde195ec4fd3db65b
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 7d0c45a587a396da934bcb3465d60e101d0150a0
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373859"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967165"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 azure DevOps 작업
 
@@ -22,7 +22,7 @@ ms.locfileid: "83373859"
 
 이 문서에서는 **Azure 데이터 탐색기 – Admin Commands** 작업을 사용 하 여 스키마 변경 내용을 데이터베이스에 배포 하는 방법에 대 한 간단한 예를 설명 합니다. 전체 CI/CD 파이프라인은 [Azure DevOps 설명서](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)를 참조 하세요.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * Azure 데이터 탐색기 클러스터 설정:
@@ -42,7 +42,7 @@ Git 리포지토리에서 다음 샘플 폴더 (*함수*, *정책*, *테이블*)
 ![폴더 만들기](media/devops/create-folders.png)
 
 > [!TIP]
-> 사용자 고유의 워크플로를 만들 때 코드를 idempotent 하는 것이 좋습니다. 예를 들어 create [table](kusto/management/create-table-command.md)대신 [. create-merge 테이블](kusto/management/create-table-command.md#create-merge-table) 을 사용 하 [고. create 함수 대신](kusto/management/create-function.md) [create-또는-alter](kusto/management/create-alter-function.md) 함수를 사용 합니다.
+> 사용자 고유의 워크플로를 만들 때 코드를 idempotent 하는 것이 좋습니다. 예를 들어 create [table](kusto/management/create-table-command.md)대신 [. create-merge 테이블](kusto/management/create-merge-table-command.md) 을 사용 하 [고. create 함수 대신](kusto/management/create-function.md) [create-또는-alter](kusto/management/create-alter-function.md) 함수를 사용 합니다.
 
 ## <a name="create-a-release-pipeline"></a>릴리스 파이프라인 만들기
 

@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 1f0a95e095dfaa11afdea3b66597ff3d98f0449b
-ms.sourcegitcommit: 3848b8db4c3a16bda91c4a5b7b8b2e1088458a3a
+ms.openlocfilehash: 830db0da43da241ffb77ff05f15c0a5f62eb1725
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84818614"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967573"
 ---
-# <a name="extents-merge-policy"></a>익스텐트 병합 정책
+# <a name="merge-policy"></a>병합 정책
 
 병합 정책은 Kusto 클러스터의 [익스텐트 (데이터 분할)](../management/extents-overview.md) 를 병합할지 여부 및 방법을 정의 합니다.
 

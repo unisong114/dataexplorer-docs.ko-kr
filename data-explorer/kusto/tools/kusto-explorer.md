@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 15c9ff61067f25f8a0f63ce4078b158277740db3
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
-ms.translationtype: HT
+ms.openlocfilehash: 6c36ace478e9bc026c028bfb6393bcfdf4eebdfa
+ms.sourcegitcommit: 0d15903613ad6466d49888ea4dff7bab32dc5b23
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83863561"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "86013921"
 ---
 # <a name="getting-started-with-kustoexplorer"></a>Kusto 탐색기 시작
 
@@ -26,9 +26,9 @@ Kusto 탐색기를 사용 하 여 다음을 수행할 수 있습니다.
 
 ## <a name="installing-kustoexplorer"></a>Kusto 탐색기 설치
 
-* [Kusto 탐색기 도구를 설치 합니다.](https://aka.ms/ke)
+* [Kusto 탐색기 도구](https://aka.ms/ke)를 설치 합니다.
 
-* 대신에 브라우저를 사용 하 여 Kusto 클러스터에 액세스 [합니다. https://<your_cluster>. kusto.windows.net](https://your_cluster.kusto.windows.net). <your_cluster>를 Azure 데이터 탐색기 클러스터 이름으로 바꿉니다.
+* 에서 브라우저를 사용 하 여 Kusto 클러스터에 액세스할 수 있습니다 `https://<your_cluster>.kusto.windows.net` . `<your_cluster>`Azure 데이터 탐색기 클러스터 이름으로 대체 합니다.
 
 ### <a name="using-chrome-and-kustoexplorer"></a>Chrome 및 Kusto 탐색기 사용
 
@@ -51,11 +51,11 @@ Kusto 탐색기 사용자 인터페이스는 다른 Microsoft 제품의 경우�
 
 Kusto 탐색기 메뉴 패널에는 다음과 같은 탭이 있습니다.
 
-* [홈](#home-tab)
+* [Home](#home-tab)
 * [파일](#file-tab)
 * [연결](#connections-tab)
 * [보기](#view-tab)
-* [Tools](#tools-tab)
+* [도구](#tools-tab)
 * [Monitoring](#monitoring-tab)
 * [관리](#management-tab)
 * [도움말](#help-tab)
@@ -223,7 +223,7 @@ Kusto 탐색기 메뉴 패널에는 다음과 같은 탭이 있습니다.
 ||---------*Analytics*---------|
 |분석 보고서| 데이터 분석을 위해 미리 작성 된 여러 보고서를 사용 하 여 대시보드를 엽니다.|
 ||---------*번역하기*---------|
-|Power BI에 대 한 쿼리| 에서를 사용 하는 데 적합 한 형식으로 쿼리를 변환 Power BI|
+|Power BI로 쿼리| 에서를 사용 하는 데 적합 한 형식으로 쿼리를 변환 Power BI|
 ||---------*옵션*---------|
 |옵션 다시 설정| 응용 프로그램 설정을 기본값으로 설정 합니다.|
 |옵션| 응용 프로그램 설정을 구성 하는 도구를 엽니다. [Kusto 탐색기 옵션](kusto-explorer-options.md)에 대해 자세히 알아보세요.|
@@ -319,10 +319,10 @@ Kusto 탐색기는 결과 패널에서 각 행의 심각도 또는 세부 정보
 
 Kusto 탐색기를 사용 하는 방법에 대해 자세히 알아보세요.
 
-* [Kusto 탐색기 사용](kusto-explorer-using.md)
+* [Kusto.Explorer 사용](kusto-explorer-using.md)
 * [Kusto 탐색기 바로 가기 키](kusto-explorer-shortcuts.md)
-* [Kusto. 탐색기 옵션](kusto-explorer-options.md)
-* [Kusto 탐색기 문제 해결](kusto-explorer-troubleshooting.md)
+* [Kusto.Explorer 옵션](kusto-explorer-options.md)
+* [Kusto.Explorer 문제 해결](kusto-explorer-troubleshooting.md)
 
 Kusto 탐색기 도구 및 유틸리티에 대해 자세히 알아보세요.
 * [Kusto 탐색기 코드 분석기](kusto-explorer-code-analyzer.md)

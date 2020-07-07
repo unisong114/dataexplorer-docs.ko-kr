@@ -1,5 +1,5 @@
 ---
-title: Kusto 탐색기 사용
+title: Kusto.Explorer 사용
 description: Kusto 탐색기를 사용 하는 방법을 알아봅니다.
 author: orspod
 ms.author: orspodek
@@ -7,14 +7,14 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 98a42fd72a28089e6add53aed5346ce2d0e5d993
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: fc8e34be3d61c690bc94795e6bd37f2559d247e0
+ms.sourcegitcommit: 0d15903613ad6466d49888ea4dff7bab32dc5b23
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83866138"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "86013900"
 ---
-# <a name="using-kustoexplorer"></a>Kusto 탐색기 사용
+# <a name="using-kustoexplorer"></a>Kusto.Explorer 사용
 
 Kusto. 탐색기는 사용 하기 쉬운 사용자 인터페이스에서 Kusto 쿼리 언어를 사용 하 여 데이터를 탐색할 수 있도록 하는 데스크톱 응용 프로그램입니다. 이 문서에서는 검색 및 쿼리 모드를 사용 하 고, 쿼리를 공유 하 고, 클러스터, 데이터베이스 및 테이블을 관리 하는 방법을 보여 줍니다.
 
@@ -83,7 +83,7 @@ StormEvents
 >
 > * 아래에 설명 된 클라이언트 쪽 쿼리 parametrization는 Kusto 탐색기 응용 프로그램의 기능입니다. 서비스에서 실행 되도록 보내기 전에 쿼리에 대해 문자열 바꾸기 작업을 사용 하는 것과 같습니다. 아래에 설명 된 구문은 쿼리 언어 자체에 포함 되지 않으며, Kusto 탐색기를 사용 하 여 쿼리를 서비스로 보낼 때 사용할 수 없습니다.
 
-여러 쿼리 또는 여러 탭에서 동일한 값을 사용 하는 경우 사용 되는 모든 위치의 값을 변경 하는 것이 매우 불편할 수 있습니다. 그 이유는 Kusto 탐색기는 쿼리 매개 변수를 지원 하기 때문입니다. 쿼리 매개 변수는 쉽게 다시 사용할 수 있도록 탭 간에 공유 됩니다. 매개 변수는 대괄호로 표시 됩니다 {} . 예를 들면 다음과 같습니다. `{parameter1}`
+여러 쿼리 또는 여러 탭에서 동일한 값을 사용 하는 경우 사용 되는 모든 위치의 값을 변경 하는 것이 매우 불편할 수 있습니다. 그 이유는 Kusto 탐색기는 쿼리 매개 변수를 지원 하기 때문입니다. 쿼리 매개 변수는 쉽게 다시 사용할 수 있도록 탭 간에 공유 됩니다. 매개 변수는 대괄호로 표시 됩니다 {} . `{parameter1}`
 
 스크립트 편집기는 쿼리 매개 변수를 강조 표시 합니다.
 
@@ -135,7 +135,7 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 
 ### <a name="limitations"></a>제한 사항
 
-브라우저 제한, HTTP 프록시 및 Microsoft Outlook과 같은 링크의 유효성을 검사 하는 도구로 인해 쿼리가 ~ 2000 자로 제한 됩니다. 클러스터와 데이터베이스 이름 길이에 따라 달라 지므로 제한이 대략적으로 발생 합니다. 자세한 내용은 [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427)을(를) 참조하세요. 문자 제한에 도달할 가능성을 줄이려면 아래의 [짧은 링크 가져오기](#getting-shorter-links)를 참조 하세요.
+브라우저 제한, HTTP 프록시 및 Microsoft Outlook과 같은 링크의 유효성을 검사 하는 도구로 인해 쿼리가 ~ 2000 자로 제한 됩니다. 클러스터와 데이터베이스 이름 길이에 따라 달라 지므로 제한이 대략적으로 발생 합니다. 자세한 내용은 [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427)를 참조하세요. 문자 제한에 도달할 가능성을 줄이려면 아래의 [짧은 링크 가져오기](#getting-shorter-links)를 참조 하세요.
 
 URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
 
@@ -150,7 +150,7 @@ URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.ne
 
 딥 링크를 만드는 가장 쉬운 방법은 Kusto. 탐색기에서 쿼리를 작성 한 다음 `Export to Clipboard` 를 사용 하 여 쿼리 (딥 링크 및 결과 포함)를 클립보드에 복사 하는 것입니다. 그런 다음 전자 메일을 통해 공유할 수 있습니다.
         
-전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 다음은 그 예입니다.
+전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예:
 
 https://help.kusto.windows.net:443/Samples[[쿼리를 실행 하려면 클릭](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
 
@@ -164,9 +164,9 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 딥 링크와 함께 매개 변수가 있는 쿼리를 사용할 수 있습니다.
 
 1. 매개 변수가 있는 쿼리 (예:)로 형성 될 쿼리를 만듭니다. `KustoLogs | where Timestamp > ago({Period}) | count` 
-1. 이 경우 URI의 모든 쿼리 매개 변수에 대 한 매개 변수를 제공 합니다.
+1. URI의 모든 쿼리 매개 변수 (예:)에 대 한 매개 변수를 제공 합니다.
 
-https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
+   `https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
 ### <a name="getting-shorter-links"></a>짧은 링크 가져오기
 
@@ -240,8 +240,8 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 ## <a name="next-steps"></a>다음 단계
 
 * [Kusto 탐색기 바로 가기 키](kusto-explorer-shortcuts.md)
-* [Kusto. 탐색기 옵션](kusto-explorer-options.md)
-* [Kusto 탐색기 문제 해결](kusto-explorer-troubleshooting.md)
+* [Kusto.Explorer 옵션](kusto-explorer-options.md)
+* [Kusto.Explorer 문제 해결](kusto-explorer-troubleshooting.md)
 
 Kusto 탐색기 도구 및 유틸리티에 대해 자세히 알아보세요.
 * [Kusto 탐색기 코드 분석기](kusto-explorer-code-analyzer.md)

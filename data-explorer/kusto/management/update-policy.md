@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 5974909b6f5e40a977f935319972e7477a2a5755
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: 6bb4a99b9fe226ce84bd02ee5ba04fc7a82fcd4c
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294375"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967284"
 ---
-# <a name="update-policy"></a>정책 업데이트
+# <a name="update-policy-command"></a>정책 명령 업데이트
 
 [업데이트 정책은](updatepolicy.md) 쿼리를 자동으로 실행 한 다음 데이터를 다른 테이블에 수집 때 결과를 수집 하는 테이블 수준 정책 개체입니다.
 
@@ -25,7 +25,7 @@ ms.locfileid: "84294375"
 
 **구문**
 
-* `.show` `table` *TableName* `policy` `update`
+* `.show``table` *TableName* TableName `policy``update`
 * `.show``table` *DatabaseName* `.` *TableName* TableName `policy``update`
 * `.show` `table` `*` `policy` `update`
 
@@ -148,7 +148,7 @@ MyUpdateFunction()
 
 **구문**
 
-* `.delete` `table` *TableName* `policy` `update`
+* `.delete``table` *TableName* TableName `policy``update`
 * `.delete``table` *DatabaseName* `.` *TableName* TableName `policy``update`
 
 **반환**

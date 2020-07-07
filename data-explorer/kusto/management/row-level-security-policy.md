@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: 3f36fa4c35ceb88c82b4dfcb7557e4839fed4aa2
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 2df8178bbc75b9338699c00cdd8a16e7ab3b057f
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780544"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967522"
 ---
-# <a name="rowlevelsecurity-policy-preview"></a>RowLevelSecurity 정책 (미리 보기)
+# <a name="row_level_security-policy-command-preview"></a>row_level_security 정책 명령 (미리 보기)
 
 이 문서에서는 데이터베이스 테이블에 대 한 [row_level_security 정책을](rowlevelsecuritypolicy.md) 구성 하는 데 사용 되는 명령을 설명 합니다.
 

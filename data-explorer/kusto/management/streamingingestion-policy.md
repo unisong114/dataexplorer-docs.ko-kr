@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: e8d02634ad0c56b2e1e369d4c2cd86c63bdad155
-ms.sourcegitcommit: 56bb7b69654900ed63310ac9537ae08b72bf7209
+ms.openlocfilehash: 6f7efe2916bc5c5344bf4a6c4fa4a60bfaa167b7
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85814197"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967352"
 ---
-# <a name="streaming-ingestion-policy-management"></a>스트리밍 수집 정책 관리
+# <a name="streaming-ingestion-policy-command"></a>스트리밍 수집 정책 명령
 
 테이블에 스트리밍 수집 정책을 설정 하 여이 테이블에 대 한 스트리밍 수집을 허용할 수 있습니다. 또한 데이터베이스 수준에서 정책을 설정 하 여 현재 테이블과 이후 테이블 모두에 동일한 설정을 적용할 수 있습니다.
 
@@ -33,7 +33,7 @@ ms.locfileid: "85814197"
 
 이 명령은 다음 열이 있는 테이블을 반환 합니다.
 
-|Column    |형식    |설명
+|Column    |Type    |Description
 |---|---|---
 |PolicyName|`string`|정책 이름-StreamingIngestionPolicy
 |EntityName|`string`|데이터베이스 또는 테이블 이름
@@ -115,7 +115,7 @@ ms.locfileid: "85814197"
 
 관리 명령의 입력 및 출력에서 스트리밍 수집 정책 개체는 다음 속성을 포함 하는 JSON 형식 문자열입니다.
 
-|속성|형식|설명|필수/선택
+|속성|Type|Description|필수/선택
 |---|---|---|---
 |IsEnabled|`bool`|엔터티에 대해 스트리밍 수집을 사용 하도록 설정 되어 있습니다.| 필수
 |HintAllocatedRate|`double`|데이터 조절기의 예상 률 (Gb/시간)|선택 사항

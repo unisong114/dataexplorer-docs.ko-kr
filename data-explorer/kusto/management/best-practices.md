@@ -1,6 +1,6 @@
 ---
-title: 스키마 디자인모범 사례 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 스키마 디자인에 대한 모범 사례에 대해 설명합니다.
+title: 스키마 디자인에 대 한 모범 사례-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 스키마 디자인에 대 한 모범 사례를 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,36 +8,25 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/18/2020
-ms.openlocfilehash: f9e2d4a2ad50b140d041179736b48a41a424f5c6
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: a16cb4b425e26a5896b4109ad6f906b5925c93a5
+ms.sourcegitcommit: 0d15903613ad6466d49888ea4dff7bab32dc5b23
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81522171"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "86013755"
 ---
-# <a name="best-practices-for-schema-design"></a>스키마 디자인에 대한 모범 사례
+# <a name="best-practices-for-schema-design"></a>스키마 디자인에 대 한 모범 사례
 
-관리 명령의 성능이 향상되고 서비스에 더 가벼운 영향을 미치기 위해 따라야 할 몇 가지 "해야 할 일과 하지 말"이 있습니다.
+다음은 몇 가지 모범 사례입니다. 이를 통해 관리 명령이 더 잘 작동 하 고 서비스 리소스에 더 많은 영향을 줄 수 있습니다.
 
-## <a name="do"></a>해야 할 일
-
-1. 여러 테이블을 만들어야 하는 경우 [`.create tables`](create-tables-command.md) 많은 `.create table` 명령을 실행하는 대신 명령을 사용합니다.
-2. 여러 테이블의 이름을 바쳐야 하는 경우 각 [`.rename tables`](rename-table-command.md)테이블 쌍에 대해 별도의 호출을 발행하는 대신 에 대한 단일 호출로 이 작업을 수행합니다.
-3. 파이프()에 `.show` `|`필터를 적용하는 대신 가장 낮은 범위의 명령을 사용합니다. 다음은 그 예입니다.
-    - `.show cluster extents | where TableName == 'T'` 대신 `.show table T extents` 사용
-    - `.show database DB schema` 대신 `.show schema | where DatabaseName == 'DB'`를 사용합니다.
-4. 단일 `.show table T` 테이블에서 실제 통계를 얻어야 하는 경우에만 사용합니다. 테이블의 존재를 확인하거나 테이블의 스키마를 얻으려면 을 사용합니다. `.show table T schema as json`
-5. datetime 값을 포함하는 테이블의 스키마를 정의할 때 이러한 열이 `datetime` 형식과 함께 입력되는지 확인합니다.
-    - Kusto는 열 필터링에 `datetime` 최적화되어 있습니다. 열이 필터링 `string` 시간 전이나 사용 `long`중에 수행할 `datetime` 수 있는 경우 필터링을 위한 쿼리 시간으로 변환하거나 숫자(예:) 열을 변환하지 마십시오.
-
-## <a name="dont"></a>하지 않아야 할 일
-
-1. 명령을 너무 `.show` 자주 실행하지 마십시오(예: `.show schema` `.show databases`, `.show tables` 가능하면 반환되는 정보를 캐시합니다.
-2. 큰 스키마(예: 데이터베이스가 100개 이상)인 클러스터에서 명령을 실행하지 `.show schema` 마십시오. 대신 을 [`.show databases schema`](../management/show-schema-database.md)사용합니다.
-3. 명령 다음 [쿼리](index.md#combining-queries-and-control-commands) 작업을 너무 자주 실행하지 마십시오.
-    - *명령 - 다음 쿼리*: 제어 명령의 결과 집합을 파이프하고 필터 / 집계를 적용하는 것을 의미합니다.
-        - 예: `.show ... | where ... | summarize ...`
-    - 다음과 같은 작업을 `.show cluster extents | count` 실행할 때 `| count`Kusto는 먼저 클러스터의 모든 익스텐트에 대한 모든 세부 정보를 포함하는 데이터 테이블을 준비한 다음 해당 인메모리 전용 테이블을 Kusto 엔진으로 전송하여 카운트를 수행합니다. 이것은 Kusto가 실제로 최적화되지 않은 경로에서 매우 열심히 작동하여 그러한 사소한 대답을 다시 제공합니다.
-4. 데이터 수집의 일부로 익스텐트 태그를 과도하게 사용합니다. 특히 태그를 `drop-by:` 사용하는 경우 백그라운드에서 성능 지향 그루밍 프로세스를 수행하는 시스템의 기능을 제한합니다.
-    - [성능 노트는 여기를](../management/extents-overview.md#extent-tagging)참조하십시오.
-    
+|작업  |Windows Server Update Services와 함께  |사용 안 함 | 참고 |
+|---------|---------|---------|----
+| **여러 테이블 만들기**    |  단일 명령 사용 [`.create tables`](create-tables-command.md)       | 많은 명령 실행 안 함 `.create table`        | |
+| **여러 테이블 이름 바꾸기**    | 단일 호출을 수행 합니다.[`.rename tables`](rename-table-command.md)        |  각 테이블 쌍에 대해 별도의 호출을 실행 하지 마십시오.   |    |
+|**명령 표시**   |   가장 낮은 범위의 명령 사용 `.show` |   파이프 () 뒤에 필터를 적용 하지 않습니다. `|`   </ul></li>  | 가능한 한 많이 사용을 제한 합니다. 가능 하면 반환 하는 정보를 캐시 합니다. |
+| 익스텐트 표시  | `.show table T extents` 사용   |사용 안 함`.show cluster extents | where TableName == 'T'`  |
+|  데이터베이스 스키마를 표시 합니다. |`.show database DB schema` 사용  |  사용 안 함`.show schema | where DatabaseName == 'DB'` |
+| **대량 스키마가 있는 클러스터에 스키마 표시** <br> |사용[`.show databases schema`](../management/show-schema-database.md) |사용 안 함`.show schema`| 예를 들어 100 개 이상의 데이터베이스를 포함 하는 클러스터에서를 사용 합니다.
+| **테이블의 존재 여부를 확인 하거나 테이블의 스키마를 가져옵니다.**|`.show table T schema as json` 사용|사용 안 함`.show table T` |이 명령을 사용 하 여 단일 테이블에 대 한 실제 통계를 가져옵니다.|
+| **값을 포함 하는 테이블의 스키마를 정의 합니다. `datetime`**  |관련 열을 형식으로 설정 합니다. `datetime` | 필터링을 `string` 위해 또는 숫자 열을 쿼리 시로 변환 하지 않음 `datetime` (수집 시간 전후에 수행할 수 있는 경우)|
+| **메타 데이터에 범위 태그 추가** |자주 사용 |태그를 사용 하지 마십시오 `drop-by:` .이 경우 백그라운드에서 성능 중심의 정리 프로세스를 수행 하는 시스템 기능이 제한 됩니다.|  <br> [성능 정보](../management/extents-overview.md#extent-tagging)를 참조 하세요. |
