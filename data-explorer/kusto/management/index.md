@@ -8,12 +8,11 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1277de1be577de7f9f6d4adf1b74460eac4a8c42
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
-ms.translationtype: HT
+ms.openlocfilehash: b42cf002382cf4f7b79f7f734b6c7137f42fcbc8
+ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490347"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85967029"
 ---
 # <a name="management-control-commands-overview"></a>관리(제어 명령) 개요
 
@@ -42,12 +41,19 @@ API 수준에서는 다양한 함수가 쿼리가 아닌 제어 명령을 보내
 
 또한 [쿼리 문](../query/statements.md)은 텍스트의 쿼리 부분 내에 표시됩니다(명령 자체 앞에 나올 수 없음).
 
+>[!NOTE]
+> [command-then-query](명령 후 쿼리) 작업을 너무 자주 실행하지 마세요.
+> *command-then-query*는 제어 명령의 결과 세트를 파이프하고, 이 세트에 대한 필터/집계를 적용합니다.
+>  * 예: `.show ... | where ... | summarize ...`
+>   * `.show cluster extents | count`(`| count`에 강조)와 같은 작업을 실행하는 경우 Kusto는 먼저 클러스터의 모든 익스텐트에 대한 모든 세부 정보가 포함된 데이터 테이블을 준비합니다. 그런 다음, 시스템에서 메모리 내 전용 테이블을 Kusto 엔진에 보내 계산을 수행합니다. 시스템은 실제로 최적화되지 않은 경로에서 활발하게 작동하여 이러한 간단한 대답을 제공합니다.
+
+
 **AdminThenQuery**는 다음 두 가지 방법 중 하나로 표시됩니다.
 
 1. 파이프(`|`) 문자를 사용하는 경우 이로 인해 쿼리에서 제어 명령의 결과를 다른 데이터 생성 쿼리 연산자인 것처럼 처리합니다.
 2. 세미콜론(`;`) 문자를 사용하는 경우 제어 명령의 결과를 `$command_results`라는 특수 기호에 도입합니다. 그러면 쿼리에서 이 기호를 여러 번 사용할 수 있습니다.
 
-다음은 그 예입니다.
+예를 들면 다음과 같습니다.
 
 ```kusto
 // 1. Using pipe: Count how many tables are in the database-in-scope:
@@ -72,3 +78,5 @@ $command_results | extend LastColumn=useless(TableName)
 let text="Hello, World!";
 print str=Text
 ```
+
+

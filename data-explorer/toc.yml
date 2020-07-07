@@ -295,7 +295,7 @@
           href: spark-connector.md
         - name: Cosmos DB
           href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
-        - name: Python을 사용하여 Databricks에서 연결
+        - name: Azure Databricks에서 연결
           href: connect-from-databricks.md
         - name: Jupyter Notebook 및 Kqlmagic에서 데이터 분석
           href: kqlmagic.md
@@ -1163,31 +1163,31 @@
               href: kusto/query/geo-polygon-to-s2cells-function.md
         - name: 사용자 분석
           items:
-            - name: 사용자 분석 플러그 인
+            - name: 사용자 분석 플러그 인 개요
               href: ./kusto/query/useranalytics.md
-            - name: 활성 사용자 수 플러그 인
+            - name: active_users_count 플러그 인
               href: ./kusto/query/active-users-count-plugin.md
-            - name: 활동 수 메트릭 플러그 인
+            - name: activity_counts_metrics 플러그 인
               href: ./kusto/query/activity-counts-metrics-plugin.md
-            - name: 활동 참여 플러그 인
+            - name: activity_engagement 플러그 인
               href: ./kusto/query/activity-engagement-plugin.md
-            - name: 활동 메트릭 플러그 인
+            - name: activity_metrics 플러그 인
               href: ./kusto/query/activity-metrics-plugin.md
-            - name: 활동 메트릭 플러그 인 - 신규
+            - name: new_activity_metrics 플러그 인
               href: ./kusto/query/new-activity-metrics-plugin.md
-            - name: 깔때기형 시퀀스 완료 플러그 인
+            - name: funnel_sequence_completion 플러그 인
               href: ./kusto/query/funnel-sequence-completion-plugin.md
-            - name: 깔때기형 시퀀스 플러그 인
+            - name: funnel_sequence 플러그 인
               href: ./kusto/query/funnel-sequence-plugin.md
-            - name: 세션 수 플러그 인
+            - name: session_count 플러그 인
               href: ./kusto/query/session-count-plugin.md
-            - name: 슬라이딩 윈도우 수 플러그 인
+            - name: sliding_window_counts 플러그 인
               href: ./kusto/query/sliding-window-counts-plugin.md
         - name: Kusto 쿼리 언어에 대한 참조 자료
           items:
             - name: RE2 구문
               href: ./kusto/query/re2.md
-            - name: SQL to Kusto 참고 자료
+            - name: SQL 대 Kusto 참고 자료
               href: ./kusto/query/sqlcheatsheet.md
     - name: 개념
       href: ./kusto/concepts/index.md
@@ -1221,34 +1221,33 @@
     - name: 관리
       href: ./kusto/management/index.md
       items:
-        - name: 개요
+        - name: 관리(제어 명령) 개요
           href: ./kusto/management/index.md
           items:
-            - name: 모범 사례
+            - name: 스키마 디자인 모범 사례
               href: ./kusto/management/best-practices.md
         - name: 스키마
-          href: ./kusto/management/schema.md
           items:
-            - name: 데이터베이스
+            - name: 데이터베이스 관리
               href: ./kusto/management/databases.md
               items:
                 - name: .show databases
                   href: ./kusto/management/show-databases.md
                 - name: .show database
                   href: ./kusto/management/show-database.md
-                - name: .show cluster database
+                - name: .show cluster databases
                   href: ./kusto/management/show-cluster-database.md
-                - name: .alter database
+                - name: .alter database prettyname
                   href: ./kusto/management/alter-database.md
-                - name: .show database schema
+                - name: .show database(s) schema
                   href: ./kusto/management/show-schema-database.md
                 - name: .execute database script
                   href: ./kusto/management/execute-database-script.md
             - name: 테이블
               items:
-                - name: 테이블 개요
+                - name: 테이블 관리
                   href: ./kusto/management/tables.md
-                - name: .alter merge table
+                - name: .alter-merge table
                   href: ./kusto/management/alter-merge-table-command.md
                 - name: .alter table
                   href: ./kusto/management/alter-table-command.md
@@ -1268,13 +1267,15 @@
                   href: ./kusto/management/create-table-command.md
                 - name: .create tables
                   href: ./kusto/management/create-tables-command.md
+                - name: .create-merge table
+                  href: ./kusto/management/create-merge-table-command.md
                 - name: .create-merge tables
                   href: ./kusto/management/create-merge-tables-command.md
                 - name: .drop table(s)
                   href: ./kusto/management/drop-table-command.md
-                - name: .rename table
+                - name: .rename table(s)
                   href: ./kusto/management/rename-table-command.md
-                - name: .show table
+                - name: .show tables
                   href: ./kusto/management/show-tables-command.md
                 - name: .undo drop table
                   href: ./kusto/management/undo-drop-table-command.md
@@ -1292,7 +1293,7 @@
                   href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
             - name: 열
               items:
-                - name: 열 개요
+                - name: 열 관리
                   href: ./kusto/management/columns.md
                 - name: .alter column
                   href: ./kusto/management/alter-column.md
@@ -1302,17 +1303,17 @@
                   href: ./kusto/management/drop-column.md
                 - name: .rename column
                   href: ./kusto/management/rename-column.md
-            - name: 매핑
+            - name: 데이터 매핑
               href: ./kusto/management/mappings.md
             - name: Functions
               items:
-                - name: 함수 개요
+                - name: 저장된 함수 관리 개요
                   href: ./kusto/management/functions.md
                 - name: .alter function
                   href: ./kusto/management/alter-function.md
-                - name: .alter docstring function
+                - name: .alter function docstring
                   href: ./kusto/management/alter-docstring-function.md
-                - name: .alter folder function
+                - name: .alter function folder
                   href: ./kusto/management/alter-folder-function.md
                 - name: .create function
                   href: ./kusto/management/create-function.md
@@ -1320,98 +1321,96 @@
                   href: ./kusto/management/create-alter-function.md
                 - name: .drop function
                   href: ./kusto/management/drop-function.md
-                - name: .show function
+                - name: .show functions
                   href: ./kusto/management/show-function.md
         - name: 정책
           items:
-            - name: 정책 개요
-              href: ./kusto/management/policies.md
-            - name: 캐시 정책
+            - name: 수집 일괄 처리
               items:
-                - name: 캐시 정책
-                  href: ./kusto/management/cachepolicy.md
-                - name: 캐시 정책 명령
-                  href: ./kusto/management/cache-policy.md
-            - name: IngestionTime 정책
-              items:
-                - name: Ingestiontime 정책
-                  href: ./kusto/management/ingestiontimepolicy.md
-                - name: ingestiontime 정책 명령
-                  href: ./kusto/management/ingestiontime-policy.md
-            - name: 보존 정책
-              items:
-                - name: 보존 정책
-                  href: ./kusto/management/retentionpolicy.md
-                - name: 보존 정책 명령
-                  href: ./kusto/management/retention-policy.md
-            - name: RowLevelSecurity 정책
-              items:
-                - name: 행 수준 보안 정책
-                  href: ./kusto/management/rowlevelsecuritypolicy.md
-                - name: row_level_securityy 정책 명령
-                  href: ./kusto/management/row-level-security-policy.md
-            - name: RowOrder 정책
-              items:
-                - name: 행 순서 정책
-                  href: ./kusto/management/roworderpolicy.md
-                - name: roworder 명령
-                  href: ./kusto/management/roworder-policy.md
-            - name: 정책 업데이트
-              items:
-                - name: 정책 업데이트
-                  href: ./kusto/management/updatepolicy.md
-                - name: 정책 명령 업데이트
-                  href: ./kusto/management/update-policy.md
-            - name: Batch 정책
-              items:
-                - name: 수집 일괄 처리 정책
+                - name: ingestionbatching 정책
                   href: ./kusto/management/batchingpolicy.md
                 - name: ingestionbatching 정책 명령
                   href: ./kusto/management/batching-policy.md
-            - name: 병합 정책
+            - name: 캐시
               items:
-                - name: 병합 정책
-                  href: ./kusto/management/mergepolicy.md
-                - name: 병합 정책 명령
-                  href: ./kusto/management/merge-policy.md
-            - name: 분할 정책
-              items:
-                - name: 분할 정책
-                  href: ./kusto/management/partitioningpolicy.md
-                - name: 분할 정책 명령
-                  href: ./kusto/management/partitioning-policy.md
-            - name: 제한된 보기 액세스 정책
-              items:
-                - name: 제한된 보기 액세스 정책
-                  href: ./kusto/management/restrictedviewaccesspolicy.md
-                - name: restricted_view_access 정책 명령
-                  href: ./kusto/management/restrictedviewaccess-policy.md
-            - name: 샌드박스 정책
-              items:
-                - name: 샌드박스 정책
-                  href: ./kusto/management/sandboxpolicy.md
-                - name: 샌드박스 정책 명령
-                  href: ./kusto/management/sandbox-policy.md
-            - name: 분할 정책
-              items:
-                - name: 분할 정책
-                  href: ./kusto/management/shardingpolicy.md
-                - name: 분할 정책 명령
-                  href: ./kusto/management/sharding-policy.md
-            - name: 스트리밍 수집 정책
-              items:
-                - name: 스트리밍 수집 정책
-                  href: ./kusto/management/streamingingestionpolicy.md
-                - name: streamingingestion 정책 명령
-                  href: ./kusto/management/streamingingestion-policy.md
-            - name: 설명선 정책
+                - name: 캐시 정책(핫 및 콜드 캐시)
+                  href: ./kusto/management/cachepolicy.md
+                - name: 캐시 정책 명령
+                  href: ./kusto/management/cache-policy.md
+            - name: 설명선 제목
               href: ./kusto/management/calloutpolicy.md
-            - name: 용량 정책
+            - name: 용량
               items:
                 - name: 용량 정책
                   href: ./kusto/management/capacitypolicy.md
                 - name: 용량 정책 명령
                   href: ./kusto/management/capacity-policy.md
+            - name: ingestiontime
+              items:
+                - name: Ingestiontime 정책
+                  href: ./kusto/management/ingestiontimepolicy.md
+                - name: ingestiontime 정책 명령
+                  href: ./kusto/management/ingestiontime-policy.md
+            - name: 병합
+              items:
+                - name: 병합 정책
+                  href: ./kusto/management/mergepolicy.md
+                - name: 병합 정책 명령
+                  href: ./kusto/management/merge-policy.md
+            - name: 분할
+              items:
+                - name: 분할 정책
+                  href: ./kusto/management/partitioningpolicy.md
+                - name: 분할 정책 명령
+                  href: ./kusto/management/partitioning-policy.md
+            - name: 보존
+              items:
+                - name: 보존 정책
+                  href: ./kusto/management/retentionpolicy.md
+                - name: 보존 정책 명령
+                  href: ./kusto/management/retention-policy.md
+            - name: 제한된 보기 액세스
+              items:
+                - name: 제한된 보기 액세스 정책
+                  href: ./kusto/management/restrictedviewaccesspolicy.md
+                - name: restricted_view_access 정책 명령
+                  href: ./kusto/management/restrictedviewaccess-policy.md
+            - name: 행 수준 보안
+              items:
+                - name: 행 수준 보안 정책
+                  href: ./kusto/management/rowlevelsecuritypolicy.md
+                - name: row_level_security 정책 명령
+                  href: ./kusto/management/row-level-security-policy.md
+            - name: roworder
+              items:
+                - name: roworder 정책
+                  href: ./kusto/management/roworderpolicy.md
+                - name: roworder 정책 명령
+                  href: ./kusto/management/roworder-policy.md
+            - name: 샌드박스
+              items:
+                - name: 샌드박스 정책
+                  href: ./kusto/management/sandboxpolicy.md
+                - name: 샌드박스 정책 명령
+                  href: ./kusto/management/sandbox-policy.md
+            - name: 분할
+              items:
+                - name: 분할 정책
+                  href: ./kusto/management/shardingpolicy.md
+                - name: 분할 정책 명령
+                  href: ./kusto/management/sharding-policy.md
+            - name: 스트리밍 수집
+              items:
+                - name: 스트리밍 수집 정책
+                  href: ./kusto/management/streamingingestionpolicy.md
+                - name: streamingingestion 정책 명령
+                  href: ./kusto/management/streamingingestion-policy.md
+            - name: 업데이트
+              items:
+                - name: 정책 업데이트
+                  href: ./kusto/management/updatepolicy.md
+                - name: 정책 명령 업데이트
+                  href: ./kusto/management/update-policy.md
         - name: 보안 역할
           href: ./kusto/management/security-roles.md
         - name: 데이터 수집
@@ -1486,7 +1485,7 @@
           items:
             - name: 익스텐트(데이터 분할) 개요
               href: ./kusto/management/extents-overview.md
-            - name: 익스텐트 명령
+            - name: extents 명령
               href: ./kusto/management/extents-commands.md
             - name: 클러스터 팔로워
               href: ./kusto/management/cluster-follower.md
@@ -1563,7 +1562,7 @@
                   href: ./kusto/api/netfx/kusto-ingest-client-status.md
                 - name: 모범 사례
                   href: ./kusto/api/netfx/kusto-ingest-best-practices.md
-                - name: 코드 예제
+                - name: 코드 샘플
                   href: ./kusto/api/netfx/kusto-ingest-client-examples.md
                 - name: 데이터 수집 방법
                   href: ./kusto/api/netfx/kusto-ingest-queued-ingest-sample.md
