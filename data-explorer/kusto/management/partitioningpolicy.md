@@ -8,12 +8,11 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 433d8786ad3664d02387efacd7dcd3865b4deb13
-ms.sourcegitcommit: ddafa58deb79417bd6f36e8bb3ad106d375b63e1
-ms.translationtype: MT
+ms.openlocfilehash: ca9d455bb1ca5a8736c279388d848ab1347c11e6
+ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85448505"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058833"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -30,7 +29,7 @@ ms.locfileid: "85448505"
 
 |종류                                                   |열 유형 |파티션 속성                    |파티션 값                                        |
 |-------------------------------------------------------|------------|----------------------------------------|----------------------|
-|[Hash](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
+|[해시](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
 |[균일 범위](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`                | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
 
 ### <a name="hash-partition-key"></a>해시 파티션 키
@@ -173,7 +172,7 @@ ms.locfileid: "85448505"
 * **Maxrowcountperoperation**:
   * 단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다.
   * 이 속성은 선택 사항입니다. 기본값은 이며 `0` 기본 대상은 500만 레코드입니다.
-    * 5 m 보다 낮은 값을 설정 하는 것을 고려할 수 있습니다. 분할 작업은 작업당 매우 많은 양의 메모리/CPU를 사용 하는 것을 볼 수 있습니다 (#monitoring 참조).
+    * 분할 작업에서 작업 당 매우 많은 양의 메모리 또는 CPU를 사용 하는 경우 5M 보다 낮은 값을 설정할 수 있습니다. 자세한 내용은 [Monitoring](#monitoring)을 참조 하세요.
 
 ## <a name="notes"></a>참고
 
@@ -196,10 +195,10 @@ ms.locfileid: "85448505"
 출력에는 다음이 포함 됩니다.
 
   * `MinPartitioningPercentageInSingleTable`: 클러스터에 데이터 분할 정책이 있는 모든 테이블에서 분할 된 데이터의 최소 비율입니다.
-    * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 용량 ( [용량](partitioningpolicy.md#capacity)참조)을 평가 합니다.
+    * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들어:
 
 ```kusto
 .show commands 
