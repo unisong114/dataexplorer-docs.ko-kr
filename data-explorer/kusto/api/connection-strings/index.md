@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: 53c3caecc373a646162016fc1717ce1b0b0b85d1
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 9cea718db64c3da998df8b832d886ebd87d0f241
+ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81490075"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058765"
 ---
 # <a name="connection-strings"></a>연결 문자열
 
@@ -27,3 +27,6 @@ ms.locfileid: "81490075"
 * [Storage 연결 문자열](./storage.md)은 Kusto가 외부 스토리지 서비스(예: Azure Blob Storage 및 Azure Data Lake Storage)를 가리키도록 하는 방법을 설명합니다.
 * SQL 연결 문자열 - Kusto [sql_request plugin](../../query/sqlrequestplugin.md)이 Azure DB 서비스에 대한 요청을 실행하고 [SQL 명령으로 내보내는 데 사용됩니다](../../management/data-export/export-data-to-sql.md).  
   이러한 연결 문자열은 [SqlClient 연결 문자열](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) 사양을 따릅니다.
+
+> [!NOTE]
+> 일부 연결 문자열은 보안 주체를 참조할 수 있습니다. 연결 문자열에서 보안 주체를 지정하는 방법은 [보안 주체 및 ID 공급자](../../management/access-control/principals-and-identity-providers.md)를 참조하세요.
