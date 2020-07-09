@@ -10,11 +10,12 @@ ms.topic: reference
 ms.date: 07/02/2020
 ms.openlocfilehash: 6b633358713b0ff48d14fc9c5ca2a907bad0afab
 ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86060760"
 ---
-# <a name="merge-extents"></a>. 범위 병합
+# <a name="merge-extents"></a>.merge extents
 
 이 명령은 지정 된 테이블에서 해당 Id가 나타내는 범위를 병합 합니다. 
 
@@ -22,7 +23,7 @@ ms.locfileid: "86060760"
 > 데이터 분할은 Kusto에서 **익스텐트에서** 호출 되며 모든 명령은 "익스텐트" 또는 "익스텐트"를 동의어로 사용 합니다.
 > 익스텐트에 대 한 자세한 내용은 [익스텐트 (데이터 분할) 개요](extents-overview.md)를 참조 하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `.merge``[async | dryrun]` *TableName* `(` *GUID1* [ `,` *GUID2* ...] `)``[with(rebuild=true)]`
 
@@ -39,13 +40,13 @@ ms.locfileid: "86060760"
 
 ## <a name="return-output"></a>반환 출력
 
-출력 매개 변수 |형식 |설명
+출력 매개 변수 |Type |Description
 ---|---|---
-OriginalExtentId |string |원본 테이블에서 원본 익스텐트의 원래 범위에 대 한 고유 식별자 (GUID)로, 대상 범위에 병합 되었습니다.
-ResultExtentId |string |원본 범위에서 만들어진 익스텐트의 고유 식별자 (GUID)입니다. 실패 시: "실패" 또는 "중단 됨"입니다.
+OriginalExtentId |문자열 |원본 테이블에서 원본 익스텐트의 원래 범위에 대 한 고유 식별자 (GUID)로, 대상 범위에 병합 되었습니다.
+ResultExtentId |문자열 |원본 범위에서 만들어진 익스텐트의 고유 식별자 (GUID)입니다. 실패 시: "실패" 또는 "중단 됨"입니다.
 기간 |timespan |병합 작업을 완료 하는 데 걸린 시간입니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="rebuild-two-specific-extents-in-mytable-asynchronously"></a>에서 두 개의 특정 익스텐트 `MyTable` 를 비동기적으로 다시 빌드합니다.
 
@@ -59,7 +60,7 @@ ResultExtentId |string |원본 범위에서 만들어진 익스텐트의 고유 
 .merge MyTable (12345050-a1e2-4dad-8552-1f5cf47cab69, 98765b2d-9dd2-4d2c-a45e-b24c65aa6687)
 ```
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 * 일반적으로 `.merge` 명령을 수동으로 실행 해서는 안 됩니다. 테이블 및 데이터베이스에 대 한 [병합 정책](mergepolicy.md) 에 따라 명령은 지속적으로 클러스터의 백그라운드에서 자동으로 실행 됩니다.  
   * 여러 익스텐트를 단일 항목으로 병합 하는 기준에 대 한 자세한 내용은 [병합 정책](mergepolicy.md)을 참조 하세요.

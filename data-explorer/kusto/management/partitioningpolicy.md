@@ -8,11 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: ca9d455bb1ca5a8736c279388d848ab1347c11e6
-ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.openlocfilehash: 7f299a730b451f608e0d2c81fc78565d515fc029
+ms.sourcegitcommit: bcb87ed043aca7c322792c3a03ba0508026136b4
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058833"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86127303"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -21,7 +22,7 @@ ms.locfileid: "86058833"
 정책의 주요 목적은 분할 된 열에 있는 값의 데이터 집합 범위를 좁히는 것으로 알려진 쿼리 성능을 향상 시키는 것이 고, 높은 카디널리티 문자열 열에는 집계/조인 하는 것입니다. 이로 인해 데이터 압축이 향상 될 수도 있습니다.
 
 > [!CAUTION]
-> 정책을 정의할 수 있는 테이블의 수에는 하드 코드 된 제한이 설정 되어 있지 않습니다. 그러나 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 합니다. 이로 인해 더 많은 클러스터 리소스가 사용 될 수 있습니다. 자세한 내용은 [모니터링](#monitoring) 및 [용량](#capacity)을 참조 하세요.
+> 정책을 정의할 수 있는 테이블의 수에는 하드 코드 된 제한이 설정 되어 있지 않습니다. 그러나 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 합니다. 그러면 더 많은 클러스터 리소스가 사용 될 수 있습니다. 자세한 내용은 [모니터링](#monitoring) 및 [용량](#capacity)을 참조 하세요.
 
 ## <a name="partition-keys"></a>파티션 키
 
@@ -34,7 +35,8 @@ ms.locfileid: "86058833"
 
 ### <a name="hash-partition-key"></a>해시 파티션 키
 
-테이블의 형식 열에 해시 파티션 키를 적용 하는 `string` 것은 대부분의 쿼리에서 같음 필터 (,)를 사용 `==` `in()` 하거나 `string` ,, 또는 등의 *큰 차원* (10M 이상의 카디널리티)의 특정 열에 집계/조인할 때 적합 합니다 `application_ID` `tenant_ID` `user_ID` .
+> [!NOTE]
+> 테이블의 형식 열에 해시 파티션 키를 적용 하는 `string` 것은 대부분 **only** 의 쿼리에서 같음 필터 ( `==` ,)를 사용 `in()` 하거나 `string` ,, 또는 등의 *큰 차원* (10M 이상의 카디널리티)의 특정 열에 대해 집계/조인할 때만 `application_ID` `tenant_ID` 적합 합니다 `user_ID` .
 
 * 해시 모듈로 함수는 데이터를 분할 하는 데 사용 됩니다.
 * 동일한 파티션에 속하는 모든 동일 (분할 된) 익스텐트는 동일한 데이터 노드에 할당 됩니다.
@@ -77,7 +79,10 @@ ms.locfileid: "86058833"
 
 ### <a name="uniform-range-datetime-partition-key"></a>균일 범위 datetime 파티션 키
 
-테이블에서 형식화 된 열에 균일 한 범위 datetime 파티션 키를 적용 하는 것 `datetime` 은 테이블의 데이터 수집이 열에 따라 정렬 되지 않는 경우에 적합 합니다. 범위 간에 데이터를 재조정 하 여 각 익스텐트가 제한 된 시간 범위에서 레코드를 포함 하 여 종료 되도록 하는 것이 유용할 수 있습니다. 단지 섞는 쿼리 시 열에 대 한 필터가 `datetime` 더 효율적입니다.
+> [!NOTE] 
+> 테이블의 형식화 된 열에 균일 한 범위 datetime 파티션 키를 적용 `datetime` 하는 것은 테이블의 데이터 수집이 열에 따라 정렬 되지 않는 경우에 **만** 적합 합니다.
+
+이러한 경우 각 익스텐트가 제한 된 시간 범위에서 레코드를 포함 하 여 종료 되도록 익스텐트 간에 데이터를 재조정 하는 것이 유용할 수 있습니다. 이렇게 하면 쿼리 시 해당 열에 대 한 필터가 `datetime` 더 효과적일 수 있습니다.
 
 * 사용 된 파티션 함수는 [bin_at ()](../query/binatfunction.md) 되며 사용자 지정할 수 없습니다.
 
@@ -174,7 +179,7 @@ ms.locfileid: "86058833"
   * 이 속성은 선택 사항입니다. 기본값은 이며 `0` 기본 대상은 500만 레코드입니다.
     * 분할 작업에서 작업 당 매우 많은 양의 메모리 또는 CPU를 사용 하는 경우 5M 보다 낮은 값을 설정할 수 있습니다. 자세한 내용은 [Monitoring](#monitoring)을 참조 하세요.
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
@@ -198,7 +203,7 @@ ms.locfileid: "86058833"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들어:
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 .show commands 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6fa60c3c82a889d1161b30529586b225cee3efbd
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: e6b329380d507e93161415f51515656628564500
+ms.sourcegitcommit: bf2c9da0c23ebcaec19b229d2079032d54a2cc82
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83863281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86140545"
 ---
 # <a name="azure-data-explorer-data-ingestion-overview"></a>Azure 데이터 탐색기 데이터 수집 개요 
 
@@ -28,12 +28,11 @@ Azure 데이터 탐색기는 외부 소스에서 데이터를 가져오고 보�
 
 ## <a name="supported-data-formats-properties-and-permissions"></a>지원 되는 데이터 형식, 속성 및 사용 권한
 
-* **[지원되는 데이터 형식](ingestion-supported-formats.md)** 
+* **[지원 되는 데이터 형식](ingestion-supported-formats.md)** 
 
 * 수집 **[속성](ingestion-properties.md)**: 데이터를 수집 하는 방법에 영향을 주는 속성입니다 (예: 태깅, 매핑, 생성 시간).
 
 * **사용 권한**: 데이터를 수집 하려면 프로세스에 [database 수집기 level 권한이](kusto/management/access-control/role-based-authorization.md)필요 합니다. Query와 같은 다른 작업에는 데이터베이스 관리자, 데이터베이스 사용자 또는 테이블 관리자 권한이 필요할 수 있습니다.
-
 
 ## <a name="batching-vs-streaming-ingestion"></a>일괄 처리 및 스트리밍 수집
 
@@ -54,6 +53,12 @@ Azure 데이터 탐색기는 각각 고유한 대상 시나리오를 포함 하�
 * **[이벤트 허브](https://azure.microsoft.com/services/event-hubs/)**: 서비스에서 Azure 데이터 탐색기로 이벤트를 전송 하는 파이프라인입니다. 자세한 내용은 [이벤트 허브에서 Azure Data Explorer로 데이터 수집](ingest-data-event-hub.md)을 참조하세요.
 
 * **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: 지원 되는 IoT 장치에서 Azure 데이터 탐색기로 데이터를 전송 하는 데 사용 되는 파이프라인입니다. 자세한 내용은 [IoT Hub에서 수집](ingest-data-iot-hub.md)을 참조 하세요.
+
+* **Azure Data Factory (ADF)**: Azure의 분석 워크 로드에 대해 완전히 관리 되는 데이터 통합 서비스입니다. Azure Data Factory은 지원 되는 90 이상에 연결 하 여 효율적이 고 복원 력 있는 데이터 전송을 제공 합니다. ADF는 데이터를 준비, 변환 및 강화 하 여 다양 한 종류의 방식으로 모니터링할 수 있는 정보를 제공 합니다. 이 서비스는 정기적인 타임 라인에서 일회성 솔루션으로 사용 하거나 특정 이벤트에 의해 트리거될 수 있습니다. 
+  * [Azure 데이터 탐색기 Azure Data Factory와 통합](data-factory-integration.md)합니다.
+  * [Azure Data Factory를 사용 하 여 지원 되는 원본에서 Azure 데이터 탐색기로 데이터를 복사](/azure/data-explorer/data-factory-load-data)합니다.
+  * [Azure Data Factory 템플릿을 사용 하 여 데이터베이스에서 Azure 데이터 탐색기로 대량 복사](data-factory-template.md)합니다.
+  * [Azure Data Factory 명령 작업을 사용 하 여 Azure 데이터 탐색기 제어 명령을 실행](data-factory-command-activity.md)합니다.
 
 ### <a name="ingestion-using-connectors-and-plugins"></a>커넥터 및 플러그 인을 사용하여 수집
 
@@ -85,12 +90,6 @@ Azure 데이터 탐색기는 쿼리 및 데이터 수집에 사용할 수 있는
 
 ### <a name="tools"></a>도구
 
-* **Azure Data Factory (ADF)**: Azure의 분석 워크 로드에 대해 완전히 관리 되는 데이터 통합 서비스입니다. Azure Data Factory은 지원 되는 90 이상에 연결 하 여 효율적이 고 복원 력 있는 데이터 전송을 제공 합니다. ADF는 데이터를 준비, 변환 및 강화 하 여 다양 한 종류의 방식으로 모니터링할 수 있는 정보를 제공 합니다. 이 서비스는 정기적인 타임 라인에서 일회성 솔루션으로 사용 하거나 특정 이벤트에 의해 트리거될 수 있습니다. 
-  * [Azure 데이터 탐색기 Azure Data Factory와 통합](data-factory-integration.md)합니다.
-  * [Azure Data Factory를 사용 하 여 지원 되는 원본에서 Azure 데이터 탐색기로 데이터를 복사](/azure/data-explorer/data-factory-load-data)합니다.
-  * [Azure Data Factory 템플릿을 사용 하 여 데이터베이스에서 Azure 데이터 탐색기로 대량 복사](data-factory-template.md)합니다.
-  * [Azure Data Factory 명령 작업을 사용 하 여 Azure 데이터 탐색기 제어 명령을 실행](data-factory-command-activity.md)합니다.
-
 * **[한 번의 클릭](ingest-data-one-click.md)** 으로 수집: 광범위 한 소스 형식에서 테이블을 만들고 조정 하 여 데이터를 신속 하 게 수집할 수 있습니다. 한 번의 클릭으로 Azure 데이터 탐색기의 데이터 원본을 기반으로 테이블 및 매핑 구조를 자동으로 제안 합니다. 한 번의 클릭으로 한 번의 수집을 사용 하거나, 데이터를 수집 하는 컨테이너에 대 한 Event Grid를 통해 연속 수집을 정의할 수 있습니다.
 
 * **[LightIngest](lightingest.md)**: Azure 데이터 탐색기에 대 한 임시 데이터 수집을 위한 명령줄 유틸리티입니다. 유틸리티는 로컬 폴더 또는 Azure blob 저장소 컨테이너에서 원본 데이터를 끌어올 수 있습니다.
@@ -114,17 +113,17 @@ KQL (Kusto Query Language) 명령을 통해 데이터를 엔진에 직접 수집
 | [**ADX Kafka**](ingest-data-kafka.md) | | | | |
 | [**ADX to Apache Spark**](spark-connector.md) | | | | |
 | [**LogStash**](ingest-data-logstash.md) | | | | |
-| [**Azure 데이터 팩터리**](kusto/tools/azure-data-factory.md) | [지원되는 데이터 형식](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | 무제한 * (ADF 제한 당) | 일괄 처리 또는 ADF 별 트리거 | 일반적으로 지원 되지 않는 많은 파일 (일반적으로 지원 되지 않음)에서 perm의 원본에서 클라우드로 90 복사할 수 있는 형식을 지원 합니다. | 수집 시간 |
+| [**Azure 데이터 팩터리**](kusto/tools/azure-data-factory.md) | [지원 되는 데이터 형식](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | 무제한 * (ADF 제한 당) | 일괄 처리 또는 ADF 별 트리거 | 일반적으로 지원 되지 않는 많은 파일 (일반적으로 지원 되지 않음)에서 perm의 원본에서 클라우드로 90 복사할 수 있는 형식을 지원 합니다. | 수집 시간 |
 |[**Azure 데이터 흐름**](kusto/tools/flow.md) | | | | 흐름의 일부로 명령 수집| 높은 성능의 응답 시간이 있어야 합니다. |
-| [**IoT Hub**](kusto/management/data-ingestion/iothub.md) | [지원되는 데이터 형식](kusto/management/data-ingestion/iothub.md#data-format)  | 해당 없음 | 일괄 처리, 스트리밍 | Iot 메시지, iot 이벤트, IoT 속성 | |
-| [**이벤트 허브**](kusto/management/data-ingestion/eventhub.md) | [지원되는 데이터 형식](kusto/management/data-ingestion/eventhub.md#data-format) | 해당 없음 | 일괄 처리, 스트리밍 | 메시지, 이벤트 | |
-| [**Event Grid**](kusto/management/data-ingestion/eventgrid.md) | [지원되는 데이터 형식](kusto/management/data-ingestion/eventgrid.md#data-format) | 1gb 압축 되지 않음 | 일괄 처리 | Azure storage의 연속 수집, Azure storage의 외부 데이터 | 100 KB는 최적의 파일 크기 이며 blob 이름 바꾸기 및 blob 만들기에 사용 됩니다. |
+| [**IoT Hub**](kusto/management/data-ingestion/iothub.md) | [지원 되는 데이터 형식](kusto/management/data-ingestion/iothub.md#data-format)  | 해당 없음 | 일괄 처리, 스트리밍 | Iot 메시지, iot 이벤트, IoT 속성 | |
+| [**이벤트 허브**](kusto/management/data-ingestion/eventhub.md) | [지원 되는 데이터 형식](kusto/management/data-ingestion/eventhub.md#data-format) | 해당 없음 | 일괄 처리, 스트리밍 | 메시지, 이벤트 | |
+| [**Event Grid**](kusto/management/data-ingestion/eventgrid.md) | [지원 되는 데이터 형식](kusto/management/data-ingestion/eventgrid.md#data-format) | 1gb 압축 되지 않음 | 일괄 처리 | Azure storage의 연속 수집, Azure storage의 외부 데이터 | 100 KB는 최적의 파일 크기 이며 blob 이름 바꾸기 및 blob 만들기에 사용 됩니다. |
 | [**Net Std**](net-standard-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Python**](python-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
-| [**Node.js**](node-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조 | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
+| [**Node.JS**](node-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조 | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Java**](kusto/api/java/kusto-java-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**REST (영문)**](kusto/api/netfx/kusto-ingest-client-rest.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접| 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
-| [**Go**](kusto/api/golang/kusto-golang-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
+| [**으로**](kusto/api/golang/kusto-golang-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 
 > [!Note] 
 > 위의 표에서 참조 하는 경우 수집은 최대 파일 크기 5gb를 지원 합니다. 100MB에서 1GB 사이의 파일을 수집하는 것이 좋습니다.
@@ -160,5 +159,5 @@ KQL (Kusto Query Language) 명령을 통해 데이터를 엔진에 직접 수집
 
 ## <a name="next-steps"></a>다음 단계
 
-* [지원되는 데이터 형식](ingestion-supported-formats.md)
+* [지원 되는 데이터 형식](ingestion-supported-formats.md)
 * [지원 되는 수집 속성](ingestion-properties.md)

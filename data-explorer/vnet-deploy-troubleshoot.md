@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: bbbf120c0a24a7ed14bc558b7dcd739bf2cae595
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 49041ec72439d8f36b54ece5fcd341fa4ca873fc
+ms.sourcegitcommit: bcb87ed043aca7c322792c3a03ba0508026136b4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374267"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86127334"
 ---
 # <a name="troubleshoot-access-ingestion-and-operation-of-your-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터의 액세스, 수집 및 작업 문제 해결
 
@@ -85,6 +85,10 @@ ms.locfileid: "83374267"
 ## <a name="cluster-creation-and-operations-issues"></a>클러스터 만들기 및 작업 문제
 
 클러스터 만들기 또는 작업 문제가 발생 하 고 가상 네트워크 설치와 관련 된 것으로 의심 되는 경우 다음 단계에 따라 문제를 해결 하십시오.
+
+### <a name="check-the-dns-servers-configuration"></a>"DNS 서버" 구성 확인
+
+사용자 지정 DNS 서버는 지원 되지 않습니다. Virtual Network의 **DNS 서버** 구성 섹션에서 기본 옵션을 사용 합니다.
 
 ### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>REST API를 사용 하 여 가상 네트워크 진단
 

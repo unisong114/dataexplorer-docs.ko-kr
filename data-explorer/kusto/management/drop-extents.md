@@ -10,11 +10,12 @@ ms.topic: reference
 ms.date: 07/02/2020
 ms.openlocfilehash: dfa462ca82cd5e94adff77b3893b3b02d60c6cdc
 ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86060725"
 ---
-# <a name="drop-extents"></a>. 범위 삭제
+# <a name="drop-extents"></a>.drop extents
 
 지정 된 데이터베이스 또는 테이블에서 익스텐트를 삭제 합니다.
 
@@ -33,7 +34,7 @@ Kusto 쿼리를 사용 하 여 지정 된 Drop 익스텐트가 있습니다.
 
 을 사용 하는 경우 `whatif` 실제로 삭제 하지 않고만 보고 합니다.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>구문
 
 `.drop``extents`[ `whatif` ] <| *쿼리*
 
@@ -43,7 +44,7 @@ Kusto 쿼리를 사용 하 여 지정 된 Drop 익스텐트가 있습니다.
 
 테이블 이름을 지정 하지 않은 경우 [데이터베이스 관리자 권한이](../management/access-control/role-based-authorization.md) 필요 합니다.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>구문
 
 `.drop``extent` *ExtentId* [ `from` *TableName*]
 
@@ -53,7 +54,7 @@ Kusto 쿼리를 사용 하 여 지정 된 Drop 익스텐트가 있습니다.
 
 테이블 이름을 지정 하지 않은 경우 [데이터베이스 관리자 권한이](../management/access-control/role-based-authorization.md) 필요 합니다.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>구문
 
 `.drop``extents` `(` *ExtentId1* `,` ... *Extentidn* `)` [ `from` *TableName*]
 
@@ -65,7 +66,7 @@ Kusto 쿼리를 사용 하 여 지정 된 Drop 익스텐트가 있습니다.
 
 테이블 이름을 지정 하지 않은 경우 [데이터베이스 관리자 권한이](../management/access-control/role-based-authorization.md) 필요 합니다.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>구문
 
 `.drop``extents`[ `older` *N* ( `days`  |  `hours` )] `from` (*TableName*  |  `all` `tables` ) [ `trim` `by` ( `extentsize`  |  `datasize` ) *N* ( `MB`  |  `GB`  |  `bytes` )] [ `limit` *개수 개수*]
 
@@ -73,7 +74,7 @@ Kusto 쿼리를 사용 하 여 지정 된 Drop 익스텐트가 있습니다.
 * `trim`: 익스텐트의 합계가 필요한 크기 (MaxSize)와 일치할 때까지 작업에서 데이터베이스의 데이터를 자릅니다.
 * `limit`: 작업은 첫 번째 한도 *개수* 범위에 적용 됩니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="remove-all-extents-by-time-created"></a>만든 시간에 따라 모든 익스텐트 제거
 
@@ -108,7 +109,7 @@ Kusto 쿼리를 사용 하 여 지정 된 Drop 익스텐트가 있습니다.
 
 ## <a name="return-output"></a>반환 출력
 
-|출력 매개 변수 |형식 |설명 
+|출력 매개 변수 |Type |Description 
 |---|---|---
 |ExtentId |String |명령으로 인해 삭제 된 ExtentId
 |TableName |String |범위가 속한 테이블 이름  

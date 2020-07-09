@@ -10,6 +10,7 @@ ms.topic: reference
 ms.date: 07/02/2020
 ms.openlocfilehash: 00c4cfbb4b6415afcd68e8e41864ca4a68cc097e
 ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86060680"
@@ -26,7 +27,7 @@ ms.locfileid: "86060680"
 > 데이터 분할은 Kusto에서 **익스텐트에서** 호출 되며 모든 명령은 "익스텐트" 또는 "익스텐트"를 동의어로 사용 합니다.
 > 익스텐트에 대 한 자세한 내용은 [익스텐트 (데이터 분할) 개요](extents-overview.md)를 참조 하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `.alter`[ `async` ] `extent` `tags` `(` '*Tag1*' [ `,` '*Tag2*' `,` ... `,` ' *TagN*'] `)`  <|  *쿼리*
 
@@ -41,14 +42,14 @@ ms.locfileid: "86060680"
 
 ## <a name="return-output"></a>반환 출력
 
-|출력 매개 변수 |형식 |설명|
+|출력 매개 변수 |Type |Description|
 |---|---|---|
-|OriginalExtentId |string |태그가 수정 된 원래 익스텐트의 고유 식별자 (GUID)입니다. 익스텐트는 작업의 일부로 삭제 됩니다.|
-|ResultExtentId |string |수정 된 태그를 포함 하는 결과 범위에 대 한 고유 식별자 (GUID)입니다. 익스텐트를 만들어 작업의 일부로 추가 합니다. 오류가 발생 한 경우-"Failed".|
-|ResultExtentTags |string |결과 익스텐트가 태그가 지정 된 태그의 컬렉션 이거나, 작업이 실패 하는 경우에는 "null"입니다.|
-|설명 |string |작업이 실패 하는 경우 오류 세부 정보를 포함 합니다.|
+|OriginalExtentId |문자열 |태그가 수정 된 원래 익스텐트의 고유 식별자 (GUID)입니다. 익스텐트는 작업의 일부로 삭제 됩니다.|
+|ResultExtentId |문자열 |수정 된 태그를 포함 하는 결과 범위에 대 한 고유 식별자 (GUID)입니다. 익스텐트를 만들어 작업의 일부로 추가 합니다. 오류가 발생 한 경우-"Failed".|
+|ResultExtentTags |문자열 |결과 익스텐트가 태그가 지정 된 태그의 컬렉션 이거나, 작업이 실패 하는 경우에는 "null"입니다.|
+|세부 정보 |문자열 |작업이 실패 하는 경우 오류 세부 정보를 포함 합니다.|
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="alter-tags"></a>태그 변경 
 
@@ -68,7 +69,7 @@ ms.locfileid: "86060680"
 
 ## <a name="sample-output"></a>샘플 출력
 
-|OriginalExtentId |ResultExtentId | ResultExtentTags | 설명
+|OriginalExtentId |ResultExtentId | ResultExtentTags | 세부 정보
 |---|---|---|---
 |e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 | drop by: MyNewTag MyOtherNewTag| 
 |cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be | drop by: MyNewTag MyOtherNewTag| 
