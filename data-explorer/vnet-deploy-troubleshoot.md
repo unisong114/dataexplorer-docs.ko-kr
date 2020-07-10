@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 49041ec72439d8f36b54ece5fcd341fa4ca873fc
-ms.sourcegitcommit: bcb87ed043aca7c322792c3a03ba0508026136b4
+ms.openlocfilehash: 6eab8ab3097876c74cc6aaa9116c8923ca9fc3db
+ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86127334"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86188407"
 ---
 # <a name="troubleshoot-access-ingestion-and-operation-of-your-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터의 액세스, 수집 및 작업 문제 해결
 
@@ -28,43 +28,40 @@ ms.locfileid: "86127334"
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-   1. 클러스터에 연결 하는 컴퓨터에 [Tcping](https://www.elifulkerson.com/projects/tcping.php) 을 다운로드 합니다.
-   1. 다음 명령을 사용 하 여 원본 컴퓨터에서 대상에 대해 Ping을 수행 합니다.
+1. 클러스터에 연결 하는 컴퓨터에 [Tcping](https://www.elifulkerson.com/projects/tcping.php) 을 다운로드 합니다.
+1. 다음 명령을 사용 하 여 원본 컴퓨터에서 대상에 대해 Ping을 수행 합니다.
 
-    ```cmd
-     C:\> tcping -t yourcluster.kusto.windows.net 443 
-    
-     ** Pinging continuously.  Press control-c to stop **
-    
-     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-     ```
+   ```cmd
+   C:\> tcping -t yourcluster.kusto.windows.net 443 
+   ** Pinging continuously.  Press control-c to stop **
+   Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+   ```
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-   1. 클러스터에 연결 하는 컴퓨터에 *netcat* 설치
+1. 클러스터에 연결 하는 컴퓨터에 *netcat* 설치
 
-    ```bash
-    $ apt-get install netcat
-     ```
+   ```bash
+   $ apt-get install netcat
+   ```
 
-   1. 다음 명령을 사용 하 여 원본 컴퓨터에서 대상에 대해 Ping을 수행 합니다.
+1. 다음 명령을 사용 하 여 원본 컴퓨터에서 대상에 대해 Ping을 수행 합니다.
 
-     ```bash
-     $ netcat -z -v yourcluster.kusto.windows.net 443
-    
-     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-     ```
+   ```bash
+   $ netcat -z -v yourcluster.kusto.windows.net 443
+   Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+   ```
 ---
 
 테스트에 실패 하면 다음 단계를 진행 합니다. 테스트에 성공 하면 TCP 연결 문제로 인해 문제가 발생 하지 않습니다. 문제 해결을 위해 [운영 문제로](#cluster-creation-and-operations-issues) 이동 합니다.
 
 ### <a name="check-the-network-security-group-nsg"></a>NSG (네트워크 보안 그룹)를 확인 합니다.
 
-   클러스터의 서브넷에 연결 된 nsg ( [네트워크 보안 그룹](/azure/virtual-network/security-overview) )에 클라이언트 컴퓨터의 IP에서 포트 443에 대 한 액세스를 허용 하는 인바운드 규칙이 있는지 확인 합니다.
+클러스터의 서브넷에 연결 된 nsg ( [네트워크 보안 그룹](/azure/virtual-network/security-overview) )에 클라이언트 컴퓨터의 IP에서 포트 443에 대 한 액세스를 허용 하는 인바운드 규칙이 있는지 확인 합니다.
 
 ### <a name="check-route-table"></a>경로 테이블 확인
 
-   클러스터의 서브넷에서 방화벽 (기본 경로 ' 0.0.0.0/0 '을 포함 하는 [경로 테이블](/azure/virtual-network/virtual-networks-udr-overview) 을 포함 하는 서브넷)에 강제 터널링을 설정 하는 경우 컴퓨터 IP 주소에 [다음 홉 유형이](/azure/virtual-network/virtual-networks-udr-overview) VirtualNetwork/Internet 인 경로가 있는지 확인 합니다. 이 경로는 비대칭 경로 문제를 방지 하는 데 필요 합니다.
+클러스터의 서브넷에서 방화벽 (기본 경로 ' 0.0.0.0/0 '을 포함 하는 [경로 테이블](/azure/virtual-network/virtual-networks-udr-overview) 을 포함 하는 서브넷)에 강제 터널링을 설정 하는 경우 컴퓨터 IP 주소에 [다음 홉 유형이](/azure/virtual-network/virtual-networks-udr-overview) VirtualNetwork/Internet 인 경로가 있는지 확인 합니다. 이 경로는 비대칭 경로 문제를 방지 하는 데 필요 합니다.
 
 ## <a name="ingestion-issues"></a>수집 문제
 

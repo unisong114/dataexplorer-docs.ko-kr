@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/29/2019
-ms.openlocfilehash: b454b9453c7afd0835041ac78d13318de73432e2
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: 6804b71ff3985de17460dddfa60f081f3bb910c0
+ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382073"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86188424"
 ---
 # <a name="using-the-net-client-libraries-from-powershell"></a>PowerShell에서 .NET 클라이언트 라이브러리 사용
 
@@ -24,9 +24,10 @@ Powershell 스크립트는 powershell이 아닌 임의의 (PowerShell) .NET 라�
 PowerShell을 사용 하 여 Azure 데이터 탐색기 .NET 클라이언트 라이브러리 작업을 시작 합니다.
 
 1. [ `Microsoft.Azure.Kusto.Tools` NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)를 다운로드 합니다.
+    * Powershell 7 이상을 사용 하는 경우 [ `Microsoft.Azure.Kusto.Tools.NETCore` NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/)를 다운로드 합니다.
 1. 패키지에서 ' tools ' 디렉터리의 콘텐츠를 추출 합니다 (와 같은 보관 도구 사용 `7-zip` ).
 1. `[System.Reflection.Assembly]::LoadFrom("path")`PowerShell에서를 호출 하 여 필요한 라이브러리를 로드 합니다. 
-    - `path`명령의 매개 변수는 추출 된 파일의 위치를 나타내야 합니다.
+    * `path`명령의 매개 변수는 추출 된 파일의 위치를 나타내야 합니다.
 1. 모든 종속 .NET 어셈블리가 로드 되 면 다음을 수행 합니다.
    1. Kusto 연결 문자열을 만듭니다.
    1. *쿼리 공급자나* *관리 공급자*를 인스턴스화합니다.
@@ -65,6 +66,10 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 #     $applicationKey = "application key goes here"
 #     $authority = "authority goes here"
 #     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
+#
+#   NOTE: if you're running with Powershell 7 (or above) and the .NET Core library,
+#         AAD user authentication with prompt will not work, and you should choose
+#         a different authentication method.
 ```
 
 ### <a name="example-running-an-admin-command"></a>예: 관리 명령 실행
@@ -107,7 +112,7 @@ $dataView | Sort StartTime -Descending | Format-Table -AutoSize
 
 출력은 다음과 같습니다.
 
-|StartTime           |EndTime             |EpisodeID |EventID |State          |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
+|StartTime           |EndTime             |EpisodeID |EventID |시스템 상태          |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
 |---------           |-------             |--------- |------- |-----          |---------         |-------------- |---------------- |------------ |--------------
 |2007-12-30 16:00:00 |2007-12-30 16:05:00 |    11749 |  64588 |그루지야        |뇌우를 동반한 바람 |             0 |               0 |           0 |             0
 |2007-12-20 07:50:00 |2007-12-20 07:53:00 |    12554 |  68796 |MISSISSIPPI    |뇌우를 동반한 바람 |             0 |               0 |           0 |             0

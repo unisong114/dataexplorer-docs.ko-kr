@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 3daf9f5af46338a450a1f1a4e9c80a6c83841343
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: aa5aa5c2c370cc56487a242b9c13ef4692295cdc
+ms.sourcegitcommit: 67cb5aabd8100bf3f41e70fc23c338b998b5227e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374014"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86208429"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>Azure 데이터 탐색기에서 클러스터 보안 설정-Azure Portal
 
@@ -32,6 +32,10 @@ ms.locfileid: "83374014"
  
 > [!NOTE]
 > 사용 하도록 설정 된 후 암호화를 사용 하지 않도록 설정 하려면 **해제** 를 선택 합니다.
+
+## <a name="azure-data-explorer-stores-data-within-a-region"></a>Azure 데이터 탐색기는 지역 내에 데이터를 저장 합니다.
+
+모든 Azure 데이터 탐색기 클러스터는 단일 지역의 전용 리소스에서 실행 됩니다. 모든 데이터는 지역 내에 저장 됩니다. 
 
 ## <a name="next-steps"></a>다음 단계
 

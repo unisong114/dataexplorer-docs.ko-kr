@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 5505eca4435521ea82c347bcd204ff3d68a14176
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 7403ac66357f796804ab481f1b566a7373364ac2
+ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862125"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86188577"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -35,9 +35,9 @@ Azure 데이터 탐색기는 VNet (Virtual Network)의 서브넷에 클러스터
 
 서비스에 액세스 하기 위해 생성 되는 DNS 레코드는 다음과 같습니다. 
 
-* `[clustername].[geo-region].kusto.windows.net`엔진 `ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 공용 IP에 매핑됩니다. 
+* `[clustername].[geo-region].kusto.windows.net`(엔진) `ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 공용 IP에 매핑됩니다. 
 
-* `private-[clustername].[geo-region].kusto.windows.net`엔진 `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 개인 IP에 매핑됩니다.
+* `private-[clustername].[geo-region].kusto.windows.net`(엔진) `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 개인 IP에 매핑됩니다.
 
 ## <a name="plan-subnet-size-in-your-vnet"></a>VNet에서 서브넷 크기를 계획 합니다.
 
@@ -45,13 +45,13 @@ Azure 데이터 탐색기 클러스터를 호스트 하는 데 사용 되는 서
 
 총 IP 주소 수:
 
-| 기능 | 주소 수 |
+| 용도 | 주소 수 |
 | --- | --- |
 | 엔진 서비스 | 인스턴스당 1 개 |
 | 데이터 관리 서비스 | 2 |
 | 내부 부하 분산 장치 | 2 |
 | Azure 예약 주소 | 5 |
-| **개수** | **#engine_instances + 9** |
+| **합계** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Azure 데이터 탐색기 배포 된 후에는 서브넷 크기를 변경할 수 없으므로 미리 계획 해야 합니다. 따라서 필요에 따라 서브넷 크기를 예약 합니다.
@@ -68,11 +68,11 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 ### <a name="network-security-groups-configuration"></a>네트워크 보안 그룹 구성
 
-[NSG (네트워크 보안 그룹)](/azure/virtual-network/security-overview) 는 VNet 내에서 네트워크 액세스를 제어 하는 기능을 제공 합니다. Azure 데이터 탐색기는 HTTPs (443) 및 TDS (1433) 라는 두 개의 끝점을 사용 하 여 액세스할 수 있습니다. 클러스터의 관리, 모니터링 및 적절 한 작업을 수행 하기 위해 이러한 끝점에 대 한 액세스를 허용 하도록 다음 NSG 규칙을 구성 해야 합니다.
+[NSG (네트워크 보안 그룹)](/azure/virtual-network/security-overview) 는 VNet 내에서 네트워크 액세스를 제어 하는 기능을 제공 합니다. Azure 데이터 탐색기는 HTTPs (443) 및 TDS (1433) 라는 두 개의 끝점을 사용 하 여 액세스할 수 있습니다. 클러스터의 관리, 모니터링 및 적절 한 작업을 수행 하기 위해 이러한 끝점에 대 한 액세스를 허용 하도록 다음 NSG 규칙을 구성 해야 합니다. 추가 규칙은 보안 지침에 따라 달라 집니다.
 
 #### <a name="inbound-nsg-configuration"></a>인바운드 NSG 구성
 
-| **사용**   | **From**   | **받는 사람**   | **프로토콜**   |
+| **사용**   | **From**   | **수행할 작업**   | **프로토콜**   |
 | --- | --- | --- | --- |
 | 관리  |[Adx management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (servicetag) | ADX 서브넷: 443  | TCP  |
 | 상태 모니터링  | [ADX 상태 모니터링 주소](#health-monitoring-addresses)  | ADX 서브넷: 443  | TCP  |
@@ -81,7 +81,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 #### <a name="outbound-nsg-configuration"></a>아웃 바운드 NSG 구성
 
-| **사용**   | **From**   | **받는 사람**   | **프로토콜**   |
+| **사용**   | **From**   | **수행할 작업**   | **프로토콜**   |
 | --- | --- | --- | --- |
 | Azure Storage에 대한 종속성  | ADX 서브넷  | 저장소: 443  | TCP  |
 | Azure Data Lake에 대 한 종속성  | ADX 서브넷  | AzureDataLake: 443  | TCP  |
@@ -91,7 +91,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | Active Directory (해당 하는 경우) | ADX 서브넷 | AzureActiveDirectory: 443 | TCP |
 | 인증 기관 | ADX 서브넷 | 인터넷: 80 | TCP |
 | 내부 통신  | ADX 서브넷  | ADX 서브넷: 모든 포트  | 모두  |
-| 및 `sql\_request` `http\_request` 플러그 인에 사용 되는 포트  | ADX 서브넷  | 인터넷: 사용자 지정  | TCP  |
+| `sql\_request`및 플러그 인에 사용 되는 포트 `http\_request`  | ADX 서브넷  | 인터넷: 사용자 지정  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>관련 IP 주소
 
@@ -127,14 +127,14 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 미국 중북부 | 40.81.45.254 |
 | 북유럽 | 52.142.91.221 |
 | 남아프리카 북부 | 102.133.129.138 |
-| 남아프리카 공화국 서 부 | 102.133.0.97 |
+| 남아프리카 공화국 서부 | 102.133.0.97 |
 | 미국 중남부 | 20.45.3.60 |
-| 동남아시아 | 40.119.203.252 |
+| 동남 아시아 | 40.119.203.252 |
 | 인도 남부 | 40.81.72.110, 104.211.224.189 |
 | 영국 남부 | 40.81.154.254 |
 | 영국 서부 | 40.81.122.39 |
-| USDoD Central | 52.182.33.66 |
-| USDoD 동부 | 52.181.33.69 |
+| 미국 국방부 중부 | 52.182.33.66 |
+| 미국 국방부 동부 | 52.181.33.69 |
 | USGov 애리조나 | 52.244.33.193 |
 | USGov 텍사스 | 52.243.157.34 |
 | USGov 버지니아 | 52.227.228.88 |
@@ -176,11 +176,11 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 남아프리카 공화국 서 부 | 104.211.224.189 |
 | 미국 중남부 | 23.98.145.105 |
 | 인도 남부 | 23.99.5.162 |
-| 동남아시아 | 168.63.173.234 |
+| 동남 아시아 | 168.63.173.234 |
 | 영국 남부 | 23.97.212.5 |
 | 영국 서부 | 23.97.212.5 |
-| USDoD Central | 52.238.116.34 |
-| USDoD 동부 | 52.238.116.34 |
+| 미국 국방부 중부 | 52.238.116.34 |
+| 미국 국방부 동부 | 52.238.116.34 |
 | USGov 애리조나 | 52.244.48.35 |
 | USGov 텍사스 | 52.238.116.34 |
 | USGov 버지니아 | 23.97.0.26 |
@@ -220,7 +220,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 남아프리카 공화국 서 부 | 13.71.25.187 |
 | 미국 중남부 | 13.84.173.99 |
 | 인도 남부 | 13.71.25.187 |
-| 동남아시아 | 52.148.86.165 |
+| 동남 아시아 | 52.148.86.165 |
 | 영국 남부 | 52.174.4.112 |
 | 영국 서부 | 52.169.237.246 |
 | 미국 중서부 | 52.161.31.69 |
@@ -228,6 +228,18 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 인도 서부 | 13.71.25.187 |
 | 미국 서부 | 40.78.70.148 |
 | 미국 서부 2 | 52.151.20.103 |
+
+## <a name="disable-access-to-azure-data-explorer-from-the-public-ip"></a>공용 IP에서 Azure 데이터 탐색기에 대 한 액세스 사용 안 함
+
+공용 IP 주소를 통해 Azure 데이터 탐색기에 대 한 액세스를 완전히 사용 하지 않도록 설정 하려면 NSG에서 다른 인바운드 규칙을 만듭니다. 이 규칙은 낮은 [우선 순위](/azure/virtual-network/security-overview#security-rules) (높은 숫자)를 가져야 합니다. 
+
+| **사용**   | **소스** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **동작** | * * 우선 순위 * * |
+| ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | Deny | 위의 규칙 보다 높은 값 |
+
+이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
+* `private-[clustername].[geo-region].kusto.windows.net`엔진
+* `private-ingest-[clustername].[geo-region].kusto.windows.net`(데이터 관리)
 
 ## <a name="expressroute-setup"></a>Express 경로 설정
 
@@ -268,7 +280,7 @@ crl3.digicert.com:80
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| Name | 주소 접두사 | 다음 홉 |
+| 이름 | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |
