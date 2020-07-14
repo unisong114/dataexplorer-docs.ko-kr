@@ -50,6 +50,8 @@
           href: security.md
         - name: 보안 기준
           href: security-baseline.md
+    - name: 도구 및 통합 개요
+      href: tools-integrations-overview.md
 - name: 방법 가이드
   items:
     - name: 클러스터 및 데이터베이스 만들기
@@ -110,14 +112,24 @@
               href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager 템플릿
               href: data-connection-iot-hub-resource-manager.md
+            - name: Azure 데이터 팩터리
+              items: null
+            - name: Data Factory와 통합
+              href: data-factory-integration.md
+            - name: Azure Data Factory를 사용하여 데이터 복사
+              href: data-factory-load-data.md
+            - name: Azure Data Factory 템플릿을 사용하여 데이터 대량 복사
+              href: data-factory-template.md
+            - name: Azure Data Factory를 사용하여 제어 명령 실행
+              href: data-factory-command-activity.md
         - name: SDK 사용
           items:
             - name: Python
               href: python-ingest-data.md
             - name: Node SDK
               href: node-ingest-data.md
-            - name: .NET Standard SDK
-              href: net-standard-ingest-data.md
+            - name: .NET SDK
+              href: net-sdk-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
         - name: Logstash
@@ -273,16 +285,6 @@
           href: follower.md
     - name: 다른 도구와 통합
       items:
-        - name: Azure 데이터 팩터리
-          items:
-            - name: Data Factory와 통합
-              href: data-factory-integration.md
-            - name: Azure Data Factory를 사용하여 데이터 복사
-              href: data-factory-load-data.md
-            - name: Azure Data Factory 템플릿을 사용하여 데이터 대량 복사
-              href: data-factory-template.md
-            - name: Azure Data Factory를 사용하여 제어 명령 실행
-              href: data-factory-command-activity.md
         - name: Power Automate
           items:
             - name: Power Automate 흐름 커넥터
@@ -303,6 +305,8 @@
           href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
+        - name: Kusto 동기화
+          href: ./kusto/tools/synckusto.md
     - name: 문제 해결
       items:
         - name: 클러스터 만들기
@@ -1189,6 +1193,28 @@
               href: ./kusto/query/re2.md
             - name: SQL 대 Kusto 참고 자료
               href: ./kusto/query/sqlcheatsheet.md
+        - name: 쿼리 도구
+          items:
+            - name: Kusto.Explorer
+              items:
+                - name: Kusto.Explorer 설치 및 사용자 인터페이스
+                  href: ./kusto/tools/kusto-explorer.md
+                - name: Kusto.Explorer 사용
+                  href: ./kusto/tools/kusto-explorer-using.md
+                - name: Kusto.Explorer 옵션
+                  href: ./kusto/tools/kusto-explorer-options.md
+                - name: 바로 가기 키
+                  href: ./kusto/tools/kusto-explorer-shortcuts.md
+                - name: 코드 리팩터링
+                  href: ./kusto/tools/kusto-explorer-refactor.md
+                - name: 코드 탐색
+                  href: ./kusto/tools/kusto-explorer-codenav.md
+                - name: 코드 분석기
+                  href: ./kusto/tools/kusto-explorer-code-analyzer.md
+                - name: Kusto.Explorer 문제 해결
+                  href: ./kusto/tools/kusto-explorer-troubleshooting.md
+            - name: Kusto.Cli
+              href: ./kusto/tools/kusto-cli.md
     - name: 개념
       href: ./kusto/concepts/index.md
       items:
@@ -1578,8 +1604,6 @@
                   href: ./kusto/api/netfx/kusto-ingest-best-practices.md
                 - name: 코드 샘플
                   href: ./kusto/api/netfx/kusto-ingest-client-examples.md
-                - name: 데이터 수집 방법
-                  href: ./kusto/api/netfx/kusto-ingest-queued-ingest-sample.md
                 - name: REST API를 사용한 데이터 수집 방법
                   href: ./kusto/api/netfx/kusto-ingest-client-rest.md
         - name: Python SDK
@@ -1612,79 +1636,6 @@
               href: ./kusto/api/monaco/monaco-kusto.md
             - name: iFrame에 웹 UX 포함
               href: ./kusto/api/monaco/host-web-ux-in-iframe.md
-    - name: 도구
-      href: ./kusto/tools/index.md
-      items:
-        - name: 도구 개요
-          href: ./kusto/tools/index.md
-        - name: 임시 쿼리
-          items:
-            - name: Kusto.Explorer
-              items:
-                - name: Kusto.Explorer 설치 및 사용자 인터페이스
-                  href: ./kusto/tools/kusto-explorer.md
-                - name: Kusto.Explorer 사용
-                  href: ./kusto/tools/kusto-explorer-using.md
-                - name: Kusto.Explorer 옵션
-                  href: ./kusto/tools/kusto-explorer-options.md
-                - name: 바로 가기 키
-                  href: ./kusto/tools/kusto-explorer-shortcuts.md
-                - name: 코드 리팩터링
-                  href: ./kusto/tools/kusto-explorer-refactor.md
-                - name: 코드 탐색
-                  href: ./kusto/tools/kusto-explorer-codenav.md
-                - name: 코드 분석기
-                  href: ./kusto/tools/kusto-explorer-code-analyzer.md
-                - name: Kusto.Explorer 문제 해결
-                  href: ./kusto/tools/kusto-explorer-troubleshooting.md
-            - name: 웹 UI
-              href: ./web-query-data.md
-            - name: Kusto.Cli
-              href: ./kusto/tools/kusto-cli.md
-        - name: '시각화, 대시보드 및 보고'
-          items:
-            - name: Azure Notebooks
-              href: ./azure-notebooks.md
-            - name: Excel
-              items:
-                - name: Excel 빈 쿼리
-                  href: ./excel-blank-query.md
-                - name: Excel 커넥터
-                  href: ./excel-connector.md
-            - name: Grafana
-              href: ./grafana.md
-            - name: Power BI
-              items:
-                - name: Power BI 모범 사례
-                  href: ./power-bi-best-practices.md
-                - name: Power BI 커넥터
-                  href: ./power-bi-connector.md
-                - name: 가져온 Power BI 쿼리
-                  href: ./power-bi-imported-query.md
-                - name: Power BI SQL 쿼리
-                  href: ./power-bi-sql-query.md
-        - name: 오케스트레이션
-          items:
-            - name: Microsoft Flow(미리 보기)
-              items:
-                - name: Microsoft Flow 커넥터
-                  href: ./flow.md
-                - name: Microsoft Flow 커넥터 사용 예
-                  href: ./flow-usage.md
-            - name: Microsoft Logic Apps(미리 보기)
-              href: ./kusto/tools/logicapps.md
-        - name: 데이터 수집
-          items:
-            - name: LightIngest
-              href: ./lightingest.md
-            - name: Apache Spark 커넥터
-              href: ./spark-connector.md
-        - name: 소스 제어 통합
-          items:
-            - name: Kusto 동기화
-              href: ./kusto/tools/synckusto.md
-            - name: Azure Pipelines/DevOps
-              href: ./devops.md
 - name: 리소스
   items:
     - name: 블로그

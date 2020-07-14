@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6c09bea9cfe25ea7ebe86170f71593db4db7d9a2
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: a1382703c4c70263ff0d8a066860071fd07ef179
+ms.sourcegitcommit: bf2c9da0c23ebcaec19b229d2079032d54a2cc82
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86140496"
 ---
 # <a name="getting-started-with-kusto"></a>Kusto 시작
 
@@ -33,7 +33,7 @@ Azure Data Explorer는 빅 데이터에 대한 대화형 분석을 저장하고 
 ## <a name="interacting-with-azure-data-explorer"></a>Azure Data Explorer와 상호 작용
 
 사용자가 Azure Data Explorer(Kusto)와 상호 작용하는 주요 방법:
-* 사용 가능한 여러 [클라이언트 도구](../tools/index.md) 중 하나를 사용합니다. 
+* [쿼리 도구](../../tools-integrations-overview.md#azure-data-explorer-query-tools) 중 하나를 사용합니다. 
 * [SQL 쿼리](../api/tds/t-sql.md).
 *  [Kusto 쿼리 언어](../query/index.md)는 기본적인 상호 작용 수단입니다. KQL을 사용하면 데이터 쿼리를 보내고 [제어 명령](../management/index.md)을 사용하여 엔터티를 관리하고 메타데이터를 검색하는 등의 작업을 수행할 수 있습니다.
 쿼리와 제어 명령은 둘 다 짧은 텍스트 "프로그램"입니다.

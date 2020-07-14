@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 66118ad7b91d1bcfdd52679d4bfa3dc5ebc4c281
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: bda9afdda9d922df6188a3b9170aa4d4926f8ca3
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780238"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280421"
 ---
 # <a name="streaming-ingestion-preview"></a>스트리밍 수집 (미리 보기)
 
@@ -20,7 +20,7 @@ ms.locfileid: "84780238"
 
 데이터 양이 테이블당 시간당 4gb 이상으로 증가 하는 경우 스트리밍 수집 대신 대량 수집을 사용 합니다. 수집의 다양 한 방법에 대 한 자세한 내용은 [데이터 수집 개요](ingest-data-overview.md) 를 참조 하세요.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [웹 UI](https://dataexplorer.azure.com/)에 로그인 합니다.
@@ -71,7 +71,7 @@ ms.locfileid: "84780238"
 
 ## <a name="limitations"></a>제한 사항
 
-* 데이터베이스 자체 또는 해당 테이블에 [스트리밍 수집 정책이](kusto/management/streamingingestionpolicy.md) 정의 되 고 사용 하도록 설정 된 경우 데이터베이스 [커서](kusto/management/databasecursor.md) 는 데이터베이스에 대해 지원 되지 않습니다.
+* 데이터베이스 자체 또는 해당 테이블에 [스트리밍 수집 정책이](kusto/management/streamingingestionpolicy.md) 정의 되 고 사용 되는 경우 데이터베이스 [커서](kusto/management/databasecursor.md) 는 데이터베이스에 대해 지원 되지 않습니다. 이 경우 연속 내보내기가 지원 되지 않으며 업데이트 정책은 원본 테이블의 쿼리로만 제한 됩니다.
 * 스트리밍 수집에 사용할 [데이터 매핑을](kusto/management/mappings.md) [미리 만들어야](kusto/management/create-ingestion-mapping-command.md) 합니다. 개별 스트리밍 수집 요청은 인라인 데이터 매핑을 허용 하지 않습니다.
 * VM 및 클러스터 크기를 늘려 스트리밍 수집 성능 및 용량을 확장 합니다. 동시 수집 요청 수는 코어 당 6 개로 제한 됩니다. 예를 들어 D14 및 L16와 같은 16 개 코어 Sku의 경우 지원 되는 최대 부하는 동시 수집 요청 96입니다. 코어 2와 같은 두 코어 Sku의 경우 지원 되는 최대 부하는 12 개의 동시 수집 요청입니다.
 * 스트리밍 수집 요청에 대 한 데이터 크기 제한은 4mb입니다.

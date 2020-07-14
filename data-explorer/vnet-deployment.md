@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 7403ac66357f796804ab481f1b566a7373364ac2
-ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
+ms.openlocfilehash: dcc196675b29ac1989fb0753e87ef5f1bf0477aa
+ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86188577"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86291579"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -112,8 +112,8 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 인도 중부 | 40.81.249.251, 104.211.98.159 |
 | 미국 중부 | 40.67.188.68 |
 | 미국 중부 EUAP | 40.89.56.69 |
-| 중국 동부 2 | 139.217.236.210 |
-| 중국 북부 2 | 40.73.6.21 |
+| 중국 동부 2 | 139.217.184.92 |
+| 중국 북부 2 | 139.217.60.6 |
 | 동아시아 | 20.189.74.103 |
 | 미국 동부 | 52.224.146.56 |
 | 미국 동부2 | 52.232.230.201 |
@@ -235,7 +235,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 | **사용**   | **소스** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **동작** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | Deny | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
 * `private-[clustername].[geo-region].kusto.windows.net`엔진

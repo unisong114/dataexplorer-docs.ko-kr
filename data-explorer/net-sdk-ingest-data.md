@@ -7,12 +7,12 @@ ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: f1a7167b36be66b145c51b2eeca8b8fe057f1b6a
-ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
+ms.openlocfilehash: 7b26d0585e4d6bc2ff8edfb9a906dd305278f967
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86195410"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280619"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-sdk"></a>Azure 데이터 탐색기 .NET SDK를 사용 하 여 데이터 수집 
 
@@ -182,7 +182,10 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="queue-a-message-for-ingestion"></a>수집을 위해 메시지를 큐에 넣음
 
-Blob Storage에서 데이터를 끌어온 후 Azure 데이터 탐색기에 수집하기 위해 메시지를 큐에 넣습니다. Azure 데이터 탐색기 클러스터의 데이터 수집 끝점에 대 한 연결이 설정 되 고, 다른 클라이언트가 해당 끝점을 사용 하도록 만들어집니다. 이전 섹션에서와 동일한 지침이 적용 됩니다.
+Blob Storage에서 데이터를 끌어온 후 Azure 데이터 탐색기에 수집하기 위해 메시지를 큐에 넣습니다. Azure 데이터 탐색기 클러스터의 데이터 수집 끝점에 대 한 연결이 설정 되 고, 다른 클라이언트가 해당 끝점을 사용 하도록 만들어집니다. 
+
+> [!TIP]
+> 다음 코드 조각에서는 거의 모든 호출에 대해 클라이언트의 인스턴스를 만듭니다. 이 작업은 각 조각을 개별적으로 실행할 수 있도록 하기 위한 것입니다. 프로덕션에서 클라이언트 인스턴스는 재진입 이며 필요에 따라 유지 해야 합니다. 여러 데이터베이스로 작업 하는 경우에도 URI 당 단일 클라이언트 인스턴스도 충분 합니다. 데이터베이스는 명령 수준에서 지정 될 수 있습니다.
 
 ```csharp
 var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net";
