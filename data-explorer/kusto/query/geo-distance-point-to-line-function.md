@@ -8,12 +8,12 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
-ms.openlocfilehash: 304b40a00fd471b7735ff11c01bdaa8b6ca3a8ec
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: b4a30aa4285b8f6e22e5d4057fe7d408d548a27b
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227467"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280560"
 ---
 # <a name="geo_distance_point_to_line"></a>geo_distance_point_to_line()
 
@@ -35,7 +35,8 @@ ms.locfileid: "83227467"
 
 > [!NOTE]
 > * 지리 공간적 좌표는 [Wgs-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) 좌표 참조 시스템으로 표현 되는 것으로 해석 됩니다.
-> * 지구 거리를 측정 하는 데 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구입니다. 구에는 선 가장자리가 geodesics 됩니다.
+> * 지구 거리를 측정 하는 데 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구입니다. 구에는 선 가장자리가 [geodesics](https://en.wikipedia.org/wiki/Geodesic) 됩니다.
+> * 입력 선 가장자리가 직선이 면 [geo_line_densify ()](geo-line-densify-function.md) 를 사용 하 여 평면 가장자리를 geodesics으로 변환 하는 것이 좋습니다.
 
 **LineString 정의 및 제약 조건**
 

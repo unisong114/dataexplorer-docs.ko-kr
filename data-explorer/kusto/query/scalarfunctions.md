@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
-ms.openlocfilehash: c8733a9aaa1dbdfa504961cfc3676cd813d69952
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 3b3f72bc2ea6b3b17cbdb6d4fb707b9837a2ed56
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763736"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280605"
 ---
 # <a name="scalar-function-types"></a>스칼라 함수 유형
 
@@ -98,7 +98,7 @@ ms.locfileid: "85763736"
 
 |함수 이름     |설명                                          |
 |-------------------------|--------------------------------------------------------|
-|[next()](nextfunction.md)|Serialize 된 행 집합의 경우 오프셋에 따라 이후 행에서 지정 된 열의 값을 반환 합니다.|
+|[다음 ()](nextfunction.md)|Serialize 된 행 집합의 경우 오프셋에 따라 이후 행에서 지정 된 열의 값을 반환 합니다.|
 |[prev()](prevfunction.md)|Serialize 된 행 집합의 경우 오프셋에 따라 이전 행에서 지정 된 열의 값을 반환 합니다.|
 |[row_cumsum()](rowcumsumfunction.md)|열의 누적 합계를 계산 합니다.|
 |[row_number()](rownumberfunction.md)|지정 된 인덱스에서 시작 하 여 직렬화 된 행 집합에서 연속 하는 행의 수를 반환 하거나, 기본적으로 1을 반환 합니다.|
@@ -113,7 +113,7 @@ ms.locfileid: "85763736"
 
 |함수 이름     |설명                                          |
 |-------------------------|--------------------------------------------------------|
-|[abs ()](abs-function.md)|입력의 절대값을 계산 합니다.|
+|[abs()](abs-function.md)|입력의 절대값을 계산 합니다.|
 |[acos()](acosfunction.md)|코사인이 지정 된 숫자 (cos ()의 역 연산) 인 각도를 반환 합니다.|
 |[asin()](asinfunction.md)|사인이 지정 된 숫자 (sin ()의 역 연산) 인 각도를 반환 합니다.|
 |[atan()](atanfunction.md)|탄젠트가 지정 된 숫자 (tan ()의 역 연산) 인 각도를 반환 합니다.|
@@ -124,14 +124,14 @@ ms.locfileid: "85763736"
 |[cos()](cosfunction.md)|코사인 함수를 반환 합니다.|
 |[cot()](cotfunction.md)|지정 된 각도의 삼각 코탄젠트를 라디안으로 계산 합니다.|
 |[degrees()](degreesfunction.md)|수식도 = (180/PI) * 각도 단위를 사용 하 여 라디안의 각도 값을도 값으로 변환 합니다.|
-|[exp ()](exp-function.md)|X의 밑이 e 인 지 수 함수 이며 e는 거듭제곱 x: e ^ x입니다.|
+|[exp()](exp-function.md)|X의 밑이 e 인 지 수 함수 이며 e는 거듭제곱 x: e ^ x입니다.|
 |[exp10()](exp10-function.md)|X의 밑이 10 인 지 수 함수 이며, 10은 거듭제곱 x: 10 ^ x에 발생 합니다.|
 |[exp2()](exp2-function.md)|X의 밑이 2 인 지 수 함수 이며, 2는 거듭제곱 x: 2 ^ x입니다.|
 |[gamma()](gammafunction.md)|감마 함수를 계산 합니다.|
 |[isfinite()](isfinitefunction.md)|입력이 유한 값 (무한 또는 NaN) 인지 여부를 반환 합니다.|
 |[isinf()](isinffunction.md)|입력이 무한 (양수 또는 음수) 값 인지 여부를 반환 합니다.|
 |[isnan()](isnanfunction.md)|입력이 NaN (숫자가 아님) 값 인지 여부를 반환 합니다.|
-|[log ()](log-function.md)|자연 로그 함수를 반환 합니다.|
+|[log()](log-function.md)|자연 로그 함수를 반환 합니다.|
 |[log10()](log10-function.md)|일반 (밑수 10) 로그 함수를 반환 합니다.|
 |[log2()](log2-function.md)|밑이 2 인 로그 함수를 반환 합니다.|
 |[loggamma()](loggammafunction.md)|감마 함수의 절대값 로그를 계산 합니다.|
@@ -140,11 +140,11 @@ ms.locfileid: "85763736"
 |[pow()](powfunction.md)|거듭제곱 한 결과를 반환 합니다.|
 |[radians()](radiansfunction.md)|각도 단위 = (PI/180) * 각도 단위를 사용 하 여 각도의 각도 값을 라디안으로 값으로 변환 합니다.|
 |[rand()](randfunction.md)|난수를 반환 합니다.|
-|[range ()](rangefunction.md)|간격이 동일한 일련의 값을 포함 하는 동적 배열을 생성 합니다.|
-|[round ()](roundfunction.md)|지정 된 전체 자릿수로 반올림 된 원본을 반환 합니다.|
-|[sign ()](signfunction.md)|숫자 식의 부호입니다.|
+|[range()](rangefunction.md)|간격이 동일한 일련의 값을 포함 하는 동적 배열을 생성 합니다.|
+|[round()](roundfunction.md)|지정 된 전체 자릿수로 반올림 된 원본을 반환 합니다.|
+|[sign()](signfunction.md)|숫자 식의 부호입니다.|
 |[sin()](sinfunction.md)|사인 함수를 반환 합니다.|
-|[sqrt ()](sqrtfunction.md)|제곱근 함수를 반환 합니다.|
+|[sqrt()](sqrtfunction.md)|제곱근 함수를 반환 합니다.|
 |[tan()](tanfunction.md)|탄젠트 함수를 반환 합니다.|
 |[welch_test()](welch-testfunction.md)|[Welch 함수의](https://en.wikipedia.org/wiki/Welch%27s_t-test)p 값을 계산 합니다.|
 
@@ -162,7 +162,7 @@ ms.locfileid: "85763736"
 |[estimate_data_size()](estimate-data-sizefunction.md)|테이블 형식 식에서 선택한 열의 예상 데이터 크기를 반환 합니다.|
 |[extent_id()](extentidfunction.md)|현재 레코드가 있는 데이터 분할 ("익스텐트")을 식별 하는 고유 식별자를 반환 합니다.|
 |[extent_tags()](extenttagsfunction.md)|현재 레코드가 있는 데이터 분할 ("익스텐트")의 태그가 있는 동적 배열을 반환 합니다.|
-|[ingestion_time()](ingestiontimefunction.md)|레코드의 $IngestionTime 숨겨진 datetime 열 또는 null을 검색 합니다.|
+|[ingestion_time ()](ingestiontimefunction.md)|레코드의 $IngestionTime 숨겨진 datetime 열 또는 null을 검색 합니다.|
 
 ## <a name="rounding-functions"></a>반올림 함수
 
@@ -170,8 +170,8 @@ ms.locfileid: "85763736"
 |-------------------------|--------------------------------------------------------|
 |[bin()](binfunction.md)|값을 지정된 bin 크기의 아래쪽 정수 배로 반올림합니다.|
 |[bin_at()](binatfunction.md)|Bin의 시작점에 대 한 제어를 사용 하 여 값을 고정 크기 "bin"으로 내림 합니다. Bin 함수를 참조 하세요.|
-|[상한 ()](ceilingfunction.md)|지정 된 숫자 식 보다 크거나 같은 최소 정수를 계산 합니다.|
-|[floor ()](floorfunction.md)|값을 지정된 bin 크기의 아래쪽 정수 배로 반올림합니다.|
+|[ceiling()](ceilingfunction.md)|지정 된 숫자 식 보다 크거나 같은 최소 정수를 계산 합니다.|
+|[floor()](floorfunction.md)|값을 지정된 bin 크기의 아래쪽 정수 배로 반올림합니다.|
 
 ## <a name="conditional-functions"></a>조건부 함수
 
@@ -231,7 +231,7 @@ ms.locfileid: "85763736"
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Base64 문자열을 UTF-8 문자열로 디코딩합니다.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Base64 문자열을 long 값 배열로 디코딩합니다.|
 |[countof()](cotfunction.md)|문자열의 부분 문자열 발생을 계산합니다. 일반 문자열 일치는 겹칠 수 있습니다. regex는 그렇지 않습니다.|
-|[extract ()](extractfunction.md)|텍스트 문자열에서 정규식 에 대한 일치 항목을 가져옵니다.|
+|[extract()](extractfunction.md)|텍스트 문자열에서 정규식 에 대한 일치 항목을 가져옵니다.|
 |[extract_all()](extractallfunction.md)|텍스트 문자열에서 정규식에 대 한 모든 일치 항목을 가져옵니다.|
 |[extractjson()](extractjsonfunction.md)|path 식을 사용하여 JSON 텍스트에서 지정된 요소를 가져옵니다.|
 |[indexof()](indexoffunction.md)|함수는 입력 문자열에서 맨 처음 발견 되는 지정 된 문자열의 0부터 시작 하는 인덱스를 보고 합니다.|
@@ -249,7 +249,7 @@ ms.locfileid: "85763736"
 |[parse_url()](parseurlfunction.md)|절대 URL 문자열을 구문 분석 하 고 URL의 모든 부분을 포함 하는 동적 개체를 반환 합니다.|
 |[parse_urlquery()](parseurlqueryfunction.md)|Url 쿼리 문자열을 구문 분석 하 고 쿼리 매개 변수를 포함 하는 동적 개체를 반환 합니다.|
 |[parse_version()](parse-versionfunction.md)|버전의 입력 문자열 표현을 비교할 수 있는 10 진수로 변환 합니다.|
-|[replace ()](replacefunction.md)|모든 정규식 일치 항목을 다른 문자열로 바꿉니다.|
+|[replace()](replacefunction.md)|모든 정규식 일치 항목을 다른 문자열로 바꿉니다.|
 |[reverse()](reversefunction.md)|함수는 입력 문자열을 역순으로 만듭니다.|
 |[split()](splitfunction.md)|지정 된 구분 기호에 따라 지정 된 문자열을 분할 하 고 포함 된 부분 문자열을 포함 하는 문자열 배열을 반환 합니다.|
 |[strcat()](strcatfunction.md)|1에서 64 사이의 인수를 연결 합니다.|
@@ -257,7 +257,7 @@ ms.locfileid: "85763736"
 |[strcmp()](strcmpfunction.md)|두 문자열을 비교합니다.|
 |[strlen()](strlenfunction.md)|입력 문자열의 길이 (문자)를 반환 합니다.|
 |[strrep()](strrepfunction.md)|지정 된 문자열을 지정 된 횟수 만큼 반복 합니다 (기본값-1).|
-|[substring ()](substringfunction.md)|일부 인덱스부터 문자열 끝 까지의 소스 문자열에서 부분 문자열을 추출 합니다.|
+|[substring()](substringfunction.md)|일부 인덱스부터 문자열 끝 까지의 소스 문자열에서 부분 문자열을 추출 합니다.|
 |[toupper()](toupperfunction.md)|문자열을 대문자로 변환합니다.|
 |[translate()](translatefunction.md)|지정 된 문자열에서 문자 집합 (' searchList ')을 다른 문자 집합 (' replacementList ')으로 바꿉니다.|
 |[trim()](trimfunction.md)|지정 된 정규식에 대 한 선행 및 후행 일치 항목을 모두 제거 합니다.|
@@ -283,7 +283,7 @@ ms.locfileid: "85763736"
 
 |함수 이름     |설명                                          |
 |-------------------------|--------------------------------------------------------|
-|[gettype ()](gettypefunction.md)|단일 인수의 런타임 형식을 반환 합니다.|
+|[gettype()](gettypefunction.md)|단일 인수의 런타임 형식을 반환 합니다.|
 
 ## <a name="scalar-aggregation-functions"></a>스칼라 집계 함수
 
@@ -301,9 +301,16 @@ ms.locfileid: "85763736"
 |함수 이름|설명|
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[geo_distance_2points()](geo-distance-2points-function.md)|지구에서 두 지리 공간적 좌표 사이의 최단 거리를 계산 합니다.|
-|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Geohash 사각형 영역의 중심을 나타내는 지리 공간적 좌표를 계산 합니다.|
+|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|좌표와 지구 선 사이의 최단 거리를 계산 합니다.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|지리 공간적 좌표가 지구에 원 안에 있는지 여부를 계산 합니다.|
+|[geo_point_in_polygon()](geo-point-in-polygon-function.md)|지리 공간적 좌표가 다각형 내부에 있는지 아니면 지구에 multipolygon 인지를 계산 합니다.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|지리적 위치에 대 한 Geohash 문자열 값을 계산 합니다.|
+|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Geohash 사각형 영역의 중심을 나타내는 지리 공간적 좌표를 계산 합니다.|
+|[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|지리적 위치에 대 한 S2 셀 토큰 문자열 값을 계산 합니다.|
+|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|S2 셀의 중심을 나타내는 지리 공간적 좌표를 계산 합니다.|
+|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|지구에 다각형 또는 multipolygon을 포함 하는 S2 셀 토큰을 계산 합니다. 유용한 지리 공간적 조인 도구입니다.|
+|[geo_line_densify ()](geo-line-densify-function.md)|중간 요소를 추가 하 여 평면 선 가장자리를 geodesics으로 변환 합니다.|
+|[geo_polygon_densify ()](geo-polygon-densify-function.md)|중간 요소를 추가 하 여 polygon 또는 multipolygon 평면 가장자리를 geodesics으로 변환 합니다.|
 
 ## <a name="hash-functions"></a>해시 함수
 
@@ -312,5 +319,5 @@ ms.locfileid: "85763736"
 |[hash ()](hashfunction.md)|입력 값에 대 한 해시 값을 반환 합니다.|
 |[hash_combine()](hash_combinefunction.md)|두 개 이상의 해시 값을 결합 합니다.|
 |[hash_many()](hash_manyfunction.md)|여러 값의 결합 된 해시 값을 반환 합니다.|
-|[hash_md5 ()](md5hashfunction.md)|입력 값에 대 한 MD5 해시 값을 반환 합니다.|
+|[hash_md5()](md5hashfunction.md)|입력 값에 대 한 MD5 해시 값을 반환 합니다.|
 |[hash_sha256()](sha256hashfunction.md)|입력 값의 SHA256 해시 값을 반환 합니다.|

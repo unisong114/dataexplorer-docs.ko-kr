@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/06/2020
-ms.openlocfilehash: f5ea896d4701aa5aec1b22c1ff20853aea18f065
-ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
+ms.openlocfilehash: 0580088bf04bffafd36990a3f42c32aa5c4ede53
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84664945"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280478"
 ---
 # <a name="materialize"></a>materialize()
 
@@ -41,7 +41,7 @@ ms.locfileid: "84664945"
   이 제한은 클러스터 노드당 이며 동시에 실행 되는 모든 쿼리에 대해 상호 합니다.
   쿼리에서를 사용 하 `materialize()` 고 캐시에서 더 이상 데이터를 보유할 수 없으면 쿼리가 오류와 함께 중단 됩니다.
 
-**예**
+## <a name="examples-of-query-performance-improvement"></a>쿼리 성능 향상의 예
 
 다음 예에서는를 사용 하 여 `materialize()` 쿼리 성능을 향상 시키는 방법을 보여 줍니다.
 식은 `_detailed_data` 함수를 사용 하 여 정의 `materialize()` 되므로 한 번만 계산 됩니다.
@@ -72,7 +72,7 @@ _detailed_data
 
 
 다음 예에서는 난수 집합을 생성 하 고를 계산 합니다. 
-* 집합에 있는 고유 값의 수 (Dcount)
+* 집합에 있는 고유 값의 수 ( `Dcount` )
 * 집합에서 상위 3 개 값 
 * 집합에 있는 이러한 모든 값의 합계입니다. 
  
@@ -105,6 +105,66 @@ randomSet | summarize Sum=sum(value)
 
 결과 집합 3: 
 
-|합계|
+|합|
 |---|
 |15002960543563|
+
+## <a name="examples-of-using-materialize"></a>구체화 () 사용 예
+
+> [!TIP]
+> 대부분의 쿼리가 수백만 개의 행에서 동적 개체의 필드를 추출 하는 경우 수집 시 열을 구체화 합니다.
+> 
+> `let`문을 두 번 이상 사용 하는 값으로 사용 하려면 [구체화 () 함수](./materializefunction.md)를 사용 합니다.
+> 자세한 내용은 [모범 사례](best-practices.md) 를 참조 하세요.
+
+구체화 된 데이터 집합을 줄이고 쿼리의 의미 체계를 유지 하는 모든 가능한 연산자를 푸시합니다. 예를 들어, 필터 또는 project only는 필수 열입니다.
+
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d));
+    union (materializedData
+    | where Text !has "somestring"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text !has "somestring"
+    | summarize dcount(Resource2))
+```
+
+에 대 한 필터는 `Text` 상호 이며 구체화 식에 푸시할 수 있습니다.
+쿼리에는,, 및 열만 필요 `Timestamp` `Text` `Resource1` `Resource2` 합니다. 구체화 된 식 내에서 이러한 열을 프로젝션 합니다.
+    
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d)
+    | where Text !has "somestring"
+    | project Timestamp, Resource1, Resource2, Text);
+    union (materializedData
+    | summarize dcount(Resource1)), (materializedData
+    | summarize dcount(Resource2))
+```
+    
+필터가이 쿼리와 동일 하지 않으면 다음을 수행 합니다.  
+
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d));
+    union (materializedData
+    | where Text has "String1"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text has "String2"
+    | summarize dcount(Resource2))
+ ```
+
+결합 된 필터가 구체화 된 결과를 크게 줄이는 경우 구체화 된 결과에 대 한 두 필터를 `or` 아래 쿼리와 같은 논리 식으로 결합 합니다. 그러나 쿼리의 의미 체계를 유지 하려면 각 합집합 레그의 필터를 유지 합니다.
+     
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d)
+    | where Text has "String1" or Text has "String2"
+    | project Timestamp, Resource1, Resource2, Text);
+    union (materializedData
+    | where Text has "String1"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text has "String2"
+    | summarize dcount(Resource2))
+```
+    

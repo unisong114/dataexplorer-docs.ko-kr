@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
-ms.openlocfilehash: 1ac715f06945e3db99de1a00b09237ae6f6e241d
-ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
+ms.openlocfilehash: e909754a040308d752b19155e1e69a10097ab219
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86188560"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280510"
 ---
 # <a name="the-dynamic-data-type"></a>동적 데이터 형식
 
@@ -52,13 +52,13 @@ print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 ```
 
 편의상,,,,, `dynamic` `datetime` `timespan` `real` `long` `guid` `bool` 및 `dynamic` 형식과 함께 쿼리 텍스트 자체에 나타나는 리터럴에 다른 kusto 리터럴을 포함할 수도 있습니다.
-JSON을 통한이 확장은 문자열을 구문 분석할 때 사용할 수 없지만 (예: 함수를 사용 하는 경우 또는 수집 데이터를 사용 하는 경우 `parse_json` )이 작업을 수행할 수 있습니다.
+JSON을 통한이 확장은 문자열 (예: 함수를 사용 하는 경우 `parse_json` 또는 수집 데이터)을 구문 분석할 때 사용할 수 없지만 다음 작업을 수행할 수 있습니다.
 
 ```kusto
 print d=dynamic({"a": datetime(1970-05-11)})
 ```
 
-`string`JSON 인코딩 규칙을 따르는 값을 값으로 구문 분석 하려면 `dynamic` 함수를 사용 `parse_json` 합니다. 예:
+`string`JSON 인코딩 규칙을 따르는 값을 값으로 구문 분석 하려면 `dynamic` 함수를 사용 `parse_json` 합니다. 예를 들어:
 
 * `parse_json('[43, 21, 65]')` - 숫자의 배열
 * `parse_json('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`-사전
@@ -88,7 +88,7 @@ print d=dynamic({"a": datetime(1970-05-11)})
   [2015-01-01,"{""EventType"":""Demo"", ""EventValue"":""Double-quote love!""}"]
 ```
 
-|타임스탬프                   | 추적                                                 |
+|Timestamp                   | 추적                                                 |
 |----------------------------|-------------------------------------------------------|
 |2015-01-01 00:00:00.0000000 | {"EventType": "Demo", "EventValue": "큰따옴표 선호!"}|
 
@@ -102,7 +102,7 @@ print d=dynamic({"a": datetime(1970-05-11)})
 
 아래 예제에서 `dict` 및 `arr` 는 동적 형식의 열입니다.
 
-|식                        | 접근자 식 형식 | 의미                                                                              | 설명                                      |
+|식                        | 접근자 식 형식 | 의미                                                                              | 의견                                      |
 |----------------------------------|--------------------------|--------------------------------------------------------------------------------------|-----------------------------------------------|
 |dict [col]                         | 엔터티 이름 (열)     | 열의 값을 키로 사용 하 여 사전 첨자를 사용 합니다. `col`              | 열은 문자열 형식 이어야 합니다.                 | 
 |arr [인덱스]                        | 엔터티 인덱스 (열)    | 열의 값을 인덱스로 사용 하 여 배열의 아래 첨자 `index`              | 열은 정수 또는 부울 형식 이어야 합니다.     | 
@@ -163,7 +163,7 @@ Cast 함수는 다음과 같습니다.
 
 ## <a name="operators-and-functions-over-dynamic-types"></a>동적 형식에 대한 연산자 및 함수
 
-|||
+|연산자 또는 함수|동적 데이터 형식 사용|
 |---|---|
 | *value* `in` *array*| == *value*인 *array*의 요소가 있으면 True<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| == *value*인 *array*의 요소가 없으면 True

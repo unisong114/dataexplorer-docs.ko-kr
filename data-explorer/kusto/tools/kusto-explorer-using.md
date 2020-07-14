@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fc8e34be3d61c690bc94795e6bd37f2559d247e0
-ms.sourcegitcommit: 0d15903613ad6466d49888ea4dff7bab32dc5b23
+ms.openlocfilehash: 0b2daf955515e4c023cdb7312fbd82039ca598bc
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "86013900"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280634"
 ---
 # <a name="using-kustoexplorer"></a>Kusto.Explorer 사용
 
@@ -28,11 +28,11 @@ Kusto. 탐색기는 사용 하기 쉬운 사용자 인터페이스에서 Kusto �
 1. 편집 상자에 검색 문구를 입력 하 고 **이동**을 선택 합니다.
 1. 테이블/시간 슬롯 표의 열 맵은 표시 되는 용어와 표시 되는 위치를 보여 줍니다.
 
-:::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="검색 + + Kusto Explorer":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="검색 + + Kusto Explorer":::
 
 1. 표에서 셀을 선택 하 고 **자세히 보기** 를 선택 하 여 결과 창에 관련 항목을 표시 합니다.
 
-:::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto 탐색기 검색 + + 결과":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto 탐색기 검색 + + 결과":::
 
 ## <a name="query-mode"></a>쿼리 모드
 
@@ -117,17 +117,17 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 1. Kusto 탐색기에서 [쿼리를 실행](#basic-queries) 합니다.
 1. 홈 탭의 공유 섹션에서 **클립보드로 내보내기** 를 선택 하거나 Ctrl + Shift + C를 누릅니다.
 
-:::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="클립보드로 내보내기":::
+    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="클립보드로 내보내기":::
 
-    Kusto.Explorer pastes the following to the clipboard:
-    * Your query
-    * The query results (table or chart)
-    * The connection details for the Kusto cluster and database
-    * A link that will rerun the query automatically
+    Kusto 탐색기는 다음 내용을 클립보드에 붙여 넣습니다.
+     * 쿼리
+     * 쿼리 결과 (테이블 또는 차트)
+     * Kusto 클러스터 및 데이터베이스에 대 한 연결 세부 정보
+     * 자동으로 쿼리를 다시 실행 하는 링크
 
 1. 클립보드의 내용을 새 전자 메일 메시지에 붙여넣습니다.
 
-:::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="전자 메일로 결과 공유":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="전자 메일로 결과 공유":::
 
 ### <a name="deep-linking-queries"></a>심층 연결 쿼리
 
@@ -150,7 +150,7 @@ URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.ne
 
 딥 링크를 만드는 가장 쉬운 방법은 Kusto. 탐색기에서 쿼리를 작성 한 다음 `Export to Clipboard` 를 사용 하 여 쿼리 (딥 링크 및 결과 포함)를 클립보드에 복사 하는 것입니다. 그런 다음 전자 메일을 통해 공유할 수 있습니다.
         
-전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예:
+전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예를 들어:
 
 https://help.kusto.windows.net:443/Samples[[쿼리를 실행 하려면 클릭](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
 
@@ -164,9 +164,13 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 딥 링크와 함께 매개 변수가 있는 쿼리를 사용할 수 있습니다.
 
 1. 매개 변수가 있는 쿼리 (예:)로 형성 될 쿼리를 만듭니다. `KustoLogs | where Timestamp > ago({Period}) | count` 
-1. URI의 모든 쿼리 매개 변수 (예:)에 대 한 매개 변수를 제공 합니다.
+1. URI의 모든 쿼리 매개 변수 (예:)에 대 한 매개 변수를 제공 합니다. 
+    
+    `https://<your_cluster>.kusto.windows.net/MyDatabase?
+web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
-   `https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
+    &lt;Your_cluster &gt; 를 Azure 데이터 탐색기 클러스터 이름으로 바꿉니다.
+
 
 ### <a name="getting-shorter-links"></a>짧은 링크 가져오기
 
@@ -201,7 +205,7 @@ Kusto 탐색기는 다음 구문에서 몇 가지 명령줄 인수를 지원 합
 Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples
 ```
 
-|인수  |Description                                                               |
+|인수  |설명                                                               |
 |----------|--------------------------------------------------------------------------|
 |**실행할 쿼리**                                                                 |
 |`query`   |실행할 쿼리 (base64 인코딩)입니다. 비어 있는 경우를 사용 `querysrc` 합니다.          |
@@ -247,4 +251,4 @@ Kusto 탐색기 도구 및 유틸리티에 대해 자세히 알아보세요.
 * [Kusto 탐색기 코드 분석기](kusto-explorer-code-analyzer.md)
 * [Kusto 탐색기 코드 탐색](kusto-explorer-codenav.md)
 * [Kusto 탐색기 코드 리팩터링](kusto-explorer-refactor.md)
-* [Kusto 쿼리 언어 (KQL)](https://docs.microsoft.com/azure/kusto/query/)
+* [Kusto Query Language(KQL)](https://docs.microsoft.com/azure/kusto/query/)

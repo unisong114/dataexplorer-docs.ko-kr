@@ -8,12 +8,12 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/10/2020
-ms.openlocfilehash: 25eb68a942eb0ff84ea34e47c94ea1a21cd09c90
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 96e3cfeba0002aa48a4300a994e9e12610deb9a3
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227246"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280571"
 ---
 # <a name="geo_point_in_polygon"></a>geo_point_in_polygon()
 
@@ -35,7 +35,8 @@ ms.locfileid: "83227246"
 
 > [!NOTE]
 > * 지리 공간적 좌표는 [Wgs-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) 좌표 참조 시스템으로 표현 되는 것으로 해석 됩니다.
-> * 지구 측정에 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구에 사용 됩니다. Geodesics 다각형 가장자리가 구에 있습니다.
+> * 지구 측정에 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구에 사용 됩니다. [Geodesics](https://en.wikipedia.org/wiki/Geodesic) 다각형 가장자리가 구에 있습니다.
+> * 입력 다각형 가장자리가 직선이 면 [geo_polygon_densify ()](geo-polygon-densify-function.md) 를 사용 하 여 평면 가장자리를 geodesics으로 변환 하는 것이 좋습니다.
 
 **Polygon 정의 및 제약 조건**
 
@@ -56,7 +57,7 @@ dynamic ({"type": "Polygon", "좌표": [LinearRingShell, LinearRingHole_1,..., L
 > * 리터럴 다각형을 사용 하면 성능이 향상 될 수 있습니다.
 > * 다각형에 점이 포함 되어 있는지 여부를 확인 하려면 다음 단계를 수행 합니다. 다각형 컬렉션을 하나의 multipolygon로 접어 올립니다. 그런 다음이 multipolygon을 쿼리 합니다. 이렇게 하면 성능이 향상 될 수 있습니다. 아래 예제를 참조하세요. 
 
-**예제**
+**예**
 
 맨해튼 섬 (중앙 공원 불포함)
 
@@ -73,7 +74,7 @@ datatable(longitude:real, latitude:real, description:string)
 | where geo_point_in_polygon(longitude, latitude, dynamic({"type":"Polygon","coordinates":[[[-73.92597198486328,40.87821814104651],[-73.94691467285156,40.85069618625578],[-73.94691467285156,40.841865966890786],[-74.01008605957031,40.7519385984599],[-74.01866912841797,40.704586878965245],[-74.01214599609375,40.699901911003046],[-73.99772644042969,40.70875101828792],[-73.97747039794922,40.71083299030839],[-73.97026062011719,40.7290474687069],[-73.97506713867186,40.734510840309376],[-73.970947265625,40.74543623770158],[-73.94210815429688,40.77586181063573],[-73.9434814453125,40.78080140115127],[-73.92974853515625,40.79691751000055],[-73.93077850341797,40.804454347291006],[-73.93489837646484,40.80965166748853],[-73.93524169921875,40.837190668541105],[-73.92288208007812,40.85770758108904],[-73.9101791381836,40.871728144624974],[-73.92597198486328,40.87821814104651]],[[-73.95824432373047,40.80071852197889],[-73.98206233978271,40.76815921628347],[-73.97309303283691,40.76422632379533],[-73.94914627075195,40.796949998204596],[-73.95824432373047,40.80071852197889]]]}))
 ```
 
-|longitude|latitude|description|
+|longitude|latitude|설명|
 |---|---|---|
 |-73.985654|40.748487|제국 상태 빌드|
 
@@ -95,7 +96,7 @@ coordinates
 | where geo_point_in_polygon(longitude, latitude, multipolygon)
 ```
 
-|longitude|latitude|description|
+|longitude|latitude|설명|
 |---|---|---|
 |-73.9741|40.7914|위쪽 서 부 쪽|
 |-73.995|40.734|그리니치 마을|
@@ -143,7 +144,7 @@ Polygons
 }
 ```
 
-|longitude|latitude|description|
+|longitude|latitude|설명|
 |---|---|---|
 |-73.95|40.75|뉴욕 도시 면적|
 |-122.3|47.6|시애틀 영역|
@@ -178,7 +179,7 @@ Coordinates
 | where geo_point_in_polygon(longitude, latitude, multipolygon)
 ```
 
-|longitude|latitude|description|
+|longitude|latitude|설명|
 |---|---|---|
 |-73.9741|40.7914|위쪽 서 부 쪽|
 |-73.995|40.734|그리니치 마을|

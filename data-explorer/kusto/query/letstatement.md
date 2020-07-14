@@ -8,63 +8,81 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: c2e21f0b41f34b469e409109a2586f3e5fd98fa5
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 2994a65e8726edaba22c6905290b4b69660e0586
+ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271471"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86291545"
 ---
 # <a name="let-statement"></a>Let 문
 
-Let 문이 이름을 식에 바인딩합니다. Let 문이 표시 되는 나머지 범위 (전역 범위 또는 함수 본문 범위)의 경우 해당 이름을 사용 하 여 바인딩된 값을 참조할 수 있습니다. 해당 이름이 이전에 다른 값에 바인딩된 경우 "가장 안쪽의" let 문 바인딩이 사용 됩니다.
+Let 문이 이름을 식에 바인딩합니다. Let 문이 표시 되는 범위의 나머지 부분에서는이 이름을 사용 하 여 바인딩된 값을 참조할 수 있습니다. Let 문은 전역 범위 또는 함수 본문 범위 내에 있을 수 있습니다.
+해당 이름이 이전에 다른 값에 바인딩된 경우 "가장 안쪽의" let 문 바인딩이 사용 됩니다.
 
-Let 문은 잠재적으로 복잡 한 식을 여러 부분으로 나눌 수 있도록 하 고, 각각 let 문을 통해 이름에 바인딩되고, 함께 구성 하는 것을 허용 하므로 모듈화를 개선 하 고 재사용 합니다. 이러한 함수를 사용 하 여 사용자 정의 함수 및 뷰 (결과가 새 테이블과 같은 테이블에 대 한 식)를 만들 수도 있습니다.
+문을 사용 하면 복잡 한 식을 여러 부분으로 나눌 수 있으므로 모듈화를 향상 시키고 재사용할 수 있습니다.
+각 파트는 let 문을 통해 이름에 바인딩되고 전체를 구성 합니다. 사용자 정의 함수 및 뷰를 만드는 데 사용할 수도 있습니다. 뷰는 결과가 새 테이블과 같은 테이블에 대 한 식입니다.
 
-Let 문에 의해 바인딩된 이름은 유효한 엔터티 이름 이어야 합니다.
+> [!NOTE]
+> Let 문에 의해 바인딩된 이름은 유효한 엔터티 이름 이어야 합니다.
 
 Let 문에 의해 바인딩된 식은 다음과 같을 수 있습니다.
 * 스칼라 형식
 * 테이블 형식
 * 사용자 정의 함수 (람다)
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `let`*이름* `=` *ScalarExpression*  |  *TabularExpression*  |  *Functiondefinitionexpression*
 
-* *이름*: 바인딩할 이름입니다. 이름은 유효한 엔터티 이름 이어야 하며 엔터티 이름 이스케이프 (예: `["Name with spaces"]` )가 허용 됩니다. 
-* *ScalarExpression*: 값이 이름에 바인딩될 스칼라 결과가 포함 된 식입니다. 예를 들어 `let one=1;`을 참조하십시오.
-* *TabularExpression*: 값이 이름에 바인딩되는 테이블 형식 결과가 포함 된 식입니다. 예를 들어 `Logs | where Timestamp > ago(1h)`을 참조하십시오.
-* *Functiondefinitionexpression*: 이름에 바인딩할 람다 (익명 함수 선언)를 생성 하는 식입니다.
-  예를 들어 `let f=(a:int, b:string) { strcat(b, ":", a) }`을 참조하십시오.
+|필드  |정의  |예제  |
+|---------|---------|---------|
+|*이름*   | 바인딩할 이름입니다. 이름은 유효한 엔터티 이름 이어야 합니다.    |와 같은 엔터티 이름 이스케이프를 `["Name with spaces"]` 사용할 수 있습니다.      |
+|*ScalarExpression*     |  값이 이름에 바인딩된 스칼라 결과가 포함 된 식입니다.  | `let one=1;`  |
+|*TabularExpression*    | 값이 이름에 바인딩된 테이블 형식 결과가 포함 된 식입니다.   | `Logs | where Timestamp > ago(1h)`    |
+|*FunctionDefinitionExpression*   | 이름에 바인딩할 무명 함수 선언 인 람다를 생성 하는 식입니다.   |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
 
-람다 식의 구문은 다음과 같습니다.
+
+### <a name="lambda-expressions-syntax"></a>람다 식 구문
 
 [ `view` ] `(` [*TabularArguments*] [ `,` ] [*ScalarArguments*] `)` `{` *functionbody*`}`
 
 `TabularArguments`-[*TabularArgName* `:` `(` [*AtrName* `:` *atrtype*] [ `,` ...] `)` ] [`,` ... ] [`,`]
 
- or:-[*TabularArgName* `:` `(` `*` `)` ]
+ 또는
+
+ [*TabularArgName* `:` `(` `*` `)`]
 
 `ScalarArguments`-[*ArgName* `:` *argtype*] [ `,` ...]
 
-* `view`는 매개 변수가 없는 람다 (인수 없음)에만 나타날 수 있으며, "모든 테이블"이 쿼리 (예:를 사용 하는 경우) 인 경우 바인딩된 이름이 포함 됨을 나타냅니다 `union *` .
-* *TabularArguments* 는 공식 테이블 형식 식 인수 목록입니다.
-  각 인수에는 다음이 포함 됩니다.
-  * *TabularArgName* -형식 테이블 형식 인수의 이름입니다. 그러면 이름이 *Functionbody* 에 표시 될 수 있으며, 람다가 호출 될 때 특정 값에 바인딩됩니다. 
-  * 테이블 스키마 정의-해당 유형 (AtrName: AtrType)이 포함 된 특성 목록입니다.
-  람다 호출에 사용 되는 테이블 형식 식은 일치 하는 형식을 가진 이러한 모든 특성을 포함 해야 하지만이에 국한 되지 않습니다. 
-  ' (*) '를 테이블 형식 식으로 사용할 수 있습니다. 이 경우 람다 호출에 테이블 형식 식을 사용할 수 있으며 람다 식에서 해당 열에 액세스할 수 없습니다.
-  모든 테이블 형식 인수는 스칼라 인수 앞에 나와야 합니다.
-* *ScalarArguments* 는 공식 스칼라 인수의 목록입니다. 
-  각 인수에는 다음이 포함 됩니다.
-  * *ArgName* -정식 스칼라 인수의 이름입니다. 그러면 이름이 *Functionbody* 에 표시 될 수 있으며, 람다가 호출 될 때 특정 값에 바인딩됩니다.  
-  * *Argtype* -정식 스칼라 인수의 형식입니다. 현재,,,,, `bool` `string` `long` `datetime` `timespan` `real` , 및 형식 `dynamic` 에 대 한 별칭은 람다 인수 형식으로 지원 됩니다.
 
-**여러 개의 중첩 된 let 문**
+|필드  |정의  |예제  |
+|---------|---------|---------|
+| **봅니다** | 인수를 포함 하지 않는 매개 변수가 없는 람다에만 나타날 수 있습니다. "모든 테이블"이 쿼리인 경우 바인딩된 이름이 포함 됨을 나타냅니다. | 예를 들어를 사용 하는 경우 `union *` 입니다.|
+| ***TabularArguments*** | 공식 테이블 형식 식 인수의 목록입니다. 
+| 각 테이블 형식 인수에는 다음이 포함 됩니다.||
+|<ul><li> *TabularArgName*</li></ul> | 정식 테이블 형식 인수의 이름입니다. 이 이름은 *Functionbody* 에 표시 될 수 있으며 람다를 호출할 때 특정 값에 바인딩됩니다. ||
+|<ul><li>테이블 스키마 정의 </li></ul> | 해당 형식이 포함 된 특성 목록| AtrName: AtrType|
+| ***ScalarArguments*** | 정식 스칼라 인수의 목록입니다. 
+|각 스칼라 인수에는 다음이 포함 됩니다.||
+|<ul><li>*ArgName*</li></ul> | 공식 스칼라 인수의 이름입니다. 이 이름은 *Functionbody* 에 표시 될 수 있으며 람다를 호출할 때 특정 값에 바인딩됩니다.  |
+| <ul><li>*ArgType* </li></ul>| 공식 스칼라 인수의 형식입니다. | 현재,,,,, `bool` `string` `long` `datetime` `timespan` `real` , 및 형식 `dynamic` 에 대 한 별칭은 람다 인수 형식으로 지원 됩니다.
 
-`;`다음 예제와 같이 여러 let 문을 구분 기호 사이에 구분 기호로 사용할 수 있습니다.
-마지막 문은 올바른 쿼리 식 이어야 합니다. 
+> [!NOTE]
+>람다 호출에 사용 되는 테이블 형식 식은 일치 하는 형식을 가진 모든 특성을 포함 해야 합니다 (이에 국한 되지 않음).
+>
+>`(*)`테이블 형식 식으로 사용할 수 있습니다. 
+>
+> 모든 테이블 형식 식은 람다 호출에서 사용할 수 있으며 람다 식에서 해당 열에 액세스할 수 없습니다. 
+>
+> 모든 테이블 형식 인수는 스칼라 인수 앞에 나와야 합니다.
+
+## <a name="multiple-and-nested-let-statements"></a>여러 개의 중첩 된 let 문
+
+다음 예제와 같이 여러 let 문을 세미콜론, `;` , 구분 기호 사이에 사용할 수 있습니다.
+
+> [!NOTE]
+> 마지막 문은 올바른 쿼리 식 이어야 합니다. 
 
 ```kusto
 let start = ago(5h); 
@@ -81,9 +99,9 @@ let end_time = start_time + 2h;
 T | where Time > start_time and Time < end_time | ...
 ```
 
-**예**
+## <a name="examples"></a>예
 
-### <a name="using-let-to-define-constants"></a>Let을 사용 하 여 상수 정의
+### <a name="use-let-function-to-define-constants"></a>Let 함수를 사용 하 여 상수 정의
 
 다음 예에서는 이름을 `x` 스칼라 리터럴에 바인딩한 `1` 다음 테이블 형식 식 문에서 사용 합니다.
 
@@ -92,14 +110,14 @@ let x = 1;
 range y from x to x step x
 ```
 
-동일한 예제입니다 .이 경우에는 다음과 같이 개념을 사용 하 여 let 문의 이름을 지정 합니다 `['name']` .
+이 예제는 이전 예제와 유사 하며, 개념을 사용 하 여 let 문의 이름만 제공 됩니다 `['name']` .
 
 ```kusto
 let ['x'] = 1;
 range y from x to x step x
 ```
 
-그러나를 사용 하는 또 다른 예에서는 스칼라 값을 사용할 수 있습니다.
+### <a name="use-let-for-scalar-values"></a>스칼라 값에 let 사용
 
 ```kusto
 let n = 10;  // number
@@ -111,9 +129,9 @@ Events
 | take n
 ```
 
-### <a name="using-multiple-let-statements"></a>여러 let 문 사용
+### <a name="use-multiple-let-statements"></a>여러 let 문 사용
 
-다음 예제에서는 하나의 문 ( `foo2` )이 다른 ()를 사용 하는 두 개의 let 문을 정의 합니다 `foo1` .
+이 예제에서는 하나의 문 ( `foo2` )이 다른 ()를 사용 하는 두 개의 let 문을 정의 `foo1` 합니다.
 
 ```kusto
 let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step};
@@ -122,7 +140,7 @@ foo2(2) | count
 // Result: 50
 ```
 
-### <a name="using-materialize-function"></a>구체화 함수 사용
+### <a name="use-materialize-function"></a>구체화 함수 사용
 
 [`materialize`](materializefunction.md)함수를 사용 하면 쿼리 실행 시 하위 쿼리 결과를 캐시할 수 있습니다. 
 
@@ -148,8 +166,6 @@ on Page
     totalPagesPerDay
 on $left.Day1 == $right.Day
 | project Day1, Day2, Percentage = count_*100.0/count_1
-
-
 ```
 
 |Day1|Day2|백분율|

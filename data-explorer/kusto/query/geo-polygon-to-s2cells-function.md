@@ -8,16 +8,16 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/10/2020
-ms.openlocfilehash: 39d5b35a80ff9354a5fb6987866ff024471d7305
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: c4396087018e25c57f064e8d2f99a83cc0840c3a
+ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83232442"
+ms.lasthandoff: 07/13/2020
+ms.locfileid: "86280586"
 ---
-# <a name="geo_polygon_to_s2cells"></a>geo_polygon_to_s2cells ()
+# <a name="geo_polygon_to_s2cells"></a>geo_polygon_to_s2cells()
 
-지구에 다각형 또는 multipolygon을 포함 하는 S2 셀 토큰을 계산 합니다.
+지구에 다각형 또는 multipolygon을 포함 하는 S2 셀 토큰을 계산 합니다. 이 함수는 유용한 지리 공간적 조인 도구입니다.
 
 [S2 셀 계층](https://s2geometry.io/devguide/s2cell_hierarchy)에 대해 자세히 알아보세요.
 
@@ -36,10 +36,11 @@ ms.locfileid: "83232442"
 
 > [!NOTE]
 >
-> * S2 셀 토큰을 사용 하 여 다각형을 다루는 것은 좌표를 이러한 좌표를 포함할 수 있는 다각형에 일치 시키는 데 유용할 수 있습니다.
+> * S2 셀 토큰을 사용 하 여 다각형을 다루는 것은 좌표를 이러한 좌표와 다각형에 일치 시킬 수 있는 다각형에 일치 시킬 때 유용할 수 있습니다.
 > * 토큰을 포함 하는 polygon은 동일한 S2 셀 수준입니다.
 > * Polygon 당 최대 토큰 수는 65536입니다.
-> * 지구 측정에 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구에 사용 됩니다. Geodesics 다각형 가장자리가 구에 있습니다.
+> * 지구 측정에 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구에 사용 됩니다. [Geodesics](https://en.wikipedia.org/wiki/Geodesic) 다각형 가장자리가 구에 있습니다.
+> * 입력 다각형 가장자리가 직선이 면 [geo_polygon_densify ()](geo-polygon-densify-function.md) 를 사용 하 여 평면 가장자리를 geodesics으로 변환 하는 것이 좋습니다.
 
 **S2 셀 토큰을 사용 하 여 다각형을 포괄 하는 동기**
 
@@ -66,10 +67,10 @@ Polygons | extend dummy=1
 | project longitude, latitude, description
 ```
 
-|longitude|latitude|description|
+|longitude|latitude|설명|
 |---|---|---|
 |-73.95|40.75|뉴욕 도시|
-|-122.3|47.6|Seattle|
+|-122.3|47.6|시애틀|
 |-115.18|36.16|라스베이거스|
 
 이 메서드는 어떤 경우에도 작동 하지만 비효율적입니다. 이 메서드는 크로스 조인을 수행 합니다. 즉, 모든 다각형을 모든 지점에 일치 시 키 려 고 합니다. 이 프로세스는 많은 양의 메모리 및 계산 리소스를 사용 합니다.
@@ -91,7 +92,7 @@ Polygons | extend dummy=1
    - S2 셀 수준 5는 국가를 포괄 하는 데 적합 한 것으로 입증 될 수 있습니다.
    - S2 셀 수준 16은 조밀한 및 비교적 작은 맨해튼 (뉴욕) 환경이를 처리할 수 있습니다.
    - S2 셀 수준 11은 오스트레일리아 교외를 다루는 데 사용할 수 있습니다.
-* 쿼리 실행 시간 및 메모리 사용은 S2 셀 수준 값이 서로 다르기 때문에 달라질 수 있습니다.
+* 다른 S2 셀 수준 값 때문에 쿼리 실행 시간 및 메모리 소비가 달라질 수 있습니다.
 
 > [!WARNING]
 > 작은 영역 셀을 포함 하는 큰 영역 다각형을 덮고 있으면 많은 양의 포괄 셀이 발생할 수 있습니다. 따라서 쿼리가 null을 반환할 수 있습니다.
@@ -128,7 +129,7 @@ Polygons
 | project longitude, latitude, description
 ```
 
-|longitude|latitude|description|
+|longitude|latitude|설명|
 |---|---|---|
 |-73.9741|40.7914|위쪽 서 부 쪽|
 |-73.995|40.734|그리니치 마을|
