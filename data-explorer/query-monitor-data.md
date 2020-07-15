@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 1edca77125f46c59402edfde251262cebe5c1b70
-ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
+ms.openlocfilehash: e5e4e2642d41d045c7fc49efaca78c35e217b0e5
+ms.sourcegitcommit: f086298a6dd32790910350c7cd3b914b51d51226
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86291596"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86374686"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
@@ -50,6 +50,9 @@ Azure 데이터 탐색기 프록시 흐름:
 1. 연결이 설정 되 면 LA 또는 AI 클러스터가 기본 ADX 클러스터와 함께 왼쪽 창에 표시 됩니다. 
 
     ![Log Analytics 및 Azure 데이터 탐색기 클러스터](media/adx-proxy/la-adx-clusters.png)
+
+> [!NOTE]
+> 매핑될 수 있는 Azure Monitor 작업 영역 수는 100 개로 제한 됩니다.
 
 ## <a name="run-queries"></a>쿼리 실행
 
@@ -90,8 +93,9 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 연산자를 사용 하는 대신 [ `join` 연산자](kusto/query/joinoperator.md)를 사용 하 여 [`hint`](kusto/query/joinoperator.md#join-hints) Azure 데이터 탐색기 기본 클러스터 (프록시가 아닌)에서 실행 해야 할 수 있습니다. 
 
 ## <a name="function-supportability"></a>함수 지원 가능성
+
 Azure 데이터 탐색기 프록시 클러스터는 Application Insights 및 Log Analytics에 대 한 기능을 모두 지원 합니다.
-이를 통해 클러스터 간 쿼리는 Azure Monitor 테이블 형식 함수를 직접 참조할 수 있습니다.
+이 기능을 통해 클러스터 간 쿼리는 Azure Monitor 테이블 형식 함수를 직접 참조할 수 있습니다.
 프록시는 다음 명령을 지원 합니다.
 
 ```kusto
