@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 03/29/2020
-ms.openlocfilehash: 26b1633a13aa6ffbd98109e94113679620845160
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 98cfbf8b196d0496b4c7e86b03d6d2787ba6919f
+ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264517"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86188458"
 ---
 # <a name="what-is-one-click-ingestion"></a>원클릭 수집이란?
 
@@ -35,17 +35,6 @@ ms.locfileid: "85264517"
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md)를 만듭니다.
 * [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com/)에 로그인하여 [클러스터에 연결을 추가](web-query-data.md#add-clusters)합니다.
-
-## <a name="file-formats"></a>파일 형식
-
-원클릭 수집은 다음 형식의 원본 데이터에서 새 테이블을 수집할 수 있습니다.
-* JSON
-* CSV
-* TSV
-* SCSV
-* SOHSV
-* TSVE
-* PSV
 
 ## <a name="ingest-new-data"></a>새 데이터 수집
 
@@ -70,22 +59,34 @@ ms.locfileid: "85264517"
 > * [컨테이너의 새 테이블에 CSV 형식으로](one-click-ingestion-new-table.md) 수집
 > * [로컬 파일의 기존 테이블에 JSON 형식으로](one-click-ingestion-existing-table.md) 수집 
 
-* 이 마법사는 다음 옵션을 안내합니다.
-    * [기존 테이블](one-click-ingestion-existing-table.md)에 수집
-    * [새 테이블](one-click-ingestion-new-table.md)에 수집
-    * 다음에서 데이터를 수집합니다.
+이 마법사는 다음 옵션을 안내합니다.
+   * [기존 테이블](one-click-ingestion-existing-table.md)에 수집
+   * [새 테이블](one-click-ingestion-new-table.md)에 수집
+   * 다음에서 데이터를 수집합니다.
       * Blob Storage
       * [로컬 파일](one-click-ingestion-existing-table.md)
       * [컨테이너](one-click-ingestion-new-table.md)
 
+
 ### <a name="schema-mapping"></a>스키마 매핑
 
-* 서비스에서 스키마 및 수집 속성을 자동으로 생성하며, 사용자가 변경할 수 있습니다. 사용자는 새 테이블과 기존 테이블 중 어디에 수집할 것인지에 따라 기존 매핑 구조를 사용할 수도 있고 새로 만들 수도 있습니다.
+서비스에서 스키마 및 수집 속성을 자동으로 생성하며, 사용자가 변경할 수 있습니다. 사용자는 새 테이블과 기존 테이블 중 어디에 수집할 것인지에 따라 기존 매핑 구조를 사용할 수도 있고 새로 만들 수도 있습니다.
 
-* **스키마** 탭에서 다음 작업을 수행할 수 있습니다.
-    * 자동 생성된 압축 형식을 확인합니다.
-    * [데이터 형식](#file-formats)을 선택합니다. 여러 형식을 사용하면 추가 변경 작업을 수행할 수 있습니다.
-      
+**스키마** 탭에서 다음 작업을 수행합니다.
+   * 자동 생성된 압축 형식을 확인합니다.
+   * [데이터 형식](#file-formats)을 선택합니다. 여러 형식을 사용하면 추가 변경 작업을 수행할 수 있습니다.
+
+#### <a name="file-formats"></a>파일 형식
+
+원클릭 수집은 다음 형식의 원본 데이터에서 새 테이블을 수집할 수 있습니다.
+* JSON
+* CSV
+* TSV
+* SCSV
+* SOHSV
+* TSVE
+* PSV
+
 ### <a name="editor-window"></a>편집기 창
 
 **편집기** 창에서 데이터 테이블 열을 필요한 대로 조정할 수 있습니다. 
@@ -102,13 +103,12 @@ ms.locfileid: "85264517"
 
 스키마 매핑과 열 조작을 완료하면 수집 마법사가 데이터 수집 프로세스를 시작합니다. 
 
-* **컨테이너가 아닌** 원본에서 데이터를 수집하는 경우:
-    * 수집이 즉시 적용됩니다.
+* **컨테이너가 이닌** 원본에서 데이터를 수집하는 경우 수집이 즉시 적용됩니다.
 
 * 데이터 원본이 **컨테이너**인 경우:
     * Azure Data Explorer의 [일괄 처리 정책](kusto/management/batchingpolicy.md)은 데이터를 집계합니다. 
     * 수집 후에는 수집 보고서를 다운로드하여 해결된 각 BLOB의 성능을 검토할 수 있습니다. 
-    * **지속적인 수집 만들기**를 선택하고 [Event Grid를 사용하여 지속적인 수집](one-click-ingestion-new-table.md#continuous-ingestion---container-only)을 설정할 수 있습니다.
+    * **지속적인 수집 만들기**를 선택하고 [Event Grid를 사용하여 지속적인 수집](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container)을 설정할 수 있습니다.
  
 ### <a name="initial-data-exploration"></a>초기 데이터 탐색
    
