@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: dcc196675b29ac1989fb0753e87ef5f1bf0477aa
-ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
+ms.openlocfilehash: 0b831b236c2604ef7d87c77f6955e6b5eaf2aae1
+ms.sourcegitcommit: 4ae1508bbaa8fe9642dcfc8618d77f009bc8ec9f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86291579"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86405490"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -45,7 +45,7 @@ Azure 데이터 탐색기 클러스터를 호스트 하는 데 사용 되는 서
 
 총 IP 주소 수:
 
-| 용도 | 주소 수 |
+| Windows Server Update Services와 함께 | 주소 수 |
 | --- | --- |
 | 엔진 서비스 | 인스턴스당 1 개 |
 | 데이터 관리 서비스 | 2 |
@@ -223,6 +223,11 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 동남 아시아 | 52.148.86.165 |
 | 영국 남부 | 52.174.4.112 |
 | 영국 서부 | 52.169.237.246 |
+| 미국 국방부 중부 | 13.72.37.111 |
+| 미국 국방부 동부 | 13.72.37.111 |
+| USGov 애리조나 | 13.72.37.111 |
+| USGov 텍사스 | 13.72.37.111 |
+| USGov 버지니아 | 13.72.37.111 |
 | 미국 중서부 | 52.161.31.69 |
 | 서유럽 | 52.174.4.112 |
 | 인도 서부 | 13.71.25.187 |
@@ -233,9 +238,9 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 공용 IP 주소를 통해 Azure 데이터 탐색기에 대 한 액세스를 완전히 사용 하지 않도록 설정 하려면 NSG에서 다른 인바운드 규칙을 만듭니다. 이 규칙은 낮은 [우선 순위](/azure/virtual-network/security-overview#security-rules) (높은 숫자)를 가져야 합니다. 
 
-| **사용**   | **소스** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **동작** | * * 우선 순위 * * |
+| **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **동작** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | Deny | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
 * `private-[clustername].[geo-region].kusto.windows.net`엔진
@@ -280,7 +285,7 @@ crl3.digicert.com:80
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| 이름 | 주소 접두사 | 다음 홉 |
+| Name | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |
