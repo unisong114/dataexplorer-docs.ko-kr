@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 828f2450db7f6afabf33f72d813af6f0007ada6b
-ms.sourcegitcommit: c3bbb9a6bfd7c5506f05afb4968fdc2043a9fbbf
+ms.openlocfilehash: 1b857ee464b0fff973293cd03afadecc8c893af2
+ms.sourcegitcommit: 537a7eaf8c8e06a5bde57503fedd1c3706dd2b45
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85332603"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86422984"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -133,7 +133,7 @@ ms.locfileid: "85332603"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | 유형     | 설명       |
+| 속성         | Type     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -142,6 +142,8 @@ ms.locfileid: "85332603"
 | `namePrefix`     | `string` | 설정 하는 경우 파일의 접두사를 나타냅니다. 쓰기 작업 시 모든 파일이이 접두사로 작성 됩니다. 읽기 작업에서는이 접두사가 포함 된 파일만 읽습니다. |
 | `fileExtension`  | `string` | 설정 하는 경우 파일의 파일 확장명을 나타냅니다. 쓰기에서는 파일 이름이이 접미사로 종료 됩니다. 읽을 때이 파일 확장명을 가진 파일만 읽습니다.           |
 | `encoding`       | `string` | 텍스트를 인코딩하는 방법을 나타냅니다. `UTF8NoBOM` (기본값) 또는 `UTF8BOM` 입니다.             |
+| `sampleUris`     | `bool`   | 설정 하는 경우 명령 결과는 외부 테이블 정의에서 예상 하는 외부 데이터 파일 URI의 몇 가지 예를 제공 합니다. |
+| `validateNotEmpty` | `bool`   | 설정 하는 경우 연결 문자열에 콘텐츠를 포함 하기 위해 연결 문자열의 유효성이 검사 됩니다. 지정 된 URI 위치가 존재 하지 않거나 액세스 권한이 부족 한 경우 명령이 실패 합니다. |
 
 > [!TIP]
 > `namePrefix` `fileExtension` 쿼리 중 데이터 파일 필터링에서 실행 되는 역할 및 속성에 대 한 자세한 내용은 [파일 필터링 논리](#file-filtering) 섹션을 참조 하세요.
@@ -272,9 +274,9 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | 유형   | 설명                       |
+| 출력 매개 변수 | Type   | 설명                       |
 |------------------|--------|-----------------------------------|
-| URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
+| URI              | string | 외부 저장소 데이터 파일의 URI |
 
 > [!TIP]
 > 외부 테이블에서 참조 하는 모든 파일에 대 한 반복은 파일 수에 따라 비용이 많이 들 수 있습니다. `limit`일부 URI 예제를 보려는 경우에는 매개 변수를 사용 해야 합니다.

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: e5e4e2642d41d045c7fc49efaca78c35e217b0e5
-ms.sourcegitcommit: f086298a6dd32790910350c7cd3b914b51d51226
+ms.openlocfilehash: b3f4ed8e0bb37b62c7f31c9444b373529cf24df9
+ms.sourcegitcommit: 537a7eaf8c8e06a5bde57503fedd1c3706dd2b45
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2020
-ms.locfileid: "86374686"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86423021"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
@@ -36,7 +36,7 @@ Azure 데이터 탐색기 프록시 흐름:
 
 1. Azure 데이터 탐색기 UI (에서 https://dataexplorer.azure.com/clusters) **클러스터 추가**를 선택 합니다.
 
-1. **클러스터 추가** 창에서 LA 또는 AI 클러스터에 URL을 추가 합니다. 
+1. **클러스터 추가** 창에서 LA 또는 AI 클러스터의 URL을 추가 합니다. 
     
     * LA의 경우:`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * AI의 경우:`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -67,7 +67,7 @@ Kusto 탐색기, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jar
 ### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>LA 또는 AI ADX 프록시 클러스터에서 직접 쿼리
 
 LA 또는 AI 클러스터에서 쿼리를 실행 합니다. 왼쪽 창에서 클러스터가 선택 되어 있는지 확인 합니다. 
-
+ 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
@@ -98,11 +98,13 @@ Azure 데이터 탐색기 프록시 클러스터는 Application Insights 및 Log
 이 기능을 통해 클러스터 간 쿼리는 Azure Monitor 테이블 형식 함수를 직접 참조할 수 있습니다.
 프록시는 다음 명령을 지원 합니다.
 
-```kusto
-.show functions
-.show function {FunctionName}
-.show database {DataBaseName} schema as json
-```
+* `.show functions`
+* `.show function {FunctionName}`
+* `.show database {DatabaseName} schema as json`
+
+다음 이미지는 Azure 데이터 탐색기 웹 UI에서 테이블 형식 함수를 쿼리 하는 예를 보여 줍니다. 함수를 사용 하려면 쿼리 창에서 이름을 실행 합니다.
+
+  [![Azure 데이터 탐색기 웹 UI에서 테이블 형식 함수 쿼리](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
 > [!NOTE]
 > Azure Monitor은 테이블 형식 함수만 지원 합니다. 테이블 형식 함수는 매개 변수를 지원 하지 않습니다.

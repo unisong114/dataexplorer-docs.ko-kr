@@ -7,12 +7,12 @@ ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 7b26d0585e4d6bc2ff8edfb9a906dd305278f967
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: 8a31c4a482f047f9f92edd75fe1119c1729deaf9
+ms.sourcegitcommit: 537a7eaf8c8e06a5bde57503fedd1c3706dd2b45
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280619"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86423008"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-sdk"></a>Azure 데이터 탐색기 .NET SDK를 사용 하 여 데이터 수집 
 
@@ -165,7 +165,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-batching-policy-for-your-table"></a>테이블에 대 한 일괄 처리 정책 정의
 
-Azure 데이터 탐색기 수집은 들어오는 데이터의 일괄 처리를 수행 하 여 데이터 분할 크기를 최적화 합니다. 이 프로세스는 수집 [일괄 처리 정책](/kusto/management/batchingpolicy) 에 의해 제어 되며 [제어 명령](/kusto/management/batching-policy)으로 수정할 수 있습니다. 이 정책을 사용 하 여 느린 도착 데이터의 대기 시간을 줄입니다.
+Azure 데이터 탐색기 수집은 들어오는 데이터의 일괄 처리를 수행 하 여 데이터 분할 크기를 최적화 합니다. 이 프로세스는 수집 [일괄 처리 정책](kusto/management/batchingpolicy.md) 에 의해 제어 되며, 수집 [일괄 처리 정책 제어 명령](kusto/management/batching-policy.md)으로 수정할 수 있습니다. 이 정책을 사용 하 여 느린 도착 데이터의 대기 시간을 줄입니다.
 
 ```kusto
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
