@@ -1,6 +1,6 @@
 ---
-title: Kusto IngestionBatching 정책 관리-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 IngestionBatching 정책에 대해 설명 합니다.
+title: Kusto IngestionBatching 정책 관리 명령-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기의 IngestionBatching policy 명령에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: e9823fd0cd44dd2e5bd0731cc59086961ce86d8c
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 04c59b33d780db1c9731ac71d1f905315afbc302
+ms.sourcegitcommit: 4405ae34e119948778e0de5021077638d24da812
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82617768"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86448047"
 ---
-# <a name="ingestionbatching-policy"></a>IngestionBatching 정책
+# <a name="ingestionbatching-policy-command"></a>IngestionBatching policy 명령
 
 [IngestionBatching 정책은](batchingpolicy.md) 지정 된 설정에 따라 데이터를 수집 하는 동안 데이터 집계가 중지 되는 시기를 결정 하는 정책 개체입니다.
 
-정책을로 `null`설정할 수 있습니다 .이 경우에는 기본값을 사용 하 여 최대 일괄 처리 시간 범위를 5 분, 1000 항목 및 전체 일괄 처리 크기인 1g로 설정 하거나 Kusto로 설정 된 기본 클러스터 값으로 설정 합니다.
+정책을로 설정할 수 있습니다 .이 경우에는 기본값을 사용 하 여 `null` 최대 일괄 처리 시간 범위를 5 분, 1000 항목 및 전체 일괄 처리 크기인 1g로 설정 하거나 Kusto로 설정 된 기본 클러스터 값으로 설정 합니다.
 
 특정 엔터티에 대해 정책이 설정 되지 않은 경우에는 더 높은 계층 구조 수준 정책을 검색 합니다. 모두 null로 설정 된 경우에는 기본값이 사용 됩니다. 
 
@@ -30,7 +30,7 @@ ms.locfileid: "82617768"
 이 정책은 데이터베이스 또는 테이블에 대해 설정할 수 있으며 다음 명령 중 하나를 사용 하 여 표시 됩니다.
 
 * `.show``database` *DatabaseName* DatabaseName `policy``ingestionbatching`
-* `.show``table` *DatabaseName*DatabaseName`.`*TableName* TableName `policy``ingestionbatching`
+* `.show``table` *DatabaseName* `.` *TableName* TableName `policy``ingestionbatching`
 
 ## <a name="altering-the-ingestionbatching-policy"></a>IngestionBatching 정책 변경
 

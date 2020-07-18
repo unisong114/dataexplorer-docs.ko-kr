@@ -78,8 +78,10 @@
               href: one-click-ingestion-existing-table.md
         - name: 스트리밍 수집
           items:
-            - name: 스트리밍 수집
+            - name: Azure portal
               href: ingest-data-streaming.md
+            - name: C#
+              href: ingest-data-streaming-csharp.md
         - name: LightIngest 사용
           href: lightingest.md
         - name: 이벤트 허브
@@ -112,8 +114,8 @@
               href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager 템플릿
               href: data-connection-iot-hub-resource-manager.md
-            - name: Azure 데이터 팩터리
-              items: null
+        - name: Azure 데이터 팩터리
+          items:
             - name: Data Factory와 통합
               href: data-factory-integration.md
             - name: Azure Data Factory를 사용하여 데이터 복사
@@ -317,7 +319,7 @@
           href: troubleshoot-database-table.md
 - name: 참조
   items:
-    - name: Kusto 쿼리
+    - name: Kusto 쿼리 언어
       items:
         - name: 개요
           href: ./kusto/query/index.md
@@ -1219,45 +1221,14 @@
                   href: ./kusto/tools/kusto-explorer-troubleshooting.md
             - name: Kusto.Cli
               href: ./kusto/tools/kusto-cli.md
-    - name: 개념
-      href: ./kusto/concepts/index.md
-      items:
-        - name: 시작
-          href: ./kusto/concepts/index.md
-          items:
-            - name: 샌드박스
-              href: ./kusto/concepts/sandboxes.md
-        - name: 기타 및 오류
-          items:
-            - name: 쿼리 제한
-              href: ./kusto/concepts/querylimits.md
-            - name: 부분 쿼리 오류
-              href: ./kusto/concepts/partialqueryfailures.md
-              items:
-                - name: 결과 잘림
-                  href: ./kusto/concepts/resulttruncation.md
-                - name: 런어웨이 쿼리
-                  href: ./kusto/concepts/runawayqueries.md
-                - name: 오버플로
-                  href: ./kusto/concepts/overflow.md
-            - name: 클러스터 간 쿼리 및 스키마 변경
-              href: ./kusto/concepts/crossclusterandschemachanges.md
-            - name: 쿼리 일관성
-              href: ./kusto/concepts/queryconsistency.md
-            - name: 네이티브 코드 오류
-              href: ./kusto/concepts/errorsinnativecode.md
-            - name: 팩트 및 차원 테이블
-              href: ./kusto/concepts/fact-and-dimension-tables.md
     - name: 관리
-      href: ./kusto/management/index.md
       items:
         - name: 관리(제어 명령) 개요
           href: ./kusto/management/index.md
+        - name: 스키마
           items:
             - name: 스키마 디자인 모범 사례
               href: ./kusto/management/best-practices.md
-        - name: 스키마
-          items:
             - name: 데이터베이스 관리
               href: ./kusto/management/databases.md
               items:
@@ -1535,10 +1506,36 @@
               href: ./kusto/management/cluster-follower.md
             - name: 데이터 제거
               href: ./kusto/concepts/data-purge.md
-    - name: API
-      href: ./kusto/api/index.md
+    - name: 개념
       items:
-        - name: 개요
+        - name: 시작
+          href: ./kusto/concepts/index.md
+        - name: 기타 및 오류
+          items:
+            - name: 샌드박스
+              href: ./kusto/concepts/sandboxes.md
+            - name: 쿼리 제한
+              href: ./kusto/concepts/querylimits.md
+            - name: 부분 쿼리 오류
+              href: ./kusto/concepts/partialqueryfailures.md
+              items:
+                - name: 결과 잘림
+                  href: ./kusto/concepts/resulttruncation.md
+                - name: 런어웨이 쿼리
+                  href: ./kusto/concepts/runawayqueries.md
+                - name: 오버플로
+                  href: ./kusto/concepts/overflow.md
+            - name: 클러스터 간 쿼리 및 스키마 변경
+              href: ./kusto/concepts/crossclusterandschemachanges.md
+            - name: 쿼리 일관성
+              href: ./kusto/concepts/queryconsistency.md
+            - name: 네이티브 코드 오류
+              href: ./kusto/concepts/errorsinnativecode.md
+            - name: 팩트 및 차원 테이블
+              href: ./kusto/concepts/fact-and-dimension-tables.md
+    - name: API
+      items:
+        - name: API 개요
           href: ./kusto/api/index.md
           items:
             - name: 클라이언트 라이브러리
