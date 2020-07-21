@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 130526b41030ac3936236f8fd8bba81f20b4bb0e
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: af224c630cb835d190b8fd6655a6d42f7fd7fee9
+ms.sourcegitcommit: d79d3aa9aaa70cd23e3107ef12296159322e1eb5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512523"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86475612"
 ---
-# <a name="cache-policy-hot-and-cold-cache"></a>캐시 정책 (핫 및 콜드 캐시) 
+# <a name="cache-policy-hot-and-cold-cache"></a>캐시 정책(핫 및 콜드 캐시) 
 
 Azure 데이터 탐색기는 실제 처리 (예: Azure Compute) 노드와는 다른 수집 데이터를 신뢰할 수 있는 저장소 (가장 일반적으로 Azure Blob Storage)에 저장 합니다. 해당 데이터에 대 한 쿼리 속도를 높이기 위해 Azure 데이터 탐색기는 해당 데이터 또는 그 일부를 처리 노드, SSD 또는 RAM에도 캐시 합니다. Azure 데이터 탐색기에는 캐시할 데이터 개체를 지능적으로 결정 하도록 설계 된 정교한 캐시 메커니즘이 포함 되어 있습니다. 캐시를 사용 하면 Azure 데이터 탐색기에서 사용 하는 데이터 아티팩트를 설명할 수 있으므로 더 중요 한 데이터가 우선적으로 적용 될 수 있습니다. 예: 열 인덱스 및 열 데이터 분할
 
@@ -39,7 +39,7 @@ Azure 데이터 탐색기 캐시는 고객이 **핫 데이터 캐시** 와 **콜
 
 데이터가 Azure 데이터 탐색기로 수집 시스템은 수집 된 날짜 및 시간과 생성 된 익스텐트의 추적을 유지 합니다. 익스텐트의 수집 날짜 및 시간 값 (또는 익스텐트가 여러 기존 범위에서 빌드된 경우 최대값)은 캐시 정책을 평가 하는 데 사용 됩니다.
 
-> [!Note]
+> [!NOTE]
 > 수집 속성을 사용 하 여 수집 날짜 및 시간에 대 한 값을 지정할 수 있습니다 `creationTime` .
 
 기본적으로 유효 정책은입니다 `null` . 즉, 모든 데이터가 **핫**으로 간주 됩니다.
@@ -48,13 +48,16 @@ Azure 데이터 탐색기 캐시는 고객이 **핫 데이터 캐시** 와 **콜
 ## <a name="scoping-queries-to-hot-cache"></a>핫 캐시로 쿼리 범위 지정
 
 Kusto는 핫 캐시 데이터만으로 범위가 지정 된 쿼리를 지원 합니다.
-몇 가지 쿼리 가능성이 있습니다.
 
-- 이라는 클라이언트 요청 속성을 `query_datascope` 쿼리에 추가 합니다.
+> [!NOTE]
+> 데이터 범위 지정은 테이블과 같은 캐싱 정책을 지 원하는 엔터티에만 적용 됩니다. 외부 테이블과 같은 다른 엔터티에 대해서는 무시 됩니다.
+
+다음과 같은 몇 가지 쿼리 가능성이 있습니다.
+* 이라는 클라이언트 요청 속성을 `query_datascope` 쿼리에 추가 합니다.
    가능한 값은 `default` , `all` 및 `hotcache` 입니다.
-- `set`쿼리 텍스트에서 문을 사용 `set query_datascope='...'` 합니다.
+* `set`쿼리 텍스트에서 문을 사용 `set query_datascope='...'` 합니다.
    가능한 값은 클라이언트 요청 속성의 경우와 동일 합니다.
-- `datascope=...`쿼리 본문에서 테이블 참조 바로 뒤에 텍스트를 추가 합니다. 
+* `datascope=...`쿼리 본문에서 테이블 참조 바로 뒤에 텍스트를 추가 합니다. 
    가능한 값은 `all` 및 `hotcache`입니다.
 
 `default`값은 쿼리가 모든 데이터를 포함 해야 함을 결정 하는 클러스터 기본 설정의 사용을 나타냅니다.

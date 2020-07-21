@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
-ms.openlocfilehash: 3b3f72bc2ea6b3b17cbdb6d4fb707b9837a2ed56
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: 1fa12a52994e19f8710294e440de98ee47922c86
+ms.sourcegitcommit: aacea5c4c397479e8254c1fe6ed0b2f333307b14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86470063"
 ---
 # <a name="scalar-function-types"></a>스칼라 함수 유형
 
@@ -69,6 +69,10 @@ ms.locfileid: "86280605"
 |[startofyear()](startofyearfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 시작을 반환 합니다.|
 |[todatetime()](todatetimefunction.md)|입력을 datetime 스칼라로 변환 합니다.|
 |[totimespan()](totimespanfunction.md)|입력을 timespan 스칼라로 변환 합니다.|
+|[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Unix epoch 마이크로초를 UTC 날짜/시간으로 변환 합니다.|
+|[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md)|Unix epoch 밀리초를 UTC 날짜/시간으로 변환 합니다.|
+|[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Unix epoch 나노초를 UTC 날짜/시간으로 변환 합니다.|
+|[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Unix epoch 초를 UTC 날짜/시간으로 변환 합니다.|
 |[weekofyear()](weekofyearfunction.md)|주 번호를 나타내는 정수를 반환 합니다.|
 
 
@@ -129,21 +133,21 @@ ms.locfileid: "86280605"
 |[exp2()](exp2-function.md)|X의 밑이 2 인 지 수 함수 이며, 2는 거듭제곱 x: 2 ^ x입니다.|
 |[gamma()](gammafunction.md)|감마 함수를 계산 합니다.|
 |[isfinite()](isfinitefunction.md)|입력이 유한 값 (무한 또는 NaN) 인지 여부를 반환 합니다.|
-|[isinf()](isinffunction.md)|입력이 무한 (양수 또는 음수) 값 인지 여부를 반환 합니다.|
+|[isinf ()](isinffunction.md)|입력이 무한 (양수 또는 음수) 값 인지 여부를 반환 합니다.|
 |[isnan()](isnanfunction.md)|입력이 NaN (숫자가 아님) 값 인지 여부를 반환 합니다.|
-|[log()](log-function.md)|자연 로그 함수를 반환 합니다.|
+|[log ()](log-function.md)|자연 로그 함수를 반환 합니다.|
 |[log10()](log10-function.md)|일반 (밑수 10) 로그 함수를 반환 합니다.|
 |[log2()](log2-function.md)|밑이 2 인 로그 함수를 반환 합니다.|
 |[loggamma()](loggammafunction.md)|감마 함수의 절대값 로그를 계산 합니다.|
-|[not()](notfunction.md)|Bool 인수의 값을 반대로 바꿉니다.|
+|[not ()](notfunction.md)|Bool 인수의 값을 반대로 바꿉니다.|
 |[pi()](pifunction.md)|Pi (π)의 상수 값을 반환 합니다.|
 |[pow()](powfunction.md)|거듭제곱 한 결과를 반환 합니다.|
 |[radians()](radiansfunction.md)|각도 단위 = (PI/180) * 각도 단위를 사용 하 여 각도의 각도 값을 라디안으로 값으로 변환 합니다.|
-|[rand()](randfunction.md)|난수를 반환 합니다.|
-|[range()](rangefunction.md)|간격이 동일한 일련의 값을 포함 하는 동적 배열을 생성 합니다.|
+|[rand ()](randfunction.md)|난수를 반환 합니다.|
+|[range ()](rangefunction.md)|간격이 동일한 일련의 값을 포함 하는 동적 배열을 생성 합니다.|
 |[round()](roundfunction.md)|지정 된 전체 자릿수로 반올림 된 원본을 반환 합니다.|
-|[sign()](signfunction.md)|숫자 식의 부호입니다.|
-|[sin()](sinfunction.md)|사인 함수를 반환 합니다.|
+|[sign ()](signfunction.md)|숫자 식의 부호입니다.|
+|[sin ()](sinfunction.md)|사인 함수를 반환 합니다.|
 |[sqrt()](sqrtfunction.md)|제곱근 함수를 반환 합니다.|
 |[tan()](tanfunction.md)|탄젠트 함수를 반환 합니다.|
 |[welch_test()](welch-testfunction.md)|[Welch 함수의](https://en.wikipedia.org/wiki/Welch%27s_t-test)p 값을 계산 합니다.|
@@ -231,7 +235,7 @@ ms.locfileid: "86280605"
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Base64 문자열을 UTF-8 문자열로 디코딩합니다.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Base64 문자열을 long 값 배열로 디코딩합니다.|
 |[countof()](cotfunction.md)|문자열의 부분 문자열 발생을 계산합니다. 일반 문자열 일치는 겹칠 수 있습니다. regex는 그렇지 않습니다.|
-|[extract()](extractfunction.md)|텍스트 문자열에서 정규식 에 대한 일치 항목을 가져옵니다.|
+|[extract ()](extractfunction.md)|텍스트 문자열에서 정규식 에 대한 일치 항목을 가져옵니다.|
 |[extract_all()](extractallfunction.md)|텍스트 문자열에서 정규식에 대 한 모든 일치 항목을 가져옵니다.|
 |[extractjson()](extractjsonfunction.md)|path 식을 사용하여 JSON 텍스트에서 지정된 요소를 가져옵니다.|
 |[indexof()](indexoffunction.md)|함수는 입력 문자열에서 맨 처음 발견 되는 지정 된 문자열의 0부터 시작 하는 인덱스를 보고 합니다.|
@@ -249,7 +253,7 @@ ms.locfileid: "86280605"
 |[parse_url()](parseurlfunction.md)|절대 URL 문자열을 구문 분석 하 고 URL의 모든 부분을 포함 하는 동적 개체를 반환 합니다.|
 |[parse_urlquery()](parseurlqueryfunction.md)|Url 쿼리 문자열을 구문 분석 하 고 쿼리 매개 변수를 포함 하는 동적 개체를 반환 합니다.|
 |[parse_version()](parse-versionfunction.md)|버전의 입력 문자열 표현을 비교할 수 있는 10 진수로 변환 합니다.|
-|[replace()](replacefunction.md)|모든 정규식 일치 항목을 다른 문자열로 바꿉니다.|
+|[replace ()](replacefunction.md)|모든 정규식 일치 항목을 다른 문자열로 바꿉니다.|
 |[reverse()](reversefunction.md)|함수는 입력 문자열을 역순으로 만듭니다.|
 |[split()](splitfunction.md)|지정 된 구분 기호에 따라 지정 된 문자열을 분할 하 고 포함 된 부분 문자열을 포함 하는 문자열 배열을 반환 합니다.|
 |[strcat()](strcatfunction.md)|1에서 64 사이의 인수를 연결 합니다.|
@@ -309,8 +313,8 @@ ms.locfileid: "86280605"
 |[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|지리적 위치에 대 한 S2 셀 토큰 문자열 값을 계산 합니다.|
 |[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|S2 셀의 중심을 나타내는 지리 공간적 좌표를 계산 합니다.|
 |[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|지구에 다각형 또는 multipolygon을 포함 하는 S2 셀 토큰을 계산 합니다. 유용한 지리 공간적 조인 도구입니다.|
-|[geo_line_densify ()](geo-line-densify-function.md)|중간 요소를 추가 하 여 평면 선 가장자리를 geodesics으로 변환 합니다.|
-|[geo_polygon_densify ()](geo-polygon-densify-function.md)|중간 요소를 추가 하 여 polygon 또는 multipolygon 평면 가장자리를 geodesics으로 변환 합니다.|
+|[geo_line_densify()](geo-line-densify-function.md)|중간 요소를 추가 하 여 평면 선 가장자리를 geodesics으로 변환 합니다.|
+|[geo_polygon_densify()](geo-polygon-densify-function.md)|중간 요소를 추가 하 여 polygon 또는 multipolygon 평면 가장자리를 geodesics으로 변환 합니다.|
 
 ## <a name="hash-functions"></a>해시 함수
 

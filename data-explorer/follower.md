@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 942c0577b8fb784af74cf09aec4c8a68a7be8dda
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: b1855d12872c291e1ae45f62da1ad1fe0e792617
+ms.sourcegitcommit: aacea5c4c397479e8254c1fe6ed0b2f333307b14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86470114"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>종동체 데이터베이스를 사용 하 여 Azure 데이터 탐색기에 데이터베이스 연결
 
@@ -26,7 +26,7 @@ ms.locfileid: "84294562"
 * 단일 클러스터는 여러 개의 리더 클러스터에서 데이터베이스를 따라갈 수 있습니다. 
 * 클러스터에는 종동체 데이터베이스와 리더 데이터베이스가 모두 포함 될 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 1. Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.microsoft.com/free/) 계정을 만듭니다.
 1. 리더 및 종동체에 대 한 [클러스터 및 DB를 만듭니다](create-cluster-database-portal.md) .
@@ -182,7 +182,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
         {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2020-02-15",
             "location": "[parameters('location')]",
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
@@ -372,8 +372,8 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 |**종류** |**설명**  |
 |---------|---------|
-|**부분**     |   연결 된 데이터베이스 보안 주체에는 항상 원래 데이터베이스 보안 주체와 종동체 데이터베이스에 추가 된 새 보안 주체가 모두 포함 됩니다.      |
-|**바꾸십시오**   |    원본 데이터베이스의 보안 주체를 상속 하지 않습니다. 연결 된 데이터베이스에 대 한 새 보안 주체를 만들어야 합니다.     |
+|**Union**     |   연결 된 데이터베이스 보안 주체에는 항상 원래 데이터베이스 보안 주체와 종동체 데이터베이스에 추가 된 새 보안 주체가 모두 포함 됩니다.      |
+|**바꾸기**   |    원본 데이터베이스의 보안 주체를 상속 하지 않습니다. 연결 된 데이터베이스에 대 한 새 보안 주체를 만들어야 합니다.     |
 |**없음**   |   연결 된 데이터베이스 보안 주체에는 추가 보안 주체가 없는 원래 데이터베이스의 보안 주체만 포함 됩니다.      |
 
 제어 명령을 사용 하 여 권한이 부여 된 보안 주체를 구성 하는 방법에 대 한 자세한 내용은 [종동체 클러스터를 관리 하기 위한 제어 명령](kusto/management/cluster-follower.md)을 참조 하세요.
@@ -393,7 +393,6 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 * [고객 관리 키](security.md#customer-managed-keys-with-azure-key-vault) 를 사용 하는 데이터 암호화는 리더가 나 종동체 클러스터에서 지원 되지 않습니다. 
 * 분리 하기 전에 다른 클러스터에 연결 된 데이터베이스는 삭제할 수 없습니다.
 * 다른 클러스터에 연결 된 데이터베이스를 분리 하기 전에는 해당 클러스터를 삭제할 수 없습니다.
-* 연결 된 종동체 또는 리더 데이터베이스가 있는 클러스터는 중지할 수 없습니다. 
 
 ## <a name="next-steps"></a>다음 단계
 

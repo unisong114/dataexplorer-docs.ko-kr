@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 98841c57c8e7c405eb113e3242df75bedf1ea3b7
-ms.sourcegitcommit: 8611ac88cc42178f2dead5385432d71fa7216c82
+ms.openlocfilehash: 3835cc3e50cc589e13f7d038a7c1f8f83def9d15
+ms.sourcegitcommit: aacea5c4c397479e8254c1fe6ed0b2f333307b14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86437573"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86470080"
 ---
 # <a name="capacity-policy"></a>용량 정책
 
@@ -31,7 +31,7 @@ ms.locfileid: "86437573"
 
 ## <a name="ingestion-capacity"></a>수집 용량
 
-|속성                           |Type    |설명                                                                                                                                                                               |
+|속성                           |형식    |설명                                                                                                                                                                               |
 |-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |ClusterMaximumConcurrentOperations |long    |클러스터의 동시 수집 작업 수에 대 한 최대 값                                          |
 |CoreUtilizationCoefficient         |double  |수집 용량을 계산할 때 사용할 코어 비율의 계수입니다. 계산 결과는 항상 다음으로 정규화 됩니다.`ClusterMaximumConcurrentOperations`                          |
@@ -45,7 +45,7 @@ ms.locfileid: "86437573"
 
 ## <a name="extents-merge-capacity"></a>익스텐트 병합 용량
 
-|속성                           |Type    |설명                                                                                                |
+|속성                           |형식    |설명                                                                                                |
 |-----------------------------------|--------|-----------------------------------------------------------------------------------------------------------|
 |MinimumConcurrentOperationsPerNode |long    |단일 노드에서 동시 익스텐트 병합/다시 작성 작업 수에 대 한 최소값입니다. 기본값은 1입니다. |
 |MaximumConcurrentOperationsPerNode |long    |단일 노드에서 동시 익스텐트 병합/다시 작성 작업 수에 대 한 최대값입니다. 기본값은 3입니다. |
@@ -54,14 +54,14 @@ ms.locfileid: "86437573"
 
 `Number of nodes in cluster`.x`Concurrent operations per node`
 
-의 유효 값은 `Concurrent operations per node` [,] 범위에서 시스템에 의해 자동으로 `MinimumConcurrentOperationsPerNode` 조정 `MaximumConcurrentOperationsPerNode` 됩니다.
+`Concurrent operations per node` `MinimumConcurrentOperationsPerNode` 병합 작업의 성공률은 90%를 초과 하는 경우의 유효 값은 [,] 범위에서 시스템에 의해 자동으로 조정 `MaximumConcurrentOperationsPerNode` 됩니다.
 
 > [!Note]
 > * 노드가 세 개 이상인 클러스터에서는 관리 노드가 병합 작업 수행에 참여 하지 않습니다. 는 `Number of nodes in cluster` 1로 줄어듭니다.
 
 ## <a name="extents-purge-rebuild-capacity"></a>익스텐트 재작성 용량 제거
 
-|속성                           |Type    |설명                                                                                                                           |
+|속성                           |형식    |설명                                                                                                                           |
 |-----------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|
 |MaximumConcurrentOperationsPerNode |long    |단일 노드에서의 제거 작업에 대 한 동시 다시 빌드 익스텐트의 최대 값 |
 
@@ -74,7 +74,7 @@ ms.locfileid: "86437573"
 
 ## <a name="export-capacity"></a>용량 내보내기
 
-|속성                           |Type    |설명                                                                                                                                                                            |
+|속성                           |형식    |설명                                                                                                                                                                            |
 |-----------------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |ClusterMaximumConcurrentOperations |long    |클러스터의 동시 내보내기 작업 수에 대 한 최대값입니다.                                           |
 |CoreUtilizationCoefficient         |double  |내보내기 용량을 계산할 때 사용할 코어 비율의 계수입니다. 계산 결과는 항상으로 정규화 됩니다 `ClusterMaximumConcurrentOperations` . |
@@ -88,14 +88,14 @@ ms.locfileid: "86437573"
 
 ## <a name="extents-partition-capacity"></a>익스텐트 파티션 용량
 
-|속성                           |Type    |설명                                                                                         |
+|속성                           |형식    |설명                                                                                         |
 |-----------------------------------|--------|----------------------------------------------------------------------------------------------------|
 |ClusterMinimumConcurrentOperations |long    |클러스터의 동시 익스텐트 파티션 작업 수에 대 한 최소값입니다. 기본값: 1  |
 |ClusterMaximumConcurrentOperations |long    |클러스터의 동시 익스텐트 파티션 작업 수에 대 한 최대값입니다. 기본값: 16 |
 
 클러스터의 총 익스텐트 파티션 용량 (에 표시 된 [용량 표시](../management/diagnostics.md#show-capacity))입니다.
 
-의 유효 값은 `Concurrent operations` [,] 범위에서 시스템에 의해 자동으로 조정 됩니다 `ClusterMinimumConcurrentOperations` `ClusterMaximumConcurrentOperations` .
+`Concurrent operations` `ClusterMinimumConcurrentOperations` `ClusterMaximumConcurrentOperations` 분할 작업의 성공률은 90%를 초과 하는 경우의 유효 값은 [,] 범위의 시스템에 의해 자동으로 조정 됩니다.
 
 ## <a name="defaults"></a>기본값
 
@@ -134,7 +134,7 @@ ms.locfileid: "86437573"
 
 * 클러스터 [정책 용량 변경](capacity-policy.md#alter-cluster-policy-capacity) 을 사용 하 여 클러스터의 용량 정책을 변경 합니다.
 
-## <a name="throttling"></a>제한
+## <a name="throttling"></a>스로틀
 
 Kusto는 다음과 같은 사용자 시작 명령에 대 한 동시 요청 수를 제한 합니다.
 

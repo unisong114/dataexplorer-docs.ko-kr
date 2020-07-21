@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 19ffbe2f5e14a2c003c24d145b713970e6bb31b8
-ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
+ms.openlocfilehash: dd312c4a36bb095dbe4b5e475e758c141bbab6e0
+ms.sourcegitcommit: aacea5c4c397479e8254c1fe6ed0b2f333307b14
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517769"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86470097"
 ---
 # <a name="troubleshooting"></a>문제 해결
 
@@ -26,7 +26,7 @@ ms.locfileid: "85517769"
 
 시작 시 Kusto 탐색기에서 오류를 표시 합니다. `InvalidOperationException`
 
-**가능한 솔루션**
+**가능한 해결 방법**
 
 이 오류가 발생 하면 운영 체제가 손상 되거나 일부 필수 모듈이 누락 될 수 있습니다.
 누락 되거나 손상 된 시스템 파일을 확인 하려면 여기에 설명 된 단계를 따르세요.   
@@ -38,7 +38,7 @@ ms.locfileid: "85517769"
 
 Kusto. 탐색기를 열 때마다 새 버전을 설치 하 라는 메시지가 표시 됩니다. Kusto 탐색기는 이미 설치 된 버전을 업데이트 하지 않고 전체 패키지를 다운로드 합니다.
 
-**가능한 솔루션**
+**가능한 해결 방법**
 
 이 증상은 로컬 ClickOnce 저장소의 손상으로 인해 발생할 수 있습니다. 관리자 권한 명령 프롬프트에서 다음 명령을 실행 하 여 로컬 ClickOnce 저장소를 지울 수 있습니다.
 
@@ -152,7 +152,7 @@ Following errors were detected during this operation.
 
 경우에 따라 이전 문제 해결 단계를 시작 하는 데 도움이 되지 않는 경우 로컬에 저장 된 데이터를 정리 하는 것이 도움이 될 수 있습니다.
 
-Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 수 `C:\Users\\[your alias]\AppData\Local\Kusto.Explorer` 있습니다.
+Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 수 `C:\Users\[your username]\AppData\Local\Kusto.Explorer` 있습니다.
 
 > [!NOTE]
 > 데이터를 정리 하면 열린 탭 (복구 폴더), 저장 된 연결 (연결 폴더) 및 응용 프로그램 설정 (UserSettings 폴더)이 손실 됩니다.

@@ -8,12 +8,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
-ms.openlocfilehash: 9ddb94e005e88855bbeddd7d3cf8ab537a42d413
-ms.sourcegitcommit: a8575e80c65eab2a2118842e59f62aee0ff0e416
+ms.openlocfilehash: 68d6493176696f0241467303f166b8c7160859b7
+ms.sourcegitcommit: cf1da667be12656a8c4727c23144421b5a4b1099
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84943122"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86565448"
 ---
 # <a name="clear-query-results-cache"></a>쿼리 결과 캐시 지우기
 
@@ -21,7 +21,7 @@ ms.locfileid: "84943122"
 
 **구문**
 
-`.clear` `database` `cache` `queryresults`
+`.clear` `database` `cache` `query_results`
 
 **반환**
 
@@ -30,7 +30,7 @@ ms.locfileid: "84943122"
 |Column    |형식    |설명
 |---|---|---
 |NodeId|`string`|클러스터 노드의 식별자입니다.
-|항목만|`long`|노드가 지워진 항목 수입니다.
+|개수|`long`|노드에서 삭제 된 항목 수입니다.
 
 **예제**
 

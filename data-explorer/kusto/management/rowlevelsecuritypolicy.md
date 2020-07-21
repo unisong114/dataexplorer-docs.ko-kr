@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: b5bc65b94c45e27087345cfbaf7252ccc4bcaf40
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: c07a2e624d8f2657889431df51958017228774a8
+ms.sourcegitcommit: d79d3aa9aaa70cd23e3107ef12296159322e1eb5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264423"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86475595"
 ---
 # <a name="row-level-security-preview"></a>행 수준 보안 (미리 보기)
 
@@ -23,16 +23,22 @@ RLS (행 수준 보안)는 보안의 디자인과 코딩을 간소화 합니다.
 
 액세스 제한 논리는 다른 응용 프로그램 계층의 데이터를 벗어나지 않고 데이터베이스 계층에 있습니다. 데이터베이스 시스템은 모든 계층에서 데이터 액세스를 시도할 때마다 액세스 제한을 적용 합니다. 이 논리는 보안 시스템의 노출 영역을 줄임으로써 보안 시스템을 보다 안정적이 고 강력 하 게 만듭니다.
 
-RLS를 사용 하면 테이블의 특정 부분에만 다른 응용 프로그램 및 사용자에 게 액세스 권한을 제공할 수 있습니다. 예를 들면 다음과 같습니다.
+RLS를 사용 하면 테이블의 특정 부분에만 다른 응용 프로그램 및 사용자에 게 액세스 권한을 제공할 수 있습니다. 예를 들어, 다음을 수행합니다.
 
 * 일부 조건을 충족 하는 행에만 액세스 권한 부여
 * 일부 열에 데이터 익명화
-* 위의 모든 항목
+* 위 항목 모두 해당
 
 자세한 내용은 [행 수준 보안 정책을 관리 하는 명령 제어](../management/row-level-security-policy.md)를 참조 하세요.
 
 > [!NOTE]
 > 프로덕션 데이터베이스에서 구성 하는 RLS 정책은 종동체 데이터베이스에도 적용 됩니다. 프로덕션 및 종동체 데이터베이스에서 다른 RLS 정책을 구성할 수 없습니다.
+
+> [!TIP]
+> 이러한 함수는 쿼리를 row_level_security 하는 데 유용한 경우가 많습니다.
+> * [current_principal()](../query/current-principalfunction.md)
+> * [current_principal_details()](../query/current-principal-detailsfunction.md)
+> * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
 
 ## <a name="limitations"></a>제한 사항
 
@@ -99,7 +105,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 먼저 테이블 이름을 문자열 매개 변수로 받는 함수를 정의 하 고 연산자를 사용 하 여 테이블을 참조 `table()` 합니다. 
 
-예를 들어:
+예를 들면 다음과 같습니다.
 
 ```
 .create-or-alter function RLSForCustomersTables(TableName: string) {
@@ -132,7 +138,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 * Azure Active Directory에서 구성원 자격 확인
 * 데이터에 적용 되는 필터입니다.
 
-예를 들어:
+예를 들면 다음과 같습니다.
 
 ```kusto
 let IsRestrictedUser = current_principal_is_member_of('aadgroup=some_group@domain.com');
