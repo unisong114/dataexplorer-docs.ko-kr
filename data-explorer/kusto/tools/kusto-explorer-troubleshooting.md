@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: dd312c4a36bb095dbe4b5e475e758c141bbab6e0
-ms.sourcegitcommit: aacea5c4c397479e8254c1fe6ed0b2f333307b14
+ms.openlocfilehash: 6dd52dbe9b69000b109f613957d1405190194b13
+ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86470097"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86870093"
 ---
 # <a name="troubleshooting"></a>문제 해결
 
@@ -42,7 +42,7 @@ Kusto. 탐색기를 열 때마다 새 버전을 설치 하 라는 메시지가 �
 
 이 증상은 로컬 ClickOnce 저장소의 손상으로 인해 발생할 수 있습니다. 관리자 권한 명령 프롬프트에서 다음 명령을 실행 하 여 로컬 ClickOnce 저장소를 지울 수 있습니다.
 
-> [!Important]
+> [!IMPORTANT]
 > 1. ClickOnce 응용 프로그램의 다른 인스턴스 또는이 있는 경우 `dfsvc.exe` 이 명령을 실행 하기 전에 해당 인스턴스를 종료 합니다.
 > 1. 앱 바로 가기에 저장 된 원래 설치 위치에 액세스할 수 있는 경우 모든 ClickOnce 앱은 다음에 실행할 때 자동으로 다시 설치 됩니다. 앱 바로 가기는 삭제 되지 않습니다.
 
@@ -159,7 +159,7 @@ Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 
 
 ## <a name="reset-kustoexplorer"></a>Kusto 탐색기 다시 설정
 
-필요한 경우 Kusto. 탐색기를 완전히 다시 설정할 수 있습니다. 다음 절차에서는 컴퓨터에서 완전히 제거 될 때까지 Kusto 탐색기나를 점진적으로 다시 설정 하 여 처음부터 설치 해야 하는 방법을 설명 합니다.
+필요한 경우 Kusto. 탐색기를 완전히 다시 설정할 수 있습니다. 다음 절차에서는 컴퓨터에서 제거 될 때까지 Kusto 탐색기를 점진적으로 다시 설정 하는 방법에 대해 설명 하며, 처음부터 설치 해야 합니다.
 
 1. Windows에서 **프로그램 변경 또는 제거** ( **프로그램 및 기능이**라고도 함)를 엽니다.
 1. 로 시작 하는 모든 항목을 선택 `Kusto.Explorer` 합니다.

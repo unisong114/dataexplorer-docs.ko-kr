@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 1f3b273260451dc0ce36730d20f1bc357a453397
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: d5cb54ab0171a7f7a7e6b7353f723abe2caf69ff
+ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280536"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86870144"
 ---
 # <a name="getting-started-with-kustoexplorer"></a>Kusto 탐색기 시작
 
@@ -53,10 +53,10 @@ Kusto 탐색기 사용자 인터페이스는 다른 Microsoft 제품의 경우�
 Kusto 탐색기 메뉴 패널에는 다음과 같은 탭이 있습니다.
 
 * [Home](#home-tab)
-* [파일](#file-tab)
+* [최근에 사용한 파일](#file-tab)
 * [연결](#connections-tab)
 * [보기](#view-tab)
-* [도구](#tools-tab)
+* [Tools](#tools-tab)
 * [Monitoring](#monitoring-tab)
 * [관리](#management-tab)
 * [도움말](#help-tab)
@@ -306,7 +306,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 * `AAD_TENANT_OF_CLUSTER`클러스터가 호스트 되는 AAD 테 넌 트의 도메인 이름 또는 AAD 테 넌 트 ID (GUID)입니다. 이는 일반적으로 클러스터를 소유 하는 조직의 도메인 이름입니다 (예:) `contoso.com` . 
 * USER_DOMAIN는 해당 테 넌 트에 초대 된 사용자의 id (예: `user@example.com` )입니다. 
 
->[!Note]
+>[!NOTE]
 > 사용자의 도메인 이름은 클러스터를 호스트 하는 테 넌 트의 도메인 이름과 같을 필요는 없습니다.
 
 :::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto 탐색기 고급 연결 문자열":::
