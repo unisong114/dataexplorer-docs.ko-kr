@@ -8,12 +8,12 @@ ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/12/2020
-ms.openlocfilehash: 144e56ee89cb35900b8e55cdbcdce597b26f8a68
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: ad659f9208bd057719a1adc31f8370c0cb11ffd3
+ms.sourcegitcommit: fb54d71660391a63b0c107a9703adea09bfc7cb9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226003"
+ms.lasthandoff: 07/22/2020
+ms.locfileid: "86946141"
 ---
 # <a name="data-purge"></a>데이터 제거
 
@@ -36,10 +36,10 @@ Azure 데이터 탐색기에 개인 데이터를 저장 하기 전에 데이터 
 
 Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프로세스는 다음 단계에서 수행 됩니다.
 
-1. 1 단계: Azure 데이터 탐색기 테이블 이름 및 레코드 별 조건자를 사용 하 여 입력을 제공 하 고 삭제할 레코드를 나타냅니다. Kusto는 데이터 제거에 참여 하는 데이터 분할 식별 하는 테이블을 검색 합니다. 분할는 조건자가 true를 반환 하는 레코드가 하나 이상 있는 것으로 식별 됩니다.
-1. 2 단계: (일시 삭제) 테이블의 각 데이터 분할 영역을 (1) reingested 버전으로 바꿉니다. Reingested 버전에는 조건자가 true를 반환 하는 레코드가 없어야 합니다. 새 데이터가 테이블에 수집 되는 경우이 단계가 끝나면 쿼리에서 조건자가 true를 반환 하는 데이터가 더 이상 반환 되지 않습니다. 제거 일시 삭제 단계의 기간은 다음 매개 변수에 따라 달라 집니다. 
+1. 1 단계: Azure 데이터 탐색기 테이블 이름 및 레코드 별 조건자를 사용 하 여 입력을 제공 하 고 삭제할 레코드를 나타냅니다. Kusto는 테이블을 검색 하 여 데이터 제거에 참여 하는 데이터 범위를 식별 합니다. 지정 된 익스텐트는 조건자가 true를 반환 하는 하나 이상의 레코드를 포함 하는 범위입니다.
+1. 2 단계: (일시 삭제) 테이블의 각 데이터 범위 (1)를 reingested 버전으로 바꿉니다. Reingested 버전에는 조건자가 true를 반환 하는 레코드가 없어야 합니다. 새 데이터가 테이블에 수집 되는 경우이 단계가 끝나면 쿼리에서 조건자가 true를 반환 하는 데이터가 더 이상 반환 되지 않습니다. 제거 일시 삭제 단계의 기간은 다음 매개 변수에 따라 달라 집니다. 
      * 제거 해야 하는 레코드 수 
-     * 클러스터의 데이터 분할 간 배포 기록 
+     * 클러스터의 데이터 익스텐트 간 배포 기록 
      * 클러스터의 노드 수  
      * 제거 작업에 대해 보유 한 예비 용량
      * 2 단계 기간이 몇 초에서 몇 시간 사이에 다를 수 있는 몇 가지 다른 요인이 있습니다.
@@ -113,7 +113,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
      ```
     
-    | 매개 변수  | 설명  |
+    | 매개 변수  | Description  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스 이름      |
     | `TableName`     |     테이블 이름입니다.    |
@@ -159,7 +159,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
     | `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
     |--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-    | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
+    | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
 
 #### <a name="example-single-step-purge"></a>예: 단일 단계 제거
 
@@ -176,7 +176,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 | `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
 
 ### <a name="cancel-purge-operation-command"></a>제거 작업 취소 명령
 
@@ -223,12 +223,12 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 .show purges from '<StartDate>' to '<EndDate>' [in database <DatabaseName>]
 ```
 
-| 속성  |설명  |필수/선택 사항|
+| 속성  |Description  |필수/선택 사항|
 |---------|------------|-------|
 |`OperationId `   |      단일 단계 또는 두 번째 단계를 실행 한 후 데이터 관리 작업 Id가 출력 됩니다.   |필수
-|`StartDate`    |   필터링 작업의 시간 제한이 더 낮습니다. 생략 하는 경우 기본값은 현재 시간 보다 24 시간입니다.      |Optional
-|`EndDate`    |  필터링 작업의 상한 시간 제한입니다. 생략 하는 경우 기본값은 현재 시간입니다.       |Optional
-|`DatabaseName`    |     결과를 필터링 할 데이터베이스 이름입니다.    |Optional
+|`StartDate`    |   필터링 작업의 시간 제한이 더 낮습니다. 생략 하는 경우 기본값은 현재 시간 보다 24 시간입니다.      |선택 사항
+|`EndDate`    |  필터링 작업의 상한 시간 제한입니다. 생략 하는 경우 기본값은 현재 시간입니다.       |선택 사항
+|`DatabaseName`    |     결과를 필터링 할 데이터베이스 이름입니다.    |선택 사항
 
 > [!NOTE]
 > 상태는 클라이언트에 [데이터베이스 관리자](../management/access-control/role-based-authorization.md) 권한이 있는 데이터베이스에만 제공 됩니다.
@@ -247,7 +247,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |Completed |제거가 완료 되었습니다 (저장소 아티팩트 삭제 보류 중). |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...
+|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |완료됨 |제거가 완료 되었습니다 (저장소 아티팩트 삭제 보류 중). |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...
 
 * `OperationId`-제거를 실행할 때 반환 되는 DM 작업 ID입니다. 
 * `DatabaseName`* *-데이터베이스 이름 (대/소문자 구분). 
@@ -307,7 +307,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
      ```
 
-    | 매개 변수  |설명  |
+    | 매개 변수  |Description  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스의 이름입니다.      |
     | `TableName`    |     테이블 이름입니다.    |
