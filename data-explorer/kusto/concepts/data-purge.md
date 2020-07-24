@@ -8,12 +8,12 @@ ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/12/2020
-ms.openlocfilehash: ad659f9208bd057719a1adc31f8370c0cb11ffd3
-ms.sourcegitcommit: fb54d71660391a63b0c107a9703adea09bfc7cb9
+ms.openlocfilehash: 86712a2e85f2785666b0b6245962aca39cd82729
+ms.sourcegitcommit: 4507466bdcc7dd07e6e2a68c0707b6226adc25af
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86946141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87106490"
 ---
 # <a name="data-purge"></a>데이터 제거
 
@@ -76,7 +76,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 ## <a name="trigger-the-purge-process"></a>제거 프로세스 트리거
 
-> [!Note]
+> [!NOTE]
 > 제거 실행은 데이터 관리 끝점 [해당 clustername]에서 [purge Table *TableName* records](#purge-table-tablename-records-command) 명령을 실행 하 여 호출 됩니다 https://ingest- . Region] .kusto. net.
 
 ### <a name="purge-table-tablename-records-command"></a>테이블 TableName 레코드 제거 명령
@@ -85,24 +85,24 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 * 프로그래밍 방식 호출: 응용 프로그램에서 호출 하는 단일 단계입니다. 이 명령을 호출 하면 제거 실행 시퀀스가 바로 트리거됩니다.
 
-    **구문**
+  **구문**
 
-     ```kusto
-     // Connect to the Data Management service
-     #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-     
-     .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
-     ```
+  ```kusto
+  // Connect to the Data Management service
+  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+  .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
+   ```
 
-    > [!NOTE]
-    > [Kusto 클라이언트 라이브러리](../api/netfx/about-kusto-data.md) NuGet 패키지의 일부로 사용할 수 있는 CslCommandGenerator API를 사용 하 여이 명령을 생성 합니다.
+  > [!NOTE]
+  > [Kusto 클라이언트 라이브러리](../api/netfx/about-kusto-data.md) NuGet 패키지의 일부로 사용할 수 있는 CslCommandGenerator API를 사용 하 여이 명령을 생성 합니다.
 
 * 인간 호출: 별도의 단계로 명시적 확인이 필요한 2 단계 프로세스입니다. 명령의 첫 번째 호출은 실제 제거를 실행 하기 위해 제공 해야 하는 확인 토큰을 반환 합니다. 이 순서는 잘못 된 데이터를 실수로 삭제 하는 위험을 줄여 줍니다. 이 옵션을 사용 하면 상당한 콜드 캐시 데이터가 있는 큰 테이블에서 완료 하는 데 시간이 오래 걸릴 수 있습니다.
     <!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
-     **구문**
+  **구문**
 
-     ```kusto
+  ```kusto
      // Connect to the Data Management service
      #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
      
@@ -111,9 +111,9 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
      // Step #2 - input the verification token to execute purge
      .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
-     ```
+  ```
     
-    | 매개 변수  | Description  |
+    | 매개 변수  | 설명  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스 이름      |
     | `TableName`     |     테이블 이름입니다.    |
@@ -132,50 +132,50 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 2 단계 활성화 시나리오에서 제거를 시작 하려면 명령의 #1 단계를 실행 합니다.
 
-    ```kusto
+ ```kusto
     // Connect to the Data Management service
      #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
      
     .purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
-    ```
+ ```
 
-    **Output**
+**출력**
 
-    | NumRecordsToPurge | EstimatedPurgeExecutionTime| VerificationToken
-    |--|--|--
-    | 1596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
+ | NumRecordsToPurge | EstimatedPurgeExecutionTime| VerificationToken
+ |---|---|---
+ | 1596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
 
-    Then, validate the NumRecordsToPurge before running step #2. 
+그런 다음 #2 단계를 실행 하기 전에 NumRecordsToPurge 유효성을 검사 합니다. 
 
 2 단계 활성화 시나리오에서 제거를 완료 하려면 #1 단계에서 반환 된 확인 토큰을 사용 하 여 #2 단계를 실행 합니다.
 
-    ```kusto
-    .purge table MyTable records in database MyDatabase
-    with (verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
-    <| where CustomerId in ('X', 'Y')
-    ```
+```kusto
+.purge table MyTable records in database MyDatabase
+ with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
+<| where CustomerId in ('X', 'Y')
+```
 
-    **Output**
+**출력**
 
-    | `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
-    |--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-    | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
+| `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
 
 #### <a name="example-single-step-purge"></a>예: 단일 단계 제거
 
 단일 단계 활성화 시나리오에서 제거를 트리거하려면 다음 명령을 실행 합니다.
 
-    ```kusto
-    // Connect to the Data Management service
-     #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-     
-    .purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
-    ```
+```kusto
+// Connect to the Data Management service
+ #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+.purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
+```
 
 **출력**
 
 | `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
 
 ### <a name="cancel-purge-operation-command"></a>제거 작업 취소 명령
@@ -189,28 +189,28 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 ```kusto
  .cancel purge <OperationId>
- ```
+```
 
 **예제**
 
 ```kusto
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
- ```
+```
 
 **출력**
 
 이 명령의 출력은 취소 중인 제거 작업의 업데이트 된 상태를 보여 주는 ' 제거 *OperationId OperationId*' 명령 출력과 동일 합니다. 시도에 성공 하면 작업 상태가로 업데이트 됩니다 `Abandoned` . 그렇지 않으면 작업 상태가 변경 되지 않습니다. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...
 
 ## <a name="track-purge-operation-status"></a>제거 작업 상태 추적 
 
-> [!Note]
+> [!NOTE]
 > 제거 작업은 데이터 관리 끝점 [해당 clustername]에 대해 실행 되는 [제거 표시](#show-purges-command) 명령을 사용 하 여 추적할 수 있습니다 https://ingest- . region] .kusto. net.
 
-상태 = ' 완료 '는 제거 작업의 첫 번째 단계가 성공적으로 완료 되었음을 나타냅니다. 즉, 레코드가 일시 삭제 되 고 더 이상 쿼리에 사용할 수 없습니다. 고객은 두 번째 단계 (하드 삭제) 완료를 추적 하 고 **확인할 필요가 없습니다** . 이 단계는 Azure 데이터 탐색기에서 내부적으로 모니터링 됩니다.
+상태 = ' 완료 '는 제거 작업의 첫 번째 단계가 성공적으로 완료 되었음을 나타냅니다. 즉, 레코드가 일시 삭제 되 고 더 이상 쿼리에 사용할 수 없습니다. 고객은 두 번째 단계 (하드 삭제) 완료를 추적 하 고 확인할 필요가 없습니다. 이 단계는 Azure 데이터 탐색기에서 내부적으로 모니터링 됩니다.
 
 ### <a name="show-purges-command"></a>제거 명령 표시
 
@@ -223,9 +223,9 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 .show purges from '<StartDate>' to '<EndDate>' [in database <DatabaseName>]
 ```
 
-| 속성  |Description  |필수/선택 사항|
+| 속성  |설명  |필수/선택 사항|
 |---------|------------|-------|
-|`OperationId `   |      단일 단계 또는 두 번째 단계를 실행 한 후 데이터 관리 작업 Id가 출력 됩니다.   |필수
+|`OperationId `   |      단일 단계 또는 두 번째 단계를 실행 한 후 데이터 관리 작업 ID가 출력 됩니다.   |필수
 |`StartDate`    |   필터링 작업의 시간 제한이 더 낮습니다. 생략 하는 경우 기본값은 현재 시간 보다 24 시간입니다.      |선택 사항
 |`EndDate`    |  필터링 작업의 상한 시간 제한입니다. 생략 하는 경우 기본값은 현재 시간입니다.       |선택 사항
 |`DatabaseName`    |     결과를 필터링 할 데이터베이스 이름입니다.    |선택 사항
@@ -246,7 +246,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 **출력** 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |완료됨 |제거가 완료 되었습니다 (저장소 아티팩트 삭제 보류 중). |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...
 
 * `OperationId`-제거를 실행할 때 반환 되는 DM 작업 ID입니다. 
@@ -272,7 +272,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 테이블을 삭제 하면 테이블을 삭제 하 고 삭제 된 것으로 표시 하 여 [제거 프로세스](#purge-process) 에 설명 된 하드 삭제 프로세스가 실행 됩니다. 제거 하지 않고 테이블을 삭제 하면 모든 저장소 아티팩트가 삭제 되지 않습니다. 이러한 아티팩트는 테이블에 처음 설정 된 하드 보존 정책에 따라 삭제 됩니다. `purge table allrecords`명령은 빠르고 효율적 이며, 시나리오에 해당 하는 경우 레코드 제거 프로세스 보다 더 좋습니다. 
 
-> [!Note]
+> [!NOTE]
 > 명령은 데이터 관리 끝점 [해당 clustername]에서 [제거 테이블 *TableName* allrecords](#purge-table-tablename-allrecords-command) 명령을 실행 하 여 호출 됩니다 https://ingest- . region] .kusto. net.
 
 ### <a name="purge-table-tablename-allrecords-command"></a>테이블 제거 *TableName* allrecords 명령
@@ -307,7 +307,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
      ```
 
-    | 매개 변수  |Description  |
+    | 매개 변수  |설명  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스의 이름입니다.      |
     | `TableName`    |     테이블 이름입니다.    |
@@ -328,7 +328,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
     **출력**
 
     | `VerificationToken`|
-    |--|
+    |---|
     | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b|
 
 1.  2 단계 활성화 시나리오에서 제거를 완료 하려면 #1 단계에서 반환 된 확인 토큰을 사용 하 여 #2 단계를 실행 합니다.

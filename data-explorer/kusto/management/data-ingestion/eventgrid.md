@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/01/2020
-ms.openlocfilehash: 88a95ea2fc8e1f417114cfcfd89c4e5003d9bef2
-ms.sourcegitcommit: fb54d71660391a63b0c107a9703adea09bfc7cb9
+ms.openlocfilehash: b8b72c2bc3b34f6d42ea71903272893ffde773fc
+ms.sourcegitcommit: 4507466bdcc7dd07e6e2a68c0707b6226adc25af
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86946107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87106464"
 ---
 # <a name="ingest-from-storage-using-event-grid-subscription"></a>Event Grid 구독을 사용하여 스토리지에서 수집
 
@@ -35,7 +35,7 @@ Azure 데이터 탐색기는 blob 생성 알림에 대 한 [Azure Event Grid](/a
 Blob 메타 데이터를 통해 blob 수집의 수집 [속성](../../../ingestion-properties.md) 을 지정할 수 있습니다.
 다음 속성을 설정할 수 있습니다.
 
-|속성 | Description|
+|속성 | 설명|
 |---|---|
 | rawSizeBytes | 원시 (압축 되지 않은) 데이터의 크기입니다. Avro/ORC/Parquet의 경우이 값은 서식 지정 압축을 적용 하기 전의 크기입니다.|
 | kustoTable |  기존 대상 테이블의 이름입니다. `Table`블레이드의 집합을 재정의 `Data Connection` 합니다. |
@@ -74,7 +74,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 > [!NOTE]
 > 최상의 성능을 위해 Azure 데이터 탐색기 클러스터와 동일한 지역에 모든 리소스를 만듭니다.
 
-### <a name="prerequisites"></a>필수 조건
+### <a name="prerequisites"></a>필수 구성 요소
 
 * [스토리지 계정 만들기](/azure/storage/common/storage-quickstart-create-account)
   또는 종류에 대 한 Azure Storage 계정에 Event Grid 알림 구독을 설정할 수 있습니다 `BlobStorage` `StorageV2` .
@@ -94,7 +94,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
     |**설정** | **제안 값** | **필드 설명**|
     |---|---|---|
-    | Name | *test-grid-connection* | 만들려는 event grid 구독의 이름입니다.|
+    | 이름 | *test-grid-connection* | 만들려는 event grid 구독의 이름입니다.|
     | 이벤트 스키마 | *Event Grid 스키마* | Event Grid에 사용해야 하는 스키마입니다. |
     | 항목 종류 | *스토리지 계정* | Event Grid 항목의 종류입니다. |
     | 원본 리소스 | *gridteststorage1* | 사용자 스토리지 계정의 이름입니다. |
@@ -115,7 +115,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
         :::image type="content" source="../images/eventgrid/filters-tab.png" alt-text="필터 탭 이벤트 표":::
 
 > [!NOTE]
-> 끝점이 이벤트 수신을 승인 하지 않으면 Azure Event Grid는 재시도 메커니즘을 활성화 합니다. 이 재시도 배달이 실패 하면 Event Grid은 배달 *못*한 편지 처리를 사용 하 여 배달 되지 않은 이벤트를 저장소 계정에 배달 합니다. 자세한 내용은 [Event Grid 메시지 배달 및 재시도](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration)를 참조하세요.
+> 끝점이 이벤트 수신을 승인 하지 않으면 Azure Event Grid는 재시도 메커니즘을 활성화 합니다. 이 재시도 배달이 실패 하면 배달 *못*한 편지 처리를 사용 하 여 배달 되지 않은 이벤트를 저장소 계정으로 배달할 수 Event Grid. 자세한 내용은 [Event Grid 메시지 배달 및 재시도](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration)를 참조하세요.
 
 ### <a name="data-ingestion-connection-to-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 데이터 수집 연결
 

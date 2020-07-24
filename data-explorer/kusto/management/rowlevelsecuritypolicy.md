@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: c07a2e624d8f2657889431df51958017228774a8
-ms.sourcegitcommit: d79d3aa9aaa70cd23e3107ef12296159322e1eb5
+ms.openlocfilehash: 9952a7a7d95f03ee431b699a1833aa23b21d341b
+ms.sourcegitcommit: 4507466bdcc7dd07e6e2a68c0707b6226adc25af
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86475595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87106359"
 ---
 # <a name="row-level-security-preview"></a>행 수준 보안 (미리 보기)
 
@@ -49,7 +49,7 @@ RLS를 사용 하면 테이블의 특정 부분에만 다른 응용 프로그램
 * [업데이트 정책](./updatepolicy.md)쿼리에서 참조 됩니다.
 * 제한 된 [보기 액세스 정책을](./restrictedviewaccesspolicy.md) 구성 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="limit-access-to-sales-table"></a>Sales 테이블에 대 한 액세스 제한
 
@@ -122,6 +122,19 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 .alter table Customers2 policy row_level_security enable "RLSForCustomersTables('Customers2')"
 .alter table Customers3 policy row_level_security enable "RLSForCustomersTables('Customers3')"
 ```
+
+### <a name="produce-an-error-upon-unauthorized-access"></a>무단 액세스 시 오류 생성
+
+권한이 없는 테이블 사용자가 빈 테이블을 반환 하는 대신 오류를 받도록 하려면 함수를 사용 `[assert()](../query/assert-function.md)` 합니다. 다음 예에서는 RLS 함수에서이 오류를 생성 하는 방법을 보여 줍니다.
+
+```
+.create-or-alter function RLSForCustomersTables() {
+    MyTable
+    | where assert(current_principal_is_member_of('aadgroup=mygroup@mycompany.com') == true, "You don't have access")
+}
+```
+
+이 접근 방식을 다른 예제와 결합할 수 있습니다. 예를 들어 다른 AAD 그룹의 사용자에 게 다른 결과를 표시 하 고 다른 모든 사용자에 게 오류를 생성할 수 있습니다.
 
 ## <a name="more-use-cases"></a>추가 사용 사례
 
