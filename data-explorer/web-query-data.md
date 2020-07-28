@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 06/15/2020
-ms.openlocfilehash: 05c9a805e1391a34fe2d751c33178fcac16d15a9
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: c1202e4578f9d1d3d4520984e6dc3b6de0ef33b0
+ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780136"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86870161"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
@@ -114,6 +114,12 @@ Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](h
     결과는 다음 차트와 같이 표시됩니다.
 
     ![세로 막대형 차트](media/web-query-data/column-chart.png)
+
+> [!NOTE]
+> 쿼리 식의 빈 줄은 실행되는 쿼리 부분에 영향을 줄 수 있습니다.
+>
+> 텍스트를 선택하지 않은 경우 쿼리나 명령이 빈 줄로 구분되어 있다고 가정합니다.
+> 텍스트를 선택하면 선택한 텍스트가 실행됩니다.
 
 ## <a name="work-with-the-table-grid"></a>테이블 모눈 사용
 
