@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/06/2020
-ms.openlocfilehash: 0580088bf04bffafd36990a3f42c32aa5c4ede53
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: 8858b261cb366842b475a76a1b2c3246b8a3e7b5
+ms.sourcegitcommit: de81b57b6c09b6b7442665e5c2932710231f0773
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280478"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87264701"
 ---
 # <a name="materialize"></a>materialize()
 
@@ -27,19 +27,14 @@ ms.locfileid: "86280478"
 
 * *식*: 쿼리를 실행 하는 동안 평가 및 캐시할 테이블 형식 식입니다.
 
-**팁**
+> [!NOTE]
+> 구체화의 캐시 크기 제한은 **5gb**입니다. 이 제한은 클러스터 노드당 이며 동시에 실행 되는 모든 쿼리에 대해 상호 합니다. 쿼리에서를 사용 하 `materialize()` 고 캐시에서 더 이상 데이터를 보유할 수 없으면 쿼리가 오류와 함께 중단 됩니다.
 
-* 피연산자에 한 번만 실행할 수 있는 상호 하위 쿼리가 있을 때 join 또는 union과 함께 구체화를 사용 합니다. 아래 예제를 참조하세요.
-
-* 또한 시나리오에서 분기 기간을 조인/유니언해야 할 때 유용합니다.
-
-* 구체화는 캐시 된 결과에 이름을 지정 하는 경우 let 문에서만 사용할 수 있습니다.
-
-**참고**
-
-* 구체화의 캐시 크기 제한은 **5gb**입니다. 
-  이 제한은 클러스터 노드당 이며 동시에 실행 되는 모든 쿼리에 대해 상호 합니다.
-  쿼리에서를 사용 하 `materialize()` 고 캐시에서 더 이상 데이터를 보유할 수 없으면 쿼리가 오류와 함께 중단 됩니다.
+>[!TIP]
+>
+>* 구체화 된 데이터 집합을 줄이고 쿼리의 의미 체계를 유지 하는 모든 가능한 연산자를 푸시합니다. 예를 들어 필터를 사용 하거나 필요한 열만 프로젝션 합니다.
+>* 피연산자에 한 번만 실행할 수 있는 상호 하위 쿼리가 있을 때 join 또는 union과 함께 구체화를 사용 합니다. 예를 들어 조인/공용 구조체 포크 다리입니다. [Join 연산자 사용 예제를](#examples-of-query-performance-improvement)참조 하세요.
+>* 구체화는 캐시 된 결과에 이름을 지정 하는 경우 let 문에서만 사용할 수 있습니다. [Let 문 사용 예제를](#examples-of-using-materialize)참조 하세요.
 
 ## <a name="examples-of-query-performance-improvement"></a>쿼리 성능 향상의 예
 
@@ -57,7 +52,7 @@ _detailed_data
 | top 10 by EventPercentage
 ```
 
-|시스템 상태|EventType|EventPercentage|이벤트|
+|상태|EventType|EventPercentage|이벤트|
 |---|---|---|---|
 |하와이 중인지|Waterspout|100|2|
 |LAKE ONTARIO|해병대 뇌우 바람|100|8|
@@ -97,7 +92,7 @@ randomSet | summarize Sum=sum(value)
 
 결과 집합 2: 
 
-|값|
+|value|
 |---|
 |9999998|
 |9999998|
@@ -105,7 +100,7 @@ randomSet | summarize Sum=sum(value)
 
 결과 집합 3: 
 
-|합|
+|합계|
 |---|
 |15002960543563|
 
@@ -113,11 +108,8 @@ randomSet | summarize Sum=sum(value)
 
 > [!TIP]
 > 대부분의 쿼리가 수백만 개의 행에서 동적 개체의 필드를 추출 하는 경우 수집 시 열을 구체화 합니다.
-> 
-> `let`문을 두 번 이상 사용 하는 값으로 사용 하려면 [구체화 () 함수](./materializefunction.md)를 사용 합니다.
-> 자세한 내용은 [모범 사례](best-practices.md) 를 참조 하세요.
 
-구체화 된 데이터 집합을 줄이고 쿼리의 의미 체계를 유지 하는 모든 가능한 연산자를 푸시합니다. 예를 들어, 필터 또는 project only는 필수 열입니다.
+`let`문을 두 번 이상 사용 하는 값으로 사용 하려면 [구체화 () 함수](./materializefunction.md)를 사용 합니다. 구체화 된 데이터 집합을 줄이고 쿼리의 의미 체계를 유지 하는 모든 가능한 연산자를 푸시합니다. 예를 들어 필터를 사용 하거나 필요한 열만 프로젝션 합니다.
 
 ```kusto
     let materializedData = materialize(Table
@@ -142,7 +134,7 @@ randomSet | summarize Sum=sum(value)
     | summarize dcount(Resource2))
 ```
     
-필터가이 쿼리와 동일 하지 않으면 다음을 수행 합니다.  
+필터가 동일 하지 않으면 다음 쿼리와 같이 합니다.  
 
 ```kusto
     let materializedData = materialize(Table
@@ -154,7 +146,7 @@ randomSet | summarize Sum=sum(value)
     | summarize dcount(Resource2))
  ```
 
-결합 된 필터가 구체화 된 결과를 크게 줄이는 경우 구체화 된 결과에 대 한 두 필터를 `or` 아래 쿼리와 같은 논리 식으로 결합 합니다. 그러나 쿼리의 의미 체계를 유지 하려면 각 합집합 레그의 필터를 유지 합니다.
+결합 된 필터가 구체화 된 결과를 크게 줄이는 경우 아래 쿼리와 같이 구체화 된 결과에 대 한 두 필터를 논리 식으로 결합 합니다 `or` . 그러나 쿼리의 의미 체계를 유지 하려면 각 합집합 레그의 필터를 유지 합니다.
      
 ```kusto
     let materializedData = materialize(Table

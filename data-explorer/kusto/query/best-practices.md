@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
-ms.openlocfilehash: 301917f363176fb8e3bbf2fe4286a86b7a5674ea
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: e37d3733909b84a2991c54a9242d7f44b18d64cb
+ms.sourcegitcommit: de81b57b6c09b6b7442665e5c2932710231f0773
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280520"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87264684"
 ---
 # <a name="query-best-practices"></a>쿼리 모범 사례
 
 다음은 쿼리를 더 빠르게 실행 하기 위해 수행할 수 있는 몇 가지 모범 사례입니다.
 
-|작업  |용도  |사용 안 함  |참고  |
+|작업  |Windows Server Update Services와 함께  |사용 안 함  |메모  |
 |---------|---------|---------|---------|
 | **시간 필터** | 먼저 시간 필터를 사용합니다. ||Kusto는 시간 필터를 사용 하도록 최적화 되어 있습니다.| 
 |**문자열 연산자**      | 연산자 사용 `has`     | 사용 안 함`contains`     | 전체 토큰을 찾을 때는 `has` 부분 문자열을 찾을 수 없기 때문에 더 효율적으로 작동 합니다.   |
@@ -43,3 +43,4 @@ ms.locfileid: "86280520"
 |**동일한 형식이 나 패턴을 공유 하는 문자열을 사용 하 여 열에서 값 추출**|  [Parse 연산자](./parseoperator.md) 사용 | 여러 문을 사용 하지 마세요 `extract()` .  | 예를 들면 다음과 같은 값입니다.`"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`
 |**[extract () 함수](./extractfunction.md)**| 구문 분석 된 문자열이 모두 동일한 형식이 나 패턴을 따르지 않는 경우를 사용 합니다.| |REGEX를 사용 하 여 필요한 값을 추출 합니다.|
 | **[구체화 () 함수](./materializefunction.md)** | 구체화 된 데이터 집합을 줄이고 쿼리의 의미 체계를 유지 하는 모든 가능한 연산자를 푸시합니다. | |예를 들어, 필터 또는 project only는 필수 열입니다.
+
