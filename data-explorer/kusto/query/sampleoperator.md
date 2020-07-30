@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/18/2020
-ms.openlocfilehash: 4915371127acd229845cc9eac1ea1400484c313f
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: b5d0624504744bb28dfdb68ee27c48b2119242b8
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372976"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351508"
 ---
 # <a name="sample-operator"></a>sample 연산자
 
@@ -23,15 +23,15 @@ ms.locfileid: "83372976"
 T | sample 5
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 _T_ `| sample` _numberofrows_
 
-**인수**
+## <a name="arguments"></a>인수
 
 - _Numberofrows_: 반환할 _T_ 의 행 수입니다. 임의의 숫자 식을 지정할 수 있습니다.
 
-**참고 사항**
+**참고**
 
 - `sample`는 값을 배포 하는 대신 속도를 위해 설계 되었습니다. 특히, or 연산자와 같이 서로 다른 크기의 데이터 집합 2 개를 통합 하는 연산자를 사용 하는 경우 ' 공평 ' 결과를 생성 하지 않습니다 `union` `join` . 테이블 참조 및 필터 바로 뒤에를 사용 하는 것이 좋습니다 `sample` .
 
@@ -72,7 +72,7 @@ StormEvents | where rand() < 0.1
 
 - 행이 아닌 키를 샘플링 하는 경우 (예: 샘플 10 Id 및 이러한 Id의 모든 행 가져오기)를 연산자와 함께 사용할 수 있습니다 [`sample-distinct`](./sampledistinctoperator.md) `in` .
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

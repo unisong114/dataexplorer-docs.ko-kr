@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2019
-ms.openlocfilehash: 876966391e67ad2f8f25a900dfc4c92bf0bfd11e
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 2ee587bfa7d01ae0602cc870e6c0b776593d53c0
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351338"
 ---
 # <a name="series_periods_detect"></a>series_periods_detect()
 
@@ -29,11 +29,11 @@ ms.locfileid: "85763262"
 * *기간*: 점수를 기준으로 정렬 된 bin 크기 단위로 검색 된 기간을 포함 하는 동적 배열입니다.
 * *점수*: 0에서 1 사이의 값을 포함 하는 동적 배열입니다. 각 배열은 *마침표* 배열의 해당 위치에서 마침표의 중요도를 측정 합니다.
  
-**구문**
+## <a name="syntax"></a>구문
 
 `series_periods_detect(`*x* `,` *min_period* `,` *max_period* `,` *num_periods*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값 배열 (일반적으로 series 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력 [)](make-seriesoperator.md) 인 동적 배열 스칼라 식입니다.
 * *min_period*: `real` 검색할 최소 기간을 지정 하는 숫자입니다.
@@ -47,7 +47,7 @@ ms.locfileid: "85763262"
 >
 > * 입력 시계열은 일반 이어야 합니다. 즉, 상수 bin으로 집계 되며, [시리즈](make-seriesoperator.md)를 사용 하 여 만든 경우 항상 해당 됩니다. 그렇지 않은 경우 출력은 의미가 없습니다.
 
-**예제**
+## <a name="example"></a>예제
 
 다음 쿼리는 하루에 두 번 집계 된 응용 프로그램 트래픽의 한 달에 대 한 스냅숏을 포함 합니다. Bin 크기는 12 시간입니다.
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a94629ae8f4795e28cbfb0c41f06596731cdd8d9
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: 560f7ca9f423eb57fd9be0478e0e51dc2ce26755
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717328"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346510"
 ---
 # <a name="pack"></a>pack()
 
@@ -21,16 +21,16 @@ ms.locfileid: "84717328"
 
 함수에 대 한 별칭 `pack_dictionary()` 입니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `pack(`*key1* `,` *value1* `,` *key2* `,` *value2*`,... )`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * 키와 값의 교대로 반복 되는 목록입니다. 목록의 전체 길이는 짝수 여야 합니다.
 * 모든 키는 비어 있지 않은 상수 문자열 이어야 합니다.
 
-**예**
+## <a name="examples"></a>예
 
 다음 예제는 `{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}`을 반환합니다.
 

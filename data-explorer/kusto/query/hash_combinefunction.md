@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: 1925d9b27382dd3a888e14243bfecad51d37db0d
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: f71a0d0cdfa4fe0ca8cdb84e65a271ee42bc7dc7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226706"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347615"
 ---
 # <a name="hash_combine"></a>hash_combine()
 
 둘 이상의 해시에 대 한 해시 값을 결합 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `hash_combine(`*h1* `,` *h2* [ `,` *h3* ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *h1*: 첫 번째 해시 값을 나타내는 Long 값입니다.
 * *h2*: 두 번째 해시 값을 나타내는 Long 값입니다.
 * *hN*: n 번째 해시 값을 나타내는 Long 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지정 된 스칼라의 결합 된 해시 값입니다.
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

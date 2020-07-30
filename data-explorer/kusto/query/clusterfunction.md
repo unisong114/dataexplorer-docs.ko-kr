@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 092915c08b4b3d1e72722a4303e911403b2defd2
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: 3e1f74d6605b4916a2718a00fd252141060d748f
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348890"
 ---
 # <a name="cluster-scope-function"></a>cluster () (범위 함수)
 
@@ -27,15 +27,15 @@ ms.locfileid: "82737201"
 cluster('help').database('Sample').SomeTable
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `cluster(`*stringConstant*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *Stringconstant*: 참조 된 클러스터의 이름입니다. 클러스터 이름은 정규화 된 DNS 이름 이거나 접미사로 사용 `.kusto.windows.net`되는 문자열일 수 있습니다. 쿼리를 실행 하기 전에 인수를 _일정_ 해야 합니다. 즉, 하위 쿼리 계산에서 가져올 수 없습니다.
+* *Stringconstant*: 참조 된 클러스터의 이름입니다. 클러스터 이름은 정규화 된 DNS 이름 이거나 접미사로 사용 되는 문자열일 수 있습니다 `.kusto.windows.net` . 쿼리를 실행 하기 전에 인수를 _일정_ 해야 합니다. 즉, 하위 쿼리 계산에서 가져올 수 없습니다.
 
-**참고 사항**
+**참고**
 
 * 동일한 클러스터 내에서 데이터베이스에 액세스 하는 경우- [database ()](databasefunction.md) 함수를 사용 합니다.
 * 클러스터 간 및 데이터베이스 간 쿼리에 대 한 자세한 내용은 여기를 참조 [하세요](cross-cluster-or-database-queries.md) .  
@@ -58,7 +58,7 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 
 ### <a name="use-cluster-inside-let-statements"></a>Let 문 내에서 cluster () 사용 
 
-위와 동일한 쿼리는 cluster () 함수로 전달 되는 매개 변수 `clusterName` 를 받는 인라인 함수 (let 문)를 사용 하도록 다시 작성할 수 있습니다.
+위와 동일한 쿼리는 `clusterName` cluster () 함수로 전달 되는 매개 변수를 받는 인라인 함수 (let 문)를 사용 하도록 다시 작성할 수 있습니다.
 
 ```kusto
 let foo = (clusterName:string)
@@ -74,7 +74,7 @@ foo('help')
 
 ### <a name="use-cluster-inside-functions"></a>함수 내에서 cluster () 사용 
 
-위와 동일한 쿼리는 cluster () 함수로 전달 되는 매개 변수 `clusterName` 를 받는 함수에서 사용 하도록 다시 작성할 수 있습니다.
+위와 동일한 쿼리는 `clusterName` cluster () 함수로 전달 되는 매개 변수를 받는 함수에서 사용 하도록 다시 작성할 수 있습니다.
 
 ```kusto
 .create function foo(clusterName:string)

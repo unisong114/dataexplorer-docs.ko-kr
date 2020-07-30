@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4da07433be5a052d71740931d4dedd9df0399f56
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: f19883335149603fe7fc7429dabb62f565a0b402
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347989"
 ---
 # <a name="format_bytes"></a>format_bytes()
 
@@ -23,21 +23,21 @@ ms.locfileid: "83227371"
 format_bytes(1024) == '1 KB'"
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `format_bytes(`*값* [ `,` *전체 자릿수* [ `,` *단위*]]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `value`: 데이터 크기 (바이트)로 지정할 숫자입니다.
 * `precision`: (선택 사항) 값이 반올림 될 자릿수입니다. 기본값은 0입니다.
 * `units`: (선택 사항) 문자열 형식에서 ( `Bytes` , `KB` , `MB` ,, `GB` `TB` , `PB` )을 사용 하는 대상 데이터 크기의 단위입니다. 매개 변수가 비어 있으면 입력 값에 따라 단위가 자동으로 선택 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 형식 결과를 포함 하는 문자열입니다.
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

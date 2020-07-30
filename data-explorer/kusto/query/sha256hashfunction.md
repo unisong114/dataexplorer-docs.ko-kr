@@ -8,33 +8,33 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: cf47fd98027859ebb5f0cf22208b790a5396dc61
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: b813ce4c0901ef66177e8e7bdaa42a1744bd5912
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763748"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351117"
 ---
 # <a name="hash_sha256"></a>hash_sha256()
 
 입력 값의 sha256 해시 값을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `hash_sha256(`*원본*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *source*: 해시할 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 16 진수 문자열로 인코딩된 지정 된 스칼라의 sha256 해시 값입니다 .이 값은 문자 문자열 (0에서 255 사이의 단일 16 진수를 나타냄)입니다.
 
 > [!WARNING]
 > 이 함수 (SHA256)에서 사용 하는 알고리즘은 나중에 수정 되지 않지만 계산 하기는 매우 복잡 합니다. 단일 쿼리 기간 동안 "경량" 해시 함수를 사용 해야 하는 사용자는 대신 함수 [해시 ()](./hashfunction.md) 를 사용 하는 것이 좋습니다.
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -56,7 +56,7 @@ StormEvents
 | top 5 by StormCount desc
 ```
 
-|시스템 상태|StateHash|StormCount|
+|상태|StateHash|StormCount|
 |---|---|---|
 |텍사스|9087f20f23f91b5a77e8406846117049029e6798ebbd0d38aea68da73a00ca37|4701|
 |캔자스|c80e328393541a3181b258cdb4da4d00587c5045e8cf3bb6c8fdb7016b69cc2e|3166|

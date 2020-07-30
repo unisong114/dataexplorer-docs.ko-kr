@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1e173dcba48e8748562bad61e0f16786e957ca83
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: c46430fe7acc75685b90d2322d709392c91ed6dc
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550557"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351219"
 ---
 # <a name="session_count-plugin"></a>session_count 플러그 인
 
@@ -23,11 +23,11 @@ ms.locfileid: "83550557"
 T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `session_count(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Bin* `,` *LookBackWindow* [ `,` *dim1* `,` *dim2* `,` ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -38,7 +38,7 @@ T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday
 * *LookBackWindow*: session lookback period를 나타내는 스칼라 상수 값입니다. 의 ID가 `IdColumn` 내에서 기간에 표시 되는 경우 `LookBackWindow` 세션은 기존 항목으로 간주 됩니다. ID가 표시 되지 않으면 세션이 새로운 것으로 간주 됩니다.
 * *dim1*, *dim2*, ...: (선택 사항) 세션 수 계산을 조각화 하는 차원 열의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 각 타임 라인 기간 및 각 기존 차원 조합에 대 한 세션 수 값이 있는 테이블을 반환 합니다.
 
@@ -49,7 +49,7 @@ T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday
 |유형: *TimelineColumn*|..|..|..|long|
 
 
-**예제**
+## <a name="examples"></a>예
 
 이 예에서는 데이터가 결정적 이며 두 개의 열이 있는 테이블을 사용 합니다.
 - 타임 라인: 1에서 1만 사이의 실행 수

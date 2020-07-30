@@ -8,30 +8,30 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 388f24f12993bcdc91d86bfc3f3f20967e0b1cc5
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 9276b3d920259b4a73d3fb45c056837439b43fba
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351236"
 ---
 # <a name="series_subtract"></a>series_subtract()
 
 두 숫자 계열 입력의 요소 단위 빼기를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `series_subtract(`*series1* `,` *series2*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *series1, series2*: 입력 숫자 배열, 첫 번째에서 동적 배열 결과로 요소를 뺄 두 번째입니다. 모든 인수는 동적 배열 이어야 합니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 두 입력 간의 계산 된 요소 단위 빼기 연산의 동적 배열입니다. 숫자가 아닌 요소나 비 기존 요소 (크기가 다른 배열)는 `null` 요소 값을 생성 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

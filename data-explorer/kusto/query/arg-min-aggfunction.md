@@ -1,6 +1,6 @@
 ---
-title: arg_min() (집계 기능) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 arg_min(집계 함수)에 대해 설명합니다.
+title: arg_min () (집계 함수)-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 arg_min () (집계 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,49 +8,49 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/12/2019
-ms.openlocfilehash: 58c590e124b01166ad07aa2b00fe865546947f96
-ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
+ms.openlocfilehash: 33e2657f2569957002d17d7061cfec863402027e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82030493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349689"
 ---
-# <a name="arg_min-aggregation-function"></a>arg_min() (집계 함수)
+# <a name="arg_min-aggregation-function"></a>arg_min () (집계 함수)
 
-*ExprToMinimize를*최소화하는 그룹에서 행을 찾아 *ExprToReturn(또는* `*` 전체 행을 반환)의 값을 반환합니다.
+그룹에서 *ExprToMinimize*를 최소화 하는 행을 찾은 다음 *ExprToReturn* 값을 반환 하거나 `*` 전체 행을 반환 합니다.
 
-* 요약 내부 집계의 컨텍스트에서만 사용할 수 [있습니다.](summarizeoperator.md)
+* [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
-`summarize`[`(`*네임엑스프토리메라카리메라카* `,` *NameExprToReturn* `,` `)=` `arg_min` ] `(` *ExprtoMinimize*, `*`  |  *ExprtoReturn* [...]`,``)`
+`summarize`[ `(` *NameExprToMinimize* `,` *NameExprToReturn* [ `,` ...] `)=` ] `arg_min` `(` *ExprToMinimize*, `*`  |  *ExprToReturn* [ `,` ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *ExprToMinimize*: 집계 계산에 사용되는 표현식입니다. 
-* *ExprToReturn*: *ExprToMinimize가* 최소일 때 값을 반환하는 데 사용되는 표현식입니다. 반환할 표현식은 입력 테이블의 모든 열을 반환하는 와일드카드(*)일 수 있습니다.
-* *NameExprToMinimize*: *ExprToMinimize를*나타내는 결과 열에 대한 선택적 이름입니다.
-* *NameExprToReturn*: *ExprToReturn을*나타내는 결과 열에 대한 추가 선택적 이름 .
+* *ExprToMinimize*: 집계 계산에 사용 되는 식입니다. 
+* *ExprToReturn*: *ExprToMinimize* 가 minimum 인 경우 값을 반환 하는 데 사용 되는 식입니다. 반환 되는 식은 입력 테이블의 모든 열을 반환 하는 와일드 카드 (*) 일 수 있습니다.
+* *NameExprToMinimize*: *ExprToMinimize*을 나타내는 결과 열의 선택적 이름입니다.
+* *NameExprToReturn*: *ExprToReturn*을 나타내는 결과 열의 추가 선택적 이름입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-*ExprToMinimize를*최소화하는 그룹에서 행을 찾아 *ExprToReturn(또는* `*` 전체 행을 반환)의 값을 반환합니다.
+그룹에서 *ExprToMinimize*를 최소화 하는 행을 찾은 다음 *ExprToReturn* 값을 반환 하거나 `*` 전체 행을 반환 합니다.
 
-**예**
+## <a name="examples"></a>예
 
-각 제품의 가장 저렴한 공급 업체를 표시 :
+각 제품의 가장 저렴 한 공급 업체 표시:
 
 ```kusto
 Supplies | summarize arg_min(Price, Supplier) by Product
 ```
 
-공급업체 이름뿐만 아니라 모든 세부 정보를 표시합니다.
+공급자 이름 뿐만 아니라 모든 세부 정보를 표시 합니다.
 
 ```kusto
 Supplies | summarize arg_min(Price, *) by Product
 ```
 
-각 대륙에서 가장 남쪽에 위치한 도시를 찾아보세요.
+각 대륙에서 국가를 사용 하 여 southernmost 도시를 찾습니다.
 
 ```kusto
 PageViewLog 
@@ -58,4 +58,4 @@ PageViewLog
     by continent
 ```
 
-:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="아르그 민":::
+:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="인수 최소값":::

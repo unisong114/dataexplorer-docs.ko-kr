@@ -8,26 +8,26 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
-ms.openlocfilehash: bee6471ef2cf2a2cd484af8ce84d70cce749d5e0
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: ede35223b9cc57fddc5318659e6902130a80c011
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225329"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349281"
 ---
 # <a name="base64_encode_fromarray"></a>base64_encode_fromarray()
 
 바이트 배열에서 base64 문자열을 인코딩합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `base64_encode_fromarray(`*BytesArray*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Bytesarray*: base64 문자열로 인코딩할 입력 바이트 배열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 바이트 배열에서 인코딩된 base64 문자열을 반환 합니다.
 
@@ -35,7 +35,7 @@ ms.locfileid: "83225329"
 * Base64 문자열에 문자열을 인코딩하기 위해 [base64_encode_tostring ()](base64_encode_tostringfunction.md) 를 참조 하세요.
 * 이 함수는 [base64_decode_toarray ()](base64_decode_toarrayfunction.md) 의 역함수입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

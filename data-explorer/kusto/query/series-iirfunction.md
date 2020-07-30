@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: fbdf7b1a9a9f5b65e6c6ee7a78fe64afba2893af
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: e1b863b83e08fae680e1a387ca2fdd2a93d111a8
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264796"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351440"
 ---
 # <a name="series_iir"></a>series_iir()
 
@@ -26,11 +26,11 @@ ms.locfileid: "85264796"
 
 함수는 동적 배열과 필터 *a* 및 *b* 계수의 정적 동적 배열 두 개가 포함 된 열을 입력으로 사용 하 고 열에 필터를 적용 합니다. 필터링된 출력을 포함하는 새 동적 배열 열을 출력합니다.  
 
-**구문**
+## <a name="syntax"></a>구문
 
 `series_iir(`*x* `,` *b* `,` *a*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값의 배열인 동적 배열 셀입니다. 일반적으로 [series](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력입니다.
 * *b*: 숫자 값의 동적 배열로 저장 된 필터의 분자 계수를 포함 하는 상수 식입니다.

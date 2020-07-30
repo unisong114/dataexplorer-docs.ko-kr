@@ -8,30 +8,30 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: b5847fec10eb76a6fe5a139809766d2a3ca4f089
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 7b6de7d141f02703c5f369dd831d1fbac82cb45e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372912"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345524"
 ---
 # <a name="series_add"></a>series_add()
 
 두 숫자 계열 입력의 요소 덧셈을 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `series_add(`*series1* `,` *series2*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *series1, series2*: 동적 배열 결과에 요소를 추가 하는 데 사용할 숫자 배열을 입력 합니다. 모든 인수는 동적 배열 이어야 합니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 두 입력 간의 계산 된 요소 단위 추가 작업의 동적 배열입니다. 숫자가 아닌 요소나 비 기존 요소 (크기가 다른 배열)는 `null` 요소 값을 생성 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: c431f17184570b294b9c8077028ac792719b4abd
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: de75014fb408b3d31acab37ad8e16923cabaadfd
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348414"
 ---
 # <a name="dcount_intersect-plugin"></a>dcount_intersect 플러그 인
 
@@ -27,21 +27,21 @@ S<sub>1</sub> ∩ s<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
 
     T | evaluate dcount_intersect(hll_1, hll_2, hll_3)
 
-**구문**
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `dcount_intersect(` *hll_1*, *hll_2*, [ `,` *hll_3* ... `,` ]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *hll_i*: 함수를 사용 하 여<sub>계산 된</sub> set S의 값입니다 [`hll()`](./hll-aggfunction.md) .
 
-**반환**
+## <a name="returns"></a>반환
 
 N 개 값이 포함 된 테이블을 반환 `dcount` 합니다 (열 마다 교집합을 나타냄).
 열 이름은 s0, s1, ... (n-1까지).
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

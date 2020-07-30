@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/06/2020
-ms.openlocfilehash: bc4b0bc8a02dd3a8d2a39ffdd27db5817eb8ffdb
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: c2fab7abbcebdc97f6f1c394f840bf6e232db03a
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225244"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349111"
 ---
 # <a name="binary_all_xor-aggregation-function"></a>binary_all_xor () (집계 함수)
 
@@ -21,19 +21,19 @@ ms.locfileid: "83225244"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `binary_all_xor(` *식* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: long 숫자입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 요약 그룹당 레코드에 대해 이항 연산을 사용 하 여 집계 된 값을 반환 `XOR` 합니다. 요약을 그룹화 하지 않고 요약 하는 경우에는 합계를 사용 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 이항 연산을 사용 하 여 ' 카페 ' 생성 `XOR` :
 

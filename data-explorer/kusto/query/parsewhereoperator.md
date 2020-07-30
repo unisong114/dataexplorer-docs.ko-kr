@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/12/2020
-ms.openlocfilehash: 48231d24ca1e49938629dd9912804c5858d11ae1
-ms.sourcegitcommit: f9d3f54114fb8fab5c487b6aea9230260b85c41d
+ms.openlocfilehash: c2936ec7461850aaad6fdb4e9daa7624dd561c49
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85071882"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346255"
 ---
 # <a name="parse-where-operator"></a>parse-where 연산자
 
@@ -25,11 +25,11 @@ ms.locfileid: "85071882"
 T | parse-where Text with "ActivityName=" name ", ActivityType=" type
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 *T* `| parse-where` [ `kind=regex` [ `flags=regex_flags` ] | `simple` ] *식* `with` `*` (*stringconstant* *ColumnName* [ `:` *ColumnType*]) `*` ...
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블입니다.
 
@@ -47,7 +47,7 @@ T | parse-where Text with "ActivityName=" name ", ActivityType=" type
   
 * *ColumnType:* 값을 변환할 형식을 나타내는 선택적 스칼라 형식 이어야 합니다. 기본값은 문자열 형식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 입력 테이블은 연산자에 제공 되는 열 목록에 따라 확장 됩니다.
 
@@ -84,11 +84,11 @@ T | parse-where Text with "ActivityName=" name ", ActivityType=" type
         
     - `long`가로 변환 되었습니다 `\-\d+` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 `parse-where`연산자는 `extend` 동일한 식에서 여러 응용 프로그램을 사용 하 여 테이블에 간소화 된 방법을 제공 `extract` `string` 합니다. 이는 테이블에 `string` 개별 열로 나눌 여러 값이 포함 된 열이 있는 경우에 가장 유용 합니다. 예를 들어 개발자 추적 (" `printf` "/"") 문에 의해 생성 된 열을 나눌 수 있습니다 `Console.WriteLine` .
 
-### <a name="using-parse"></a>`parse` 시작
+### <a name="using-parse"></a>`parse` 사용
 
 아래 예에서는 테이블의 열에 형식의 `EventText` `Traces` 문자열이 포함 되어 있습니다 `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})` . 아래 작업을 수행 하면 테이블에,,,,,, `resourceName` `totalSlices` `sliceNumber` `lockTime ` `releaseTime` `previouLockTime` `Month` 및 `Day` 열이 6 개 있는 것으로 확장 됩니다. 
 
@@ -119,7 +119,7 @@ Traces
 |PipelineScheduler|27|20|02/17/2016 08:40:01|2016-02-17 08:40:01.0000000|2016-02-17 08:39:01.0000000|
 |PipelineScheduler|27|22|02/17/2016 08:41:01|2016-02-17 08:41:00.0000000|2016-02-17 08:40:01.0000000|
 
-### <a name="using-parse-where"></a>`parse-where` 시작 
+### <a name="using-parse-where"></a>`parse-where` 사용 
 
 ' Parse-where '를 사용 하면 결과에서 구문 분석 된 문자열이 성공적으로 필터링 되지 않습니다.
 

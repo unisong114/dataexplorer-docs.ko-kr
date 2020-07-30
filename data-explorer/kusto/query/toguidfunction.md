@@ -1,6 +1,6 @@
 ---
-title: toguid() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 toguid()에 대해 설명합니다.
+title: toguid ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 toguid ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fb1df5fe91b75e5d3b7d1a9f40b8b3079cac9944
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: a2eec6a582c4c8fc6cda6b3cf9a304f41ab48143
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81506140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350736"
 ---
 # <a name="toguid"></a>toguid()
 
-입력을 표현으로 [`guid`](./scalar-data-types/guid.md) 변환합니다.
+입력을 표현으로 변환 [`guid`](./scalar-data-types/guid.md) 합니다.
 
 ```kusto
 toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-d364d70fce44")
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `toguid(`*Expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *예:* 스칼라로 [`guid`](./scalar-data-types/guid.md) 변환되는 표현식입니다. 
+* *Expr*: 스칼라로 변환 되는 식입니다 [`guid`](./scalar-data-types/guid.md) . 
 
-**반환**
+## <a name="returns"></a>반환
 
-변환에 성공하면 결과는 스칼라가 [`guid`](./scalar-data-types/guid.md) 됩니다.
-변환에 성공하지 못하면 결과가 `null`됩니다.
+성공적으로 변환 되 면 결과는 스칼라가 됩니다 [`guid`](./scalar-data-types/guid.md) .
+변환이 실패 하면 결과는가 됩니다 `null` .
 
-*참고*: 가능하면 [guid()를](./scalar-data-types/guid.md) 사용하는 것을 선호합니다.
+*참고*: 가능 하면 [guid ()](./scalar-data-types/guid.md) 를 사용 하는 것이 좋습니다.

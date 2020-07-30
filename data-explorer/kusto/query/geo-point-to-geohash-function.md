@@ -8,12 +8,12 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
-ms.openlocfilehash: c37789ac490814288c7331f0b1ae86b8b2178d67
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 7998726637a7d19413954a509dd0ad9b34202f03
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226927"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347768"
 ---
 # <a name="geo_point_to_geohash"></a>geo_point_to_geohash()
 
@@ -21,17 +21,17 @@ ms.locfileid: "83226927"
 
 [Geohash](https://en.wikipedia.org/wiki/Geohash)에 대해 자세히 알아보세요.  
 
-**구문**
+## <a name="syntax"></a>구문
 
 `geo_point_to_geohash(`*경도* `, ` *위도* `, ` [*정확도*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *경도*: 지리적 위치의 경도 값입니다. X가 실수이 고 [-180, + 180] 범위에 있는 경우 경도 x는 유효한 것으로 간주 됩니다. 
 * *위도*: 지리적 위치의 위도 값입니다. Y가 실수이 고 y가 [-90, + 90] 범위 내에 있는 경우 위도 y는 유효한 것으로 간주 됩니다. 
 * *정확도*: 요청 된 `int` 정확도를 정의 하는 선택적입니다. 지원 되는 값은 [1, 18] 범위에 있습니다. 지정 하지 않으면 기본값이 `5` 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지정 된 지리적 위치의 geohash 문자열 값으로, 요청 된 정확도 길이입니다. 좌표 또는 정확성이 잘못 된 경우 쿼리에서 빈 결과가 생성 됩니다.
 
@@ -69,7 +69,7 @@ ms.locfileid: "83226927"
 
 [Geo_point_to_s2cell ()](geo-point-to-s2cell-function.md)도 참조 하세요.
 
-**예제**
+## <a name="examples"></a>예
 
 Geohash로 집계 된 US 스톰 이벤트입니다.
 

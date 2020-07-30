@@ -8,22 +8,22 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 4534705156669447a89cb5d85c360071dfcb2b2a
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 698acc481a6313160602c939774a6029978df483
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85265000"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348108"
 ---
 # <a name="externaldata-operator"></a>externaldata 연산자
 
 연산자는 해당 `externaldata` 스키마가 쿼리 자체에 정의 되어 있고 외부 저장소 아티팩트 (예: Azure Blob Storage의 blob)에서 데이터를 읽는 테이블을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `externaldata``(` *ColumnName* `:` *ColumnType* [ `,` ...] `)` `[` *StorageConnectionString* `]` [ `with` `(` *Prop1* `=` *Value1* [ `,` ...] `)` ]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *ColumnName*, *ColumnType*: 인수는 테이블의 스키마를 정의 합니다.
   구문은 [create table](../management/create-table-command.md)에서 테이블을 정의할 때 사용 되는 구문과 같습니다.
@@ -37,11 +37,11 @@ ms.locfileid: "85265000"
 > [!NOTE]
 > 이 연산자에는 파이프라인 입력이 없습니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `externaldata`연산자는 저장소 연결 문자열에 표시 된 지정 된 저장소 아티팩트에서 데이터를 구문 분석 한 지정 된 스키마의 데이터 테이블을 반환 합니다.
 
-**예**
+## <a name="examples"></a>예
 
 다음 예에서는 `UserID` 열이 외부 blob에서 한 줄에 하나씩 있는 알려진 id 집합에 속하는 테이블의 모든 레코드를 찾는 방법을 보여 줍니다.
 이 집합은 쿼리에서 간접적으로 참조 되므로 클 수 있습니다.

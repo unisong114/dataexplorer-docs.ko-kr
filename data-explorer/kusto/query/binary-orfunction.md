@@ -1,6 +1,6 @@
 ---
-title: binary_or() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 binary_or()에 대해 설명합니다.
+title: binary_or ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 binary_or ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,29 +8,29 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1f6d68137ded3b164ca25d82e0c17b6fef6fc1a1
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 6903ee36e29551e7af6d08e686c1189e0c0125f3
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81517598"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349060"
 ---
 # <a name="binary_or"></a>binary_or()
 
-두 값의 비트별 `or` 연수 결과를 반환합니다. 
+두 값에 대 한 비트 연산의 결과를 반환 합니다 `or` . 
 
 ```kusto
 binary_or(x,y)
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `binary_or(`*num1* `,` *num2*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *num1*, *num2*: 긴 숫자.
+* *num1*, *num2*: long 숫자입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-한 쌍의 숫자에서 논리OR 연산을 반환합니다: num1 | num2.
+값 쌍에 대 한 논리합 연산을 반환 합니다. num1 | num2.

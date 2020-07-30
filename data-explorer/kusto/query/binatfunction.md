@@ -8,33 +8,33 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 90055f644dbf653eb65546202832f7cab834a0ac
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 8a480ad0af2d3f71dd3ae9279bb59b32d9654acb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348992"
 ---
 # <a name="bin_at"></a>bin_at()
 
 Bin의 시작점에 대 한 제어를 사용 하 여 값을 고정 크기 "bin"으로 내림 합니다.
 (참고 항목 [`bin function`](./binfunction.md) )
 
-**구문**
+## <a name="syntax"></a>구문
 
 `bin_at``(` *식* `,` *binsize* `, ` *fixedpoint*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expression*: `datetime` 반올림할 값을 나타내는 숫자 형식 (및 포함)의 스칼라 식 `timespan` 입니다.
 * *Binsize*: 각 bin의 크기를 나타내는 *식* 과 동일한 형식의 스칼라 상수입니다. 
 * *Fixedpoint*: "fixed point" (즉, 값) 인 *식* 의 값 하나를 나타내는 *식* 과 동일한 형식의 스칼라 상수입니다 `fixed_point` `bin_at(fixed_point, bin_size, fixed_point) == fixed_point` .
 
-**반환**
+## <a name="returns"></a>반환
 
 *식*아래에서 가장 근접 한 *binsize* 의 가장 가까운 배수 이며,이는 *fixedpoint* 가 자체로 변환 되도록 이동 합니다.
 
-**예**
+## <a name="examples"></a>예
 
 |식                                                                    |결과                           |설명                   |
 |------------------------------------------------------------------------------|---------------------------------|---------------------------|

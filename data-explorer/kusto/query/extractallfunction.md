@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 55168d381ab69bf0d29e8560714e13cb635fd688
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: e52f90b911331bca6374318869d3f8ebf262d81f
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780527"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348074"
 ---
 # <a name="extract_all"></a>extract_all()
 
@@ -24,11 +24,11 @@ ms.locfileid: "84780527"
 print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results with the dynamic array ["123", "567", "789"]
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `extract_all(`*regex* `,` [*captureGroups* `,` ] *텍스트*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 |인수        |Description                                  |필수 또는 선택  |
 |----------------|---------------------------------------------|----------------------|
@@ -36,7 +36,7 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 |captureGroups   |추출할 캡처 그룹을 나타내는 동적 배열 상수입니다. 유효한 값은 정규식의 캡처링 그룹 수에서 1까지입니다. 명명 된 캡처 그룹도 사용할 수 있습니다 ( [예제](#examples)참조).|선택 사항         |
 |text            |`string`검색할입니다.                         |필수              |
 
-**반환**
+## <a name="returns"></a>반환
 
 * *Regex* 가 *텍스트*에서 일치 항목을 찾으면: 표시 된 캡처 그룹 *captureGroups*에 대 한 모든 일치 항목 또는 *regex*의 모든 캡처링 그룹을 포함 하는 동적 배열을 반환 합니다.
 * *CaptureGroups* 수가 1 인 경우 반환 되는 배열에는 일치 하는 값의 단일 차원이 있습니다.

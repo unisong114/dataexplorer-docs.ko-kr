@@ -1,6 +1,6 @@
 ---
-title: 연산자로 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 연산자로 설명합니다.
+title: as operator-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 as 연산자에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,34 +8,34 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 05dc96fb7eec773d1e55d8b94a33cdda928622ff
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: f9d7a60b3c39fb0b7357c2bbe68533252f794347
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81518431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349485"
 ---
 # <a name="as-operator"></a>as 연산자
 
-연산자의 입력 테이블 형식 식에 이름을 바인딩하므로 쿼리가 [쿼리를](letstatement.md)끊고 let 문을 통해 이름을 바인딩하지 않고 여러 번 테이블 형식 식의 값을 참조할 수 있습니다.
+연산자의 입력 테이블 형식 식에 이름을 바인딩하여 쿼리를 중단 하 고 [let 문을](letstatement.md)통해 이름을 바인딩하지 않고 테이블 형식 식의 값을 여러 번 참조할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
-*T* `|` T `as` `hint.materialized` [ `=` *Name* 이름 `true`
+*T* `|` `as` [ `hint.materialized` `=` `true` ] *이름*
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *T*: 표식 식입니다.
-* *이름*: 테이블 형식식의 임시 이름입니다.
-* `hint.materialized`: 테이블 `true`형식 식의 값이 [materialize()](./materializefunction.md) 함수 호출에 의해 래핑된 것처럼 구체화됩니다.
+* *T*: 테이블 형식 식입니다.
+* *이름*: 테이블 형식 식의 임시 이름입니다.
+* `hint.materialized`:로 설정 하면 `true` 테이블 형식 식의 값이 [구체화 ()](./materializefunction.md) 함수 호출로 래핑된 것 처럼 구체화 됩니다.
 
-**참고 사항**
+**참고**
 
-* 제공된 `as` 이름은 [공용 구조의](./unionoperator.md) `withsource=` 열, [찾기](./findoperator.md) `source_` 열 및 [검색](./searchoperator.md) `$table` 열에 사용됩니다.
+* 에서 지정 하는 이름은 `as` `withsource=` [union](./unionoperator.md)의 열, `source_` [find](./findoperator.md)열 및 `$table` [search](./searchoperator.md)의 열에서 사용 됩니다.
 
-* [조인의](./joinoperator.md)외부 테이블 형식 입력 () 연산자`$left`사용 으로 명명 된 테이블 형식 표현식은 조인의 테이블 내부 입력 ()에서도`$right`사용할 수 있습니다.
+* [조인의 외부](./joinoperator.md)테이블 형식 입력 ()에서 연산자를 사용 하 여 명명 된 테이블 형식 식은 `$left` 조인의 테이블 내부 입력 () 에서도 사용할 수 있습니다 `$right` .
 
-**예**
+## <a name="examples"></a>예
 
 ```kusto
 // 1. In the following 2 example the union's generated TableName column will consist of 'T1' and 'T2'

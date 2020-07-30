@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1aca8cda34e1ee8506d5be6633cfd46fd912c6c3
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: debd0a83f4c27fa05415805404ad450bab1d3ca1
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347377"
 ---
 # <a name="invoke-operator"></a>invoke 연산자
 
@@ -23,25 +23,25 @@ As 테이블 형식 매개 변수 인수로 원본을 수신 하는 람다를 �
 T | invoke foo(param1, param2)
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `T | invoke`*함수* `(` [*param1* `,` *param2*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 테이블 형식 원본입니다.
 * *function*: 평가할 람다 식 또는 함수 이름의 이름입니다.
 * *param1*, *param2* ...: 추가 람다 인수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 계산 된 식의 결과를 반환 합니다.
 
-**참고 사항**
+**참고**
 
 테이블 형식 인수를 사용할 수 있는 람다 식을 선언 하는 방법에 대 한 자세한 내용은 [let 문](./letstatement.md) 을 참조 하세요.
 
-**예제**
+## <a name="example"></a>예제
 
 다음 예제에서는 연산자를 사용 하 여 람다 식을 호출 하는 방법을 보여 줍니다 `invoke` .
 

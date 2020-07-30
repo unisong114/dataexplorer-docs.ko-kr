@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 333c4d59a7ed62fd031ab52019c10abd821fd858
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 4fe19148ef8f410f04dc68f435734a2c2c425cca
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226757"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347683"
 ---
 # <a name="getschema-operator"></a>getschema 연산자 
 
@@ -23,11 +23,11 @@ ms.locfileid: "83226757"
 T | summarize MyCount=count() by Country | getschema 
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 *T* `| ``getschema`
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -38,7 +38,7 @@ StormEvents
 
 |ColumnName|ColumnOrdinal|DataType|ColumnType|
 |---|---|---|---|
-|타임스탬프|0|System.DateTime|Datetime|
+|Timestamp|0|System.DateTime|Datetime|
 |언어|1|System.String|문자열|
 |페이지|2|System.String|문자열|
 |보기|3|System.Int64|long

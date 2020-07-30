@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 073bf45977648bd654f72fff47b62f92ac1b3d27
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: d0a60a61e5319d9a190f6172b9c0bd8fb7fe1300
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227386"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347972"
 ---
 # <a name="format_datetime"></a>format_datetime()
 
@@ -23,22 +23,22 @@ ms.locfileid: "83227386"
 format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "15-12-14 2:3:4.1234500"
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `format_datetime(`*datetime* `,` *형식*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `datetime`: 형식의 값 `datetime` 입니다.
 * `format`: 하나 이상의 [형식 요소로](#supported-formats)구성 된 형식 지정자 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 형식 결과를 포함 하는 문자열입니다.
 
 ## <a name="supported-formats"></a>지원되는 형식
 
-|형식 지정자   |설명    |예제
+|형식 지정자   |Description    |예
 |---|---|---
 |`d`    |1부터 31까지의 일(월 기준)입니다. | 2009-06-01T13:45:30-> 1, 2009-06-15T13:45:30-> 15
 |`dd`   |01부터 31까지의 일(월 기준)입니다.| 2009-06-01T13:45:30-> 01, 2009-06-15T13:45:30-> 15
@@ -75,7 +75,7 @@ format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "
 
 형식 지정자는 다음 구분 기호 문자를 포함할 수 있습니다.
 
-|구분 기호가|주석|
+|구분 기호가|설명|
 |---------|-------|
 |`' '`| Space|
 |`'/'`||
@@ -87,7 +87,7 @@ format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "
 |`'['`||
 |`']'`||
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

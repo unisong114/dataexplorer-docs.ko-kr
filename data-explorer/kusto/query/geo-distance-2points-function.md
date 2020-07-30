@@ -8,29 +8,29 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
-ms.openlocfilehash: 64c61bcde7bfe02d55bb0f4a6719e9d7b1c1a681
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 0e8d57e76b0dfa45003f541b54360cb4ac414646
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227420"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347887"
 ---
 # <a name="geo_distance_2points"></a>geo_distance_2points()
 
 지구에서 두 지리 공간적 좌표 사이의 최단 거리를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `geo_distance_2points(`*p1_longitude* `, ` *p1_latitude* `, ` *p2_longitude* `, ` *p2_latitude*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *p1_longitude*: 첫 번째 지리 공간적 좌표, 경도 값 (도)입니다. 유효한 값은 [-180, + 180] 범위의 실수입니다.
 * *p1_latitude*: 첫 번째 지리 공간적 좌표, 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
 * *p2_longitude*: 두 번째 지리 공간적 좌표, 경도 값 (도)입니다. 유효한 값은 [-180, + 180] 범위의 실수입니다.
 * *p2_latitude*: 두 번째 지리 공간적 좌표 이며 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지구에서 두 지리적 위치 사이의 최단 거리 (미터)입니다. 좌표가 잘못 된 경우 쿼리는 null 결과를 생성 합니다.
 
@@ -38,7 +38,7 @@ ms.locfileid: "83227420"
 > * 지리 공간적 좌표는 [Wgs-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) 좌표 참조 시스템으로 표현 되는 것으로 해석 됩니다.
 > * 지구 거리를 측정 하는 데 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구입니다.
 
-**예**
+## <a name="examples"></a>예
 
 다음 예에서는 시애틀에서 로스앤젤레스 사이의 최단 거리를 찾습니다.
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
-ms.openlocfilehash: 2cddd645b0b89b3356adabae26874f93b41f8815
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: ecf16a714b0466a7ffc2da7b69f117383c90970e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226553"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347530"
 ---
 # <a name="hll_merge"></a>hll_merge()
 
@@ -21,19 +21,19 @@ ms.locfileid: "83226553"
 
 [기본 알고리즘 (*H*yper*L*og*l*og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)에 대해 읽어 보십시오.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `hll_merge(`*Expr1* `,` *Expr2*`, ...)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `hll`값이 병합 될 열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 열 `*Exrp1*` ,, ...을 `*Expr2*` `*ExprN*` 한 `hll` 값에 병합 하는 결과입니다.
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/KustoMonitoringPersistentDatabase -->
 ```kusto

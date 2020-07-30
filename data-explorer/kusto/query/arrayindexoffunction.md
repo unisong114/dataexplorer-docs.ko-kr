@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
-ms.openlocfilehash: 99044d8762a1c7c7e86fb2633a8226ef48d66b55
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: a366120428d14c713b18aee6652460817c75433a
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349570"
 ---
 # <a name="array_index_of"></a>array_index_of()
 
 배열에서 지정 된 항목을 검색 하 여 해당 위치를 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `array_index_of(`*배열*,*값*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *array*: 검색할 입력 배열입니다.
 * *값*: 검색할 값입니다. 값은 long, integer, double, datetime, timespan, decimal, string 또는 guid 형식 이어야 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 조회의 인덱스 위치 (0부터 시작)입니다.
 배열에서 값을 찾을 수 없으면-1을 반환 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -8,27 +8,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b0a8f1b2a72ceb154b7252b3218718a9c23968cb
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 16b570d996148f1dad9e285b3c2da24d136b20c4
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763859"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347581"
 ---
 # <a name="hash"></a>hash()
 
 입력 값에 대 한 해시 값을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `hash(`*원본* [ `,` *mod*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *source*: 해시할 값입니다.
 * *mod*: 출력 값이 `0` 및 *mod* -1 사이인 해시 결과에 적용할 선택적 모듈 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지정 된 스칼라의 해시 값입니다. 지정 된 mod 값 (지정 된 경우)의 나머지 부분입니다.
 
@@ -37,7 +37,7 @@ ms.locfileid: "85763859"
 > 이 알고리즘은 나중에 변경 될 수 있으며 단일 쿼리 내에서이 메서드를 호출할 때마다 동일한 알고리즘을 사용 한다는 것만을 보장 합니다.
 > 따라서의 결과를 테이블에 저장 하지 않는 것이 좋습니다 `hash()` . 해시 값을 유지 해야 하는 경우 [hash_sha256 ()](./sha256hashfunction.md) 또는 [hash_md5 ()](./md5hashfunction.md) 를 대신 사용 합니다. 이러한 함수는 보다 계산 하기 더 복잡 `hash()` 합니다.
 
-**예**
+## <a name="examples"></a>예
 
 ```kusto
 hash("World")                   // 1846988464401551951
