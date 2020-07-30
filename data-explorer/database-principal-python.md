@@ -1,29 +1,29 @@
 ---
-title: 파이썬을 사용하여 Azure 데이터 탐색기용 데이터베이스 보안 주체 추가
-description: 이 문서에서는 Python을 사용하여 Azure Data Explorer에 대한 데이터베이스 보안 주체를 추가하는 방법을 알아봅니다.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+title: Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 보안 주체 추가
+description: 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 보안 주체를 추가 하는 방법에 대해 알아봅니다.
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 3ddb34692158fdc7e6d4f7786f84b8c059bc0621
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 54b2d05c666c1ac3ed35520ad383f01eff3371cb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81498696"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350012"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>파이썬을 사용하여 Azure 데이터 탐색기용 데이터베이스 보안 주체 추가
+# <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 보안 주체 추가
 
 > [!div class="op_single_selector"]
 > * [C#](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager 템플릿](database-principal-resource-manager.md)
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 이 문서에서는 Python을 사용하여 Azure 데이터 탐색기의 데이터베이스 보안 주체를 추가합니다.
+Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 보안 주체를 추가 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스 만들기](create-cluster-database-python.md)
@@ -39,9 +39,9 @@ pip install azure-mgmt-kusto
 
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-## <a name="add-a-database-principal"></a>데이터베이스 주체 추가
+## <a name="add-a-database-principal"></a>데이터베이스 보안 주체 추가
 
-다음 예제에서는 데이터베이스 주체를 프로그래밍 방식으로 추가하는 방법을 보여 주며,
+다음 예에서는 데이터베이스 보안 주체를 프로그래밍 방식으로 추가 하는 방법을 보여 줍니다.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -81,19 +81,19 @@ poller = kusto_management_client.database_principal_assignments.create_or_update
 
 |**설정** | **제안 값** | **필드 설명**|
 |---|---|---|
-| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | 테넌트 ID 디렉터리 ID라고도 합니다.|
-| subscription_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | 리소스 만들기에 사용하는 구독 ID입니다.|
-| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | 테넌트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 ID입니다.|
-| client_secret | *트리플 엑스 트리플 엑스 트리플 엑스 트리플 엑스* | 테넌트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 보안 입니다. |
-| resource_group_name | *테서그 (것)에 대한* | 클러스터를 포함하는 리소스 그룹의 이름입니다.|
+| tenant_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테넌트 ID 디렉터리 ID 라고도 합니다.|
+| subscription_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 리소스를 만드는 데 사용 하는 구독 ID입니다.|
+| client_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테 넌 트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 ID입니다.|
+| client_secret | *xxxxxxxxxxxxxx* | 테 넌 트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 암호입니다. |
+| resource_group_name | *testrg* | 클러스터를 포함 하는 리소스 그룹의 이름입니다.|
 | cluster_name | *mykustocluster* | 클러스터의 이름입니다.|
 | database_name | *mykustodatabase* | 데이터베이스의 이름입니다.|
-| principal_assignment_name | *데이터베이스주체할당1* | 데이터베이스 주 리소스의 이름입니다.|
-| principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | 사용자 전자 메일, 응용 프로그램 ID 또는 보안 그룹 이름이 될 수 있는 주 ID입니다.|
-| 역할(role) | *관리자* | '관리자', '인제스터', '모니터', '사용자', '무제한 시청자', '뷰어'가 될 수 있는 데이터베이스 주체의 역할입니다.|
-| tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | 보안 주체의 테넌트 ID입니다.|
-| principal_type | *앱* | '사용자', '앱' 또는 '그룹'일 수 있는 보안 주체의 유형|
+| principal_assignment_name | *databasePrincipalAssignment1* | 데이터베이스 보안 주체 리소스의 이름입니다.|
+| principal_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 사용자 전자 메일, 응용 프로그램 ID 또는 보안 그룹 이름일 수 있는 보안 주체 ID입니다.|
+| 역할(role) | *관리자* | ' Admin ', ' 수집기 ', ' Monitor ', ' User ', ' UnrestrictedViewers ', ' Viewer ' 일 수 있는 데이터베이스 보안 주체의 역할입니다.|
+| tenant_id_for_principal | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 보안 주체의 테 넌 트 ID입니다.|
+| principal_type | *앱* | ' 사용자 ', ' 앱 ' 또는 ' 그룹 ' 일 수 있는 보안 주체의 유형입니다.|
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Azure 데이터 탐색기 파이썬 라이브러리를 사용하여 데이터 수집](python-ingest-data.md)
+* [Azure 데이터 탐색기 Python 라이브러리를 사용 하 여 데이터 수집](python-ingest-data.md)

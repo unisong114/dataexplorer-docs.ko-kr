@@ -8,30 +8,30 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/06/2020
-ms.openlocfilehash: 66ca1e5ff330a4b39ab769b0e3e8d6359eed9c00
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 3d0f389264d078d2b55ac06214bb3b820fcf7f13
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226672"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347598"
 ---
 # <a name="hash_many"></a>hash_many()
 
 여러 값의 결합 된 해시 값을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `hash_many(`*s1* `,` *s2* [ `,` *s3* ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *s1*, *s2*, ..., *sN*: 함께 해시 되는 입력 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지정 된 스칼라의 결합 된 해시 값입니다.
 
-**예**
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

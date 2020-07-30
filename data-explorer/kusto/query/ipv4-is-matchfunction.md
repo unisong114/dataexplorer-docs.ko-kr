@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 7b076f9878828ca8503c808b6ab94daf3375e2d4
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: 90d65f80ed8b5defe1fd2fe1e19ca4ff385cc408
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294630"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347343"
 ---
-# <a name="ipv4_is_match"></a>ipv4_is_match ()
+# <a name="ipv4_is_match"></a>ipv4_is_match()
 
 두 IPv4 문자열을 찾습니다. 인수 접두사에서 계산 된 결합 된 IP 접두사 마스크와 선택적 인수를 고려 하는 동안 두 IPv4 문자열이 구문 분석 되 고 비교 됩니다 `PrefixMask` .
 
@@ -26,11 +26,11 @@ ipv4_is_match('192.168.1.1/24', '192.168.1.255/24') == true
 ipv4_is_match('192.168.1.1', '192.168.1.255', 24) == true
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `ipv4_is_match(`*Expr1* `, ` *Expr2* `[ ,` *PrefixMask*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr1*, *Expr2*: IPv4 주소를 나타내는 문자열 식입니다. [IP 접두사 표기법](#ip-prefix-notation)을 사용 하 여 IPv4 문자열을 마스킹할 수 있습니다.
 * *PrefixMask*: 고려 되는 가장 중요 한 비트 수를 나타내는 0에서 32 사이의 정수입니다.
@@ -40,7 +40,7 @@ ipv4_is_match('192.168.1.1', '192.168.1.255', 24) == true
 IP 주소 `IP-prefix notation` 는 슬래시 () 문자를 사용 하 여 정의할 수 있습니다 `/` . 슬래시 ()의 왼쪽에 있는 IP 주소는 `/` 기본 ip 주소입니다. 슬래시 ()의 오른쪽에 있는 숫자 (1 ~ 32)는 `/` 네트워크 마스크에서 연속 된 1 비트의 수입니다. 
 **예:** 192.168.2.0/24에는 24 개의 연속 비트를 포함 하는 네트워크/subnetmask와 점으로 구분 된 10 진수 형식의 255.255.255.0이 포함 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 * `true`: 첫 번째 IPv4 문자열 인수의 긴 표현이 두 번째 IPv4 문자열 인수와 동일한 경우
 *  `false`그렇지.

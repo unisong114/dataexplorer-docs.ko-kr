@@ -8,30 +8,30 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/02/2019
-ms.openlocfilehash: 19c7b47318d0748510aba146968149cd0eb246a2
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 8aec2bdebacc1bfd87b84bbfc83a6aed5cb05427
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264575"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351134"
 ---
 # <a name="set_union"></a>set_union()
 
 `dynamic`배열 (arr1 ∪ arr2 ∪ ...)에 있는 모든 고유 값 집합의 배열을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `set_union(`*arr1* `, ` *arr2* `[` ,` *arr3*, ...]``)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *arr1 ... arrN*: 공용 구조체 집합을 만들기 위한 입력 배열입니다 (적어도 두 개의 배열). 모든 인수는 동적 배열 이어야 합니다 ( [pack_array](packarrayfunction.md)참조). 
 
-**반환**
+## <a name="returns"></a>반환
 
 배열에 있는 모든 고유 값 집합의 동적 배열을 반환 합니다. [`set_intersect()`](setintersectfunction.md)및를 참조 하십시오 [`set_difference()`](setdifferencefunction.md) .
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

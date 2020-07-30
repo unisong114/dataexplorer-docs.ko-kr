@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b3dece66f3bafae989643afd418557aeaaa7d746
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: a02f275dc47e88c7b14b85d19040e907613d1b80
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225040"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348329"
 ---
 # <a name="diff-patterns-plugin"></a>diff 패턴 플러그 인
 
@@ -25,7 +25,7 @@ T | evaluate diffpatterns(splitColumn)
 ```
 
 
-**구문**
+## <a name="syntax"></a>구문
 
 `T | evaluate diffpatterns(SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...])` 
 
@@ -76,7 +76,7 @@ T | evaluate diffpatterns(splitColumn)
 
     예: `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))`
 
-**반환**
+## <a name="returns"></a>반환
 
 `Diffpatterns`두 집합에 있는 데이터의 서로 다른 부분 (즉, 첫 번째 데이터 집합에서 높은 비율의 행을 캡처하고 두 번째 집합에 있는 행의 비율이 낮은 패턴)을 캡처하는 작은 패턴 집합을 반환 합니다. 각 패턴은 결과의 행으로 표시됩니다.
 
@@ -109,7 +109,7 @@ T | evaluate diffpatterns(splitColumn)
 
 * 참고: `diffpatterns` 집합 간 데이터 차이의 일부를 캡처하는 중요 한 패턴을 찾기 위해 행 단위 차이점은 아닙니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -120,7 +120,7 @@ StormEvents
 | evaluate diffpatterns(Damage, "0", "1" )
 ```
 
-|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|State|EventType|원본|DamageCrops|
+|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|상태|EventType|원본|DamageCrops|
 |---|---|---|---|---|---|---|---|---|---|
 |0|2278|93|49.8|7.1|42.7||우박||0|
 |1|779|512|17.03|39.08|22.05||뇌우를 동반한 바람|||

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: fdd062abc02ff1d98ba935fc9016d0a1505e69c3
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: 67d589f15a414ed715a75cc1871549b06f3dba9b
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348669"
 ---
 # <a name="current_principal_is_member_of"></a>current_principal_is_member_of()
 
@@ -31,11 +31,11 @@ print current_principal_is_member_of(
     )
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `current_principal_is_member_of`(`*list of string literals*`)
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *식 목록* -쉼표로 구분 된 문자열 리터럴의 목록이 며 각 리터럴은 다음과 같이 형성 된 FQN (주 정규화 된 이름) 문자열입니다.  
 *PrinciplaType* `=` *Principalid* `;` *TenantId*
@@ -46,7 +46,7 @@ print current_principal_is_member_of(
 | AAD 그룹       | `aadgroup=` |
 | AAD 응용 프로그램 | `aadapp=`   |
 
-**반환**
+## <a name="returns"></a>반환
   
 함수에서 다음을 반환합니다.
 * `true`: 쿼리를 실행 하는 현재 보안 주체가 하나 이상의 입력 인수와 일치 하는 경우
@@ -60,7 +60,7 @@ print current_principal_is_member_of(
 > * `where current_principal_is_member_of('non-existing-group') != false` 
 
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

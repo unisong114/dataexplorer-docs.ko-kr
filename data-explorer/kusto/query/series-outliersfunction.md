@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: 80e20e70bc51045f68fd3ef2068f099d750b2b3f
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: c5ada33d74f5ed3e1c7b357321b23bd7a76be64e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512438"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351355"
 ---
 # <a name="series_outliers"></a>series_outliers()
 
@@ -21,11 +21,11 @@ ms.locfileid: "84512438"
 
 함수는 동적 숫자 배열을 입력으로 사용 하는 식을 사용 하 고 길이가 같은 동적 숫자 배열을 생성 합니다. 배열의 각 값은 ["이 키의 테스트"](https://en.wikipedia.org/wiki/Outlier#Tukey.27s_test)를 사용 하 여 가능한 변칙의 점수를 나타냅니다. 입력의 동일한 요소에서 1.5 보다 큰 값은 비정상 또는 거부를 나타냅니다. -1.5 보다 작은 값은 변칙을 거부 함을 나타냅니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `series_outliers(`*x* `, ` *종류* `, ` *ignore_val* `, ` *min_percentile* `, ` *max_percentile*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값의 배열인 동적 배열 셀입니다.
 * *kind*: 이상 값 검색의 알고리즘입니다. 는 현재 `"tukey"` (기존 "고 키") 및 `"ctukey"` (사용자 지정 "의 키")를 지원 합니다. 기본값은 `"ctukey"`
@@ -37,13 +37,13 @@ ms.locfileid: "84512438"
 
 | 알고리즘 | 기본 변위치 범위 | 사용자 지정 변위치 범위 지원 |
 |-----------|----------------------- |--------------------------------|
-| `"tukey"` | 25%/75%              | 아니요                             |
+| `"tukey"` | 25%/75%              | 예                             |
 | `"ctukey"`| 10%/90%              | 예                            |
 
 > [!TIP]
 > 이 함수를 사용 하는 가장 좋은 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 약간의 노이즈가 있는 시계열은 이상 값을 만듭니다. 이러한 이상 값 (노이즈)을 평균값으로 바꾸려면 series_outliers ()를 사용 하 여 이상 값을 검색 한 후 대체 합니다.
 

@@ -8,30 +8,30 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 6c394c33af25e1891131c7ca2a47359f3cdcd059
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 1f8e6e8100472ed8e68a5dc1801c282b5a48ff77
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351474"
 ---
 # <a name="series_greater_equals"></a>series_greater_equals()
 
 `>=`두 숫자 계열 입력의 요소 단위 크거나 같음 () 논리 연산을 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `series_greater_equals (`*Series1* `,` *Series2*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Series1, Series2*: 요소를 비교 하는 데 사용할 숫자 배열을 입력 합니다. 모든 인수는 동적 배열 이어야 합니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 두 입력 간의 계산 된 요소-보다 크거나 같은 논리 연산을 포함 하는 부울의 동적 배열입니다. 숫자가 아닌 요소나 비 기존 요소 (크기가 다른 배열)는 `null` 요소 값을 생성 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

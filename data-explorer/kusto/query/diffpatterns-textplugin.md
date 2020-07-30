@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7ef4bf5607979cc02976d00250e8754f3a0c4e69
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 9321f30d2643f6e398d73cf7960490708626f723
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348363"
 ---
 # <a name="diffpatterns_text-plugin"></a>diffpatterns_text 플러그 인
 
@@ -25,7 +25,7 @@ T | evaluate diffpatterns_text(TextColumn, BooleanCondition)
 
 는 `diffpatterns_text` 두 집합에 있는 데이터의 서로 다른 부분을 캡처하는 텍스트 패턴 집합을 반환 합니다. 즉, 조건이 인 경우 행의 많은 부분을 캡처하는 패턴이 며 `true` 조건이 일 때 행의 비율이 낮습니다. `false` 패턴은 공백으로 구분 된 연속 토큰에서 텍스트 열의 토큰이 나 와일드 카드를 나타내는로 작성 됩니다 `*` . 각 패턴은 결과의 행으로 표시됩니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `T | evaluate diffpatterns_text(`TextColumn, BooleanCondition [, MinTokens, Threshold, MaxTokens]`)` 
 
@@ -55,7 +55,7 @@ T | evaluate diffpatterns_text(TextColumn, BooleanCondition)
 
     결과 패턴 당 최대 토큰 수를 설정 하 고, 하한값을 지정 하면 쿼리 런타임이 감소 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 Diffpatterns_text 결과는 다음 열을 반환 합니다.
 
@@ -68,7 +68,7 @@ Diffpatterns_text 결과는 다음 열을 반환 합니다.
 > [!NOTE]
 > 패턴은 반드시 다르지는 않으며 데이터 집합에 대 한 전체 검사를 제공 하지 않을 수 있습니다. 패턴은 겹칠 수 있으며 일부 행은 패턴과 일치 하지 않을 수 있습니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

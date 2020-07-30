@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e62432773d99d74a46022cad3199f3bab0cae50b
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: 34734f3975b1720c1d009f190d4fae2ebc54283f
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128468"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350760"
 ---
-# <a name="todouble-toreal"></a>todouble (), toreal ()
+# <a name="todouble-toreal"></a>todouble(), toreal()
 
 입력을 형식의 값으로 변환 합니다 `real` . `todouble()`및 `toreal()` 는 동의어입니다.
 
@@ -23,16 +23,16 @@ ms.locfileid: "85128468"
 toreal("123.4") == 123.4
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `toreal(`*Expr* `)` 
  Expr `todouble(` *Expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 값이 형식의 값으로 변환 되는 식입니다 `real` .
 
-**반환**
+## <a name="returns"></a>반환
 
 성공적으로 변환 되 면 결과는 형식의 값입니다 `real` .
 변환이 실패 하면 결과는 값 `real(null)` 입니다.
