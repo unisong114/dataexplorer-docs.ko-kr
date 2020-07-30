@@ -3,17 +3,17 @@ title: geo_polygon_to_s2cells ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 geo_polygon_to_s2cells ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
-ms.author: orspod
+ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/10/2020
-ms.openlocfilehash: c4396087018e25c57f064e8d2f99a83cc0840c3a
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: d282dc6d25947aa20da3d1f05a1f76ab887ca21c
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280586"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347734"
 ---
 # <a name="geo_polygon_to_s2cells"></a>geo_polygon_to_s2cells()
 
@@ -21,16 +21,16 @@ ms.locfileid: "86280586"
 
 [S2 셀 계층](https://s2geometry.io/devguide/s2cell_hierarchy)에 대해 자세히 알아보세요.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `geo_polygon_to_s2cells(`*다각형* `, ` *수준*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *polygon*: [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 다각형 또는 multipolygon입니다. 
 * *수준*: 요청 된 `int` 셀 수준을 정의 하는 선택적입니다. 지원 되는 값은 [0, 30] 범위에 있습니다. 지정 하지 않으면 기본값이 `11` 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 다각형 또는 multipolygon을 포함 하는 S2 셀 토큰 문자열의 배열입니다. 다각형이 나 수준이 잘못 되었거나 셀 수가 제한을 초과 하는 경우 쿼리는 null 결과를 생성 합니다.
 
@@ -67,10 +67,10 @@ Polygons | extend dummy=1
 | project longitude, latitude, description
 ```
 
-|longitude|latitude|설명|
+|longitude|latitude|description|
 |---|---|---|
 |-73.95|40.75|뉴욕 도시|
-|-122.3|47.6|시애틀|
+|-122.3|47.6|Seattle|
 |-115.18|36.16|라스베이거스|
 
 이 메서드는 어떤 경우에도 작동 하지만 비효율적입니다. 이 메서드는 크로스 조인을 수행 합니다. 즉, 모든 다각형을 모든 지점에 일치 시 키 려 고 합니다. 이 프로세스는 많은 양의 메모리 및 계산 리소스를 사용 합니다.
@@ -97,7 +97,7 @@ Polygons | extend dummy=1
 > [!WARNING]
 > 작은 영역 셀을 포함 하는 큰 영역 다각형을 덮고 있으면 많은 양의 포괄 셀이 발생할 수 있습니다. 따라서 쿼리가 null을 반환할 수 있습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 다음 예제에서는 좌표를 다각형으로 분류 합니다.
 
@@ -129,7 +129,7 @@ Polygons
 | project longitude, latitude, description
 ```
 
-|longitude|latitude|설명|
+|longitude|latitude|description|
 |---|---|---|
 |-73.9741|40.7914|위쪽 서 부 쪽|
 |-73.995|40.734|그리니치 마을|

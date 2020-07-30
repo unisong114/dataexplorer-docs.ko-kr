@@ -19,7 +19,7 @@ ms.locfileid: "87347598"
 
 여러 값의 결합 된 해시 값을 반환 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `hash_many(`*s1* `,` *s2* [ `,` *s3* ...]`)`
 
@@ -31,7 +31,7 @@ ms.locfileid: "87347598"
 
 지정 된 스칼라의 결합 된 해시 값입니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

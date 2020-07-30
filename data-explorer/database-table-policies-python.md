@@ -1,18 +1,18 @@
 ---
 title: 'Azure 데이터 탐색기 Python 라이브러리를 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스에 대 한 정책 만들기 '
 description: 이 문서에서는 Python을 사용 하 여 정책을 만드는 방법에 대해 알아봅니다.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 60fe6fe1473bb1e7b370491985af27fc95836153
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 4f73eebc3822eb84f58dd01a020090ab4a763957
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373885"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349961"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 및 테이블 정책 만들기
 
@@ -23,7 +23,7 @@ ms.locfileid: "83373885"
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 및 테이블 정책을 만듭니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [테스트 클러스터 및 데이터베이스](create-cluster-database-python.md)

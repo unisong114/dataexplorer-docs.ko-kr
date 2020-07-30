@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9f8afae2413d65618cf6b6e2f400df2500b06078
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 4222e0672290a6d934382dd6f922aec082a19af7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618051"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338680"
 ---
 # <a name="variance-aggregation-function"></a>variance () (집계 함수)
 
@@ -25,19 +25,19 @@ ms.locfileid: "82618051"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `variance(` *식* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 집계 계산에 사용 되는 식입니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 그룹 전체에 대 한 *Expr* 의 가변성 값입니다.
  
-**예제**
+## <a name="examples"></a>예제
 
 ```kusto
 range x from 1 to 5 step 1

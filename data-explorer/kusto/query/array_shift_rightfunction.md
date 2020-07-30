@@ -8,28 +8,28 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: 28a44365d6d79bf30ec188146d989f2af2ad12c1
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: 866f7865abe2debeab22bfbf13bc7641d9bc5078
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550659"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349621"
 ---
 # <a name="array_shift_right"></a>array_shift_right()
 
 `array_shift_right()`배열 내의 값을 오른쪽으로 이동 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `array_shift_right(`*`arr`*, *`shift_count`* [, *`fill_value`* ]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *`arr`*: 분할할 입력 배열입니다. 동적 배열 이어야 합니다.
 * *`shift_count`*: 배열 요소가 오른쪽으로 이동 하는 위치의 수를 지정 하는 정수입니다. 값이 음수 이면 요소가 왼쪽으로 이동 됩니다.
 * *`fill_value`*: 이동 및 제거 된 요소 대신 요소를 삽입 하는 데 사용 되는 스칼라 값입니다. 기본값: *arr* 유형에 따라 null 값 또는 빈 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 원래 배열과 동일한 양의 요소를 포함 하는 동적 배열입니다. 각 요소는에 따라 이동 되었습니다 *`shift_count`* . 제거 된 요소 대신 추가 된 새 요소는의 값을 갖습니다 *`fill_value`* .
 
@@ -39,7 +39,7 @@ ms.locfileid: "83550659"
 * 배열 오른쪽 회전의 경우 [array_rotate_right ()](array_rotate_rightfunction.md)를 참조 하세요.
 * 배열의 회전을 왼쪽으로 [array_rotate_left ()](array_rotate_leftfunction.md)를 참조 하세요.
 
-**예제**
+## <a name="examples"></a>예제
 
 * 오른쪽에서 두 위치로 이동:
 

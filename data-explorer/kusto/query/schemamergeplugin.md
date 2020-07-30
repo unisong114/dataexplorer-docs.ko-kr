@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: b1f3ef10ac5cee3eb9bc1c1dca4c0de26bd85477
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 2873f3d010464b82ef8cb6a9a3e09f7b0a56b8d9
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780204"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345711"
 ---
 # <a name="schema_merge-plugin"></a>schema_merge 플러그 인
 
@@ -29,19 +29,19 @@ let Schema2=Table2 | getschema;
 union Schema1, Schema2 | evaluate schema_merge()
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `T``|` `evaluate` `schema_merge(` *PreserveOrder*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *PreserveOrder*: (선택 사항)로 설정 하면 `true` 유지 되는 첫 번째 테이블 형식 스키마에 정의 된 대로 플러그 인에서 열 순서의 유효성을 검사 하도록 지시 합니다. 동일한 열이 여러 스키마에 있는 경우 열 서 수는 표시 된 첫 번째 스키마의 열 서 수와 같아야 합니다. 기본값은 `true`입니다.
+* *PreserveOrder*: (선택 사항)로 설정 하면 `true` 유지 되는 첫 번째 테이블 형식 스키마에 정의 된 대로 플러그 인에서 열 순서의 유효성을 검사 하도록 지시 합니다. 동일한 열이 여러 스키마에 있는 경우 열 서 수는 표시 된 첫 번째 스키마의 열 서 수와 같아야 합니다. 기본값은 `true`여야 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `schema_merge`플러그 인은 반환 되는 연산자와 유사한 출력을 반환 [`getschema`](./getschemaoperator.md) 합니다.
 
-**예**
+## <a name="examples"></a>예제
 
 새 열이 추가 된 스키마와 병합 합니다.
 
@@ -51,7 +51,7 @@ let schema2 = datatable(Uri:string, HttpStatus:int, Referrer:string)[] | getsche
 union schema1, schema2 | evaluate schema_merge()
 ```
 
-*만들어집니다*
+*결과*
 
 |ColumnName | ColumnOrdinal | DataType | ColumnType|
 |---|---|---|---|
@@ -67,7 +67,7 @@ let schema2 = datatable(Uri:string, Referrer:string, HttpStatus:int)[] | getsche
 union schema1, schema2 | evaluate schema_merge()
 ```
 
-*만들어집니다*
+*결과*
 
 |ColumnName | ColumnOrdinal | DataType | ColumnType|
 |---|---|---|---|
@@ -83,7 +83,7 @@ let schema2 = datatable(Uri:string, Referrer:string, HttpStatus:int)[] | getsche
 union schema1, schema2 | evaluate schema_merge(PreserveOrder = false)
 ```
 
-*만들어집니다*
+*결과*
 
 |ColumnName | ColumnOrdinal | DataType | ColumnType|
 |---|---|---|---|

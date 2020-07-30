@@ -8,31 +8,31 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 22fe505eb8fd391e7a61120dbf42c214cb61c120
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: fa87dae85b158e162cea90c276057abb210ea23b
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264830"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345779"
 ---
 # <a name="reverse"></a>reverse()
 
 함수는 입력 문자열의 순서를 반대로 바꿉니다.
 입력 값이 형식이 아닌 경우 `string` 함수는 값을 강제로 형식으로 캐스팅 합니다 `string` .
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `reverse(`*원본*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *원본*: 입력 값입니다.  
 
-**반환**
+## <a name="returns"></a>반환
 
 문자열 값의 반대 순서입니다.
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

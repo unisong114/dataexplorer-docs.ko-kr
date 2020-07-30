@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 116f585fe8a09b4befddd7d1429229ad1bac886f
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: ed207a9db0b6440bae8f8fb4ae1c250d274565d7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338221"
 ---
 # <a name="where-operator"></a>where 연산자
 
@@ -25,16 +25,16 @@ T | where fruit=="apple"
 
 **별칭**`filter`
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| where` *조건자*
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 레코드를 필터링 할 테이블 형식 입력입니다.
 * *Predicate*: `boolean` *T*의 열에 대 한 [식](./scalar-data-types/bool.md) 입니다. *T*의 각 행에 대해 평가 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 *Predicate*가 `true`인 *T*의 행입니다.
 
@@ -54,7 +54,7 @@ T | where fruit=="apple"
 
 자세한 내용은 [사용 가능한 문자열 연산자](./datatypes-string-operators.md) 의 요약 및 [사용 가능한 숫자 연산자](./numoperators.md)의 요약을 참조 하세요.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 Traces
@@ -67,7 +67,7 @@ Traces
 
 인덱스를 사용할 수 없고 검색을 강제 적용할 수 없기 때문에 두 열을 마지막에 비교 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 Traces | where * has "Kusto"

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 8476680ad5b8206dcd7dfe98bf116bb5b6dcefdc
-ms.sourcegitcommit: 085e212fe9d497ee6f9f477dd0d5077f7a3e492e
+ms.openlocfilehash: a81c5faadb51b99cdcd233132f9b6a4843e3ce34
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85133456"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345796"
 ---
 # <a name="restrict-statement"></a>Restrict 문
 
@@ -25,7 +25,7 @@ Restrict 문은 쿼리 문 뒤에 표시 되는 테이블/뷰 엔터티 집합�
 
 Restrict 문의 주요 시나리오는 사용자의 쿼리를 수락 하 고 해당 쿼리에 대해 행 수준 보안 메커니즘을 적용 하려는 중간 계층 응용 프로그램에 대 한 것입니다. 중간 계층 응용 프로그램은 사용자의 데이터에 대 한 액세스를 제한 하는 뷰를 정의 하는 let 문의 집합인 **논리 모델**을 사용 하 여 사용자의 쿼리에 접두사를 지정할 수 있습니다 (예: `T | where UserId == "..."` ). 마지막으로 추가 되는 문은 사용자의 논리적 모델만 액세스를 제한 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `restrict``access` `to` `(` [*Entityspecifier* [ `,` ...]]`)`
 
@@ -36,11 +36,11 @@ Restrict 문의 주요 시나리오는 사용자의 쿼리를 수락 하 고 해
 
 Restrict 문으로 지정 되지 않은 모든 테이블, 테이블 형식 뷰 또는 패턴은 쿼리의 나머지 부분에 대해 "보이지 않는" 상태가 됩니다. 
 
-**참고 사항**
+**참고**
 
 Restrict 문은 다른 데이터베이스 또는 클러스터의 엔터티에 대 한 액세스를 제한 하는 데 사용할 수 있습니다 (와일드 카드는 클러스터 이름에서 지원 되지 않음).
 
-**인수**
+## <a name="arguments"></a>인수
 
 Restrict 문은 엔터티 이름을 확인 하는 동안 허용 제한을 정의 하는 하나 이상의 매개 변수를 가져올 수 있습니다. 엔터티는 다음과 같을 수 있습니다.
 - 문 앞에 [let 문을](./letstatement.md) 표시 `restrict` 합니다. 
@@ -80,7 +80,7 @@ restricts access to (database('DB2').*);
 ```
 
 
-**예**
+## <a name="examples"></a>예제
 
 다음 예제에서는 중간 계층 응용 프로그램에서 사용자가 다른 사용자의 데이터를 쿼리할 수 없도록 하는 논리 모델을 사용 하 여 사용자의 쿼리를 추가 하는 방법을 보여 줍니다.
 

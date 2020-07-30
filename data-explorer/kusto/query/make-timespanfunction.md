@@ -23,7 +23,7 @@ ms.locfileid: "87346952"
 make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `make_timespan(`*시간*,*분*`)`
 

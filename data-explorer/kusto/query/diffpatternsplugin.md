@@ -25,7 +25,7 @@ T | evaluate diffpatterns(splitColumn)
 ```
 
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `T | evaluate diffpatterns(SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...])` 
 
@@ -120,7 +120,7 @@ StormEvents
 | evaluate diffpatterns(Damage, "0", "1" )
 ```
 
-|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|상태|EventType|원본|DamageCrops|
+|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|시스템 상태|EventType|원본|DamageCrops|
 |---|---|---|---|---|---|---|---|---|---|
 |0|2278|93|49.8|7.1|42.7||우박||0|
 |1|779|512|17.03|39.08|22.05||뇌우를 동반한 바람|||

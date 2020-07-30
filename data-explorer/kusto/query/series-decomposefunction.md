@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 4500ec5b58c93901e011ea6dd270563d3405ee01
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: fa17d27506c4930fa9b9f7fb0a24f5ff31e1c974
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345167"
 ---
 # <a name="series_decompose"></a>series_decompose()
 
@@ -21,11 +21,11 @@ ms.locfileid: "83372860"
 
 계열 (동적 숫자 배열)을 포함 하는 식을 입력으로 사용 하 고 계절, 추세 및 잔여 구성 요소로 분해 합니다.
  
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_decompose(`*계열* `[,` *계절성* `,` *추세* `,` *Test_points* `,` *Seasonality_threshold*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Series*: 숫자 값 배열인 동적 배열 셀입니다. 일반적으로 [Series](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력입니다.
 * *계절성*: 다음 중 하나를 포함 하는 계절 분석을 제어 하는 정수입니다.
@@ -51,7 +51,7 @@ ms.locfileid: "83372860"
 * `residual`: 나머지 구성 요소 (x-기준선)의 시리즈입니다.
   
 
-**참고 사항**
+**참고**
 
 * 구성 요소 실행 순서:
     1. 계절 시리즈 추출
@@ -66,7 +66,7 @@ ms.locfileid: "83372860"
 
 이 메서드는 일반적으로 주기 및/또는 추세 동작에 필요한 메트릭의 시계열에 적용 됩니다. 메서드를 사용 하 여 미래 메트릭 값을 예측 하거나 비정상 값을 검색할 수 있습니다. 이 회귀 프로세스의 암시적 가정은 계절 및 추세 동작과는 달리 시계열은 추계 되 고 무작위로 분산 된다는 것입니다. 잔여 부분을 무시 하 고 계절 및 추세 구성 요소에서 향후 메트릭 값을 예측 합니다. 잔여 부분만 해당 하는 이상 값 검색을 기준으로 비정상 값을 검색 합니다. 자세한 내용은 [시계열 분해 챕터](https://www.otexts.org/fpp/6)에서 찾을 수 있습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 **주간 계절성**
 

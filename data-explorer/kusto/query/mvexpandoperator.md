@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
-ms.openlocfilehash: ee9c4b236344e21bbbc1da68b76710b15b519baa
-ms.sourcegitcommit: 56bb7b69654900ed63310ac9537ae08b72bf7209
+ms.openlocfilehash: 8358bf9a8eb0dab38b8f5847521e069f21fe4a2c
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85814214"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346697"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
@@ -21,13 +21,13 @@ ms.locfileid: "85814214"
 
 `mv-expand`는 컬렉션의 각 값이 개별 행을 가질 수 있도록 [동적](./scalar-data-types/dynamic.md)으로 형식화 된 배열 또는 속성 모음 열에 적용 됩니다. 확장된 행의 다른 열은 모두 중복됩니다. 
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| mv-expand ` [ `bagexpansion=` ( `bag`  |  `array` )] [ `with_itemindex=` *indexcolumnname*] *ColumnName* [ `,` *columnname* ...] [ `limit` *rowlimit*]
 
 *T* `| mv-expand ` [ `bagexpansion=` ( `bag`  |  `array` )] [*Name* `=` ] *arrayexpression* [ `to typeof(` *typename* `)` ] [, [*Name* `=` ] *arrayexpression* [ `to typeof(` *typename* `)` ] ...] [ `limit` *rowlimit*]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *ColumnName:* 결과적으로 명명된 열의 배열이 여러 행으로 확장됩니다. 
 * *ArrayExpression:* 배열을 생성하는 식입니다. 이 양식을 사용하면 새 열이 추가되며 기존 열은 보존됩니다.
@@ -40,7 +40,7 @@ ms.locfileid: "85814214"
 
 * *인덱스 columnname:* `with_itemindex`이 지정 된 경우 출력에는 원래 확장 된 컬렉션에 있는 항목의 인덱스 (0부터 시작)를 포함 하는 추가 열 (명명 된 *indexcolumnname*)이 포함 됩니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 명명 된 열 또는 배열 식에 있는 배열의 각 값에 대 한 여러 행
 여러 개의 열 또는 식을 지정 하는 경우 병렬로 확장 됩니다. 각 입력 행에 대해 가장 긴 확장 식에 있는 요소 수 만큼의 출력 행이 있습니다. 짧은 목록은 null로 채워집니다. 행의 값이 빈 배열인 경우에는 행이 nothing (결과 집합에 표시 되지 않음)으로 확장 됩니다. 그러나 행의 값이 배열이 아닌 경우 행은 결과 집합에 그대로 유지 됩니다. 

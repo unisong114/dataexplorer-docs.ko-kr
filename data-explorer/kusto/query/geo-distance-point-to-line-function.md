@@ -8,28 +8,28 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
-ms.openlocfilehash: b4a30aa4285b8f6e22e5d4057fe7d408d548a27b
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: a7796c14098f773b73bd16735a3d2c9c879c8fd2
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347870"
 ---
 # <a name="geo_distance_point_to_line"></a>geo_distance_point_to_line()
 
 좌표와 지구 선 사이의 최단 거리를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `geo_distance_point_to_line(`*경도* `, ` *위도* `, ` *lineString*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *경도*: 지리 공간적 좌표 경도 값 (도)입니다. 유효한 값은 [-180, + 180] 범위의 실수입니다.
 * *위도*: 지리 공간적 좌표 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
 * *lineString*: [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 줄입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 좌표와 지구 선 사이의 최단 거리 (미터)입니다. 좌표 또는 lineString이 잘못 된 경우 쿼리는 null 결과를 생성 합니다.
 
@@ -49,7 +49,7 @@ dynamic ({"type": "LineString", "좌표계": [[lng_1, lat_1], [lng_2, lat_2],...
 > [!TIP]
 > 성능 향상을 위해 리터럴 줄을 사용 합니다.
 
-**예**
+## <a name="examples"></a>예제
 
 다음 예에서는 북쪽 Las Vegas 공항과 가까운도로의 최단 거리를 찾습니다.
 

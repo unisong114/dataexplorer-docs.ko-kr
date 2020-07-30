@@ -1,6 +1,6 @@
 ---
-title: 고유 연산자 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 고유한 연산자에 대해 설명합니다.
+title: distinct 연산자-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 distinct 연산자에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,38 +8,38 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4287ca48d3fb5006e67a9266ea05287a7d8a06f6
-ms.sourcegitcommit: 29018b3db4ea7d015b1afa65d49ecf918cdff3d6
+ms.openlocfilehash: 233d3fdb0e25720b860a0c11515daec7c597dadd
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82030374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348346"
 ---
 # <a name="distinct-operator"></a>distinct 연산자
 
-입력 테이블의 제공된 열의 고유한 조합이 있는 테이블을 생성합니다. 
+입력 테이블에서 제공 된 열의 고유한 조합을 사용 하 여 테이블을 생성 합니다. 
 
 ```kusto
 T | distinct Column1, Column2
 ```
 
-입력 테이블의 모든 열이 고유한 조합으로 테이블을 생성합니다.
+입력 테이블에 있는 모든 열의 고유한 조합을 사용 하 여 테이블을 생성 합니다.
 
 ```kusto
 T | distinct *
 ```
 
-**예제**
+## <a name="example"></a>예제
 
-과일과 가격의 뚜렷한 조합을 보여줍니다.
+과일과 가격의 고유한 조합을 보여 줍니다.
 
 ```kusto
 Table | distinct fruit, price
 ```
 
-:::image type="content" source="images/distinctoperator/distinct.PNG" alt-text="별개":::
+:::image type="content" source="images/distinctoperator/distinct.PNG" alt-text="Distinct":::
 
-**참고 사항**
+**참고**
 
-* 이와 달리 `summarize by ...`연산자는 별표`*`()를 그룹 키로 제공하여 넓은 테이블에 사용하기 쉽게 합니다. `distinct`
-* 키별 그룹이 카디널리티가 높은 `summarize by ...` 경우 [셔플 전략을](shufflequery.md) 사용하는 것이 유용할 수 있습니다.
+* 와 달리 `summarize by ...` `distinct` 연산자는 별표 ()를 그룹 키로 제공 하 여 `*` 넓은 테이블에 보다 쉽게 사용할 수 있도록 지원 합니다.
+* Group by 키가 high 카디널리티 인 경우을 순서 대로 사용 하 여를 사용 하는 `summarize by ...` 것이 유용할 수 있습니다. [shuffle strategy](shufflequery.md)

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 167ba8818709f52ccc344452e275405c42b1796e
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: df7b994350297d911a0f3be59c791b6538899d67
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227675"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349791"
 ---
 # <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics 플러그 인
 
@@ -23,11 +23,11 @@ ms.locfileid: "83227675"
 T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `activity_counts_metrics(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Window* [ `,` *코 호트*] [ `,` *dim1* `,` *dim2* ] `,` [ `,` *Lookback*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -37,7 +37,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 * *Window*: 분석 기간 값이 포함 된 스칼라입니다. 는 숫자/날짜/시간/타임 스탬프 값 이거나 중 하나인 문자열일 수 있으며,이 `week` / `month` / `year` 경우 모든 기간이 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) 또는 [startofyear](startofyearfunction.md)가 됩니다. 
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 는 총 개수 값, 고유 카운트 값, 새 값의 고유 개수 및 각 기간에 대 한 집계 된 고유 카운트를 포함 하는 테이블을 반환 합니다.
 
@@ -54,7 +54,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 * *`new_dcount`*: 모든 이전 시간 창과 비교 하 여 시간 창과 *dim* 의 고유 ID 값입니다. 
 * *`aggregated_dcount`*: 첫 번째 창에서 현재 (포함)까지 *dim* 의 총 집계 된 고유 ID 값입니다.
 
-**예**
+## <a name="examples"></a>예제
 
 ### <a name="daily-activity-counts"></a>일별 활동 수 
 

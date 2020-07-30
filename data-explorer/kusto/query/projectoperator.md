@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 76ead8fabe755d5e3e200a767cb8b7518121b2ac
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: 7a7cbb563a10b1cd1bdd91f12b0ce9d7da1c0e7b
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128957"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346034"
 ---
 # <a name="project-operator"></a>project 연산자
 
@@ -25,7 +25,7 @@ ms.locfileid: "85128957"
 T | project cost=price*quantity, price
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| project` *ColumnName* [ `=` *식*] [ `,` ...]
   
@@ -33,7 +33,7 @@ T | project cost=price*quantity, price
   
 *T* `| project` [*columnname*  |  `(` *columnname*[ `,` ] `)` `=` ] *식* [ `,` ...]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블입니다.
 * *ColumnName:* 출력에 표시할 열의 선택적 이름입니다. *식이*없는 경우 *ColumnName* 은 필수 이며 해당 이름의 열이 입력에 표시 되어야 합니다. 생략 하면 이름이 자동으로 생성 됩니다. *식이* 둘 이상의 열을 반환 하는 경우 열 이름 목록을 괄호로 지정할 수 있습니다. 이 경우 *식*의 출력 열에는 지정 된 이름이 지정 됩니다 .이 경우 모든 나머지 출력 열은 삭제 됩니다. 열 이름 목록을 지정 하지 않으면 생성 된 이름이 있는 모든 *식*의 출력 열이 출력에 추가 됩니다.
@@ -41,11 +41,11 @@ T | project cost=price*quantity, price
 
     입력의 기존 열과 같은 이름을 가진 새 계산된 열을 반환하는 것이 올바릅니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 인수로 이름 지정된 열 및 입력 테이블만큼의 행을 가진 테이블입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 다음 예제에서는 `project` 연산자를 사용하여 수행할 수 있는 여러 종류의 조작을 보여 줍니다. 입력 테이블 `T`에는 `int` 형식의 열로 `A`, `B`, `C`의 3개가 있습니다. 
 

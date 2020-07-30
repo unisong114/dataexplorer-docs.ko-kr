@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e078919af16a9d2f7dadba0a309932b3a39b6ced
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: bb3f217b1ec0631f533a10433a7be368945667d7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763250"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87344538"
 ---
 # <a name="series_fill_const"></a>series_fill_const()
 
@@ -21,12 +21,12 @@ ms.locfileid: "85763250"
 
 동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 missing_value_placeholder의 모든 인스턴스를 지정 된 constant_value로 바꾸고 결과 배열을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_fill_const(`*x* `[, ` *constant_value* `[,` *missing_value_placeholder*`]])`
 * 는 *missing_value_placeholder* 의 모든 인스턴스가 *constant_value*로 바뀐 series *x* 를 반환 합니다.
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값의 배열인 동적 배열 스칼라 식입니다.
 * *constant_value*: 대체할 누락 값에 대 한 자리 표시자를 지정 하는 매개 변수입니다. 기본값은 *0*입니다. 
@@ -48,7 +48,7 @@ make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) 
 * *Missing_value_placeholder* 은 실제 요소 형식으로 변환 되는 모든 형식일 수 있습니다. 이와 같이 `double` (*null*), `long` (*null*) 또는 `int` (*null*)는 동일한 의미를 갖습니다.
 * 함수는 배열 요소의 원래 형식을 유지 합니다. 
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 417d4afb74e9170301baebde6be73d97df097f0f
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: 2b082e516a1118638bc8e61b545471326dd400e5
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346238"
 ---
 # <a name="partition-operator"></a>partition 연산자
 
@@ -25,13 +25,13 @@ T | partition by Col1 ( top 10 by MaxValue )
 T | partition by Col1 { U | where Col2=toscalar(Col1) }
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `partition` [*파티션 매개 변수*] `by` *열* `(` *ContextualSubquery*`)`
 
 *T* `|` `partition` [*파티션 매개 변수*] `by` *열* `{` *하위 쿼리*`}`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 연산자에서 처리할 데이터를 포함 하는 테이블 형식 원본입니다.
 
@@ -43,17 +43,17 @@ T | partition by Col1 { U | where Col2=toscalar(Col1) }
 
 * *파티션 매개 변수*: *Name* `=` 연산자의 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다.
 
-  |속성               |값         |Description|
+  |Name               |값         |설명|
   |-------------------|---------------|-----------|
   |`hint.materialized`|`true`,`false` |로 설정 하면 `true` 연산자의 소스가 구체화 됩니다 `partition` (기본값:). `false`|
-  |`hint.concurrency`|*숫자*|시스템 힌트 병렬로 실행 해야 하는 연산자의 동시 하위 쿼리 수 `partition` 입니다. *기본값*: 클러스터의 단일 노드 (2-16)에 있는 CPU 코어의 양입니다.|
-  |`hint.spread`|*숫자*|동시 하위 쿼리 실행에서 사용 해야 하는 노드 수를 시스템에 설명 합니다 `partition` . *기본값*: 1.|
+  |`hint.concurrency`|*Number*|시스템 힌트 병렬로 실행 해야 하는 연산자의 동시 하위 쿼리 수 `partition` 입니다. *기본값*: 클러스터의 단일 노드 (2-16)에 있는 CPU 코어의 양입니다.|
+  |`hint.spread`|*Number*|동시 하위 쿼리 실행에서 사용 해야 하는 노드 수를 시스템에 설명 합니다 `partition` . *기본값*: 1.|
 
-**반환**
+## <a name="returns"></a>반환
 
 연산자는 하위 쿼리를 입력 데이터의 각 파티션에 적용 한 결과의 합집합을 반환 합니다.
 
-**참고 사항**
+**참고**
 
 * 파티션 연산자는 현재 파티션 수에 의해 제한 됩니다.
   최대 64 개의 고유 파티션을 만들 수 있습니다.
@@ -76,7 +76,7 @@ StormEvents
 ) 
 
 ```
-|EventType|State|이벤트|부상|
+|EventType|시스템 상태|이벤트|부상|
 |---|---|---|---|
 |우박|와이오밍|108|0|
 |높은 바람|와이오밍|81|5|

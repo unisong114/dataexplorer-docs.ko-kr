@@ -8,12 +8,12 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
-ms.openlocfilehash: fe3af4218fcc8b714cd4d62e45e78d6f8c9c0270
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: a094644e6f8a96631e5e1bcf1d2d15cf1ba7caad
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347751"
 ---
 # <a name="geo_point_to_s2cell"></a>geo_point_to_s2cell()
 
@@ -21,17 +21,17 @@ ms.locfileid: "83226910"
 
 [S2 셀 계층](https://s2geometry.io/devguide/s2cell_hierarchy)에 대해 자세히 알아보세요.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `geo_point_to_s2cell(`*경도* `, ` *위도* `, ` *수준*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *경도*: 지리적 위치의 경도 값입니다. *X* 가 실수이 고 *x* 가 [-180, + 180] 범위 내에 있는 경우 경도 *x* 는 유효한 것으로 간주 됩니다. 
 * *위도*: 지리적 위치의 위도 값입니다. Y가 실수이 고 [-90, + 90] 범위의 y 인 경우 위도 y는 유효한 것으로 간주 됩니다. 
 * *수준*: 요청 된 `int` 셀 수준을 정의 하는 선택적입니다. 지원 되는 값은 [0, 30] 범위에 있습니다. 지정 하지 않으면 기본값이 `11` 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지정 된 지리적 위치의 S2 셀 토큰 문자열 값입니다. 좌표가 나 수준이 잘못 된 경우 쿼리에서 빈 결과가 생성 됩니다.
 
@@ -86,7 +86,7 @@ ms.locfileid: "83226910"
 
 [Geo_point_to_geohash ()](geo-point-to-geohash-function.md)도 참조 하세요.
 
-**예**
+## <a name="examples"></a>예제
 
 S2cell에 의해 집계 된 미국 스톰 이벤트입니다.
 

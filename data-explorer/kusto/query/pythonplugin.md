@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: e6439912d323b7677f6febc8b23068c880a735c2
-ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
+ms.openlocfilehash: 984e5c37f3d29a6c56f88c6eb9b6750635e48920
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85902132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345983"
 ---
 # <a name="python-plugin"></a>Python 플러그 인
 
@@ -24,7 +24,7 @@ ms.locfileid: "85902132"
 Python 플러그 인은 Python 스크립트를 사용 하 여 UDF (사용자 정의 함수)를 실행 합니다. Python 스크립트는 테이블 형식 데이터를 입력으로 가져오며 테이블 형식 출력을 생성할 것으로 예상 됩니다.
 플러그 인의 런타임은 클러스터의 노드에서 실행 되는 [샌드박스에서](../concepts/sandboxes.md)호스팅됩니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 *T* `|` `evaluate` [ `hint.distribution` `=` ( `single`  |  `per_node` )] `python(` *output_schema* `,` *스크립트* [ `,` *script_parameters*] [ `,` *external_artifacts*]`)`
 
@@ -79,7 +79,7 @@ Python 플러그 인은 Python 스크립트를 사용 하 여 UDF (사용자 정
     이러한 두 경우 모두 수집의 볼륨 및 빈도와 Python 논리에서 사용 하는 복잡성 및 리소스를 [샌드박스 제한 사항](../concepts/sandboxes.md#limitations) 및 클러스터의 사용 가능한 리소스와 일치 하는지 확인 합니다. 그렇게 하지 않으면 [제한 오류가](../concepts/sandboxes.md#errors)발생할 수 있습니다.
 * 원본 테이블이 [스트리밍](../../ingest-data-streaming.md)수집을 사용 하 여 수집 업데이트 정책의 일부로 정의 된 쿼리에는 플러그 인을 사용할 수 없습니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ```kusto
 range x from 1 to 360 step 1
@@ -134,7 +134,7 @@ print "This is an example for using 'external_artifacts'"
     * 또한 [partition 연산자](partitionoperator.md) 를 사용 하 여 입력 데이터 집합을 분할할 수 있습니다.
 * 가능 하면 Kusto의 쿼리 언어를 사용 하 여 Python 스크립트의 논리를 구현 합니다.
 
-    **예제**
+    ## <a name="example"></a>예제
 
     ```kusto    
     .show operations
@@ -159,7 +159,7 @@ print "This is an example for using 'external_artifacts'"
      * Python `"` 스크립트의 python 문자열 리터럴에 대 한 큰따옴표 문자 ()
 * [ `externaldata` 연산자](externaldata-operator.md) 를 사용 하 여 Azure Blob storage와 같은 외부 위치에 저장 한 스크립트의 콘텐츠를 가져올 수 있습니다.
   
-    **예제**
+    ## <a name="example"></a>예제
 
     ```kusto
     let script = 
@@ -183,7 +183,7 @@ print "This is an example for using 'external_artifacts'"
 
 다음과 같이 패키지를 설치 합니다.
 
-### <a name="prerequisites"></a>사전 요구 사항
+### <a name="prerequisites"></a>필수 구성 요소
 
   1. 패키지를 호스트 하는 blob 컨테이너를 만듭니다. 특히 클러스터와 동일한 장소에 있습니다. 예를 들어, `https://artifcatswestus.blob.core.windows.net/python` 클러스터가 미국 서 부에 있다고 가정 합니다.
   1. 클러스터의 [콜아웃 정책을](../management/calloutpolicy.md) 변경 하 여 해당 위치에 대 한 액세스를 허용 합니다.

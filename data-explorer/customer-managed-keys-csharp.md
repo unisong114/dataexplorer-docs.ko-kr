@@ -1,18 +1,18 @@
 ---
 title: 'C를 사용 하 여 고객 관리 키 구성 #'
 description: 이 문서에서는 Azure 데이터 탐색기의 데이터에서 고객이 관리 하는 키 암호화를 구성 하는 방법을 설명 합니다.
-author: saguiitay
-ms.author: itsagui
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1d562939430aa5040dc2ab96ae59611d2685e057
-ms.sourcegitcommit: a7e040fc844098323aa1c00e254bcbcd41fe587f
+ms.openlocfilehash: 84d21c7cedd77a409e0d5e1c1ca0cc5f93fdad16
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84426550"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350250"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>C를 사용 하 여 고객 관리 키 구성 #
 
@@ -31,7 +31,7 @@ ms.locfileid: "84426550"
 
 이 섹션에서는 Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 고객 관리 키 암호화를 구성 하는 방법을 보여 줍니다. 
 
-### <a name="prerequisites"></a>사전 요구 사항
+### <a name="prerequisites"></a>필수 구성 요소
 
 * Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발**을 사용하도록 설정합니다.
 

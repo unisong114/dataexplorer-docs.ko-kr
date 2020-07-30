@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 5a8ce5a66da871dfaa6f65a0fbc8addeb0f42926
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 47b6ab3db5f0ea252fa86ef925026613654afeea
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264594"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87341640"
 ---
 # <a name="tdigest-aggregation-function"></a>tdigest () (집계 함수)
 
@@ -24,17 +24,17 @@ ms.locfileid: "85264594"
 
 자세한 내용은 [기본 알고리즘 (T-다이제스트) 및 예상 오류](percentiles-aggfunction.md#estimation-error-in-percentiles)를 참조 하세요.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `summarize` `tdigest`(*`Expr`* [`,` *`WeightExpr`*])
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 집계 계산에 사용 되는 식입니다.
 * *WeightExpr*: 집계 계산에 대 한 값의 가중치로 사용 되는 식입니다.
 
     
-**반환**
+## <a name="returns"></a>반환
 
 그룹 전체에서가 중 백분위 수의 중간 결과입니다 `*Expr*` .
  
@@ -45,7 +45,7 @@ ms.locfileid: "85264594"
 
 * 함수 [percentile_tdigest ()](percentile-tdigestfunction.md) 를 사용 하 여 결과의 백분위 수/percentilew을 계산 `tdigest` 합니다.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 3fc4cfa307a283c4eb21ba60e3b83ba89b574757
-ms.sourcegitcommit: aaada224e2f8824b51e167ddb6ff0bab92e5485f
+ms.openlocfilehash: 68b55ec5496f1eb68f979c56412f10191b9f5a68
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84626688"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87340805"
 ---
 # <a name="top-nested-operator"></a>top-nested 연산자
 
@@ -28,7 +28,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 예를 들어 `top-nested` 다음 질문에 대답 하는 데 연산자를 사용할 수 있습니다. "국가, 영업 사원 및 판매 금액 등 판매 수치를 포함 하는 테이블의 경우 판매액 별 상위 5 개 국가는 무엇 인가요? 이러한 각 국가에서 상위 3 개 직원은 무엇 인가요? "
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `top-nested` *TopNestedClause2* [ `,` *TopNestedClause2*]
 
@@ -36,7 +36,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 [*N*] `of` [ *`ExprName`* `=` ] *`Expr`* [ `with` `others` `=` *`ConstExpr`* ] `by` [ *`AggName`* `=` ] *`Aggregation`* [ `asc`  |  `desc` ]
 
-**인수**
+## <a name="arguments"></a>인수
 
 각 *TopNestedClause*:
 
@@ -66,7 +66,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 * `asc`또는 `desc` (기본값)을 선택 하 여 선택 항목이 실제로 집계 된 값 범위의 "아래쪽" 또는 "위쪽" 중 어디에 있는지를 제어할 수 있습니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 이 연산자는 각 집계 절에 대해 두 개의 열이 있는 테이블을 반환 합니다.
 
@@ -87,7 +87,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 집계 분포가 균일 하지 않은 경우 *N*을 사용 하 여 반환할 고유 값의 수를 제한 하 고 `with others=` *ConstExpr* 옵션을 사용 하 여 다른 모든 사례의 "가중치"에 대 한 표시를 가져옵니다.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

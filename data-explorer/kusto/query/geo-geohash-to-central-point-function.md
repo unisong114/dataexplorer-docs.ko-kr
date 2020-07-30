@@ -8,12 +8,12 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020
-ms.openlocfilehash: eb59eae0bc014c6ce9060d65f6c3aced80e4275c
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 40f3daa208c3c7ce18252d8c4f7276346206b250
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347853"
 ---
 # <a name="geo_geohash_to_central_point"></a>geo_geohash_to_central_point()
 
@@ -21,22 +21,22 @@ Geohash 사각형 영역의 중심을 나타내는 지리 공간적 좌표를 �
 
 에 대해 자세히 알아보세요 [`geohash`](https://en.wikipedia.org/wiki/Geohash) .  
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `geo_geohash_to_central_point(`*geohash*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 *geohash*: geohash 문자열 값 [geo_point_to_geohash ()](geo-point-to-geohash-function.md)에서 계산 된 값입니다. Geohash 문자열은 1 ~ 18 자까지 사용할 수 있습니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 [GeoJSON Format](https://tools.ietf.org/html/rfc7946) 및 [dynamic](./scalar-data-types/dynamic.md) data 형식의 지리 공간적 좌표 값입니다. Geohash가 잘못 된 경우 쿼리는 null 결과를 생성 합니다.
 
 > [!NOTE]
 > GeoJSON 형식은 경도 first와 위도 second를 지정 합니다.
 
-**예제**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

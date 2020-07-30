@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f5ae36f00e7dc54b67eea5305c65a9ed4e44c572
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 42012111c7f862672a1335e0e9165eb62179dfe7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87344929"
 ---
 # <a name="series_fill_backward"></a>series_fill_backward()
 
@@ -21,12 +21,12 @@ ms.locfileid: "85763412"
 
 동적 숫자 배열을 포함 하는 식은 입력입니다. 함수는 missing_value_placeholder의 모든 인스턴스를 missing_value_placeholder를 제외 하 고 오른쪽의 가장 가까운 값으로 바꾸고 결과 배열을 반환 합니다. Missing_value_placeholder의 맨 오른쪽 인스턴스가 유지 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_fill_backward(`*x* `[, ` *missing_value_placeholder*`])`
 * 는 뒤로 채워지는 *missing_value_placeholder* 의 모든 인스턴스가 포함 된 series *x* 를 반환 합니다.
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값 배열인 동적 배열 스칼라 식입니다.
 * *missing_value_placeholder*:이 선택적 매개 변수는 누락 값에 대 한 자리 표시자를 지정 합니다. 기본값은 `double` (*null*)입니다.
@@ -43,7 +43,7 @@ make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) 
 * *Missing_value_placeholder* 가 `double` (*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 이러한 *null* 값을 채우려면 다른 보간 함수를 사용 합니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
 * 함수는 원래 형식의 배열 요소를 유지 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

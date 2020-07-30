@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/09/2020
-ms.openlocfilehash: 41f07f16641fd303c9b8e76b4924238378b6ccc9
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: b78bed51da8422dced4d57406c10721639b68ccc
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83224819"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346986"
 ---
 # <a name="make_list_with_nulls-aggregation-function"></a>make_list_with_nulls () (집계 함수)
 
@@ -21,15 +21,15 @@ ms.locfileid: "83224819"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `summarize``make_list_with_nulls(` *Expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 집계 계산에 사용 되는 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `dynamic`Null 값을 포함 하 여 그룹에 있는 모든 *Expr* 값의 (JSON) 배열을 반환 합니다.
 연산자에 대 한 입력 `summarize` 이 정렬 되지 않은 경우 결과 배열의 요소 순서는 정의 되지 않습니다.

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: e6eb481423e31e4dfa1b4e6c738ffb525e9aaef7
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: c85738928aa65bf2a4476f10afa065c2a8ca1faf
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618407"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346918"
 ---
 # <a name="make_set-aggregation-function"></a>make_set () (집계 함수)
 
@@ -21,19 +21,19 @@ ms.locfileid: "82618407"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`summarize``make_set(` *Expr* [`,` *MaxSize*]`)`
+`summarize``make_set(` *Expr* [ `,` *MaxSize*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 집계 계산에 대 한 식입니다.
 * *MaxSize* 는 반환 되는 최대 요소 수에 대 한 선택적 정수 제한입니다 (기본값은 *1048576*). MaxSize 값은 1048576를 초과할 수 없습니다.
 
 > [!NOTE]
-> 이 함수의 기존 변형 및 사용 되지 않는 변형 `makeset()` : 기본 제한은 *MaxSize* = 128입니다.
+> 이 함수의 기존 변형 및 사용 되지 않는 변형: `makeset()` 기본 제한은 *MaxSize* = 128입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 *Expr*이 그룹에서 가지는 고유 값 집합의 `dynamic` (JSON) 배열을 반환합니다.
 배열의 정렬 순서가 정의 되어 있지 않습니다.
@@ -41,7 +41,7 @@ ms.locfileid: "82618407"
 > [!TIP]
 > 고유 값만 계산 하려면 [dcount ()](dcount-aggfunction.md) 를 사용 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 PageViewLog 
@@ -52,5 +52,5 @@ PageViewLog
 
 **참고 항목**
 
-* 반대쪽 [`mv-expand`](./mvexpandoperator.md) 함수에 연산자를 사용 합니다.
-* [`make_set_if`](./makesetif-aggfunction.md)연산자는 조건자를 `make_set`수락 한다는 점을 제외 하 고와 비슷합니다.
+* [`mv-expand`](./mvexpandoperator.md)반대쪽 함수에 연산자를 사용 합니다.
+* [`make_set_if`](./makesetif-aggfunction.md)연산자는 조건자를 `make_set` 수락 한다는 점을 제외 하 고와 비슷합니다.

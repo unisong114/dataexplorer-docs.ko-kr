@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 5e02c7ca2874a779cc5a626fd65522392439b491
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: b376afda0874fdb70934ffc6861192ef9028e9aa
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271590"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347088"
 ---
 # <a name="new_activity_metrics-plugin"></a>new_activity_metrics 플러그 인
 
@@ -22,11 +22,11 @@ ms.locfileid: "83271590"
 T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `new_activity_metrics(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Window* [ `,` *코 호트*] [ `,` *dim1* `,` *dim2* ] `,` [ `,` *Lookback*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -38,7 +38,7 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 * *Lookback*: (선택 사항) ' 뒤로 ' 기간에 속하는 id 집합이 있는 테이블 형식 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 ' From ' 및 ' to ' 및 ' to ' timeline 기간의 각 조합에 대 한 고유 카운트 값, 고유 카운트 수, 보존 률 및 변동 율을 포함 하는 테이블을 반환 하 고 각 기존 차원 조합에 대해
 
@@ -56,12 +56,12 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 * `retention_rate`- `dcount_retained_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
 * `churn_rate`- `dcount_churn_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
 
-**참고 사항**
+**참고**
 
 및에 대 한 정의는 `Retention Rate` `Churn Rate` [activity_metrics 플러그 인](./activity-metrics-plugin.md) 설명서의 **참고** 섹션을 참조 하세요.
 
 
-**예**
+## <a name="examples"></a>예제
 
 다음 샘플 데이터 집합은 어떤 사용자가 어떤 날짜에 표시 되는지 보여 줍니다. 테이블은 다음과 같이 원본 테이블을 기반으로 생성 되었습니다 `Users` . 
 
@@ -69,7 +69,7 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Timestamp asc;
 ```
 
-|타임스탬프|set_user|
+|Timestamp|set_user|
 |---|---|
 |2019-11-01 00:00:00.0000000|[0, 2, 3, 4]|
 |2019-11-02 00:00:00.0000000|[0, 1, 3, 4, 5]|

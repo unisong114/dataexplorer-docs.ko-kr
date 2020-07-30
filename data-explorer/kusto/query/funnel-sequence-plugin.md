@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: c68cac70223b4779b4ca0acf33cd9f66d8c91765
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 67a5e05a5720c8a9290523344f793c07c47c5ed2
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227403"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347921"
 ---
 # <a name="funnel_sequence-plugin"></a>funnel_sequence 플러그 인
 
@@ -23,11 +23,11 @@ ms.locfileid: "83227403"
 T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `funnel_sequence(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *IdColum*: 열 참조는 원본 식에 있어야 합니다.
@@ -39,7 +39,7 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
 * *StateColumn*: 상태를 나타내는 열 참조는 원본 식에 있어야 합니다.
 * *Sequence*: 시퀀스 값이 포함 된 상수 동적 배열입니다 (값은에서 조회 됨 `StateColumn` ).
 
-**반환**
+## <a name="returns"></a>반환
 
 는 분석 된 시퀀스에 대 한 sankey 다이어그램을 생성 하는 데 유용한 세 개의 출력 테이블을 반환 합니다.
 
@@ -57,7 +57,7 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
     samples: `IdColumn` 행의 시퀀스에 해당 하는 id (에서)의 배열입니다 (최대 128 id가 반환 됨). 
 
 
-**예**
+## <a name="examples"></a>예제
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 

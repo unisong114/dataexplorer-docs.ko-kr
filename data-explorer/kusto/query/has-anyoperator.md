@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: 19329b8822a1e1d484c5f751f5fbc2f8eb6343ac
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 4485dde5eb77478e5fd75ce388ada7f4232f2ddb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226740"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347632"
 ---
 # <a name="has_any-operator"></a>has_any 연산자
 
@@ -23,23 +23,23 @@ ms.locfileid: "83226740"
 Table1 | where col has_any ('value1', 'value2')
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `where` *col* `has_any` `(` *스칼라 식의* T 열 목록`)`   
 *T* `|` `where` *col* `has_any` `(` *테이블 형식 식*`)`   
  
-**인수**
+## <a name="arguments"></a>인수
 
 * 레코드를 필터링 할 *T* -테이블 형식 입력입니다.
 * 필터링 *할 열입니다* .
 * *식 목록* -쉼표로 구분 된 테이블 형식, 스칼라 또는 리터럴 식 목록입니다.  
 * *테이블 형식 식* -값 집합이 있는 테이블 형식 식입니다. 식에 여러 열이 있는 경우 첫 번째 열이 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 조건자가 인 *T* 의 행`true`
 
-**참고 사항**
+**참고**
 
 * 식 목록에는 최대 값이 생성 될 수 있습니다 `10,000` .    
 * 테이블 형식 식의 경우 결과 집합의 첫 번째 열이 선택 됩니다.   
@@ -55,7 +55,7 @@ StormEvents
 | summarize count() by State
 ```
 
-|State|count_|
+|시스템 상태|count_|
 |---|---|
 |뉴욕|1750|
 |북부 CAROLINA|1721|
@@ -77,7 +77,7 @@ StormEvents
 | summarize count() by State
 ```
 
-|State|count_|
+|시스템 상태|count_|
 |---|---|
 |북부 CAROLINA|1721|
 |남부 노스다코타|1567|

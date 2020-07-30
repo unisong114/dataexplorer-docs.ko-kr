@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/22/2020
-ms.openlocfilehash: e04abb6eed95e5129d6878486e3781173cbf0557
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 13254314bdbab7ddbdb74341e384867c26b6259d
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226791"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347700"
 ---
 # <a name="getmonth"></a>getmonth()
 
@@ -21,7 +21,7 @@ datetime에서 월 번호(1-12)를 가져옵니다.
 
 다른 별칭: monthoyear ()
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

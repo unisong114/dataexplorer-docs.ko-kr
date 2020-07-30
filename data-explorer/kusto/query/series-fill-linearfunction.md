@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 4bf68800cc10bf301f6a5738d47e670905c2c46d
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 0831251bd38df4475c271cc6bcec9c15668860ea
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87344174"
 ---
 # <a name="series_fill_linear"></a>series_fill_linear()
 
@@ -21,13 +21,13 @@ ms.locfileid: "85763644"
 
 동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고, missing_value_placeholder의 모든 인스턴스에 대해 선형 보간을 수행 하 고, 결과 배열을 반환 합니다. 배열의 시작과 끝에 missing_value_placeholder 포함 된 경우 missing_value_placeholder 이외의 가장 가까운 값으로 대체 됩니다. 이 기능을 해제할 수 있습니다. 전체 배열이 missing_value_placeholder로 구성 된 경우에는 배열이 constant_value으로 채워지거나, 지정 되지 않은 경우 0이 됩니다.  
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_fill_linear(`*x* `[,` *missing_value_placeholder* ` [,` *fill_edges* ` [,` *constant_value*`]]]))`
 * 지정 된 매개 변수를 사용 하 여 *x* 의 계열 선형 보간을 반환 합니다.
  
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값 배열인 동적 배열 스칼라 식입니다.
 * *missing_value_placeholder*: 대체할 "누락 값"에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
@@ -47,7 +47,7 @@ make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) 
 * *Missing_value_placeholder* 가 `double` (*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 다른 보간 함수를 사용 하 여 이러한 *null* 값을 채웁니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.
 * 함수는 원래 형식의 배열 요소를 유지 합니다. X에 int 또는 long 요소만 포함 된 경우 선형 보간은 정확한 값이 아니라 반올림 된 보간된 값을 반환 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

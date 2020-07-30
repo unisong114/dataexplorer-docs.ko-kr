@@ -8,22 +8,22 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
-ms.openlocfilehash: 6e6ef40fcdeb4942dc0924c86862ee8f6222ac12
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 1e94e8eca72e6cb679a84e7b91ea376b9ec4b29c
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347819"
 ---
 # <a name="geo_point_in_circle"></a>geo_point_in_circle()
 
 지리 공간적 좌표가 지구에 원 안에 있는지 여부를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `geo_point_in_circle(`*p_longitude* `, ` *p_latitude* `, ` *pc_longitude* `, ` *pc_latitude* `, ` *c_radius*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *p_longitude*: 지리 공간적 좌표 경도 값 (도)입니다. 유효한 값은 [-180, + 180] 범위의 실수입니다.
 * *p_latitude*: 지리 공간적 좌표 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
@@ -31,7 +31,7 @@ ms.locfileid: "83227178"
 * *pc_latitude*: 원 중심 지리 공간적 좌표 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
 * *c_radius*: 미터 단위의 원 반지름입니다. 유효한 값은 양수 여야 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 지리 공간적 좌표가 원 내에 있는지 여부를 나타냅니다. 좌표가 나 원이 잘못 된 경우 쿼리는 null 결과를 생성 합니다.
 
@@ -40,7 +40,7 @@ ms.locfileid: "83227178"
 >* 지구 거리를 측정 하는 데 사용 되는 [측 지 데이텀은](https://en.wikipedia.org/wiki/Geodetic_datum) 구입니다.
 >* 원은 지구에서 구형 캡입니다. 캡의 반지름은 구의 표면에 따라 측정 됩니다.
 
-**예제**
+## <a name="examples"></a>예제
 
 다음 쿼리는 다음 원으로 정의 된 영역에 있는 모든 위치를 찾습니다. 예를 들어 반경 18 km, 가운데 맞춤 [-122.317404, 47.609119] 좌표입니다.
 

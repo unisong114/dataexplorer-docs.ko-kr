@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/16/2020
-ms.openlocfilehash: 57cceb2fabb16956090430161b98c1287efdef97
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 3511d15ebf0f5e3708deeeed981a8a6808da2e48
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227326"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347938"
 ---
 # <a name="funnel_sequence_completion-plugin"></a>funnel_sequence_completion 플러그 인
 
@@ -23,11 +23,11 @@ ms.locfileid: "83227326"
 T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `funnel_sequence_completion(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Step* `,` *StateColumn* `,` *Sequence* `,` *MaxSequenceStepWindows*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *IdColum*: 열 참조는 원본 식에 있어야 합니다.
@@ -39,7 +39,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 * *Sequence*: 시퀀스 값이 포함 된 상수 동적 배열입니다 (값은에서 조회 됨 `StateColumn` ).
 * *MaxSequenceStepWindows*: 시퀀스의 첫 번째 및 마지막 순차 단계 사이에 허용 되는 최대 timespan 값이 포함 된 스칼라 상수 동적 배열입니다. 배열의 각 창 (기간)은 깔때기 분석 결과를 생성 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 분석 된 시퀀스에 대해 깔때기 다이어그램을 생성 하는 데 유용한 단일 테이블을 반환 합니다.
 
@@ -48,7 +48,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 * `Period`: 깔때기형 시퀀스의 단계를 완료 하는 데 허용 되는 최대 기간 (기간)으로 시퀀스의 첫 번째 단계에서 측정 됩니다. *MaxSequenceStepWindows* 의 각 값은 별도의 기간을 사용 하 여 깔때기형 분석을 생성 합니다. 
 * `dcount`: `IdColumn` 첫 번째 시퀀스 상태에서 값으로 전환 된의 고유 카운트 기간입니다 `StateColumn` .
 
-**예제**
+## <a name="examples"></a>예제
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 

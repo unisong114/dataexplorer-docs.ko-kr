@@ -1,6 +1,6 @@
 ---
-title: 감마() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 gamma()에 대해 설명합니다.
+title: 감마 ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 감마 ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,26 +8,26 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: fc8d48c2e2fc5bd290198f27e90a391eac530965
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 8b152d6155f1d453af25cdae3c81faabc4d4b9fb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81514691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347904"
 ---
 # <a name="gamma"></a>gamma()
 
-[감마 함수](https://en.wikipedia.org/wiki/Gamma_function) 계산
+[감마 함수](https://en.wikipedia.org/wiki/Gamma_function) 를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`gamma(`*Ⅹ*`)`
+`gamma(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 감마 함수에 대한 매개 변수
+* *x*: 감마 함수에 대 한 매개 변수
 
-**반환**
+## <a name="returns"></a>반환
 
-* x의 감마 함수.
-* 로그 감마 함수를 계산하는 경우 [loggamma()](loggammafunction.md)을 참조하십시오.
+* X의 감마 함수입니다.
+* 로그 감마 함수를 계산 하려면 [loggamma ()](loggammafunction.md)를 참조 하세요.

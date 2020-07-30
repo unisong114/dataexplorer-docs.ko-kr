@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 1d93535ff2caff096a18e2324fd3015ca91fc5b4
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 814124dc0ae9fa5f26a198fafc1bf1d7fd2b83e4
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373260"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346204"
 ---
 # <a name="percentile_tdigest"></a>percentile_tdigest()
 
 `tdigest` [Tdigest ()](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md)에 의해 생성 된 결과에서 백분위 수 결과를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `percentile_tdigest(`*`Expr`*`,`*Percentile1* [ `,` *typeLiteral*]`)`
 
@@ -27,14 +27,14 @@ ms.locfileid: "83373260"
 
 `percentiles_array_tdigest(`*`Expr`*`,`*동적 배열*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: [`tdigest`](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md)에서 생성 된 식입니다.
 * *백분위* 수는 백분위 수를 지정 하는 double 상수입니다.
 * *typeLiteral*: 선택적 형식 리터럴 (예: `typeof(long)` )입니다. 제공 된 경우 결과 집합은이 형식이 됩니다. 
 * *동적 배열*: 정수 또는 부동 소수점 숫자의 동적 배열에서 백분위 수의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 의 각 값에 대 한 백분위 수/percentilesw 값입니다 *`Expr`* .
 
@@ -46,7 +46,7 @@ ms.locfileid: "83373260"
 
 * 에 *`Expr`* `tdigest` 다른 형식의 함수가 포함 되어 있으면 형식을 제공 하지 않습니다. 결과는 동적 형식이 됩니다. 아래 예제를 참조하세요.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1bb995874bf6ac552350c602c6d3742a08b1273b
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: cc0cc7ca77efeae583adeaf7a983d18498e5af96
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338272"
 ---
 # <a name="welch_test"></a>welch_test()
 
@@ -31,11 +31,11 @@ print
 // pValue = 0.021
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `welch_test(`*mean1* `, ` *variance1* `, ` *count1* `, ` *mean2* `, ` *variance2* `, ` *count2*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *mean1*: 첫 번째 계열의 평균 (평균) 값을 나타내는 식입니다.
 * *variance1*: 첫 번째 계열의 분산 값을 나타내는 식입니다.
@@ -44,7 +44,7 @@ print
 * *variance2*: 두 번째 계열의 분산 값을 나타내는 식입니다.
 * *count2*: 두 번째 계열의 값 수를 나타내는 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 [위키백과](https://en.wikipedia.org/wiki/Welch%27s_t-test)에서:
 

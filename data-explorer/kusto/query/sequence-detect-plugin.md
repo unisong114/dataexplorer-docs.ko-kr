@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e8da8a61b285b31f63f346ec82e5ba8a4ac00d27
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 7b4b3d2b43bea2eeb96c9bbca94131cb7887db8c
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372924"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345694"
 ---
 # <a name="sequence_detect-plugin"></a>sequence_detect 플러그 인
 
@@ -23,11 +23,11 @@ ms.locfileid: "83372924"
 T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 = (Col2 == 'Val2'), Dim1, Dim2)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `sequence_detect` `(` *TimelineColumn* `,` *MaxSequenceStepWindow* `,` *MaxSequenceSpan* `,` *Expr1* `,` *Expr2* `,` ..., *Dim1* `,` *Dim2* `,` ...`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *TimelineColumn*: 타임 라인을 나타내는 열 참조는 소스 식에 있어야 합니다.
@@ -36,7 +36,7 @@ T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 
 * *Expr1*, *Expr2*, ...: 시퀀스 단계를 정의 하는 부울 조건자 식
 * *Dim1*, *Dim2*, ...: 시퀀스를 상호 연결 하는 데 사용 되는 차원 식
 
-**반환**
+## <a name="returns"></a>반환
 
 테이블의 각 행이 단일 시퀀스 발생을 나타내는 단일 테이블을 반환 합니다.
 
@@ -44,7 +44,7 @@ T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 
 * *Expr1*_*TimelineColumn*, *Expr2*_*TimelineColumn*, ...: 시간 값이 있는 열은 각 시퀀스 단계의 타임 라인을 나타냅니다.
 * *기간*: 전체 시퀀스 시간 창
 
-**예**
+## <a name="examples"></a>예제
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 
@@ -62,7 +62,7 @@ StormEvents
         State)
 ```
 
-|State|heat_StartTime|wildfire_StartTime|Duration|
+|시스템 상태|heat_StartTime|wildfire_StartTime|Duration|
 |---|---|---|---|
 |캘리포니아|2007-05-08 00:00:00.0000000|2007-05-08 16:02:00.0000000|16:02:00|
 |캘리포니아|2007-05-08 00:00:00.0000000|2007-05-10 11:30:00.0000000|2.11:30:00|

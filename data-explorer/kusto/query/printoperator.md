@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2019
-ms.openlocfilehash: d5788ee937fe110b63a8f137fdab0790eb7cb37e
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 9a5a780a6f7bdf277566d1c0421c5ca2a3a93602
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373199"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346068"
 ---
 # <a name="print-operator"></a>print 연산자
 
@@ -24,23 +24,23 @@ ms.locfileid: "83373199"
 print x=1, s=strcat("Hello", ", ", "World!")
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `print`[*ColumnName* `=` ] *ScalarExpression* [', ' ...]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *ColumnName*: 출력의 단일 열에 할당할 옵션 이름입니다.
 * *ScalarExpression*: 평가할 스칼라 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 단일 셀에 계산 된 *ScalarExpression*의 값이 있는 단일 열 단일 행 테이블입니다.
 
-**예**
+## <a name="examples"></a>예제
 
 `print`연산자는 하나 이상의 스칼라 식을 계산 하 고 결과 값에서 단일 행 테이블을 만드는 빠른 방법으로 유용 합니다.
-다음은 그 예입니다.
+예를 들어:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

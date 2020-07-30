@@ -1,6 +1,6 @@
 ---
-title: acos() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 acos()에 대해 설명합니다.
+title: acos ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 acos ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,26 +8,26 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: aa33714d57b319ba5a775385e8ee7d232addfe9d
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: d1daf36e85eec4c8543ba14be153a9d6069e1cd1
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81519332"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349859"
 ---
 # <a name="acos"></a>acos()
 
-코신이 지정된 숫자(역작업)인 각도를 [`cos()`](cosfunction.md)반환합니다.
+코사인이 지정 된 숫자 (의 역 연산) 인 각도를 반환 [`cos()`](cosfunction.md) 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`acos(`*Ⅹ*`)`
+`acos(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 범위의 실제 숫자 [-1, 1].
+* *x*: [-1, 1] 범위의 실수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-* 의 호 코신의 값`x`
-* `null`< `x` -1 `x` 또는 > 1인 경우
+* 의 아크 코사인 값입니다.`x`
+* `null``x`<-1 또는 `x` > 1

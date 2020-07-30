@@ -1,6 +1,6 @@
 ---
-title: 분산() (집계 함수) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 분산() (집계 함수)에 대해 설명합니다.
+title: varianceif () (집계 함수)-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 varianceif () (집계 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,33 +8,33 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9dfebb3796f07dec6c91d36d788a018f84f70961
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: bf1009d2d269bf21ea5ae14a9c828724d8bf8c70
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81504678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338476"
 ---
-# <a name="varianceif-aggregation-function"></a>분산() (집계 함수)
+# <a name="varianceif-aggregation-function"></a>varianceif () (집계 함수)
 
-*조건어가* 평가하는 그룹 전체의 `true` *Expr* [분산을](variance-aggfunction.md) 계산합니다.
+*조건자* 가로 계산 되는 그룹에서 *Expr* 의 [분산](variance-aggfunction.md) 을 계산 `true` 합니다.
 
-* 요약 내부 집계의 컨텍스트에서만 사용할 수 [있습니다.](summarizeoperator.md)
+* [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`varianceif(` *사전*`, `*설명서* 요약`)`
+`varianceif(` *Expr* `, ` *조건자* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *Expr*: 집계 계산에 사용되는 표현식입니다. 
-* *술어*: true이면 *Expr* 계산 값이 분산에 추가된다는 조건어를 지정합니다.
+* *Expr*: 집계 계산에 사용 되는 식입니다. 
+* *Predicate*: True 이면 *식* 계산 된 값이 분산에 추가 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-*조건어가* 평가되는 그룹 전체의 *Expr* 분산 `true`값입니다.
+*조건자* 가로 평가 되는 그룹 전체에 대 한 *Expr* 의 가변성 값 `true` 입니다.
  
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 range x from 1 to 100 step 1

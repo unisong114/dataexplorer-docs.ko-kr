@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8106d419f20dcacdec6386294a5b9ffb8d1bc8e2
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 69ba6a8ce3cd29d7459215184f7488b015d16558
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225907"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349808"
 ---
 # <a name="activity_metrics-plugin"></a>activity_metrics 플러그 인
 
@@ -23,11 +23,11 @@ ms.locfileid: "83225907"
 T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `activity_metrics(` *idcolumn* `,` *TimelineColumn* `,` [*Start* `,` *End* `,` ] *Window* [ `,` *dim1* `,` *dim2* `,` ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -37,7 +37,7 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
 * *Window*: 분석 기간 값이 포함 된 스칼라입니다. 는 숫자/날짜/시간/타임 스탬프 값 또는 중 하나인 문자열일 수 있으며,이 `week` / `month` / `year` 경우 모든 기간이 적절 한 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) / [startofyear](startofyearfunction.md) 됩니다. 
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 각 시간 표시 막대와 각 기존 차원 조합에 대해 고유 카운트 값, 고유 개수의 새 값, 보존 률 및 변동 률을 포함 하는 테이블을 반환 합니다.
 
@@ -47,7 +47,7 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
 |---|---|---|---|---|--|--|--|--|--|--|
 |유형: *TimelineColumn*|long|long|double|double|..|..|..|
 
-**참고 사항**
+**참고**
 
 ***보존 률 정의***
 
@@ -90,7 +90,7 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
     [Retention rate] = 100.0% - [Churn Rate]
 
 
-**예**
+## <a name="examples"></a>예제
 
 ### <a name="weekly-retention-rate-and-churn-rate"></a>주간 보존 률 및 변동 율
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b40ca669df7671b1451166f6bfc1c7c680713166
-ms.sourcegitcommit: 1f50c6688a2b8d8a3976c0cd0ef40cde2ef76749
+ms.openlocfilehash: 75f1c92dfb76c56894d1f38dec24a31690f3f789
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84202962"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349842"
 ---
 # <a name="active_users_count-plugin"></a>active_users_count 플러그 인
 
@@ -25,11 +25,11 @@ Lookback 기간의 최소 기간 이상에 각 값이 표시 되는 고유 값 �
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `active_users_count(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *LookbackWindow* `,` *Period* `,` *ActivePeriodsCount* `,` *Bin* `,` [*dim1* `,` *dim2* `,` ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -42,7 +42,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 * *Bin*: 분석 단계 기간의 스칼라 상수 값입니다. 는 숫자/날짜/시간/타임 스탬프 값 이거나 인 문자열일 수 있습니다 `week` / `month` / `year` . 모든 기간은 해당 하는 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) / [startofyear](startofyearfunction.md) 함수입니다.
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 ActivePeriodCounts에 표시 된 Id에 대 한 고유 카운트 값이 있는 테이블을 반환 합니다 .이는 lookback 기간, 각 타임 라인 기간 및 각 기존 차원 조합입니다.
 
@@ -53,7 +53,7 @@ ActivePeriodCounts에 표시 된 Id에 대 한 고유 카운트 값이 있는 �
 |유형: *TimelineColumn*|..|..|..|long|
 
 
-**예**
+## <a name="examples"></a>예제
 
 지난 8 일 동안 3 일 이상 경과 된 개별 사용자 수를 계산 합니다. 분석 기간: 7 월 2018입니다.
 
@@ -83,7 +83,7 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 
 ```
 
-|타임스탬프|`dcount`|
+|Timestamp|`dcount`|
 |---|---|
 |2018-07-01 00:00:00.0000000|1|
 |2018-07-15 00:00:00.0000000|1|

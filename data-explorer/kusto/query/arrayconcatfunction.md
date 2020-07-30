@@ -19,7 +19,7 @@ ms.locfileid: "87349604"
 
 여러 동적 배열을 단일 배열에 연결 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `array_concat(`*arr1* `[` , ` *arr2*, ...]` ) '
 

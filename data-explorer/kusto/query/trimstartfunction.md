@@ -19,7 +19,7 @@ ms.locfileid: "87339547"
 
 지정 된 정규식의 선행 일치를 제거 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `trim_start(`*regex* `,` *텍스트*`)`
 

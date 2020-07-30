@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 68581cfe4b3828823ced7d4704eb08df5d2aefa7
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 9bc000ffa57d906c3e65e54e9daac5431f8dc276
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373168"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346017"
 ---
 # <a name="project-rename-operator"></a>project-rename 연산자
 
@@ -23,22 +23,22 @@ ms.locfileid: "83373168"
 T | project-rename new_column_name = column_name
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| project-rename` *newcolumnname*  =  *existingcolumnname* [ `,` ...]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블입니다.
 * *Newcolumnname:* 열의 새 이름입니다. 
 * *Existingcolumnname:* 열의 기존 이름입니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 열 이름이 인 기존 테이블과 동일한 순서로 열이 있는 테이블입니다.
 
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

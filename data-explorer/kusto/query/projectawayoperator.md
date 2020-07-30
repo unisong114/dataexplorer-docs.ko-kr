@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 444710775af405cc63193e0205e573b2ea77de3a
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 40bc5eafee803123ea1d73e763c32b5210f741ca
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346051"
 ---
 # <a name="project-away-operator"></a>project-away 연산자
 
@@ -25,16 +25,16 @@ T | project-away price, quantity, zz*
 
 결과의 열 순서는 테이블에서 원래 순서로 결정 됩니다. 인수로 지정 된 열만 삭제 됩니다. 다른 열은 결과에 포함 됩니다.  ( `project`참조)
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| project-away` *columnnameorpattern* [ `,` ...]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블
 * *Columnnameorpattern:* 출력에서 제거할 열 또는 열 와일드 카드 패턴의 이름입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 인수로 이름이 지정 되지 않은 열이 있는 테이블입니다. 입력 테이블과 동일한 수의 행을 포함 합니다.
 
@@ -46,7 +46,7 @@ T | project-away price, quantity, zz*
 * `project-away`원래 테이블에 있거나 쿼리의 일부로 계산 된 모든 열을 사용할 수 있습니다.
 
 
-**예**
+## <a name="examples"></a>예제
 
 입력 테이블 `T`에는 `long` 형식의 열로 `A`, `B`, `C`의 3개가 있습니다.
 

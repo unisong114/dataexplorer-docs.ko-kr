@@ -8,27 +8,27 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/01/2020
-ms.openlocfilehash: 4aa11fd379bceb800a8d18a995a91ca188326faa
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.openlocfilehash: c5a66255f719d3bd0da962a8eb9d3cae23a8c254
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280716"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347836"
 ---
-# <a name="geo_line_densify"></a>geo_line_densify ()
+# <a name="geo_line_densify"></a>geo_line_densify()
 
 중간 요소를 추가 하 여 평면 선 가장자리를 geodesics으로 변환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `geo_line_densify(`*lineString* `, ` *허용 오차*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *lineString*: [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 줄입니다.
 * *허용 오차*: 원래 평면 가장자리와 변환 된 측 지 edge 체인 사이의 최대 거리 (미터)를 정의 하는 선택적 숫자입니다. 지원 되는 값은 [0.1, 1만] 범위에 있습니다. 지정 하지 않으면 기본값이 `10` 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 Densified 선입니다. 줄 또는 허용 오차가 잘못 된 경우 쿼리는 null 결과를 생성 합니다.
 
@@ -53,7 +53,7 @@ dynamic ({"type": "LineString", "좌표계": [[lng_1, lat_1], [lng_2, lat_2],...
 * [GeoJSON format](https://tools.ietf.org/html/rfc7946) 은 두 요소 사이의 가장자리를 일자형 직교 선으로 정의 합니다.
 * 측 지 또는 평면 가장자리를 사용 하도록 결정 하는 것은 데이터 집합에 따라 달라질 수 있으며 특히 긴 가장자리와 관련이 있습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 다음 예에서는 맨해튼 아일랜드의도로를 densifies 합니다. 가장자리가 짧고, 평면 가장자리와 해당 측 지의 거리는 허용 오차로 지정 된 거리 보다 짧습니다. 따라서 결과는 변경 되지 않고 그대로 유지 됩니다.
 

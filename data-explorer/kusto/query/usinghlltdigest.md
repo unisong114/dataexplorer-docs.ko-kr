@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 8da464bca228df5a813f50e68fab5ddb2aa926cf
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: bd3e7a77a4de46b6dcebb2f58c98009a9edddb43
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338612"
 ---
 # <a name="using-hll-and-tdigest"></a>hll() 및 tdigest() 사용
 
@@ -81,7 +81,7 @@ MyTable
 |0|
 
 
-**예제**
+## <a name="example"></a>예제
 
 `PageViewsHllTDigest` `hll` 각 시간에 표시 되는 페이지 값을 포함 하는 테이블이 있습니다. 이러한 값은에 맞게 표시 하려고 `12h` 합니다. `hll`타임 스탬프를 사용 하 여 집계 함수를 사용 하 여 값을 병합 `hll_merge()` `12h` 합니다. 함수를 사용 `dcount_hll` 하 여 최종 값을 반환 합니다 `dcount` .
 
@@ -91,7 +91,7 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|타임스탬프|`dcount_hll_merged_hll`|
+|Timestamp|`dcount_hll_merged_hll`|
 |---|---|
 |2016-05-01 12:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|38797623|
@@ -106,7 +106,7 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|타임스탬프|`dcount_hll_merged_hll`|
+|Timestamp|`dcount_hll_merged_hll`|
 |---|---|
 |2016-05-01 00:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|64135183|
@@ -120,14 +120,14 @@ PageViewsHllTDigest
 | project Timestamp , percentile_tdigest(merged_tdigests, 95, typeof(long))
 ```
 
-|타임스탬프|`percentile_tdigest_merged_tdigests`|
+|Timestamp|`percentile_tdigest_merged_tdigests`|
 |---|---|
 |2016-05-01 12:00:00.0000000|170200|
 |2016-05-02 00:00:00.0000000|152975|
 |2016-05-02 12:00:00.0000000|181315|
 |2016-05-03 00:00:00.0000000|146817|
  
-**예제**
+## <a name="example"></a>예제
 
 너무 커서 데이터 집합에 대 한 주기적인 쿼리를 실행 해야 하지만, 일반 쿼리를 실행 하 여 계산 [`percentile()`](percentiles-aggfunction.md) 하거나 대량 데이터 집합을 초과 하는 데이터 집합을 사용 하 여 kusto 제한에 도달 했습니다 [`dcount()`](dcount-aggfunction.md) .
 
@@ -155,7 +155,7 @@ PageViews
 | summarize percentile(BytesDelivered, 90), dcount(Page,2) by bin(Timestamp, 1d)
 ```
 
-|타임스탬프|percentile_BytesDelivered_90|dcount_Page|
+|Timestamp|percentile_BytesDelivered_90|dcount_Page|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|83634|20056275|
 |2016-05-02 00:00:00.0000000|82770|64135183|
@@ -170,7 +170,7 @@ PageViewsHllTDigest
 | summarize  percentile_tdigest(merge_tdigests(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
 ```
 
-|타임스탬프|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|
+|Timestamp|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|84224|20056275|
 |2016-05-02 00:00:00.0000000|83486|64135183|
@@ -178,7 +178,7 @@ PageViewsHllTDigest
 
 이 쿼리는 더 작은 테이블에서 실행 되므로 성능이 더 우수 합니다. 이 예에서 첫 번째 쿼리는 215M 개 이상의 레코드를 실행 하는 반면 두 번째 쿼리는 32 개 레코드를 초과 하 여 실행 됩니다.
 
-**예제**
+## <a name="example"></a>예제
 
 보존 쿼리입니다.
 각 위키백과 페이지가 표시 되는 시간을 요약 하는 테이블이 있다고 가정 합니다 (샘플 크기는 10M). 각 날짜/시간을 찾으려면 date1 (date1 < date2)에 표시 된 페이지를 기준으로 날짜 1과 날짜 2 모두에서 검토 된 페이지의 백분율을 찾으려고 합니다.

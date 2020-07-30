@@ -8,22 +8,22 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/06/2020
-ms.openlocfilehash: 8858b261cb366842b475a76a1b2c3246b8a3e7b5
-ms.sourcegitcommit: de81b57b6c09b6b7442665e5c2932710231f0773
+ms.openlocfilehash: 0e08857e01ffa3da1bcb23d16d1df4908336f76f
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87264701"
+ms.locfileid: "87346867"
 ---
 # <a name="materialize"></a>materialize()
 
 다른 하위 쿼리가 부분 결과를 참조할 수 있는 방식으로 쿼리 실행 시 하위 쿼리 결과를 캐시할 수 있습니다.
  
-**구문**
+## <a name="syntax"></a>Syntax
 
 `materialize(`*expression*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *식*: 쿼리를 실행 하는 동안 평가 및 캐시할 테이블 형식 식입니다.
 
@@ -52,7 +52,7 @@ _detailed_data
 | top 10 by EventPercentage
 ```
 
-|상태|EventType|EventPercentage|이벤트|
+|시스템 상태|EventType|EventPercentage|이벤트|
 |---|---|---|---|
 |하와이 중인지|Waterspout|100|2|
 |LAKE ONTARIO|해병대 뇌우 바람|100|8|
@@ -92,7 +92,7 @@ randomSet | summarize Sum=sum(value)
 
 결과 집합 2: 
 
-|value|
+|값|
 |---|
 |9999998|
 |9999998|

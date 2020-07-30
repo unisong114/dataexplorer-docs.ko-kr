@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ba4dffa50c605e9346807f28222809af7637ff09
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 923008d05ebc8c51a39955e29450e55af4100941
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347955"
 ---
 # <a name="format_timespan"></a>format_timespan()
 
@@ -23,16 +23,16 @@ ms.locfileid: "83227284"
 format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `format_timespan(`*timespan* `,` *형식*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `timespan`: 형식의 값 `timespan` 입니다.
 * `format`: 하나 이상의 [형식 요소로](#supported-formats)구성 된 형식 지정자 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 형식 결과를 포함 하는 문자열입니다.
 
@@ -68,7 +68,7 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 
 형식 지정자는 다음 구분 기호 문자를 포함할 수 있습니다.
 
-|구분 기호가|의견|
+|구분 기호가|주석|
 |---------|-------|
 |`' '`| Space|
 |`'/'`||
@@ -80,7 +80,7 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 |`'['`||
 |`']'`||
 
-**예제**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

@@ -1,6 +1,6 @@
 ---
-title: trim_end() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 trim_end()에 대해 설명합니다.
+title: trim_end ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 trim_end ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,33 +8,33 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a6f6ffc264cb436fc61d74f08dfded915caa05d4
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: cab78680a3b996234724bc052d75959928520289
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81505647"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87339853"
 ---
 # <a name="trim_end"></a>trim_end()
 
-지정된 정규식의 후행 일치를 제거합니다.
+지정 된 정규식의 후행 일치 항목을 제거 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`trim_end(`*정규식* `,` *텍스트*`)`
+`trim_end(`*regex* `,` *텍스트*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *정규식*: 문자열 또는 [정규식은](re2.md) *텍스트의*끝에서 잘라.  
-* *텍스트*: 문자열입니다.
+* *regex*: *텍스트*의 끝에서 잘라내는 문자열 또는 [정규식](re2.md) 입니다.  
+* *text*: 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-*텍스트* 끝에 있는 *정규식의* 일치 항목을 트리밍한 후 *텍스트입니다.*
+*텍스트*끝에 있는 *regex* 의 일치 항목을 지운 후의 *텍스트* 입니다.
 
-**예제**
+## <a name="example"></a>예제
 
-문 벨로우는 *string_to_trim*끝에서 *하위 문자열을* 트림 :
+문 아래는 *string_to_trim*끝에서 *부분 문자열* 을 자릅니다.
 
 ```kusto
 let string_to_trim = @"bing.com";
@@ -44,9 +44,9 @@ print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string
 
 |string_to_trim|trimmed_string|
 |--------------|--------------|
-|bing.com      |빙          |
+|bing.com      |bing          |
 
-다음 문은 문자열의 끝에서 모든 비 단어 문자를 잘라내입니다.
+다음 문은 문자열의 끝에서 모든 비단어 문자를 자릅니다.
 
 ```kusto
 print str = strcat("-  ","Te st",x,@"// $")
@@ -55,8 +55,8 @@ print str = strcat("-  ","Te st",x,@"// $")
 
 |str          |trimmed_str|
 |-------------|-----------|
-|- 테 st1 / / $|- 테 st1  |
-|- 테 st2 / / $|- Te st2  |
-|- Te st3 / / $|- Te st3  |
-|- Te st4// $|- Te st4  |
-|- Te st5 / / $|- Te st5  |
+|-Te st1//$|-Te st1  |
+|-Te st2//$|-Te st2  |
+|-Te st3//$|-Te st3  |
+|-Te st4//$|-Te st4  |
+|-Te st5//$|-Te st5  |

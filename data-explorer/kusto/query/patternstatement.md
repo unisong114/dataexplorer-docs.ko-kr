@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: c8031cd28a04949515ed50dbe37d3f8171d595d8
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: a4aae88f6ad435469719f8444bae9123975ee618
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85129008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346221"
 ---
 # <a name="pattern-statement"></a>pattern 문
 
@@ -35,7 +35,7 @@ ms.locfileid: "85129008"
 declare pattern app;
 ```
 
-이 문은 Kusto를 `app` 패턴으로 지시 하지만,이 패턴을 해결 하는 방법에 대해서는 kusto에 지시 하지 않습니다. 따라서 쿼리에서이 패턴을 호출 하려고 하면 특정 오류가 발생 하 고 이러한 모든 호출이 나열 됩니다. 예를 들어:
+이 문은 Kusto를 `app` 패턴으로 지시 하지만,이 패턴을 해결 하는 방법에 대해서는 kusto에 지시 하지 않습니다. 따라서 쿼리에서이 패턴을 호출 하려고 하면 특정 오류가 발생 하 고 이러한 모든 호출이 나열 됩니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 declare pattern app;
@@ -46,13 +46,13 @@ app("ApplicationX").StartEvents
 
 이 쿼리는 Kusto에서 다음 패턴 호출을 확인할 수 없음을 나타내는 오류를 생성 합니다. `app("ApplicationX")["StartEvents"]` 및 `app("ApplicationX")["StopEvents"]` .
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `declare``pattern` *PatternName*
 
 ## <a name="pattern-definition"></a>패턴 정의
 
-패턴 문은 패턴을 정의 하는 데도 사용할 수 있습니다. 패턴 정의에서는 패턴의 가능한 모든 호출을 명시적으로 배치 하 고 해당 하는 테이블 형식 식을 제공 합니다. Kusto는 쿼리를 실행할 때 각 패턴 호출을 해당 하는 패턴 본문으로 바꿉니다. 예를 들어:
+패턴 문은 패턴을 정의 하는 데도 사용할 수 있습니다. 패턴 정의에서는 패턴의 가능한 모든 호출을 명시적으로 배치 하 고 해당 하는 테이블 형식 식을 제공 합니다. Kusto는 쿼리를 실행할 때 각 패턴 호출을 해당 하는 패턴 본문으로 바꿉니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 declare pattern app = (applicationId:string)[eventType:string]
@@ -67,7 +67,7 @@ app("ApplicationX").StartEvents
 
 일치 되는 각 패턴에 대해 제공 되는 식은 테이블 이름 이거나 [let 문에](letstatement.md)대 한 참조입니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `declare``pattern` *PatternName*  =  PatternName `(` *ArgName* `:` *Argtype* [ `,` ...] `)` [ `[` *경로 이름* `:` *pathargtype* `]` ]`{`
 &nbsp;&nbsp;&nbsp;&nbsp;`(` *ArgValue1* [ `,` *ArgValue2* ] `)` [ `.[` * pathvalue `]` ] `=` `{` *식* `};` &nbsp; &nbsp; &nbsp; &nbsp; [ &nbsp; &nbsp; &nbsp; &nbsp; `(` *ArgValue1_2* [ `,` *ArgValue2_2* ...] `)` [ `.[` *PathValue_2* `]` ] `=` `{` *expression_2* `};` &nbsp; &nbsp; &nbsp; &nbsp; ... &nbsp; &nbsp; &nbsp; &nbsp; ]        `}`
@@ -88,7 +88,7 @@ app("ApplicationX").StartEvents
 * *PatternName* `(` *ArgValue1* [ `,` *ArgValue2* ] `).` *Pathvalue*
 * *PatternName* `(` *ArgValue1* [ `,` *ArgValue2* ] `).["` *Pathvalue*`"]`
 
-## <a name="notes"></a>메모
+## <a name="notes"></a>참고
 
 **시나리오**
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/29/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 90b2a08d4fdde6ab6a74b12632c9310029f8fc1b
-ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
+ms.openlocfilehash: cf10a18a699e1e93521b4927008858cbebd2baf8
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85902095"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345847"
 ---
 # <a name="render-operator"></a>render 연산자
 
@@ -30,11 +30,11 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * Render 연산자는 데이터를 수정 하지 않습니다. 결과의 확장 속성에 주석 ("시각화")을 삽입 합니다. 주석에는 쿼리에 연산자가 제공 하는 정보가 포함 되어 있습니다.
 > * 시각화 정보의 해석은 사용자 에이전트에 의해 수행 됩니다. 다른 에이전트 (예: Kusto. 탐색기, Kusto. WebExplorer)는 다른 시각화를 지원할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `render` *시각화* [ `with` `(` *PropertyName* `=` *PropertyValue* [ `,` ...] `)` ]
 
-위치:
+여기서
 
 * *시각화* 는 사용할 시각화의 종류를 나타냅니다. 지원되는 값은
 
@@ -81,7 +81,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |각 측정값의 값을 모든 선행 작업에 추가할지 여부를 지정 합니다. ( `true` 또는 `false` )|
-|`kind`        |시각화 종류의 추가 패턴. 아래를 참조하십시오.                         |
+|`kind`        |시각화 종류의 추가 패턴. 아래 내용을 참조하세요.                         |
 |`legend`      |범례를 표시할지 (또는)를 표시할지 여부를 지정 `visible` `hidden` 합니다.                       |
 |`series`      |쉼표로 구분 된 레코드의 조합 값이 레코드가 속한 계열을 정의 하는 쉼표로 구분 된 열 목록입니다.|
 |`ymin`        |Y 축에 표시할 최소값입니다.                                      |
@@ -92,7 +92,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |`xtitle`      |X 축의 제목 (형식 `string` )입니다.                                       |
 |`yaxis`       |Y 축 크기를 조정 하는 방법 ( `linear` 또는 `log` )                                      |
 |`ycolumns`    |X 열의 값에 따라 제공 되는 값으로 구성 된 쉼표로 구분 된 열 목록입니다.|
-|`ysplit`      |여러 시각화를 분할 하는 방법입니다. 아래를 참조하십시오.                               |
+|`ysplit`      |여러 시각화를 분할 하는 방법입니다. 아래 내용을 참조하세요.                               |
 |`ytitle`      |Y 축 (형식)의 제목입니다 `string` .                                       |
 |`anomalycolumns`|에만 관련 된 속성 `anomalychart` 입니다. 변칙 계열로 간주 되 고 차트에 점으로 표시 되는 쉼표로 구분 된 열 목록입니다.|
 
@@ -102,7 +102,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
-|`kind`        |시각화 종류의 추가 패턴. 아래를 참조하십시오.                         |
+|`kind`        |시각화 종류의 추가 패턴. 아래 내용을 참조하세요.                         |
 |`series`      |쉼표로 구분 된 레코드의 조합 값이 레코드가 속한 계열을 정의 하는 쉼표로 구분 된 열 목록입니다.|
 |`title`       |시각화의 제목입니다 (형식 `string` ).                                |
 |`yaxis`       |Y 축 크기를 조정 하는 방법 ( `linear` 또는 `log` )                                      |
@@ -155,7 +155,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * 데이터를 정렬 하 여 x 축의 순서를 정의 합니다.
 > * 사용자 에이전트는 쿼리에 지정 되지 않은 속성의 값을 "추측" 할 수 있습니다. 특히 결과의 스키마에 "필요 하지 않은" 열을 포함 하면 잘못 된 추측으로 변환 될 수 있습니다. 이러한 열이 발생 하는 경우 해당 열을 앞으로 이동 하십시오. 
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -170,6 +170,6 @@ range x from -2 to 2 step 0.1
 
 [자습서의 렌더링 예제](./tutorial.md#render-display-a-chart-or-table)
 
-[이상 감지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
+[변칙 탐지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
 
 ::: zone-end

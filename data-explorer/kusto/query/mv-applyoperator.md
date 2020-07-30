@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8fd83615de466c238a590273b228c118e2cd1b46
-ms.sourcegitcommit: 9fe6e34ef3321390ee4e366819ebc9b132b3e03f
+ms.openlocfilehash: 1f9cc982c213a9c2143b169dcf8a12103d617257
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84257843"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346714"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
@@ -57,7 +57,7 @@ T | mv-apply Metric to typeof(real) on
 
 연산자는 `mv-apply` 연산자의 일반화로 간주할 수 있습니다 [`mv-expand`](./mvexpandoperator.md) . 즉, 하위 쿼리에 프로젝션이만 포함 된 경우에는 후자를 이전에 구현할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `mv-apply` [*itemindex*] *columnstoexpand* [*rowlimit*] `on` `(` *하위 쿼리*`)`
 
@@ -75,7 +75,7 @@ T | mv-apply Metric to typeof(real) on
 
 및 *하위* 쿼리에는 동일한 쿼리 문 구문이 있습니다.
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Itemindex*: 사용 하는 경우 `long` 배열 확장 단계의 일부로 입력에 추가 되는 형식의 열 이름을 나타내며 확장 된 값의 0부터 기반으로 하는 배열 인덱스를 나타냅니다.
 
@@ -94,11 +94,11 @@ T | mv-apply Metric to typeof(real) on
 
 * *하위 쿼리*: 각 배열 확장 하위 테이블에 적용 되는 암시적 테이블 형식 소스를 포함 하는 테이블 형식 쿼리 식입니다.
 
-**참고 사항**
+**참고**
 
 * 연산자와 달리 [`mv-expand`](./mvexpandoperator.md) 연산자는 `mv-apply` 배열 확장만 지원 합니다. 속성 모음 확장은 지원 되지 않습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 ## <a name="getting-the-largest-element-from-the-array"></a>배열에서 가장 큰 요소 가져오기
 

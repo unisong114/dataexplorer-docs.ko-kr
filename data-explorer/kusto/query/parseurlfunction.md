@@ -20,7 +20,7 @@ ms.locfileid: "87346289"
 절대 URL을 구문 분석 `string` 하 고 url 부분을 포함 하는 개체를 반환 합니다 `dynamic` .
 
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `parse_url(`*url*`)`
 

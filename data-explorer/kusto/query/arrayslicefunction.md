@@ -8,22 +8,22 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/03/2018
-ms.openlocfilehash: 612829f2cbcd8b3f495d516b254faf7a9cf6919a
-ms.sourcegitcommit: 02236d1f23f48f9dd41cc7433f46991356a869fc
+ms.openlocfilehash: e2216361022f055078be66f37f3d2b084afaa4c6
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84306574"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349536"
 ---
 # <a name="array_slice"></a>array_slice()
 
 동적 배열의 조각을 추출 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `array_slice`(*`arr`*, *`start`*, *`end`*)
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *`arr`*: 조각을 추출 하는 입력 배열은 동적 배열 이어야 합니다.
 * *`start`*: 0부터 시작 하는 (포함) 조각의 시작 인덱스입니다. 음수 값은 array_length + start로 변환 됩니다.
@@ -31,11 +31,11 @@ ms.locfileid: "84306574"
 
 참고: 범위를 벗어난 인덱스는 무시 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 의 [] 범위에 있는 값의 동적 배열 `start..end` `arr` 입니다.
 
-**예제**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

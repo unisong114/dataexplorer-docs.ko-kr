@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에서 고객이 관리 하는 키 구성
 description: 이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기의 데이터에서 고객이 관리 하는 키 암호화를 구성 하는 방법을 설명 합니다.
-author: saguiitay
-ms.author: itsagui
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: dc181e1509f720a8871fd4c41c43f940cef72728
-ms.sourcegitcommit: a7e040fc844098323aa1c00e254bcbcd41fe587f
+ms.openlocfilehash: ad3351045f61f4fb9ddb9ce08c63201746ac05bb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84426514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350233"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 고객 관리 키 구성
 

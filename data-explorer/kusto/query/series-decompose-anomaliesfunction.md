@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019
-ms.openlocfilehash: b8f9d6d27643855ba81b2c1791dfd939b53cac9a
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 2191a26a0ee0bccd708c492690e58767d3cf52e9
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345626"
 ---
 # <a name="series_decompose_anomalies"></a>series_decompose_anomalies()
 
@@ -22,11 +22,11 @@ ms.locfileid: "85264881"
 
 함수는 계열 (동적 숫자 배열)을 포함 하는 식을 입력으로 사용 하 고 점수를 사용 하 여 비정상 요소를 추출 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_decompose_anomalies (`*계열* `[, ` *임계값* `,` *계절성* `,` *추세* `, ` *Test_points* `, ` *AD_method* `,` *Seasonality_threshold*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Series*: 숫자 값의 배열인 동적 배열 셀입니다. 일반적으로 [Series](make-seriesoperator.md) 또는 [make_list](makelist-aggfunction.md) 연산자의 결과 출력입니다.
 * *임계값*: 매우 강력한 이상 값을 검색 하기 위한 비정상 임계값, 기본값 1.5 (k 값)

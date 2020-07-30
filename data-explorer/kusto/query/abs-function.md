@@ -1,6 +1,6 @@
 ---
-title: abs() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 복근()에 대해 설명합니다.
+title: abs ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 abs ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,25 +8,25 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/14/2019
-ms.openlocfilehash: dadedbf03688c2bb6abc8e245464addf140cc60c
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 399446a407d84a1985a3b63e8bf718cab80f1f80
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81519366"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349876"
 ---
 # <a name="abs"></a>abs()
 
-입력의 절대값을 계산합니다.  
+입력의 절대값을 계산 합니다.  
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`abs(`*Ⅹ*`)`
+`abs(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 정수 또는 실수 또는 시간 범위 값입니다.
+* *x*: 정수 또는 실수 또는 timespan 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-* x의 절대 값입니다.
+* X의 절대값입니다.

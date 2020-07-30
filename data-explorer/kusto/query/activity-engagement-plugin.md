@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9aa85bcb12cd5f8d836f58ea9d16a318d8a40506
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: cdee53ad7f46aacb71b8a8277e5b875e60438874
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225958"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349825"
 ---
 # <a name="activity_engagement-plugin"></a>activity_engagement 플러그 인
 
@@ -25,11 +25,11 @@ activity_engagement 플러그 인은 6AU/WAU/MAU (일별/주별/월별 활동)�
 T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `activity_engagement(` *idcolumn* `,` *TimelineColumn* `,` [*Start* `,` *End* `,` ] *inneractivitywindow* `,` *OuterActivityWindow* [ `,` *dim1* `,` *dim2* `,` ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -40,7 +40,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 * *OuterActivityWindow*: 외부 범위 분석 기간 값을 포함 하는 스칼라입니다.
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 각 내부 범위 창 기간 및 각 기존 차원 조합에 대해 (내부 범위 창 내에서 ID 값의 고유 개수, 외부 범위 창 내에서 고유한 ID 값의 개수 및 작업 비율)가 있는 테이블을 반환 합니다.
 
@@ -51,7 +51,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 |유형: *TimelineColumn*|long|long|double|..|..|..|
 
 
-**예**
+## <a name="examples"></a>예제
 
 ### <a name="dauwau-calculation"></a>WAU 계산
 

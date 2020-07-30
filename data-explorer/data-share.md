@@ -1,18 +1,18 @@
 ---
 title: Azure 데이터 공유를 사용 하 여 Azure 데이터 탐색기와 데이터 공유 (미리 보기)
 description: Azure 데이터 탐색기 및 Azure 데이터 공유와 데이터를 공유 하는 방법에 대해 알아봅니다.
-author: manojraheja
-ms.author: maraheja
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: c935b6f888d40cfcd2208e8857dc3d794f9a50cb
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: 325adfafcb474804d6fc03d85bc5ae2e82011fd3
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83865956"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350046"
 ---
 # <a name="use-azure-data-share-to-share-data-with-azure-data-explorer-preview"></a>Azure 데이터 공유를 사용 하 여 Azure 데이터 탐색기와 데이터 공유 (미리 보기)
 
