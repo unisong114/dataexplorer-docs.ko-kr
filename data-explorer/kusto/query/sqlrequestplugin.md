@@ -35,7 +35,7 @@ ms.locfileid: "87350981"
   
 * *Options*: `dynamic` 고급 설정을 키-값 쌍으로 포함 하는 형식의 상수 값입니다. 현재는 `token` 인증을 위해 SQL 끝점에 전달 되는 호출자 제공 AZURE AD 액세스 토큰을 전달 하기 위해만 설정할 수 있습니다. (선택 사항)
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 다음 예에서는 SQL 쿼리를 Azure SQL DB 데이터베이스로 보냅니다. 에서 모든 레코드를 검색 한 `[dbo].[Table]` 다음, Kusto 쪽에서 결과를 처리 합니다. 인증은 호출 하는 사용자의 Azure AD 토큰을 다시 사용 합니다. 
 

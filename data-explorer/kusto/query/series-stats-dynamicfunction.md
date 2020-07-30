@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
-ms.openlocfilehash: 87cee5244fb1276733d4cf44d0477cc3351b947c
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: d74ba88062f49e9f3274b7f38704aa7760dc7250
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372464"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351270"
 ---
 # <a name="series_stats_dynamic"></a>series_stats_dynamic()
 
@@ -28,16 +28,16 @@ ms.locfileid: "83372464"
 * `variance`: 입력 배열의 표본 분산
 * `stdev`: 입력 배열의 샘플 표준 편차
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_stats_dynamic(`*x* `[,` *ignore_nonfinite*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값의 배열인 동적 배열 셀입니다. 
 * *ignore_nonfinite*: `false` 한정 되지 않은 값 (*null*, *NaN*, *inf*등)을 무시 하 고 통계를 계산할지 여부를 지정 하는 부울 (선택 사항, 기본값:) 플래그입니다. `false`반환 된 결과로 설정 하면 한정 되지 `null` 않은 값이 배열에 있는 경우입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

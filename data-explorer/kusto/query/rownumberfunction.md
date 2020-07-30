@@ -1,6 +1,6 @@
 ---
-title: row_number() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 row_number()에 대해 설명합니다.
+title: row_number ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 row_number ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,34 +8,34 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: c8cb01ed098d24632154215ddf06dc2ab1d72695
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: ea51e6171b8a7683a0454d177dc729ed754b8896
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81510169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351593"
 ---
 # <a name="row_number"></a>row_number()
 
-[직렬화된](./windowsfunctions.md#serialized-row-set)행 집합에서 현재 행의 인덱스를 반환합니다.
-행 인덱스는 기본적으로 `1` 첫 번째 행에 대해 시작되며 `1` 각 추가 행에 대해 증가합니다.
-선택적으로 행 인덱스는 `1`에서 와 다른 값으로 시작할 수 있습니다.
-또한 행 인덱스는 제공된 일부 조건어에 따라 재설정될 수 있습니다.
+[Serialize 된 행 집합](./windowsfunctions.md#serialized-row-set)에서 현재 행의 인덱스를 반환 합니다.
+행 인덱스는 `1` 첫 번째 행에 대해 기본적으로 시작 되며, `1` 각 추가 행에 대해에서 증가 합니다.
+필요에 따라 행 인덱스는와 다른 값으로 시작 될 수 있습니다 `1` .
+또한 일부 제공 된 조건자에 따라 행 인덱스를 다시 설정할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`row_number``(` [ 시작`,` *인덱스* [ 다시 *시작*]]`)`
+`row_number``(`[*StartingIndex* [ `,` *다시 시작*]]`)`
 
-* *startingIndex는* 시작(또는 `long` 다시 시작)할 행 인덱스의 값을 나타내는 형식의 상수 식입니다. 기본값은 `1`입니다.
-* *다시 시작은* 번호 매기기를 `bool` *StartIndex* 값으로 다시 시작해야 하는 시기를 나타내는 형식의 선택적 인수입니다. 제공되지 않으면 기본값이 `false` 사용됩니다.
+* *StartingIndex* 은 `long` 시작할 행 인덱스의 값 (또는로 다시 시작)을 나타내는 형식의 상수 식입니다. 기본값은 `1`입니다.
+* *다시 시작* 은 `bool` *StartingIndex* 값으로 번호 매기기를 다시 시작할지 여부를 나타내는 형식의 선택적 인수입니다. 이 값을 지정 하지 않으면 기본값인 `false` 가 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-함수는 현재 행의 행 인덱스를 형식의 `long`값으로 반환합니다.
+함수는 현재 행의 행 인덱스를 형식의 값으로 반환 합니다 `long` .
 
-**예**
+## <a name="examples"></a>예제
 
-다음 예제에서는 두 개의 열이 있는 테이블을`a`반환하고 `10` 첫 `1`번째 열()은`rn`아래부터 `1` 는 `10`숫자로, 두 번째 열()은 최대 다음의 숫자로 반환합니다.
+다음 예에서는 두 개의 열 ()이 포함 된 테이블을 반환 합니다. 첫 번째 열 ( `a` )의 값은 아래에서 사이 `10` `1` 이 고, 두 번째 열 ( `rn` )의 값은 `1` 최대입니다 `10` .
 
 ```kusto
 range a from 1 to 10 step 1
@@ -43,7 +43,7 @@ range a from 1 to 10 step 1
 | extend rn=row_number()
 ```
 
-다음 예제는 위의 경우와 유사하며 두`rn`번째 `7`열()만 다음에서 시작합니다.
+다음 예는 위의 경우와 유사 하며 두 번째 열 ()은 `rn` 에서 시작 됩니다 `7` .
 
 ```kusto
 range a from 1 to 10 step 1
@@ -51,7 +51,7 @@ range a from 1 to 10 step 1
 | extend rn=row_number(7)
 ```
 
-마지막 예제에서는 데이터를 분할하고 각 파티션당 행수를 매기는 방법을 보여 주며, 여기서는 다음과 같은 `Airport`으로 데이터를 분할합니다.
+마지막 예에서는 하나의 데이터를 분할 하 고 각 파티션당 행 수를 표시 하는 방법을 보여 줍니다. 여기서는 다음을 기준으로 데이터를 분할 합니다 `Airport` .
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
@@ -66,12 +66,12 @@ datatable (Airport:string, Airline:string, Departures:long)
 | extend Rank=row_number(1, prev(Airport) != Airport)
 ```
 
-이 쿼리를 실행하면 다음과 같은 결과가 생성됩니다.
+이 쿼리를 실행 하면 다음과 같은 결과가 생성 됩니다.
 
-공항  | 항공사  | 출발  | Rank
+예  | 항공사  | 출발  | 순위
 ---------|----------|-------------|------
 SEA      | BA       | 2           | 1
-SEA      | Lh       | 1           | 2
+SEA      | LH       | 1           | 2
 SEA      | LY       | 0           | 3
-Tlv      | LY       | 100         | 1
-Tlv      | Lh       | 1           | 2
+받지      | LY       | 100         | 1
+받지      | LH       | 1           | 2

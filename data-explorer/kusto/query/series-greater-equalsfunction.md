@@ -19,7 +19,7 @@ ms.locfileid: "87351474"
 
 `>=`두 숫자 계열 입력의 요소 단위 크거나 같음 () 논리 연산을 계산 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `series_greater_equals (`*Series1* `,` *Series2*`)`
 

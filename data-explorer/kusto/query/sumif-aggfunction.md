@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7d97d31b2fb97d5541400bc0605ee40e83807b62
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: cd9900b5087ed0d6ae7e97d2f2dad809bb909331
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83371888"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350811"
 ---
 # <a name="sumif-aggregation-function"></a>sumif () (집계 함수)
 
@@ -23,20 +23,20 @@ ms.locfileid: "83371888"
 
 조건자 식 없이 행의 합계를 계산 하는 [sum ()](sum-aggfunction.md) 함수를 사용할 수도 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `sumif(` *Expr* `,` *조건자* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 집계 계산에 대 한 식입니다. 
 * *조건자*: 조건자 (true 인 경우)의 경우 *Expr*의 계산 된 값이 합계에 추가 됩니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 *조건자* 가로 계산 되는 *Expr* 의 sum 값입니다 `true` .
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 let T = datatable(name:string, day_of_birth:long)

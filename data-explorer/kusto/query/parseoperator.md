@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: dd70b2135a485303cbf52d984e0b406052c4023a
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: f9dc6e49e9e3d04aadb5aecf8507b7132d8a366a
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346323"
 ---
 # <a name="parse-operator"></a>parse 연산자
 
@@ -24,11 +24,11 @@ ms.locfileid: "85264950"
 T | parse Text with "ActivityName=" name ", ActivityType=" type
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| parse` [ `kind=regex` [ `flags=regex_flags` ] | `simple` | `relaxed` ] *식* `with` `*` (*stringconstant* *ColumnName* [ `:` *ColumnType*]) `*` ...
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블입니다.
 * 종류로
@@ -47,7 +47,7 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
   
 * *ColumnType:* 필드. 값을 변환할 대상 형식을 나타내는 스칼라 값입니다. 기본값은 `string` 형식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 입력 테이블은 연산자에 제공 되는 열 목록에 따라 확장 됩니다.
 
@@ -67,7 +67,7 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
 * Regex 모드를 사용 하는 경우 구문 분석에 사용 되는 전체 regex를 제어 하는 regex 플래그를 추가 하는 옵션이 있습니다.
 
 * Regex 모드에서 parse는 패턴을 regex로 변환 합니다. [RE2 구문을](re2.md) 사용 하 여 일치를 수행 하 고 내부적으로 처리 되는 번호가 매겨진 캡처된 그룹을 사용 합니다.
-    예를 들어:
+    예를 들면 다음과 같습니다.
 
     ```kusto
     parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
@@ -81,7 +81,7 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
         
     * `long`가로 변환 되었습니다 `\-\d+` .
 
-**예**
+## <a name="examples"></a>예제
 
 `parse`연산자는 `extend` 동일한 식에서 여러 응용 프로그램을 사용 하 여 테이블에 간소화 된 방법을 제공 `extract` `string` 합니다. 이 결과는 테이블에 `string` 개별 열로 나눌 여러 값이 포함 된 열이 있는 경우에 유용 합니다. 예를 들어 개발자 추적 (" `printf` "/"") 문에 의해 생성 된 열입니다 `Console.WriteLine` .
 

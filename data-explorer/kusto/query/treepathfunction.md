@@ -1,6 +1,6 @@
 ---
-title: 트리경로() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 트리 경로()에 대해 설명합니다.
+title: treepath ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 treepath ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 27a0edc61a1d2317427454aaf74531ec395d067d
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: e52caa6da7d5746119e363d1676b39fcd9da0340
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81505698"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350658"
 ---
 # <a name="treepath"></a>treepath()
 
@@ -21,11 +21,11 @@ ms.locfileid: "81505698"
 
 `treepath(`*동적 개체*`)`
 
-**반환**
+## <a name="returns"></a>반환
 
 path 식의 배열입니다.
 
-**예**
+## <a name="examples"></a>예제
 
 |식|결과|
 |---|---|

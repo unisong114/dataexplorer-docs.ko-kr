@@ -1,18 +1,18 @@
 ---
 title: 'C를 통해 Azure 데이터 탐색기에 대 한 종단 간 blob 수집 #'
 description: '이 문서에서는 c #을 사용 하는 종단 간 예제를 사용 하 여 blob을 Azure 데이터 탐색기에 수집 하는 방법을 알아봅니다.'
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 53504f51f1a5bd80967c510bd4bff1ba47cd8e58
-ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
+ms.openlocfilehash: 2a7416a2f86963ab30f84ce0a7e2fd098af52108
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722170"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350447"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>C를 통해 Azure 데이터 탐색기에 대 한 종단 간 blob 수집 #
 
@@ -25,7 +25,7 @@ Azure Data Explorer는 로그 및 원격 분석 데이터에 사용 가능한 �
 
 프로그래밍 방식으로 리소스 그룹, 저장소 계정 및 컨테이너, 이벤트 허브 및 Azure 데이터 탐색기 클러스터와 데이터베이스를 만드는 방법을 알아봅니다. 또한 Azure 데이터 탐색기를 프로그래밍 방식으로 구성 하 여 새 저장소 계정에서 데이터를 수집 하는 방법을 알아봅니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 

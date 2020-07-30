@@ -29,7 +29,7 @@ ms.locfileid: "87351525"
 
 이 연산자는 [series_fit_line](series-fit-linefunction.md)와 비슷하지만,와는 달리 `series-fit-line` 동적 모음을 반환 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `series_fit_line_dynamic(`*.x*`)`
 
@@ -40,7 +40,7 @@ ms.locfileid: "87351525"
 > [!TIP]
 > 이 함수를 사용 하는 가장 편리한 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

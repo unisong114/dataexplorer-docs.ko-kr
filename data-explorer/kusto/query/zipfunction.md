@@ -19,7 +19,7 @@ ms.locfileid: "87350556"
 
 `zip`함수는 임의의 수의 `dynamic` 배열을 허용 하 고, 각 요소가 동일한 인덱스의 입력 배열 요소를 포함 하는 배열인 배열을 반환 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `zip(`*array1* 방법 `,` *array2* 가는`, ... )`
 
@@ -27,7 +27,7 @@ ms.locfileid: "87350556"
 
 2에서 16 개의 동적 배열 사이입니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 다음 예제는 `[[1,2],[3,4],[5,6]]`을 반환합니다.
 

@@ -8,30 +8,30 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/02/2019
-ms.openlocfilehash: 6739b01f996c04829a1fdb78eab96f6e51b011bb
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 709da983599b4e8b0c8b06cf7bff4276ba03b5cf
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763666"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351168"
 ---
 # <a name="set_intersect"></a>set_intersect()
 
 `dynamic`모든 배열 (arr1 ∩ arr2 ∩ ...)에 있는 모든 고유 값 집합의 배열을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `set_intersect(`*arr1* `, ` *arr2* `[` ,` *arr3*, ...])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *arr1 ... arrN*: 교차 집합을 만들기 위한 입력 배열입니다 (적어도 두 개의 배열). 모든 인수는 동적 배열 이어야 합니다. 자세한 내용은 [pack_array](packarrayfunction.md)를 참조 하세요. 
 
-**반환**
+## <a name="returns"></a>반환
 
 모든 배열에 있는 모든 고유 값 집합의 동적 배열을 반환 합니다. [`set_union()`](setunionfunction.md)및를 참조 하십시오 [`set_difference()`](setdifferencefunction.md) .
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

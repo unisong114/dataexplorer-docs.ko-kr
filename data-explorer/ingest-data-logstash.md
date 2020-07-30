@@ -1,24 +1,24 @@
 ---
 title: Logstash에서 Azure Data Explorer로 데이터 수집
-description: 이 문서에서는 Logstash에서 Azure 데이터 탐색기로 데이터를 수집(로드)하는 방법을 배웁니다.
-author: tamirkamara
-ms.author: takamara
-ms.reviewer: orspodek
+description: 이 문서에서는 Logstash 태에서 Azure 데이터 탐색기로 데이터를 수집 (로드) 하는 방법에 대해 알아봅니다.
+author: orspod
+ms.author: orspodek
+ms.reviewer: takamara
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e7b4a8cf3dcd109de59ab12717f8fbc17b600ec9
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 0beb88cbcb2b72a79ad2d6c1ad6aac44bdcb13bc
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81497955"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350522"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Logstash에서 Azure Data Explorer로 데이터 수집
 
-[Logstash](https://www.elastic.co/products/logstash)는 동시에 여러 원본의 데이터를 수집하고, 데이터를 변환한 다음, 데이터를 즐겨찾는 “스태시”에 전송하는 오픈 소스인 서버 쪽 데이터 처리 파이프라인입니다. 이 문서에서는 로그 및 원격 분석 데이터에 대한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure Data Explorer로 해당 데이터를 보냅니다. 처음에 테이블 및 데이터 매핑을 테스트 클러스터에 만든 다음, 테이블에 데이터를 보내고 결과를 확인하도록 Logstash로 보냅니다.
+[Logstash](https://www.elastic.co/products/logstash)는 동시에 여러 원본의 데이터를 수집하고, 데이터를 변환한 다음, 데이터를 즐겨찾는 “스태시”에 전송하는 오픈 소스인 서버 쪽 데이터 처리 파이프라인입니다. 이 문서에서는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure 데이터 탐색기로 해당 데이터를 보냅니다. 처음에 테이블 및 데이터 매핑을 테스트 클러스터에 만든 다음, 테이블에 데이터를 보내고 결과를 확인하도록 Logstash로 보냅니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독 구독이 없으면 시작하기 전에 [체험 Azure 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * Azure Data Explorer [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md).
@@ -106,7 +106,7 @@ output {
 }
 ```
 
-| 매개 변수 이름 | Description |
+| 매개 변수 이름 | 설명 |
 | --- | --- |
 | **path** | Logstash 플러그인은 이벤트를 Azure Data Explorer로 보내기 전에 임시 파일에 기록합니다. 이 매개 변수에는 파일을 작성해야 하는 경로와 Azure Data Explorer 서비스에 대한 업로드를 트리거하기 위한 파일 순환의 시간 표현식이 포함됩니다.|
 | **ingest_url** | 수집 관련 통신을 위한 Kusto 엔드포인트입니다.|
@@ -146,4 +146,4 @@ output {
 
 ## <a name="next-steps"></a>다음 단계
 
-* [쿼리 쓰기](write-queries.md)
+* [쿼리 작성](write-queries.md)

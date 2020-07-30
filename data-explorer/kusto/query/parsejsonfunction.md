@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ac6bf9a8dbd54c3afca1c00f487e6ba564e65ce9
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: abe49795b7b997abf677fd0fafff10ae38787f44
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264983"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346340"
 ---
 # <a name="parse_json"></a>parse_json()
 
@@ -21,7 +21,7 @@ ms.locfileid: "85264983"
 
 JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우이 함수는 [extractjson () 함수](./extractjsonfunction.md) 보다 낫습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `parse_json(`*json*`)`
 
@@ -29,18 +29,18 @@ JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우이 함수
 - [todynamic()](./todynamicfunction.md)
 - [toobject ()](./todynamicfunction.md)
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *json*: 형식의 식 `string` 입니다. [JSON 형식 값](https://json.org/)또는 실제 값을 나타내는 [dynamic](./scalar-data-types/dynamic.md)형식의 식을 나타냅니다 `dynamic` .
 
-**반환**
+## <a name="returns"></a>반환
 
 `dynamic` *Json*값에 의해 결정 되는 형식의 개체입니다.
 * *Json* 형식이 인 경우 `dynamic` 해당 값이 있는 그대로 사용 됩니다.
 * *Json* 이 형식이 `string` 고가 적절 한 형식의 [json 문자열이](https://json.org/)면 문자열이 구문 분석 되 고 생성 된 값이 반환 됩니다.
 * *Json* 이 형식이 `string` 고 [올바른 형식의 json 문자열이](https://json.org/)아닌 경우 반환 되는 값은 `dynamic` 원래 값을 보유 하는 형식의 개체입니다 `string` .
 
-**예제**
+## <a name="example"></a>예제
 
 다음 예제에서 `context_custom_metrics`가 `string`인 경우 다음과 유사합니다.
 
@@ -56,11 +56,11 @@ T
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
 
-**참고 사항**
+**참고**
 
 일반적으로 "슬롯" 중 하나가 다른 JSON 문자열인 속성 모음을 설명 하는 JSON 문자열이 있습니다. 
 
-예를 들어:
+예를 들면 다음과 같습니다.
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';

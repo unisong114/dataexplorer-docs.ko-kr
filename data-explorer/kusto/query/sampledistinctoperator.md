@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 5303801b983b326310065ea2a6ce6ded7d098001
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 3cb1de08604964d4d71c5868ef7564c728b1f2c4
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351542"
 ---
 # <a name="sample-distinct-operator"></a>sample-distinct 연산자
 
@@ -25,11 +25,11 @@ ms.locfileid: "83373002"
 T | sample-distinct 5 of DeviceId
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| sample-distinct` *numberofvalues* `of` *ColumnName*
 
-**인수**
+## <a name="arguments"></a>인수
 * *Numberofvalues*: 반환할 *T* 의 고유 값 수입니다. 임의의 숫자 식을 지정할 수 있습니다.
 
 **팁**
@@ -40,7 +40,7 @@ T | sample-distinct 5 of DeviceId
 
  특정 열 값이 아닌 데이터 행을 샘플링 하려면 [sample 연산자](sampleoperator.md) 를 참조 하세요.
 
-**예**  
+## <a name="examples"></a>예제  
 
 모집단에서 10 개의 고유 값 가져오기
 

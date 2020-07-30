@@ -1,36 +1,36 @@
 ---
-title: Azure 리소스 관리자 템플릿을 사용하여 Azure 데이터 탐색기용 클러스터 보안 주체 추가
-description: 이 문서에서는 Azure 리소스 관리자 템플릿을 사용하여 Azure Data Explorer에 대한 클러스터 보안 주체를 추가하는 방법을 알아봅니다.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+title: Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 클러스터 보안 주체 추가
+description: 이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 클러스터 보안 주체를 추가 하는 방법에 대해 알아봅니다.
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 22423568ab0b3b55d8d9566df4829eb6070b5f8c
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 9577e6d583f7e2c936116d9802839b24481e5f8e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81497006"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350386"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Azure 리소스 관리자 템플릿을 사용하여 Azure 데이터 탐색기용 클러스터 보안 주체 추가
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 클러스터 보안 주체 추가
 
 > [!div class="op_single_selector"]
 > * [C#](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Azure Resource Manager 템플릿](cluster-principal-resource-manager.md)
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 이 문서에서는 Azure 리소스 관리자 템플릿을 사용하여 Azure 데이터 탐색기의 클러스터 보안 주체를 추가합니다.
+Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 클러스터 보안 주체를 추가 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
-* [클러스터를 만듭니다.](create-cluster-database-portal.md)
+* [클러스터를 만듭니다](create-cluster-database-portal.md).
 
-## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>클러스터 보안 주체추가를 위한 Azure 리소스 관리자 템플릿
+## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>클러스터 보안 주체를 추가 하기 위한 Azure Resource Manager 템플릿
 
-다음 예제에서는 클러스터 보안 주체를 추가하기 위한 Azure 리소스 관리자 템플릿을 보여 주며 있습니다.  양식을 사용하여 [Azure 포털에서 템플릿을 편집하고 배포할](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) 수 있습니다.
+다음 예제에서는 클러스터 보안 주체를 추가 하기 위한 Azure Resource Manager 템플릿을 보여 줍니다.  형식을 사용 하 여 [Azure Portal에서 템플릿을 편집 하 고 배포할](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) 수 있습니다.
 
 ```json
 {

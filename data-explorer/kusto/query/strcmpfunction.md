@@ -1,6 +1,6 @@
 ---
-title: strcmp() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 strcmp()에 대해 설명합니다.
+title: strcmp ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 strcmp ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,36 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 62ebcbfa71ebf8a29f3a8a1559feb91f96e0a2bf
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 11951195d95d956f70d4bfce32d22a9f9c73dc3d
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81506905"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350930"
 ---
 # <a name="strcmp"></a>strcmp()
 
 두 문자열을 비교합니다.
 
-함수는 각 문자열의 첫 번째 문자를 비교하기 시작합니다. 서로 같으면 문자가 다를 때까지 또는 짧은 문자열의 끝에 도달할 때까지 다음 쌍으로 계속됩니다.
+함수는 각 문자열의 첫 번째 문자 비교를 시작 합니다. 서로 같으면 문자가 다르거나 짧은 문자열의 끝에 도달할 때까지 다음 쌍으로 계속 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`strcmp(`*문자열1* `,` *문자열2*`)` 
+`strcmp(`*string1* `,` *문자열 2*`)` 
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *string1*: 비교를 위한 첫 번째 입력 문자열입니다. 
-* *string2*: 비교를 위한 두 번째 입력 문자열입니다.
+* *string1*: 비교할 첫 번째 입력 문자열입니다. 
+* *문자열 2*: 비교할 두 번째 입력 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-문자열 간의 관계를 나타내는 정수 값을 반환합니다.
-* *<0* - 일치하지 않는 첫 번째 문자는 string2보다 string1의 값이 낮습니다.
-* *0* - 두 문자열의 내용이 동일합니다.
-* *>0* - 일치하지 않는 첫 번째 문자는 string2보다 string1에서 더 큰 값을 가있습니다.
+문자열 간의 관계를 나타내는 정수 값을 반환 합니다.
+* *<0* -일치 하지 않는 첫 번째 문자의 string1에서 문자열 2 보다 낮은 값이 있습니다.
+* *0* -두 문자열의 내용이 동일 합니다.
+* *>0* -일치 하지 않는 첫 번째 문자가 문자열 2의 값 보다 큽니다.
 
-**예**
+## <a name="examples"></a>예제
 
 ```
 datatable(string1:string, string2:string)
@@ -53,4 +53,4 @@ datatable(string1:string, string2:string)
 |ABC|ABC|0|
 |abc|ABC|1|
 |ABC|abc|-1|
-|Abcde|abc|1|
+|abcde...z|abc|1|

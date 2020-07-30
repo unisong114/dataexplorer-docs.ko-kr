@@ -1,18 +1,18 @@
 ---
 title: Azure CLI를 사용 하 여 Azure 데이터 탐색기 클러스터 & DB 만들기
 description: Azure CLI를 사용하여 Azure Data Explorer 클러스터 및 데이터베이스를 만드는 방법 알아보기
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: radennis
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b7e8611ba6427880f15d57137e31010047c39e01
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 673bf418bf38bf04d8b8fb9e81204f4db3499e19
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83224615"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350369"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI를 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -66,7 +66,7 @@ Azure Cloud Shell에서 명령을 실행하는 경우에는 다음 단계가 필
 
    |**설정** | **제안 값** | **필드 설명**|
    |---|---|---|
-   | 이름 | *azureclitest* | 원하는 클러스터 이름입니다.|
+   | name | *azureclitest* | 원하는 클러스터 이름입니다.|
    | sku | *Standard_D13_v2* | 클러스터에 사용될 SKU입니다. Parameters: *name* -SKU 이름입니다. *계층* -SKU 계층입니다. |
    | resource-group | *testrg* | 클러스터가 만들어질 리소스 그룹 이름입니다. |
    | 위치 | *westus* | 클러스터가 생성 될 위치입니다. |

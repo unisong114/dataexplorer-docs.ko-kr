@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: af25bb0407c9bc0c004c2f22e326ac034c6682cd
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: 1f26b4bf267a4387748fe4c4c26636579607de51
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350998"
 ---
 # <a name="strcat"></a>strcat()
 
@@ -21,19 +21,19 @@ ms.locfileid: "84717107"
 
 * 인수가 문자열 형식이 아니면 문자열이 강제로 문자열로 변환 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `strcat(`*인수 1*, *인수 2*[, *argumentn*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *인수 1* ... *argumentn*: 연결할 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 단일 문자열에 연결 된 인수입니다.
 
-**예**
+## <a name="examples"></a>예제
   
    ```kusto
 print str = strcat("hello", " ", "world")

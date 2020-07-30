@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 5e4b318743380b13a26e90a7e83549c998926bd8
-ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
+ms.openlocfilehash: ae5268a4a062a6f45adb715650028d952cb89e0b
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85902116"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346391"
 ---
 # <a name="parse_version"></a>parse_version()
 
@@ -23,15 +23,15 @@ ms.locfileid: "85902116"
 parse_version("0.0.0.1")
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `parse_version``(` *Expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *`Expr`*: `string` 구문 분석할 버전을 지정 하는 형식의 스칼라 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 성공적으로 변환 되 면 10 진수가 반환 됩니다.
 변환에 실패 하면 결과는가 됩니다 `null` .
@@ -44,7 +44,7 @@ parse_version("0.0.0.1")
 
 파트 수가 4 보다 작은 경우 누락 된 부분은 모두 후행 ()으로 간주 됩니다 `1.0`  ==  `1.0.0.0` .
 
-**예제**
+## <a name="example"></a>예제
 ```kusto
 let dt = datatable(v:string)
 ["0.0.0.5","0.0.7.0","0.0.3","0.2","0.1.2.0","1.2.3.4","1","99999999.0.0.0"];

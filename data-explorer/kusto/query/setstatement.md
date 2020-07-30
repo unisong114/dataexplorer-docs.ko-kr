@@ -28,7 +28,7 @@ ms.locfileid: "87351151"
   
 * 쿼리 옵션은 공식적으로 Kusto 언어에 포함 되지 않으며, 주요 언어 변경으로 간주 하지 않고도 수정할 수 있습니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `set`*OptionName* [ `=` *OptionValue*]
 

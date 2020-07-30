@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: ba74b7c1e78d568cc34845d56dc9768f2628192f
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: e2914e913402de7442d2533cf5159c2bd30fac60
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346306"
 ---
 # <a name="parse_path"></a>parse_path()
 
@@ -23,7 +23,7 @@ ms.locfileid: "84717379"
 * DirectoryPath
 * DirectoryName
 * FileName
-* 확장명
+* 내선 번호
 * AlternateDataStreamName
 
 함수는 두 가지 형식의 슬래시가 있는 간단한 경로 외에도 다음과 같은 경로를 지원 합니다.
@@ -32,19 +32,19 @@ ms.locfileid: "84717379"
 * 긴 경로. 예 \\ : "? \c: ..." "
 * 대체 데이터 스트림 예: "file1.exe:file2.exe"
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `parse_path(`*path*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *경로*: 파일 경로를 나타내는 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `dynamic`위에 나열 된 경로 구성 요소를 포함 하는 형식의 개체입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

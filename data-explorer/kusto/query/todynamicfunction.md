@@ -23,7 +23,7 @@ JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우 [extractj
 
 [Parse_json ()](./parsejsonfunction.md) 함수에 대 한 별칭입니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `todynamic(`*json* `)` 
  json `toobject(` *json*`)`

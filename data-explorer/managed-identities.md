@@ -1,18 +1,18 @@
 ---
 title: Azure 데이터 탐색기 클러스터에 대 한 관리 되는 id를 구성 하는 방법
 description: Azure 데이터 탐색기 클러스터에 대 한 관리 id를 구성 하는 방법을 알아봅니다.
-author: saguiitay
-ms.author: itsagui
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 523330f5ace4d9f2d652eccbd746b039d66df749
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: bed04e084621116033aa3dd2814192957032c26e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374291"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351576"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Azure 데이터 탐색기 클러스터에 대 한 관리 id 구성
 
@@ -21,7 +21,7 @@ ms.locfileid: "83374291"
 > [!Note]
 > Azure 데이터 탐색기에 대 한 관리 id는 구독 또는 테 넌 트 간에 마이그레이션된 Azure 데이터 탐색기 클러스터의 경우 예상 대로 작동 하지 않습니다. 앱은 기능을 [사용 하지 않도록](#disable-a-system-assigned-identity) 설정 하 고 [다시 사용 하도록 설정](#add-a-system-assigned-identity) 하 여 수행할 수 있는 새 id를 가져와야 합니다. 또한 새 id를 사용 하도록 다운스트림 리소스의 액세스 정책을 업데이트 해야 합니다.
 
-## <a name="add-a-system-assigned-identity"></a>시스템 할당 id 추가
+## <a name="add-a-system-assigned-identity"></a>시스템 할당 ID 추가
                                                                                                     
 클러스터에 연결 된 시스템 할당 id를 할당 하 고, 클러스터를 삭제 하면 삭제 됩니다. 클러스터에는 시스템 할당 id가 하나만 있을 수 있습니다. 시스템에 할당 된 id를 사용 하 여 클러스터를 만들려면 클러스터에서 추가 속성을 설정 해야 합니다. 시스템 할당 id는 c #, ARM 템플릿 또는 아래에 설명 된 Azure Portal를 사용 하 여 추가 됩니다.
 
@@ -129,7 +129,7 @@ Azure Resource Manager 템플릿을 사용하여 Azure 리소스 배포를 자�
 }    
 ```
 
-다음은 그 예입니다.
+예를 들면 다음과 같습니다.
 
 ```json
 {

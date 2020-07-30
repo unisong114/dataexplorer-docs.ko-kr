@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4d90bc3b6222896d45374d771ce5f87f4bdf6786
-ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
+ms.openlocfilehash: af223d31f008b972bc1b61a6a9ace7e19c988ff7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85902020"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351049"
 ---
 # <a name="sliding_window_counts-plugin"></a>sliding_window_counts 플러그 인
 
@@ -25,11 +25,11 @@ ms.locfileid: "85902020"
 T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, dim1, dim2, dim3)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| evaluate` `sliding_window_counts(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *LookbackWindow* `,` *Bin* `,` [*dim1* `,` *dim2* `,` ...]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 식입니다.
 * *Idcolumn*: 사용자 활동을 나타내는 ID 값이 포함 된 열의 이름입니다. 
@@ -40,7 +40,7 @@ T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), st
 * *Bin*: 분석 단계 기간의 스칼라 상수 값입니다. 이 값은 숫자/날짜/시간/타임 스탬프 값일 수 있습니다. 값이 형식의 문자열이 면 `week` / `month` / `year` 모든 기간이 [startofweek](startofweekfunction.md) / [startofmonth](startofmonthfunction.md) / [startofyear](startofyearfunction.md)가 됩니다. 
 * *dim1*, *dim2*, ...: (선택 사항) 활동 메트릭 계산을 분할 하는 차원 열의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 각 타임 라인 기간 (bin) 및 각 기존 차원 조합에 대해 lookback 기간에 Id의 개수 및 고유 카운트 값이 있는 테이블을 반환 합니다.
 
@@ -51,7 +51,7 @@ T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), st
 |유형: *TimelineColumn*|..|..|..|long|long|
 
 
-**예**
+## <a name="examples"></a>예제
 
 `dcounts`지난 주에 분석 기간의 각 날짜에 대 한 개수와 사용자의 수를 계산 합니다. 
 
@@ -83,7 +83,7 @@ T | evaluate sliding_window_counts(UserId, Timestamp, start, end, lookbackWindow
 
 ```
 
-|타임스탬프|개수|`dcount`|
+|Timestamp|개수|`dcount`|
 |---|---|---|
 |2017-08-01 00:00:00.0000000|5|3|
 |2017-08-02 00:00:00.0000000|8|5|

@@ -8,22 +8,22 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 054d4be758001609fbc3100a4a6c8698ef8f69f6
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: fb1f07c4b964615342adcf4d5ae51e7c99c05d13
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351287"
 ---
 # <a name="series_seasonal"></a>series_seasonal()
 
 검색 되거나 지정 된 계절 기간에 따라 계열의 계절 구성 요소를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `series_seasonal(`*계열* `[,` *기간*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *계열*: 입력 숫자 동적 배열
 * *period* (선택 사항): 각 계절 기간에 있는 Bin의 정수 수, 가능한 값:
@@ -31,11 +31,11 @@ ms.locfileid: "84717311"
     * 양의 정수: 계절 구성 요소에 대 한 기간으로 사용 됩니다.
     * 다른 모든 값: 계절성를 무시 하 고 일련의 0을 반환 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 계열의 계산 된 계절 구성 요소가 포함 된 *계열* 입력과 동일한 길이의 동적 배열입니다. 계절 구성 요소는 전체 기간의 bin 위치에 해당 하는 모든 값의 *중앙값* 으로 계산 됩니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="auto-detect-the-period"></a>기간 자동 검색
 

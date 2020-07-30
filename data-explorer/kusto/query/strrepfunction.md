@@ -1,6 +1,6 @@
 ---
-title: 스트렙() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 strrep()에 대해 설명합니다.
+title: strrep ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 strrep ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,36 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 39b398e8fadb400c25cfeb97487c2ecf0669ad83
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 797684aa70cb8205463cc41558afec82449c433d
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81506718"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350879"
 ---
 # <a name="strrep"></a>strrep()
 
-주어진 [문자열이](./scalar-data-types/string.md) 제공 된 시간을 반복합니다.
+지정 된 [문자열](./scalar-data-types/string.md) 을 지정 된 횟수 만큼 반복 합니다.
 
-* 첫 번째 또는 세 번째 인수가 문자열 형식이 아닌 경우 강제로 문자열로 변환됩니다.
+* First 또는 세 번째 인수가 문자열 형식이 아닌 경우에는 강제로 문자열로 변환 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`strrep(`*값,**승수,[구분**기호]*`)`
+`strrep(`*value*,*승수*, [*delimiter*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *값*: 입력 식
-* *승수*: 양수 정수 값(1에서 1024까지)
-* *구분 기호*: 선택적 문자열 식(기본값: 빈 문자열)
+* *승수*: 양의 정수 값 (1 ~ 1024)
+* *delimiter*: 선택적 문자열 식입니다 (기본값: 빈 문자열).
 
-**반환**
+## <a name="returns"></a>반환
 
-지정된 횟수동안 반복되는 값은 *구분 기호와*연결됩니다.
+지정 된 횟수 만큼 반복 되는 값으로, *구분 기호와*연결 됩니다.
 
-*승수가* 최대 허용 값(1024)보다 큰 경우 입력 문자열은 1024번 반복됩니다.
+*승수* 가 최대 허용 값 (1024)을 초과 하는 경우 입력 문자열이 1024 번 반복 됩니다.
  
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 print from_str = strrep('ABC', 2), from_int = strrep(123,3,'.'), from_time = strrep(3s,2,' ')

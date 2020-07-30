@@ -8,31 +8,31 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: 8e96b97754600d308526a4cb059907521fda0521
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: 314244c58eca6082b9042b263e6b3e6faeb69840
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83862931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351202"
 ---
 # <a name="set_has_element"></a>set_has_element()
 
 지정 된 집합에 지정 된 요소가 포함 되어 있는지 여부를 확인 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `set_has_element(`*배열*,*값*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *array*: 검색할 입력 배열입니다.
 * *값*: 검색할 값입니다. 값은,,,,,, 또는 형식 이어야 합니다 `long` `integer` `double` `datetime` `timespan` `decimal` `string` `guid` .
 
-**반환**
+## <a name="returns"></a>반환
 
 배열에 값이 있는지 여부에 따라 True 또는 false입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

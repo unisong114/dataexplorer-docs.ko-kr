@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f5c108b670534728f34db8975f16d713848dd8f4
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 6a991f9f64decbb3985830cf2611361d6c66db31
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350845"
 ---
 # <a name="todatetime"></a>todatetime()
 
@@ -23,15 +23,15 @@ ms.locfileid: "85264611"
 todatetime("2015-12-24") == datetime(2015-12-24)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `todatetime(`*Expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: [datetime](./scalar-data-types/datetime.md)으로 변환 되는 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 성공적으로 변환 되 면 결과는 [datetime](./scalar-data-types/datetime.md) 값이 됩니다.
 그 결과는 null이 됩니다.

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b61934ec2efbfb22c17fe93a4f3969a1592cefab
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: eddf893d3c0d8096f57a3f624ddedf753fe35f91
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780663"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346357"
 ---
 # <a name="parse_csv"></a>parse_csv()
 
@@ -23,23 +23,23 @@ ms.locfileid: "84780663"
 parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `parse_csv(`*원본*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *source*: 쉼표로 구분 된 값의 단일 레코드를 나타내는 소스 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 분할 값을 포함 하는 문자열 배열입니다.
 
-**참고 사항**
+**참고**
 
 큰따옴표 (' "')를 사용 하 여 포함 된 줄 바꿈, 쉼표 및 따옴표를 이스케이프할 수 있습니다. 이 함수는 행 마다 여러 레코드를 지원 하지 않습니다. 첫 번째 레코드만 가져옵니다.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

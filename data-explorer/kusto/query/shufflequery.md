@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bbae74ccdf0d9840a6ba4aa7427155f89c4af211
-ms.sourcegitcommit: 4f68d6dbfa6463dbb284de0aa17fc193d529ce3a
+ms.openlocfilehash: e011ffa61b70c79d51941518de0624030d847c4e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82742006"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351100"
 ---
 # <a name="shuffle-query"></a>쿼리 순서 섞기
 
@@ -21,13 +21,13 @@ ms.locfileid: "82742006"
 
 Kusto에서 순서 섞기를 지 원하는 연산자는 [조인](joinoperator.md), [요약](summarizeoperator.md)및 [시리즈 시리즈](make-seriesoperator.md)입니다.
 
-쿼리 매개 변수 `hint.strategy = shuffle` 또는 `hint.shufflekey = <key>`를 사용 하 여 순서 섞기 쿼리 전략을 설정 합니다.
+쿼리 매개 변수 또는를 사용 하 여 순서 섞기 쿼리 전략을 설정 `hint.strategy = shuffle` `hint.shufflekey = <key>` 합니다.
 
 테이블에 [데이터 분할 정책을](../management/partitioningpolicy.md) 정의 합니다. 
 
-클러스터 `shufflekey` 노드 간에 이동 하는 데 필요한 데이터 양이 줄어들기 때문에 더 나은 성능을 위해 테이블의 해시 파티션 키로 설정 합니다.
+`shufflekey`클러스터 노드 간에 이동 하는 데 필요한 데이터 양이 줄어들기 때문에 더 나은 성능을 위해 테이블의 해시 파티션 키로 설정 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 ```kusto
 T | where Event=="Start" | project ActivityId, Started=Timestamp
@@ -48,7 +48,7 @@ T
 ```
 
 이 전략은 모든 클러스터 노드의 부하를 공유 합니다. 여기서 각 노드는 데이터의 단일 파티션을 처리 합니다.
-키 (`join` 키, `summarize` 키 또는 `make-series` 키)가 높은 카디널리티와 일반적인 쿼리 전략이 쿼리 제한에 도달할 경우 순서 섞기 쿼리 전략을 사용 하는 것이 유용 합니다.
+키 ( `join` 키, `summarize` 키 또는 `make-series` 키)가 높은 카디널리티와 일반적인 쿼리 전략이 쿼리 제한에 도달할 경우 순서 섞기 쿼리 전략을 사용 하는 것이 유용 합니다.
 
 **힌트 간 차이입니다. 전략 = 순서 섞기와 shufflekey = key**
 
@@ -75,8 +75,8 @@ T | where Event=="Start" | project ActivityId, Started=Timestamp
 | summarize avg(Duration)
 ```
 
-복합 키가 너무 고유 하지만 각 키가 충분 하지 않은 경우이 `hint` 키를 사용 하 여 섞은 연산자의 모든 키로 데이터 순서를 섞기 합니다.
-섞은 연산자에 또는 `summarize` `join`와 같은 다른 순서 섞기 연산자가 있는 경우에는 쿼리가 좀 더 복잡 해지고 힌트를 적용 합니다. 전략 = 순서 섞기는 적용 되지 않습니다.
+복합 키가 너무 고유 하지만 각 키가 충분 하지 않은 경우이 키를 사용 `hint` 하 여 섞은 연산자의 모든 키로 데이터 순서를 섞기 합니다.
+섞은 연산자에 또는와 같은 다른 순서 섞기 연산자가 있는 경우에 `summarize` `join` 는 쿼리가 좀 더 복잡 해지고 힌트를 적용 합니다. 전략 = 순서 섞기는 적용 되지 않습니다.
 
 예:
 
@@ -95,11 +95,11 @@ on ActivityId, numeric_column
 | summarize avg(Duration)
 ```
 
-쿼리 계획 중에 `hint.strategy=shuffle` 전략을 무시 하는 대신를 적용 하 여 복합 키 [`ActivityId`, `numeric_column`]를 기준으로 데이터 순서를 변경한 경우 결과가 올바르지 않습니다.
-`summarize` 연산자가 `join` 연산자의 왼쪽에 있습니다. 이 연산자는 `join` 키의 하위 집합을 기준으로 그룹화 됩니다 .이 경우는 `ActivityId`입니다. 따라서는 `summarize` 키 `ActivityId`를 기준으로 그룹화 되는 반면 데이터는 복합 키 [`ActivityId`, `numeric_column`]로 분할 됩니다.
-복합 키 [`ActivityId`, `numeric_column`]로 순서 섞기 키 `ActivityId` 에 대 한 순서 섞기가 유효 하 고 결과가 올바르지 않을 수 있습니다.
+`hint.strategy=shuffle`쿼리 계획 중에 전략을 무시 하는 대신를 적용 하 여 복합 키 [,]를 기준으로 데이터 순서 `ActivityId` 를 변경한 경우 `numeric_column` 결과가 올바르지 않습니다.
+연산자 `summarize` 가 연산자의 왼쪽에 `join` 있습니다. 이 연산자는 키의 하위 집합을 기준으로 그룹화 됩니다 `join` .이 경우는 `ActivityId` 입니다. 따라서는 `summarize` 키를 기준으로 그룹화 되는 `ActivityId` 반면 데이터는 복합 키 [,]로 분할 `ActivityId` 됩니다 `numeric_column` .
+복합 키 [ `ActivityId` ,]로 순서 섞기 `numeric_column` 키에 대 한 순서 섞기가 `ActivityId` 유효 하 고 결과가 올바르지 않을 수 있습니다.
 
-이 예에서는 복합 키에 사용 되는 해시 함수를 `binary_xor(hash(key1, 100) , hash(key2, 100))`다음과 같이 가정 합니다.
+이 예에서는 복합 키에 사용 되는 해시 함수를 `binary_xor(hash(key1, 100) , hash(key2, 100))` 다음과 같이 가정 합니다.
 
 ```kusto
 
@@ -116,10 +116,10 @@ datatable(ActivityId:string, NumericColumn:long)
 |activity1|2|56|
 |activity1|1|65|
 
-두 레코드에 대 한 복합 키가 다른 파티션 (56 및 65)에 매핑 되었지만 이러한 두 레코드의 `ActivityId`값은 동일 합니다. 의 `summarize` 왼쪽에 있는 연산자는 동일한 파티션에 `join` 있는 열의 `ActivityId` 유사한 값을 예상 합니다. 이 쿼리는 잘못 된 결과를 생성 합니다.
+두 레코드에 대 한 복합 키가 다른 파티션 (56 및 65)에 매핑 되었지만 이러한 두 레코드의 값은 동일 `ActivityId` 합니다. `summarize`의 왼쪽에 있는 연산자는 `join` 동일한 파티션에 있는 열의 유사한 값을 예상 `ActivityId` 합니다. 이 쿼리는 잘못 된 결과를 생성 합니다.
 
-를 사용 `hint.shufflekey` 하 여에 `hint.shufflekey = ActivityId`대 한 조인에서 순서 섞기 키를 지정 하면이 문제를 해결할 수 있습니다. 이 키는 모든 무작위 재생 가능 연산자에 공통적입니다.
-이 경우와 `join` `summarize` 는 모두 동일한 키로 순서를 순서 섞기 때문에 안전 하지 않습니다. 따라서 유사한 모든 값이 동일한 파티션에 있고 결과가 올바릅니다.
+를 사용 하 여 `hint.shufflekey` 에 대 한 조인에서 순서 섞기 키를 지정 하면이 문제를 해결할 수 있습니다 `hint.shufflekey = ActivityId` . 이 키는 모든 무작위 재생 가능 연산자에 공통적입니다.
+이 경우와는 모두 `join` `summarize` 동일한 키로 순서를 순서 섞기 때문에 안전 하지 않습니다. 따라서 유사한 모든 값이 동일한 파티션에 있고 결과가 올바릅니다.
 
 ```kusto
 T
@@ -141,16 +141,16 @@ on ActivityId, numeric_column
 |activity1|2|56|
 |activity1|1|65|
 
-순서 섞기 쿼리에서 기본 파티션 번호는 클러스터 노드 번호입니다. 이 숫자는 파티션 수를 제어 하는 `hint.num_partitions = total_partitions`구문을 사용 하 여 재정의할 수 있습니다.
+순서 섞기 쿼리에서 기본 파티션 번호는 클러스터 노드 번호입니다. 이 숫자는 파티션 수를 제어 하는 구문을 사용 하 여 재정의할 수 있습니다 `hint.num_partitions = total_partitions` .
 
 이 힌트는 기본 파티션 번호가 작고 쿼리가 여전히 실패 하거나 실행 시간이 길어질 때 클러스터에 적은 수의 클러스터 노드가 있는 경우에 유용 합니다.
 
 > [!Note]
 > 많은 파티션이 있으면 클러스터 리소스를 더 많이 사용 하 고 성능이 저하 될 수 있습니다. 대신 힌트를 사용 하 여 파티션 번호를 신중 하 게 선택 합니다. 전략 = 순서 섞기 및 파티션을 점차적으로 늘립니다.
 
-**예**
+## <a name="examples"></a>예제
 
-다음 예에서는 순서 섞기 `summarize` 에서 성능을 크게 향상 시키는 방법을 보여 줍니다.
+다음 예에서는 순서 섞기에서 `summarize` 성능을 크게 향상 시키는 방법을 보여 줍니다.
 
 원본 테이블에는 150M 레코드가 있고 group by key의 카디널리티는 10 개의 클러스터 노드에 분산 된 10M입니다.
 
@@ -167,7 +167,7 @@ orders
 |---|
 |1086|
 
-순서 섞기 `summarize` 전략을 사용 하는 동안 쿼리는 ~ 7 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 0.43입니다.
+순서 섞기 전략을 사용 하는 동안 `summarize` 쿼리는 ~ 7 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 0.43입니다.
 
 ```kusto
 orders
@@ -182,7 +182,7 @@ orders
 
 다음 예에서는 두 개의 클러스터 노드가 있고, 테이블에 60M 레코드가 있고, group by key의 카디널리티가 2M 인 클러스터의 향상 된 기능을 보여 줍니다.
 
-를 사용 하지 않고 `hint.num_partitions` 쿼리를 실행 하면 두 개의 파티션 (클러스터 노드 번호)만 사용 하 고 다음 쿼리는 ~ 1:10 분이 소요 됩니다.
+를 사용 하지 않고 쿼리를 실행 `hint.num_partitions` 하면 두 개의 파티션 (클러스터 노드 번호)만 사용 하 고 다음 쿼리는 ~ 1:10 분이 소요 됩니다.
 
 ```kusto
 lineitem    
@@ -198,12 +198,12 @@ lineitem
 | consume
 ```
 
-다음 예에서는 순서 섞기 `join` 에서 성능을 크게 향상 시키는 방법을 보여 줍니다.
+다음 예에서는 순서 섞기에서 `join` 성능을 크게 향상 시키는 방법을 보여 줍니다.
 
 이 예제는 데이터가 이러한 모든 노드에 걸쳐 분산 된 10 개의 노드가 있는 클러스터에서 샘플링 되었습니다.
 
-왼쪽 테이블에는 `join` 키의 카디널리티가 ~ 14M 인 15M 레코드가 있습니다. 의 `join` 오른쪽은 150m 레코드를 사용 하 고 `join` 키의 카디널리티는 10M입니다.
-의 일반 전략 `join`을 실행 하면 쿼리는 28 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 1.43입니다.
+왼쪽 테이블에는 키의 카디널리티가 `join` ~ 14M 인 15M 레코드가 있습니다. 의 오른쪽은 `join` 150M 레코드를 사용 하 고 키의 카디널리티는 `join` 10M입니다.
+의 일반 전략을 실행 하면 `join` 쿼리는 28 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 1.43입니다.
 
 ```kusto
 customer
@@ -213,7 +213,7 @@ on $left.c_custkey == $right.o_custkey
 | summarize sum(c_acctbal) by c_nationkey
 ```
 
-순서 섞기 `join` 전략을 사용 하는 동안 쿼리는 ~ 4 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 0.3입니다.
+순서 섞기 전략을 사용 하는 동안 `join` 쿼리는 ~ 4 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 0.3입니다.
 
 ```kusto
 customer
@@ -223,14 +223,14 @@ on $left.c_custkey == $right.o_custkey
 | summarize sum(c_acctbal) by c_nationkey
 ```
 
-의 좌 변에 150M `join` 이 고 키의 카디널리티가 148M 인 큰 데이터 집합에 대해 동일한 쿼리를 시도 합니다. 의 오른쪽은 1.5 B `join` 이 고 키의 카디널리티는 ~ 100M입니다.
+의 좌 변에 `join` 150M이 고 키의 카디널리티가 148M 인 큰 데이터 집합에 대해 동일한 쿼리를 시도 합니다. 의 오른쪽은 `join` 1.5 b이 고 키의 카디널리티는 ~ 100M입니다.
 
-기본 `join` 전략을 사용 하는 쿼리는 4 분 후에 Kusto 제한 및 시간 제한에 도달 합니다.
-순서 섞기 `join` 전략을 사용 하는 동안 쿼리는 ~ 34 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 1.23 GB입니다.
+기본 전략을 사용 하는 쿼리는 `join` 4 분 후에 Kusto 제한 및 시간 제한에 도달 합니다.
+순서 섞기 전략을 사용 하는 동안 `join` 쿼리는 ~ 34 초 후에 종료 되 고 메모리 사용량의 최대 사용량은 1.23 GB입니다.
 
 
-다음 예에서는 두 개의 클러스터 노드가 있고, 테이블에 60M 레코드가 있고, `join` 키의 카디널리티가 2M 클러스터에 대 한 향상 된 기능을 보여 줍니다.
-를 사용 하지 않고 `hint.num_partitions` 쿼리를 실행 하면 두 개의 파티션 (클러스터 노드 번호)만 사용 하 고 다음 쿼리는 ~ 1:10 분이 소요 됩니다.
+다음 예에서는 두 개의 클러스터 노드가 있고, 테이블에 60M 레코드가 있고, 키의 카디널리티가 2M 클러스터에 대 한 향상 된 기능을 보여 줍니다 `join` .
+를 사용 하지 않고 쿼리를 실행 `hint.num_partitions` 하면 두 개의 파티션 (클러스터 노드 번호)만 사용 하 고 다음 쿼리는 ~ 1:10 분이 소요 됩니다.
 
 ```kusto
 lineitem

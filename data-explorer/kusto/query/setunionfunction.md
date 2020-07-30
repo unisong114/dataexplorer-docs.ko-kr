@@ -19,7 +19,7 @@ ms.locfileid: "87351134"
 
 `dynamic`배열 (arr1 ∪ arr2 ∪ ...)에 있는 모든 고유 값 집합의 배열을 반환 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `set_union(`*arr1* `, ` *arr2* `[` ,` *arr3*, ...]``)`
 

@@ -23,7 +23,7 @@ ms.locfileid: "87350760"
 toreal("123.4") == 123.4
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `toreal(`*Expr* `)` 
  Expr `todouble(` *Expr*`)`

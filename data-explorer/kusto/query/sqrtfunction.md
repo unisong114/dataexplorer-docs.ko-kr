@@ -19,7 +19,7 @@ ms.locfileid: "87350964"
 
 제곱근 함수를 반환 합니다.  
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `sqrt(`*.x*`)`
 

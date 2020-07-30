@@ -1,18 +1,18 @@
 ---
 title: Azure Databricks에서 Azure 데이터 탐색기에 연결
 description: 이 항목에서는 Azure Databricks를 사용 하 여 Azure 데이터 탐색기에서 데이터에 액세스 하는 방법을 보여 줍니다.
-author: manojraheja
-ms.author: maraheja
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 11db44424b86e4ca946ea104301bcd074797ca40
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: 74f80ef6dd05380e73215d1edb27f5117060bc58
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83863203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87350352"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks"></a>Azure Databricks에서 Azure 데이터 탐색기에 연결
 

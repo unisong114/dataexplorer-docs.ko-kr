@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
-ms.openlocfilehash: 3fe88a5d53faaca4512d614d3e62204ac26e6fc5
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 69e09ec9528e99e250986657bf5d7cc0756b14f8
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83372441"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87351253"
 ---
 # <a name="series_stats"></a>series_stats()
 
@@ -31,18 +31,18 @@ ms.locfileid: "83372441"
 > [!NOTE] 
 > 이 함수는 여러 열을 반환 하므로 다른 함수의 인수로 사용할 수 없습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 project `series_stats(` *x* `[,` *ignore_nonfinite* `])` 또는 extend `series_stats(` *x* `)` 는 앞에서 언급 한 모든 열을 series_stats_x_min, series_stats_x_min_idx 등의 이름으로 반환 합니다.
  
 project (m, mi) = `series_stats(` *x* `)` 또는 extend (m, mi) = `series_stats(` *x* `)` 는 m (min) 및 mi (min_idx) 열을 반환 합니다.
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *x*: 숫자 값 배열인 동적 배열 셀입니다. 
 * *ignore_nonfinite*: `false` 한정 되지 않은 값 (*null*, *NaN*, *inf*등)을 무시 하 고 통계를 계산할지 여부를 지정 하는 부울 (선택 사항, 기본값:) 플래그입니다. 로 설정 하면 `false` `null` 한정 되지 않은 값이 배열에 있는 경우 반환 되는 값은입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
