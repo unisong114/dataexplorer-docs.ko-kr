@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 0d5f44d621612e90d83a93f2f5831630520d4ba0
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: ba61537de8925b3eeaaffc8b5337e2ecfa343d88
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83371743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87342396"
 ---
 # <a name="table-scope-function"></a>table () (범위 함수)
 
@@ -25,11 +25,11 @@ Table () 함수는 이름을 형식의 식으로 제공 하 여 테이블을 참
 table('StormEvent')
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `table``(` *TableName* [ `,` *DataScope*가는`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 ::: zone pivot="azuredataexplorer"
 
@@ -55,7 +55,7 @@ table('StormEvent')
 
 ::: zone-end
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="use-table-to-access-table-of-the-current-database"></a>Table ()을 사용 하 여 현재 데이터베이스의 테이블에 액세스
 

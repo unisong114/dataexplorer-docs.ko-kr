@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 146ab59c1c0cbcb86bfae94fa26c09f5afa0f216
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: f745d9cb180842e86c184a24ed24c4e2f024f129
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737592"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348125"
 ---
 # <a name="extent_tags"></a>extent_tags()
 
@@ -25,17 +25,17 @@ ms.locfileid: "82737592"
 
 데이터 분할 된 데이터에 연결 되지 않은 계산 된 데이터에이 함수를 적용 하면 빈 값이 반환 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `extent_tags()`
 
-**반환**
+## <a name="returns"></a>반환
 
-현재 레코드의 범위 `dynamic` 태그를 포함 하는 배열 또는 빈 값 형식의 값입니다.
+`dynamic`현재 레코드의 범위 태그를 포함 하는 배열 또는 빈 값 형식의 값입니다.
 
-**예**
+## <a name="examples"></a>예제
 
-다음 예에서는 1 시간 전에 레코드를 포함 하는 모든 데이터 분할의 태그를 열 `ActivityId`에 대 한 특정 값으로 나열 하는 방법을 보여 줍니다. 일부 쿼리 연산자 (여기서는 `where` 연산자 이지만 및 `extend` `project`의 경우에도 해당 됨)는 레코드를 호스트 하는 데이터 분할 된 데이터에 대 한 정보를 유지 하는 것을 보여 줍니다.
+다음 예에서는 1 시간 전에 레코드를 포함 하는 모든 데이터 분할의 태그를 열에 대 한 특정 값으로 나열 하는 방법을 보여 줍니다 `ActivityId` . 일부 쿼리 연산자 (여기서는 `where` 연산자 이지만 및의 경우에도 해당 됨 `extend` )는 레코드를 호스트 하는 데이터 분할 된 `project` 데이터에 대 한 정보를 유지 하는 것을 보여 줍니다.
 
 ```kusto
 T
@@ -45,7 +45,7 @@ T
 | summarize by tostring(tags)
 ```
 
-다음 예제에서는 마지막 시간부터 모든 레코드의 수를 가져오는 방법을 보여 줍니다 .이는 태그 `MyTag` (및 잠재적으로 다른 태그)로 태그가 지정 되었지만 태그로 `drop-by:MyOtherTag`태그가 지정 되지 않은 익스텐트에 저장 됩니다.
+다음 예제에서는 마지막 시간부터 모든 레코드의 수를 가져오는 방법을 보여 줍니다 .이는 태그 `MyTag` (및 잠재적으로 다른 태그)로 태그가 지정 되었지만 태그로 태그가 지정 되지 않은 익스텐트에 저장 됩니다 `drop-by:MyOtherTag` .
 
 ```kusto
 T

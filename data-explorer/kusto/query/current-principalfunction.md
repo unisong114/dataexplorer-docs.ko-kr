@@ -23,7 +23,7 @@ ms.locfileid: "87348652"
 
 쿼리를 실행 하는 현재 사용자 이름을 반환 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `current_principal()`
 

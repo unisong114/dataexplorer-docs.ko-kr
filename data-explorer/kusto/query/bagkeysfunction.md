@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 45c4fec6e74bb8b25bfd83141fc2ee4110efa5e0
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 4ce05f536b8903810739c6aa7780f9eaf72c4f87
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85265047"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349332"
 ---
 # <a name="bag_keys"></a>bag_keys()
 
@@ -21,11 +21,11 @@ ms.locfileid: "85265047"
 
 `bag_keys(`*동적 개체*`)`
 
-**반환**
+## <a name="returns"></a>반환
 
 키의 배열, 순서는 결정 되지 않습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```

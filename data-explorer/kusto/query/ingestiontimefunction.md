@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: fea923b0d917beb505bd6a1cb9ee1339739d08c6
-ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
+ms.openlocfilehash: f40a592521082667815fe3ff38843a2376bda0aa
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86291562"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347411"
 ---
 # <a name="ingestion_time"></a>ingestion_time()
 
@@ -36,15 +36,15 @@ ms.locfileid: "86291562"
 > [!NOTE]
 > 수집 프로세스를 완료 하는 데 몇 분 정도 걸릴 수 있으며 여러 수집 작업이 동시에 수행 될 수 있으므로이 함수에서 반환 되는 값은 근사값입니다. 정확히 한 번만 보장 되는 테이블의 모든 레코드를 처리 하려면 [데이터베이스 커서](../management/databasecursor.md)를 사용 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `ingestion_time()`
 
-**반환**
+## <a name="returns"></a>반환
 
 `datetime`테이블에 수집 하는 대략적인 시간을 지정 하는 값입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 T

@@ -1,6 +1,6 @@
 ---
-title: 미리 보기 플러그인 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 미리 보기 플러그인에 대해 설명합니다.
+title: preview 플러그 인-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 미리 보기 플러그 인을 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,36 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 18bda0a4348d0c0eb2776bf124c57397f318a989
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 3d54852577281b66ed7754e419acbabbba989e7c
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81510985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346085"
 ---
-# <a name="preview-plugin"></a>미리 보기 플러그인
+# <a name="preview-plugin"></a>preview 플러그 인
 
-입력 레코드 집합에서 지정된 수의 행과 입력 레코드 집합의 총 레코드 수까지 테이블을 반환합니다.
+입력 레코드 집합에서 지정 된 수의 행을 포함 하는 테이블 및 입력 레코드 집합의 총 레코드 수를 반환 합니다.
 
 ```kusto
 T | evaluate preview(50)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`T``|` `evaluate` *NumberOfRows* 번호Ofrows `preview(``)`
+`T` `|` `evaluate` `preview(` *NumberOfRows* `)`
 
-**반환**
+## <a name="returns"></a>반환
 
-플러그인은 `preview` 두 개의 결과 테이블을 반환합니다.
-* 지정된 수의 행을 가진 테이블입니다.
-  예를 들어 위의 샘플 쿼리는 `T | take 50`실행과 같습니다.
-* 입력 레코드 집합의 레코드 수를 보유하는 단일 행/열이 있는 테이블입니다.
-  예를 들어 위의 샘플 쿼리는 `T | count`실행과 같습니다.
+`preview`플러그 인은 다음과 같은 두 개의 결과 테이블을 반환 합니다.
+* 지정 된 수의 행을 포함 하는 테이블입니다.
+  예를 들어 위의 예제 쿼리는를 실행 하는 것과 같습니다 `T | take 50` .
+* 입력 레코드 집합의 레코드 수를 포함 하는 단일 행/열이 있는 테이블입니다.
+  예를 들어 위의 예제 쿼리는를 실행 하는 것과 같습니다 `T | count` .
 
 **팁**
 
-복잡한 `evaluate` 필터가 포함된 테이블 형식 의 원본이나 대부분의 소스 테이블 열을 참조하는 필터가 앞에 [`materialize`](materializefunction.md) 오는 경우 이 함수를 사용하는 것이 좋습니다. 다음은 그 예입니다.
+`evaluate`이 앞에 복잡 한 필터를 포함 하는 테이블 형식 원본이 나 대부분의 원본 테이블 열을 참조 하는 필터가 있는 경우 함수를 사용 하는 것이 좋습니다 [`materialize`](materializefunction.md) . 예를 들어:
 
 ```kusto
 let MaterializedT = materialize(T);

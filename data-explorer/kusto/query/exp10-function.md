@@ -19,7 +19,7 @@ ms.locfileid: "87348193"
 
 X의 밑이 10 인 지 수 함수 이며, 10은 거듭제곱 x: 10 ^ x에 발생 합니다.  
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `exp10(`*.x*`)`
 

@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
-ms.openlocfilehash: 7d63ce48ba54377fa79ccd13484b2b9b08794bc6
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: 92c2c512fc81176cfa849ecdd66c0cdcfad9d8d3
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512370"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347326"
 ---
 # <a name="ipv6_compare"></a>ipv6_compare()
 
@@ -27,11 +27,11 @@ ipv6_compare('fe80::85d:e82c:9446:7994/127', 'fe80::85d:e82c:9446:7995/127') == 
 ipv6_compare('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == 0
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `ipv6_compare(`*Expr1* `, ` *Expr2* `[ ,` *PrefixMask*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr1*, *Expr2*: IPv6 또는 IPv4 주소를 나타내는 문자열 식입니다. IP 접두사 표기법을 사용 하 여 IPv6 및 IPv4 문자열을 마스킹할 수 있습니다 (참고 참조).
 * *PrefixMask*: 0에서 128 사이의 정수로, 고려 되는 가장 중요 한 비트 수를 나타냅니다.
@@ -42,9 +42,10 @@ ipv6_compare('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == 0
 >일반적으로 `IP-prefix notation` 슬래시 () 문자를 사용 하 여 IP 주소를 정의 하는 것이 좋습니다 `/` .
 >슬래시 ()의 왼쪽에 있는 IP 주소는 `/` 기본 ip 주소이 고, 슬래시 ()의 오른쪽에 있는 숫자 (1 ~ 127)는 `/` 네트워크 마스크에서 연속 된 1 비트의 수입니다. 
 >
-> **예**: fe80:: 85d: e82c: 9446:7994/120에는 120 연속 비트를 포함 하는 연결 된 net/subnetmask가 있습니다.
+> ## <a name="example"></a>예제:
+> fe80:: 85d: e82c: 9446:7994/120에는 120 연속 비트를 포함 하는 연결 된 net/subnetmask가 있습니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 * `0`: 첫 번째 IPv6 문자열 인수의 긴 표현이 두 번째 IPv6 문자열 인수와 동일한 경우
 * `1`: 첫 번째 IPv6 문자열 인수의 긴 표현이 두 번째 IPv6 문자열 인수 보다 큰 경우

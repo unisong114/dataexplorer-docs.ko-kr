@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 1f5584233a24c834e0ca6c28ed60aa5d7496b411
-ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
+ms.openlocfilehash: 22f1b36b851c6e629abd2524feb4c40c74bbb1fa
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86291528"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348142"
 ---
 # <a name="extent_id"></a>extent_id()
 
@@ -25,15 +25,15 @@ ms.locfileid: "86291528"
 
 데이터 분할 된 데이터에 연결 되지 않은 계산 된 데이터에이 함수를 적용 하면 빈 guid (모두 0)가 반환 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `extent_id()`
 
-**반환**
+## <a name="returns"></a>반환
 
 `guid`현재 레코드의 데이터 분할 된 영역 또는 빈 guid (모두 0)를 식별 하는 형식의 값입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 다음 예에서는 열에 대 한 특정 값을 사용 하 여 1 시간 전에 레코드를 포함 하는 모든 데이터 분할 목록을 가져오는 방법을 보여 줍니다 `ActivityId` . 일부 쿼리 연산자 (여기서 `where` 연산자 및 `extend` 및 `project` )는 레코드를 호스트 하는 데이터 분할 된 데이터에 대 한 정보를 유지 함을 보여 줍니다.
 

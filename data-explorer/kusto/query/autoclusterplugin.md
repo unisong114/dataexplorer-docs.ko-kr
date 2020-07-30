@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bfa5286a03d06282682953a23c6b2a2705c58a9c
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: 86e3ce4f1cbb957ebd126a8493ebb6b7bc5ac66b
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717073"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349417"
 ---
 # <a name="autocluster-plugin"></a>autocluster 플러그 인
 
@@ -23,11 +23,11 @@ T | evaluate autocluster()
 
 `autocluster`데이터에서 불연속 특성 (차원)의 일반적인 패턴을 찾습니다. 그런 다음 원래 쿼리 결과를 100 또는 100,000 개 행이 든 적은 수의 패턴으로 줄입니다. 플러그 인은 오류 (예: 예외 또는 충돌)를 분석 하는 데 도움이 되도록 개발 되었지만 모든 필터링 된 데이터 집합에서 작동할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`T | evaluate autocluster(` *인수* `)`
+`T | evaluate autocluster(`*인수*`)`
 
-**반환**
+## <a name="returns"></a>반환
 
 `autocluster`플러그 인은 일반적으로 작은 패턴 집합을 반환 합니다. 패턴은 여러 불연속 특성에서 공유 공통 값을 사용 하 여 데이터의 일부를 캡처합니다. 결과의 각 패턴은 행으로 표시 됩니다.
 
@@ -46,14 +46,14 @@ T | evaluate autocluster()
 
 모든 인수는 선택 사항이지만, 위와 같은 순서여야 합니다. 기본값을 사용 해야 함을 나타내려면 물결표 값 ' ~ ' 문자열을 입력 합니다 (테이블의 "예제" 열 참조).
 
-|인수        | 유형, 범위, 기본값              |Description                | 예제                                        |
+|인수        | 유형, 범위, 기본값              |설명                | 예제                                        |
 |----------------|-----------------------------------|---------------------------|------------------------------------------------|
 | 적용     | 0 < *double* < 1 [기본값: 0.5]   | 에서는 제네릭 (높은 범위) 및 정보 (많은 공유) 값 간의 균형을 제어할 수 있습니다. 값을 늘리면 일반적으로 패턴 수가 줄어들고 각 패턴은 더 큰 비율의 적용을 포함 하는 경향이 있습니다. 값을 줄이면 일반적으로 더 많은 공유 값이 포함 된 더 구체적인 패턴과 더 작은 비율을 생성 합니다. -후드 수식은 정규화 된 일반 점수와 가중치를 사용 하는 정보 점수 사이의 가중치가 적용 된 기 하 도형입니다. `SizeWeight``1-SizeWeight`                   | `T | evaluate autocluster(0.8)`                |
 |WeightColumn    | *column_name*                     | 지정된 가중치(기본적으로 각 행의 가중치는 '1'임)에 따라 입력의 각 행을 고려합니다. 인수는 숫자 열의 이름 이어야 합니다 (예: int, long, real). 이미 각 행에 포함되어 있는 데이터의 계정 샘플링 또는 버킷팅/집계가 가중치 열의 일반적인 용도로 간주됩니다.                                                                                                       | `T | evaluate autocluster('~', sample_Count)` | 
 | NumSeeds        | *int* [기본값: 25]              | 시드 수는 알고리즘의 초기 로컬 검색 지점의 수를 결정합니다. 경우에 따라 데이터의 구조에 따라 초기값 수를 늘리면 확장 된 검색 공간을 통해 결과의 수 나 품질이 증가 하 여 쿼리 균형을 저하 시킬 수 있습니다. 이 값의 결과는 양쪽 방향으로 축소 되므로 5 미만으로 줄이면 성능이 크게 향상 됩니다. 50 이상으로 늘리면 추가 패턴이 거의 생성 되지 않습니다.                                         | `T | evaluate autocluster('~', '~', 15)`       |
 | CustomWildcard 카드  | *"any_value_per_type"*           | 결과 테이블의 특정 형식에 대 한 와일드 카드 값을 설정 합니다. 현재 패턴에이 열에 대 한 제한이 없음을 표시 합니다. 기본값은 null입니다. 문자열 기본값은 빈 문자열 이기 때문입니다. 기본값이 데이터에서 양호한 값 이면 다른 와일드 카드 값 (예:)을 사용 해야 합니다 `*` .                                                                                                                | `T | evaluate autocluster('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))` |
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="example"></a>예제
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9dc64e6d91d6832dd57345bf58200848ad5a5db4
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 5c736492745d47428b5919d9791aa6115aaf8566
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373108"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345898"
 ---
 # <a name="range-operator"></a>range 연산자
 
@@ -21,11 +21,11 @@ ms.locfileid: "83373108"
 
 참고로 파이프라인 입력이 없습니다. 
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `range`*columnName* `from` *시작* `to` *중지* `step` *단계*
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *columnName*: 출력 테이블의 단일 열 이름입니다.
 * *start*: 출력에서 가장 작은 값입니다.
@@ -34,11 +34,11 @@ ms.locfileid: "83373108"
 
 인수는 숫자, 날짜 또는 시간 간격 값이어야 합니다. 아무 테이블의 열이나 참조할 수는 없습니다. 입력 테이블을 기반으로 범위를 계산 하려면 범위 함수를 사용 합니다 .이 함수는 mv 확장 연산자와 함께 사용 됩니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 값이 *start*, *start* *columnName* `+` *step*, ... 인 columnName 이라는 단일 열이 있는 테이블입니다. *중지할*때까지
 
-**예제**  
+## <a name="example"></a>예제  
 
 지난 7일 자정에 대한 테이블입니다. bin(floor) 함수는 각 시간을 날짜의 시작으로 줄입니다.
 

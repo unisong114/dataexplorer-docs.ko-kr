@@ -8,33 +8,33 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
-ms.openlocfilehash: ffef2fd609075b0d5e5af5c4064e079c27cd8c94
-ms.sourcegitcommit: 3848b8db4c3a16bda91c4a5b7b8b2e1088458a3a
+ms.openlocfilehash: 17d88c8be518b6d31b67a327a7a5d42818132cb9
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84818496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349298"
 ---
 # <a name="base64_decode_tostring"></a>base64_decode_tostring()
 
 Base64 문자열을 UTF-8 문자열로 디코딩합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `base64_decode_tostring(`*문자열*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *문자열*: BASE64에서 UTF8-8 문자열로 디코딩할 입력 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 Base64 문자열에서 디코딩된 UTF-8 문자열을 반환 합니다.
 
 * Base64 문자열을 long 값 배열로 디코딩하려면 [base64_decode_toarray ()](base64_decode_toarrayfunction.md) 를 참조 하세요.
 * 문자열을 base64 문자열로 디코딩하려면 [base64_encode_tostring ()](base64_encode_tostringfunction.md) 를 참조 하세요.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -52,6 +52,6 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 print Empty=base64_decode_tostring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```
 
-|Empty|
+|비어 있음|
 |-----|
 ||

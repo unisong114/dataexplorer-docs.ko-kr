@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 67887aac4ab04e016ed63045e66ebcfab343c135
-ms.sourcegitcommit: 8953d09101f4358355df60ab09e55e71bc255ead
+ms.openlocfilehash: 247a653ead575b0fa04295d23b6b6071bd49edeb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84420869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347360"
 ---
 # <a name="ipv4_compare"></a>ipv4_compare()
 
@@ -26,11 +26,11 @@ ipv4_compare('192.168.1.1/24', '192.168.1.255/24') == 0
 ipv4_compare('192.168.1.1', '192.168.1.255', 24) == 0
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `ipv4_compare(`*Expr1* `, ` *Expr2* `[ ,` *PrefixMask*`])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr1*, *Expr2*: IPv4 주소를 나타내는 문자열 식입니다. [IP 접두사 표기법](#ip-prefix-notation)을 사용 하 여 IPv4 문자열을 마스킹할 수 있습니다.
 * *PrefixMask*: 고려 되는 가장 중요 한 비트 수를 나타내는 0에서 32 사이의 정수입니다.
@@ -42,7 +42,7 @@ IP 주소 `IP-prefix notation` 는 슬래시 () 문자를 사용 하 여 정의�
 
 **예:** 192.168.2.0/24에는 24 개의 연속 비트를 포함 하는 네트워크/subnetmask와 점으로 구분 된 10 진수 형식의 255.255.255.0이 포함 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 * `0`: 첫 번째 IPv4 문자열 인수의 긴 표현이 두 번째 IPv4 문자열 인수와 동일한 경우
 * `1`: 첫 번째 IPv4 문자열 인수의 긴 표현이 두 번째 IPv4 문자열 인수 보다 큰 경우

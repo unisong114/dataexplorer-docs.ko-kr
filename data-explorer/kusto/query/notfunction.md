@@ -1,6 +1,6 @@
 ---
-title: not() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 not()를 설명합니다.
+title: not ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,29 +8,29 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 539e409a9e922afc390b097c863146b7fc30d7b3
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: fed2a55c8fa1c7689c087ccdeaa64ff576bea401
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81512039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346595"
 ---
 # <a name="not"></a>not()
 
-`bool` 인수의 값을 반대로 합니다.
+인수 값을 반대로 바꿉니다 `bool` .
 
 ```kusto
 not(false) == true
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`not(`*Expr*`)`
+`not(`*expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *expr*: `bool` 반전할 식입니다.
+* *expr*: `bool` 반대로 바꿀 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-해당 인수의 역반전된 논리 값을 반환합니다. `bool`
+인수의 역 논리적 값을 반환 합니다 `bool` .

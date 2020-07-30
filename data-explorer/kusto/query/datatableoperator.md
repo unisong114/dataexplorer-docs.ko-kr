@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 2a5881eacd0702720b7ea4b9a3237731a56a5180
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: cc62fcd04ad6a528836cc60a5c336ed4e8d1aecf
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85265048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348567"
 ---
 # <a name="datatable-operator"></a>datatable 연산자
 
@@ -24,11 +24,11 @@ ms.locfileid: "85265048"
 > [!NOTE]
 > 이 연산자에는 파이프라인 입력이 없습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `datatable``(` *ColumnName* `:` *ColumnType* [ `,` ...] `)` `[` *ScalarValue* [ `,` *ScalarValue* ...]`]`
 
-**인수**
+## <a name="arguments"></a>인수
 
 ::: zone pivot="azuredataexplorer"
 
@@ -45,11 +45,11 @@ ms.locfileid: "85265048"
 
 ::: zone-end
 
-**반환**
+## <a name="returns"></a>반환
 
 이 연산자는 지정 된 스키마 및 데이터의 데이터 테이블을 반환 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 datatable (Date:datetime, Event:string)

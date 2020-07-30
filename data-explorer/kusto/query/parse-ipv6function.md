@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
-ms.openlocfilehash: 6de336566f58f5cb0435ca22250cd7a07e8601cd
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: 25ed06f738e6b2e090ff92be9df026a85a27a89f
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512591"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346425"
 ---
 # <a name="parse_ipv6"></a>parse_ipv6()
 
@@ -24,11 +24,11 @@ parse_ipv6("127.0.0.1") == '0000:0000:0000:0000:0000:ffff:7f00:0001'
 parse_ipv6(":fe80::85d:e82c:9446:7994") == 'fe80:0000:0000:0000:085d:e82c:9446:7994'
 ```
 
-**구문**
+## <a name="syntax"></a>구문
 
 `parse_ipv6(`*`Expr`*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *`Expr`*: 정식 IPv6 표현으로 변환 될 IPv6/IPv4 네트워크 주소를 나타내는 문자열 식입니다. 문자열에는 [IP 접두사 표기법](#ip-prefix-notation)을 사용한 네트 마스크가 포함 될 수 있습니다.
 
@@ -37,12 +37,12 @@ parse_ipv6(":fe80::85d:e82c:9446:7994") == 'fe80:0000:0000:0000:085d:e82c:9446:7
 IP 주소 `IP-prefix notation` 는 슬래시 () 문자를 사용 하 여 정의할 수 있습니다 `/` .
 슬래시 ()의 왼쪽에 있는 IP 주소는 `/` 기본 ip 주소입니다. 슬래시 ()의 오른쪽에 있는 숫자 (1 ~ 127)는 `/` 네트워크 마스크에서 연속 된 1 비트의 수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 성공적으로 변환 되 면 정식 IPv6 네트워크 주소를 나타내는 문자열이 반환 됩니다.
 변환이 성공 하지 못하면 결과는가 됩니다 `null` .
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

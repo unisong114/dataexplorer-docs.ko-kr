@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/20/2020
-ms.openlocfilehash: a06bd3719fba4f9f61cf7b1c9501f96b17a48d58
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: a200d0619b25fe7410a82a941a3b1bf6e35d60ac
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717226"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87342617"
 ---
 # <a name="summarize-operator"></a>summarize 연산자
 
@@ -31,11 +31,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 [0,10.0], [10.0,20.0] 등의 각 간격에 가격을 가진 항목 수를 표시하는 테이블입니다. 이 예제는 개수에 대한 열 및 가격 범위에 대한 열을 가지고 있습니다. 모든 다른 입력된 열은 무시됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| summarize` [[*column* `=` ] *Aggregation* [ `,` ...]] [ `by` [*column* `=` ] *groupexpression* [ `,` ...]]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Column:* 결과 열에 대한 선택적 이름입니다. 기본적으로 식에서 파생된 이름입니다.
 * *집계:* 열 이름을 인수로 사용 하는 또는와 같은 [집계 함수](summarizeoperator.md#list-of-aggregation-functions) 에 대 한 호출 `count()` `avg()` 입니다. [집계 함수의 목록](summarizeoperator.md#list-of-aggregation-functions)을 참조하세요.
@@ -47,7 +47,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 > * *Groupexpression* 을 지정 하지 않으면 출력은 단일 (비어 있는) 행이 됩니다.
 > * *Groupexpression* 을 제공 하면 출력에 행이 없습니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 입력 행은 `by` 식의 같은 값을 가진 그룹으로 배열됩니다. 그런 다음 지정된 집계 함수를 각 그룹에 대해 계산하여 각 그룹에 대해 한 행을 생성합니다. 결과는 `by` 열 및 계산된 각 집계에 대해 열을 하나 이상 포함하고 있습니다. (일부 집계 함수는 여러 열을 반환합니다.)
 
@@ -57,17 +57,17 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 > [!NOTE]
 > * 집계와 그룹화 식에 대해 모두 임의 식을 제공할 수 있지만 단순 열 이름을 사용하거나 `bin()`을(를) 숫자 열에 적용하는 것이 더 효율적입니다.
-> * Datetime 열에 대 한 자동 매시간 저장소는 더 이상 지원 되지 않습니다. 대신 명시적 범주화를 사용 해야 합니다. 예들 들어 `summarize by bin(timestamp, 1h)`입니다.
+> * Datetime 열에 대 한 자동 매시간 저장소는 더 이상 지원 되지 않습니다. 대신 명시적 범주화를 사용 해야 합니다. 예: `summarize by bin(timestamp, 1h)`.
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|함수|Description|
+|함수|설명|
 |--------|-----------|
 |[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[anyif()](anyif-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값 (조건자 포함)을 반환 합니다.|
 |[arg_max()](arg-max-aggfunction.md)|인수가 최대화 된 경우 하나 이상의 식을 반환 합니다.|
 |[arg_min()](arg-min-aggfunction.md)|인수가 최소화 될 때 하나 이상의 식을 반환 합니다.|
-|[avg()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
+|[avg ()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
 |[avgif()](avgif-aggfunction.md)|그룹 전체에서 평균 값 (조건자 포함)을 반환 합니다.|
 |[binary_all_and](binary-all-and-aggfunction.md)|그룹의 이진을 사용 하 여 집계 된 값을 반환 합니다. `AND`|
 |[binary_all_or](binary-all-or-aggfunction.md)|그룹의 이진을 사용 하 여 집계 된 값을 반환 합니다. `OR`|
@@ -88,11 +88,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 |[maxif()](maxif-aggfunction.md)|그룹 전체에서 최대 값을 반환 합니다 (조건자 포함).|
 |[min()](min-aggfunction.md)|그룹의 최솟값을 반환합니다.|
 |[minif()](minif-aggfunction.md)|그룹 전체에서 최 솟 값을 반환 합니다 (조건자 포함).|
-|[percentiles()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
+|[백분위 수 ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentiles_array ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentilesw()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
 |[percentilesw_array ()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
-|[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
+|[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
 |[stdevif()](stdevif-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다 (조건자 포함).|
 |[sum ()](sum-aggfunction.md)|그룹 트 내의 요소의 합을 반환 합니다.|
 |[sumif()](sumif-aggfunction.md)|Group 트 내의 요소 (조건자 포함)의 합을 반환 합니다.|
@@ -111,11 +111,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 
  Null 값을 포함 하는 엔터티에 대해 이러한 집계를 사용 하는 경우 null 값은 무시 되며 계산에 참여 하지 않습니다 (아래 예제 참조).
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 :::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="과일 및 공급 업체 별로 가격 요약":::
 
-**예제**
+## <a name="example"></a>예제
 
 테이블에 있는 및의 고유한 조합을 결정 `ActivityType` `CompletionStatus` 합니다. 집계 함수는 없으며 그룹별 키만 있습니다. 출력에는 해당 결과에 대 한 열만 표시 됩니다.
 
@@ -130,7 +130,7 @@ Activities | summarize by ActivityType, completionStatus
 |`dancing`|`abandoned`
 |`singing`|`completed`
 
-**예제**
+## <a name="example"></a>예제
 
 활동 테이블에서 모든 레코드의 최소 및 최대 타임 스탬프를 찾습니다. 출력에 행이 한 개만 있으므로 group-by 절은 없습니다.
 
@@ -142,7 +142,7 @@ Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 |---|---
 |`1975-06-09 09:21:45` | `2015-12-24 23:45:00`
 
-**예제**
+## <a name="example"></a>예제
 
 각 대륙에 대해 작업을 수행 하는 도시 수를 표시 하는 행을 만듭니다. "대륙"의 값이 거의 없으므로 ' by ' 절에는 그룹화 함수가 필요 하지 않습니다.
 
@@ -155,7 +155,7 @@ Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 |`2673`|`North America`|
 
 
-**예제**
+## <a name="example"></a>예제
 
 다음 예에서는 각 활동 유형에 대 한 히스토그램을 계산 합니다. 에는 `Duration` 많은 값이 있으므로를 사용 `bin` 하 여 값을 10 분 간격으로 그룹화 합니다.
 

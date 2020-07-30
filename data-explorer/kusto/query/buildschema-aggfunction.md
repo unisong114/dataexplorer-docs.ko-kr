@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: cf21443beffb327e2708b8990017ac37fbbc8d21
-ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
+ms.openlocfilehash: 2520849508c9cef829d7c8c07f22d3f8c64cfcea
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85902049"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348941"
 ---
 # <a name="buildschema-aggregation-function"></a>buildschema () (집계 함수)
 
@@ -21,22 +21,22 @@ ms.locfileid: "85902049"
 
 * 집계의 컨텍스트에서만 [요약](summarizeoperator.md) 내에서 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `buildschema(` *dynamicexpr* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Dynamicexpr*: 집계 계산에 사용 되는 식입니다. 매개 변수 열 형식은 이어야 합니다 `dynamic` . 
 
-**반환**
+## <a name="returns"></a>반환
 
 *`Expr`* 그룹 전체에서의 최대값입니다.
 
 > [!TIP] 
 > 에서 `buildschema(json_column)` 구문 오류가 발생 하는 경우: *은 `json_column` 동적 개체가 아닌 문자열입니다* . 그런 다음 `buildschema(parsejson(json_column))` 를 사용 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 입력 열에 세 개의 동적 값이 있다고 가정 합니다.
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: baafca4d8d5711d55838bceae817c36ecb0edd6f
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: c5dffc8695df466dfc1ac9f0c5bcc4a40f687b2a
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82618577"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87342719"
 ---
 # <a name="stdevp-aggregation-function"></a>stdevp () (집계 함수)
 
@@ -25,19 +25,19 @@ ms.locfileid: "82618577"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `stdevp(` *식* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 집계 계산에 사용 되는 식입니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
 그룹 전체에 대 한 *Expr* 의 표준 편차 값입니다.
  
-**예제**
+## <a name="examples"></a>예제
 
 ```kusto
 range x from 1 to 5 step 1

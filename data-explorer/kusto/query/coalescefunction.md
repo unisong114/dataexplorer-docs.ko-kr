@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ea57efe36fb86189d798e5f18fa3fe9470bfd634
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 410a0c84a1bafdfa1900ef8e21bc0a91327b64c3
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348873"
 ---
 # <a name="coalesce"></a>coalesce()
 
@@ -23,22 +23,22 @@ ms.locfileid: "83227539"
 coalesce(tolong("not a number"), tolong("42"), 33) == 42
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `coalesce(`*expr_1* `, ` *expr_2* `,` ...)
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *expr_i*: 평가할 스칼라 식입니다.
 - 모든 인수는 동일한 형식 이어야 합니다.
 - 최대 64 개의 인수가 지원 됩니다.
 
 
-**반환**
+## <a name="returns"></a>반환
 
 값이 null이 아닌 첫 번째 *expr_i* 의 값 (또는 문자열 식의 경우 비어 있지 않음)입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto

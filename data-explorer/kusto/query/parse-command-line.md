@@ -8,31 +8,31 @@ ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/28/2020
-ms.openlocfilehash: 0296b41dc10092f0b274491c3fab3355fc82a2d9
-ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
+ms.openlocfilehash: f330c10e95cdc36eae497811ef895ef827918b43
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85518143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346493"
 ---
-# <a name="parse_command_line"></a>parse_command_line ()
+# <a name="parse_command_line"></a>parse_command_line()
 
 유니코드 명령줄 문자열을 구문 분석 하 고 명령줄 인수의 동적 배열을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `parse_command_line(`*command_line*,*parser_type*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *command_line*: 구문 분석할 명령줄입니다.
 * *parser_type*: 현재 지원 되는 유일한 값은 `"Windows"` [CommandLineToArgvW](https://docs.microsoft.com/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw)와 동일한 방식으로 명령줄을 구문 분석 하는입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 명령줄 인수의 동적 배열입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

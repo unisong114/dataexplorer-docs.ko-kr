@@ -1,6 +1,6 @@
 ---
-title: cot() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 cot()에 대해 설명합니다.
+title: cot ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 cot ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,25 +8,25 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: cc39019b78fd4d6cf098ea4e0e2584064b5bab50
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 686f1554a4d9bd562cd223cd0b2237c147f75f74
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81517020"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348805"
 ---
 # <a name="cot"></a>cot()
 
-라디안에서 지정된 각도의 삼각선 코탄젠트를 계산합니다.
+지정 된 각도의 삼각 코탄젠트를 라디안으로 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`cot(`*Ⅹ*`)`
+`cot(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 실제 숫자입니다.
+* *x*: 실수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-* 에 대한 코탄젠트 함수 값`x`
+* 에 대 한 코탄젠트 함수 값`x`

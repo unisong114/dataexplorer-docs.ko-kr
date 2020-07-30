@@ -8,31 +8,31 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7f8464ed7dca8d712900bb7a1047875b6292d243
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 2fc8ee7e8c7ab3ce372d786ec87edf55265e1249
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85265017"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348448"
 ---
 # <a name="dcount-aggregation-function"></a>dcount () (집계 함수)
 
 요약 그룹에서 스칼라 식에 사용 되는 고유 값 수에 대 한 예상 값을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 ... `|` `summarize` `dcount` `(`*`Expr`*[, *`Accuracy`*]`)` ...
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 고유 값을 계산할 스칼라 식입니다.
 * *정확도*: 요청 된 `int` 예측 정확도를 정의 하는 선택적 리터럴입니다. 지원 되는 값은 아래를 참조 하세요. 지정 하지 않으면 기본값이 `1` 사용 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 그룹에 있는의 고유한 값 수의 예상 값을 반환 합니다 *`Expr`* .
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 PageViewLog | summarize countries=dcount(country) by continent
@@ -40,7 +40,7 @@ PageViewLog | summarize countries=dcount(country) by continent
 
 :::image type="content" source="images/dcount-aggfunction/dcount.png" alt-text="D 개수":::
 
-**참고 사항**
+**참고**
 
 `dcount()`집계 함수는 주로 큰 집합의 카디널리티를 추정 하는 데 유용 합니다. 정확도를 높이기 위해 성능을 향상 시킬 수 있으며 실행 마다 다른 결과를 반환할 수 있습니다. 입력 순서는 출력에 영향을 미칠 수 있습니다.
 

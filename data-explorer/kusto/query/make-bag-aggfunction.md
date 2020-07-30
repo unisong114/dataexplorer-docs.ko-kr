@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7c0d6ae10c21b1df55aaa3584f4f40e830b58d2c
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 18d0bf2eaa0f5215e38b8b787178ea5934fb3737
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763445"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347037"
 ---
 # <a name="make_bag-aggregation-function"></a>make_bag () (집계 함수)
 
@@ -21,11 +21,11 @@ ms.locfileid: "85763445"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `summarize``make_bag(` *`Expr`* [ `,` *MaxSize*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: `dynamic` 집계 계산에 사용 되는 형식의 식입니다.
 * *MaxSize* 는 반환 되는 최대 요소 수에 대 한 선택적 정수 제한입니다. 기본값은 *1048576*입니다. MaxSize 값은 *1048576*를 초과할 수 없습니다.
@@ -34,7 +34,7 @@ ms.locfileid: "85763445"
 
 함수에서 사용 되지 않는 기존 variant의 `make_dictionary()` 기본 제한은 *MaxSize* = 128입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `dynamic`그룹에 있는 모든 값의 (JSON) 속성 모음 (사전) (속성 모음)을 반환 *`Expr`* 합니다.
 사전 값이 아닌 값을 건너뜁니다.
@@ -44,7 +44,7 @@ ms.locfileid: "85763445"
 
 동적 JSON 개체를 속성 모음 키를 사용 하는 열로 확장 하는 데 [bag_unpack ()](bag-unpackplugin.md) 플러그 인을 사용 합니다. 
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 let T = datatable(prop:string, value:string)

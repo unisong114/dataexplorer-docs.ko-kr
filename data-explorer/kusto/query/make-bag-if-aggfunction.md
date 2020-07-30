@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2603aab066a7f77ff36553d8898bb713ace990b7
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 67e408653a4873dce3b5e8f21a91775573affbe2
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763794"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347020"
 ---
 # <a name="make_bag_if-aggregation-function"></a>make_bag_if () (집계 함수)
 
@@ -22,17 +22,17 @@ ms.locfileid: "85763794"
 > [!NOTE]
 > [요약](summarizeoperator.md)내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `summarize``make_bag_if(` *Expr*, *Predicate* [ `,` *MaxSize*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: `dynamic` 집계 계산에 사용 되는 형식의 식입니다.
 * *조건자*: `true` 결과에 *' Expr '* 을 추가 하기 위해를 계산 해야 하는 조건자입니다.
 * *MaxSize*: 반환 되는 최대 요소 수에 대 한 선택적 정수 제한입니다 (기본값은 *1048576*). MaxSize 값은 1048576를 초과할 수 없습니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `dynamic`그룹에서 *조건자* 가로 계산 되는 속성 모음 (사전) 인 *' Expr '* 의 모든 값에 대 한 (JSON) 속성 모음 (사전)을 반환 `true` 합니다.
 사전 값이 아닌 값을 건너뜁니다.
@@ -41,7 +41,7 @@ ms.locfileid: "85763794"
 > [!NOTE]
 > [`make_bag`](./make-bag-aggfunction.md)함수는 조건자 식이 없는 make_bag_if ()와 유사 합니다.
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 let T = datatable(prop:string, value:string, predicate:bool)

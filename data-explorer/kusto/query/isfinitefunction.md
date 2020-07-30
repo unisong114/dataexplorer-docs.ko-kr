@@ -19,7 +19,7 @@ ms.locfileid: "87347258"
 
 입력이 유한 값 인지 여부를 반환 합니다 (무한도 아니면 NaN).
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `isfinite(`*.x*`)`
 

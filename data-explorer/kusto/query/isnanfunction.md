@@ -1,6 +1,6 @@
 ---
-title: isnan() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 isnan()에 대해 설명합니다.
+title: isnan ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 isnan ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,36 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 123d9cd32d645bb1225983138973a17b6bb9ecf3
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 5597f21d5e426329e2793978a6b207efc3868d13
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81513569"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347224"
 ---
 # <a name="isnan"></a>isnan()
 
-입력이 NaN(숫자가 아님) 값인지 여부를 반환합니다.  
+입력이 NaN (숫자가 아님) 값 인지 여부를 반환 합니다.  
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`isnan(`*Ⅹ*`)`
+`isnan(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 실제 숫자입니다.
+* *x*: 실수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-x가 NaN인 경우 0이 아닌 값(true); 그렇지 않으면 0 (거짓) .
+X가 NaN 이면 0이 아닌 값 (true)입니다. 그렇지 않으면 0 (false)입니다.
 
 **참고 항목**
 
-* 값이 null인지 확인하려면 [isnull()](isnullfunction.md)을 참조하십시오.
-* 값이 유한한지 확인하려면 [isfinite()를](isfinitefunction.md)참조하십시오.
-* 값이 무한인지 확인하려면 [isinf()를](isinffunction.md)참조하십시오.
+* 값이 null 인지 확인 하려면 [isnull ()](isnullfunction.md)을 참조 하세요.
+* 값이 유한 인지 확인 하려면 [isfinite ()](isfinitefunction.md)을 참조 하세요.
+* 값이 무한 인지 확인 하려면 [isinf ()](isinffunction.md)를 참조 하세요.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 range x from -1 to 1 step 1
@@ -46,7 +46,7 @@ range x from -1 to 1 step 1
 | extend isnan=isnan(div)
 ```
 
-|x|y|div|이산 (isnan)|
+|x|y|div|isnan|
 |---|---|---|---|
 |-1|1|-1|0|
 |0|0|NaN|1|

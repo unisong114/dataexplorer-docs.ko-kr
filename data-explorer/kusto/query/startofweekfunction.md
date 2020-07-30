@@ -1,6 +1,6 @@
 ---
-title: startofweek() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 startofweek()에 대해 설명합니다.
+title: startofweek ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 startofweek ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,40 +8,40 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9705b586a0b8c5161b7d4c27735f644b6982c707
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 24763297585a7f043847e3037103a61650f65bd1
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81507228"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87343484"
 ---
 # <a name="startofweek"></a>startofweek()
 
-제공된 경우 오프셋으로 이동된 날짜를 포함하는 주의 시작을 반환합니다.
+지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 주의 시작을 반환 합니다.
 
-요일의 시작은 일요일로 간주됩니다.
+주의 시작은 일요일이 되는 것으로 간주 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`startofweek(`*날짜* `,`[*오프셋*]`)`
+`startofweek(`*날짜* [ `,` *오프셋*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `date`: 입력 날짜입니다.
-* `offset`: 입력 날짜로부터 의 오프셋 주(정수, 기본값 - 0)의 선택적 수입니다.
+* `offset`: 입력 날짜 (정수, 기본값-0)의 선택적 오프셋 주 수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-*지정된* 날짜 값에 대한 주의 시작을 나타내는 날짜 시간(지정된 경우 오프셋)입니다.
+지정 된 경우 오프셋 (지정 된 경우)을 사용 하 여 지정 된 *날짜* 값에 대 한 주의 시작을 나타내는 날짜/시간입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
   range offset from -1 to 1 step 1
  | project weekStart = startofweek(datetime(2017-01-01 10:10:17), offset) 
 ```
 
-|주 시작|
+|weekStart|
 |---|
 |2016-12-25 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|

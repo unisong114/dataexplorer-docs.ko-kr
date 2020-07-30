@@ -8,27 +8,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 29b35e5bd7265d89e65fe0129317a9f1672c7cad
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 143257a586bb951caeb116882551e55f89c8636e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373092"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345881"
 ---
 # <a name="rank_tdigest"></a>rank_tdigest()
 
 집합에 있는 값의 대략적인 순위를 계산 합니다. `v`집합의 값 순위 `S` 는 보다 작거나 같은의 멤버 수로 정의 되며 `S` `v` 는로 `S` 표시 됩니다 `tdigest` .
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `rank_tdigest(`*`TDigest`*`,` *`Expr`*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Tdigest*: [tdigest ()](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md) 에 의해 생성 된 식입니다.
 * *Expr*: 순위 계산에 사용할 값을 나타내는 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 데이터 집합의 rank foreach 값입니다.
 
@@ -36,7 +36,7 @@ ms.locfileid: "83373092"
 
 1) 순위를 가져오려는 값은와 같은 형식 이어야 합니다 `tdigest` .
 
-**예**
+## <a name="examples"></a>예제
 
 정렬 된 목록 (1-1000)에서 685의 순위는 인덱스입니다.
 

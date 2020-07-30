@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 35fa0c29bf00a8696d4e9d08d73c30bba6171ea1
-ms.sourcegitcommit: de81b57b6c09b6b7442665e5c2932710231f0773
+ms.openlocfilehash: 510e2de8a30a422955c0cbfcbdf3a0f50e46dbc5
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87264718"
+ms.locfileid: "87346561"
 ---
 # <a name="order-operator"></a>order 연산자 
 
@@ -26,11 +26,11 @@ T | order by country asc, price desc
 > [!NOTE]
 > Order 연산자는 sort 연산자에 대 한 별칭입니다. 자세한 내용은 [sort 연산자](sortoperator.md) 를 참조 하세요.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `| order by` *열* [ `asc`  |  `desc` ] [ `nulls first`  |  `nulls last` ] [ `,` ...]
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 정렬할 테이블 입력입니다.
 * *column*: 정렬 기준이 되는 *T* 의 열입니다. 값의 형식은 숫자, 날짜, 시간 또는 문자열이어야 합니다.

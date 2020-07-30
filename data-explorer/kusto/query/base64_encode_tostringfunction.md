@@ -8,26 +8,26 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
-ms.openlocfilehash: c414f1bdb83850bc6ec6065314bc7c8662ab0ed2
-ms.sourcegitcommit: ae72164adc1dc8d91ef326e757376a96ee1b588d
+ms.openlocfilehash: 218f87a3c11695c4aa8135f98b0c445580de9ad0
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717090"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349264"
 ---
 # <a name="base64_encode_tostring"></a>base64_encode_tostring()
 
 문자열을 base64 문자열로 인코딩합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `base64_encode_tostring(`*문자열*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *문자열*: base64 문자열로 인코딩할 입력 문자열입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 Base64 문자열로 인코드된 문자열을 반환 합니다.
 
@@ -35,7 +35,7 @@ Base64 문자열로 인코드된 문자열을 반환 합니다.
 * Base64 문자열을 long 값 배열로 디코딩하려면 [base64_decode_toarray ()](base64_decode_toarrayfunction.md) 를 참조 하세요.
 
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

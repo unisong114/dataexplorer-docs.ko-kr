@@ -1,6 +1,6 @@
 ---
-title: 라디안() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 radians()에 대해 설명합니다.
+title: radians ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 라디안 ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,36 +8,36 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0dc04c5f9593b6bd5fc61f57d20819cf7d2a178c
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 3aaa41a631498e2938acf722b75f409a1bbe5031
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81510662"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87345949"
 ---
 # <a name="radians"></a>radians()
 
-수식을 사용하여 각도 값을 각도 값을 라디안에서 값으로 변환합니다.`radians = (PI / 180 ) * angle_in_degrees`
+수식을 사용 하 여 각도의 각도 값을 라디안으로 값으로 변환 합니다.`radians = (PI / 180 ) * angle_in_degrees`
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`radians(`*a.*`)`
+`radians(`*은*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *a*: 각도(실수)입니다.
+* *a*: 각도 (실제 숫자)입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-* 각도로 지정된 각도에 대한 라디안의 해당 각도입니다. 
+* 각도로 지정 된 각도의 해당 각도 (라디안)입니다. 
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 print radians0 = radians(90), radians1 = radians(180), radians2 = radians(360) 
 
 ```
 
-|라디안0|라디안1|라디안2|
+|radians0|radians1|radians2|
 |---|---|---|
 |1.5707963267949|3.14159265358979|6.28318530717959|

@@ -8,27 +8,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 54431e2d088f60fa8ea2a56bffea9faa374faeda
-ms.sourcegitcommit: aaada224e2f8824b51e167ddb6ff0bab92e5485f
+ms.openlocfilehash: 23285c0747e7fecbdce810536af195f72f27236f
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84626662"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349723"
 ---
 # <a name="anyif-aggregation-function"></a>anyif () (집계 함수)
 
 는 조건자가 "true" 인 [요약 연산자](summarizeoperator.md)의 각 그룹에 대해 레코드 하나를 임의로 선택 합니다. 함수는 각 레코드에 대 한 식의 값을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `summarize``anyif` `(` *Expr*, *Predicate*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: 반환할 입력에서 선택한 각 레코드에 대 한 식입니다.
 * *조건자*: 평가를 위해 고려할 레코드를 나타내는 조건자입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `anyif`집계 함수는 요약 연산자의 각 그룹에서 무작위로 선택 된 각 레코드에 대해 계산 된 식의 값을 반환 합니다. *조건자* 가 "true"를 반환 하는 레코드만 선택할 수 있습니다. 조건자가 "true"를 반환 하지 않으면 null 값이 생성 됩니다.
 
@@ -38,7 +38,7 @@ ms.locfileid: "84626662"
 
 이러한 값이 있는 경우 함수는 null이 아닌 값 또는 비어 있지 않은 값을 반환 하려고 합니다.
 
-**예**
+## <a name="examples"></a>예제
 
 300 ~ 6억 모집단의 임의 대륙을 표시 합니다.
 

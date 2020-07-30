@@ -1,6 +1,6 @@
 ---
-title: dayofyear() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 dayofyear()에 대해 설명합니다.
+title: dayofyear ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 dayofyear ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,29 +8,29 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 41e7c5906da001e877dd9124124e126d729e886d
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 925b65846c6ba32163bd325fd2ee3321bc7fc802
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81516221"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348465"
 ---
 # <a name="dayofyear"></a>dayofyear()
 
-지정된 연도의 일 수를 나타내는 정수 번호를 반환합니다.
+지정 된 연도의 일 수를 나타내는 정수를 반환 합니다.
 
 ```kusto
 dayofyear(datetime(2015-12-14))
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `dayofweek(`*a_date*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `a_date`: `datetime`입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-`day number`연도의.
+`day number`지정 된 연도의입니다.

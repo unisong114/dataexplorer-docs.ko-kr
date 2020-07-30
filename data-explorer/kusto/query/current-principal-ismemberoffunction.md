@@ -31,7 +31,7 @@ print current_principal_is_member_of(
     )
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `current_principal_is_member_of`(`*list of string literals*`)
 

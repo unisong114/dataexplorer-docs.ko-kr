@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 5fd6221e4b877d066050f932a564f71d56d8c168
-ms.sourcegitcommit: c3bbb9a6bfd7c5506f05afb4968fdc2043a9fbbf
+ms.openlocfilehash: f5ad4cdc2b74ddb62a4572249bb06fab6c656243
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85332555"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347428"
 ---
 # <a name="infer_storage_schema-plugin"></a>infer_storage_schema 플러그 인
 
@@ -30,15 +30,15 @@ let options = dynamic({
 evaluate infer_storage_schema(options)
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `evaluate` `infer_storage_schema(` *옵션* `)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 단일 *옵션* 인수는 `dynamic` 요청의 속성을 지정 하는 속성 모음을 보유 하는 형식의 상수 값입니다.
 
-|이름                    |필수|설명|
+|Name                    |필수|설명|
 |------------------------|--------|-----------|
 |`StorageContainers`|예|저장 된 데이터 아티팩트의 접두사 URI를 나타내는 [저장소 연결 문자열](../api/connection-strings/storage.md) 목록|
 |`DataFormat`|예|지원 되는 [데이터 형식](../../ingestion-supported-formats.md)중 하나입니다.|
@@ -46,7 +46,7 @@ evaluate infer_storage_schema(options)
 |`FileNamePrefix`|아니요|이 접두사로 시작 하는 파일만 검색 합니다. 필수는 아니지만이를 지정 하면 프로세스의 속도를 높일 수 있습니다.|
 |`Mode`|아니요|스키마 유추 전략,,, 중 하나입니다. `any` `last` `all` 각각의 (첫 번째) 파일, 마지막으로 쓴 파일 또는 모든 파일에서 데이터 스키마를 유추 합니다. 기본값은 `last`입니다.|
 
-**반환**
+## <a name="returns"></a>반환
 
 `infer_storage_schema`플러그 인은 CSL 스키마 문자열을 포함 하는 단일 행/열을 포함 하는 단일 결과 테이블을 반환 합니다.
 
@@ -55,7 +55,7 @@ evaluate infer_storage_schema(options)
 > * 스키마 유추 전략 ' 모두 '는 검색 된 *모든* 아티팩트를 읽고 해당 스키마를 병합 하는 것을 암시 하므로 매우 "비용이 많이 드는" 작업입니다.
 > * 반환 된 형식이 잘못 된 형식 추측 (또는 스키마 병합 프로세스의 결과로)의 결과로 실제 형식이 아닐 수 있습니다. 이 때문에 외부 테이블을 만들기 전에 결과를 신중 하 게 검토 해야 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 let options = dynamic({

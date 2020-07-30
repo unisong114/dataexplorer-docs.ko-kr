@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: b493f74472454649a557b7e3677b26af169413de
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 90942906908f58f321e5a81ec9ca8419fe9a2ec5
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227556"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348924"
 ---
 # <a name="case"></a>case()
 
@@ -23,21 +23,21 @@ ms.locfileid: "83227556"
 모든 홀수 인수 (개수는 1부터 시작)는 값으로 계산 되는 식 이어야 합니다 `boolean` .
 모든 짝수 인수 ( `then` s)와 마지막 인수 ( `else` )는 동일한 형식 이어야 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `case(`*predicate_1* `,` *then_1*, *predicate_2* `,` *then_2*, *predicate_3* `,` *then_3*, *기타*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *predicate_i*: 값으로 계산 되는 식 `boolean` 입니다.
 * *then_i*: *predicate_i* 가로 계산 되는 첫 번째 조건자 인 경우 계산 된 식과 해당 값이 함수에서 반환 됩니다 `true` .
 * *else*: 계산 되는 식과 해당 값이 *predicate_i* 모두로 계산 되지 않는 경우 함수에서 `true` 반환 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 *Predicate_i* 가로 계산 되는 첫 번째 *then_i* 의 값 `true` 또는 조건자가 모두 충족 되지 않는 경우 *else* 의 값입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -47,13 +47,13 @@ range Size from 1 to 15 step 2
                        "Large")
 ```
 
-|Size|bucket|
+|크기|bucket|
 |---|---|
 |1|작음|
 |3|작음|
-|5|중형|
-|7|중형|
-|9|중형|
-|11|큰|
-|13|큰|
-|15|큰|
+|5|중간|
+|7|중간|
+|9|중간|
+|11|큼|
+|13|큼|
+|15|큼|

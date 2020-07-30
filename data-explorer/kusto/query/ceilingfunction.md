@@ -1,6 +1,6 @@
 ---
-title: 천장() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 천장()에 대해 설명합니다.
+title: 상한 ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 천장 ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,35 +8,35 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f2ecd043c43bb1af6530364d200d5dc9db640f95
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: e2a29d28b25d26d582aa49717d5ce5576276f450
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81517258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348907"
 ---
 # <a name="ceiling"></a>ceiling()
 
-지정된 숫자 식보다 크거나 같을 가장 작은 정수를 계산합니다.
+지정 된 숫자 식 보다 크거나 같은 최소 정수를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`ceiling(`*Ⅹ*`)`
+`ceiling(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 실제 숫자입니다.
+* *x*: 실수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-* 가장 작은 정수보다 크거나 같으며 지정된 숫자 식입니다. 
+* 지정 된 숫자 식 보다 크거나 같은 최소 정수입니다. 
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 print c1 = ceiling(-1.1), c2 = ceiling(0), c3 = ceiling(0.9)
 ```
 
-|c1|c2|c3|
+|c1|있다면|c3|
 |---|---|---|
 |-1|0|1|

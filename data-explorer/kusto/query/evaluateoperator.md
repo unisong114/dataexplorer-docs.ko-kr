@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: d01b3b5178801fe1b5e55f51987564674ce4aeae
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: 519ac6b38a73cfc7334094ef503d1d20c7d2ecb9
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348227"
 ---
 # <a name="evaluate-operator-plugins"></a>연산자 플러그 인 평가
 
@@ -21,11 +21,11 @@ ms.locfileid: "85128634"
 
 `evaluate`연산자는 **플러그 인**이라고 하는 쿼리 언어 확장을 호출 하는 기능을 제공 하는 테이블 형식 연산자입니다. 플러그 인은 사용 하거나 사용 하지 않도록 설정할 수 있으며 (항상 사용할 수 있는 다른 언어 구문과 달리) 언어의 관계형 특성에 의해 "바인딩" 되지 않습니다. 예를 들어 미리 정의 된 정적으로 확인 된 출력 스키마가 없을 수도 있습니다.
 
-**구문** 
+## <a name="syntax"></a>Syntax 
 
 [*T* `|` ] `evaluate` [ *evaluateParameters* ] *pluginname* `(` [*PluginArg1* [ `,` *PluginArg2*] ...`)`
 
-위치:
+여기서
 
 * *T* 는 플러그 인에 대 한 선택적 테이블 형식 입력입니다. 일부 플러그 인은 입력을 취하지 않으며 테이블 형식 데이터 소스 역할을 합니다.
 * *Pluginname* 은 호출 되는 플러그 인의 필수 이름입니다.
@@ -40,7 +40,7 @@ ms.locfileid: "85128634"
   |`hint.pass_filters` |`true`, `false`| `evaluate`연산자가 플러그 인 이전에 일치 하는 필터를 통과 하도록 허용 합니다. 필터는 연산자 이전에 기존 열을 참조 하는 경우 ' 일치 ' 된 것으로 간주 됩니다 `evaluate` . 기본값: `false` |
   |`hint.pass_filters_column` |*column_name*| 플러그 인 연산자가 플러그 인 이전에 *column_name* 를 참조 하는 통과 필터를 허용 합니다. 매개 변수는 다른 열 이름으로 여러 번 사용할 수 있습니다. |
 
-**참고 사항**
+**참고**
 
 * 구문상 `evaluate` 은 테이블 형식 함수를 호출 하는 [invoke 연산자](./invokeoperator.md)와 유사 하 게 동작 합니다.
 * Evaluate 연산자를 통해 제공 되는 플러그 인은 쿼리 실행 또는 인수 평가의 일반 규칙에 의해 바인딩되지 않습니다.

@@ -26,7 +26,7 @@ ipv4_is_match('192.168.1.1/24', '192.168.1.255/24') == true
 ipv4_is_match('192.168.1.1', '192.168.1.255', 24) == true
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `ipv4_is_match(`*Expr1* `, ` *Expr2* `[ ,` *PrefixMask*`])`
 
@@ -46,7 +46,7 @@ IP 주소 `IP-prefix notation` 는 슬래시 () 문자를 사용 하 여 정의�
 *  `false`그렇지.
 * `null`: 두 IPv4 문자열 중 하나에 대 한 변환이 실패 한 경우
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="ipv4-comparison-equality---ip-prefix-notation-specified-inside-the-ipv4-strings"></a>Ipv4 비교 같음-IP 접두사 표기법이 IPv4 문자열 내에 지정 되었습니다.
 

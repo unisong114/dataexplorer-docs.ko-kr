@@ -8,33 +8,33 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/29/2020
-ms.openlocfilehash: c09f30a4f13f16e15cfcc826f6976f1208fdabf1
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 17b3e0d13f8048ccac90add4eee6f02f3d2e2959
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793632"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346799"
 ---
-# <a name="hash_md5"></a>hash_md5 ()
+# <a name="hash_md5"></a>hash_md5()
 
 입력 값에 대 한 MD5 해시 값을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `hash_md5(`*원본*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *source*: 해시할 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 16 진수 문자열로 인코딩된 지정 된 스칼라의 MD5 해시 값입니다 .이 값은 문자 문자열 (0에서 255 사이의 단일 16 진수를 나타냄)입니다.
 
 > [!WARNING]
 > 이 함수에서 사용 하는 알고리즘 (MD5)은 나중에 수정 되지 않지만 계산 하기 매우 복잡 합니다. 단일 쿼리 기간 동안 "경량" 해시 함수를 사용 해야 하는 사용자는 대신 함수 [해시 ()](./hashfunction.md) 를 사용 하는 것이 좋습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

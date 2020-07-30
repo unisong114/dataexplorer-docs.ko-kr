@@ -1,6 +1,6 @@
 ---
-title: max() (집계 기능) - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 max() (집계 함수)에 대해 설명합니다.
+title: max () (집계 함수)-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 max () (집계 함수)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,31 +8,31 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: bbfc9591fb20903d18486f9f249d3b1240f705e3
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 4d31f2137fcd64deab713522b1596f4c572606cc
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81512566"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346850"
 ---
-# <a name="max-aggregation-function"></a>max() (집계 함수)
+# <a name="max-aggregation-function"></a>max () (집계 함수)
 
-그룹 전체의 최대 값을 반환합니다. 
+그룹 전체에서 최대값을 반환 합니다. 
 
-* 요약 내부 집계의 컨텍스트에서만 사용할 수 [있습니다.](summarizeoperator.md)
+* [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`summarize``max(` *예시*`)`
+`summarize``max(` *Expr*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *Expr*: 집계 계산에 사용되는 표현식입니다. 
+* *Expr*: 집계 계산에 사용 되는 식입니다. 
 
-**반환**
+## <a name="returns"></a>반환
 
-그룹 전체의 *Expr* 최대값입니다.
+그룹 전체에서 *Expr* 의 최대값입니다.
  
 > [!TIP]
-> 이렇게 하면 최소 또는 최대 값(예: 최고 또는 최저 가격)이 있습니다.
-> 그러나 행의 다른 열 (예 : 최저 가격으로 공급자의 이름)을 원한다면 [arg_max](arg-max-aggfunction.md) 사용하거나 [arg_min](arg-min-aggfunction.md).
+> 이렇게 하면 최소값 또는 최대값이 제공 됩니다 (예: 최고 또는 최저 가격).
+> 그러나 행에 다른 열이 필요한 경우 (예: 가격이 가장 낮은 공급 업체의 이름- [arg_max](arg-max-aggfunction.md) 또는 [arg_min](arg-min-aggfunction.md).

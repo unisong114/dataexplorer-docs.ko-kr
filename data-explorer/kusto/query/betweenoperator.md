@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: ef64818c9c5e345ffb60999c97273670026be022
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 84858a28d1676306a34b2bfa7dfe9563e46227fb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227624"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349179"
 ---
 # <a name="between-operator"></a>between 연산자
 
@@ -26,7 +26,7 @@ Table1 | where Time between (datetime(2017-01-01) .. datetime(2017-01-01))
 
 `between`는 임의의 숫자, datetime 또는 timespan 식에 대해 작동할 수 있습니다.
  
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `where` *expr* `between` `(` *leftRange* ` .. ` *rightRange*`)`   
  
@@ -34,18 +34,18 @@ Table1 | where Time between (datetime(2017-01-01) .. datetime(2017-01-01))
 
 *T* `|` `where` *expr* `between` `(` *leftRangeDateTime* ` .. ` *rightRangeTimespan*`)`   
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T* -레코드를 일치 시킬 테이블 형식 입력입니다.
 * *expr* -필터링 할 식입니다.
 * *leftRange* -왼쪽 범위의 식 (포함)입니다.
 * *rightRange* -오른쪽 범위의 식 (포함)입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 ( *T* *Expr*  >=  *leftRange* 및 *expr*  <=  *rightRange*)의 조건자가로 계산 되는 T의 행 `true` 입니다.
 
-**예**  
+## <a name="examples"></a>예제  
 
 **' Between ' 연산자를 사용 하 여 숫자 값 필터링**  
 

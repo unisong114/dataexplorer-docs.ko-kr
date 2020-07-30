@@ -1,6 +1,6 @@
 ---
-title: extractjson() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 extractjson()에 대해 설명합니다.
+title: extractjson ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 extractjson ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6177a1c8a6ed4390093e6f6fd24c5f5e9fd04f8a
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 21f366e8f211acf9c7c542b420006cfb23e683e7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81515337"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348040"
 ---
 # <a name="extractjson"></a>extractjson()
 
@@ -25,22 +25,22 @@ path 식을 사용하여 JSON 텍스트에서 지정된 요소를 가져옵니�
 extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`extractjson(`*jsonPath* `,` *데이터 소스*`)` 
+`extractjson(`*jsonPath* `,` *dataSource*`)` 
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *jsonPath*: Json 문서에 접근자 정의 JsonPath 문자열입니다.
-* *데이터 소스*: JSON 문서입니다.
+* *jsonPath*: JSON 문서에 대 한 접근자를 정의 하는 jsonPath 문자열입니다.
+* *dataSource*: JSON 문서입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 이 함수는 유효한 JSON 문자열을 포함하고 있는 dataSource에 대해 JsonPath 쿼리를 수행하며, 선택적으로 이 값을 세 번째 인수에 따라 다른 형식으로 변환합니다.
 
-**예제**
+## <a name="example"></a>예제
 
-`[`대괄호`]` 표기및`.`점 () 표기는 동일합니다.
+`[`대괄호 `]` 표기 및 dot ( `.` ) 표기법은 다음과 같습니다.
 
 ```kusto
 T 

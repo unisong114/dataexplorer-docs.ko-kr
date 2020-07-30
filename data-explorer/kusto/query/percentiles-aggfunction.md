@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: b70ee322d4718f78a37144b650a147c5c9965a60
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: 13cc0edad5e0e4673c34e7e5b1b517f097fa4e9a
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85129025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346187"
 ---
 # <a name="percentile-percentiles-aggregation-function"></a>백분위 수 (), 백분위 수 () (집계 함수)
 
@@ -24,7 +24,7 @@ ms.locfileid: "85129025"
 * `percentilesw()`는와 유사 `percentilew()` 하지만 각 백분위 수를 개별적으로 계산 하는 것 보다 더 빠른 가중치가 적용 된 백분위 수 값의 수를 계산 합니다.
 * `percentilew()`가중치가 적용 되는 `percentilesw()` 백분위 수을 계산할 수 있습니다. 가중치가 적용 된 백분위 수는 입력에서 각 값을 반복 된 시간으로 처리 하 여 "가중치가 적용 된" 방식으로 지정 된 백분위 수를 계산 합니다 `weight` .
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `percentile(` *식* `,` *백분위* 수 요약`)`
 
@@ -42,18 +42,18 @@ ms.locfileid: "85129025"
 
 `percentilesw_array(` *Expr* `,` *WeightExpr* `,` *동적 배열* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `*Expr*`: 집계 계산에 사용 되는 식입니다.
 * `*WeightExpr*`: 집계 계산에 대 한 값의 가중치로 사용 되는 식입니다.
 * `*Percentile*`: 백분위 수를 지정 하는 double 상수입니다.
 * `*Dynamic array*`: 정수 또는 부동 소수점 숫자의 동적 배열에 있는 백분위 수의 목록입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 그룹의 지정 된 백분위 수에 대 한 예상 값을 반환 합니다 `*Expr*` . 
 
-**예**
+## <a name="examples"></a>예제
 
 `Duration`샘플 집합의 95% 보다 크고 샘플 집합의 5% 보다 작은의 값입니다.
 
@@ -68,7 +68,7 @@ CallDetailRecords
 | summarize percentiles(Duration, 5, 50, 95) by continent
 ```
 
-:::image type="content" source="images/percentiles-aggfunction/percentiles.png" alt-text="백분위 수":::
+:::image type="content" source="images/percentiles-aggfunction/percentiles.png" alt-text="백분위수":::
 
 결과는 유럽에서 5%의 호출이 11.55 s 보다 짧습니다. 50%의 호출이 3 분, 18.46 초 미만, 95%는 40 분 48 초 보다 짧습니다.
 
@@ -83,7 +83,7 @@ CallDetailRecords
 
 `summarize percentilesw(Duration, BucketSize, ...)`지정 된 백분위 수를 "가중치가 적용 된" 방식으로 계산 하는 데 사용 합니다. BucketSize 시간이 입력에서 반복 되는 것 처럼 지속 되는 것 처럼 각 기간 값을 실제로 처리 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 고객의 대기 시간 값은 밀리초로 설정 `{ 1, 1, 2, 2, 2, 5, 7, 7, 12, 12, 15, 15, 15, 18, 21, 22, 26, 35 }` 됩니다.
 

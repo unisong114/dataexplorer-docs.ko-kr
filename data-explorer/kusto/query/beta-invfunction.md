@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 60b054bbd234a77f81c47e375b98be0a5df103a5
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: b69fed2b3d7028fdc29d8098e8358c0088fcd8bb
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227658"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349213"
 ---
 # <a name="beta_inv"></a>beta_inv()
 
@@ -27,21 +27,21 @@ beta_inv(0.1, 10.0, 50.0)
 
 예상 완료 시간과 가변성이 주어질 경우, 프로젝트 계획에 베타 분포를 사용하여 가능한 완료 시간을 모델링할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `beta_inv(`*확률* `, ` *알파* `, ` *베타*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *확률*: 베타 분포와 관련 된 확률입니다.
 * *alpha*: 분포의 매개 변수입니다.
 * *beta*: 분포의 매개 변수입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 * 베타 누적 확률 밀도 함수 [beta_cdf ()](./beta-cdffunction.md) 의 역입니다.
 
-**참고 사항**
+**참고**
 
 숫자가 아닌 인수가 있는 경우 beta_inv ()는 null 값을 반환 합니다.
 
@@ -51,7 +51,7 @@ Alpha ≤ 0 또는 beta ≤ 0 인 경우 beta_inv ()는 null 값을 반환 합�
 
 확률의 값이 지정 된 경우 () beta_inv ()는 beta_cdf (x, alpha, beta) = 확률 등 x 값을 검색 합니다.
 
-**예**
+## <a name="examples"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

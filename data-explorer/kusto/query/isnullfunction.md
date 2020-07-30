@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4c57c7aba2bff2dfaecfa72b20ab76cc84ed17d6
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: d1bea6260ca86e6ca47be843a6acc4fb43a037b3
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550591"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347173"
 ---
 # <a name="isnull"></a>isnull()
 
@@ -23,15 +23,15 @@ ms.locfileid: "83550591"
 isnull(parse_json("")) == true
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `isnull(`*Expr*`)`
 
-**반환**
+## <a name="returns"></a>반환
 
 값이 null 인지 여부에 따라 True 또는 false입니다.
 
-**참고 사항**
+**참고**
 
 * `string`값은 null 일 수 없습니다. [Isempty](./isemptyfunction.md) 를 사용 하 여 형식의 값이 비어 있는지 여부를 확인 `string` 합니다.
 
@@ -43,7 +43,7 @@ isnull(parse_json("")) == true
 |`parse_json("[]")`|`false`    |
 |`parse_json("{}")`|`false`    |
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 T | where isnull(PossiblyNull) | count

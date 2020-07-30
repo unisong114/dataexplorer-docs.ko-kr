@@ -8,26 +8,26 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f34f2ac316f122034fcf8ee19a8e82e51b6221df
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 6c157c014ec3b83aa39d4bdfcadda12e97e84f3e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780476"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346544"
 ---
 # <a name="pack_all"></a>pack_all()
 
 `dynamic`테이블 형식 식의 모든 열에서 개체 (속성 모음)를 만듭니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `pack_all()`
 
-**참고 사항**
+**참고**
 
 반환 된 개체의 표현은 실행 간에 바이트 수준의 호환성이 보장 되지 않습니다. 예를 들어 모음에 표시 되는 속성은 다른 순서로 표시 될 수 있습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 지정 된 테이블 SmsMessages 
 

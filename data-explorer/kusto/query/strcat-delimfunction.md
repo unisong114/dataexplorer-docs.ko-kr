@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f6a78a5abb92aa93fe8b1ae15ea8968f71bde07c
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 2568196dc20042e95521ed0818bd625f3394599b
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264558"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87342566"
 ---
 # <a name="strcat_delim"></a>strcat_delim()
 
@@ -21,20 +21,20 @@ ms.locfileid: "85264558"
 
  * 인수가 문자열 형식이 아니면 문자열이 강제로 문자열로 변환 됩니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `strcat_delim(`*delimiter*, *인수 1*, *인수 2*[, *argumentn*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *delimiter*: 구분 기호로 사용 되는 문자열 식입니다.
 * *인수 1* ... *argumentn*: 연결할 식입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 인수는 *구분 기호*를 사용 하 여 단일 문자열에 연결 됩니다.
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 print st = strcat_delim('-', 1, '2', 'A', 1s)

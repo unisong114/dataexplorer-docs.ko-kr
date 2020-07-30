@@ -21,7 +21,7 @@ ms.locfileid: "87349400"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `avg(` *식* 요약`)`
 

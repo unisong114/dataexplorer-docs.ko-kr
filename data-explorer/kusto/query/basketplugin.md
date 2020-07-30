@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/26/2019
-ms.openlocfilehash: d95bed91ab07be3feebecffbb97378866cb7c6c9
-ms.sourcegitcommit: a034b6a795ed5e62865fcf9340906f91945b3971
+ms.openlocfilehash: cf83690d61bb84d1b6b877e76a77d5776be35ad4
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85197229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349247"
 ---
-# <a name="basket-plugin"></a>바구니 플러그 인
+# <a name="basket-plugin"></a>basket 플러그 인
 
 ```kusto
 T | evaluate basket()
@@ -23,11 +23,11 @@ T | evaluate basket()
 
 바구니는 데이터에서 불연속 특성 (차원)의 모든 빈번한 패턴을 찾습니다. 그런 다음 원래 쿼리에서 빈도 임계값을 통과 한 빈번한 패턴을 반환 합니다. 바구니는 데이터에서 자주 발생 하는 모든 패턴을 찾을 수 있지만 다항식 런타임이 보장 되지는 않습니다. 쿼리의 런타임은 행의 수에 선형 이지만 열 수 (차원)의 지 수를 지정할 수 있습니다. Basket은 바구니 분석 데이터 마이닝용으로 개발된 Apriori 알고리즘을 기준으로 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `T | evaluate basket(`*인수*`)`
 
-**반환**
+## <a name="returns"></a>반환
 
 바구니는 행의 비율 임계값 위에 나타나는 자주 나오는 모든 패턴을 반환 합니다. 기본 임계값은 0.05입니다. 각 패턴은 결과의 행으로 표시됩니다.
 
@@ -69,7 +69,7 @@ T | evaluate basket()
 
      `T | evaluate basket('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))`
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

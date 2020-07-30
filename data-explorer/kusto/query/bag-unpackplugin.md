@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 45dc0a02aae7cc39c7a287036055e9ca447187f3
-ms.sourcegitcommit: 085e212fe9d497ee6f9f477dd0d5077f7a3e492e
+ms.openlocfilehash: 6c91275320a5ec404b6cd5fcbe8c84b4123bd2de
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85133477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349349"
 ---
 # <a name="bag_unpack-plugin"></a>bag_unpack 플러그 인
 
@@ -21,11 +21,11 @@ ms.locfileid: "85133477"
 
     T | evaluate bag_unpack(col1)
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 *T* `|` `evaluate` `bag_unpack(` *열* [ `,` *outputcolumnprefix* ] [열 `,` *충돌* ] [ `,` *ignoredproperties* ]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *T*: 열 *열* 을 압축을 풀 테이블 형식 입력입니다.
 * *Column*: 압축을 풀 *T* 의 열입니다. 반드시 `dynamic` 형식이어야 합니다.
@@ -36,14 +36,14 @@ ms.locfileid: "85133477"
     - `keep_source`-원본 열이 유지 됩니다.
 * *Ignoredproperties*: 무시할 모음 속성의 선택적 집합입니다. 인수를 제공 하는 경우 `dynamic` 하나 이상의 문자열 리터럴이 있는 배열의 상수가 되어야 합니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 `bag_unpack`플러그 인은 레코드를 테이블 형식 입력 (*T*)으로 포함 하는 테이블을 반환 합니다. 테이블의 스키마는 다음과 같이 수정 된 테이블 형식 입력의 스키마와 동일 합니다.
 
 * 지정한 입력 열 (*열*)이 제거 됩니다.
 * 이 스키마는 *T*의 최상위 속성 모음 값에서 고유한 슬롯 수 만큼의 열로 확장 됩니다. 각 열의 이름은 각 슬롯의 이름에 해당 하며 필요에 따라 *Outputcolumnprefix*접두사가 붙습니다. 해당 형식은 슬롯의 형식으로, 동일한 슬롯의 모든 값이 동일한 형식이 면이 고, `dynamic` 값이 형식이 다른 경우입니다.
 
-**참고 사항**
+**참고**
 
 플러그 인의 출력 스키마는 데이터 값에 따라 달라 지 며 데이터 자체로 "예측할 수 없음"으로 설정 됩니다. 다른 데이터 입력을 사용 하 여 플러그 인을 여러 번 실행 하면 다른 출력 스키마가 생성 될 수 있습니다.
 
@@ -69,7 +69,7 @@ datatable(d:dynamic)
 | evaluate bag_unpack(d)
 ```
 
-|Name  |Age|
+|Name  |연령|
 |------|---|
 |John  |20 |
 |Dave  |40 |
@@ -112,7 +112,7 @@ datatable(Name:string, d:dynamic)
 | evaluate bag_unpack(d, columnsConflict='replace_source') // Use new name
 ```
 
-|Name|Age|
+|Name|연령|
 |---|---|
 |John|20|
 |Dave|40|
@@ -129,7 +129,7 @@ datatable(Name:string, d:dynamic)
 | evaluate bag_unpack(d, columnsConflict='keep_source') // Keep old name
 ```
 
-|Name|Age|
+|Name|연령|
 |---|---|
 |Old_name|20|
 |Old_name|40|

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2d5accaa0e6f6c4c6e5d5261a9709ba965de6965
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 8e237441d28f12ffc6f27f8a591980a701825e39
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264965"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347462"
 ---
 # <a name="indexof"></a>indexof()
 
@@ -23,11 +23,11 @@ Lookup 또는 input 문자열이 *문자열* 유형이 아닌 경우 함수는 �
 
 자세한 내용은 [`indexof_regex()`](indexofregexfunction.md)를 참조하세요.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `indexof(`*원본* `,` *조회* `[,` *start_index* `[,` *길이* `[,` *발생*`]]])`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *원본*: 입력 문자열입니다.  
 * *lookup*: 조회할 문자열입니다.
@@ -35,7 +35,7 @@ Lookup 또는 input 문자열이 *문자열* 유형이 아닌 경우 함수는 �
 * *length*: 검사할 문자 위치의 수입니다. 값이-1 이면 길이 제한이 없음을 의미 합니다. (선택 사항)
 * *발생*횟수: 발생 횟수입니다. 기본값은 1입니다. (선택 사항)
 
-**반환**
+## <a name="returns"></a>반환
 
 *조회*의 인덱스 위치 (0부터 시작)입니다.
 
@@ -43,7 +43,7 @@ Lookup 또는 input 문자열이 *문자열* 유형이 아닌 경우 함수는 �
 
 관련이 없는 (0 보다 작음) *start_index*, *발생*또는 (-1 미만) *길이* 매개 변수는 *null*을 반환 합니다.
 
-**예**
+## <a name="examples"></a>예제
 ```kusto
 print
  idx1 = indexof("abcdefg","cde")    // lookup found in input string

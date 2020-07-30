@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 72797b54c3ba431b4a846f9e9661e9693359cceb
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 85c39128eeb9b6ded38366ccd3bea228820c67a7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347445"
 ---
 # <a name="indexof_regex"></a>indexof_regex()
 
@@ -21,13 +21,13 @@ ms.locfileid: "84780459"
 
 [`indexof()`](indexoffunction.md)을 참조하세요.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `indexof_regex(`*원본* `,` *조회* `[,` *start_index* `[,` *길이* `[,` *발생*`]]])`
 
-**인수**
+## <a name="arguments"></a>인수
 
-|인수     | Description                                     |필수 또는 선택|
+|인수     | 설명                                     |필수 또는 선택|
 |--------------|-------------------------------------------------|--------------------|
 |source        | 입력 문자열                                    |필수            |
 |조회        | 검색할 문자열                                  |필수            |
@@ -36,7 +36,7 @@ ms.locfileid: "84780459"
 |occurrence    | 패턴의 N 번째 모양에 대 한 인덱스를 찾습니다. 
                  기본값은 1, 첫 번째 항목의 인덱스입니다. |선택 사항            |
 
-**반환**
+## <a name="returns"></a>반환
 
 *조회*의 인덱스 위치 (0부터 시작)입니다.
 
@@ -47,7 +47,7 @@ ms.locfileid: "84780459"
      * 길이 매개 변수가-1 보다 작은 경우
 
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 print

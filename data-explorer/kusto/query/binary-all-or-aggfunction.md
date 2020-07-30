@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: e00d170db7cbafb36f04dfeb14f64caf2b8abcff
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 35478b435814fe716f7130576c16714403490be6
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83225261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87349128"
 ---
 # <a name="binary_all_or-aggregation-function"></a>binary_all_or () (집계 함수)
 
@@ -21,19 +21,19 @@ ms.locfileid: "83225261"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `binary_all_or(` *식* 요약`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *Expr*: long 숫자입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 요약 그룹당 레코드에 대해 이항 연산을 사용 하 여 집계 된 값을 반환 `OR` 합니다. 요약을 그룹화 하지 않고 요약 하는 경우에는 합계를 사용 합니다.
 
-**예제**
+## <a name="example"></a>예제
 
 이항 연산을 사용 하 여 ' 카페 ' 생성 `OR` :
 

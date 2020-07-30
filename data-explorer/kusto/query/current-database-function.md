@@ -1,6 +1,6 @@
 ---
-title: current_database() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 current_database()에 대해 설명합니다.
+title: current_database ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 current_database ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,26 +8,26 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: c61717bbc8d202624b36088df5aed2ba3f3a8d2d
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: d68c35547c840cc1e16224c376e90dfabec296d7
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81516748"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348703"
 ---
 # <a name="current_database"></a>current_database()
 
-범위에서 데이터베이스 이름을 반환합니다(다른 데이터베이스를 지정하지 않은 경우 모든 쿼리 엔터티가 확인되는 데이터베이스).
+범위 (다른 데이터베이스를 지정 하지 않은 경우 모든 쿼리 엔터티가 확인 됨)의 데이터베이스 이름을 반환 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `current_database()`
 
-**반환**
+## <a name="returns"></a>반환
 
-형식의 `string`값으로 범위에 있는 데이터베이스의 이름입니다.
+범위에 있는 데이터베이스의 이름 (형식의 값)입니다 `string` .
 
-**예제**
+## <a name="example"></a>예제
 
 ```kusto
 print strcat("Database in scope: ", current_database())

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4b912b1bdc68d7b3071ace8547f0aaf7c679a86a
-ms.sourcegitcommit: 733bde4c6bc422c64752af338b29cd55a5af1f88
+ms.openlocfilehash: c2045436de09bc31fa0378824310fa872478b861
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83271607"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87346833"
 ---
 # <a name="max_of"></a>max_of()
 
@@ -23,22 +23,22 @@ ms.locfileid: "83271607"
 max_of(10, 1, -3, 17) == 17
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `max_of``(` *expr_1* `,` *expr_2* expr_1 ...`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *expr_i*: 평가할 스칼라 식입니다.
 
 - 모든 인수는 동일한 형식 이어야 합니다.
 - 최대 64 개의 인수가 지원 됩니다.
 
-**반환**
+## <a name="returns"></a>반환
 
 모든 인수 식의 최대값입니다.
 
-**예제**
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto

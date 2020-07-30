@@ -1,6 +1,6 @@
 ---
-title: log10() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 log10()에 대해 설명합니다.
+title: log10 ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 log10 ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,31 +8,31 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: 9ccc83ff466d0414f793b7cfbbcf10d2ca169348
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 9db15900ea258d42e377f47de9ad12eecf52386d
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81513195"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87347122"
 ---
 # <a name="log10"></a>log10()
 
-`log10()`공통(기본-10) 로그릿hm 함수를 반환합니다.  
+`log10()`일반 (밑수 10) 로그 함수를 반환 합니다.  
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`log10(`*Ⅹ*`)`
+`log10(`*.x*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *x*: 0을 >.
+* *x*: 실수 > 0입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-* 일반적인 로그림은 기본-10 로그림: 기본 10이 있는 지수 함수(exp)의 역입니다.
-* `null`인수가 음수 또는 null이거나 `real` 값으로 변환할 수 없는 경우 
+* 일반적인 로그는 밑이 10 인 지 수 함수 (exp)의 역함수 인 상용 로그입니다.
+* `null`인수가 음수 이거나 null 이거나 값으로 변환할 수 없는 경우 `real` 입니다. 
 
 **참고 항목**
 
-* 자연(기본 e) 로그 할림의 경우 [log()를](log-function.md)참조하십시오.
-* 기본-2 로그 할리템의 경우 [log2()](log2-function.md)
+* 자연 (밑수-e) [로그는 log ()](log-function.md)를 참조 하세요.
+* 밑이 2 인 경우 [log2 ()](log2-function.md) 를 참조 하세요.

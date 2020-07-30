@@ -1,6 +1,6 @@
 ---
-title: datetime_diff() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 datetime_diff()에 대해 설명합니다.
+title: datetime_diff ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기에서 datetime_diff ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,45 +8,45 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fd62e27ac4f9ef0ec813a311ddb2b16f0a6c9a65
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 2e116661610e343c90276a43421d263bf74cd1b5
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81516442"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348533"
 ---
 # <a name="datetime_diff"></a>datetime_diff()
 
-두 [날짜 시간](./scalar-data-types/datetime.md) 값 간의 달력 차이를 계산합니다.
+두 [날짜/시간](./scalar-data-types/datetime.md) 값의 calendarian 차이를 계산 합니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`datetime_diff(`*기간*`,`*datetime_1*`,`*datetime_2*`)`
+`datetime_diff(`*기간* `,` *datetime_1* `,` *datetime_2*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * `period`: `string`. 
-* `datetime_1`: [날짜 시간](./scalar-data-types/datetime.md) 값입니다.
-* `datetime_2`: [날짜 시간](./scalar-data-types/datetime.md) 값입니다.
+* `datetime_1`: [datetime](./scalar-data-types/datetime.md) 값입니다.
+* `datetime_2`: [datetime](./scalar-data-types/datetime.md) 값입니다.
 
-*기간의*가능한 값 : 
+가능한 *기간*값: 
 - Year
 - Quarter
-- 월
-- Week
+- Month
+- 주
 - 일
 - Hour
-- Minute
-- 초
+- 분
+- Second
 - Millisecond
 - 마이크로초
 - 나노초
 
-**반환**
+## <a name="returns"></a>반환
 
-빼기 `periods` ()의`datetime_1` - `datetime_2`결과에 있는 양을 나타내는 정수입니다.
+`periods`빼기 () 결과의 양을 나타내는 정수입니다 `datetime_1`  -  `datetime_2` .
 
-**예**
+## <a name="examples"></a>예제
 
 ```kusto
 print

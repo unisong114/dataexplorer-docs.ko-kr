@@ -28,7 +28,7 @@ database('Sample').StormEvents
 cluster('help').database('Sample').StormEvents
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `database(`*stringConstant*`)`
 
@@ -41,7 +41,7 @@ cluster('help').database('Sample').StormEvents
 * 원격 클러스터 및 원격 데이터베이스에 액세스 하려면 [cluster ()](clusterfunction.md) 범위 함수를 참조 하세요.
 * 클러스터 간 및 데이터베이스 간 쿼리에 대 한 자세한 내용은 여기를 참조 [하세요](cross-cluster-or-database-queries.md) .
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="use-database-to-access-table-of-other-database"></a>데이터베이스 ()를 사용 하 여 다른 데이터베이스의 테이블에 액세스 합니다. 
 

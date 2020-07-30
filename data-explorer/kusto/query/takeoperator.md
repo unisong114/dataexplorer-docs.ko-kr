@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 98586f8f8380d4c1fc36a88b288b47798c10e09e
-ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
+ms.openlocfilehash: 4083c304711c4d77b15809221ac4ace4629fb4dd
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87342107"
 ---
 # <a name="take-operator"></a>take 연산자
 
@@ -25,14 +25,14 @@ T | take 5
 
 원본 데이터가 정렬 되지 않은 경우 레코드가 반환 되는 것을 보장 하지 않습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `take`*Numberofrows* 
  `limit` *Numberofrows*
 
 `take`및 `limit` 는 동의어입니다.
 
-**참고 사항**
+**참고**
 
 `take`는 데이터 집합이 변경 되지 않은 경우에도 데이터를 대화형으로 검색할 때 작은 레코드 샘플을 볼 수 있는 간단 하 고 빠르고 효율적인 방법 이지만 여러 번 실행 하는 경우 결과의 일관성을 보장 하지는 않습니다.
 

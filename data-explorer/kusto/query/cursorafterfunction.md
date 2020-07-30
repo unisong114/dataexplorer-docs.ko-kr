@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 9fab1ec936e950368667fc3afb133dcd952e44b5
-ms.sourcegitcommit: d885c0204212dd83ec73f45fad6184f580af6b7e
+ms.openlocfilehash: 0f555cd1ebec8d95a3e7d0e46c986b04154c721e
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348635"
 ---
 # <a name="cursor_after"></a>cursor_after()
 
@@ -23,19 +23,19 @@ ms.locfileid: "82737694"
 
 테이블의 레코드에 대 한 조건자를 통해 해당 수집 시간을 데이터베이스 커서와 비교할 수 있습니다.
 
-**구문**
+## <a name="syntax"></a>Syntax
 
 `cursor_after``(` *RHS*`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
 * *RHS*: 빈 문자열 리터럴 이거나 올바른 데이터베이스 커서 값입니다.
 
-**반환**
+## <a name="returns"></a>반환
 
-데이터베이스 커서 *RHS* (`true`) `bool` 또는 not (`false`) 다음에 레코드를 수집 여부를 나타내는 형식의 스칼라 값입니다.
+`bool`데이터베이스 커서 *RHS* ( `true` ) 또는 not () 다음에 레코드를 수집 여부를 나타내는 형식의 스칼라 값입니다 `false` .
 
-**참고 사항**
+**참고**
 
 데이터베이스 커서에 대 한 자세한 내용은 [데이터베이스 커서](../management/databasecursor.md) 를 참조 하세요.
 

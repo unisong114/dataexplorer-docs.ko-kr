@@ -1,6 +1,6 @@
 ---
-title: countof() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 countof()에 대해 설명합니다.
+title: countof ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 countof)에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1d932fbcea9b38849e7d7de09230c9a5aa9fa8e4
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 1d34b0611db134a6fc99daa49d04bfc19575a1c1
+ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81516901"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87348754"
 ---
 # <a name="countof"></a>countof()
 
@@ -24,21 +24,21 @@ countof("The cat sat on the mat", "at") == 3
 countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
 ```
 
-**구문**
+## <a name="syntax"></a>Syntax
 
-`countof(`*텍스트* `,` *search* 검색`,` [ *종류*]`)`
+`countof(`*텍스트* `,` *검색* [ `,` *kind*]`)`
 
-**인수**
+## <a name="arguments"></a>인수
 
-* *텍스트*: 문자열입니다.
-* *검색*: *텍스트*내부에 일치하는 일반 문자열 또는 [정규식입니다.](./re2.md)
-* *종류* `"normal"|"regex"` : `normal`기본값 . 
+* *text*: 문자열입니다.
+* *검색*: *텍스트*내에서 일치 하는 일반 문자열 또는 [정규식](./re2.md) 입니다.
+* *kind*: `"normal"|"regex"` 기본값 `normal` 
 
-**반환**
+## <a name="returns"></a>반환
 
 검색 문자열이 컨테이너에서 일치시킬 수 있는 횟수입니다. 일반 문자열 일치는 겹칠 수 있으며, 정규식 일치는 겹칠 수 없습니다.
 
-**예**
+## <a name="examples"></a>예제
 
 |||
 |---|---
