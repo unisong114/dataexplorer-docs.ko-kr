@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: c95ac178e82e414df41dd5a6d4456f344bb39c2f
-ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
+ms.openlocfilehash: 601a2b90b3a9152df701f001f050ab0c48e8910d
+ms.sourcegitcommit: 6e84f50efc8c5c3fe57080341ed3effe72197886
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86870127"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87440030"
 ---
 # <a name="using-kustoexplorer"></a>Kusto.Explorer 사용
 
@@ -38,7 +38,7 @@ Kusto. 탐색기는 사용 하기 쉬운 사용자 인터페이스에서 Kusto �
 
 Kusto. 탐색기에는 임시 쿼리를 작성, 편집 및 실행할 수 있는 강력한 스크립트 모드가 포함 되어 있습니다. 스크립트 모드는 구문 강조 표시 및 IntelliSense와 함께 제공 되므로 Kusto 쿼리 언어에 대 한 지식을 신속 하 게 설정할 수 있습니다.
 
-이 문서에서는 Kusto. 탐색기에서 기본 쿼리를 실행 하는 방법과 쿼리에 매개 변수를 추가 하는 방법에 대해 설명 합니다.
+이 섹션에서는 Kusto. 탐색기에서 기본 쿼리를 실행 하는 방법과 쿼리에 매개 변수를 추가 하는 방법에 대해 설명 합니다.
 
 ## <a name="basic-queries"></a>기본 쿼리
 
@@ -76,10 +76,10 @@ StormEvents
 [Kusto 쿼리 언어](https://docs.microsoft.com/azure/kusto/query/)에 대해 자세히 알아보세요.
 
 > [!NOTE]
-> 쿼리 식의 빈 줄은 실행 되는 쿼리 부분에 영향을 줄 수 있습니다.
+> 쿼리 식의 빈 줄은 실행되는 쿼리 부분에 영향을 줄 수 있습니다.
 >
-> 텍스트를 선택 하지 않은 경우에는 쿼리나 명령이 빈 줄로 구분 되어 있다고 가정 합니다.
-> 텍스트를 선택 하면 선택한 텍스트가 실행 됩니다.
+> 텍스트를 선택하지 않은 경우 쿼리나 명령이 빈 줄로 구분되어 있다고 가정합니다.
+> 텍스트를 선택하면 선택한 텍스트가 실행됩니다.
 
 ## <a name="client-side-query-parameterization"></a>클라이언트 쪽 쿼리 매개 변수화
 
@@ -156,7 +156,7 @@ URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.ne
 
 딥 링크를 만드는 가장 쉬운 방법은 Kusto. 탐색기에서 쿼리를 작성 한 다음 `Export to Clipboard` 를 사용 하 여 쿼리 (딥 링크 및 결과 포함)를 클립보드에 복사 하는 것입니다. 그런 다음 전자 메일을 통해 공유할 수 있습니다.
         
-전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예들 들어 다음과 같습니다.
+전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예를 들면 다음과 같습니다.
 
 https://help.kusto.windows.net:443/Samples[[쿼리를 실행 하려면 클릭](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
 
@@ -211,7 +211,7 @@ Kusto 탐색기는 다음 구문에서 몇 가지 명령줄 인수를 지원 합
 Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples
 ```
 
-|인수  |Description                                                               |
+|인수  |설명                                                               |
 |----------|--------------------------------------------------------------------------|
 |**실행할 쿼리**                                                                 |
 |`query`   |실행할 쿼리 (base64 인코딩)입니다. 비어 있는 경우를 사용 `querysrc` 합니다.          |

@@ -3,20 +3,20 @@ title: Apache Spark Azure 데이터 탐색기 커넥터를 사용 하 여 Azure 
 description: 이 항목에서는 Azure 데이터 탐색기와 Apache Spark 클러스터 간에 데이터를 이동 하는 방법을 보여 줍니다.
 author: orspod
 ms.author: orspodek
-ms.reviewer: michazag
+ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2020
-ms.openlocfilehash: 28dee67b6ac412a9c0497d5713a69c9617d3ae55
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.date: 7/29/2020
+ms.openlocfilehash: 31aa478647b902353db9d39a5ad36b5d5830c127
+ms.sourcegitcommit: 6e84f50efc8c5c3fe57080341ed3effe72197886
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83370459"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87440000"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>Apache Spark 용 Azure 데이터 탐색기 커넥터
 
-[Apache Spark](https://spark.apache.org/) 는 대규모 데이터 처리를 위한 통합 분석 엔진입니다. Azure 데이터 탐색기는 대량의 데이터를 실시간으로 분석할 수 있는 빠르고 완전히 관리 되는 데이터 분석 서비스입니다. 
+[Apache Spark](https://spark.apache.org/)는 대규모 데이터를 처리하기 위한 통합 분석 엔진입니다. Azure 데이터 탐색기는 대량의 데이터를 실시간으로 분석할 수 있는 빠르고 완전히 관리 되는 데이터 분석 서비스입니다. 
 
 Spark에 대 한 Azure 데이터 탐색기 커넥터는 모든 Spark 클러스터에서 실행할 수 있는 [오픈 소스 프로젝트](https://github.com/Azure/azure-kusto-spark) 입니다. Azure 데이터 탐색기 및 Spark 클러스터에서 데이터를 이동 하기 위한 데이터 원본 및 데이터 싱크를 구현 합니다. Azure 데이터 탐색기 및 Apache Spark를 사용 하 여 데이터 기반 시나리오를 대상으로 하는 빠르고 확장 가능한 응용 프로그램을 빌드할 수 있습니다. 예를 들어 기계 학습 (ML), ETL (추출-변환-로드) 및 Log Analytics입니다. 커넥터를 사용 하는 경우 Azure 데이터 탐색기은 쓰기, 읽기, writeStream 등의 표준 Spark 원본 및 싱크 작업에 유효한 데이터 저장소가 됩니다.
 
@@ -37,7 +37,7 @@ Spark에 대 한 Azure 데이터 탐색기 커넥터는 모든 Spark 클러스�
 * [Maven](https://maven.apache.org/download.cgi) 3.x 설치 됨
 
 > [!TIP]
-> 2.3. x 버전도 지원 되지만 pom .xml 종속성의 일부를 변경 해야 할 수도 있습니다.
+> 2.3. x 버전도 지원 되지만 pom.xml 종속성을 약간 변경 해야 할 수 있습니다.
 
 ## <a name="how-to-build-the-spark-connector"></a>Spark 커넥터를 빌드하는 방법
 
@@ -111,11 +111,14 @@ Azure 데이터 탐색기 Spark 커넥터를 사용 하면 다음 방법 중 하
 
 Azure AD 응용 프로그램 인증은 가장 간단 하 고 가장 일반적인 인증 방법 이며 Azure 데이터 탐색기 Spark 커넥터에 권장 됩니다.
 
-|속성  |설명  |
-|---------|---------|
-|**KUSTO_AAD_CLIENT_ID**     |   Azure AD 응용 프로그램 (클라이언트) 식별자입니다.      |
-|**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD 인증 기관. Azure AD 디렉터리 (테 넌 트) ID입니다.        |
-|**KUSTO_AAD_CLIENT_PASSWORD**    |    클라이언트의 Azure AD 응용 프로그램 키입니다.     |
+|속성  |옵션 문자열  |설명  |
+|---------|---------|---------|
+|**KUSTO_AAD_APP_ID**     |kustoAadAppId     |   Azure AD 응용 프로그램 (클라이언트) 식별자입니다.      |
+|**KUSTO_AAD_AUTHORITY_ID**     |kustoAadAuthorityID     |  Azure AD 인증 기관. Azure AD 디렉터리 (테 넌 트) ID입니다.        |
+|**KUSTO_AAD_APP_SECRET**    |kustoAadAppSecret     |    클라이언트의 Azure AD 응용 프로그램 키입니다.     |
+
+> [!NOTE]
+> 이전 API 버전 (2.0.0 미만)에는 "kustoAADClientID", "kustoClientAADClientPassword", "kustoAADAuthorityID" 라는 이름이 있습니다.
 
 ### <a name="azure-data-explorer-privileges"></a>Azure 데이터 탐색기 권한
 
@@ -153,8 +156,8 @@ Azure 데이터 탐색기 주 역할에 대 한 자세한 내용은 [역할 기�
       .option(KustoSinkOptions.KUSTO_CLUSTER, cluster)
       .option(KustoSinkOptions.KUSTO_DATABASE, database)
       .option(KustoSinkOptions.KUSTO_TABLE, "Demo3_spark")
-      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_ID, appId)
-      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey)
+      .option(KustoSinkOptions.KUSTO_AAD_APP_ID, appId)
+      .option(KustoSinkOptions.KUSTO_AAD_APP_SECRET, appKey)
       .option(KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
       .option(KustoSinkOptions.KUSTO_TABLE_CREATE_OPTIONS, "CreateIfNotExist")
       .mode(SaveMode.Append)
@@ -204,8 +207,8 @@ Azure 데이터 탐색기 주 역할에 대 한 자세한 내용은 [역할 기�
 
     val query = s"$table | where (ColB % 1000 == 0) | distinct ColA"
     val conf: Map[String, String] = Map(
-          KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
-          KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
+          KustoSourceOptions.KUSTO_AAD_APP_ID -> appId,
+          KustoSourceOptions.KUSTO_AAD_APP_SECRET -> appKey
         )
 
     val df = spark.read.format("com.microsoft.kusto.spark.datasource").
@@ -242,8 +245,8 @@ Azure 데이터 탐색기 주 역할에 대 한 자세한 내용은 [역할 기�
 
         ```scala
          val conf3 = Map(
-              KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
-              KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
+              KustoSourceOptions.KUSTO_AAD_APP_ID -> appId,
+              KustoSourceOptions.KUSTO_AAD_APP_SECRET -> appKey
               KustoSourceOptions.KUSTO_BLOB_STORAGE_SAS_URL -> storageSas)
         val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
         
