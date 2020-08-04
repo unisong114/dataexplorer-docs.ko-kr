@@ -204,8 +204,12 @@
               href: vnet-deployment.md
             - name: 'VNet 클러스터 만들기, 연결 및 작업 문제 해결'
               href: vnet-deploy-troubleshoot.md
-        - name: 클러스터 보안 관리
-          href: manage-cluster-security.md
+        - name: 암호화
+          items:
+            - name: 클러스터 디스크 암호화 - 포털
+              href: cluster-disk-encryption.md
+            - name: 이중 암호화
+              href: double-encryption.md
         - name: 관리되는 ID 구성
           href: managed-identities.md
         - name: 고객 관리 키 구성
