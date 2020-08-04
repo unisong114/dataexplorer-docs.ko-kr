@@ -7,12 +7,12 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: ad3351045f61f4fb9ddb9ce08c63201746ac05bb
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c9594862d9dbe0eae1e8357a81e1bce5bba79da7
+ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350233"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87515806"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 고객 관리 키 구성
 
@@ -85,6 +85,6 @@ Azure Portal 또는 PowerShell을 사용 하 여 Azure Resource Manager 템플�
 
 * [Azure에서 Azure 데이터 탐색기 클러스터 보호](security.md)
 * [Azure 데이터 탐색기 클러스터에 대 한 관리 id 구성](managed-identities.md)
-* 미사용 암호화를 사용 하도록 설정 하 여 [Azure 데이터 탐색기-Azure Portal에서 클러스터를 보호](manage-cluster-security.md) 합니다.
+* 미사용 암호화를 사용 하도록 설정 하 여 [Azure Azure Portal 데이터 탐색기에서 디스크 암호화를 사용 하 여 클러스터를 보호](cluster-disk-encryption.md) 합니다.
 * [C를 사용 하 여 고객 관리 키 구성 #](customer-managed-keys-csharp.md)
 

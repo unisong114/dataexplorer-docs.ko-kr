@@ -7,12 +7,12 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 84d21c7cedd77a409e0d5e1c1ca0cc5f93fdad16
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5d06b226edd08cbe4696499f6a7ec206fc902608
+ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350250"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87515793"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>C를 사용 하 여 고객 관리 키 구성 #
 
@@ -31,7 +31,7 @@ ms.locfileid: "87350250"
 
 이 섹션에서는 Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 고객 관리 키 암호화를 구성 하는 방법을 보여 줍니다. 
 
-### <a name="prerequisites"></a>필수 구성 요소
+### <a name="prerequisites"></a>사전 요구 사항
 
 * Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발**을 사용하도록 설정합니다.
 
@@ -95,7 +95,7 @@ ms.locfileid: "87350250"
 
 * [Azure에서 Azure 데이터 탐색기 클러스터 보호](security.md)
 * [Azure 데이터 탐색기 클러스터에 대 한 관리 id 구성](managed-identities.md)
-* 미사용 암호화를 사용 하도록 설정 하 여 [Azure 데이터 탐색기-Azure Portal에서 클러스터를 보호](manage-cluster-security.md) 합니다.
+* 미사용 암호화를 사용 하도록 설정 하 여 [Azure Azure Portal 데이터 탐색기에서 디스크 암호화를 사용 하 여 클러스터를 보호](cluster-disk-encryption.md) 합니다.
 * [Azure Resource Manager 템플릿을 사용 하 여 고객 관리 키 구성](customer-managed-keys-resource-manager.md)
 
 

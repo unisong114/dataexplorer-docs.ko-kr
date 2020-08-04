@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 984e5c37f3d29a6c56f88c6eb9b6750635e48920
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 98888ddd5dd6155c9476163337e7c031e0f84a1e
+ms.sourcegitcommit: afc369ab4c4bcc74f2dce22b397a340572db8ecf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345983"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528149"
 ---
 # <a name="python-plugin"></a>Python 플러그 인
 
@@ -24,7 +24,7 @@ ms.locfileid: "87345983"
 Python 플러그 인은 Python 스크립트를 사용 하 여 UDF (사용자 정의 함수)를 실행 합니다. Python 스크립트는 테이블 형식 데이터를 입력으로 가져오며 테이블 형식 출력을 생성할 것으로 예상 됩니다.
 플러그 인의 런타임은 클러스터의 노드에서 실행 되는 [샌드박스에서](../concepts/sandboxes.md)호스팅됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `evaluate` [ `hint.distribution` `=` ( `single`  |  `per_node` )] `python(` *output_schema* `,` *스크립트* [ `,` *script_parameters*] [ `,` *external_artifacts*]`)`
 
@@ -58,7 +58,7 @@ Python 플러그 인은 Python 스크립트를 사용 하 여 UDF (사용자 정
 
 * 플러그 인은 기본적으로 사용 하지 않도록 설정 되어 있습니다.
 * 플러그 인을 사용 하도록 설정 하려면 [필수 구성 요소](../concepts/sandboxes.md#prerequisites)목록을 참조 하십시오.
-* 클러스터의[구성 탭](../../language-extensions.md)에 있는 Azure Portal에서 플러그 인을 사용 하거나 사용 하지 않도록 설정 합니다.
+* 클러스터의 [구성 탭](../../language-extensions.md)에 있는 Azure Portal에서 플러그 인을 사용 하거나 사용 하지 않도록 설정 합니다.
 
 ## <a name="python-sandbox-image"></a>Python sandbox 이미지
 
@@ -183,7 +183,7 @@ print "This is an example for using 'external_artifacts'"
 
 다음과 같이 패키지를 설치 합니다.
 
-### <a name="prerequisites"></a>필수 구성 요소
+### <a name="prerequisites"></a>사전 요구 사항
 
   1. 패키지를 호스트 하는 blob 컨테이너를 만듭니다. 특히 클러스터와 동일한 장소에 있습니다. 예를 들어, `https://artifcatswestus.blob.core.windows.net/python` 클러스터가 미국 서 부에 있다고 가정 합니다.
   1. 클러스터의 [콜아웃 정책을](../management/calloutpolicy.md) 변경 하 여 해당 위치에 대 한 액세스를 허용 합니다.

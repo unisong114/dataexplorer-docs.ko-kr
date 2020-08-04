@@ -7,12 +7,12 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: f3dfdbeda7ab0d9234c70d4bf5e0aa5613258480
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0330d0bf51e3bf8844e6545c9b57543274d56ed0
+ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349944"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87515739"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure에서 Azure 데이터 탐색기 클러스터 보호
 
@@ -60,7 +60,7 @@ Azure Key Vault를 사용 하 여 고객 관리 키를 저장 합니다. 사용�
 
 ## <a name="next-steps"></a>다음 단계
 
-* 미사용 암호화를 사용 하도록 설정 하 여 [Azure 데이터 탐색기-포털에서 클러스터를 보호](manage-cluster-security.md) 합니다.
+* 미사용 암호화를 사용 하도록 설정 하 여 [Azure 데이터 탐색기-포털에서 디스크 암호화를 사용 하 여 클러스터를 보호](cluster-disk-encryption.md) 합니다.
 * [Azure 데이터 탐색기 클러스터에 대 한 관리 id 구성](managed-identities.md)
 * [Azure Resource Manager 템플릿을 사용 하 여 고객 관리 키 구성](customer-managed-keys-resource-manager.md)
 * [C를 사용 하 여 고객 관리 키 구성 #](customer-managed-keys-csharp.md)
