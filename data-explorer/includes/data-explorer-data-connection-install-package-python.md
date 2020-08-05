@@ -13,7 +13,7 @@ ms.locfileid: "81495303"
 ---
 ## <a name="install-python-package"></a>Python 패키지 설치
 
-Azure Data Explorer(Kusto)용 Python 패키지를 설치하려면 경로에 Python이 있는 명령 프롬프트를 엽니다. 다음 명령 실행:
+Azure Data Explorer(Kusto)용 Python 패키지를 설치하려면 경로에 Python이 있는 명령 프롬프트를 엽니다. 다음 명령을 실행합니다.
 
 ```python
 pip install azure-common

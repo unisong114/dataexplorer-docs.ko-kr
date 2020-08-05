@@ -11,6 +11,6 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 04/15/2020
 ms.locfileid: "81497071"
 ---
-## <a name="install-c-nuget"></a>C# NuGet 설치
+## <a name="install-c-nuget"></a>C # NuGet 설치
 
-* [Microsoft.Azure.Management.Kusto NuGet 패키지를](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)설치합니다.
+* Microsoft. n a m a [NuGet 패키지를](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)설치 합니다.

@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 09/13/2019
-ms.openlocfilehash: 34a0e5cd7107827cd97eb0baf9a3d40b408b2024
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: f74848ac3b634affbafde8d0441a4340aff230da
+ms.sourcegitcommit: dc42f4a7fa617a06b5566ce40b7cdc66cfd22185
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382080"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87557621"
 ---
 # <a name="how-to-authenticate-with-aad-for-azure-data-explorer-access"></a>Azure 데이터 탐색기 액세스를 위해 AAD를 사용 하 여 인증 하는 방법
 
@@ -46,7 +46,7 @@ Azure 데이터 탐색기에 액세스 하는 데 권장 되는 방법은 **Azur
 
 ## <a name="specifying-the-aad-resource-for-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 AAD 리소스 지정
 
-AAD에서 액세스 토큰을 획득 하는 경우 클라이언트는 토큰을 발급 해야 하는 **aad 리소스** 를 aad에 알려야 합니다. Azure 데이터 탐색기 끝점의 AAD 리소스는 포트 정보와 경로를 제외 하 고 끝점의 URI입니다. 다음은 그 예입니다.
+AAD에서 액세스 토큰을 획득 하는 경우 클라이언트는 토큰을 발급 해야 하는 **aad 리소스** 를 aad에 알려야 합니다. Azure 데이터 탐색기 끝점의 AAD 리소스는 포트 정보와 경로를 제외 하 고 끝점의 URI입니다. 예를 들면 다음과 같습니다.
 
 ```txt
 https://help.kusto.windows.net
@@ -159,7 +159,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 // Create Auth Context for AAD (common or tenant-specific endpoint):
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
-// Exchange your token for for Kusto token.
+// Exchange your token for a Kusto token.
 // You will need to provide your application's client ID and secret to authenticate your application
 var tokenForKusto = authContext.AcquireTokenAsync(
     "https://{serviceNameAndRegion}.kusto.windows.net",

@@ -13,7 +13,7 @@ ms.locfileid: "81497695"
 ---
 ## <a name="clean-up-resources"></a>리소스 정리
 
-데이터 연결을 삭제하려면 다음 명령을 사용합니다.
+데이터 연결을 삭제 하려면 다음 명령을 사용 합니다.
 
 ```csharp
 kustoManagementClient.DataConnections.Delete(resourceGroupName, clusterName, databaseName, dataConnectionName);
