@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019
-ms.openlocfilehash: 2191a26a0ee0bccd708c492690e58767d3cf52e9
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 770eded43fff091c8c500fcda59efcc2d4f95d9e
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345626"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803576"
 ---
 # <a name="series_decompose_anomalies"></a>series_decompose_anomalies()
 
@@ -22,7 +22,7 @@ ms.locfileid: "87345626"
 
 함수는 계열 (동적 숫자 배열)을 포함 하는 식을 입력으로 사용 하 고 점수를 사용 하 여 비정상 요소를 추출 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_decompose_anomalies (`*계열* `[, ` *임계값* `,` *계절성* `,` *추세* `, ` *Test_points* `, ` *AD_method* `,` *Seasonality_threshold*`])`
 
@@ -44,7 +44,7 @@ ms.locfileid: "87345626"
     * "75 번째 [": 표준](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) 25-백분위 수 [series_outliers](series-outliersfunction.md) 범위를 사용 하는.
 * *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 점수 임계값은 `0.6` 입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md) 를 참조 하세요.
 
-**돌려**
+## <a name="returns"></a>반환
 
  함수는 다음의 각 계열을 반환 합니다.
 
@@ -59,7 +59,7 @@ ms.locfileid: "87345626"
 1. 잔차 시리즈에서 선택한 변칙 검색 방법과 [series_outliers ()](series-outliersfunction.md) 를 적용 하 여 ad_score 계열을 계산 합니다.
 1. Ad_score에 임계값을 적용 하 여 ad_flag 계열을 계산 합니다.
  
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="detect-anomalies-in-weekly-seasonality"></a>주간 계절성의 변칙 검색
 

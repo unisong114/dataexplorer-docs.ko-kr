@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: a81c5faadb51b99cdcd233132f9b6a4843e3ce34
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 52cec808795024bd58b6a4ef6cf08e5b700c0e33
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345796"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803627"
 ---
 # <a name="restrict-statement"></a>Restrict 문
 
@@ -25,7 +25,10 @@ Restrict 문은 쿼리 문 뒤에 표시 되는 테이블/뷰 엔터티 집합�
 
 Restrict 문의 주요 시나리오는 사용자의 쿼리를 수락 하 고 해당 쿼리에 대해 행 수준 보안 메커니즘을 적용 하려는 중간 계층 응용 프로그램에 대 한 것입니다. 중간 계층 응용 프로그램은 사용자의 데이터에 대 한 액세스를 제한 하는 뷰를 정의 하는 let 문의 집합인 **논리 모델**을 사용 하 여 사용자의 쿼리에 접두사를 지정할 수 있습니다 (예: `T | where UserId == "..."` ). 마지막으로 추가 되는 문은 사용자의 논리적 모델만 액세스를 제한 합니다.
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> Restrict 문은 다른 데이터베이스 또는 클러스터의 엔터티에 대 한 액세스를 제한 하는 데 사용할 수 있습니다 (와일드 카드는 클러스터 이름에서 지원 되지 않음).
+
+## <a name="syntax"></a>구문
 
 `restrict``access` `to` `(` [*Entityspecifier* [ `,` ...]]`)`
 
@@ -36,51 +39,46 @@ Restrict 문의 주요 시나리오는 사용자의 쿼리를 수락 하 고 해
 
 Restrict 문으로 지정 되지 않은 모든 테이블, 테이블 형식 뷰 또는 패턴은 쿼리의 나머지 부분에 대해 "보이지 않는" 상태가 됩니다. 
 
-**참고**
-
-Restrict 문은 다른 데이터베이스 또는 클러스터의 엔터티에 대 한 액세스를 제한 하는 데 사용할 수 있습니다 (와일드 카드는 클러스터 이름에서 지원 되지 않음).
-
 ## <a name="arguments"></a>인수
 
 Restrict 문은 엔터티 이름을 확인 하는 동안 허용 제한을 정의 하는 하나 이상의 매개 변수를 가져올 수 있습니다. 엔터티는 다음과 같을 수 있습니다.
-- 문 앞에 [let 문을](./letstatement.md) 표시 `restrict` 합니다. 
+* 문 앞에 [let 문을](./letstatement.md) 표시 `restrict` 합니다. 
 
-```kusto
-// Limit access to 'Test' let statement only
-let Test = () { print x=1 };
-restrict access to (Test);
-```
+  ```kusto
+  // Limit access to 'Test' let statement only
+  let Test = () { print x=1 };
+  restrict access to (Test);
+  ```
 
-- 데이터베이스 메타 데이터에 정의 된 [테이블](../management/tables.md) 또는 [함수](../management/functions.md)
+* 데이터베이스 메타 데이터에 정의 된 [테이블](../management/tables.md) 또는 [함수](../management/functions.md)
 
-```kusto
-// Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
-// and other database 'DB2' has Table2 defined in the metadata
- 
-restrict access to (database().Table1, database().Func1, database('DB2').Table2);
-```
+    ```kusto
+    // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
+    // and other database 'DB2' has Table2 defined in the metadata
+    
+    restrict access to (database().Table1, database().Func1, database('DB2').Table2);
+    ```
 
-- [Let 문이나](./letstatement.md) 테이블/함수의 배수를 일치 시킬 수 있는 와일드 카드 패턴  
+* [Let 문이나](./letstatement.md) 테이블/함수의 배수를 일치 시킬 수 있는 와일드 카드 패턴  
 
-```kusto
-let Test1 = () { print x=1 };
-let Test2 = () { print y=1 };
-restrict access to (*);
-// Now access is restricted to Test1, Test2 and no tables/functions are accessible.
+    ```kusto
+    let Test1 = () { print x=1 };
+    let Test2 = () { print y=1 };
+    restrict access to (*);
+    // Now access is restricted to Test1, Test2 and no tables/functions are accessible.
 
-// Assuming the database that the query uses has table Table1 and Func1 defined in the metadata.
-// Assuming that database 'DB2' has table Table2 and Func2 defined in the metadata
-restricts access to (database().*);
-// Now access is restricted to all tables/functions of the current database ('DB2' is not accessible).
+    // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata.
+    // Assuming that database 'DB2' has table Table2 and Func2 defined in the metadata
+    restricts access to (database().*);
+    // Now access is restricted to all tables/functions of the current database ('DB2' is not accessible).
 
-// Assuming the database that the query uses has table Table1 and Func1 defined in the metadata.
-// Assuming that database 'DB2' has table Table2 and Func2 defined in the metadata
-restricts access to (database('DB2').*);
-// Now access is restricted to all tables/functions of the database 'DB2'
-```
+    // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata.
+    // Assuming that database 'DB2' has table Table2 and Func2 defined in the metadata
+    restricts access to (database('DB2').*);
+    // Now access is restricted to all tables/functions of the database 'DB2'
+    ```
 
-
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예제에서는 중간 계층 응용 프로그램에서 사용자가 다른 사용자의 데이터를 쿼리할 수 없도록 하는 논리 모델을 사용 하 여 사용자의 쿼리를 추가 하는 방법을 보여 줍니다.
 

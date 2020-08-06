@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a02f275dc47e88c7b14b85d19040e907613d1b80
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0be0dc12f48723bc83376a36db04f764991f7f0d
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348329"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803100"
 ---
 # <a name="diff-patterns-plugin"></a>diff 패턴 플러그 인
 
@@ -23,13 +23,16 @@ ms.locfileid: "87348329"
 ```kusto
 T | evaluate diffpatterns(splitColumn)
 ```
+> [!NOTE]
+> `diffpatterns`는 집합 간 데이터 차이의 일부를 캡처하는 중요 한 패턴을 찾고 행 단위 차이점에 대해서는 다루지 않습니다.
 
-
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `T | evaluate diffpatterns(SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...])` 
 
-**필수 인수**
+## <a name="arguments"></a>인수 
+
+### <a name="required-arguments"></a>필수 인수
 
 * SplitColumn - *column_name*
 
@@ -45,7 +48,7 @@ T | evaluate diffpatterns(splitColumn)
 
     예: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 
-**선택적 인수**
+### <a name="optional-arguments"></a>선택적 인수
 
 다른 모든 인수는 선택 사항이지만, 아래와 같은 순서여야 합니다. 기본값을 사용해야 함을 나타내려면 문자열 물결표 값 '~'을 사용합니다(아래 예 참조).
 
@@ -100,14 +103,9 @@ T | evaluate diffpatterns(splitColumn)
 
 * 참고: 패턴은 종종 고유 하지 않습니다. 이러한 작업은 겹칠 수 있으며 일반적으로 모든 원본 행을 포함 하지 않습니다. 일부 행은 어떤 패턴에도 속하지 않을 수 있습니다.
 
-
-**팁**
-
-입력 파이프에 [where](./whereoperator.md) 와 [project](./projectoperator.md) 를 사용 하 여 데이터를 원하는 것 으로만 줄입니다.
-
-관심 있는 행을 찾으면 `where` 필터에 특정 값을 추가하여 추가로 드릴인투할 수 있습니다.
-
-* 참고: `diffpatterns` 집합 간 데이터 차이의 일부를 캡처하는 중요 한 패턴을 찾기 위해 행 단위 차이점은 아닙니다.
+> [!TIP]
+> * 입력 파이프에 [where](./whereoperator.md) 와 [project](./projectoperator.md) 를 사용 하 여 데이터를 원하는 것 으로만 줄입니다.
+> * 관심 있는 행을 찾으면 `where` 필터에 특정 값을 추가하여 추가로 드릴인투할 수 있습니다.
 
 ## <a name="example"></a>예제
 
@@ -120,7 +118,7 @@ StormEvents
 | evaluate diffpatterns(Damage, "0", "1" )
 ```
 
-|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|시스템 상태|EventType|원본|DamageCrops|
+|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|주|EventType|원본|DamageCrops|
 |---|---|---|---|---|---|---|---|---|---|
 |0|2278|93|49.8|7.1|42.7||우박||0|
 |1|779|512|17.03|39.08|22.05||뇌우를 동반한 바람|||

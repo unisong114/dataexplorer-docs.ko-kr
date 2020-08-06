@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d2f9db1dbace646c41d8751272cf44cf6d04c2c3
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: ed7f6f69669cd580482beb2d3debd0e5c45bf54b
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346136"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803151"
 ---
 # <a name="pivot-plugin"></a>pivot 플러그 인
 
@@ -23,7 +23,10 @@ ms.locfileid: "87346136"
 T | evaluate pivot(PivotColumn)
 ```
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> 플러그 인의 출력 스키마는 `pivot` 데이터를 기반으로 하므로 쿼리는 두 실행에 대해 다른 스키마를 생성할 수 있습니다. 이는 압축을 푼 열을 참조 하는 쿼리가 언제 든 지 ' 중단 ' 될 수도 있음을 의미 합니다. 이러한 이유 때문에 자동화 작업에는이 플러그 인을 사용 하지 않는 것이 좋습니다.
+
+## <a name="syntax"></a>구문
 
 `T | evaluate pivot(`*pivotColumn* `[, ` *aggregationFunction* `] [,` *column1* `[,` *column2* ...`]])`
 
@@ -37,11 +40,7 @@ T | evaluate pivot(PivotColumn)
 
 피벗은 지정 된 열 (*column1*, *column2*, ...)과 피벗 열의 모든 고유 값을 사용 하 여 회전 된 테이블을 반환 합니다. 피벗 된 열의 각 셀에는 집계 함수 계산이 포함 됩니다.
 
-**참고**
-
-플러그 인의 출력 스키마는 `pivot` 데이터를 기반으로 하므로 쿼리는 두 실행에 대해 다른 스키마를 생성할 수 있습니다. 이는 압축을 푼 열을 참조 하는 쿼리가 언제 든 지 ' 중단 ' 될 수도 있음을 의미 합니다. 이러한 이유 때문에 자동화 작업에는이 플러그 인을 사용 하지 않는 것이 좋습니다.
-
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="pivot-by-a-column"></a>열을 기준으로 피벗
 
@@ -64,7 +63,7 @@ StormEvents
 |강한 바람|22|0|
 
 
-### <a name="pivot-by-a-column-with-aggregation-function"></a>집계 함수를 사용 하는 열을 기준으로 피벗 합니다.
+### <a name="pivot-by-a-column-with-aggregation-function"></a>집계 함수를 사용 하는 열을 기준으로 피벗
 
 ' AR '로 시작 하는 각 EventType 및 상태에 대해 직접 deaths의 총 수를 표시 합니다.
 
@@ -87,7 +86,7 @@ StormEvents
 |전달을|3|0|
 
 
-### <a name="pivot-by-a-column-with-aggregation-function-and-a-single-additional-column"></a>집계 함수 및 하나의 추가 열을 포함 하는 열을 기준으로 피벗 합니다.
+### <a name="pivot-by-a-column-with-aggregation-function-and-a-single-additional-column"></a>집계 함수 및 단일 추가 열을 포함 하는 열을 기준으로 피벗
 
 결과는 이전 예제와 동일 합니다.
 

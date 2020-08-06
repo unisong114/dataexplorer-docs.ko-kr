@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 1bfe42e18cfe0bb424e933b266eb9861c7676cea
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 6511006373cd1f6245a0dcc04537f3994183d63e
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348584"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803763"
 ---
 # <a name="database-scope-function"></a>database () (범위 함수)
 
@@ -28,7 +28,11 @@ database('Sample').StormEvents
 cluster('help').database('Sample').StormEvents
 ```
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> * 자세한 내용은 [데이터베이스 간 및 클러스터 간 쿼리](cross-cluster-or-database-queries.md)를 참조 하세요.
+> * 원격 클러스터 및 원격 데이터베이스에 액세스 하려면 [cluster ()](clusterfunction.md) 범위 함수를 참조 하세요.
+
+## <a name="syntax"></a>구문
 
 `database(`*stringConstant*`)`
 
@@ -36,14 +40,9 @@ cluster('help').database('Sample').StormEvents
 
 * *Stringconstant*: 참조 되는 데이터베이스의 이름입니다. 확인 된 데이터베이스는 또는 중 하나일 수 있습니다 `DatabaseName` `PrettyName` . 인수는 쿼리를 실행 하기 전에 반드시 _일정_ 해야 합니다. 즉, 하위 쿼리 계산에서 가져올 수 없습니다.
 
-**참고**
+## <a name="examples"></a>예
 
-* 원격 클러스터 및 원격 데이터베이스에 액세스 하려면 [cluster ()](clusterfunction.md) 범위 함수를 참조 하세요.
-* 클러스터 간 및 데이터베이스 간 쿼리에 대 한 자세한 내용은 여기를 참조 [하세요](cross-cluster-or-database-queries.md) .
-
-## <a name="examples"></a>예제
-
-### <a name="use-database-to-access-table-of-other-database"></a>데이터베이스 ()를 사용 하 여 다른 데이터베이스의 테이블에 액세스 합니다. 
+### <a name="use-database-to-access-table-of-other-database"></a>데이터베이스 ()를 사용 하 여 다른 데이터베이스의 테이블에 액세스
 
 ```kusto
 database('Samples').StormEvents | count
@@ -80,7 +79,8 @@ foo('help')
 };
 ```
 
-**참고:** 이러한 함수는 로컬 에서만 사용할 수 있고 클러스터 간 쿼리에서는 사용할 수 없습니다.
+> [!NOTE]
+> 이러한 함수는 로컬 에서만 사용할 수 있으며 클러스터 간 쿼리에서는 사용할 수 없습니다.
 
 ::: zone-end
 

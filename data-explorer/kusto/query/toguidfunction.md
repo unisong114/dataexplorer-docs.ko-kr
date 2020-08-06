@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a2eec6a582c4c8fc6cda6b3cf9a304f41ab48143
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 689ee6bf7b3fcb27dced20b06a9002659622902e
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350736"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87804137"
 ---
 # <a name="toguid"></a>toguid()
 
@@ -22,6 +22,9 @@ ms.locfileid: "87350736"
 ```kusto
 toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-d364d70fce44")
 ```
+
+> [!NOTE]
+> 가능 하면 [guid ()를](./scalar-data-types/guid.md) 사용 하는 것이 좋습니다.
 
 ## <a name="syntax"></a>구문
 
@@ -35,5 +38,3 @@ toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-
 
 성공적으로 변환 되 면 결과는 스칼라가 됩니다 [`guid`](./scalar-data-types/guid.md) .
 변환이 실패 하면 결과는가 됩니다 `null` .
-
-*참고*: 가능 하면 [guid ()](./scalar-data-types/guid.md) 를 사용 하는 것이 좋습니다.

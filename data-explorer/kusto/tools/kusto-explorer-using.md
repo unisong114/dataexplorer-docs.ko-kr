@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 601a2b90b3a9152df701f001f050ab0c48e8910d
-ms.sourcegitcommit: 6e84f50efc8c5c3fe57080341ed3effe72197886
+ms.openlocfilehash: 8688c7d6f2a5d68e0e1ae4436e099b011fd5faa0
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87440030"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803236"
 ---
 # <a name="using-kustoexplorer"></a>Kusto.Explorer 사용
 
@@ -89,7 +89,7 @@ StormEvents
 >
 > * 아래에 설명 된 클라이언트 쪽 쿼리 parametrization는 Kusto 탐색기 응용 프로그램의 기능입니다. 서비스에서 실행 되도록 보내기 전에 쿼리에 대해 문자열 바꾸기 작업을 사용 하는 것과 같습니다. 아래에 설명 된 구문은 쿼리 언어 자체에 포함 되지 않으며, Kusto 탐색기를 사용 하 여 쿼리를 서비스로 보낼 때 사용할 수 없습니다.
 
-여러 쿼리 또는 여러 탭에서 동일한 값을 사용 하는 경우 사용 되는 모든 위치의 값을 변경 하는 것이 매우 불편할 수 있습니다. 그 이유는 Kusto 탐색기는 쿼리 매개 변수를 지원 하기 때문입니다. 쿼리 매개 변수는 쉽게 다시 사용할 수 있도록 탭 간에 공유 됩니다. 매개 변수는 대괄호로 표시 됩니다 {} . 예: `{parameter1}`
+여러 쿼리 또는 여러 탭에서 동일한 값을 사용 하는 경우 사용 되는 모든 위치의 값을 변경 하는 것이 매우 불편할 수 있습니다. 그 이유는 Kusto 탐색기는 쿼리 매개 변수를 지원 하기 때문입니다. 쿼리 매개 변수는 쉽게 다시 사용할 수 있도록 탭 간에 공유 됩니다. 매개 변수는 대괄호로 표시 됩니다 {} . 예를 들면 다음과 같습니다. `{parameter1}`
 
 스크립트 편집기는 쿼리 매개 변수를 강조 표시 합니다.
 
@@ -139,24 +139,14 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 
 브라우저에서 열 때이 URI를 만들 수 있습니다. 탐색기를 로컬로 열고 지정 된 Kusto 데이터베이스에서 특정 쿼리를 실행 합니다.
 
-### <a name="limitations"></a>제한 사항
-
-브라우저 제한, HTTP 프록시 및 Microsoft Outlook과 같은 링크의 유효성을 검사 하는 도구로 인해 쿼리가 ~ 2000 자로 제한 됩니다. 클러스터와 데이터베이스 이름 길이에 따라 달라 지므로 제한이 대략적으로 발생 합니다. 자세한 내용은 [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427)를 참조하세요. 문자 제한에 도달할 가능성을 줄이려면 아래의 [짧은 링크 가져오기](#getting-shorter-links)를 참조 하세요.
-
-URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
-
-예를 들어:[https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
- 
-이 URI는 Kusto 탐색기를 열고, `Help` kusto 클러스터에 연결 하 고, 데이터베이스에서 지정 된 쿼리를 실행 합니다. `Samples` Kusto. 탐색기 인스턴스가 이미 실행 중인 경우 실행 중인 인스턴스는 새 탭을 열고 쿼리를 실행 합니다.
-
 > [!NOTE] 
 > 보안상의 이유로, 제어 명령에 대해 딥 링크를 사용할 수 없습니다.
 
-### <a name="creating-a-deep-link"></a>딥 링크 만들기
+#### <a name="creating-a-deep-link"></a>딥 링크 만들기
 
 딥 링크를 만드는 가장 쉬운 방법은 Kusto. 탐색기에서 쿼리를 작성 한 다음 `Export to Clipboard` 를 사용 하 여 쿼리 (딥 링크 및 결과 포함)를 클립보드에 복사 하는 것입니다. 그런 다음 전자 메일을 통해 공유할 수 있습니다.
         
-전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예를 들면 다음과 같습니다.
+전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예를 들어:
 
 https://help.kusto.windows.net:443/Samples[[쿼리를 실행 하려면 클릭](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
 
@@ -165,7 +155,7 @@ https://help.kusto.windows.net:443/Samples[[쿼리를 실행 하려면 클릭](h
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
-### <a name="deep-links-and-parametrized-queries"></a>딥 링크 및 매개 변수가 있는 쿼리
+#### <a name="deep-links-and-parametrized-queries"></a>딥 링크 및 매개 변수가 있는 쿼리
 
 딥 링크와 함께 매개 변수가 있는 쿼리를 사용할 수 있습니다.
 
@@ -177,6 +167,17 @@ web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     &lt;Your_cluster &gt; 를 Azure 데이터 탐색기 클러스터 이름으로 바꿉니다.
 
+#### <a name="limitations"></a>제한 사항
+
+브라우저 제한, HTTP 프록시 및 Microsoft Outlook과 같은 링크의 유효성을 검사 하는 도구로 인해 쿼리가 ~ 2000 자로 제한 됩니다. 클러스터와 데이터베이스 이름 길이에 따라 달라 지므로 제한이 대략적으로 발생 합니다. 자세한 내용은 [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427)를 참조하세요. 
+
+문자 제한에 도달할 가능성을 줄이려면 [짧은 링크 가져오기](#getting-shorter-links)를 참조 하세요.
+
+URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
+
+예를 들어:[https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
+ 
+이 URI는 Kusto 탐색기를 열고, `Help` kusto 클러스터에 연결 하 고, 데이터베이스에서 지정 된 쿼리를 실행 합니다. `Samples` Kusto. 탐색기 인스턴스가 이미 실행 중인 경우 실행 중인 인스턴스는 새 탭을 열고 쿼리를 실행 합니다.
 
 ### <a name="getting-shorter-links"></a>짧은 링크 가져오기
 
@@ -196,7 +197,7 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 
 명령줄 인수는 [딥 링크를 쿼리](#creating-a-deep-link)하는 것과 비슷한 방법으로 응용 프로그램을 여는 데 사용 되는 URL의 일부로 전달 됩니다.
 
-## <a name="command-line-argument-syntax"></a>명령줄 인수 구문
+### <a name="command-line-argument-syntax"></a>명령줄 인수 구문
 
 Kusto 탐색기는 다음 구문에서 몇 가지 명령줄 인수를 지원 합니다 (순서는 중요).
 

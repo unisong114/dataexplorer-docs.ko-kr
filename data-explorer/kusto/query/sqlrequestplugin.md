@@ -10,20 +10,22 @@ ms.topic: reference
 ms.date: 02/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: e412c1ec4f08af9820018f4c8dc172bd8c748a7f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: e4752828b3e4b145026f7ee47a1ade3f8685262e
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350981"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803474"
 ---
 # <a name="sql_request-plugin"></a>sql_request 플러그 인
 
 ::: zone pivot="azuredataexplorer"
 
-  `evaluate``sql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* [ `,` *Options*]]`)`
-
 `sql_request`플러그 인은 SQL Server 네트워크 끝점으로 SQL 쿼리를 보내고 결과에서 첫 번째 행 집합을 반환 합니다.
+
+## <a name="syntax"></a>구문
+
+  `evaluate``sql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* [ `,` *Options*]]`)`
 
 ## <a name="arguments"></a>인수
 
@@ -31,11 +33,11 @@ ms.locfileid: "87350981"
 
 * *SqlQuery*: `string` SQL 끝점에 대해 실행할 쿼리를 나타내는 리터럴입니다. 는 하나 이상의 행 집합을 반환 해야 하지만, 첫 번째 행 집합은 Kusto 쿼리의 나머지 부분에서 사용할 수 있습니다.
 
-* *Sqlparameters*: `dynamic` 쿼리와 함께 매개 변수로 전달할 키-값 쌍을 보유 하는 형식의 상수 값입니다. (선택 사항)
+* *Sqlparameters*: `dynamic` 쿼리와 함께 매개 변수로 전달할 키-값 쌍을 보유 하는 형식의 상수 값입니다. 선택 사항입니다.
   
-* *Options*: `dynamic` 고급 설정을 키-값 쌍으로 포함 하는 형식의 상수 값입니다. 현재는 `token` 인증을 위해 SQL 끝점에 전달 되는 호출자 제공 AZURE AD 액세스 토큰을 전달 하기 위해만 설정할 수 있습니다. (선택 사항)
+* *Options*: `dynamic` 고급 설정을 키-값 쌍으로 포함 하는 형식의 상수 값입니다. 현재는 `token` 인증을 위해 SQL 끝점에 전달 되는 호출자 제공 AZURE AD 액세스 토큰을 전달 하기 위해만 설정할 수 있습니다. 선택 사항입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 SQL 쿼리를 Azure SQL DB 데이터베이스로 보냅니다. 에서 모든 레코드를 검색 한 `[dbo].[Table]` 다음, Kusto 쪽에서 결과를 처리 합니다. 인증은 호출 하는 사용자의 Azure AD 토큰을 다시 사용 합니다. 
 
@@ -121,7 +123,7 @@ Sql_request 플러그 인은 SQL Server 끝점에 대 한 세 가지 인증 방�
 
 `Server``=` `tcp:` *FQDN* [ `,` *포트*]
 
-여기서
+위치:
 
 * *FQDN* 은 끝점의 정규화 된 도메인 이름입니다.
 * *포트* 는 끝점의 TCP 포트입니다. 기본적으로 `1433` 는로 가정 합니다.

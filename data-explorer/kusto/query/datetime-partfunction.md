@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
-ms.openlocfilehash: 2c1a73d2d7e31eb180b37fae3d392fd5792cd69b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c786f0edc94a9b92ca0f4484d0d71166ee699883
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348516"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803984"
 ---
 # <a name="datetime_part"></a>datetime_part()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87348516"
 datetime_part("Day",datetime(2015-12-14))
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `datetime_part(`*파트* `,` *datetime*`)`
 
@@ -33,28 +33,27 @@ datetime_part("Day",datetime(2015-12-14))
 * `part`: `string`
 
 의 가능한 값은 `part` 다음과 같습니다. 
-- Year
-- Quarter
-- Month
-- week_of_year
-- 일
-- DayOfYear
-- Hour
-- 분
-- Second
-- Millisecond
-- 마이크로초
-- 나노초
+* Year
+* Quarter
+* Month
+* week_of_year
+* 일
+* DayOfYear
+* Hour
+* 분
+* Second
+* Millisecond
+* 마이크로초
+* 나노초
 
 ## <a name="returns"></a>반환
 
 추출 된 파트를 나타내는 정수입니다.
 
-**참고**
+> [!NOTE]
+> `week_of_year`주 번호를 나타내는 정수를 반환 합니다. 주 번호는 첫 번째 목요일을 포함 하는 1 년의 첫 번째 주에서 계산 됩니다.
 
-`week_of_year`주 번호를 나타내는 정수를 반환 합니다. 주 번호는 첫 번째 목요일을 포함 하는 1 년의 첫 번째 주에서 계산 됩니다.
-
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 let dt = datetime(2017-10-30 01:02:03.7654321); 
@@ -80,4 +79,4 @@ nanosecond = datetime_part("nanosecond", dt)
 
 > [!NOTE]
 > `weekofyear`은 (는) 사용 되지 않는 파트의 변형입니다 `week_of_year` . `weekofyear`ISO 8601 규격이 아닙니다. 1 년의 첫 번째 주는 연도의 첫 번째 주 수요일의 주로 정의 되었습니다.
-`week_of_year`ISO 8601 호환 됨 1 년의 첫 번째 주는 해당 연도의 첫 번째 주 목요일의 주로 정의 됩니다. [자세한 내용](https://en.wikipedia.org/wiki/ISO_8601#Week_dates)
+> `week_of_year`ISO 8601 호환 됨 1 년의 첫 번째 주는 해당 연도의 첫 번째 주 목요일의 주로 정의 됩니다. [자세한 내용](https://en.wikipedia.org/wiki/ISO_8601#Week_dates)

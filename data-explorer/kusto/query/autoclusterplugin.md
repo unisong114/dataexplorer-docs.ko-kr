@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 86e3ce4f1cbb957ebd126a8493ebb6b7bc5ac66b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 959b11eca2dc369a3f737e01175f77ff6626f773
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349417"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803848"
 ---
 # <a name="autocluster-plugin"></a>autocluster 플러그 인
 
@@ -23,7 +23,11 @@ T | evaluate autocluster()
 
 `autocluster`데이터에서 불연속 특성 (차원)의 일반적인 패턴을 찾습니다. 그런 다음 원래 쿼리 결과를 100 또는 100,000 개 행이 든 적은 수의 패턴으로 줄입니다. 플러그 인은 오류 (예: 예외 또는 충돌)를 분석 하는 데 도움이 되도록 개발 되었지만 모든 필터링 된 데이터 집합에서 작동할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> `autocluster`는 주로 [불연속 특성을 사용 하는 원격 분석 데이터 마이닝 알고리즘에 대 한](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1)다음 문서의 초기값 확장 알고리즘을 기반으로 합니다. 
+
+
+## <a name="syntax"></a>구문
 
 `T | evaluate autocluster(`*인수*`)`
 
@@ -40,7 +44,10 @@ T | evaluate autocluster()
 >
 > 관심 있는 행을 찾으면 `where` 필터에 특정 값을 추가하여 추가로 드릴인투할 수 있습니다.
 
-**인수(모두 선택 사항)**
+## <a name="arguments"></a>인수 
+
+> [!NOTE] 
+> 모든 인수는 선택 사항입니다.
 
 `T | evaluate autocluster(`[*Sizeweight*, *WeightColumn*, *numseeds*, *customwildcard 카드*, *customwildcard 카드*, ...]`)`
 
@@ -53,9 +60,9 @@ T | evaluate autocluster()
 | NumSeeds        | *int* [기본값: 25]              | 시드 수는 알고리즘의 초기 로컬 검색 지점의 수를 결정합니다. 경우에 따라 데이터의 구조에 따라 초기값 수를 늘리면 확장 된 검색 공간을 통해 결과의 수 나 품질이 증가 하 여 쿼리 균형을 저하 시킬 수 있습니다. 이 값의 결과는 양쪽 방향으로 축소 되므로 5 미만으로 줄이면 성능이 크게 향상 됩니다. 50 이상으로 늘리면 추가 패턴이 거의 생성 되지 않습니다.                                         | `T | evaluate autocluster('~', '~', 15)`       |
 | CustomWildcard 카드  | *"any_value_per_type"*           | 결과 테이블의 특정 형식에 대 한 와일드 카드 값을 설정 합니다. 현재 패턴에이 열에 대 한 제한이 없음을 표시 합니다. 기본값은 null입니다. 문자열 기본값은 빈 문자열 이기 때문입니다. 기본값이 데이터에서 양호한 값 이면 다른 와일드 카드 값 (예:)을 사용 해야 합니다 `*` .                                                                                                                | `T | evaluate autocluster('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))` |
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
-### <a name="example"></a>예제
+### <a name="using-autocluster"></a>Autocluster 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -66,13 +73,13 @@ StormEvents
 | evaluate autocluster(0.6)
 ```
 
-|SegmentId|개수|백분율|시스템 상태|EventType|피해|
+|SegmentId|개수|백분율|주|EventType|피해|
 |---|---|---|---|---|---|---|---|---|
 |0|2278|38.7||우박|아니요
 |1|512|8.7||뇌우를 동반한 바람|YES
 |2|898|15.3|텍사스||
 
-### <a name="example-with-custom-wildcards"></a>사용자 지정 와일드카드가 사용된 예
+### <a name="using-custom-wildcards"></a>사용자 지정 와일드 카드 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -83,15 +90,13 @@ StormEvents
 | evaluate autocluster(0.2, '~', '~', '*')
 ```
 
-|SegmentId|개수|백분율|시스템 상태|EventType|피해|
+|SegmentId|개수|백분율|주|EventType|피해|
 |---|---|---|---|---|---|---|---|---|
 |0|2278|38.7|\*|우박|아니요
 |1|512|8.7|\*|뇌우를 동반한 바람|YES
 |2|898|15.3|텍사스|\*|\*
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * [basket](./basketplugin.md)
 * [줄이십시오](./reduceoperator.md)
-
-* `autocluster`는 주로 [불연속 특성을 사용 하는 원격 분석 데이터 마이닝 알고리즘에 대 한](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1)다음 문서의 초기값 확장 알고리즘을 기반으로 합니다. 

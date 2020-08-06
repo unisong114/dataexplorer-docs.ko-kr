@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 233f5f7f6e6064b10d1385eaef8a28302368e74b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 98887c8044be6ea1b429c51953c6f3f9a899d090
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346000"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87802964"
 ---
 # <a name="project-reorder-operator"></a>project-reorder 연산자
 
@@ -23,7 +23,7 @@ ms.locfileid: "87346000"
 T | project-reorder Col2, Col1, Col* asc
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| project-reorder` *columnnameorpattern* [ `asc` | `desc` ] [ `,` ...]
 
@@ -33,20 +33,18 @@ T | project-reorder Col2, Col1, Col* asc
 * *Columnnameorpattern:* 출력에 추가 된 열 또는 열 와일드 카드 패턴의 이름입니다.
 * 와일드 카드 패턴의 경우 `asc` : `desc` 열 이름을 오름차순 이나 내림차순으로 지정 하거나 순서를 지정 합니다. `asc`또는이 `desc` 지정 되지 않은 경우 원본 테이블에 표시 되는 일치 하는 열에 의해 순서가 결정 됩니다.
 
+> [!NOTE]
+> * 모호한 *Columnnameorpattern* 일치에서 열이 패턴과 일치 하는 첫 번째 위치에 표시 됩니다.
+> * 에 대 한 열 지정 `project-reorder` 은 선택 사항입니다. 명시적으로 지정 되지 않은 열은 출력 테이블의 마지막 열로 표시 됩니다.
+> * [`project-away`](projectawayoperator.md)를 사용 하 여 열을 제거 합니다.
+> * [`project-rename`](projectrenameoperator.md)열 이름을 바꾸려면를 사용 합니다.
+
+
 ## <a name="returns"></a>반환
 
 연산자 인수에 지정 된 순서로 열을 포함 하는 테이블입니다. `project-reorder`는 테이블에서 열 이름을 바꾸거나 제거 하지 않으므로 원본 테이블에 있던 모든 열이 결과 테이블에 표시 됩니다.
 
-**참고**
-
-- 모호한 *Columnnameorpattern* 일치에서 열이 패턴과 일치 하는 첫 번째 위치에 표시 됩니다.
-- 에 대 한 열 지정 `project-reorder` 은 선택 사항입니다. 명시적으로 지정 되지 않은 열은 출력 테이블의 마지막 열로 표시 됩니다.
-
-* [`project-away`](projectawayoperator.md)를 사용 하 여 열을 제거 합니다.
-* [`project-rename`](projectrenameoperator.md)열 이름을 바꾸려면를 사용 합니다.
-
-
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 세 개의 열 (a, b, c)이 있는 테이블을 다시 정렬 하 여 두 번째 열 (b)이 먼저 표시 되도록 합니다.
 

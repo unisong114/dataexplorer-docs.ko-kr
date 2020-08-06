@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: e11a4d450275fb4d596bd9618c20ef6cefcb0531
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: acd1b5328150e61bc81930f94b8ea9e8025e1ebb
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350737"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87804086"
 ---
 # <a name="todynamic-toobject"></a>todynamic(), toobject()
 
@@ -23,7 +23,10 @@ JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우 [extractj
 
 [Parse_json ()](./parsejsonfunction.md) 함수에 대 한 별칭입니다.
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> 가능 하면 [dynamic ()을](./scalar-data-types/dynamic.md) 사용 하는 것이 좋습니다.
+
+## <a name="syntax"></a>구문
 
 `todynamic(`*json* `)` 
  json `toobject(` *json*`)`
@@ -35,5 +38,3 @@ JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우 [extractj
 ## <a name="returns"></a>반환
 
 *json*에 의해 지정된 형식 `dynamic`의 개체입니다.
-
-*참고*: 가능한 경우 [dynamic ()을](./scalar-data-types/dynamic.md) 사용 하는 것이 좋습니다.

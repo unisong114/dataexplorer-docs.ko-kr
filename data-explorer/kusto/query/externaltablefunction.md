@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a3a1150996000742f5065df0eddc385074eaa48
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 13b244eb151d140e3626412188ac9bc9de242cc6
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348091"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87802981"
 ---
 # <a name="external_table"></a>external_table()
 
@@ -22,6 +22,11 @@ ms.locfileid: "87348091"
 ```kusto
 external_table('StormEvent')
 ```
+
+> [!NOTE]
+> * 함수에는 `external_table` [테이블](tablefunction.md) 함수와 유사한 제한이 있습니다.
+> * [외부 테이블](schema-entities/externaltables.md)
+> * [외부 테이블을 관리 하기 위한 명령](../management/externaltables.md)
 
 ## <a name="syntax"></a>구문
 
@@ -33,11 +38,3 @@ external_table('StormEvent')
   는 종류의 외부 테이블을 참조 하는 문자열 리터럴이어야 `blob` 합니다 `adl` . <!-- TODO: Document data formats supported -->
 
 * *MappingName*: 실제 (외부) 데이터 분할의 필드를이 함수에 의해 출력 되는 열에 매핑하는 매핑 개체의 선택적 이름입니다.
-
-**참고**
-
-외부 테이블에 대 한 자세한 내용은 [외부 테이블](schema-entities/externaltables.md) 을 참조 하세요.
-
-[외부 테이블 관리 명령도](../management/externaltables.md)참조 하세요.
-
-함수에는 `external_table` [테이블](tablefunction.md) 함수와 유사한 제한이 있습니다.

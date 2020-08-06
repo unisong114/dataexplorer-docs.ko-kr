@@ -8,18 +8,21 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fc8ee7e8c7ab3ce372d786ec87edf55265e1249
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 45ab913fdc659444ac578ca725e2afb24256a38b
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348448"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803712"
 ---
 # <a name="dcount-aggregation-function"></a>dcount () (집계 함수)
 
 요약 그룹에서 스칼라 식에 사용 되는 고유 값 수에 대 한 예상 값을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> `dcount()`집계 함수는 주로 큰 집합의 카디널리티를 추정 하는 데 유용 합니다. 정확도를 높이기 위해 성능을 향상 시킬 수 있으며 실행 마다 다른 결과를 반환할 수 있습니다. 입력 순서는 출력에 영향을 미칠 수 있습니다.
+
+## <a name="syntax"></a>구문
 
 ... `|` `summarize` `dcount` `(`*`Expr`*[, *`Accuracy`*]`)` ...
 
@@ -39,10 +42,6 @@ PageViewLog | summarize countries=dcount(country) by continent
 ```
 
 :::image type="content" source="images/dcount-aggfunction/dcount.png" alt-text="D 개수":::
-
-**참고**
-
-`dcount()`집계 함수는 주로 큰 집합의 카디널리티를 추정 하는 데 유용 합니다. 정확도를 높이기 위해 성능을 향상 시킬 수 있으며 실행 마다 다른 결과를 반환할 수 있습니다. 입력 순서는 출력에 영향을 미칠 수 있습니다.
 
 로 그룹화 된의 고유 값 수를 정확 하 게 가져옵니다 `V` `G` .
 

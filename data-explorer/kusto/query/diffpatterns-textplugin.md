@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9321f30d2643f6e398d73cf7960490708626f723
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: b0a71f9db9062d83f55ebf9db1efabb6d86f9786
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348363"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803287"
 ---
 # <a name="diffpatterns_text-plugin"></a>diffpatterns_text 플러그 인
 
@@ -25,11 +25,13 @@ T | evaluate diffpatterns_text(TextColumn, BooleanCondition)
 
 는 `diffpatterns_text` 두 집합에 있는 데이터의 서로 다른 부분을 캡처하는 텍스트 패턴 집합을 반환 합니다. 즉, 조건이 인 경우 행의 많은 부분을 캡처하는 패턴이 며 `true` 조건이 일 때 행의 비율이 낮습니다. `false` 패턴은 공백으로 구분 된 연속 토큰에서 텍스트 열의 토큰이 나 와일드 카드를 나타내는로 작성 됩니다 `*` . 각 패턴은 결과의 행으로 표시됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `T | evaluate diffpatterns_text(`TextColumn, BooleanCondition [, MinTokens, Threshold, MaxTokens]`)` 
 
-**필수 인수**
+## <a name="arguments"></a>인수
+
+### <a name="required-arguments"></a>필수 인수
 
 * TextColumn- *column_name*
 
@@ -39,7 +41,7 @@ T | evaluate diffpatterns_text(TextColumn, BooleanCondition)
 
     입력 테이블과 비교할 두 개의 레코드 하위 집합을 생성 하는 방법을 정의 합니다. 알고리즘은 쿼리를 두 개의 데이터 집합 "True" 및 "False"로 분할 한 다음 두 데이터 집합 간의 차이 (텍스트)를 분석 합니다. 
 
-**선택적 인수**
+### <a name="optional-arguments"></a>선택적 인수
 
 다른 모든 인수는 선택 사항이지만, 아래와 같은 순서여야 합니다. 
 
@@ -86,4 +88,3 @@ StormEvents
 |0|42|0|7.71|* * * * * * * * * * * * * * * Colorado *|
 |0|45|0|8.26|* * normal 미만 *|
 |0|110|0|20.18|일반 *|
-

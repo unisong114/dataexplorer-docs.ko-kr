@@ -7,15 +7,15 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
-ms.openlocfilehash: 6bb4a99b9fe226ce84bd02ee5ba04fc7a82fcd4c
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.date: 08/04/2020
+ms.openlocfilehash: 111110ac69e726c8367af4a2741a79061df7531a
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967284"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803865"
 ---
-# <a name="update-policy-command"></a>정책 명령 업데이트
+# <a name="update-policy-commands"></a>정책 업데이트 명령
 
 [업데이트 정책은](updatepolicy.md) 쿼리를 자동으로 실행 한 다음 데이터를 다른 테이블에 수집 때 결과를 수집 하는 테이블 수준 정책 개체입니다.
 
@@ -23,13 +23,13 @@ ms.locfileid: "85967284"
 
 이 명령은 지정 된 테이블의 업데이트 정책 또는 `*` 를 테이블 이름으로 사용 하는 경우 기본 데이터베이스의 모든 테이블을 반환 합니다.
 
-**구문**
+### <a name="syntax"></a>구문
 
 * `.show``table` *TableName* TableName `policy``update`
 * `.show``table` *DatabaseName* `.` *TableName* TableName `policy``update`
 * `.show` `table` `*` `policy` `update`
 
-**반환**
+### <a name="returns"></a>반환
 
 이 명령은 테이블당 하나의 레코드가 있는 테이블을 반환 합니다.
 
@@ -38,7 +38,7 @@ ms.locfileid: "85967284"
 |EntityName|`string`|업데이트 정책이 정의 된 엔터티의 이름입니다.                                                                                                                |
 |정책  |`string`|엔터티에 대해 정의 된 모든 업데이트 정책을 나타내는 JSON 배열로, [업데이트 정책 개체로](updatepolicy.md#the-update-policy-object) 형식이 지정 됩니다.|
 
-**예제**
+### <a name="example"></a>예제
 
 ```kusto
 .show table DerivedTableX policy update 
@@ -52,7 +52,7 @@ ms.locfileid: "85967284"
 
 이 명령은 지정 된 테이블의 업데이트 정책을 설정 합니다.
 
-**구문**
+### <a name="syntax"></a>구문
 
 * `.alter``table` *TableName* `policy` TableName `update` *ArrayOfUpdatePolicyObjects*
 * `.alter``table` *DatabaseName* `.` *TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
@@ -67,16 +67,16 @@ ms.locfileid: "85967284"
 >    * `Query` 
 >        * 스키마에 정의 된 스키마가 대상 테이블의 스키마와 일치 하는지 확인 합니다.
 >        * 쿼리가 업데이트 정책 테이블을 참조 하는지 확인 `source` 합니다. 
-        소스를 참조 *하지* 않는 업데이트 정책 쿼리를 정의 하는 방법은 `AllowUnreferencedSourceTable=true` *with* properties (아래 예제 참조)에서를 설정 하 여 수행할 수 있지만 성능 문제 때문에 권장 되지 않습니다. 원본 테이블에 대 한 모든 수집에 대해 다른 테이블의 *모든* 레코드를 업데이트 정책 실행에 대해 고려 합니다.
+        소스를 참조 하지 않는 업데이트 정책 쿼리를 정의 하는 방법은 `AllowUnreferencedSourceTable=true` *with* properties (아래 예제 참조)에서를 설정 하 여 수행할 수 있지만 성능 문제 때문에 권장 되지 않습니다. 원본 테이블에 대 한 모든 수집에 대해 다른 테이블의 모든 레코드를 업데이트 정책 실행에 대해 고려 합니다.
  >       * 정책으로 인해 대상 데이터베이스의 업데이트 정책 체인에서 순환이 생성 되지 않는지 확인 합니다.
  > * `IsTransactional`가로 설정 된 경우는 `true` `TableAdmin` `Source` (원본 테이블)에 대해서도 사용 권한이 확인 되는지 확인 합니다.
- > * 원본 테이블에 대 한 각 수집에서 실행 되도록 업데이트 정책 또는 성능 기능을 테스트 합니다. 자세한 내용은 [업데이트 정책 성능 영향 테스트](updatepolicy.md#testing-an-update-policys-performance-impact)를 참조 하십시오.
+ > * 원본 테이블에 대 한 각 수집에서 실행 되도록 업데이트 정책 또는 성능 기능을 테스트 합니다. 자세한 내용은 [업데이트 정책 성능 영향 테스트](updatepolicy.md#performance-impact)를 참조 하십시오.
 
-**반환**
+### <a name="returns"></a>반환
 
-이 명령은 테이블의 업데이트 정책 개체를 설정 하 고, 현재 정책을 재정의 하 고, 해당 하는 [. 테이블 테이블 업데이트 정책 표시](#show-update-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블의 업데이트 정책 개체를 설정 하 고 현재 정책을 재정의 한 다음 해당 [. 테이블 업데이트 정책 표시](#show-update-policy) 명령의 출력을 반환 합니다.
 
-**예제**
+### <a name="example"></a>예제
 
 ```kusto
 // Create a function that will be used for update
@@ -99,7 +99,7 @@ MyUpdateFunction()
 ```
 
 * 원본 테이블에 대 한 수집이 발생 하면이 경우 `MyTableX` 하나 이상의 익스텐트 (데이터 분할)가 해당 테이블에 만들어집니다.
-* `Query`업데이트 정책 개체에 정의 된 (이 경우에는 ' MyUpdateFunction ()는 해당 범위 에서만 실행 되며 전체 테이블에서 실행 되지 않습니다.
+* `Query`업데이트 정책 개체에 정의 된 (이 경우)는 `MyUpdateFunction()` 해당 범위 에서만 실행 되며 전체 테이블에서 실행 되지 않습니다.
   * "범위 지정"은 내부적으로 자동으로 수행 되며를 정의할 때 처리 되지 않습니다 `Query` .
   * 각 수집 작업에서 다른 새 수집 레코드만 파생 테이블에 수집 때 고려 됩니다 `DerivedTableX` .
 
@@ -115,7 +115,7 @@ MyUpdateFunction()
 
 ```
 
-## <a name="alter-merge-table-table-policy-update"></a>. alter-병합 테이블 테이블 정책 업데이트
+## <a name="alter-merge-table-tablename-policy-update"></a>. alter-병합 테이블 *TableName* 정책 업데이트
 
 이 명령은 지정 된 테이블의 업데이트 정책을 수정 합니다.
 
@@ -133,7 +133,7 @@ MyUpdateFunction()
 
 **반환**
 
-이 명령은 테이블의 업데이트 정책 개체에 추가 하 여 현재 정책을 재정의 하 고 해당 하는 [. 테이블 테이블 업데이트 정책 표시](#show-update-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블의 업데이트 정책 개체에 추가 하 고 현재 정책을 무시 한 다음 해당 [. show Table *TableName* update policy](#show-update-policy) 명령의 출력을 반환 합니다.
 
 **예제**
 
@@ -142,7 +142,7 @@ MyUpdateFunction()
 @'[{"IsEnabled": true, "Source": "MyTableY", "Query": "MyUpdateFunction()", "IsTransactional": false}]'  
 ``` 
 
-## <a name="delete-table-table-policy-update"></a>. 테이블 테이블 정책 업데이트 삭제
+## <a name="delete-table-tablename-policy-update"></a>. 테이블 *TableName* 정책 업데이트 삭제
 
 지정 된 테이블의 업데이트 정책을 삭제 합니다.
 
@@ -153,7 +153,7 @@ MyUpdateFunction()
 
 **반환**
 
-이 명령은 테이블의 업데이트 정책 개체를 삭제 한 다음 해당 [. 테이블 테이블 업데이트 정책 표시](#show-update-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블의 업데이트 정책 개체를 삭제 한 다음 해당 [. show Table *TableName* update policy](#show-update-policy) 명령의 출력을 반환 합니다.
 
 **예제**
 

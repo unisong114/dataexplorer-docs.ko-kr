@@ -8,53 +8,78 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6718ad614166d5328dcd412d09405c1db8cc14dc
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 0c8e9b3397026c572d27c250fc4e817bd5f7f265
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85265085"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803678"
 ---
 # <a name="string-operators"></a>문자열 연산자
 
-다음 표에서는 문자열에 대 한 연산자를 요약 합니다.
+Kusto는 문자열 데이터 형식을 검색 하기 위한 다양 한 쿼리 연산자를 제공 합니다. 다음 문서에서는 문자열 용어를 인덱싱하는 방법에 대해 설명 하 고, 문자열 쿼리 연산자를 나열 하 고, 성능을 최적화 하기 위한 팁을 제공 합니다.
 
-연산자        |Description                                                       |대/소문자 구분|예제(`true` 생성)
+## <a name="understanding-string-terms"></a>문자열 용어 이해
+
+Kusto는 형식의 열을 포함 하 여 모든 열을 인덱싱합니다 `string` . 실제 데이터에 따라 이러한 열에 대해 여러 인덱스를 작성 합니다. 이러한 인덱스는 직접 노출 되지 않지만,,, 등의 이름에 포함 된 연산자를 사용 하 여 쿼리에 사용 됩니다 `string` `has` `has` `!has` `hasprefix` `!hasprefix` . 이러한 연산자의 의미 체계는 열이 인코딩 되는 방식에 따라 결정 됩니다. "일반" 부분 문자열 일치를 수행 하는 대신 이러한 연산자는 *용어*와 일치 합니다.
+
+### <a name="what-is-a-term"></a>용어 란 무엇 인가요? 
+
+기본적으로 각 `string` 값은 ASCII 영숫자 문자의 최대 시퀀스로 분할 되 고 이러한 각 시퀀스는 용어로 생성 됩니다.
+예를 들어, 다음과 같은 용어는,,,, 등의 `string` `Kusto` `WilliamGates3rd` 부분 문자열 `ad67d136` `c1db` `4f9f` `88ef` `d94f3b6b0b5a` 입니다.
+
+```
+Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
+```
+
+Kusto는 *4 자 이상인*모든 용어로 구성 된 용어 인덱스를 작성 하 고, 등에서이 인덱스를 사용 `has` `!has` 합니다. 쿼리가 4 자 보다 작은 용어를 찾거나 연산자를 사용 하는 경우 `contains` Kusto는 일치 항목을 확인할 수 없는 경우 열에 있는 값을 검색 하도록 되돌립니다. 이 방법은 용어 인덱스에서 용어를 찾는 것 보다 훨씬 느립니다.
+
+## <a name="operators-on-strings"></a>문자열에 대 한 연산자
+
+> [!NOTE]
+> 아래 표에는 다음 약어가 사용 됩니다.
+> * RHS = 식의 오른쪽
+> * LHS = 식의 왼쪽
+
+연산자        |설명                                                       |대/소문자 구분|예제(`true` 생성)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
-`==`            |같음                                                            |Yes           |`"aBc" == "aBc"`
-`!=`            |같지 않음                                                        |Yes           |`"abc" != "ABC"`
-`=~`            |같음                                                            |No            |`"abc" =~ "ABC"`
-`!~`            |같지 않음                                                        |No            |`"aBc" !~ "xyz"`
-`has`           |오른쪽(RHS)이 왼쪽(LHS)의 전체 항임     |No            |`"North America" has "america"`
-`!has`          |RHS는 LHS에서 전체 용어가 아닙니다.                                     |No            |`"North America" !has "amer"` 
-`has_cs`        |오른쪽(RHS)이 왼쪽(LHS)의 전체 항임     |Yes           |`"North America" has_cs "America"`
-`!has_cs`       |RHS는 LHS에서 전체 용어가 아닙니다.                                     |Yes           |`"North America" !has_cs "amer"` 
-`hasprefix`     |RHS는 LHS에서 용어 접두사입니다.                                       |No            |`"North America" hasprefix "ame"`
-`!hasprefix`    |RHS는 LHS에서 용어 접두사가 아닙니다.                                   |No            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`  |RHS는 LHS에서 용어 접두사입니다.                                       |Yes           |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs` |RHS는 LHS에서 용어 접두사가 아닙니다.                                   |Yes           |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`     |RHS는 LHS에서 용어 접미사입니다.                                       |No            |`"North America" hassuffix "ica"`
-`!hassuffix`    |RHS는 LHS에서 용어 접미사가 아닙니다.                                   |No            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`  |RHS는 LHS에서 용어 접미사입니다.                                       |Yes           |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs` |RHS는 LHS에서 용어 접미사가 아닙니다.                                   |Yes           |`"North America" !hassuffix_cs "icA"`
-`contains`      |RHS가 LHS의 하위 시퀀스로 발생함                                |No            |`"FabriKam" contains "BRik"`
-`!contains`     |RHS가 LHS에서 발생하지 않음                                         |No            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |RHS가 LHS의 하위 시퀀스로 발생함                                |Yes           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |RHS가 LHS에서 발생하지 않음                                         |Yes           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`    |RHS가 LHS의 초기 하위 시퀀스임                              |No            |`"Fabrikam" startswith "fab"`
-`!startswith`   |RHS가 LHS의 초기 하위 시퀀스가 아님                          |No            |`"Fabrikam" !startswith "kam"`
-`startswith_cs` |RHS가 LHS의 초기 하위 시퀀스임                              |Yes           |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`|RHS가 LHS의 초기 하위 시퀀스가 아님                          |Yes           |`"Fabrikam" !startswith_cs "fab"`
-`endswith`      |RHS가 LHS의 닫는 하위 시퀀스임                               |No            |`"Fabrikam" endswith "Kam"`
-`!endswith`     |RHS가 LHS의 닫는 하위 시퀀스가 아님                           |No            |`"Fabrikam" !endswith "brik"`
-`endswith_cs`   |RHS가 LHS의 닫는 하위 시퀀스임                               |Yes           |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`  |RHS가 LHS의 닫는 하위 시퀀스가 아님                           |Yes           |`"Fabrikam" !endswith "brik"`
-`matches regex` |LHS가 RHS에 대한 일치 항목을 포함                                      |Yes           |`"Fabrikam" matches regex "b.*k"`
-`in`            |요소 중 하나와 같음                                     |Yes           |`"abc" in ("123", "345", "abc")`
-`!in`           |어떤 요소와도 같지 않음                                 |Yes           |`"bca" !in ("123", "345", "abc")`
-`in~`           |요소 중 하나와 같음                                     |No            |`"abc" in~ ("123", "345", "ABC")`
-`!in~`          |어떤 요소와도 같지 않음                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
-`has_any`       |와 동일 `has` 하지만 모든 요소에서 작동 합니다.                    |No            |`"North America" has_any("south", "north")`
+`==`            |같음                                                            |예           |`"aBc" == "aBc"`
+`!=`            |같지 않음                                                        |예           |`"abc" != "ABC"`
+`=~`            |같음                                                            |아니요            |`"abc" =~ "ABC"`
+`!~`            |같지 않음                                                        |아니요            |`"aBc" !~ "xyz"`
+`has`           |오른쪽(RHS)이 왼쪽(LHS)의 전체 항임     |아니요            |`"North America" has "america"`
+`!has`          |RHS는 LHS에서 전체 용어가 아닙니다.                                     |아니요            |`"North America" !has "amer"` 
+`has_cs`        |RHS는 LHS의 전체 용어입니다.                                        |예           |`"North America" has_cs "America"`
+`!has_cs`       |RHS는 LHS에서 전체 용어가 아닙니다.                                     |예           |`"North America" !has_cs "amer"` 
+`hasprefix`     |RHS는 LHS에서 용어 접두사입니다.                                       |아니요            |`"North America" hasprefix "ame"`
+`!hasprefix`    |RHS는 LHS에서 용어 접두사가 아닙니다.                                   |아니요            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`  |RHS는 LHS에서 용어 접두사입니다.                                       |예           |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs` |RHS는 LHS에서 용어 접두사가 아닙니다.                                   |예           |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`     |RHS는 LHS에서 용어 접미사입니다.                                       |아니요            |`"North America" hassuffix "ica"`
+`!hassuffix`    |RHS는 LHS에서 용어 접미사가 아닙니다.                                   |아니요            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`  |RHS는 LHS에서 용어 접미사입니다.                                       |예           |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs` |RHS는 LHS에서 용어 접미사가 아닙니다.                                   |예           |`"North America" !hassuffix_cs "icA"`
+`contains`      |RHS가 LHS의 하위 시퀀스로 발생함                                |아니요            |`"FabriKam" contains "BRik"`
+`!contains`     |RHS가 LHS에서 발생하지 않음                                         |아니요            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |RHS가 LHS의 하위 시퀀스로 발생함                                |예           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |RHS가 LHS에서 발생하지 않음                                         |예           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`    |RHS가 LHS의 초기 하위 시퀀스임                              |아니요            |`"Fabrikam" startswith "fab"`
+`!startswith`   |RHS가 LHS의 초기 하위 시퀀스가 아님                          |아니요            |`"Fabrikam" !startswith "kam"`
+`startswith_cs` |RHS가 LHS의 초기 하위 시퀀스임                              |예           |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`|RHS가 LHS의 초기 하위 시퀀스가 아님                          |예           |`"Fabrikam" !startswith_cs "fab"`
+`endswith`      |RHS가 LHS의 닫는 하위 시퀀스임                               |아니요            |`"Fabrikam" endswith "Kam"`
+`!endswith`     |RHS가 LHS의 닫는 하위 시퀀스가 아님                           |아니요            |`"Fabrikam" !endswith "brik"`
+`endswith_cs`   |RHS가 LHS의 닫는 하위 시퀀스임                               |예           |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`  |RHS가 LHS의 닫는 하위 시퀀스가 아님                           |예           |`"Fabrikam" !endswith "brik"`
+`matches regex` |LHS가 RHS에 대한 일치 항목을 포함함                                      |예           |`"Fabrikam" matches regex "b.*k"`
+`in`            |요소 중 하나와 같음                                     |예           |`"abc" in ("123", "345", "abc")`
+`!in`           |어떤 요소와도 같지 않음                                 |예           |`"bca" !in ("123", "345", "abc")`
+`in~`           |요소 중 하나와 같음                                     |아니요            |`"abc" in~ ("123", "345", "ABC")`
+`!in~`          |어떤 요소와도 같지 않음                                 |아니요            |`"bca" !in~ ("123", "345", "ABC")`
+`has_any`       |와 동일 `has` 하지만 모든 요소에서 작동 합니다.                    |아니요            |`"North America" has_any("south", "north")`
+
+> [!TIP]
+> 네 개 이상의 `has` 문자로 이루어진 인덱싱된 *용어* 에 대 한 검색을 포함 하는 모든 연산자와 부분 문자열이 일치 합니다. 문자열을 ASCII 영숫자의 시퀀스로 분리 하 여 용어를 만듭니다. [문자열 용어 이해](#understanding-string-terms)를 참조 하세요.
 
 ## <a name="performance-tips"></a>성능 팁
 
@@ -74,20 +99,3 @@ ms.locfileid: "85265085"
 EventLog | where continent has "North" | count;
 EventLog | where continent contains "nor" | count
 ```
-
-## <a name="understanding-string-terms"></a>문자열 용어 이해
-
-기본적으로 Kusto는 형식의 열을 포함 하 여 모든 열을 인덱싱합니다 `string` .
-실제 데이터에 따라 이러한 열에 대해 여러 인덱스를 작성 합니다. ,,, 등의 이름에 포함 된 연산자를 제외 하 고 이러한 인덱스는 쿼리 성능에 대 한 긍정적인 영향을 제외 하 고는 직접 노출 되지 않습니다 `string` `has` `has` `!has` `hasprefix` `!hasprefix` .
-이러한 연산자의 의미 체계는 열이 인코딩 되는 방식에 따라 결정 되기 때문에 특수 합니다. "일반" 부분 문자열 일치를 수행 하는 대신 이러한 연산자는 **용어**와 일치 합니다.
-
-용어 기반 일치를 이해 하려면 먼저 용어를 이해 해야 합니다. 기본적으로 각 `string` 값은 ASCII 영숫자 문자의 최대 시퀀스로 분할 되 고 이러한 각 시퀀스는 용어로 생성 됩니다.
-
-예를 들어, 다음과 같은 용어는,,,, 등의 `string` `Kusto` `WilliamGates3rd` 부분 문자열 `ad67d136` `c1db` `4f9f` `88ef` `d94f3b6b0b5a` 입니다.
-
-```
-Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
-```
-
-기본적으로 Kusto는 **4 자**이상으로 구성 된 모든 용어로 구성 된 용어 인덱스를 작성 하 고,, 등에서 `has` 4 자 이상의 용어를 조회할 때이 인덱스를 사용 `!has` 합니다.
-쿼리가 4 자 보다 작은 용어를 찾거나 연산자를 사용 하는 경우 `contains` Kusto는 일치 항목을 확인할 수 없는 경우 열에 있는 값을 검색 하도록 되돌립니다. 이 방법은 용어 인덱스에서 용어를 찾는 것 보다 훨씬 느립니다.

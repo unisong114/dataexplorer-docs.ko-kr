@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fb209ff3784f6e24f184b576a1e8f94c52834ba4
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 36c0317f046f146d2812b8830d7fe571d5363c59
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87340958"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87804120"
 ---
 # <a name="tolong"></a>tolong()
 
@@ -23,7 +23,10 @@ ms.locfileid: "87340958"
 tolong("123") == 123
 ```
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> 가능 하면 [long ()](./scalar-data-types/long.md) 을 사용 하는 것이 좋습니다.
+
+## <a name="syntax"></a>구문
 
 `tolong(`*Expr*`)`
 
@@ -36,4 +39,3 @@ tolong("123") == 123
 성공적으로 변환 되 면 결과는 long 숫자가 됩니다.
 변환이 실패 하면 결과는가 됩니다 `null` .
  
-*참고*: 가능 하면 [long ()](./scalar-data-types/long.md) 을 사용 하는 것이 좋습니다.

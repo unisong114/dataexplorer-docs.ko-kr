@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 0831251bd38df4475c271cc6bcec9c15668860ea
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3fa07fee38ab42c61035f68773b603607d0aa858
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87344174"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803457"
 ---
 # <a name="series_fill_linear"></a>series_fill_linear()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87344174"
 
 동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고, missing_value_placeholder의 모든 인스턴스에 대해 선형 보간을 수행 하 고, 결과 배열을 반환 합니다. 배열의 시작과 끝에 missing_value_placeholder 포함 된 경우 missing_value_placeholder 이외의 가장 가까운 값으로 대체 됩니다. 이 기능을 해제할 수 있습니다. 전체 배열이 missing_value_placeholder로 구성 된 경우에는 배열이 constant_value으로 채워지거나, 지정 되지 않은 경우 0이 됩니다.  
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_fill_linear(`*x* `[,` *missing_value_placeholder* ` [,` *fill_edges* ` [,` *constant_value*`]]]))`
 * 지정 된 매개 변수를 사용 하 여 *x* 의 계열 선형 보간을 반환 합니다.
@@ -34,14 +34,14 @@ ms.locfileid: "87344174"
 * *fill_edges*: 배열의 시작과 끝에 있는 *missing_value_placeholder* 를 가장 가까운 값으로 바꾸어야 하는지 여부를 나타내는 부울 값입니다. 기본적으로 *True* 입니다. *False*로 설정 하면 배열의 시작과 끝에 있는 *missing_value_placeholder* 유지 됩니다.
 * *constant_value*: 배열에만 관련 된 선택적 매개 변수는 모두 *null* 값으로 구성 됩니다. 이 매개 변수는 계열을 채울 상수 값을 지정 합니다. 기본값은 *0*입니다. 이 매개 변수를 `double` (*null*)로 설정 하면 *null* 값은 그대로 유지 됩니다.
 
-**참고**
+## <a name="notes"></a>참고
 
 * [시리즈](make-seriesoperator.md)를 만든 후에 보간 함수를 적용 하려면 *null* 을 기본값으로 지정 합니다. 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
-make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
-```
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    ```kusto
+    make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
+    ```
 
 * 실제 요소 형식으로 변환 되는 모든 형식을 *missing_value_placeholder* 수 있습니다. 이와 같이 `double` (*null*), `long` (*null*) 또는 `int` (*null*)는 동일한 의미를 갖습니다.
 * *Missing_value_placeholder* 가 `double` (*null*) 이거나 동일한 의미를 갖는 생략 된 경우 결과에는 *null* 값이 포함 될 수 있습니다. 다른 보간 함수를 사용 하 여 이러한 *null* 값을 채웁니다. 현재는 [series_outliers ()](series-outliersfunction.md) 만 입력 배열에서 *null* 값을 지원 합니다.

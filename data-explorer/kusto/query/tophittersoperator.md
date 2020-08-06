@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: babb4e023d29c7894661e3acf2c0a09e753011c2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: be05a3a546bb6f1db003be14e4a1417841b54671
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87340822"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87804069"
 ---
 # <a name="top-hitters-operator"></a>top-hitters 연산자
 
@@ -22,6 +22,9 @@ ms.locfileid: "87340822"
 ```kusto
 T | top-hitters 25 of Page by Views 
 ```
+
+> [!NOTE]
+> `top-hitters`는 근사값 알고리즘 이며, 많은 데이터를 사용 하 여 실행할 때 사용 해야 합니다. 최상위 hitters의 근사값은 [개수-최소 스케치](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) 알고리즘을 기반으로 합니다.  
 
 ## <a name="syntax"></a>구문
 
@@ -35,13 +38,9 @@ T | top-hitters 25 of Page by Views
     * *식*: hitters는 최대 합계 (*식*)를 포함 하는 *numberofrows* 행을 반환 합니다. Expression은 열 이거나 숫자로 계산 되는 다른 식일 수 있습니다. 
     *  *Expression* 을 언급 하지 않을 경우 hitters 알고리즘은 *정렬 키*의 발생 횟수를 계산 합니다.  
 
-**참고**
+## <a name="examples"></a>예
 
-`top-hitters`는 근사값 알고리즘 이며, 많은 데이터를 사용 하 여 실행할 때 사용 해야 합니다. 최상위 hitters의 근사값은 [개수-최소 스케치](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) 알고리즘을 기반으로 합니다.  
-
-## <a name="example"></a>예제
-
-## <a name="getting-top-hitters-most-frequent-items"></a>상위 hitters 가져오기 (가장 자주 발생 하는 항목) 
+### <a name="get-most-frequent-items"></a>가장 자주 항목 가져오기 
 
 다음 예제에서는 위키백과에서 대부분의 페이지를 포함 하는 최고 수준의 5 개 언어를 찾는 방법을 보여 줍니다 (4 월 2016 일에 액세스 한 후에 액세스). 
 
@@ -51,7 +50,7 @@ PageViews
 | top-hitters 5 of Language 
 ```
 
-|언어|approximate_count_Language|
+|Language|approximate_count_Language|
 |---|---|
 |en|1539954127|
 |zh|339827659|
@@ -59,7 +58,7 @@ PageViews
 |ru|227003107|
 |fr|207943448|
 
-## <a name="getting-top-hitters-based-on-column-value-"></a>Top hitters 가져오기 (열 값 기반) * * *
+### <a name="get-top-hitters-based-on-column-value"></a>열 값을 기준으로 상위 hitters 가져오기
 
 다음 예제에서는 2016 년의 위키백과에서 가장 많이 표시 되는 영어 페이지를 찾는 방법을 보여 줍니다. 쿼리에서는 ' Views ' (정수 숫자)를 사용 하 여 페이지 인기도 (뷰 수)를 계산 합니다. 
 

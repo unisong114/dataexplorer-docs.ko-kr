@@ -8,26 +8,25 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6c157c014ec3b83aa39d4bdfcadda12e97e84f3e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0c4ce80c00df4c9c6e257fbe1f8a93802f54438e
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346544"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87802947"
 ---
 # <a name="pack_all"></a>pack_all()
 
 `dynamic`테이블 형식 식의 모든 열에서 개체 (속성 모음)를 만듭니다.
 
-## <a name="syntax"></a>Syntax
+> [!NOTE]
+> 반환 된 개체의 표현은 실행 간에 바이트 수준의 호환성이 보장 되지 않습니다. 예를 들어 모음에 표시 되는 속성은 다른 순서로 표시 될 수 있습니다.
+
+## <a name="syntax"></a>구문
 
 `pack_all()`
 
-**참고**
-
-반환 된 개체의 표현은 실행 간에 바이트 수준의 호환성이 보장 되지 않습니다. 예를 들어 모음에 표시 되는 속성은 다른 순서로 표시 될 수 있습니다.
-
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 지정 된 테이블 SmsMessages 
 
@@ -49,6 +48,7 @@ datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
 ]
 | extend Packed=pack_all()
 ```
+
 HRESULT = NO_ERROR를
 
 |TableName |SourceNumber |TargetNumber | 채워집니다

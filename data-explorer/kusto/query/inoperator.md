@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: ab2132908dad26f5f21cf945a1af4af1b8a049cd
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a6551ee2d4ac01d6d896cc8daff466f3c4a7852e
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347394"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803967"
 ---
 # <a name="in-and-in-operators"></a>in 및 !in 연산자
 
@@ -23,9 +23,15 @@ ms.locfileid: "87347394"
 Table1 | where col in ('value1', 'value2')
 ```
 
+> [!NOTE]
+> * 연산자에 ' ~ '를 추가 하면 값에서 대/소문자를 구분 하지 않고 검색 `x in~ (expression)` `x !in~ (expression)` 합니다.
+> * 테이블 형식 식에서 결과 집합의 첫 번째 열이 선택 됩니다.
+> * 식 목록에는 최대 값이 생성 될 수 있습니다 `1,000,000` .
+> * 중첩 된 배열은 값의 단일 목록으로 결합 됩니다. 예를 들어 `x in (dynamic([1,[2,3]]))`는 `x in (1,2,3)`가 됩니다.
+ 
 ## <a name="syntax"></a>구문
 
-*대/소문자 구분 구문:*
+### <a name="case-sensitive-syntax"></a>대/소문자 구분 구문
 
 *T* `|` `where` *col* `in` `(` *스칼라 식의* T 열 목록`)`   
 *T* `|` `where` *col* `in` `(` *테이블 형식 식*`)`   
@@ -33,7 +39,7 @@ Table1 | where col in ('value1', 'value2')
 *T* `|` `where` *col* `!in` `(` *스칼라 식의* T 열 목록`)`  
 *T* `|` `where` *col* `!in` `(` *테이블 형식 식*`)`   
 
-*대/소문자를 구분 하지 않는 구문:*
+### <a name="case-insensitive-syntax"></a>대/소문자를 구분 하지 않는 구문
 
 *T* `|` `where` *col* `in~` `(` *스칼라 식의* T 열 목록`)`   
 *T* `|` `where` *col* `in~` `(` *테이블 형식 식*`)`   
@@ -52,16 +58,9 @@ Table1 | where col in ('value1', 'value2')
 
 조건자가 인 *T* 의 행 `true` 입니다.
 
-**참고**
+## <a name="examples"></a>예  
 
-* 식 목록에는 최대 값이 생성 될 수 있습니다 `1,000,000` .
-* 중첩 된 배열은 값의 단일 목록으로 결합 됩니다. 예를 들어 `x in (dynamic([1,[2,3]]))`는 `x in (1,2,3)`가 됩니다.
-* 테이블 형식 식에서 결과 집합의 첫 번째 열이 선택 됩니다.
-* 연산자에 ' ~ '를 추가 하면 값에서 대/소문자를 구분 하지 않고 검색 `x in~ (expression)` `x !in~ (expression)` 합니다.
-
-**예:**  
-
-**' In ' 연산자를 간단 하 게 사용 합니다.**  
+### <a name="use-in-operator"></a>' In ' 연산자 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -74,8 +73,7 @@ StormEvents
 |---|
 |4775|  
 
-
-**' In ~ ' 연산자를 간단 하 게 사용 합니다.**  
+### <a name="use-in-operator"></a>' In ~ ' 연산자 사용  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -88,7 +86,7 @@ StormEvents
 |---|
 |4775|  
 
-**'! In ' 연산자를 간단 하 게 사용 합니다.**  
+### <a name="use-in-operator"></a>'! In ' 연산자 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -102,7 +100,7 @@ StormEvents
 |54291|  
 
 
-**동적 배열 사용:**
+### <a name="use-dynamic-array"></a>동적 배열 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -116,8 +114,7 @@ StormEvents
 |---|
 |3218|
 
-
-**하위 쿼리 예제:**  
+### <a name="subquery"></a>하위 쿼리
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -149,7 +146,7 @@ StormEvents
 |---|
 |14242|  
 
-**Top (기타 예:**  
+### <a name="top-with-other-example"></a>Top (기타 예제 포함)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -160,7 +157,7 @@ Lightning_By_State
 | summarize sum(lightning_events) by State 
 ```
 
-| 상태     | sum_lightning_events |
+| 주     | sum_lightning_events |
 |-----------|----------------------|
 | ALABAMA   | 29                   |
 | 위스콘신 | 31                   |
@@ -169,7 +166,7 @@ Lightning_By_State
 | 그루지야   | 106                  |
 | 기타     | 415                  |
 
-**함수에서 반환 되는 정적 목록 사용:**  
+### <a name="use-a-static-list-returned-by-a-function"></a>함수에서 반환 된 정적 목록 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -188,6 +185,6 @@ StormEvents | where State in (InterestingStates()) | count
 .show function InterestingStates
 ```
 
-|Name|매개 변수|본문|폴더|DocString|
+|이름|매개 변수|본문|폴더|DocString|
 |---|---|---|---|---|
 |InterestingStates|()|{dynamic (["워싱턴", "플로리다", "그루지야", "뉴욕"])}}

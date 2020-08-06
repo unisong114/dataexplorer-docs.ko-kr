@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: debd0a83f4c27fa05415805404ad450bab1d3ca1
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0a94b4f0e274d01a15edd06cbb725547e65d8381
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347377"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803950"
 ---
 # <a name="invoke-operator"></a>invoke 연산자
 
@@ -23,6 +23,9 @@ As 테이블 형식 매개 변수 인수로 원본을 수신 하는 람다를 �
 T | invoke foo(param1, param2)
 ```
 
+> [!NOTE]
+> 테이블 형식 인수를 사용할 수 있는 람다 식을 선언 하는 방법에 대 한 자세한 내용은 [let 문](./letstatement.md) 을 참조 하세요.
+ 
 ## <a name="syntax"></a>구문
 
 `T | invoke`*함수* `(` [*param1* `,` *param2*]`)`
@@ -36,10 +39,6 @@ T | invoke foo(param1, param2)
 ## <a name="returns"></a>반환
 
 계산 된 식의 결과를 반환 합니다.
-
-**참고**
-
-테이블 형식 인수를 사용할 수 있는 람다 식을 선언 하는 방법에 대 한 자세한 내용은 [let 문](./letstatement.md) 을 참조 하세요.
 
 ## <a name="example"></a>예제
 
