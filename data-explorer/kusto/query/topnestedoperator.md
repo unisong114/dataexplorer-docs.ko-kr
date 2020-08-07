@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 68b55ec5496f1eb68f979c56412f10191b9f5a68
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 85a59adc355c3d8855c34bcf97d29d3bd6eea4a1
+ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87340805"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87803134"
 ---
 # <a name="top-nested-operator"></a>top-nested 연산자
 
@@ -74,7 +74,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 * 하나의 열에 *집계* 계산 결과가 포함 됩니다 (지정 된 경우 *AggregationName* 열 이름 포함).
 
-**설명**
+## <a name="notes"></a>참고
 
 값으로 지정 되지 않은 입력 열은 *`Expr`* 출력 되지 않습니다.
 특정 수준에서 모든 값을 가져오려면 다음을 수행 하는 집계 수를 추가 합니다.
@@ -97,7 +97,7 @@ StormEvents
   top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -118,7 +118,7 @@ StormEvents
 
 ```
 
-|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -159,7 +159,7 @@ StormEvents
 | project-away tmp
 ```
 
-|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
+|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
 |---|---|---|---|---|---|---|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|뇌우를 동반한 바람|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|우박|
@@ -184,7 +184,7 @@ StormEvents
 | mv-expand EndLocations, endLocationSums, indicies
 ```
 
-|시스템 상태|원본|EndLocations|endLocationSums|색인|
+|주|원본|EndLocations|endLocationSums|색인|
 |---|---|---|---|---|
 |텍사스|숙련된 관찰자|CLAUDE|421.44|0|
 |텍사스|숙련된 관찰자|AMARILLO|316.8892|1|
