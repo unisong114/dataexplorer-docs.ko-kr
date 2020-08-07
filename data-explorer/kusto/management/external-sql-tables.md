@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 235c68a8a04fd76dd3a9e25abac63db09e00919a
-ms.sourcegitcommit: b4d6c615252e7c7d20fafd99c5501cb0e9e2085b
+ms.openlocfilehash: ea32c7631681c12aa1262c4dbdb8debdcc22a3c7
+ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83863339"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87871921"
 ---
 # <a name="create-and-alter-external-sql-tables"></a>외부 SQL 테이블 만들기 및 변경
 
@@ -21,7 +21,7 @@ ms.locfileid: "83863339"
 
 ## <a name="syntax"></a>구문
 
-( `.create`  |  `.alter` ) `external` `table` *TableName* ([columnName: columnType], ...)  
+( `.create`  |  `.alter`  |  `.create-or-alter` ) `external` `table` *TableName* ([columnName: columnType], ...)  
 `kind` `=` `sql`  
 `table``=` *Sqltablename*  
 `(`*SqlServerConnectionString*`)`  
@@ -40,7 +40,7 @@ ms.locfileid: "83863339"
 
 ## <a name="optional-properties"></a>선택적 속성
 
-| 속성            | Type            | Description                          |
+| 속성            | Type            | 설명                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | 테이블의 폴더입니다.                  |
 | `docString`         | `string`        | 테이블을 문서화 하는 문자열입니다.      |
@@ -49,7 +49,7 @@ ms.locfileid: "83863339"
 | `primarykey`        | `string`        | `createifnotexists`이 이면 `true` 결과 열 이름이이 명령으로 생성 된 경우 SQL 테이블의 기본 키로 사용 됩니다.                  |
 
 > [!NOTE]
-> * 테이블이 있으면 `.create` 오류가 발생 하 여 명령이 실패 합니다. `.alter`기존 테이블을 수정 하는 데 사용 합니다. 
+> * 테이블이 있으면 `.create` 오류가 발생 하 여 명령이 실패 합니다. `.create-or-alter` `.alter` 기존 테이블을 수정 하려면 또는를 사용 합니다. 
 > * 외부 SQL 테이블의 스키마 또는 형식 변경은 지원 되지 않습니다. 
 
 에 대 한 [데이터베이스 사용자 권한](../management/access-control/role-based-authorization.md) `.create` 및에 대 한 [테이블 관리자 권한이](../management/access-control/role-based-authorization.md) 필요 `.alter` 합니다. 
@@ -77,7 +77,7 @@ with
 
 | TableName   | TableType | 폴더         | DocString | 속성                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
-| ExternalSql | Sql       | ExternalTables | 문서      | {<br>  "TargetEntityKind": "sqltable '",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server = tcp: myserver. net.tcp, 1433; Authentication = Active Directory Integrated; 초기 카탈로그 = mydatabase; ",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
+| ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable '",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server = tcp: myserver. net.tcp, 1433; Authentication = Active Directory Integrated; 초기 카탈로그 = mydatabase; ",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
 ## <a name="querying-an-external-table-of-type-sql"></a>SQL 유형의 외부 테이블 쿼리 
 
@@ -99,4 +99,4 @@ Kusto는 SQL database에 대 한 ' SELECT * from TABLE ' 쿼리를 실행 한 �
 ## <a name="next-steps"></a>다음 단계
 
 * [외부 테이블 일반 제어 명령](externaltables.md)
-* [Azure Storage 또는 Azure Data Lake에서 외부 테이블 만들기 및 변경](external-tables-azurestorage-azuredatalake.md)
+* [Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경](external-tables-azurestorage-azuredatalake.md)

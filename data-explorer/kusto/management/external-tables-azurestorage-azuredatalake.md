@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1b857ee464b0fff973293cd03afadecc8c893af2
-ms.sourcegitcommit: 537a7eaf8c8e06a5bde57503fedd1c3706dd2b45
+ms.openlocfilehash: 2616605d29f90a283f5a5d8fef367bf77df65a15
+ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/16/2020
-ms.locfileid: "86422984"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87871938"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -23,7 +23,7 @@ ms.locfileid: "86422984"
 
 **구문**
 
-( `.create`  |  `.alter` ) `external` `table` *[TableName](#table-name)* `(` *[스키마](#schema)*`)`  
+( `.create`  |  `.alter`  |  `.create-or-alter` ) `external` `table` *[TableName](#table-name)* `(` *[스키마](#schema)*`)`  
 `kind` `=` (`blob` | `adl`)  
 [ `partition` `by` `(` *[파티션](#partitions)* `)` [ `pathformat` `=` `(` *[pathformat](#path-format)* `)` ]]  
 `dataformat``=` * [형식](#format)*  
@@ -33,7 +33,7 @@ ms.locfileid: "86422984"
 명령이 실행 되는 데이터베이스에서 새 외부 테이블을 만들거나 변경 합니다.
 
 > [!NOTE]
-> * 테이블이 있으면 `.create` 오류가 발생 하 여 명령이 실패 합니다. `.alter`기존 테이블을 수정 하는 데 사용 합니다. 
+> * 테이블이 있으면 `.create` 오류가 발생 하 여 명령이 실패 합니다. `.create-or-alter` `.alter` 기존 테이블을 수정 하려면 또는를 사용 합니다.
 > * 외부 blob 테이블의 스키마, 형식 또는 파티션 정의 변경은 지원 되지 않습니다. 
 > * 이 작업을 수행 하려면에 대 한 [데이터베이스 사용자 권한과](../management/access-control/role-based-authorization.md) `.create` 에 대 한 [테이블 관리자 권한이](../management/access-control/role-based-authorization.md) 필요 합니다 `.alter` . 
 

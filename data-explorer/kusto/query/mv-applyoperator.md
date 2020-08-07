@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1f9cc982c213a9c2143b169dcf8a12103d617257
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 656d1d5d9120baebced624fee476d261214eff57
+ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346714"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87871853"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
@@ -35,7 +35,7 @@ T | mv-apply Metric to typeof(real) on
 1. 결과 하위 테이블이 0 개 이상의 열을 추가 합니다. 이러한 열은 확장 되지 않고 필요한 경우 반복 되는 원본 열의 값을 포함 합니다.
 1. 결과의 합집합을 반환 합니다.
 
-`mv-expand`연산자는 다음 입력을 가져옵니다.
+`mv-apply`연산자는 다음 입력을 가져옵니다.
 
 1. 확장할 동적 배열로 계산 되는 하나 이상의 식입니다.
    확장 된 각 하위 문서의 레코드 수는 각 동적 배열의 최대 길이입니다. 여러 식이 지정 되 고 해당 배열의 길이가 다른 경우 Null 값이 추가 됩니다.
@@ -57,7 +57,7 @@ T | mv-apply Metric to typeof(real) on
 
 연산자는 `mv-apply` 연산자의 일반화로 간주할 수 있습니다 [`mv-expand`](./mvexpandoperator.md) . 즉, 하위 쿼리에 프로젝션이만 포함 된 경우에는 후자를 이전에 구현할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `mv-apply` [*itemindex*] *columnstoexpand* [*rowlimit*] `on` `(` *하위 쿼리*`)`
 
@@ -94,11 +94,11 @@ T | mv-apply Metric to typeof(real) on
 
 * *하위 쿼리*: 각 배열 확장 하위 테이블에 적용 되는 암시적 테이블 형식 소스를 포함 하는 테이블 형식 쿼리 식입니다.
 
-**참고**
+**참고 사항**
 
 * 연산자와 달리 [`mv-expand`](./mvexpandoperator.md) 연산자는 `mv-apply` 배열 확장만 지원 합니다. 속성 모음 확장은 지원 되지 않습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ## <a name="getting-the-largest-element-from-the-array"></a>배열에서 가장 큰 요소 가져오기
 
