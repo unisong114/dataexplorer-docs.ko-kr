@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1d8766c1fb09ceb64cf4196a92030163eed63694
-ms.sourcegitcommit: d40fe44e7581d87f63cc0cb939f3aa9c3996fc08
+ms.openlocfilehash: 90158c066c724f7d05e9c5e91333874ad572e81b
+ms.sourcegitcommit: 53679e57e0fcb7ec46beaba7cc812bd991da6cc0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85839414"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984473"
 ---
 # <a name="the-ingest-into-command-pull-data-from-storage"></a>명령 수집 (저장소에서 데이터 끌어오기)
 
-`.ingest into`명령은 하나 이상의 클라우드 저장소 아티팩트에서 데이터를 "풀링" 하 여 테이블에 데이터를 수집 합니다.
+`.ingest into`명령은 하나 이상의 클라우드 저장소 파일에서 데이터를 "풀링" 하 여 테이블에 데이터를 수집 합니다.
 예를 들어 명령은 Azure Blob Storage에서 1000 CSV 형식 blob을 검색 하 고, 구문 분석 하 고, 단일 대상 테이블로 모을 수 있습니다.
 기존 레코드에 영향을 주지 않고 테이블의 스키마를 수정 하지 않고 테이블에 데이터를 추가 합니다.
 
@@ -32,7 +32,9 @@ ms.locfileid: "85839414"
 * *TableName*: 데이터를 수집 하는 테이블의 이름입니다.
   테이블 이름은 항상 컨텍스트의 데이터베이스에 상대적 이며 스키마 매핑 개체가 제공 되지 않은 경우 해당 스키마는 데이터에 대해 가정 하는 스키마입니다.
 
-* *SourceDataLocator*: `string` `(` `)` 끌어올 데이터를 포함 하는 저장소 아티팩트를 나타내는 및 문자로 둘러싸인, 형식의 리터럴 또는 쉼표로 구분 된 이러한 리터럴의 목록입니다. [저장소 연결 문자열](../../api/connection-strings/storage.md)을 참조 하세요.
+* *SourceDataLocator*: 형식의 리터럴 `string` 또는 `(` `)` [저장소 연결 문자열](../../api/connection-strings/storage.md)을 나타내는 및 문자로 둘러싸인 쉼표로 구분 된 이러한 리터럴의 목록입니다. Kusto는 URI 형식을 사용 하 여 끌어올 데이터가 포함 된 저장소 파일을 설명 합니다. 
+  * 단일 연결 문자열은 저장소 계정에서 호스트 되는 단일 파일을 참조 해야 합니다. 
+  * 쉼표로 구분 하 여 여러 개의 연결 문자열을 지정 하거나 [외부 테이블](../../query/schema-entities/externaltables.md)의 [쿼리에서 수집](ingest-from-query.md) 를 사용 하 여 여러 파일을 수집할 수 있습니다.
 
 > [!NOTE]
 > 실제 자격 증명을 포함 하는 *SourceDataPointer* 에 난독 처리 된 [문자열 리터럴을](../../query/scalar-data-types/string.md#obfuscated-string-literals) 사용 하는 것이 좋습니다.
@@ -45,10 +47,10 @@ ms.locfileid: "85839414"
 명령의 결과는 명령에 의해 생성 된 데이터 분할 ("익스텐트") 만큼의 레코드를 포함 하는 테이블입니다.
 데이터 분할 생성 되지 않은 경우에는 빈 (0 값) 익스텐트 ID를 사용 하 여 단일 레코드가 반환 됩니다.
 
-|이름       |유형      |설명                                                                |
+|Name       |Type      |설명                                                                |
 |-----------|----------|---------------------------------------------------------------------------|
 |ExtentId   |`guid`    |명령으로 생성 된 데이터 분할에 대 한 고유 식별자입니다.|
-|ItemLoaded |`string`  |이 레코드와 관련 된 하나 이상의 저장소 아티팩트입니다.             |
+|ItemLoaded |`string`  |이 레코드와 관련 된 하나 이상의 저장소 파일입니다.             |
 |기간   |`timespan`|수집을 수행 하는 데 걸리는 시간입니다.                                     |
 |HasErrors  |`bool`    |이 레코드가 수집 오류를 나타내는지 여부를 나타냅니다.                |
 |OperationId|`guid`    |작업을 나타내는 고유 ID입니다. 명령과 함께 사용할 수 있습니다 `.show operation` .|
@@ -84,4 +86,3 @@ ms.locfileid: "85839414"
 .ingest into table T ('adl://contoso.azuredatalakestore.net/Path/To/File/file1.ext;impersonate')
   with (format='csv')
 ```
-
