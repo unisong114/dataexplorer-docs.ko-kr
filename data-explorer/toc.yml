@@ -50,6 +50,12 @@
           href: security.md
         - name: 보안 기준
           href: security-baseline.md
+    - name: 비즈니스 연속성
+      items:
+        - name: 개요
+          href: business-continuity-overview.md
+        - name: 솔루션 만들기
+          href: business-continuity-create-solution.md
     - name: 도구 및 통합 개요
       href: tools-integrations-overview.md
 - name: 방법 가이드
@@ -1291,7 +1297,7 @@
             - name: 외부 테이블
               items:
                 - name: 외부 테이블 일반 제어 명령
-                  href: ./kusto/management/externaltables.md
+                  href: ./kusto/management/external-table-commands.md
                 - name: 외부 SQL 테이블 만들기 및 변경
                   href: ./kusto/management/external-sql-tables.md
                 - name: Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
