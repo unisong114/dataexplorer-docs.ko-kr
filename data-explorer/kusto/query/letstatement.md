@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 Let 문을 설명 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
-ms.openlocfilehash: 2994a65e8726edaba22c6905290b4b69660e0586
-ms.sourcegitcommit: 284152eba9ee52e06d710cc13200a80e9cbd0a8b
+ms.date: 08/09/2020
+ms.openlocfilehash: 879b858904ac9f024f70dfef6096141a9ff81bd7
+ms.sourcegitcommit: b8415e01464ca2ac9cd9939dc47e4c97b86bd07a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86291545"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028479"
 ---
 # <a name="let-statement"></a>Let 문
 
@@ -49,7 +49,7 @@ Let 문에 의해 바인딩된 식은 다음과 같을 수 있습니다.
 
 `TabularArguments`-[*TabularArgName* `:` `(` [*AtrName* `:` *atrtype*] [ `,` ...] `)` ] [`,` ... ] [`,`]
 
- 또는
+ 또는:
 
  [*TabularArgName* `:` `(` `*` `)`]
 
@@ -129,16 +129,72 @@ Events
 | take n
 ```
 
+### <a name="use-let-statement-with-arguments-for-scalar-calculation"></a>스칼라 계산에 대 한 인수와 함께 let 문 사용
+
+이 예에서는 let 문을 스칼라 계산에 대 한 인수와 함께 사용 합니다. 이 쿼리는 `MultiplyByN` 두 숫자를 곱하는 함수를 정의 합니다.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let MultiplyByN = (val:long, n:long) { val * n };
+range x from 1 to 5 step 1 
+| extend result = MultiplyByN(x, 5)
+```
+
+|x|result|
+|---|---|
+|1|5|
+|2|10|
+|3|15|
+|4|20|
+|5|25|
+
+다음 예에서는 입력에서 선행/후행 1 ()을 제거 합니다 `1` .
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let TrimOnes = (s:string) { trim("1", s) };
+range x from 10 to 15 step 1 
+| extend result = TrimOnes(tostring(x))
+```
+
+|x|result|
+|---|---|
+|10|0|
+|11||
+|12|2|
+|13|3|
+|14|4|
+|15|5|
+
+
 ### <a name="use-multiple-let-statements"></a>여러 let 문 사용
 
 이 예제에서는 하나의 문 ( `foo2` )이 다른 ()를 사용 하는 두 개의 let 문을 정의 `foo1` 합니다.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step};
 let foo2 = (_step:long) { foo1(1, 100, _step)};
 foo2(2) | count
 // Result: 50
 ```
+
+### <a name="use-the-view-keyword-in-a-let-statement"></a>Let 문에서 키워드를 사용 합니다. `view`
+
+이 예에서는 let 문을 키워드와 함께 사용 하는 방법을 보여 줍니다 `view` .
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let Range10 = view () { range MyColumn from 1 to 10 step 1 };
+let Range20 = view () { range MyColumn from 1 to 20 step 1 };
+search MyColumn == 5
+```
+
+|$table|MyColumn|
+|---|---|
+|Range10|5|
+|Range20|5|
+
 
 ### <a name="use-materialize-function"></a>구체화 함수 사용
 

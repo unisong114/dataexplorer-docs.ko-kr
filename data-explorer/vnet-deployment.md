@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 7025567c9495f3eeefe547dcd88b19962e1be934
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 10c2cf41ae1ab149b6eeffe35f94052069309152
+ms.sourcegitcommit: b8415e01464ca2ac9cd9939dc47e4c97b86bd07a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351644"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028513"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -45,7 +45,7 @@ Azure 데이터 탐색기 클러스터를 호스트 하는 데 사용 되는 서
 
 총 IP 주소 수:
 
-| Windows Server Update Services와 함께 | 주소 수 |
+| 사용 | 주소 수 |
 | --- | --- |
 | 엔진 서비스 | 인스턴스당 1 개 |
 | 데이터 관리 서비스 | 2 |
@@ -87,7 +87,6 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | Azure Data Lake에 대 한 종속성  | ADX 서브넷  | AzureDataLake: 443  | TCP  |
 | EventHub 수집 및 서비스 모니터링  | ADX 서브넷  | EventHub: 443, 5671  | TCP  |
 | 메트릭 게시  | ADX 서브넷  | AzureMonitor: 443 | TCP  |
-| Azure Monitor 구성 다운로드  | ADX 서브넷  | [Azure Monitor 구성 끝점 주소](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (해당 하는 경우) | ADX 서브넷 | AzureActiveDirectory: 443 | TCP |
 | 인증 기관 | ADX 서브넷 | 인터넷: 80 | TCP |
 | 내부 통신  | ADX 서브넷  | ADX 서브넷: 모든 포트  | 모두  |
@@ -188,51 +187,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 서유럽 | 23.97.212.5 |
 | 인도 서부 | 23.99.5.162 |
 | 미국 서부 | 23.99.5.162 |
-| 미국 서부 2 | 23.99.5.162, 104.210.32.14 |    
-
-#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor 구성 끝점 주소
-
-| 지역 | 주소 |
-| --- | --- |
-| 오스트레일리아 중부 | 52.148.86.165 |
-| 오스트레일리아 중부 2 | 52.148.86.165 |
-| 오스트레일리아 동부 | 52.148.86.165 |
-| 오스트레일리아 남동부 | 52.148.86.165 |
-| 브라질 남부 | 13.68.89.19 |
-| 캐나다 중부 | 13.90.43.231 |
-| 캐나다 동부 | 13.90.43.231 |
-| 인도 중부 | 13.71.25.187 |
-| 미국 중부 | 52.173.95.68 |
-| 미국 중부 EUAP | 13.90.43.231 |
-| 동아시아 | 13.75.117.221 |
-| 미국 동부 | 13.90.43.231 |
-| 미국 동부 2 | 13.68.89.19 |    
-| 미국 동부 2 EUAP | 13.68.89.19 |
-| 프랑스 중부 | 52.174.4.112 |
-| 프랑스 남부 | 52.174.4.112 |
-| 일본 동부 | 13.75.117.221 |
-| 일본 서부 | 13.75.117.221 |
-| 한국 중부 | 13.75.117.221 |
-| 한국 남부 | 13.75.117.221 |
-| 미국 중북부 | 52.162.240.236 |
-| 북유럽 | 52.169.237.246 |
-| 남아프리카 북부 | 13.71.25.187 |
-| 남아프리카 공화국 서 부 | 13.71.25.187 |
-| 미국 중남부 | 13.84.173.99 |
-| 인도 남부 | 13.71.25.187 |
-| 동남 아시아 | 52.148.86.165 |
-| 영국 남부 | 52.174.4.112 |
-| 영국 서부 | 52.169.237.246 |
-| 미국 국방부 중부 | 13.72.37.111 |
-| 미국 국방부 동부 | 13.72.37.111 |
-| USGov 애리조나 | 13.72.37.111 |
-| USGov 텍사스 | 13.72.37.111 |
-| USGov 버지니아 | 13.72.37.111 |
-| 미국 중서부 | 52.161.31.69 |
-| 서유럽 | 52.174.4.112 |
-| 인도 서부 | 13.71.25.187 |
-| 미국 서부 | 40.78.70.148 |
-| 미국 서부 2 | 52.151.20.103 |
+| 미국 서부 2 | 23.99.5.162, 104.210.32.14 |
 
 ## <a name="disable-access-to-azure-data-explorer-from-the-public-ip"></a>공용 IP에서 Azure 데이터 탐색기에 대 한 액세스 사용 안 함
 
@@ -240,7 +195,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 | **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **동작** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 임의의 값 | 거부 | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
 * `private-[clustername].[geo-region].kusto.windows.net`엔진
