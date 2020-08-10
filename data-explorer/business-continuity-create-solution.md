@@ -7,12 +7,12 @@ ms.reviewer: herauch
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4c3a4a522192510ffb1a4ac2a1c46d9ddaf7c823
-ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
+ms.openlocfilehash: 0b37d65d095806d108a632c315820d164f45a520
+ms.sourcegitcommit: 39a055e246539ac64d651abb42531892dd4393e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87877180"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028901"
 ---
 # <a name="create-business-continuity-and-disaster-recovery-solutions-with-azure-data-explorer"></a>Azure 데이터 탐색기을 사용 하 여 비즈니스 연속성 및 재해 복구 솔루션 만들기
 
@@ -40,7 +40,7 @@ Azure 데이터 탐색기는 전체 Azure 지역의 작동 중단을 방지 하�
 모든 복제본에서 동일한 클러스터 구성을 갖도록 관리 작업을 복제 합니다.
 
 1. 각 복제본에서 동일 하 게 만들기: 
-    * [Databases]: You can use the [Azure portal to create a new database](create-cluster-database-portal.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto).
+    * 데이터베이스: [Azure Portal](create-cluster-database-portal.md#create-a-database) 또는 microsoft [sdk](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) 중 하나를 사용 하 여 새 데이터베이스를 만들 수 있습니다.
     * [테이블](kusto/management/create-table-command.md)
     * [매핑](kusto/management/create-ingestion-mapping-command.md)
     * [정책](kusto/management/policies.md)
