@@ -7,12 +7,12 @@ ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8a4a4e68333255c322708993b1c9429a89ae7a00
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: bf479a7248033d2aa70a8e09b039814361c78031
+ms.sourcegitcommit: bcd0c96b1581e43e33aa35f4d68af6dcb4979d39
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373759"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88039236"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>K2Bridge 오픈 소스 커넥터를 사용 하 여 Kibana의 Azure 데이터 탐색기에서 데이터 시각화
 
@@ -102,7 +102,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
 
         [구성](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md)에서 전체 구성 옵션 집합을 찾을 수 있습니다.
 
-    1. 이전 명령의 출력은 Kibana를 배포 하는 다음 투구 명령을 제안 합니다. 필요에 따라 다음 명령을 실행 합니다.
+    1. <a name="install-kibana-service"></a>이전 명령의 출력은 Kibana를 배포 하는 다음 투구 명령을 제안 합니다. 필요에 따라 다음 명령을 실행 합니다.
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
@@ -118,7 +118,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
 
     1. 사용자에 게 Kibana를 노출 합니다. 여러 가지 방법으로이 작업을 수행할 수 있습니다. 사용 하는 방법은 사용 사례에 따라 크게 달라 집니다.
 
-        예를 들어 서비스를 Load Balancer 서비스로 노출할 수 있습니다. 이렇게 하려면 **--set service. type = LoadBalancer** 매개 변수를 [이전 K2Bridge 투구 **install** 명령](#install-k2bridge-chart)에 추가 합니다.
+        예를 들어 서비스를 Load Balancer 서비스로 노출할 수 있습니다. 이렇게 하려면 **--set service. type = LoadBalancer** 매개 변수를 [이전 Kibana 투구 **install** 명령](#install-kibana-service)에 추가 합니다.
 
         그런 후 다음 명령을 실행 합니다.
 
@@ -133,7 +133,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
         kibana-kibana   LoadBalancer   xx.xx.xx.xx    <pending>     5601:30128/TCP   4m24s
         ```
 
-        그런 다음 나타나는 생성 된 외부 IP 값을 사용할 수 있습니다. 브라우저를 열고 \< 외부 IP: 5601으로 이동 하 여 Kibana에 액세스 하는 데 사용 \> 합니다.
+        그런 다음 나타나는 생성 된 외부 IP 값을 사용할 수 있습니다. 브라우저를 열고 5601로 이동 하 여 Kibana에 액세스 하는 데 사용 \<EXTERNAL-IP\> 합니다.
 
 1. 인덱스 패턴을 구성 하 여 데이터에 액세스 합니다.
 
