@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: ed0c570449a0c21e9eace1273228539db7c208da
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: cdd44f6d90e5549153cb1a1a0673a2e054839f1f
+ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81491678"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87871965"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>빠른 시작: Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -106,7 +106,10 @@ Azure 리소스 그룹에 컴퓨팅 및 스토리지 리소스 집합이 정의�
 
 1. 클러스터를 중지하려면 **개요** 탭의 맨 위에서 **중지**를 선택합니다.
 
-    클러스터가 중지되면 쿼리에 데이터를 사용할 수 없고 새 데이터를 수집할 수 없습니다.
+    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="중지 단추":::
+
+    > [!NOTE]
+    > 클러스터가 중지되면 쿼리에 데이터를 사용할 수 없고 새 데이터를 수집할 수 없습니다.
 
 1. 클러스터를 다시 시작하려면 **개요** 탭의 맨 위에서 **시작**을 선택합니다.
 
@@ -123,6 +126,6 @@ Azure 리소스 그룹에 컴퓨팅 및 스토리지 리소스 집합이 정의�
 ## <a name="next-steps"></a>다음 단계
 
 > [!div class="nextstepaction"]
-> [빠른 시작: 이벤트 허브에서 Azure Data Explorer로 데이터 수집](ingest-data-event-hub.md)
+> [빠른 시작: 이벤트 허브에서 Azure 데이터 탐색기로 데이터 수집](ingest-data-event-hub.md)
 
 
