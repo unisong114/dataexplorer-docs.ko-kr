@@ -8,20 +8,22 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/04/2020
-ms.openlocfilehash: 7eb5adc76c963065940365973aadc5281ff5f553
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 9b2d35c796cfd1f41dc2fd8e9385a4c446000b86
+ms.sourcegitcommit: ed902a5a781e24e081cd85910ed15cd468a0db1e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803416"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88072449"
 ---
 # <a name="update-policy-overview"></a>정책 업데이트 개요
 
-[업데이트 정책은](update-policy.md) 새 데이터가 원본 테이블에 삽입 될 때마다 데이터를 대상 테이블에 자동으로 추가 하도록 kusto에 지시 합니다. 업데이트 정책의 쿼리는 원본 테이블에 삽입 된 데이터에 대해 실행 됩니다. 예를 들어 정책을 사용 하 여 다른 테이블의 필터링 된 보기를 하나의 테이블에 만들 수 있습니다. 새 테이블에는 다른 스키마, 보존 정책 등이 있을 수 있습니다. 
-
-업데이트 정책은 일반적인 수집과 동일한 제한 사항 및 모범 사례를 따릅니다. 이 정책은 클러스터 크기를 확장 하 고, ingestions가 큰 동료 ks에서 수행 되는 경우 보다 효율적으로 작동 합니다.
+[업데이트 정책은](update-policy.md) 원본 테이블에 삽입 된 데이터에서 실행 되는 변환 쿼리를 기반으로 새 데이터를 원본 테이블에 삽입할 때마다 kusto가 대상 테이블에 데이터를 자동으로 추가 하도록 지시 합니다.
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Azure 데이터 탐색기의 업데이트 정책 개요":::
+
+예를 들어 정책을 사용 하 여 다른 테이블의 필터링 된 보기를 하나의 테이블에 만들 수 있습니다. 새 테이블에는 다른 스키마, 보존 정책 등이 있을 수 있습니다. 
+
+업데이트 정책은 일반적인 수집과 동일한 제한 사항 및 모범 사례를 따릅니다. 이 정책은 클러스터 크기를 확장 하 고, ingestions가 큰 동료 ks에서 수행 되는 경우 보다 효율적으로 작동 합니다.
 
 > [!NOTE]
 > 원본 테이블과 업데이트 정책이 정의 된 테이블은 동일한 데이터베이스에 있어야 합니다.

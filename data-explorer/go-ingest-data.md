@@ -1,18 +1,18 @@
 ---
 title: Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집
 description: 이 문서에서는 Go SDK를 사용 하 여 Azure 데이터 탐색기에 데이터를 수집 (로드) 하는 방법에 대해 알아봅니다.
-author: abhirockzz
-ms.author: abhishgu
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 38063f3e00ebd22da17d48abba1dd9b3510273ec
-ms.sourcegitcommit: bcd0c96b1581e43e33aa35f4d68af6dcb4979d39
+ms.openlocfilehash: 010ee029c4f16248b0f9249d7331da436439cdc0
+ms.sourcegitcommit: ed902a5a781e24e081cd85910ed15cd468a0db1e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88039737"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88072364"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-go-sdk"></a>Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집 
 
@@ -26,7 +26,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
 이 문서에서는 먼저 테스트 클러스터에서 테이블 및 데이터 매핑을 만듭니다. 그런 다음 Go SDK를 사용 하 여 클러스터에 대 한 수집을 큐에 대기 하 고 결과의 유효성을 검사 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: bd3e7a77a4de46b6dcebb2f58c98009a9edddb43
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: f56bd1c9f87833f7c1a9d29580a71557fedb894c
+ms.sourcegitcommit: ed902a5a781e24e081cd85910ed15cd468a0db1e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338612"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88072398"
 ---
 # <a name="using-hll-and-tdigest"></a>hll() 및 tdigest() 사용
 
@@ -27,7 +27,8 @@ ms.locfileid: "87338612"
 
 > [!NOTE]
 > 일부 경우에는 또는 집계 함수에 의해 생성 된 동적 개체가 `hll` `tdigest` 크고 인코딩 정책의 기본 MaxValueSize 속성을 초과할 수 있습니다. 이 경우 개체는 null로 수집 됩니다.
-예를 들어 정확도 수준 4를 사용 하 여 함수의 출력을 유지 하는 경우 `hll` 개체의 크기는 `hll` 기본 MaxValueSize (1mb)를 초과 합니다.
+> 예를 들어 정확도 수준 4를 사용 하 여 함수의 출력을 유지 하는 경우 `hll` 개체의 크기는 `hll` 기본 MaxValueSize (1mb)를 초과 합니다.
+> 이 문제를 방지 하려면 다음 예제와 같이 열의 인코딩 정책을 수정 합니다.
 
 ```kusto
 range x from 1 to 1000000 step 1
@@ -91,7 +92,7 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|Timestamp|`dcount_hll_merged_hll`|
+|타임스탬프|`dcount_hll_merged_hll`|
 |---|---|
 |2016-05-01 12:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|38797623|
@@ -106,7 +107,7 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|Timestamp|`dcount_hll_merged_hll`|
+|타임스탬프|`dcount_hll_merged_hll`|
 |---|---|
 |2016-05-01 00:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|64135183|
@@ -120,7 +121,7 @@ PageViewsHllTDigest
 | project Timestamp , percentile_tdigest(merged_tdigests, 95, typeof(long))
 ```
 
-|Timestamp|`percentile_tdigest_merged_tdigests`|
+|타임스탬프|`percentile_tdigest_merged_tdigests`|
 |---|---|
 |2016-05-01 12:00:00.0000000|170200|
 |2016-05-02 00:00:00.0000000|152975|
@@ -155,7 +156,7 @@ PageViews
 | summarize percentile(BytesDelivered, 90), dcount(Page,2) by bin(Timestamp, 1d)
 ```
 
-|Timestamp|percentile_BytesDelivered_90|dcount_Page|
+|타임스탬프|percentile_BytesDelivered_90|dcount_Page|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|83634|20056275|
 |2016-05-02 00:00:00.0000000|82770|64135183|
@@ -170,7 +171,7 @@ PageViewsHllTDigest
 | summarize  percentile_tdigest(merge_tdigests(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
 ```
 
-|Timestamp|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|
+|타임스탬프|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|84224|20056275|
 |2016-05-02 00:00:00.0000000|83486|64135183|
