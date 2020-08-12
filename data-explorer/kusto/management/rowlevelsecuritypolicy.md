@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: 9952a7a7d95f03ee431b699a1833aa23b21d341b
-ms.sourcegitcommit: 4507466bdcc7dd07e6e2a68c0707b6226adc25af
+ms.openlocfilehash: a82c4b48358a90460f917f181b73b718f6c5e455
+ms.sourcegitcommit: c7b16409995087a7ad7a92817516455455ccd2c5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87106359"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88148118"
 ---
 # <a name="row-level-security-preview"></a>행 수준 보안 (미리 보기)
 
@@ -27,7 +27,7 @@ RLS를 사용 하면 테이블의 특정 부분에만 다른 응용 프로그램
 
 * 일부 조건을 충족 하는 행에만 액세스 권한 부여
 * 일부 열에 데이터 익명화
-* 위 항목 모두 해당
+* 위 항목 모두
 
 자세한 내용은 [행 수준 보안 정책을 관리 하는 명령 제어](../management/row-level-security-policy.md)를 참조 하세요.
 
@@ -105,7 +105,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 먼저 테이블 이름을 문자열 매개 변수로 받는 함수를 정의 하 고 연산자를 사용 하 여 테이블을 참조 `table()` 합니다. 
 
-예를 들면 다음과 같습니다.
+다음은 그 예입니다. 
 
 ```
 .create-or-alter function RLSForCustomersTables(TableName: string) {
@@ -125,7 +125,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 ### <a name="produce-an-error-upon-unauthorized-access"></a>무단 액세스 시 오류 생성
 
-권한이 없는 테이블 사용자가 빈 테이블을 반환 하는 대신 오류를 받도록 하려면 함수를 사용 `[assert()](../query/assert-function.md)` 합니다. 다음 예에서는 RLS 함수에서이 오류를 생성 하는 방법을 보여 줍니다.
+권한이 없는 테이블 사용자가 빈 테이블을 반환 하는 대신 오류를 받도록 하려면 함수를 사용 [`assert()`](../query/assert-function.md) 합니다. 다음 예에서는 RLS 함수에서이 오류를 생성 하는 방법을 보여 줍니다.
 
 ```
 .create-or-alter function RLSForCustomersTables() {
@@ -151,7 +151,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 * Azure Active Directory에서 구성원 자격 확인
 * 데이터에 적용 되는 필터입니다.
 
-예를 들면 다음과 같습니다.
+다음은 그 예입니다. 
 
 ```kusto
 let IsRestrictedUser = current_principal_is_member_of('aadgroup=some_group@domain.com');

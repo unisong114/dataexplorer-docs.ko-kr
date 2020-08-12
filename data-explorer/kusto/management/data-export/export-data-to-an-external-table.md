@@ -8,24 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: ebead1ee5dbe458fc9c517d6bf20fc99ca27dd66
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 663d80f470e17a277fffa89569aeb977c8d713df
+ms.sourcegitcommit: c7b16409995087a7ad7a92817516455455ccd2c5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780680"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88148169"
 ---
 # <a name="export-data-to-an-external-table"></a>외부 테이블로 데이터 내보내기
 
 [외부 테이블](../externaltables.md) 을 정의 하 고 데이터를 내보내 데이터를 내보낼 수 있습니다.
 테이블 속성은 [외부 테이블을 만들](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table)때 지정 됩니다. 내보내기 명령에 테이블의 속성을 포함할 필요가 없습니다. 내보내기 명령은 이름별로 외부 테이블을 참조 합니다. 데이터 내보내기에는 [데이터베이스 관리자 권한이](../access-control/role-based-authorization.md)필요 합니다.
 
-**구문:**
+## <a name="syntax"></a>구문
 
 `.export`[ `async` ] `to` `table` *Externaltablename* <br>
 [ `with` `(` *PropertyName* `=` *PropertyValue* `,` ... `)` ] <| *쿼리*
 
-**출력:**
+## <a name="output"></a>출력
 
 |출력 매개 변수 |Type |Description
 |---|---|---
@@ -33,7 +33,8 @@ ms.locfileid: "84780680"
 |경로|String|출력 경로입니다.
 |NumRecords|String| 경로로 내보낸 레코드 수입니다.
 
-**참고:**
+## <a name="notes"></a>메모
+
 * 내보내기 쿼리 출력 스키마는 파티션에서 정의한 모든 열을 포함 하 여 외부 테이블의 스키마와 일치 해야 합니다. 예를 들어 테이블을 *DateTime*으로 분할 하는 경우 쿼리 출력 스키마에는 *TimestampColumnName*와 일치 하는 타임 스탬프 열이 있어야 합니다. 이 열 이름은 외부 테이블 분할 정의에 정의 되어 있습니다.
 
 * 내보내기 명령을 사용 하 여 외부 테이블 속성을 재정의할 수는 없습니다.
@@ -45,10 +46,12 @@ ms.locfileid: "84780680"
 * 외부 테이블이 분할 된 경우에는 [분할 된 외부 테이블 예제](#partitioned-external-table-example)에 표시 된 대로 파티션 정의에 따라 내보낸 아티팩트가 해당 디렉터리에 기록 됩니다. 
   * 파티션 값이 null 이거나 비어 있거나 잘못 된 디렉터리 값 이면 대상 저장소의 정의에 따라 파티션 값이 기본값인로 바뀝니다 `__DEFAULT_PARTITION__` . 
 
-* 파티션당 기록 되는 파일 수는 설정에 따라 달라 집니다.
-   * 외부 테이블에 datetime 파티션만 포함 되어 있거나 파티션이 없는 경우 각 파티션에 대해 기록 된 파일 수 (있는 경우)는 클러스터의 노드 수와 유사 해야 합니다 `sizeLimit` . 내보내기 작업을 배포 하는 경우 클러스터의 모든 노드가 동시에 내보냅니다. 배포를 사용 하지 않도록 설정 하 여 단일 노드만 쓰기를 수행 하도록 하려면를 `distributed` false로 설정 합니다. 이 프로세스는 더 작은 파일을 만들지만 내보내기 성능을 저하 시킵니다.
+### <a name="number-of-files"></a>파일 수
 
-   * 외부 테이블에 문자열 열을 기준으로 하는 파티션이 포함 된 경우 내보낸 파일의 수는 파티션당 단일 파일 이어야 합니다 (또는에 도달 하 `sizeLimit` 는 경우). 모든 노드는 내보내기 (작업 분산)에 계속 참여 하지만 각 파티션은 특정 노드에 할당 됩니다. 을 `distributed` false로 설정 하면 단일 노드만 내보내기를 수행 하지만 동작은 동일 하 게 유지 됩니다 (파티션당 단일 파일 기록).
+파티션당 기록 되는 파일 수는 설정에 따라 달라 집니다.
+ * 외부 테이블에 datetime 파티션만 포함 되어 있거나 파티션이 없는 경우 각 파티션에 대해 기록 된 파일 수 (있는 경우)는 클러스터의 노드 수와 유사 해야 합니다 `sizeLimit` . 내보내기 작업을 배포 하는 경우 클러스터의 모든 노드가 동시에 내보냅니다. 배포를 사용 하지 않도록 설정 하 여 단일 노드만 쓰기를 수행 하도록 하려면를 `distributed` false로 설정 합니다. 이 프로세스는 더 작은 파일을 만들지만 내보내기 성능을 저하 시킵니다.
+
+* 외부 테이블에 문자열 열을 기준으로 하는 파티션이 포함 된 경우 내보낸 파일의 수는 파티션당 단일 파일 이어야 합니다 (또는에 도달 하 `sizeLimit` 는 경우). 모든 노드는 내보내기 (작업 분산)에 계속 참여 하지만 각 파티션은 특정 노드에 할당 됩니다. 을 `distributed` false로 설정 하면 단일 노드만 내보내기를 수행 하지만 동작은 동일 하 게 유지 됩니다 (파티션당 단일 파일 기록).
 
 ## <a name="examples"></a>예
 
