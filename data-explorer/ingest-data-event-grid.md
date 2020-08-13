@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: cad16cf68b5b923c4ffef36370adb6506255dafd
-ms.sourcegitcommit: 0d15903613ad6466d49888ea4dff7bab32dc5b23
+ms.date: 08/13/2020
+ms.openlocfilehash: 2785ec685041c47943ce618b9223eadd46ad9b2a
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "86013970"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201710"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid 알림을 구독하여 Azure Data Explorer에 Blob 수집
 
@@ -22,7 +22,7 @@ ms.locfileid: "86013970"
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager 템플릿](data-connection-event-grid-resource-manager.md)
 
-Azure Data Explorer는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장이 가능한 데이터 탐색 서비스로서, Blob 컨테이너에 기록된 Blob에서 지속적인 수집(데이터 로딩)을 제공합니다.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
 이 문서에서는 Event Grid 데이터 연결을 사용 하 여 저장소 계정에서 Azure 데이터 탐색기로 blob을 수집 하는 방법에 대해 알아봅니다. [Azure Event Grid](/azure/event-grid/overview) 구독을 설정 하는 Event Grid 데이터 연결을 만듭니다. Event Grid 구독은 Azure 이벤트 허브를 통해 저장소 계정에서 Azure 데이터 탐색기로 이벤트를 라우팅합니다. 그런 다음 시스템 전체의 데이터 흐름에 대 한 예를 볼 수 있습니다.
 
@@ -79,7 +79,7 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
     | 데이터 연결 이름 | *test-grid-connection* | Azure Data Explorer에서 만들 연결의 이름입니다.|
     | 스토리지 계정 구독 | 구독 ID | 저장소 계정이 있는 구독 ID입니다.|
     | 스토리지 계정 | *gridteststorage1* | 이전에 만든 스토리지 계정의 이름입니다.|
-    | 리소스 만들기 | *자동* | Azure 데이터 탐색기에서 Event Grid 구독, 이벤트 허브 네임 스페이스 및 이벤트 허브를 만들지 여부를 정의 합니다. 수동으로 Event Grid 구독을 만드는 방법에 대 한 자세한 설명은 [저장소 계정에서 Event Grid 구독 만들기](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) 섹션의 참조에서 찾을 수 있습니다.|
+    | 리소스 만들기 | *자동* | Azure 데이터 탐색기에서 Event Grid 구독, 이벤트 허브 네임 스페이스 및 이벤트 허브를 만들지 여부를 정의 합니다. 수동으로 Event Grid 구독을 만드는 방법에 대 한 자세한 설명은 [저장소 계정에서 Event Grid 구독 만들기](ingest-data-event-grid.md) 섹션의 참조에서 찾을 수 있습니다.|
 
 1. 특정 주제를 추적 하려면 **필터 설정** 을 선택 합니다. 알림에 대한 필터를 다음과 같이 설정합니다.
     * **접두사** 필드는 주체의 *리터럴* 접두사입니다. 적용 되는 패턴은 *startswith*여러 컨테이너, 폴더 또는 blob에 걸쳐 있을 수 있습니다. 와일드카드는 허용되지 않습니다.
@@ -102,14 +102,14 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
      **설정** | **제안 값** | **필드 설명**
     |---|---|---|
     | 테이블 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
-    | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT 및 TSVE입니다. 지원 되는 압축 옵션: Zip 및 GZip |
+    | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW 및 W3CLOG입니다. 지원 되는 압축 옵션은 Zip 및 GZip입니다. |
     | 매핑 | *TestMapping* | **TestDatabase**에서 생성된 것으로, 들어오는 JSON 데이터를 **TestTable**의 열 이름 및 데이터 형식에 매핑.|
 
 1. 자동으로 생성 된 리소스를 검토 하 고 **만들기**를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Event grid에 대 한 데이터 연결 검토 및 만들기":::
 
-1. 배포가 완료될 때까지 기다립니다. 배포가 실패 한 경우 실패 한 원인에 대 한 자세한 정보를 보려면 실패 한 단계 옆에 있는 **작업 세부** 정보를 선택할 수 있습니다. 다시 **배포를 선택 하** 여 리소스 배포를 다시 시도할 수도 있습니다.
+1. 배포가 완료될 때까지 기다립니다. 배포에 실패 한 경우 실패 한 단계 옆에 있는 **작업 세부** 정보를 선택 하 여 실패 원인에 대 한 자세한 정보를 가져옵니다. 다시 **배포를 선택 하** 여 리소스 배포를 다시 시도 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Event grid 리소스 배포":::
 
@@ -163,15 +163,7 @@ Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingestion-propert
 
 이러한 속성은 다음과 같이 설정할 수 있습니다.
 
-|**속성** | **속성 설명**|
-|---|---|
-| `rawSizeBytes` | 원시 (압축 되지 않은) 데이터의 크기입니다. Avro/ORC/Parquet의 경우 서식 지정 압축을 적용 하기 전의 크기입니다.|
-| `kustoTable` |  기존 대상 테이블의 이름입니다. `Table`블레이드의 집합을 재정의 `Data Connection` 합니다. |
-| `kustoDataFormat` |  데이터 형식입니다. `Data format`블레이드의 집합을 재정의 `Data Connection` 합니다. |
-| `kustoIngestionMappingReference` |  사용할 기존 수집 매핑의 이름입니다. `Column mapping`블레이드의 집합을 재정의 `Data Connection` 합니다.|
-| `kustoIgnoreFirstRecord` | 로 설정 된 경우 `true` kusto는 blob의 첫 번째 행을 무시 합니다. 테이블 형식 데이터 (CSV, TSV 또는 이와 유사한)를 사용 하 여 헤더를 무시 합니다. |
-| `kustoExtentTags` | 결과 범위에 첨부 될 [태그](kusto/management/extents-overview.md#extent-tagging) 를 나타내는 문자열입니다. |
-| `kustoCreationTime` |  ISO 8601 문자열로 형식이 지정 된 blob에 대 한 [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) 를 재정의 합니다. 백필에 사용 합니다. |
+[!INCLUDE [ingestion-properties-event-grid](includes/ingestion-properties-event-grid.md)]
 
 > [!NOTE]
 > Azure 데이터 탐색기는 blob 사후 수집을 삭제 하지 않습니다.

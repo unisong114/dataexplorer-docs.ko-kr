@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: b5196e126ffa36e3d767bfaacb79ce819ff9fa29
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9b832fb9bc70744c428498220f1acc28053ad0d9
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350182"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201261"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 Event Grid 데이터 연결 만들기
 
@@ -22,8 +22,8 @@ ms.locfileid: "87350182"
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager 템플릿](data-connection-event-grid-resource-manager.md)
 
-
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기는 blob 컨테이너에 기록 된 Event Hubs, IoT Hub 및 blob에서 수집 (데이터 로드)을 제공 합니다. 이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 Event Grid 데이터 연결을 만듭니다.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 Event Grid 데이터 연결을 만듭니다.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
@@ -31,7 +31,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 * [클러스터 및 데이터베이스](create-cluster-database-portal.md) 만들기
 * [테이블 및 열 매핑](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer) 만들기
 * [이벤트 허브](/azure/event-hubs/event-hubs-create) 만들기
-* [Event Grid 구독을 사용 하 여 저장소 계정을](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account)만듭니다.
+* [Event Grid 구독을 사용 하 여 저장소 계정을](ingest-data-event-grid.md)만듭니다.
 
 ## <a name="azure-resource-manager-template-for-adding-an-event-grid-data-connection"></a>Event Grid 데이터 연결을 추가 하기 위한 Azure Resource Manager 템플릿
 

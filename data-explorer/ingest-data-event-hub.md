@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: ca617629578e9f3830e4fa1edf1a5781b0317a81
-ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
+ms.date: 08/13/2020
+ms.openlocfilehash: 0738df4b86fe7d602ad41e921d88501c58d8e500
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87515858"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201654"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Event Hub에서 Azure Data Explorer로 데이터 수집
 
@@ -22,9 +22,11 @@ ms.locfileid: "87515858"
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager 템플릿](data-connection-event-hub-resource-manager.md)
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 이벤트 수집 서비스인 이벤트 허브에서 데이터를 수집(로드)하는 기능을 제공합니다. [Event Hubs](/azure/event-hubs/event-hubs-about)에서는 초당 수백만 개의 이벤트를 거의 실시간으로 처리할 수 있습니다. 이 문서에서는 이벤트 허브를 만들고, Azure 데이터 탐색기에서 연결 하 고, 시스템을 통해 데이터 흐름을 확인 합니다.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-## <a name="prerequisites"></a>사전 요구 사항
+Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 이벤트 수집 서비스인 이벤트 허브에서 데이터를 수집(로드)하는 기능을 제공합니다. [Event Hubs](/azure/event-hubs/event-hubs-about)에서는 초당 수백만 개의 이벤트를 거의 실시간으로 처리할 수 있습니다. 이 문서에서는 이벤트 허브를 만들고, Azure 데이터 탐색기에서 연결 하 고, 시스템을 통해 데이터 흐름을 확인 합니다.
+
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)입니다.
@@ -45,7 +47,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
     **Azure에 배포** 단추를 선택하면 Azure Portal에서 배포 양식을 작성할 수 있는 페이지로 이동하게 됩니다.
 
-    ![Azure에 배포](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Deploy to Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. 이벤트 허브를 만들려는 구독을 선택하고 이름이 *test-hub-rg*인 리소스 그룹을 만듭니다.
 
@@ -60,7 +62,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
     **설정** | **제안 값** | **필드 설명**
     |---|---|---|
     | Subscription | 사용자의 구독 | 이벤트 허브에 사용할 Azure 구독을 선택합니다.|
-    | Resource group | *test-hub-rg* | 새 리소스 그룹 만들기 |
+    | 리소스 그룹 | *test-hub-rg* | 새 리소스 그룹 만들기 |
     | 위치 | *미국 서부* | 이 문서에 대 한 *미국 서 부* 를 선택 합니다. 프로덕션 시스템의 경우 요구에 가장 적합한 지역을 선택합니다. 최상의 성능을 위해 Kusto 클러스터와 동일한 위치에 Event Hub 네임스페이스를 만듭니다(처리량이 높은 Event Hub 네임스페이스에 가장 중요).
     | 네임스페이스 이름 | 고유한 네임스페이스 이름 | 네임스페이스를 식별하는 고유한 이름을 선택합니다. 예를 들어 *mytestnamespace*를 선택합니다. 입력한 이름에 도메인 이름 *servicebus.windows.net*이 추가됩니다. 이 이름에는 문자, 숫자 및 하이픈만 포함할 수 있습니다. 이름은 문자로 시작하고 문자나 숫자로 끝나야 합니다. 값의 길이는 6자에서 50자 사이여야 합니다.
     | 이벤트 허브 이름 | *test-hub* | 이벤트 허브는 고유한 범위 지정 컨테이너 역할을 하는 네임스페이스 아래에 배치됩니다. 이벤트 허브 이름은 네임스페이스 내에서 고유해야 합니다. |
@@ -128,8 +130,8 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
      **설정** | **제안 값** | **필드 설명**
     |---|---|---|
-    | 표 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
-    | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC 및 PARQUET입니다. |
+    | 테이블 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
+    | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO 및 W3CLOG입니다. |
     | 열 매핑 | *TestMapping* | **Testdatabase**에서 만든 [매핑으로](kusto/management/mappings.md) , 들어오는 JSON 데이터를 **testdatabase**의 열 이름 및 데이터 형식에 매핑합니다. JSON 또는 여러 줄 JSON에 필요 하 고 다른 형식의 경우 선택 사항입니다.|
     | | |
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 2616605d29f90a283f5a5d8fef367bf77df65a15
-ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
+ms.openlocfilehash: 866436d74e3e37319ec06b477503c11e3d7d6be7
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87871938"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201329"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -97,7 +97,7 @@ ms.locfileid: "87871938"
 
 여기서 *DateTimeFormat* 는 형식 지정자를 중괄호로 묶을 수 있는 확장명이 있는 .net 형식 사양을 따릅니다. 예를 들어 다음 두 가지 형식은 동일 합니다.
 
-&nbsp;&nbsp;`'year='yyyy'/month='MM`하거나`year={yyyy}/month={MM}`
+&nbsp;&nbsp;`'year='yyyy'/month='MM` 하거나 `year={yyyy}/month={MM}`
 
 기본적으로 datetime 값은 다음 형식을 사용 하 여 렌더링 됩니다.
 
@@ -133,16 +133,16 @@ ms.locfileid: "87871938"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | Type     | 설명       |
+| 속성         | 형식     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
 | `compressed`     | `bool`   | 설정 하는 경우 파일이 파일로 압축 되는지 여부를 나타냅니다 `.gz` ( [내보내기 시나리오](data-export/export-data-to-an-external-table.md) 에서만 사용 됨). |
-| `includeHeaders` | `string` | CSV 또는 TSV 파일의 경우 파일에 헤더가 포함 되어 있는지 여부를 나타냅니다.                     |
+| `includeHeaders` | `string` | 구분 기호로 분리 된 텍스트 형식 (CSV, TSV, ...)은 파일에 헤더가 포함 되어 있는지 여부를 나타냅니다. 가능한 값은 다음과 같습니다. `All` (모든 파일에 헤더 포함) `FirstFile` . (폴더의 첫 번째 파일에는 헤더가 포함 되어 있음) `None` . |
 | `namePrefix`     | `string` | 설정 하는 경우 파일의 접두사를 나타냅니다. 쓰기 작업 시 모든 파일이이 접두사로 작성 됩니다. 읽기 작업에서는이 접두사가 포함 된 파일만 읽습니다. |
 | `fileExtension`  | `string` | 설정 하는 경우 파일의 파일 확장명을 나타냅니다. 쓰기에서는 파일 이름이이 접미사로 종료 됩니다. 읽을 때이 파일 확장명을 가진 파일만 읽습니다.           |
 | `encoding`       | `string` | 텍스트를 인코딩하는 방법을 나타냅니다. `UTF8NoBOM` (기본값) 또는 `UTF8BOM` 입니다.             |
-| `sampleUris`     | `bool`   | 설정 하는 경우 명령 결과는 외부 테이블 정의에서 예상 하는 외부 데이터 파일 URI의 몇 가지 예를 제공 합니다. |
+| `sampleUris`     | `bool`   | 설정 하는 경우 명령 결과는 외부 테이블 정의에 예상 되는 외부 데이터 파일 URI의 몇 가지 예를 제공 합니다 (샘플이 두 번째 결과 테이블에 반환 됨). 이 옵션은 *[파티션](#partitions)* 및 *[pathformat](#path-format)* 매개 변수가 제대로 정의 되었는지 여부를 확인 하는 데 도움이 됩니다. |
 | `validateNotEmpty` | `bool`   | 설정 하는 경우 연결 문자열에 콘텐츠를 포함 하기 위해 연결 문자열의 유효성이 검사 됩니다. 지정 된 URI 위치가 존재 하지 않거나 액세스 권한이 부족 한 경우 명령이 실패 합니다. |
 
 > [!TIP]
@@ -274,7 +274,7 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | Type   | 설명                       |
+| 출력 매개 변수 | 형식   | 설명                       |
 |------------------|--------|-----------------------------------|
 | URI              | string | 외부 저장소 데이터 파일의 URI |
 
@@ -307,7 +307,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 이름     | 종류 | 매핑                                                           |
+| Name     | 종류 | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -325,7 +325,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 이름     | 종류 | 매핑                                                                |
+| Name     | 종류 | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -347,7 +347,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 이름     | 종류 | 매핑                                                                         |
+| Name     | 종류 | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 

@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/03/2020
-ms.openlocfilehash: ef8c0505c7bc26139d7a881ac0cc716395d3d497
-ms.sourcegitcommit: c7b16409995087a7ad7a92817516455455ccd2c5
+ms.openlocfilehash: fab1f41fc4b72b497900276d33beb1b89820c02c
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88148152"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201636"
 ---
 # <a name="continuous-data-export-overview"></a>연속 데이터 내보내기 개요
 
@@ -63,7 +63,7 @@ ms.locfileid: "88148152"
 
 기록 데이터가 너무 커서 단일 내보내기 명령으로 내보낼 수 없습니다. 필요한 경우 쿼리를 몇 개의 작은 일괄 처리로 분할 합니다. 
 
-연속 내보내기로 내보낸 데이터에 중복 되지 않도록 하려면 `StartCursor` [연속 내보내기 표시 명령](show-continuous-export.md) 에 의해 반환 된를 사용 하 고 내보내기는 `where cursor_before_or_at` 커서 값을 기록 합니다. 다음은 그 예입니다. 
+연속 내보내기로 내보낸 데이터에 중복 되지 않도록 하려면 `StartCursor` [연속 내보내기 표시 명령](show-continuous-export.md) 에 의해 반환 된를 사용 하 고 내보내기는 `where cursor_before_or_at` 커서 값을 기록 합니다. 예를 들어:
 
 ```kusto
 .show continuous-export MyExport | project StartCursor
@@ -94,4 +94,5 @@ ms.locfileid: "88148152"
 * 연속 내보내기는 `impersonate` [연결 문자열](../../api/connection-strings/storage.md)에 있는 외부 테이블에 대해서는 지원 되지 않습니다.
 * 연속 내보내기는 데이터베이스 간 및 클러스터 간 호출을 지원 하지 않습니다.
 * 연속 내보내기는 Azure 데이터 탐색기에서 지속적으로 데이터를 스트리밍하는 데 적합 하지 않습니다. 연속 내보내기는 모든 노드가 동시에 내보내는 분산 모드에서 실행 됩니다. 각 실행에서 쿼리 하는 데이터 범위가 작은 경우 연속 내보내기의 출력은 많은 작은 아티팩트가 됩니다. 아티팩트의 수는 클러스터의 노드 수에 따라 달라 집니다.
-* 연속 내보내기에 사용 되는 아티팩트가 Event Grid 알림을 트리거하기 위한 것 이라면 [Event Grid 설명서의 알려진 문제 섹션](../data-ingestion/eventgrid.md#known-issues)을 참조 하세요.
+* 연속 내보내기에 사용 되는 아티팩트가 Event Grid 알림을 트리거하기 위한 것 이라면 [Event Grid 설명서의 알려진 문제 섹션](../../../ingest-data-event-grid-overview.md#known-event-grid-issues)을 참조 하세요.
+ 

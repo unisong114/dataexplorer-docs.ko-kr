@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 166f109f96695380c979dd4060e324187c5b5efc
-ms.sourcegitcommit: 4ae1508bbaa8fe9642dcfc8618d77f009bc8ec9f
+ms.openlocfilehash: 9522ee72e639c967f7b735c9c52d67c236498522
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86405473"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201697"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -38,13 +38,13 @@ Azure 데이터 탐색기는 데이터 수집, 쿼리, 시각화, 오케스트�
 ### <a name="ingestion-integrations"></a>수집 통합
 
 * 이벤트 허브
-    * [이벤트 허브에서 수집](kusto/management/data-ingestion/eventhub.md)
+    * [이벤트 허브에서 수집](ingest-data-event-hub-overview.md)
     * [Azure Portal](ingest-data-event-hub.md), [c #](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-event-hub-resource-manager.md) 사용 하 여 이벤트 허브에서 수집
 * Event Grid
-    * [Event Grid에서 수집](kusto/management/data-ingestion/eventgrid.md)
+    * [Event Grid에서 수집](ingest-data-event-grid-overview.md)
     * [Azure Portal](ingest-data-event-grid.md), [c #](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-event-grid-resource-manager.md) 사용 하 여 Event Grid 수집
 * IoT Hub
-    * [IoT Hub에서 수집](kusto/management/data-ingestion/iothub.md)
+    * [IoT Hub에서 수집](ingest-data-iot-hub-overview.md)
     * [Azure Portal](ingest-data-iot-hub.md), [c #](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-iot-hub-resource-manager.md) 사용 하 여 IoT Hub 수집
 * [Logstash](ingest-data-logstash.md)
 * Azure 데이터 팩터리
@@ -75,7 +75,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 ### <a name="query-integrations"></a>통합 쿼리
 
 * [Azure Monitor](query-monitor-data.md)
-* [Azure Data Lake](data-lake-query-data.md)
+* [Azure 데이터 레이크](data-lake-query-data.md)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)

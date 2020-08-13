@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 434d32a3b6597d71ea22c182a468d64d7971e6cb
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: bb6c7c51e295f9af9d6e43a5de5936dfea13f5b6
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348975"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201670"
 ---
 # <a name="bin"></a>bin()
 
@@ -33,7 +33,7 @@ Null 값, null bin 크기 또는 음수 bin 크기를 반환 하면 null이 반�
 ## <a name="arguments"></a>인수
 
 * *value*: 숫자, 날짜 또는 timespan입니다. 
-* *roundTo*: "bin size" *값*을 나누는 숫자, 날짜 또는 시간 범위입니다. 
+* *roundTo*: "bin size" *값*을 나누는 숫자 또는 timespan입니다. 
 
 ## <a name="returns"></a>반환
 

@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b85ec79c962ab4e63c0831f415ee7c3f2074c970
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 89fc499e0e74bcd521c8c2fbc7c2038536c097da
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350097"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201571"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Python (미리 보기)을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결 만들기
 
@@ -22,20 +22,16 @@ ms.locfileid: "87350097"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager 템플릿](data-connection-iot-hub-resource-manager.md)
 
-이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결을 만듭니다. Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기는 Event Hubs, IoT Hub 및 blob 컨테이너에 기록 된 blob에서 수집 또는 데이터 로드를 제공 합니다.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결을 만듭니다. 
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
 * 활성 구독이 있는 Azure 계정. [체험 계정을 만듭니다](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 * [Python 3.4 이상](https://www.python.org/downloads/).
-
 * [클러스터 및 데이터베이스](create-cluster-database-python.md)
-
 * [테이블 및 열 매핑](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
-
 * [데이터베이스 및 테이블 정책](database-table-policies-python.md) (옵션).
-
 * [공유 액세스 정책이 구성 된 IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub)
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]

@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 7649a89208881ce323c0cbd970f3f247b0cf67da
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7a4cc1efef506f046e17af901a87b501e0272d08
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350148"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201293"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Python을 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결 만들기
 
@@ -22,20 +22,16 @@ ms.locfileid: "87350148"
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager 템플릿](data-connection-event-hub-resource-manager.md)
 
-이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결을 만듭니다. Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기는 Event Hubs, IoT Hub 및 blob 컨테이너에 기록 된 blob에서 수집 또는 데이터 로드를 제공 합니다.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결을 만듭니다. 
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
 * 활성 구독이 있는 Azure 계정. [체험 계정을 만듭니다](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 * [Python 3.4 이상](https://www.python.org/downloads/).
-
 * [클러스터 및 데이터베이스](create-cluster-database-python.md)
-
 * [테이블 및 열 매핑](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
-
 * [데이터베이스 및 테이블 정책](database-table-policies-python.md) (옵션).
-
 * 수집 [에 대 한 데이터를 포함 하는 이벤트 허브](ingest-data-event-hub.md#create-an-event-hub)
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]

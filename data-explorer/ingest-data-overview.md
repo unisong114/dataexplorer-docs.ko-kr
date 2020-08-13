@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e6b329380d507e93161415f51515656628564500
-ms.sourcegitcommit: bf2c9da0c23ebcaec19b229d2079032d54a2cc82
+ms.openlocfilehash: d46455fcce2880c4f347d04125a9f6355cb4cffa
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86140545"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201547"
 ---
 # <a name="azure-data-explorer-data-ingestion-overview"></a>Azure 데이터 탐색기 데이터 수집 개요 
 
@@ -115,15 +115,15 @@ KQL (Kusto Query Language) 명령을 통해 데이터를 엔진에 직접 수집
 | [**LogStash**](ingest-data-logstash.md) | | | | |
 | [**Azure 데이터 팩터리**](kusto/tools/azure-data-factory.md) | [지원 되는 데이터 형식](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | 무제한 * (ADF 제한 당) | 일괄 처리 또는 ADF 별 트리거 | 일반적으로 지원 되지 않는 많은 파일 (일반적으로 지원 되지 않음)에서 perm의 원본에서 클라우드로 90 복사할 수 있는 형식을 지원 합니다. | 수집 시간 |
 |[**Azure 데이터 흐름**](kusto/tools/flow.md) | | | | 흐름의 일부로 명령 수집| 높은 성능의 응답 시간이 있어야 합니다. |
-| [**IoT Hub**](kusto/management/data-ingestion/iothub.md) | [지원 되는 데이터 형식](kusto/management/data-ingestion/iothub.md#data-format)  | 해당 없음 | 일괄 처리, 스트리밍 | Iot 메시지, iot 이벤트, IoT 속성 | |
-| [**이벤트 허브**](kusto/management/data-ingestion/eventhub.md) | [지원 되는 데이터 형식](kusto/management/data-ingestion/eventhub.md#data-format) | 해당 없음 | 일괄 처리, 스트리밍 | 메시지, 이벤트 | |
-| [**Event Grid**](kusto/management/data-ingestion/eventgrid.md) | [지원 되는 데이터 형식](kusto/management/data-ingestion/eventgrid.md#data-format) | 1gb 압축 되지 않음 | 일괄 처리 | Azure storage의 연속 수집, Azure storage의 외부 데이터 | 100 KB는 최적의 파일 크기 이며 blob 이름 바꾸기 및 blob 만들기에 사용 됩니다. |
+| [**IoT Hub**](ingest-data-iot-hub-overview.md) | [지원 되는 데이터 형식](ingest-data-iot-hub-overview.md#data-format)  | N/A | 일괄 처리, 스트리밍 | Iot 메시지, iot 이벤트, IoT 속성 | |
+| [**이벤트 허브**](ingest-data-event-hub-overview.md) | [지원 되는 데이터 형식](ingest-data-event-hub-overview.md#data-format) | N/A | 일괄 처리, 스트리밍 | 메시지, 이벤트 | |
+| [**Event Grid**](ingest-data-event-grid-overview.md) | [지원 되는 데이터 형식](ingest-data-event-grid-overview.md#data-format) | 1gb 압축 되지 않음 | 일괄 처리 | Azure storage의 연속 수집, Azure storage의 외부 데이터 | 100 KB는 최적의 파일 크기 이며 blob 이름 바꾸기 및 blob 만들기에 사용 됩니다. |
 | [**Net Std**](net-standard-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Python**](python-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Node.JS**](node-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조 | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Java**](kusto/api/java/kusto-java-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**REST (영문)**](kusto/api/netfx/kusto-ingest-client-rest.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접| 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
-| [**으로**](kusto/api/golang/kusto-golang-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
+| [**Go**](kusto/api/golang/kusto-golang-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 
 > [!Note] 
 > 위의 표에서 참조 하는 경우 수집은 최대 파일 크기 5gb를 지원 합니다. 100MB에서 1GB 사이의 파일을 수집하는 것이 좋습니다.

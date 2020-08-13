@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: f38e6ffe4cec263585c3fe6e06bbb92c9127bbba
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7ccc256e1e3f97606659e712d3df986c160bef89
+ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350074"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88201149"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결 만들기
 
@@ -22,7 +22,8 @@ ms.locfileid: "87350074"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager 템플릿](data-connection-iot-hub-resource-manager.md)
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기는 blob 컨테이너에 기록 된 Event Hubs, IoT Hub 및 blob에서 수집 (데이터 로드)을 제공 합니다. 이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결을 만듭니다.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결을 만듭니다.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
