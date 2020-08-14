@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e011ffa61b70c79d51941518de0624030d847c4e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: d3625be5a3a97b456a2d6d84802b11602f959f3e
+ms.sourcegitcommit: bb7c2ba9f9dcae08710be2345ee6e63004629ea1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351100"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88218975"
 ---
 # <a name="shuffle-query"></a>쿼리 순서 섞기
 
@@ -22,10 +22,6 @@ ms.locfileid: "87351100"
 Kusto에서 순서 섞기를 지 원하는 연산자는 [조인](joinoperator.md), [요약](summarizeoperator.md)및 [시리즈 시리즈](make-seriesoperator.md)입니다.
 
 쿼리 매개 변수 또는를 사용 하 여 순서 섞기 쿼리 전략을 설정 `hint.strategy = shuffle` `hint.shufflekey = <key>` 합니다.
-
-테이블에 [데이터 분할 정책을](../management/partitioningpolicy.md) 정의 합니다. 
-
-`shufflekey`클러스터 노드 간에 이동 하는 데 필요한 데이터 양이 줄어들기 때문에 더 나은 성능을 위해 테이블의 해시 파티션 키로 설정 합니다.
 
 ## <a name="syntax"></a>Syntax
 
@@ -52,7 +48,7 @@ T
 
 **힌트 간 차이입니다. 전략 = 순서 섞기와 shufflekey = key**
 
-`hint.strategy=shuffle`섞은 연산자가 모든 키로 섞은 됨을 의미 합니다.
+`hint.strategy=shuffle` 섞은 연산자가 모든 키로 섞은 됨을 의미 합니다.
 예를 들어 다음 쿼리에서는
 
 ```kusto
