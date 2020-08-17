@@ -1,20 +1,20 @@
 ---
-title: Azure 데이터 공유를 사용 하 여 Azure 데이터 탐색기와 데이터 공유 (미리 보기)
+title: Azure 데이터 공유를 사용 하 여 Azure 데이터 탐색기와 데이터 공유
 description: Azure 데이터 탐색기 및 Azure 데이터 공유와 데이터를 공유 하는 방법에 대해 알아봅니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 325adfafcb474804d6fc03d85bc5ae2e82011fd3
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.date: 08/14/2020
+ms.openlocfilehash: 29d3c10dc08d0506f43af7127cbf705a8b1881c1
+ms.sourcegitcommit: ec191391f5ea6df8c591e6d747c67b2c46f98ac4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350046"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88259914"
 ---
-# <a name="use-azure-data-share-to-share-data-with-azure-data-explorer-preview"></a>Azure 데이터 공유를 사용 하 여 Azure 데이터 탐색기와 데이터 공유 (미리 보기)
+# <a name="use-azure-data-share-to-share-data-with-azure-data-explorer"></a>Azure 데이터 공유를 사용 하 여 Azure 데이터 탐색기와 데이터 공유
 
 파일 공유, FTP, 전자 메일 및 Api를 통해 데이터를 공유 하는 일반적인 방법에는 여러 가지가 있습니다. 이러한 메서드를 통해 팀과 조직 간에 데이터를 이동 하는 데이터 파이프라인을 작성 하 고 유지 관리 해야 합니다. Azure 데이터 탐색기을 사용 하면 회사 또는 외부 파트너의 사용자와 쉽고 안전 하 게 데이터를 공유할 수 있습니다. 공유는 데이터 파이프라인을 빌드하거나 유지 관리할 필요 없이 거의 실시간으로 발생 합니다. 공급자 측에서 스키마 및 데이터를 비롯 한 모든 데이터베이스 변경 내용은 소비자 쪽에서 즉시 사용할 수 있습니다.
 
@@ -62,5 +62,5 @@ Azure 데이터 탐색기는 고객이 동일한 기본 저장소에서 여러 �
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Azure 데이터 공유 설명서](/azure/data-share/)
+* [Azure Data Share 설명서](/azure/data-share/)
 * 종동체 클러스터에 대 한 자세한 내용은 [종동체 cluster](follower.md) 를 참조 하세요.

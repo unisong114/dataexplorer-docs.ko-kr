@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d4f9fe945281eb61c1d1e685d0c2689585951926
-ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
+ms.openlocfilehash: 9efbceafa20b1807b5c3cfd89a288bc9b704a086
+ms.sourcegitcommit: ec191391f5ea6df8c591e6d747c67b2c46f98ac4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86870110"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88260088"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
@@ -23,7 +23,7 @@ Azure 데이터 탐색기 프록시 흐름:
 
 ![ADX 프록시 흐름](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
 > [!NOTE]
 > ADX 프록시는 미리 보기 모드입니다. [프록시에 연결](#connect-to-the-proxy) 하 여 클러스터에 대해 adx 프록시 기능을 사용 하도록 설정 합니다. [Adxproxy](mailto:adxproxy@microsoft.com) 팀에 질문을 합니다.
@@ -38,8 +38,8 @@ Azure 데이터 탐색기 프록시 흐름:
 
 1. **클러스터 추가** 창에서 LA 또는 AI 클러스터의 URL을 추가 합니다. 
     
-    * LA의 경우:`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
-    * AI의 경우:`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
+    * LA의 경우: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * AI의 경우: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
     * **추가**를 선택합니다.
 
@@ -107,8 +107,6 @@ Azure 데이터 탐색기 프록시 클러스터는 Application Insights 및 Log
 
   [![Azure 데이터 탐색기 웹 UI에서 테이블 형식 함수 쿼리](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
-> [!NOTE]
-> Azure Monitor은 테이블 형식 함수만 지원 합니다. 테이블 형식 함수는 매개 변수를 지원 하지 않습니다.
 
 ## <a name="additional-syntax-examples"></a>추가 구문 예제
 

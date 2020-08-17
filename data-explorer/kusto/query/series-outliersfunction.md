@@ -8,28 +8,28 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: c5ada33d74f5ed3e1c7b357321b23bd7a76be64e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c3728b4497e09460fbc19ef2da26a72f02c2ee71
+ms.sourcegitcommit: ec191391f5ea6df8c591e6d747c67b2c46f98ac4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351355"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88260104"
 ---
 # <a name="series_outliers"></a>series_outliers()
 
 계열에서 변칙 점수를 점수가 있습니다.
 
-함수는 동적 숫자 배열을 입력으로 사용 하는 식을 사용 하 고 길이가 같은 동적 숫자 배열을 생성 합니다. 배열의 각 값은 ["이 키의 테스트"](https://en.wikipedia.org/wiki/Outlier#Tukey.27s_test)를 사용 하 여 가능한 변칙의 점수를 나타냅니다. 입력의 동일한 요소에서 1.5 보다 큰 값은 비정상 또는 거부를 나타냅니다. -1.5 보다 작은 값은 변칙을 거부 함을 나타냅니다.
+함수는 동적 숫자 배열을 입력으로 사용 하는 식을 사용 하 고 길이가 같은 동적 숫자 배열을 생성 합니다. 배열의 각 값은 ["이 키의 테스트"](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences)를 사용 하 여 가능한 변칙의 점수를 나타냅니다. 입력의 동일한 요소에서 1.5 보다 큰 값은 비정상 또는 거부를 나타냅니다. -1.5 보다 작은 값은 변칙을 거부 함을 나타냅니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_outliers(`*x* `, ` *종류* `, ` *ignore_val* `, ` *min_percentile* `, ` *max_percentile*`)`
 
 ## <a name="arguments"></a>인수
 
 * *x*: 숫자 값의 배열인 동적 배열 셀입니다.
-* *kind*: 이상 값 검색의 알고리즘입니다. 는 현재 `"tukey"` (기존 "고 키") 및 `"ctukey"` (사용자 지정 "의 키")를 지원 합니다. 기본값은 `"ctukey"`
-* *ignore_val*: 계열의 누락 값을 나타내는 숫자 값입니다. 기본값은 double (null)입니다. Null 및 무시 값의 점수는로 설정 됩니다.`0`
+* *kind*: 이상 값 검색의 알고리즘입니다. 는 현재 `"tukey"` (기존 "고 키") 및  `"ctukey"` (사용자 지정 "의 키")를 지원 합니다. 기본값은 `"ctukey"`
+* *ignore_val*: 계열의 누락 값을 나타내는 숫자 값입니다. 기본값은 double (null)입니다. Null 및 무시 값의 점수는로 설정 됩니다. `0`
 * *min_percentile*: 일반적인 변 위치 범위를 계산 하는 데 사용할입니다. 기본값은 10이 고, 지원 되는 사용자 지정 값은 범위 `[2.0, 98.0]` ( `ctukey` 전용)입니다.
 * *max_percentile*: 동일, 기본값: 90, 지원 되는 사용자 지정 값 범위 `[2.0, 98.0]` (ctukey 전용)
 

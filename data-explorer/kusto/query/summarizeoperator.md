@@ -8,22 +8,23 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/20/2020
-ms.openlocfilehash: a200d0619b25fe7410a82a941a3b1bf6e35d60ac
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 19f86e4973a2822de6f25e38edb07ccd8fbda9d1
+ms.sourcegitcommit: ec191391f5ea6df8c591e6d747c67b2c46f98ac4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87342617"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88260121"
 ---
 # <a name="summarize-operator"></a>summarize 연산자
 
 입력된 테이블의 내용을 집계하는 테이블을 생성합니다.
 
 ```kusto
-T | summarize count(), avg(price) by fruit, supplier
+Sales | summarize NumTransactions=count(), Total=sum(UnitPrice * NumUnits) by Fruit, StartOfMonth=startofmonth(SellDateTime)
 ```
 
-각 공급자의 각 과일의 평균 및 평균 가격을 표시 하는 테이블입니다. 과일과 공급자의 각 고유 조합에 대 한 행이 출력에 있습니다. 출력 열에는 개수, 평균 가격, 과일 및 공급자가 표시 됩니다. 모든 다른 입력된 열은 무시됩니다.
+판매 트랜잭션 수와 과일 당 총 금액 및 판매 월 수를 포함 하는 테이블을 반환 합니다.
+출력 열에는 트랜잭션 수, 거래 가치가 있는 과일 및 트랜잭션이 기록 된 달의 시작 날짜/시간을 표시 합니다.
 
 ```kusto
 T | summarize count() by price_range=bin(price, 10.0)
@@ -31,7 +32,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 [0,10.0], [10.0,20.0] 등의 각 간격에 가격을 가진 항목 수를 표시하는 테이블입니다. 이 예제는 개수에 대한 열 및 가격 범위에 대한 열을 가지고 있습니다. 모든 다른 입력된 열은 무시됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| summarize` [[*column* `=` ] *Aggregation* [ `,` ...]] [ `by` [*column* `=` ] *groupexpression* [ `,` ...]]
 
@@ -39,7 +40,8 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 * *Column:* 결과 열에 대한 선택적 이름입니다. 기본적으로 식에서 파생된 이름입니다.
 * *집계:* 열 이름을 인수로 사용 하는 또는와 같은 [집계 함수](summarizeoperator.md#list-of-aggregation-functions) 에 대 한 호출 `count()` `avg()` 입니다. [집계 함수의 목록](summarizeoperator.md#list-of-aggregation-functions)을 참조하세요.
-* *GroupExpression:* 고유 값 집합을 제공하는 열에 대한 식입니다. 일반적으로 이미 제한된 값 집합을 제공한 열의 이름 또는 숫자나 시간 열을 인수로 하는 `bin()` 입니다. 
+* *Groupexpression:* 입력 데이터를 참조할 수 있는 스칼라 식입니다.
+  출력에는 모든 그룹 식에 대 한 고유 값 만큼의 레코드가 포함 됩니다.
 
 > [!NOTE]
 > 입력 테이블이 비어 있는 경우 출력은 *Groupexpression* 을 사용 하는지 여부에 따라 달라 집니다.
@@ -57,11 +59,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 > [!NOTE]
 > * 집계와 그룹화 식에 대해 모두 임의 식을 제공할 수 있지만 단순 열 이름을 사용하거나 `bin()`을(를) 숫자 열에 적용하는 것이 더 효율적입니다.
-> * Datetime 열에 대 한 자동 매시간 저장소는 더 이상 지원 되지 않습니다. 대신 명시적 범주화를 사용 해야 합니다. 예: `summarize by bin(timestamp, 1h)`.
+> * Datetime 열에 대 한 자동 매시간 저장소는 더 이상 지원 되지 않습니다. 대신 명시적 범주화를 사용 해야 합니다. 예들 들어 `summarize by bin(timestamp, 1h)`입니다.
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|함수|설명|
+|기능|Description|
 |--------|-----------|
 |[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[anyif()](anyif-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값 (조건자 포함)을 반환 합니다.|
@@ -92,7 +94,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 |[percentiles_array ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentilesw()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
 |[percentilesw_array ()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
-|[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
+|[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
 |[stdevif()](stdevif-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다 (조건자 포함).|
 |[sum ()](sum-aggfunction.md)|그룹 트 내의 요소의 합을 반환 합니다.|
 |[sumif()](sumif-aggfunction.md)|Group 트 내의 요소 (조건자 포함)의 합을 반환 합니다.|
@@ -111,7 +113,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 
  Null 값을 포함 하는 엔터티에 대해 이러한 집계를 사용 하는 경우 null 값은 무시 되며 계산에 참여 하지 않습니다 (아래 예제 참조).
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 :::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="과일 및 공급 업체 별로 가격 요약":::
 
