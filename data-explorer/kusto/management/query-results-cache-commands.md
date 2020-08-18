@@ -1,5 +1,5 @@
 ---
-title: 쿼리 결과 캐시-Azure 데이터 탐색기
+title: 쿼리 결과 캐시 명령-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 쿼리 결과 캐시에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: amitof
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
-ms.openlocfilehash: fa2bf2f6d24162c5bdb1c851ef7d74e4eb39489f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 519560f0b6bb98651dc4a8b6749935ec9843eb9c
+ms.sourcegitcommit: 5e903c61e779f7bf62f745f13a6038ce2a32e934
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349910"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88512578"
 ---
-# <a name="query-results-cache"></a>쿼리 결과 캐시
+# <a name="query-results-cache-commands"></a>쿼리 결과 캐시 명령
 
 쿼리 결과 캐시는 쿼리 결과를 저장 하는 전용 캐시입니다. 자세한 내용은 [쿼리 결과 캐시](../query/query-results-cache.md)를 참조 하세요.
 

@@ -1,5 +1,5 @@
 ---
-title: parse_ipv4_mask ()-Azure 데이터 탐색기 | Microsoft Docs
+title: parse_ipv4_mask ()-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기의 parse_ipv4_mask () 함수에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
-ms.openlocfilehash: 7399bf83369a1b1e1565dd127712faccf7e60830
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c84a719c59f46702ba8f5d92db2a1277cef49fb4
+ms.sourcegitcommit: 5e903c61e779f7bf62f745f13a6038ce2a32e934
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346476"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88512575"
 ---
 # <a name="parse_ipv4_mask"></a>parse_ipv4_mask()
 
