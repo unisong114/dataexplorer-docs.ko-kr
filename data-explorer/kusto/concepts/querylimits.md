@@ -8,17 +8,17 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: f0b2dcc8537c7bf959d60283a63f9227b22c168b
-ms.sourcegitcommit: 31ebf208d6bfd901f825d048ea69c9bb3d8b87af
+ms.openlocfilehash: a9818f2efb6b48621c59619e89b3f2c9a4315e42
+ms.sourcegitcommit: 5137a4291d70327b7bb874bbca74a4a386e57d32
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88501572"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566418"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
 Kusto는 큰 데이터 집합을 호스트 하 고 모든 관련 데이터를 메모리 내에 저장 하 여 쿼리를 충족 하려고 시도 하는 임시 쿼리 엔진입니다.
-쿼리가 서비스 리소스를 제한 없이 독점할 하는 내재 된 위험이 있습니다. Kusto는 기본 쿼리 제한의 형태로 여러 기본 제공 보호 기능을 제공 합니다.
+쿼리가 서비스 리소스를 제한 없이 독점할 하는 내재 된 위험이 있습니다. Kusto는 기본 쿼리 제한의 형태로 여러 기본 제공 보호 기능을 제공 합니다. 이러한 제한을 제거 하는 것을 고려 하는 경우 먼저이 작업을 수행 하 여 값을 얻을 수 있는지 여부를 확인 합니다.
 
 ## <a name="limit-on-query-concurrency"></a>쿼리 동시성 제한
 
@@ -59,7 +59,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 요청 옵션을 사용 하 여 결과 잘림을 사용 하지 않도록 설정할 수 있습니다 `notruncation` .
 몇 가지 형태의 제한이 여전히 적용 되는 것이 좋습니다.
 
-예를 들어 다음과 같은 가치를 제공해야 합니다.
+예를 들면 다음과 같습니다.
 
 ```kusto
 set notruncation;
@@ -73,6 +73,12 @@ set truncationmaxsize=1048576;
 set truncationmaxrecords=1105;
 MyTable | where User=="Ploni"
 ```
+
+결과 잘림 제한을 제거 하면 Kusto에서 대량 데이터를 이동 하는 것을 의미 합니다.
+
+`.export`명령을 사용 하거나 이후 집계를 위해 내보내기 목적으로 결과 잘림 제한을 제거할 수 있습니다. 나중에 집계를 선택 하는 경우 Kusto를 사용 하 여 집계 하는 것이 좋습니다.
+
+이러한 제안 된 솔루션 중 하나로 충족 될 수 없는 비즈니스 시나리오가 있는 경우 Kusto 팀에 알립니다.  
 
 Kusto 클라이언트 라이브러리는 현재이 제한의 존재를 전제로 합니다. 범위 없이 제한을 늘릴 수 있지만 결국에는 현재 구성할 수 없는 클라이언트 제한에 도달할 수 있습니다.
 
@@ -114,10 +120,6 @@ The TopNested operator has exceeded the memory budget during evaluation. Results
 set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
-
-이러한 제한을 제거 하는 것을 고려할 때 먼저이 작업을 수행 하 여 값을 얻을 수 있는지 확인 합니다. 특히 결과 잘림 제한을 제거 하면 Kusto에서 대량 데이터를 이동 하는 것을 의미 합니다.
-내보내기를 위해 명령을 사용 하거나 나중에 집계를 수행 하기 위해 결과 잘림 제한을 제거할 수 있습니다 `.export` .이 경우 Kusto를 사용 하 여 집계 하는 것이 좋습니다.
-이러한 제안 된 솔루션 중 하나로 충족 될 수 없는 비즈니스 시나리오가 있는 경우 Kusto 팀에 알립니다.  
 
 대부분의 경우 데이터 집합을 샘플링 하 여이 제한을 초과 하는 것을 방지할 수 있습니다. 아래의 두 쿼리는 샘플링을 수행 하는 방법을 보여 줍니다. 첫 번째는 임의의 숫자 생성기를 사용 하는 통계 샘플링입니다. 두 번째는 데이터 집합의 일부 열 (일반적으로 일부 ID)을 해시 하 여 수행 되는 결정적 샘플링입니다.
 
@@ -191,7 +193,7 @@ Kusto에서는 쿼리를 실행할 때 두 개의 [클라이언트 요청 속성
 
 쿼리를 실행 하는 동안 쿼리 텍스트는 쿼리를 나타내는 관계형 연산자 트리로 변환 됩니다.
 트리 깊이가 여러 천 수준의 내부 임계값을 초과 하는 경우 쿼리는 처리 하기에는 너무 복잡 한 것으로 간주 되며 오류 코드와 함께 실패 합니다. 이 오류는 관계형 연산자 트리가 제한을 초과 했음을 나타냅니다.
-함께 연결 된 이항 연산자의 긴 목록이 포함 된 쿼리로 인해 한도가 초과 되었습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+함께 연결 된 이항 연산자의 긴 목록이 포함 된 쿼리로 인해 한도가 초과 되었습니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 T 
