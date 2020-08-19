@@ -7,18 +7,18 @@ ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 74f80ef6dd05380e73215d1edb27f5117060bc58
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 08ac06b5f0a1a65afec6a71106943f3b58c1b9f5
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350352"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610307"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks"></a>Azure Databricks에서 Azure 데이터 탐색기에 연결
 
 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)는 Microsoft Azure 플랫폼에 대해 최적화된 Apache Spark 기반 분석 플랫폼입니다. 이 문서에서는 Azure 데이터 탐색기에서 Azure Databricks를 사용 하 여 데이터에 액세스 하는 방법을 보여 줍니다. 디바이스 로그인 및 Azure AD(Azure Active Directory) 앱을 포함하여 Azure Data Explorer로 인증하는 방법에는 여러 가지가 있습니다.
  
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 - [Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다](create-cluster-database-portal.md).
 - [Azure Databricks 작업 영역을 만듭니다](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). **Azure Databricks 서비스** 아래 **가격 책정 계층** 드롭다운 목록에서 **프리미엄**을 선택합니다. 이를 선택하면 Azure Databricks 비밀을 사용하여 자격 증명을 저장하고 Notebook 및 작업에서 이를 참조할 수 있습니다.
@@ -44,11 +44,12 @@ Azure Databricks 클러스터에 [spark-kusto 커넥터](https://mvnrepository.c
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
     ```
-    |   |   |
+
+    | 매개 변수 | Description |
     | - | - |
-    | ```DB Name``` | 데이터베이스 이름 |
-    | ```AAD App ID``` | Azure AD 앱 ID |
-    | ```AAD Tenant ID``` | Azure AD 테넌트 ID |
+    | `DB Name` | 데이터베이스 이름 |
+    | `AAD App ID` | Azure AD 앱 ID |
+    | `AAD Tenant ID` | Azure AD 테넌트 ID |
 
 ### <a name="find-your-azure-ad-tenant-id"></a>Azure AD 테넌트 ID 찾기
 

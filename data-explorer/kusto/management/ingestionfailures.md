@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/20/2019
-ms.openlocfilehash: 7684ea11b03113051580e3e19aef0d9ac3f13585
-ms.sourcegitcommit: 283cce0e7635a2d8ca77543f297a3345a5201395
+ms.openlocfilehash: a7a2dcaea2ef982edc8286b83a042d2f21460986
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84011485"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610443"
 ---
 # <a name="ingestion-failures"></a>수집 오류
 
@@ -30,7 +30,7 @@ ms.locfileid: "84011485"
 
 **구문**
 
-|||
+|구문 옵션|설명|
 |---|---| 
 |`.show` `ingestion` `failures`                                       |기록 된 수집 오류를 모두 반환 합니다.  
 |`.show` `ingestion` `failures` <code>&#124;</code> `where` ...       |수집 실패의 필터링 된 집합을 반환 합니다.
@@ -38,7 +38,7 @@ ms.locfileid: "84011485"
 
 **결과**
  
-|출력 매개 변수           |유형     |Description                                                                              |
+|출력 매개 변수           |Type     |Description                                                                              |
 |---------------------------|---------|-----------------------------------------------------------------------------------------|
 |OperationId                |String   |를 통해 추가 작업 세부 정보를 보는 데 사용할 수 있는 작업 식별자입니다. <br> [. 작업 명령 표시](operations.md) </br> 
 |데이터베이스                   |String   |오류가 발생 한 데이터베이스입니다.
@@ -49,7 +49,7 @@ ms.locfileid: "84011485"
 |FailureKind                |String   |실패 유형 (영구/임시)
 |RootActivityId             |String   |루트 활동 ID입니다.
 |OperationKind              |String   |오류가 등록 된 수집 작업 유형 (단계)입니다.
-|OriginatesFromUpdatePolicy |Boolean | [업데이트 정책을](update-policy.md) 실행 하는 동안 오류가 등록 되었는지 여부를 나타냅니다.
+|OriginatesFromUpdatePolicy |부울 | [업데이트 정책을](update-policy.md) 실행 하는 동안 오류가 등록 되었는지 여부를 나타냅니다.
  
 **예제**
  

@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: d9564eec41fd78b3506994da2917f1d8765ee266
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 2f82c1f381bf377226579ca9fa3b086c1396f2d4
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373981"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610392"
 ---
 # <a name="use-azure-notebooks-to-analyze-data-in-azure-data-explorer"></a>Azure Notebooks를 사용 하 여 Azure 데이터 탐색기에서 데이터 분석
 
@@ -28,7 +28,7 @@ ms.locfileid: "83373981"
 
 1. 머리글에서 **내 프로젝트** 탭을 선택 합니다. 
 
-    [![](media/azurenotebooks/an-myprojects.png "My projects")](media/azurenotebooks/an-myprojects.png#lightbox)
+    :::image type="content" source="media/azurenotebooks/an-myprojects.png" alt-text="프로젝트 페이지, 내 프로젝트 탭, Microsoft Azure Notebooks, Azure 데이터 탐색기" lightbox="media/azurenotebooks/an-myprojects.png#lightbox":::
 
 1. **+ 새 프로젝트**를 선택 합니다.
     
@@ -90,11 +90,11 @@ ms.locfileid: "83373981"
 
 1. 노트북으로 돌아와서 인증 결과를 확인 합니다. 
 
-[![](media/azurenotebooks/an-python-commands.png "Python commands")](media/azurenotebooks/an-python-commands.png#lightbox)
+:::image type="content" source="media/azurenotebooks/an-python-commands.png" alt-text="인증 결과 출력, 노트북 창, Microsoft Azure Notebooks, Azure 데이터 탐색기" lightbox="media/azurenotebooks/an-python-commands.png#lightbox":::
 
 ## <a name="execute-a-kusto-query"></a>Kusto 쿼리 실행
 
-1. Kusto 쿼리를 입력 하 고 **실행**을 선택 합니다. 예를 들면 다음과 같습니다.
+1. Kusto 쿼리를 입력 하 고 **실행**을 선택 합니다. 다음은 그 예입니다. 
 
     ```python
     query= "StormEvents | project State, EventType | take 10"
@@ -103,7 +103,7 @@ ms.locfileid: "83373981"
         print(", ".join(row))
     ```    
 
-[![](media/azurenotebooks/an-commands.png "Python commands")](media/azurenotebooks/an-commands.png#lightbox)
+:::image type="content" source="media/azurenotebooks/an-commands.png" alt-text="실행 단추, 노트북 창, Microsoft Azure Notebooks, Azure 데이터 탐색기" lightbox="media/azurenotebooks/an-commands.png#lightbox":::
 
 ## <a name="next-steps"></a>다음 단계
 

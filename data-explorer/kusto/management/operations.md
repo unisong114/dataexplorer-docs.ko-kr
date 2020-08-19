@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ac3d44fadf614606bc63e6a9aa3b8318419d0c70
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: 9c25900817aadcc450696525be8446d385d2e220
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294392"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610477"
 ---
 # <a name="operations-management"></a>운영 관리
 
@@ -23,7 +23,7 @@ ms.locfileid: "84294392"
 
 **구문**
 
-|||
+|구문 옵션|설명|
 |---|---| 
 |`.show` `operations`              |클러스터가 처리 중이거나 클러스터가 처리 한 작업을 모두 반환 합니다.
 |`.show``operations` *OperationId*|특정 ID에 대 한 작업 상태를 반환 합니다. 
@@ -31,26 +31,26 @@ ms.locfileid: "84294392"
 
 **결과**
  
-|출력 매개 변수 |유형 |Description
+|출력 매개 변수 |Type |Description
 |---|---|---
 |ID |String |작업 식별자
-|작업 |String |관리자 명령 별칭
+|작업(Operation) |String |관리자 명령 별칭
 |NodeId |String |명령에 원격 실행이 있는 경우 (예: DataIngestPull)-NodeId는 실행 중인 원격 노드의 ID를 포함 합니다.
 |StartedOn |DateTime |작업이 시작 된 날짜/시간 (UTC)
 |LastUpdatedOn |DateTime |작업이 마지막으로 업데이트 된 날짜/시간 (UTC)입니다 (작업 내의 단계 이거나 완료 단계 일 수 있음).
-|기간 |DateTime |LastUpdateOn와 StartedOn 사이의 TimeSpan
-|주 |String |명령 상태-"InProgress", "Completed" 또는 "Failed" 값을 가질 수 있습니다.
+|Duration |DateTime |LastUpdateOn와 StartedOn 사이의 TimeSpan
+|시스템 상태 |String |명령 상태-"InProgress", "Completed" 또는 "Failed" 값을 가질 수 있습니다.
 |상태 |String |실패 한 작업의 오류를 포함 하는 추가 도움말 문자열
  
 **예제**
  
-|ID |작업 |노드 ID |시작 시간 |마지막 업데이트 날짜 |기간 |주 |상태 
+|ID |작업(Operation) |노드 ID |시작 시간 |마지막 업데이트 날짜 |Duration |시스템 상태 |상태 
 |--|--|--|--|--|--|--|--
-|3827def6-0773-4f2a-859e-c02cf395deaf |SchemaShow | |2015-01-06 08:47:01.0000000 |2015-01-06 08:47:01.0000000 |0001-01-01 00:00:00.0000000 |완료 |
-|841fafa4-076a-4cba-9300-4836da0d9c75 |DataIngestPull |Kusto. Azure Svc_IN_1 |2015-01-06 08:47:02.0000000 |2015-01-06 08:48:19.0000000 |0001-01-01 00:01:17.0000000 |완료 |
-|e198c519-5263-4629-a158-8d68f7a1022f |OperationsShow | |2015-01-06 08:47:18.0000000 |2015-01-06 08:47:18.0000000 |0001-01-01 00:00:00.0000000 |완료 |
+|3827def6-0773-4f2a-859e-c02cf395deaf |SchemaShow | |2015-01-06 08:47:01.0000000 |2015-01-06 08:47:01.0000000 |0001-01-01 00:00:00.0000000 |완료됨 |
+|841fafa4-076a-4cba-9300-4836da0d9c75 |DataIngestPull |Kusto. Azure Svc_IN_1 |2015-01-06 08:47:02.0000000 |2015-01-06 08:48:19.0000000 |0001-01-01 00:01:17.0000000 |완료됨 |
+|e198c519-5263-4629-a158-8d68f7a1022f |OperationsShow | |2015-01-06 08:47:18.0000000 |2015-01-06 08:47:18.0000000 |0001-01-01 00:00:00.0000000 |완료됨 |
 |a9f287a1-f3e6-4154-ad18-b86438da0929 |ExtentsDrop | |2015-01-11 08:41:01.0000000 |0001-01-01 00:00:00.0000000 |0001-01-01 00:00:00.0000000 |InProgress |
-|9edb3ecc-f4b4-4738-87e1-648eed2bd998 |DataIngestPull | |2015-01-10 14:57:41.0000000 |2015-01-10 14:57:41.0000000 |0001-01-01 00:00:00.0000000 |Failed |컬렉션이 수정 되었습니다. 열거 작업이 실행 되지 않을 수 있습니다.
+|9edb3ecc-f4b4-4738-87e1-648eed2bd998 |DataIngestPull | |2015-01-10 14:57:41.0000000 |2015-01-10 14:57:41.0000000 |0001-01-01 00:00:00.0000000 |실패 |컬렉션이 수정 되었습니다. 열거 작업이 실행 되지 않을 수 있습니다.
 
 ## <a name="show-operation-details"></a>. 작업 세부 정보 표시
 

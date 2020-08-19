@@ -7,12 +7,12 @@ ms.reviewer: docohe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 8765635e0eea8c1d41640bc0393d39a0afa5f971
-ms.sourcegitcommit: e66c5f4b833b4f6269bb7bfa5695519fcb11d9fa
+ms.openlocfilehash: 9ac8011f8bc126c4fc6ea13fdb174bb7af0ba0af
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83630173"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610613"
 ---
 # <a name="microsoft-logic-app-and-azure-data-explorer"></a>Microsoft 논리 앱 및 Azure 데이터 탐색기
 
@@ -23,11 +23,11 @@ Azure Kusto 논리 앱 커넥터를 사용 하면 [Microsoft 논리 앱](https:/
 ## <a name="how-to-create-a-logic-app-with-azure-data-explorer"></a>Azure 데이터 탐색기을 사용 하 여 논리 앱을 만드는 방법
 
 1. [Microsoft Azure portal](https://ms.portal.azure.com/)를 엽니다. 
-1. 을 검색 `logic app` 하 고 선택 합니다.
+1. `logic app`를 검색하여 선택합니다.
 
-    [![](./Images/logicapps/logicapp-search.png "Search for logic app")](./Images/logicapps/logicapp-search.png#lightbox)
+    :::image type="content" source="./images/logicapps/logicapp-search.png" alt-text="Azure Portal Azure 데이터 탐색기에서 ' 논리 앱 '을 검색 하는 중" lightbox="./images/logicapps/logicapp-search.png#lightbox":::
 
-1. **+ 추가**를 선택 합니다.
+1. **+추가**를 선택합니다.
 
     ![논리 앱 추가](./Images/logicapps/logicapp-add.png)
 

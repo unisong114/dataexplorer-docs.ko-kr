@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 0ecf0124051b6c003e056263afb6a3c5aa9ddb81
-ms.sourcegitcommit: 98eabf249b3f2cc7423dade0f386417fb8e36ce7
+ms.openlocfilehash: 56851a159f6d8d2cee5f3991dab290070fb8c482
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82868717"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610494"
 ---
 # <a name="usage-examples-for-azure-data-explorer-connector-to-power-automate-preview"></a>전원 자동화를 위한 Azure 데이터 탐색기 커넥터의 사용 예 (미리 보기)
 
@@ -37,9 +37,9 @@ Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색
 Power BI 커넥터를 사용 하 여 flow 커넥터를 사용 하 여 Kusto 쿼리에서 데이터를 Power BI 스트리밍 데이터 집합에 푸시할 수 있습니다.
 
 1. 새 **쿼리 실행 및 결과 나열** 작업을 만듭니다.
-1. **새 단계**를 선택 합니다.
+1. **새 단계**를 선택합니다.
 1. **작업 추가**를 선택 하 고 Power BI를 검색 합니다.
-1. **데이터 집합에 행 추가** **Power BI** > 선택 합니다. 
+1. **Power BI**  >  **데이터 집합에 행 추가**Power BI 선택 합니다. 
 
     ![Power BI 커넥터의 스크린샷](./media/flow-usage/flow-powerbiconnector.png)
 
@@ -62,16 +62,16 @@ Kusto 쿼리 결과를 다음 흐름 작업의 입력 또는 조건으로 사용
 이와 비슷한 흐름을 만들려면 다음 지침을 따르세요.
 
 1. 새 **쿼리 실행 및 결과 나열** 작업을 만듭니다.
-1. **새 단계** > **조건 제어**를 선택 합니다.
+1. **새 단계**  >  **조건 제어**를 선택 합니다.
 1. 동적 콘텐츠 창에서 다음 작업의 조건으로 사용할 매개 변수를 선택 합니다.
 1. 특정 매개 변수에 대 한 특정 조건을 설정 하려면 *관계* 유형 및 *값* 을 선택 합니다.
 
-    [![](./media/flow-usage/flow-condition.png "Screenshot of flow conditions")](./media/flow-usage/flow-condition.png#lightbox)
+    :::image type="content" source="./media/flow-usage/flow-condition.png" alt-text="Kusto 쿼리 결과를 기반으로 흐름 조건을 사용 하 여 다음 흐름 작업을 결정 합니다. Azure 데이터 탐색기" lightbox="./media/flow-usage/flow-condition.png#lightbox":::
 
     흐름은이 조건을 쿼리 결과 테이블의 각 행에 적용 합니다.
 1. 조건이 true 및 false 인 경우에 대 한 작업을 추가 합니다.
 
-    [![](./media/flow-usage/flow-conditionactions.png "Screenshot of flow condition actions")](./media/flow-usage/flow-conditionactions.png#lightbox)
+    :::image type="content" source="./media/flow-usage/flow-conditionactions.png" alt-text="조건이 true 또는 false 인 경우에 대 한 작업 추가, Kusto 쿼리 결과를 기반으로 하는 흐름 조건, Azure 데이터 탐색기" lightbox="./media/flow-usage/flow-conditionactions.png#lightbox":::
 
 Kusto 쿼리 결과 값을 다음 작업에 대 한 입력으로 사용할 수 있습니다. 동적 콘텐츠 창에서 결과 값을 선택 합니다.
 다음 예제에서는 Kusto 쿼리의 데이터를 포함 하는 **여유 시간 게시 메시지** 작업 및 **Visual Studio-새 작업 항목 만들기** 작업을 추가 합니다.
@@ -116,9 +116,9 @@ Kusto 쿼리 결과 값을 다음 작업에 대 한 입력으로 사용할 수 �
 
 결과:
 
-[![](./media/flow-usage/flow-resultsmultipleattachments.png "Screenshot of results of multiple attachments, visualized as a pie chart and bar chart")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
+:::image type="content" source="./media/flow-usage/flow-resultsmultipleattachments.png" alt-text="원형 차트 및 가로 막대형 차트로 시각화 된 여러 전자 메일 첨부 파일의 결과, Azure 데이터 탐색기" lightbox="./media/flow-usage/flow-resultsmultipleattachments.png#lightbox":::
 
-[![](./media/flow-usage/flow-resultsmultipleattachments2.png "Screenshot of results of multiple attachments, visualized as a time chart")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
+:::image type="content" source="./media/flow-usage/flow-resultsmultipleattachments2.png" alt-text="시간 차트로 시각화 된 여러 전자 메일 첨부 파일의 결과, Azure 데이터 탐색기" lightbox="./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox":::
 
 ## <a name="next-steps"></a>다음 단계
 

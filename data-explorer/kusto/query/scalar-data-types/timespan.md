@@ -1,6 +1,6 @@
 ---
-title: 시간 범위 데이터 유형 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 시간 범위 데이터 형식에 대해 설명합니다.
+title: Timespan 데이터 형식-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 timespan 데이터 형식에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,22 +8,22 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 31a0bfafed817ffaf531cffdcb844da8a357531f
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 204076e8ed079dec69cae7080e7d2c50df52a9a6
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81509608"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610324"
 ---
-# <a name="the-timespan-data-type"></a>시간 범위 데이터 형식
+# <a name="the-timespan-data-type"></a>Timespan 데이터 형식입니다.
 
-`timespan` ()`time`데이터 형식은 시간 간격을 나타냅니다.
+`timespan`( `time` ) 데이터 형식은 시간 간격을 나타냅니다.
 
-## <a name="timespan-literals"></a>시간 범위 리터럴
+## <a name="timespan-literals"></a>timespan 리터럴
 
-문자 `timespan` 문자에는 구문 `timespan(` *값이*`)`있으며 다음 표에 표시된 대로 값에 대해 여러 형식이 지원됩니다. *value*
+형식의 리터럴에는 `timespan` `timespan(` *value* `)` 다음 표에 표시 된 것과 같이 *값*에 대해 많은 형식이 지원 되는 구문 값이 있습니다.
 
-|||
+|값|시간 길이|
 ---|---
 `2d`|2일
 `1.5h`|1.5시간
@@ -37,16 +37,16 @@ ms.locfileid: "81509608"
 `time(2)`| 2일
 `time(0.12:34:56.7)`|`0d+12h+34m+56.7s`
 
-특수 양식은 `time(null)` [null 값입니다.](null-values.md)
+특수 폼은 `time(null)` [null 값](null-values.md)입니다.
 
-## <a name="timespan-operators"></a>시간 범위 연산자
+## <a name="timespan-operators"></a>timespan 연산자
 
-형식의 `timespan` 두 값을 추가, 빼기 및 분할할 수 있습니다.
-마지막 연석은 한 `real` 값이 다른 값에 맞을 수 있는 소수 수를 나타내는 형식 값을 반환합니다.
+형식의 두 값 `timespan` 을 추가, 빼기 및 나눌 수 있습니다.
+마지막 작업은 `real` 한 값이 다른 값에 맞출 수 있는 소수 자릿수를 나타내는 형식의 값을 반환 합니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
-다음 예제에서는 여러 가지 방법으로 하루에 있는 초 수를 계산합니다.
+다음 예에서는 몇 가지 방법으로 하루 동안의 초 수를 계산 합니다.
 
 ```kusto
 print

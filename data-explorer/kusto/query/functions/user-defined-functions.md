@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: e9e199631d57f3fd3be8d438e6b0cdbf9bdd4266
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: f1d77e91ba625b3f38c4b1fde31a841377bb88a5
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83227362"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610521"
 ---
 # <a name="user-defined-functions"></a>사용자 정의 함수
 
@@ -45,9 +45,6 @@ ms.locfileid: "83227362"
 
 또한 이름은 해당 정의의 범위 내에서 고유 해야 합니다.
 
-> [!NOTE]
-> 함수 오버 로드는 지원 되지 않습니다. 같은 이름을 사용 하 여 여러 함수를 정의할 수 없습니다.
-
 ## <a name="input-arguments"></a>입력 인수
 
 유효한 사용자 정의 함수는 다음 규칙을 따릅니다.
@@ -64,7 +61,7 @@ ArgName:ArgType [= ArgDefaultValue]
 ```
  테이블 형식 인수의 경우 *Argtype* 은 테이블 정의 (괄호 및 열 이름/형식 쌍의 목록)와 동일한 구문을 사용 하며, `(*)` "모든 테이블 형식 스키마"를 나타내는 독립를 추가로 지원 합니다.
 
-예:
+다음은 그 예입니다. 
 
 |구문                        |입력 인수 목록 설명                                 |
 |------------------------------|-----------------------------------------------------------------|
@@ -76,7 +73,7 @@ ArgName:ArgType [= ArgDefaultValue]
 > [!NOTE]
 > 테이블 형식 입력 인수와 스칼라 입력 인수를 모두 사용 하는 경우 모든 테이블 형식 입력 인수 앞에 스칼라 입력 인수를 추가 합니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 스칼라 함수:
 
@@ -189,7 +186,7 @@ print f(12, c=7) // Returns "12-b.default-7"
 
 인수를 사용 하지 않는 사용자 정의 함수는 이름 또는 이름으로 호출 하거나 괄호 안에 빈 인수 목록을 사용 하 여 호출할 수 있습니다.
 
-예:
+예제:
 
 ```kusto
 // Bind the identifier a to a user-defined function (lambda) that takes
@@ -329,3 +326,11 @@ let Table2 = datatable(Column:long)[1235];
 let f = (hours:long) { range x from 1 to hours step 1 | summarize make_list(x) };
 Table2 | where Column != 123 | project d = f(Column)
 ```
+
+## <a name="features-that-are-currently-unsupported-by-user-defined-functions"></a>사용자 정의 함수에서 현재 지원 되지 않는 기능
+
+완전성을 위해 현재 지원 되지 않는 사용자 정의 함수에 대해 일반적으로 요청 되는 기능은 다음과 같습니다.
+
+1.  함수 오버 로드: 현재 함수를 오버 로드할 수 없습니다. 즉, 동일한 이름과 다른 입력 스키마를 사용 하 여 여러 함수를 만들 수 있습니다.
+
+2.  기본값: 함수에 대 한 스칼라 매개 변수의 기본값은 스칼라 리터럴 (상수) 이어야 합니다. 또한 저장 된 함수에는 형식의 기본값을 사용할 수 없습니다 `dynamic` .

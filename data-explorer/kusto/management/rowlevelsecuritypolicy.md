@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
-ms.openlocfilehash: a82c4b48358a90460f917f181b73b718f6c5e455
-ms.sourcegitcommit: c7b16409995087a7ad7a92817516455455ccd2c5
+ms.openlocfilehash: f3d42835733ffe9303806687891c69df4dcc2178
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88148118"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610460"
 ---
 # <a name="row-level-security-preview"></a>행 수준 보안 (미리 보기)
 
@@ -31,9 +31,6 @@ RLS를 사용 하면 테이블의 특정 부분에만 다른 응용 프로그램
 
 자세한 내용은 [행 수준 보안 정책을 관리 하는 명령 제어](../management/row-level-security-policy.md)를 참조 하세요.
 
-> [!NOTE]
-> 프로덕션 데이터베이스에서 구성 하는 RLS 정책은 종동체 데이터베이스에도 적용 됩니다. 프로덕션 및 종동체 데이터베이스에서 다른 RLS 정책을 구성할 수 없습니다.
-
 > [!TIP]
 > 이러한 함수는 쿼리를 row_level_security 하는 데 유용한 경우가 많습니다.
 > * [current_principal()](../query/current-principalfunction.md)
@@ -49,7 +46,7 @@ RLS를 사용 하면 테이블의 특정 부분에만 다른 응용 프로그램
 * [업데이트 정책](./updatepolicy.md)쿼리에서 참조 됩니다.
 * 제한 된 [보기 액세스 정책을](./restrictedviewaccesspolicy.md) 구성 합니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="limit-access-to-sales-table"></a>Sales 테이블에 대 한 액세스 제한
 
@@ -107,7 +104,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 다음은 그 예입니다. 
 
-```
+```kusto
 .create-or-alter function RLSForCustomersTables(TableName: string) {
     table(TableName)
     | ...
@@ -117,7 +114,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 그런 다음 이러한 방식으로 여러 테이블에서 RLS를 구성 합니다.
 
 
-```
+```kusto
 .alter table Customers1 policy row_level_security enable "RLSForCustomersTables('Customers1')"
 .alter table Customers2 policy row_level_security enable "RLSForCustomersTables('Customers2')"
 .alter table Customers3 policy row_level_security enable "RLSForCustomersTables('Customers3')"
@@ -127,7 +124,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 권한이 없는 테이블 사용자가 빈 테이블을 반환 하는 대신 오류를 받도록 하려면 함수를 사용 [`assert()`](../query/assert-function.md) 합니다. 다음 예에서는 RLS 함수에서이 오류를 생성 하는 방법을 보여 줍니다.
 
-```
+```kusto
 .create-or-alter function RLSForCustomersTables() {
     MyTable
     | where assert(current_principal_is_member_of('aadgroup=mygroup@mycompany.com') == true, "You don't have access")
@@ -135,6 +132,21 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 ```
 
 이 접근 방식을 다른 예제와 결합할 수 있습니다. 예를 들어 다른 AAD 그룹의 사용자에 게 다른 결과를 표시 하 고 다른 모든 사용자에 게 오류를 생성할 수 있습니다.
+
+### <a name="control-permissions-on-follower-databases"></a>종동체 데이터베이스에 대 한 Control 권한
+
+프로덕션 데이터베이스에서 구성 하는 RLS 정책은 종동체 데이터베이스에도 적용 됩니다. 프로덕션 및 종동체 데이터베이스에서 다른 RLS 정책을 구성할 수 없습니다. 그러나 RLS 쿼리에서 함수를 사용 하 여 [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) 종동체 테이블에 다른 RLS 쿼리를 포함 하는 것과 동일한 결과를 얻을 수 있습니다.
+
+다음은 그 예입니다. 
+
+```kusto
+.create-or-alter function RLSForCustomersTables() {
+    let IsProductionCluster = current_cluster_endpoint() == "mycluster.eastus.kusto.windows.net";
+    let DataForProductionCluster = TempTable | where IsProductionCluster;
+    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend CreditCardNumber = "****";
+    union DataForProductionCluster, DataForFollowerClusters
+}
+```
 
 ## <a name="more-use-cases"></a>추가 사용 사례
 

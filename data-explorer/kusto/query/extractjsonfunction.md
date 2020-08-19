@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 21f366e8f211acf9c7c542b420006cfb23e683e7
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9668b173c6b3769113972be2c74382464e7d9819
+ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348040"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88610579"
 ---
 # <a name="extractjson"></a>extractjson()
 
@@ -25,7 +25,7 @@ path 식을 사용하여 JSON 텍스트에서 지정된 요소를 가져옵니�
 extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `extractjson(`*jsonPath* `,` *dataSource*`)` 
 
@@ -52,7 +52,7 @@ T
 
 ### <a name="json-path-expressions"></a>JSON Path 식
 
-|||
+|경로 식|Description|
 |---|---|
 |`$`|루트 개체|
 |`@`|현재 개체|
