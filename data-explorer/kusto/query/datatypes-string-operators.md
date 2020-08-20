@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0c8e9b3397026c572d27c250fc4e817bd5f7f265
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 8ad104b7802bde2355b46bc31e74e63a6708d4f4
+ms.sourcegitcommit: d2edf654f71f8686d1f03d8ec16200f84e671b12
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803678"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659266"
 ---
 # <a name="string-operators"></a>문자열 연산자
 
@@ -41,7 +41,7 @@ Kusto는 *4 자 이상인*모든 용어로 구성 된 용어 인덱스를 작성
 > * RHS = 식의 오른쪽
 > * LHS = 식의 왼쪽
 
-연산자        |설명                                                       |대/소문자 구분|예제(`true` 생성)
+연산자        |Description                                                       |대/소문자 구분|예제(`true` 생성)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
 `==`            |같음                                                            |예           |`"aBc" == "aBc"`
 `!=`            |같지 않음                                                        |예           |`"abc" != "ABC"`
@@ -84,11 +84,11 @@ Kusto는 *4 자 이상인*모든 용어로 구성 된 용어 인덱스를 작성
 ## <a name="performance-tips"></a>성능 팁
 
 동일한 태스크를 수행 하는 두 개의 연산자가 있는 경우에는 대/소문자를 구분 하는 연산자를 사용 하 여 성능을 향상 시킬 수 있습니다.
-예를 들어:
+예를 들면 다음과 같습니다.
 
-* 대신 `=~` 를 사용 합니다.`==`
-* 대신 `in~` 를 사용 합니다.`in`
-* 대신 `contains` 를 사용 합니다.`contains_cs`
+* 대신 `=~` 를 사용 합니다. `==`
+* 대신 `in~` 를 사용 합니다. `in`
+* 대신 `contains` 를 사용 합니다. `contains_cs`
 
 더 빠른 결과를 위해 영숫자가 아닌 문자 또는 필드의 시작 또는 끝에 의해 바인딩된 기호 또는 영숫자 단어가 있는지 테스트 하는 경우 또는를 사용 `has` `in` 합니다. 
 `has``contains`는, 또는 보다 빠르게 작동 `startswith` `endswith` 합니다.
