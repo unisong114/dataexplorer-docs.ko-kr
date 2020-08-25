@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 69ba6a8ce3cd29d7459215184f7488b015d16558
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 2ab8a9b8a687b695859c52e75ab4e9f88aac408b
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349808"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793705"
 ---
 # <a name="activity_metrics-plugin"></a>activity_metrics 플러그 인
 
@@ -23,7 +23,7 @@ ms.locfileid: "87349808"
 T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `activity_metrics(` *idcolumn* `,` *TimelineColumn* `,` [*Start* `,` *End* `,` ] *Window* [ `,` *dim1* `,` *dim2* `,` ...]`)`
 
@@ -51,43 +51,43 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
 
 ***보존 률 정의***
 
-`Retention Rate`일정 기간 동안 다음과 같이 계산 됩니다.
+`Retention Rate` 일정 기간 동안 다음과 같이 계산 됩니다.
 
-    # of customers returned during the period
-    / (divided by)
-    # customers at the beginning of the period
+> *기간 동안 반환 된 고객 수*  
+> /(로 구분)  
+> *기간 시작 시 고객 수*  
 
 여기서는 `# of customers returned during the period` 다음과 같이 정의 됩니다.
 
-    # of customers at end of period
-    - (minus)
-    # of new customers acquired during the period
+> *기간이 종료 된 고객 수*  
+> \- 음수  
+> *기간 동안 획득 한 새 고객 수*  
 
-`Retention Rate`0.0에서 1.0까지 달라질 수 있습니다.  
+`Retention Rate` 0.0에서 1.0까지 달라질 수 있습니다.  
 점수를 높게 설정할수록 반환 되는 사용자의 수가 커집니다.
 
 
 ***변동 율 정의***
 
-`Churn Rate`일정 기간 동안 다음과 같이 계산 됩니다.
+`Churn Rate` 일정 기간 동안 다음과 같이 계산 됩니다.
     
-    # of customers lost in the period
-    / (divided by)
-    # of customers at the beginning of the period
+> *해당 기간 동안 손실 된 고객 수*  
+> /(로 구분)  
+> *기간이 시작 된 고객 수*  
 
 여기서는 `# of customer lost in the period` 다음과 같이 정의 됩니다.
 
-    # of customers at the beginning of the period
-    - (minus)
-    # of customers at the end of the period
+> *기간이 시작 된 고객 수*  
+> \- 음수  
+> *기간이 종료 된 고객 수*  
 
-`Churn Rate`0.0에서 1.0까지 달라질 수 있습니다. 점수가 높으면 더 많은 사용자가 서비스에 반환 되지 않는 것을 의미 합니다.
+`Churn Rate` 0.0에서 1.0까지 달라질 수 있습니다. 점수가 높으면 더 많은 사용자가 서비스에 반환 되지 않는 것을 의미 합니다.
 
 ***변동 대비 및 보존 률***
 
 및의 정의에서 파생 `Churn Rate` 되는 경우 `Retention Rate` 다음은 항상 true입니다.
 
-    [Retention rate] = 100.0% - [Churn Rate]
+> [ `Retention Rate` ] = 100.0%-[ `Churn Rate` ]
 
 
 ## <a name="examples"></a>예제

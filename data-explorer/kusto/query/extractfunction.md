@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6239d4da8c2cf2b1faa56ec627928524beca9a56
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 98b0f30c968279fcc757ab49bfda982612379026
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348057"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793764"
 ---
 # <a name="extract"></a>extract()
 
@@ -21,9 +21,11 @@ ms.locfileid: "87348057"
 
 필요에 따라 추출 된 부분 문자열을 지정 된 형식으로 변환 합니다.
 
-    extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
+```kusto
+extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
+```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `extract(`*regex* `,` *captureGroup* `,` *텍스트* [ `,` *typeLiteral*]`)`
 

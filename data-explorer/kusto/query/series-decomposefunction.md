@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: fa17d27506c4930fa9b9f7fb0a24f5ff31e1c974
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9ff0df578f174bc6964e39e799b91068f89a28e4
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345167"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793937"
 ---
 # <a name="series_decompose"></a>series_decompose()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87345167"
 
 계열 (동적 숫자 배열)을 포함 하는 식을 입력으로 사용 하 고 계절, 추세 및 잔여 구성 요소로 분해 합니다.
  
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_decompose(`*계열* `[,` *계절성* `,` *추세* `,` *Test_points* `,` *Seasonality_threshold*`])`
 
@@ -39,7 +39,7 @@ ms.locfileid: "87345167"
 * *Test_points*: 0 (기본값) 또는 양의 정수 이며, 학습 (재발) 프로세스에서 제외할 계열의 끝에 있는 점의 수를 지정 합니다. 이 매개 변수는 예측을 위해 설정 되어야 합니다.
 * *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 점수 임계값은 `0.6` 입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
 
-**돌려**
+**Return**
 
  함수는 다음의 각 계열을 반환 합니다.
 
@@ -64,13 +64,13 @@ ms.locfileid: "87345167"
 
 **계열 분해에 대 한 자세한 정보**
 
-이 메서드는 일반적으로 주기 및/또는 추세 동작에 필요한 메트릭의 시계열에 적용 됩니다. 메서드를 사용 하 여 미래 메트릭 값을 예측 하거나 비정상 값을 검색할 수 있습니다. 이 회귀 프로세스의 암시적 가정은 계절 및 추세 동작과는 달리 시계열은 추계 되 고 무작위로 분산 된다는 것입니다. 잔여 부분을 무시 하 고 계절 및 추세 구성 요소에서 향후 메트릭 값을 예측 합니다. 잔여 부분만 해당 하는 이상 값 검색을 기준으로 비정상 값을 검색 합니다. 자세한 내용은 [시계열 분해 챕터](https://www.otexts.org/fpp/6)에서 찾을 수 있습니다.
+이 메서드는 일반적으로 주기 및/또는 추세 동작에 필요한 메트릭의 시계열에 적용 됩니다. 메서드를 사용 하 여 미래 메트릭 값을 예측 하거나 비정상 값을 검색할 수 있습니다. 이 회귀 프로세스의 암시적 가정은 계절 및 추세 동작과는 달리 시계열은 추계 되 고 무작위로 분산 된다는 것입니다. 잔여 부분을 무시 하 고 계절 및 추세 구성 요소에서 향후 메트릭 값을 예측 합니다. 잔여 부분만 해당 하는 이상 값 검색을 기준으로 비정상 값을 검색 합니다. 자세한 내용은 [시계열 분해 챕터](https://otexts.com/fpp2/decomposition.html)에서 찾을 수 있습니다.
 
 ## <a name="examples"></a>예제
 
 **주간 계절성**
 
-다음 예제에서는 계절성를 사용 하 여 매주 및 추세 없이 계열을 생성 하 고 그에 대 한 이상 값을 추가 합니다. `series_decompose`계절성를 찾아서 자동으로 검색 하 고 계절 구성 요소와 거의 동일한 기준을 생성 합니다. 추가한 이상 값은 잔차 구성 요소에서 명확 하 게 볼 수 있습니다.
+다음 예제에서는 계절성를 사용 하 여 매주 및 추세 없이 계열을 생성 하 고 그에 대 한 이상 값을 추가 합니다. `series_decompose` 계절성를 찾아서 자동으로 검색 하 고 계절 구성 요소와 거의 동일한 기준을 생성 합니다. 추가한 이상 값은 잔차 구성 요소에서 명확 하 게 볼 수 있습니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

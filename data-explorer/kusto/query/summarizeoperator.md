@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/20/2020
-ms.openlocfilehash: 19f86e4973a2822de6f25e38edb07ccd8fbda9d1
-ms.sourcegitcommit: ec191391f5ea6df8c591e6d747c67b2c46f98ac4
+ms.openlocfilehash: 00d205a710b7b3bf41dc181e79e5e6d0baa95fc6
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88260121"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793931"
 ---
 # <a name="summarize-operator"></a>summarize 연산자
 
@@ -63,7 +63,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|기능|Description|
+|기능|설명|
 |--------|-----------|
 |[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[anyif()](anyif-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값 (조건자 포함)을 반환 합니다.|
@@ -94,11 +94,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 |[percentiles_array ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentilesw()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
 |[percentilesw_array ()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
-|[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
+|[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
 |[stdevif()](stdevif-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다 (조건자 포함).|
-|[sum ()](sum-aggfunction.md)|그룹 트 내의 요소의 합을 반환 합니다.|
-|[sumif()](sumif-aggfunction.md)|Group 트 내의 요소 (조건자 포함)의 합을 반환 합니다.|
-|[variance()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
+|[sum ()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
+|[sumif()](sumif-aggfunction.md)|그룹 내에 있는 요소의 합 (조건자 포함)을 반환 합니다.|
+|[variance ()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
 |[varianceif()](varianceif-aggfunction.md)|그룹 전반의 분산 (조건자 포함)을 반환 합니다.|
 
 ## <a name="aggregates-default-values"></a>기본값 집계
@@ -113,7 +113,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 
  Null 값을 포함 하는 엔터티에 대해 이러한 집계를 사용 하는 경우 null 값은 무시 되며 계산에 참여 하지 않습니다 (아래 예제 참조).
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 :::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="과일 및 공급 업체 별로 가격 요약":::
 
@@ -148,7 +148,9 @@ Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 
 각 대륙에 대해 작업을 수행 하는 도시 수를 표시 하는 행을 만듭니다. "대륙"의 값이 거의 없으므로 ' by ' 절에는 그룹화 함수가 필요 하지 않습니다.
 
-    Activities | summarize cities=dcount(city) by continent
+```kusto
+Activities | summarize cities=dcount(city) by continent
+```
 
 |`cities`|`continent`
 |---:|---

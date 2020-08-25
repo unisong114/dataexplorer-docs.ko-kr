@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 쿼리 제한에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: a9818f2efb6b48621c59619e89b3f2c9a4315e42
-ms.sourcegitcommit: 5137a4291d70327b7bb874bbca74a4a386e57d32
+ms.openlocfilehash: 5bb05de1ad5a3a055201f42541927619777cafcd
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566418"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793716"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -30,7 +30,7 @@ Kusto는 큰 데이터 집합을 호스트 하 고 모든 관련 데이터를 �
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>결과 집합 크기 제한 (결과 잘림)
 
-**결과 잘림** 은 쿼리에서 반환 하는 결과 집합에 대해 기본적으로 설정 되는 제한입니다. Kusto는 클라이언트에 반환 되는 레코드 수를 **50만**으로 제한 하 고 해당 레코드에 대 한 전체 메모리를 **64 MB**로 제한 합니다. 이러한 제한 중 하나를 초과 하면 쿼리가 실패 하 고 "부분 쿼리 오류"가 발생 합니다. 전체 메모리를 초과 하면 다음과 같은 메시지가 포함 된 예외가 생성 됩니다.
+**결과 잘림** 은 쿼리에서 반환 하는 결과 집합에 대해 기본적으로 설정 되는 제한입니다. Kusto는 클라이언트에 반환 되는 레코드 수를 **50만**으로 제한 하 고 해당 레코드의 전체 데이터 크기를 **64 MB**로 제한 합니다. 이러한 제한 중 하나를 초과 하면 쿼리가 실패 하 고 "부분 쿼리 오류"가 발생 합니다. 전체 데이터 크기를 초과 하면 다음과 같은 메시지가 포함 된 예외가 생성 됩니다.
 
 ```
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal data size limit 67108864 (E_QUERY_RESULT_SET_TOO_LARGE).'
@@ -47,7 +47,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 * 쿼리를 수정 하 여 관심 있는 데이터만 반환 하도록 결과 집합 크기를 줄입니다. 이 전략은 초기 실패 쿼리가 너무 "넓은" 경우에 유용 합니다. 예를 들어 쿼리는 필요 하지 않은 데이터 열을 프로젝션 하지 않습니다.
 * 집계와 같은 쿼리 후 처리를 쿼리 자체로 이동 하 여 결과 집합 크기를 줄입니다. 이 전략은 쿼리의 출력이 다른 처리 시스템에 공급 된 후 추가 집계를 수행 하는 시나리오에서 유용 합니다.
 * 서비스에서 많은 데이터 집합을 내보내려는 경우 [데이터 내보내기를](../management/data-export/index.md) 사용 하 여 쿼리에서로 전환 합니다.
-* 이 쿼리 제한을 표시 하지 않도록 서비스에 지시 합니다.
+* `set` [클라이언트 요청 속성](../api/netfx/request-properties.md)에서 아래에 나열 된 문이나 플래그를 사용 하 여이 쿼리 제한을 표시 하지 않도록 서비스에 지시 합니다.
 
 쿼리에 의해 생성 되는 결과 집합 크기를 줄이는 방법에는 다음이 포함 됩니다.
 
@@ -71,22 +71,12 @@ MyTable | take 1000000
 ```kusto
 set truncationmaxsize=1048576;
 set truncationmaxrecords=1105;
-MyTable | where User=="Ploni"
+MyTable | where User=="UserId1"
 ```
 
 결과 잘림 제한을 제거 하면 Kusto에서 대량 데이터를 이동 하는 것을 의미 합니다.
 
 `.export`명령을 사용 하거나 이후 집계를 위해 내보내기 목적으로 결과 잘림 제한을 제거할 수 있습니다. 나중에 집계를 선택 하는 경우 Kusto를 사용 하 여 집계 하는 것이 좋습니다.
-
-이러한 제안 된 솔루션 중 하나로 충족 될 수 없는 비즈니스 시나리오가 있는 경우 Kusto 팀에 알립니다.  
-
-Kusto 클라이언트 라이브러리는 현재이 제한의 존재를 전제로 합니다. 범위 없이 제한을 늘릴 수 있지만 결국에는 현재 구성할 수 없는 클라이언트 제한에 도달할 수 있습니다.
-
-모든 데이터를 단일 대량으로 끌어 오지 않으려는 고객은 다음 해결 방법을 시도해 볼 수 있습니다.
-* 일부 Sdk를 스트리밍 모드로 전환 (KustoConnectionStringBuilder의 Streaming = true 속성)
-* .NET v2 API로 전환
-
-이 문제가 발생 하는 경우 Kusto 팀에 알리기 때문에 스트리밍 클라이언트 우선 순위를 높일 수 있습니다.
 
 Kusto는 호출자에 게 스트리밍하 여 "무한히 크게" 결과를 처리할 수 있는 여러 클라이언트 라이브러리를 제공 합니다. 이러한 라이브러리 중 하나를 사용 하 여 스트리밍 모드로 구성 합니다. 예를 들어 .NET Framework 클라이언트 (ExecuteQueryV2Async)를 사용 하 고 연결 문자열의 streaming 속성을 *true*로 설정 하거나 항상 결과를 스트리밍하는 *()* 호출을 사용 합니다.
 
@@ -146,9 +136,7 @@ MyTable | ...
 ```
 Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
 
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of 2G items (see http://aka.ms/kustoquerylimits)')
-
-Runaway query (E_RUNAWAY_QUERY). (message: 'Single string size shouldn't exceed the limit of 2GB (see http://aka.ms/kustoquerylimits)')
+Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of ..GB items (see http://aka.ms/kustoquerylimits)')
 ```
 
 현재 최대 문자열 집합 크기를 늘리기 위한 스위치가 없습니다.

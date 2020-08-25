@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 2520849508c9cef829d7c8c07f22d3f8c64cfcea
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3fb6ae643bb4350cea1ffef4493625bc9c7d191d
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348941"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793575"
 ---
 # <a name="buildschema-aggregation-function"></a>buildschema () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87348941"
 
 * 집계의 컨텍스트에서만 [요약](summarizeoperator.md) 내에서 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `buildschema(` *dynamicexpr* 요약`)`
 
@@ -34,7 +34,11 @@ ms.locfileid: "87348941"
 *`Expr`* 그룹 전체에서의 최대값입니다.
 
 > [!TIP] 
-> 에서 `buildschema(json_column)` 구문 오류가 발생 하는 경우: *은 `json_column` 동적 개체가 아닌 문자열입니다* . 그런 다음 `buildschema(parsejson(json_column))` 를 사용 합니다.
+> `buildschema(json_column)`에서 구문 오류가 발생 하는 경우:
+>
+> > *`json_column`동적 개체가 아닌 문자열 인가요?*
+>
+> 그런 다음 `buildschema(parsejson(json_column))` 를 사용 합니다.
 
 ## <a name="example"></a>예제
 
@@ -49,12 +53,14 @@ ms.locfileid: "87348941"
 
 결과 스키마는 다음과 같습니다.
 
-    { 
-      "x":["int", "string"], 
-      "y":["double", {"w": "string"}], 
-      "z":{"`indexer`": ["int", "string"]}, 
-      "t":{"`indexer`": "string"} 
-    }
+```kusto
+{ 
+    "x":["int", "string"],
+    "y":["double", {"w": "string"}],
+    "z":{"`indexer`": ["int", "string"]},
+    "t":{"`indexer`": "string"}
+}
+```
 
 스키마는 다음 정보를 알려줍니다.
 
@@ -70,19 +76,22 @@ ms.locfileid: "87348941"
 
 반환되는 스키마의 구문은 다음과 같습니다.
 
-    Container ::= '{' Named-type* '}';
-    Named-type ::= (name | '"`indexer`"') ':' Type;
-    Type ::= Primitive-type | Union-type | Container;
-    Union-type ::= '[' Type* ']';
-    Primitive-type ::= "int" | "string" | ...;
+```output
+Container ::= '{' Named-type* '}';
+Named-type ::= (name | '"`indexer`"') ':' Type;
+Type ::= Primitive-type | Union-type | Container;
+Union-type ::= '[' Type* ']';
+Primitive-type ::= "int" | "string" | ...;
+```
 
 값은 Kusto 동적 값으로 인코드된 TypeScript 형식 주석의 하위 집합에 해당 합니다. Typescript에서 예제 스키마는 다음과 같습니다.
 
-    var someobject: 
-    { 
-      x?: (number | string), 
-      y?: (number | { w?: string}), 
-      z?: { [n:number] : (int | string)},
-      t?: { [n:number]: string } 
-    }
-    
+```typescript
+var someobject: 
+{
+    x?: (number | string),
+    y?: (number | { w?: string}),
+    z?: { [n:number] : (int | string)},
+    t?: { [n:number]: string }
+}
+```

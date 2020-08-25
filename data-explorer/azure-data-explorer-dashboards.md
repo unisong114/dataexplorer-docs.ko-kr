@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 7f012b5b99cdf12ab1ace452838860aff312a28d
-ms.sourcegitcommit: b0cbb89e88b64a36880e6d34b4d6779283174456
+ms.openlocfilehash: 4d2f493e2057d81a813c26eac2e73643097e9482
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84633753"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793856"
 ---
 # <a name="visualize-data-with-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화
 
@@ -44,7 +44,7 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
 1. 위쪽 막대에서 **데이터 소스** 메뉴 항목을 선택 합니다. **데이터 원본** 창에서 **+ 새 데이터 원본** 단추를 선택 합니다.
 
-    :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="데이터 소스":::
+    :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="데이터 원본":::
 
 1. **새 데이터 원본 만들기** 창에서 다음을 수행 합니다.
     1. 영역을 포함 하 여 **클러스터 URI** 또는 부분 이름을 입력 하 고 **연결**을 선택 합니다. 
@@ -66,10 +66,10 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="매개 변수 창":::
 
-|필드  |Description |
+|필드  |설명 |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
-|**매개 변수 유형**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
+|**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
 |**변수 이름**     |   쿼리에서 사용 되는 매개 변수의 이름입니다.      |
 |**데이터 형식**    |    매개 변수 값의 데이터 형식입니다.     |
 |**대시보드 필터로 고정**   |   매개 변수 기반 필터를 대시보드에 고정 하거나 대시보드에서 고정 해제 합니다.       |

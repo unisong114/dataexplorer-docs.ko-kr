@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 80bb9802b3048cdf6332cb7a43b5eae3a99dec8c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 60b485a7abe9f505da3ca32c4f35fbbfda101321
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350267"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793882"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python을 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -122,8 +122,8 @@ pip install azure-mgmt-kusto
     poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
-        [!NOTE]
-        If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
+    > [!NOTE]
+    > Python 버전 0.4.0을 사용 하는 경우 ReadWriteDatabase 대신 데이터베이스를 사용 합니다.
 
    |**설정** | **제안 값** | **필드 설명**|
    |---|---|---|

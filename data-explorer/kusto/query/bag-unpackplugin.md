@@ -8,22 +8,24 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 6c91275320a5ec404b6cd5fcbe8c84b4123bd2de
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 48670f1c0bb38599451bc73afa58d6f1dba344a2
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349349"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793631"
 ---
 # <a name="bag_unpack-plugin"></a>bag_unpack 플러그 인
 
 `bag_unpack`플러그 인은 `dynamic` 각 속성 모음 최상위 슬롯을 열로 처리 하 여 형식의 단일 열을 압축 합니다.
 
-    T | evaluate bag_unpack(col1)
+```kusto
+T | evaluate bag_unpack(col1)
+```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
-*T* `|` `evaluate` `bag_unpack(` *열* [ `,` *outputcolumnprefix* ] [열 `,` *충돌* ] [ `,` *ignoredproperties* ]`)`
+*T* `|` `evaluate` `bag_unpack(` *열* [ `,` *outputcolumnprefix* ] [열 `,` *충돌* ] [ `,` *ignoredproperties* ] `)`
 
 ## <a name="arguments"></a>인수
 
@@ -31,9 +33,9 @@ ms.locfileid: "87349349"
 * *Column*: 압축을 풀 *T* 의 열입니다. 반드시 `dynamic` 형식이어야 합니다.
 * *Outputcolumnprefix*: 플러그 인에서 생성 하는 모든 열에 추가할 일반적인 접두사입니다. 이 인수는 선택 사항입니다.
 * 열 *충돌*: 열 충돌 해결을 위한 방향입니다. 이 인수는 선택 사항입니다. 인수가 제공 되는 경우 다음 값 중 하 나와 일치 하는 문자열 리터럴이 될 것으로 예상 됩니다.
-    - `error`-Query에서 오류를 생성 합니다 (기본값).
-    - `replace_source`-원본 열이 대체 됨
-    - `keep_source`-원본 열이 유지 됩니다.
+    - `error` -Query에서 오류를 생성 합니다 (기본값).
+    - `replace_source` -원본 열이 대체 됨
+    - `keep_source` -원본 열이 유지 됩니다.
 * *Ignoredproperties*: 무시할 모음 속성의 선택적 집합입니다. 인수를 제공 하는 경우 `dynamic` 하나 이상의 문자열 리터럴이 있는 배열의 상수가 되어야 합니다.
 
 ## <a name="returns"></a>반환

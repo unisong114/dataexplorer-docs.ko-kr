@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: a4aae88f6ad435469719f8444bae9123975ee618
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 03d183bd042bb75d8bb44f530575bd3b91cb2102
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346221"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793810"
 ---
 # <a name="pattern-statement"></a>pattern 문
 
@@ -46,7 +46,7 @@ app("ApplicationX").StartEvents
 
 이 쿼리는 Kusto에서 다음 패턴 호출을 확인할 수 없음을 나타내는 오류를 생성 합니다. `app("ApplicationX")["StartEvents"]` 및 `app("ApplicationX")["StopEvents"]` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `declare``pattern` *PatternName*
 
@@ -67,7 +67,7 @@ app("ApplicationX").StartEvents
 
 일치 되는 각 패턴에 대해 제공 되는 식은 테이블 이름 이거나 [let 문에](letstatement.md)대 한 참조입니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `declare``pattern` *PatternName*  =  PatternName `(` *ArgName* `:` *Argtype* [ `,` ...] `)` [ `[` *경로 이름* `:` *pathargtype* `]` ]`{`
 &nbsp;&nbsp;&nbsp;&nbsp;`(` *ArgValue1* [ `,` *ArgValue2* ] `)` [ `.[` * pathvalue `]` ] `=` `{` *식* `};` &nbsp; &nbsp; &nbsp; &nbsp; [ &nbsp; &nbsp; &nbsp; &nbsp; `(` *ArgValue1_2* [ `,` *ArgValue2_2* ...] `)` [ `.[` *PathValue_2* `]` ] `=` `{` *expression_2* `};` &nbsp; &nbsp; &nbsp; &nbsp; ... &nbsp; &nbsp; &nbsp; &nbsp; ]        `}`
@@ -157,7 +157,7 @@ union (App('a1').Text), (App('a2').Text)
 
 **의미 오류**:
 
-     SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a1').['Text']","App('a2').['Text']"].
+> SEM0036: 하나 이상의 패턴 참조가 선언 되지 않았습니다. 검색 된 패턴 참조: ["App (' a1 '). [' 텍스트 '] "," 앱 (' a2 '). [' Text '] "].
 
 ```kusto
 declare pattern App;
@@ -173,7 +173,7 @@ union (App('a2').Metrics), (App('a3').Metrics)
 
 **의미 오류가 반환**됨:
 
-    SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a2').['Metrics']","App('a3').['Metrics']"].
+> SEM0036: 하나 이상의 패턴 참조가 선언 되지 않았습니다. 검색 된 패턴 참조: ["App (' a2 '). [' 메트릭 '] "," 앱 (' a3 '). [' 메트릭 '] "].
 
 ::: zone-end
 

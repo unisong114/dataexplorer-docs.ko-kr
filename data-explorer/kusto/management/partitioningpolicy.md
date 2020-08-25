@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 0bf2960d1bf585efc6b356a1b7075a27ca6616da
-ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
+ms.openlocfilehash: 944ada323a1a928d4b63c2d8f4e168c442e78ffa
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86188373"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793674"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -48,17 +48,17 @@ ms.locfileid: "86188373"
 
 #### <a name="partition-properties"></a>파티션 속성
 
-* `Function`사용할 hash 모듈로 함수의 이름입니다.
+* `Function` 사용할 hash 모듈로 함수의 이름입니다.
   * 지원 되는 값은 `XxHash64` 입니다.
-* `MaxPartitionCount`만들 파티션의 최대 수 (해시 모듈로 함수에 대 한 모듈로 인수)입니다.
+* `MaxPartitionCount` 만들 파티션의 최대 수 (해시 모듈로 함수에 대 한 모듈로 인수)입니다.
   * 지원 되는 값은 범위 내에 `(1,1024]` 있습니다.
     * 값은 다음과 같아야 합니다.
-      * 클러스터의 노드 수보다 큼
+      * 클러스터의 노드 수보다 큽니다.
       * 열 카디널리티 보다 작습니다.
     * 값이 높을수록 클러스터의 노드에서 데이터 분할 프로세스의 오버 헤드가 증가 하 고 각 기간의 익스텐트 수가 커집니다.
-    * 값으로 시작 하는 것이 좋습니다 `256` .
+    * 노드가 30 개 미만인 클러스터의 경우 값으로 시작 하는 것이 좋습니다 `256` .
       * 위의 고려 사항에 따라 필요에 따라 또는 쿼리 성능 및 데이터 사후 수집의 분할 오버 헤드에 따라 값을 조정 합니다.
-* `Seed`해시 값을 임의로 선택할 하는 데 사용할 값입니다.
+* `Seed` 해시 값을 임의로 선택할 하는 데 사용할 값입니다.
   * 값은 양의 정수 여야 합니다.
   * 권장 값은 이며 `1` , 지정 되지 않은 경우 기본값입니다.
 
@@ -94,7 +94,7 @@ ms.locfileid: "86188373"
   다음을 수행 하는 것이 좋습니다.
   * 값으로 시작 `1.00:00:00` 합니다 (1 일).
   * 테이블에 병합할 수 없는 작은 익스텐트가 많이 있을 수 있으므로 보다 짧은 값을 설정 하지 마세요.
-* `Reference`정렬 된 `datetime` datetime 파티션에 따라 고정 된 지정 시간을 나타내는 스칼라 상수입니다.
+* `Reference` 정렬 된 `datetime` datetime 파티션에 따라 고정 된 지정 시간을 나타내는 스칼라 상수입니다.
   * 로 시작 하는 것이 좋습니다 `1970-01-01 00:00:00` .
   * Datetime 파티션 키에 값이 있는 레코드가 있는 경우 `null` 해당 파티션 값은의 값으로 설정 됩니다 `Reference` .
 
@@ -205,7 +205,7 @@ ms.locfileid: "86188373"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예:
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 .show commands 
