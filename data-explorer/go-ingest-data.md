@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: abhishgu
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2020
-ms.openlocfilehash: 010ee029c4f16248b0f9249d7331da436439cdc0
-ms.sourcegitcommit: ed902a5a781e24e081cd85910ed15cd468a0db1e
+ms.openlocfilehash: b733e70c78d9792e53dfe9cf133efe759e8ea91e
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88072364"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873987"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-go-sdk"></a>Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집 
 
@@ -26,7 +26,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
 이 문서에서는 먼저 테스트 클러스터에서 테이블 및 데이터 매핑을 만듭니다. 그런 다음 Go SDK를 사용 하 여 클러스터에 대 한 수집을 큐에 대기 하 고 결과의 유효성을 검사 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.
@@ -57,7 +57,7 @@ auth := kusto.Authorization{Config: auth.NewClientCredentialsConfig(clientID, cl
 client, err := kusto.New(kustoEndpoint, auth)
 ```
 
-[Kusto의 인스턴스입니다. ](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Authorization)서비스 주체 자격 증명을 사용 하 여 권한 부여를 만듭니다. 그런 다음 kusto를 만드는 데 사용 [됩니다. ](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client)클러스터 끝점을 허용 하는 [새](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#New]) 함수를 포함 하는 클라이언트입니다.
+[Kusto의 인스턴스입니다. ](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Authorization)서비스 주체 자격 증명을 사용 하 여 권한 부여를 만듭니다. 그런 다음 kusto를 만드는 데 사용 [됩니다. ](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client) 클러스터 끝점을 허용 하는 [새](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#New]) 함수를 포함 하는 클라이언트입니다.
 
 ### <a name="create-table"></a>테이블 만들기
 
@@ -74,7 +74,7 @@ func createTable(kc *kusto.Client, kustoDB string) {
 ```
 
 > [!TIP]
-> Kusto 문은 보안을 강화 하기 위해 기본적으로 상수입니다. [`NewStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#NewStmt)문자열 상수를 허용 합니다. [`UnsafeStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#UnsafeStmt)API는 비상수 문 세그먼트를 사용할 수 있지만 권장 되지는 않습니다.
+> Kusto 문은 보안을 강화 하기 위해 기본적으로 상수입니다. [`NewStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#NewStmt) 문자열 상수를 허용 합니다. [`UnsafeStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#UnsafeStmt)API는 비상수 문 세그먼트를 사용할 수 있지만 권장 되지는 않습니다.
 
 Kusto create table 명령은 다음과 같습니다.
 

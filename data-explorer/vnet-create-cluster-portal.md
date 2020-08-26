@@ -5,20 +5,20 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: basaba
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
-ms.openlocfilehash: 753c2a21812c850613c2c2462394b6b0bde8b740
-ms.sourcegitcommit: 4eb64e72861d07cedb879e7b61a59eced74517ec
+ms.openlocfilehash: cb31dc576e7bcaa30a37b04dcd4ff7ad3b5fae9c
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517956"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874038"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터 만들기
 
 Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러스터를 배포 하는 것을 지원 합니다. 이 기능을 사용 하면 Azure 가상 네트워크 또는 온-프레미스에서 클러스터에 개별적으로 액세스 하 고, 가상 네트워크 내에서 이벤트 허브 및 저장소와 같은 리소스에 액세스 하 고, 인바운드 및 아웃 바운드 트래픽을 제한할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Portal](https://portal.azure.com/)에 로그인합니다.
@@ -29,7 +29,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
 
 네트워크 보안 그룹을 만들려면 다음을 수행 합니다.
 
-1. 포털의 왼쪽 위 모서리에 있는 **+ 리소스 만들기** 단추를 선택 합니다.
+1. 포털의 왼쪽 상단 모서리에서 **+ 리소스 만들기** 단추를 선택합니다.
 1. *네트워크 보안 그룹*을 검색 합니다.
 1. **네트워크 보안 그룹**의 화면 아래쪽에서 **만들기**를 선택 합니다.
 1. **네트워크 보안 그룹 만들기** 창에서 다음 정보를 입력 합니다.
@@ -78,7 +78,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
 
 쿼리 (엔진) 공용 IP 주소를 만들려면 다음을 수행 합니다.
 
-1. 포털의 왼쪽 위 모서리에 있는 **+ 리소스 만들기** 단추를 선택 합니다.
+1. 포털의 왼쪽 상단 모서리에서 **+ 리소스 만들기** 단추를 선택합니다.
 1. *공용 IP 주소*를 검색 합니다.
 1. **공용 IP 주소** 아래에서 **만들기**를 선택합니다.
 1. **공용 IP 주소 만들기** 창에서 다음 정보를 완료 합니다.
@@ -88,7 +88,7 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
     **설정** | **제안 값** | **필드 설명**
     |---|---|---|
     | IP 버전 | IPv4 | IP 버전을 선택 합니다. IPv4만 지원 합니다.|
-    | SKU | Standard | **Standard** for Query (엔진) URI 끝점이 필요 합니다. |
+    | SKU | 표준 | **Standard** for Query (엔진) URI 끝점이 필요 합니다. |
     | 이름 | 엔진-pip | 리소스 그룹에서 공용 IP 주소를 식별 하는 이름을 선택 합니다.
     | Subscription | 사용자의 구독 | 공용 IP에 사용 하려는 Azure 구독을 선택 합니다.|
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
@@ -103,8 +103,8 @@ Azure 데이터 탐색기는 VNet (가상 네트워크)의 서브넷에 클러�
 
 가상 네트워크 및 서브넷을 만들려면 다음을 수행 합니다.
 
-1. 포털의 왼쪽 위 모서리에 있는 **+ 리소스 만들기** 단추를 선택 합니다.
-1. *Virtual Network*를 검색 합니다.
+1. 포털의 왼쪽 상단 모서리에서 **+ 리소스 만들기** 단추를 선택합니다.
+1. *가상 네트워크*를 검색합니다.
 1. **Virtual Network**에서 화면 아래쪽에 있는 **만들기**를 선택 합니다.
 1. **가상 네트워크 만들기** 창에서 다음 정보를 완료 합니다.
 

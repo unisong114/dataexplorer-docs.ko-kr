@@ -6,14 +6,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 6a06e5ea90bb16466c3550c8de07f930477dad96
-ms.sourcegitcommit: b0cbb89e88b64a36880e6d34b4d6779283174456
+ms.openlocfilehash: fd33ea4d4607c9c3af0ded26ec7f58de761f24ea
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637374"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873851"
 ---
 # <a name="use-parameters-in-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드에서 매개 변수 사용
 
@@ -22,7 +22,7 @@ ms.locfileid: "84637374"
 > [!NOTE]
 > 매개 변수 관리는 편집 모드에서 대시보드 편집기로 사용할 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 [Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화](azure-data-explorer-dashboards.md)
 
@@ -44,10 +44,10 @@ ms.locfileid: "84637374"
 
 :::image type="content" source="media/dashboard-parameters/properties.png" alt-text="매개 변수 속성 추가":::
 
-|필드  |Description |
+|필드  |설명 |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
-|**매개 변수 유형**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
+|**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
 |**변수 이름**     |   쿼리에서 사용 되는 매개 변수의 이름입니다.      |
 |**데이터 형식**    |    매개 변수 값의 데이터 형식입니다.     |
 |**대시보드 필터로 고정**   |   매개 변수 기반 필터를 대시보드에 고정 하거나 대시보드에서 고정 해제 합니다.       |
@@ -107,7 +107,7 @@ EventsAll
 
     * **매개 변수 표시 이름**: 회사
     * **매개 변수 유형**: 단일 선택
-    * **변수 이름**:`_company`
+    * **변수 이름**: `_company`
     * **데이터 형식**: 문자열
     * **대시보드 필터로 고정**: 선택 됨
     * **원본**: 고정 값
@@ -162,7 +162,7 @@ EventsAll
 
     * **매개 변수 표시 이름**: 회사
     * **매개 변수 유형**: 다중 선택
-    * **변수 이름**:`_companies`
+    * **변수 이름**: `_companies`
 
 1. **완료** 를 클릭 하 여 매개 변수를 만듭니다.
 
@@ -201,7 +201,7 @@ EventsAll
 2. 다음 변경 내용과 함께 [단일 선택 고정 값 매개 변수 사용](#use-the-single-selection-fixed-value-parameter) 에 설명 된 대로 세부 정보를 입력 합니다.
 
     * **매개 변수 표시 이름**: 이벤트
-    * **변수 이름**:`_event`
+    * **변수 이름**: `_event`
     * **원본**: 쿼리
     * **데이터 원본**: GitHub
     * **쿼리 추가** 를 선택 하 고 다음 쿼리를 입력 합니다. **완료**를 선택합니다.
@@ -244,7 +244,7 @@ EventsAll
 
     * **매개 변수 표시 이름**: 이벤트
     * **매개 변수 유형**: 다중 선택
-    * **변수 이름**:`_events`
+    * **변수 이름**: `_events`
 
 1. **완료** 를 클릭 하 여 매개 변수를 만듭니다.
 

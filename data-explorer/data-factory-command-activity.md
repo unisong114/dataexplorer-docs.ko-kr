@@ -6,20 +6,20 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/15/2019
-ms.openlocfilehash: b2078ee88b6721f414d280e657d1463925f5a31f
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: af351530b8622785f76c6165aede056073aff67f
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87804023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873392"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Data Factory 명령 작업을 사용 하 여 Azure 데이터 탐색기 제어 명령 실행
 
 ADF ( [Azure Data Factory](/azure/data-factory/) )는 데이터에 대 한 작업의 조합을 수행할 수 있도록 하는 클라우드 기반 데이터 통합 서비스입니다. ADF를 사용 하 여 데이터 이동 및 데이터 변환을 오케스트레이션 하 고 자동화 하기 위한 데이터 기반 워크플로를 만듭니다. Azure Data Factory의 **azure 데이터 탐색기 명령** 작업을 사용 하면 ADF 워크플로 내에서 [azure 데이터 탐색기 제어 명령을](kusto/concepts/index.md#control-commands) 실행할 수 있습니다. 이 문서에서는 Azure 데이터 탐색기 명령 작업을 포함 하는 ForEach 작업 및 조회 작업을 사용 하 여 파이프라인을 만드는 방법을 배웁니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure 데이터 탐색기 클러스터 및 데이터베이스](create-cluster-database-portal.md)

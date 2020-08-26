@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: kedamari
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.openlocfilehash: 3f170a48f31f9d842e39fcf42fcfce0c383c71ed
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 6bf447a845954bde58a0308a03bee45f98f16111
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83232387"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873239"
 ---
 # <a name="enable-data-purge-on-your-azure-data-explorer-cluster"></a>Azure 데이터 탐색기 클러스터에서 데이터 제거 사용
 
@@ -30,7 +30,7 @@ Azure 데이터 탐색기 (Kusto)는 개별 레코드 삭제를 모두 지원 �
 
 * 인간 호출: 별도의 단계로 명시적 확인이 필요한 2 단계 프로세스입니다. 명령을 호출 하면 실제 제거를 실행 하기 위해 제공 해야 하는 확인 토큰이 반환 됩니다. 이 프로세스를 통해 잘못 된 데이터를 실수로 삭제 하는 위험을 줄일 가능성이 줄어듭니다. 이 옵션을 사용 하면 상당한 콜드 캐시 데이터가 있는 큰 테이블에서 완료 하는 데 시간이 오래 걸릴 수 있습니다. 
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [웹 UI](https://dataexplorer.azure.com/)에 로그인 합니다.
@@ -63,7 +63,7 @@ Azure 데이터 탐색기 (Kusto)는 개별 레코드 삭제를 모두 지원 �
 * 제거 프로세스는 마지막 이며 취소할 수 없습니다. 이 프로세스를 "실행 취소" 하거나 제거 된 데이터를 복구할 수 없습니다. 따라서 [실행 취소 테이블 drop](kusto/management/undo-drop-table-command.md) 과 같은 명령은 삭제 된 데이터를 복구할 수 없으며, 이전 버전으로 데이터를 롤백하는 것은 최신 제거를 "이전"으로 이동할 수 없습니다.
 * `.purge`명령은 데이터 관리 끝점에 대해 실행 됩니다. * https://ingest- [해당 clustername]. [ Region] .kusto. net*. 이 명령에는 관련 데이터베이스에 대 한 [데이터베이스 관리자](kusto/management/access-control/role-based-authorization.md) 권한이 필요 합니다. 
 * 제거 프로세스 성능에 영향을 줄 수 있으므로 호출자는 제거 프로세스의 심각한 COGS 영향을 줄이기 위해 최소한의 테이블에 관련 데이터가 포함 되도록 데이터 스키마를 수정 하 고 테이블당 일괄 처리 명령을 수정 해야 합니다.
-* 제거 `predicate` 명령의 매개 변수는 제거할 레코드를 지정 하는 데 사용 됩니다. `Predicate`크기는 63 KB로 제한 됩니다. 
+* 제거 `predicate` 명령의 매개 변수는 제거할 레코드를 지정 하는 데 사용 됩니다. `Predicate` 크기는 63 KB로 제한 됩니다. 
 
 ## <a name="next-steps"></a>다음 단계
 

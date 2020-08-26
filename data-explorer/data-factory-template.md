@@ -6,20 +6,20 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/08/2019
-ms.openlocfilehash: e1c51132ddb36a206a97236b6ceb4553a62e6d2c
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: d0e7cb8badcd5ae3ad3939728f35de435b848735
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373925"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873272"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Azure Data Factory 템플릿을 사용 하 여 데이터베이스에서 Azure 데이터 탐색기로 대량 복사 
 
 Azure 데이터 탐색기는 빠르고 완전히 관리 되는 데이터 분석 서비스입니다. 응용 프로그램, 웹 사이트 및 IoT 장치와 같은 많은 원본에서 스트리밍하는 대용량 데이터에 대 한 실시간 분석을 제공 합니다. 
 
-Oracle Server, Netezza, Teradata 또는 SQL Server의 데이터베이스에서 Azure 데이터 탐색기로 데이터를 복사 하려면 여러 테이블에서 대량의 데이터를 로드 해야 합니다. 일반적으로 단일 테이블에서 여러 스레드가 동시에 행을 로드할 수 있도록 각 테이블에서 데이터를 분할 해야 합니다. 이 문서에서는 이러한 시나리오에서 사용할 템플릿을 설명 합니다.
+Oracle Server, Netezza, Teradata 또는 SQL Server의 데이터베이스에서 Azure 데이터 탐색기로 데이터를 복사 하려면 여러 테이블에서 대량의 데이터를 로드 해야 합니다. 일반적으로 단일 테이블에서 여러 스레드를 병렬 처리하여 행을 로드할 수 있도록 각 테이블에 데이터를 분할해야 합니다. 이 문서에서는 이러한 시나리오에서 사용할 템플릿을 설명합니다.
 
 [Azure Data Factory 템플릿은](/azure/data-factory/solution-templates-introduction) 파이프라인 Data Factory 미리 정의 되어 있습니다. 이러한 템플릿을 통해 신속 하 게 Data Factory를 시작 하 고 데이터 통합 프로젝트에 대 한 개발 시간을 줄일 수 있습니다. 
 
@@ -30,7 +30,7 @@ Oracle Server, Netezza, Teradata 또는 SQL Server의 데이터베이스에서 A
 > * *데이터베이스에서 azure 데이터 탐색기로 대량 복사* 를 사용 하 여 SQL Server 및 Google 이상 쿼리와 같은 데이터베이스의 많은 양의 데이터를 azure 데이터 탐색기에 복사 합니다. 
 > * [*Data Factory 데이터 복사 도구*](data-factory-load-data.md) 를 사용 하 여 적은 양의 데이터를 포함 하는 몇 개의 테이블을 Azure 데이터 탐색기에 복사 합니다. 
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md).
@@ -53,7 +53,7 @@ ADXTableName varchar(255)
 
 다음 표에서는 코드 요소에 대해 설명 합니다.
 
-|속성  |설명  | 예제
+|속성  |설명  | 예
 |---------|---------| ---------|
 |PartitionId   |  복사 순서 | 1  |  
 |SourceQuery   |  파이프라인 런타임 중에 복사할 데이터를 나타내는 쿼리입니다. | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
@@ -79,7 +79,7 @@ ControlTableDataset의 형식이 다른 경우 형식에 대 한 비교할 수 �
 
     c. **AzureDataExplorerTable** 드롭다운 목록에서 Azure 데이터 탐색기 테이블을 선택 합니다. 데이터 집합이 없는 경우 [Azure 데이터 탐색기 연결 된 서비스를 만들어](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) 데이터 집합을 추가 합니다.
 
-    d. **이 템플릿 사용**을 선택 합니다.
+    d. **이 템플릿 사용**을 선택합니다.
 
     !["데이터베이스에서 Azure 데이터 탐색기로 대량 복사" 창](media/data-factory-template/configure-bulk-copy-adx-template.png)
 

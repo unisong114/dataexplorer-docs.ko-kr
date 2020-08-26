@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/07/2019
-ms.openlocfilehash: b1855d12872c291e1ae45f62da1ad1fe0e792617
-ms.sourcegitcommit: aacea5c4c397479e8254c1fe6ed0b2f333307b14
+ms.openlocfilehash: 36c5201f7b9d9f1cad2b82d569733c9d9f2abb90
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86470114"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874004"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>종동체 데이터베이스를 사용 하 여 Azure 데이터 탐색기에 데이터베이스 연결
 
@@ -378,7 +378,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 제어 명령을 사용 하 여 권한이 부여 된 보안 주체를 구성 하는 방법에 대 한 자세한 내용은 [종동체 클러스터를 관리 하기 위한 제어 명령](kusto/management/cluster-follower.md)을 참조 하세요.
 
-### <a name="manage-permissions"></a>권한 관리
+### <a name="manage-permissions"></a>사용 권한 관리
 
 읽기 전용 데이터베이스 권한을 관리 하는 것은 모든 데이터베이스 유형의 경우와 동일 합니다. [Azure Portal에서 관리 권한을](manage-database-permissions.md#manage-permissions-in-the-azure-portal)참조 하세요.
 

@@ -6,14 +6,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2019
-ms.openlocfilehash: 066f385e53c010f45979ec435e3446d880302e44
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: c38a55294ba26ed130cac2c57b2ae12abe70526e
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373954"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873358"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory를 사용 하 여 Azure 데이터 탐색기에 데이터 복사 
 
@@ -29,14 +29,14 @@ Azure 데이터 탐색기에 데이터를 로드 하는 경우 Data Factory는 �
 * **고성능**: 데이터 로드 속도는 Azure 데이터 탐색기에 최대 1gbps (초당 기가바이트)입니다. 자세한 내용은 [복사 작업 성능](/azure/data-factory/copy-activity-performance)을 참조 하세요.
 
 이 문서에서는 Data Factory 데이터 복사 도구를 사용 하 여 Amazon Simple Storage Service (S3)에서 Azure 데이터 탐색기로 데이터를 로드 합니다. 유사한 프로세스를 따라 다른 데이터 저장소의 데이터를 복사할 수 있습니다. 예를 들면 다음과 같습니다.
-* [Azure Blob 저장소](/azure/data-factory/connector-azure-blob-storage)
+* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
 * [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
-* [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse)
+* [Azure SQL 데이터 웨어하우스](/azure/data-factory/connector-azure-sql-data-warehouse)
 * [Google BigQuery](/azure/data-factory/connector-google-bigquery)
 * [Oracle](/azure/data-factory/connector-oracle)
 * [파일 시스템](/azure/data-factory/connector-file-system)
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md).
@@ -59,7 +59,7 @@ Azure 데이터 탐색기에 데이터를 로드 하는 경우 Data Factory는 �
    | **이름** | 상자에 데이터 팩터리에 대 한 전역적으로 고유한 이름을 입력 합니다. 오류가 발생 하는 경우 *data factory 이름 \" loadadxdemo를 \" 사용할 수 없습니다*. 데이터 팩터리에 대해 다른 이름을 입력 합니다. Data Factory 아티팩트 명명에 대 한 규칙은 [Data Factory 명명 규칙](/azure/data-factory/naming-rules)을 참조 하세요.|
    | **구독** | 드롭다운 목록에서 데이터 팩터리를 만들 Azure 구독을 선택 합니다. |
    | **리소스 그룹** | **새로 만들기**를 선택한 다음 새 리소스 그룹의 이름을 입력 합니다. 리소스 그룹이 이미 있는 경우 **기존 사용**을 선택 합니다. |
-   | **버전** | 드롭다운 목록에서 **V2**를 선택 합니다. |    
+   | **Version** | 드롭다운 목록에서 **V2**를 선택 합니다. |    
    | **위치** | 드롭다운 목록에서 데이터 팩터리의 위치를 선택 합니다. 지원 되는 위치만 목록에 표시 됩니다. 데이터 팩터리에서 사용 하는 데이터 저장소는 다른 위치나 지역에 있을 수 있습니다. |
 
 1. **만들기**를 선택합니다.
@@ -120,7 +120,7 @@ Azure 데이터 탐색기에 데이터를 로드 하는 경우 Data Factory는 �
     
       **원본 데이터 저장소** 창에 새 AmazonS31 연결이 표시 됩니다. 
 
-1. **새로 만들기**를 선택합니다.
+1. **다음**을 선택합니다.
 
    ![원본 데이터 저장소에서 연결을 만듦](media/data-factory-load-data/source-data-store-created-connection.png)
 
@@ -130,7 +130,7 @@ Azure 데이터 탐색기에 데이터를 로드 하는 경우 Data Factory는 �
 
     b. 원하는 복사 동작을 선택 합니다. **이진 복사** 확인란이 선택 취소 되어 있는지 확인 합니다.
 
-    c. **새로 만들기**를 선택합니다.
+    c. **다음**을 선택합니다.
 
     ![입력 파일 또는 폴더 선택](media/data-factory-load-data/source-choose-input-file.png)
 
@@ -191,7 +191,7 @@ Azure 데이터 탐색기 연결 된 서비스를 만들려면 다음 단계를 
 
 연결 된 서비스 연결을 만든 후에는 **대상 데이터 저장소** 창이 열리고 만든 연결을 사용할 수 있습니다. 연결을 구성 하려면 다음 단계를 수행 합니다.
 
-1. **새로 만들기**를 선택합니다.
+1. **다음**을 선택합니다.
 
     ![Azure 데이터 탐색기 "대상 데이터 저장소" 창](media/data-factory-load-data/destination-data-store.png)
 
@@ -213,7 +213,7 @@ Azure 데이터 탐색기 연결 된 서비스를 만들려면 다음 단계를 
 
     * 수집 **매핑 이름을** 지정 하지 않으면 **열 매핑** 섹션에 정의 된 *이름으로* 매핑 순서가 사용 됩니다. *이름으로* 의 매핑이 실패 하는 경우 Azure 데이터 탐색기는 *열을 기준* 으로 데이터를 수집 하려고 시도 합니다. 즉, 기본적으로 위치를 기준으로 매핑됩니다.
 
-    * **새로 만들기**를 선택합니다.
+    * **다음**을 선택합니다.
 
     ![대상 데이터 집합 "열 매핑" 창](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
@@ -223,7 +223,7 @@ Azure 데이터 탐색기 연결 된 서비스를 만들려면 다음 단계를 
 
     b. **성능 설정**에서 **준비 사용** 은 적용 되지 않으며 **고급 설정** 에는 비용 고려 사항이 포함 됩니다. 특정 요구 사항이 없는 경우에는이 설정을 그대로 둡니다.
 
-    c. **새로 만들기**를 선택합니다.
+    c. **다음**을 선택합니다.
 
     ![데이터 복사 "설정" 창](media/data-factory-load-data/copy-data-settings.png)
 

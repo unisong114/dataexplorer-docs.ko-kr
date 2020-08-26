@@ -5,21 +5,21 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: has-adal-ref
 ms.date: 5/29/2019
-ms.openlocfilehash: 4afbf9ddf53715b045dba46d03f233f1401ff770
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: d7e476a6396d4ba695dd290226c3ace4d77153ba
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862159"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875398"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>Sisense에서 Azure 데이터 탐색기의 데이터 시각화
 
 Sisense는 대화형 사용자 환경을 제공 하는 분석 앱을 빌드할 수 있게 해 주는 분석 비즈니스 인텔리전스 플랫폼입니다. 비즈니스 인텔리전스 및 대시보드 보고 소프트웨어를 사용 하면 몇 번의 클릭으로 데이터에 액세스 하 고 결합할 수 있습니다. 구조화 된 데이터 원본 및 구조화 되지 않은 데이터 원본에 연결 하 고, 최소한의 스크립팅 및 코딩으로 여러 원본의 테이블을 조인 하 고, 대화형 웹 대시보드 및 보고서를 만들 수 있습니다. 이 문서에서는 Sisense의 데이터 원본으로 Azure 데이터 탐색기를 설정 하 고 샘플 클러스터에서 데이터를 시각화 하는 방법을 알아봅니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>전제 조건
 
 이 문서를 완료 하려면 다음이 필요 합니다.
 
@@ -35,11 +35,11 @@ Sisense는 대화형 사용자 환경을 제공 하는 분석 앱을 빌드할 �
 
     * activation-1.1
     * adal4j-1.6.0
-    * commons-codec-1.10
+    * commons-codec-1.10.jar
     * commons-collections4-4.1
-    * commons-lang3-3.5 jar
+    * commons-lang3-3.5.jar
     * gson-2.8.0
-    * jcip-annotations-1.0 -1
+    * jcip-annotations-1.0-1.jar
     * json-smart-1.3.1
     * lang-tag-1.4.4
     * mail-1.4.7
@@ -69,7 +69,7 @@ Sisense는 대화형 사용자 환경을 제공 하는 분석 앱을 빌드할 �
 
     ![JDBC 커넥터 설정](media/sisense/jdbc-connector.png)
 
-    |필드 |Description |
+    |필드 |설명 |
     |---------|---------|
     |연결 문자열     |   `jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword`      |
     |JDBC Jar 폴더  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
@@ -124,4 +124,4 @@ Sisense는 대화형 사용자 환경을 제공 하는 분석 앱을 빌드할 �
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Azure 데이터 탐색기에 대 한 쿼리 작성](write-queries.md)
+* [Azure 데이터 탐색기용 쿼리 작성](write-queries.md)

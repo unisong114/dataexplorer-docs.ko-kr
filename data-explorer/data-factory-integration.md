@@ -6,14 +6,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/20/2020
-ms.openlocfilehash: b3ff40f04ba9152fa1b12b7211bf7a7cf07c69bb
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 03df6c4714a24dfad33940e29016fd66dccca27f
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373928"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88873307"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Factory와 Azure 데이터 탐색기 통합
 
@@ -72,7 +72,7 @@ Azure 데이터 탐색기에서 데이터를 복사 하는 복사 작업 및 명
 | **흐름 설명** | ADF는 Kusto에 대해 쿼리를 실행 하 고 결과를 처리 한 다음 대상 데이터 저장소에 보냅니다. <br>(**Adx > ADF > 싱크 데이터 저장소**) | ADF는 `.export` 명령을 실행 하 고 데이터를 대상 데이터 저장소로 직접 전송 하는 Azure 데이터 탐색기에 제어 명령을 보냅니다. <br>(**Adx > 싱크 데이터 저장소**) |
 | **지원 되는 대상 데이터 저장소** | 지원 되는 다양 한 [데이터 저장소](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure Blob SQL Database |
 | **성능** | 중앙 | <ul><li>분산 (기본값), 여러 노드에서 동시에 데이터 내보내기</li><li>더 빠르고 COGS 효율적입니다.</li></ul> |
-| **서버 제한** | [쿼리 제한은](kusto/concepts/querylimits.md) 확장/비활성화할 수 있습니다. 기본적으로 ADF 쿼리는 다음을 포함 합니다. <ul><li>50만 레코드 또는 64 MB의 크기 제한</li><li>제한 시간은 10 분입니다.</li><li>`noTruncation`false로 설정 합니다.</li></ul> | 기본적으로는 쿼리 제한을 확장 하거나 해제 합니다. <ul><li>크기 제한이 사용 되지 않습니다.</li><li>서버 제한 시간은 1 시간으로 연장 됩니다.</li><li>`MaxMemoryConsumptionPerIterator`및 `MaxMemoryConsumptionPerQueryPerNode` 은 max (5gb, TOTALGB memory/2)로 확장 됩니다.</li></ul>
+| **서버 제한** | [쿼리 제한은](kusto/concepts/querylimits.md) 확장/비활성화할 수 있습니다. 기본적으로 ADF 쿼리는 다음을 포함 합니다. <ul><li>50만 레코드 또는 64 MB의 크기 제한</li><li>제한 시간은 10 분입니다.</li><li>`noTruncation` false로 설정 합니다.</li></ul> | 기본적으로는 쿼리 제한을 확장 하거나 해제 합니다. <ul><li>크기 제한이 사용 되지 않습니다.</li><li>서버 제한 시간은 1 시간으로 연장 됩니다.</li><li>`MaxMemoryConsumptionPerIterator` 및 `MaxMemoryConsumptionPerQueryPerNode` 은 max (5gb, TOTALGB memory/2)로 확장 됩니다.</li></ul>
 
 > [!TIP]
 > 복사 대상이 명령에서 지 원하는 데이터 저장소 중 하나이 `.export` 고 복사 작업 기능이 필요에 중요 하지 않은 경우 `.export` 명령을 선택 합니다.
@@ -98,11 +98,11 @@ Azure 데이터 탐색기로 데이터를 복사 하기 위한 수집 명령과 
 
 다음 표에서는 Azure Data Factory와의 통합에서 다양 한 단계에 필요한 사용 권한을 나열 합니다.
 
-| 단계 | 연산 | 최소 권한 수준 | 참고 |
+| 단계 | 작업(Operation) | 최소 권한 수준 | 참고 |
 |---|---|---|---|
 | **연결 된 서비스 만들기** | 데이터베이스 탐색 | *데이터베이스 뷰어* <br>ADF를 사용 하는 로그인 한 사용자에 게는 데이터베이스 메타 데이터를 읽을 수 있는 권한이 있어야 합니다. | 사용자는 데이터베이스 이름을 수동으로 입력할 수 있습니다. |
 | | 연결을 테스트 | *데이터베이스 모니터* 또는 *테이블 수집기* <br>서비스 주체에는 데이터베이스 수준 `.show` 명령이 나 테이블 수준 수집을 실행할 수 있는 권한이 있어야 합니다. | <ul><li>TestConnection은 데이터베이스가 아니라 클러스터에 대 한 연결을 확인 합니다. 데이터베이스가 존재 하지 않더라도 성공할 수 있습니다.</li><li>테이블 관리자 권한이 충분 하지 않습니다.</li></ul>|
-| **데이터 집합 만들기** | 테이블 탐색 | *데이터베이스 모니터* <br>ADF를 사용 하 여 로그인 한 사용자는 데이터베이스 수준 명령을 실행할 수 있는 권한이 있어야 합니다 `.show` . | 사용자는 테이블 이름을 수동으로 입력할 수 있습니다.|
+| **데이터 세트 만들기** | 테이블 탐색 | *데이터베이스 모니터* <br>ADF를 사용 하 여 로그인 한 사용자는 데이터베이스 수준 명령을 실행할 수 있는 권한이 있어야 합니다 `.show` . | 사용자는 테이블 이름을 수동으로 입력할 수 있습니다.|
 | **데이터 집합** 또는 **복사 작업** 만들기 | 데이터 미리 보기 | *데이터베이스 뷰어* <br>서비스 주체는 데이터베이스 메타 데이터를 읽을 수 있는 권한이 있어야 합니다. | | 
 |   | 스키마 가져오기 | *데이터베이스 뷰어* <br>서비스 주체는 데이터베이스 메타 데이터를 읽을 수 있는 권한이 있어야 합니다. | ADX가 테이블 형식에서 테이블 형식 복사의 원본인 경우에는 사용자가 명시적으로 스키마를 가져오지 않더라도 ADF가 자동으로 스키마를 가져옵니다. |
 | **ADX를 싱크로** | 이름으로 열 매핑 만들기 | *데이터베이스 모니터* <br>서비스 사용자에 게 데이터베이스 수준 명령을 실행할 수 있는 권한이 있어야 합니다 `.show` . | <ul><li>모든 필수 작업은 *table 수집기*와 함께 작동 합니다.</li><li> 일부 선택적 작업은 실패할 수 있습니다.</li></ul> |
@@ -117,12 +117,12 @@ Azure 데이터 탐색기가 원본인 경우 쿼리를 포함 하는 조회, �
   
 이 섹션에서는 Azure 데이터 탐색기 싱크로 복사 작업을 사용 하는 방법을 설명 합니다. Azure 데이터 탐색기 싱크에 대 한 예상 처리량은 11-13 MBps입니다. 다음 표에서는 Azure 데이터 탐색기 싱크의 성능에 영향을 주는 매개 변수를 자세히 설명 합니다.
 
-| 매개 변수 | 참고 |
+| 매개 변수 | 메모 |
 |---|---|
 | **구성 요소 지리적 근접성** | 모든 구성 요소를 동일한 지역에 저장 합니다.<ul><li>원본 및 싱크 데이터 저장소.</li><li>ADF 통합 런타임.</li><li>ADX 클러스터.</li></ul>하나 이상의 통합 런타임이 ADX 클러스터와 동일한 지역에 있는지 확인 합니다. |
 | **DIUs 수** | ADF에서 사용 되는 4 개의 DIUs 마다 하나의 VM <br>파일이 여러 파일을 사용 하는 파일 기반 저장소 인 경우에만 DIUs를 늘릴 수 있습니다. 그러면 각 VM은 서로 다른 파일을 병렬로 처리 합니다. 따라서 하나의 큰 파일을 복사 하는 경우 여러 개의 작은 파일을 복사 하는 것 보다 대기 시간이 더 깁니다.|
 |**ADX 클러스터의 금액 및 SKU** | ADX 노드 수가 많으면 수집 처리 시간이 향상 됩니다.|
-| **병렬로** |    데이터베이스에서 대량의 데이터를 복사 하려면 데이터를 분할 한 다음 각 파티션을 병렬로 복사 하는 ForEach 루프를 사용 하거나 [데이터베이스에서 Azure 데이터 탐색기 템플릿으로 대량 복사](data-factory-template.md)를 사용 합니다. 참고: **Settings**  >  복사 작업의 설정 수준**병렬 처리 수준은** adx와 관련이 없습니다. |
+| **Parallelism** |    데이터베이스에서 대량의 데이터를 복사 하려면 데이터를 분할 한 다음 각 파티션을 병렬로 복사 하는 ForEach 루프를 사용 하거나 [데이터베이스에서 Azure 데이터 탐색기 템플릿으로 대량 복사](data-factory-template.md)를 사용 합니다. 참고: **Settings**  >  복사 작업의 설정 수준**병렬 처리 수준은** adx와 관련이 없습니다. |
 | **데이터 처리 복잡성** | 대기 시간은 원본 파일 형식, 열 매핑 및 압축에 따라 다릅니다.|
 | **Integration runtime을 실행 하는 VM** | <ul><li>Azure 복사의 경우 ADF Vm 및 컴퓨터 Sku를 변경할 수 없습니다.</li><li> 온-프레미스에서 Azure로 복사 하는 경우 자체 호스팅 IR을 호스트 하는 VM이 충분히 강력한 지 확인 합니다.</li></ul>|
 
@@ -145,7 +145,7 @@ Azure 데이터 탐색기에는 CSV 파일이 [RFC 4180](https://www.ietf.org/rf
 
 Azure Data Factory 백슬래시 (이스케이프) 문자를 허용 합니다. Azure Data Factory를 사용 하 여 백슬래시 문자를 사용 하 여 CSV 파일을 생성 하는 경우 파일을 Azure 데이터 탐색기 수집 하지 못합니다.
 
-#### <a name="example"></a>예제
+#### <a name="example"></a>예
 
 다음 텍스트 값: Hello, "세계"<br/>
 ABC DEF<br/>
