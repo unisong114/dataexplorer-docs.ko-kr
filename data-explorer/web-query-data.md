@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 06/15/2020
-ms.openlocfilehash: c1202e4578f9d1d3d4520984e6dc3b6de0ef33b0
-ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
+ms.openlocfilehash: 061c3ea6c2a493cbda8ac428837720efe42f2082
+ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86870161"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88793959"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기에서는 쿼리를 실행하고 공유할 수 있는 웹 애플리케이션이 제공됩니다. 이 애플리케이션은 Azure Portal에서 그리고 독립 실행형 웹 애플리케이션으로 사용할 수 있습니다. 이 문서에서는 독립 실행형 버전을 사용합니다. 이 버전의 경우 여러 클러스터에 연결하고 쿼리에 대한 딥 링크를 공유할 수 있습니다.
+Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure Data Explorer에서는 쿼리를 실행하고 공유할 수 있는 웹 애플리케이션이 제공됩니다. 이 애플리케이션은 Azure Portal에서 그리고 독립 실행형 웹 애플리케이션으로 사용할 수 있습니다. 이 문서에서는 독립 실행형 버전을 사용합니다. 이 버전의 경우 여러 클러스터에 연결하고 쿼리에 대한 딥 링크를 공유할 수 있습니다.
 
 Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 
