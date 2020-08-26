@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
-ms.openlocfilehash: 5532be47c957ae2251e71dc25a17e67a8e57f474
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7081f96bf948a7d3f0e99b6d9f7aaf6fa77b9c65
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350403"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872219"
 ---
 # <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Python을 사용 하 여 Azure 데이터 탐색기에 대 한 클러스터 보안 주체 추가
 
@@ -90,7 +90,7 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | principal_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 사용자 전자 메일, 응용 프로그램 ID 또는 보안 그룹 이름일 수 있는 보안 주체 ID입니다.|
 | 역할(role) | *AllDatabasesAdmin* | ' AllDatabasesAdmin' ' 또는 ' AllDatabasesViewer ' 일 수 있는 클러스터 보안 주체의 역할입니다.|
 | tenant_id_for_principal | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 보안 주체의 테 넌 트 ID입니다.|
-| principal_type | *앱* | ' 사용자 ', ' 앱 ' 또는 ' 그룹 ' 일 수 있는 보안 주체의 유형입니다.|
+| principal_type | *App* | ' 사용자 ', ' 앱 ' 또는 ' 그룹 ' 일 수 있는 보안 주체의 유형입니다.|
 
 ## <a name="next-steps"></a>다음 단계
 

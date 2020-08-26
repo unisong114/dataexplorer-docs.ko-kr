@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: basaba
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: 10c2cf41ae1ab149b6eeffe35f94052069309152
-ms.sourcegitcommit: b8415e01464ca2ac9cd9939dc47e4c97b86bd07a
+ms.openlocfilehash: 95c222bb1c04115927d799481bb817c8f2539fd3
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88028513"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875245"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -35,9 +35,9 @@ Azure 데이터 탐색기는 VNet (Virtual Network)의 서브넷에 클러스터
 
 서비스에 액세스 하기 위해 생성 되는 DNS 레코드는 다음과 같습니다. 
 
-* `[clustername].[geo-region].kusto.windows.net`(엔진) `ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 공용 IP에 매핑됩니다. 
+* `[clustername].[geo-region].kusto.windows.net` (엔진) `ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 공용 IP에 매핑됩니다. 
 
-* `private-[clustername].[geo-region].kusto.windows.net`(엔진) `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 개인 IP에 매핑됩니다.
+* `private-[clustername].[geo-region].kusto.windows.net` (엔진) `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 개인 IP에 매핑됩니다.
 
 ## <a name="plan-subnet-size-in-your-vnet"></a>VNet에서 서브넷 크기를 계획 합니다.
 
@@ -45,7 +45,7 @@ Azure 데이터 탐색기 클러스터를 호스트 하는 데 사용 되는 서
 
 총 IP 주소 수:
 
-| 사용 | 주소 수 |
+| Windows Server Update Services와 함께 | 주소 수 |
 | --- | --- |
 | 엔진 서비스 | 인스턴스당 1 개 |
 | 데이터 관리 서비스 | 2 |
@@ -193,13 +193,13 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 공용 IP 주소를 통해 Azure 데이터 탐색기에 대 한 액세스를 완전히 사용 하지 않도록 설정 하려면 NSG에서 다른 인바운드 규칙을 만듭니다. 이 규칙은 낮은 [우선 순위](/azure/virtual-network/security-overview#security-rules) (높은 숫자)를 가져야 합니다. 
 
-| **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **동작** | * * 우선 순위 * * |
+| **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **작업** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 임의의 값 | 거부 | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
-* `private-[clustername].[geo-region].kusto.windows.net`엔진
-* `private-ingest-[clustername].[geo-region].kusto.windows.net`(데이터 관리)
+* `private-[clustername].[geo-region].kusto.windows.net` 엔진
+* `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)
 
 ## <a name="expressroute-setup"></a>Express 경로 설정
 
@@ -240,7 +240,7 @@ crl3.digicert.com:80
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| Name | 주소 접두사 | 다음 홉 |
+| 이름 | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |

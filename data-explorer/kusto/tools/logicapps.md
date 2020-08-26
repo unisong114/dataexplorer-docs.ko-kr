@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: docohe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 9ac8011f8bc126c4fc6ea13fdb174bb7af0ba0af
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.openlocfilehash: ae79fd334b3ac2a59a99c5ad8d63fccf0ed6784c
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610613"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875228"
 ---
 # <a name="microsoft-logic-app-and-azure-data-explorer"></a>Microsoft 논리 앱 및 Azure 데이터 탐색기
 
@@ -32,8 +32,8 @@ Azure Kusto 논리 앱 커넥터를 사용 하면 [Microsoft 논리 앱](https:/
     ![논리 앱 추가](./Images/logicapps/logicapp-add.png)
 
 1. 양식에 필요한 세부 정보를 입력 합니다.
-    * Subscription
-    * Resource group
+    * 구독
+    * 리소스 그룹
     * 논리 앱 이름
     * 지역 또는 통합 서비스 환경
     * 위치

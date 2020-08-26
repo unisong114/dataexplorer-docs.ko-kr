@@ -5,21 +5,21 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2020
-ms.openlocfilehash: a56f5ea3ad17e8ef7c428d927861af9eaa0e9935
-ms.sourcegitcommit: de81b57b6c09b6b7442665e5c2932710231f0773
+ms.openlocfilehash: 1825ef642e5427df58800c8d6a71f75ff484bcf5
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87264757"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872644"
 ---
 # <a name="use-lightingest-to-ingest-data-to-azure-data-explorer"></a>LightIngest를 사용 하 여 Azure 데이터 탐색기에 데이터 수집
  
 LightIngest는 Azure 데이터 탐색기에 대 한 임시 데이터 수집을 위한 명령줄 유틸리티입니다. 유틸리티는 로컬 폴더 또는 Azure blob 저장소 컨테이너에서 원본 데이터를 끌어올 수 있습니다.
 LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 데이터를 수집 하려는 경우에 가장 유용 합니다. 이는 나중에 생성 된 시간에 따라 레코드를 쿼리 하 고 수집 시간이 아닌 경우에도 유용 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>전제 조건
 
 * LightIngest- [Microsoft Azure .Kusto. Tools NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 의 일부로 다운로드 합니다.
 
@@ -50,13 +50,13 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 1. `ingest-`그런 다음 수집을 관리할 Azure 데이터 탐색기 클러스터에 대 한 연결 문자열을 입력 합니다.
     연결 문자열을 큰따옴표로 묶고 [Kusto 연결 문자열 사양을](kusto/api/connection-strings/kusto.md)따릅니다.
 
-    예를 들면 다음과 같습니다.
+    예를 들면
 
     ```
     ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-### <a name="recommendations"></a>권장 사항
+### <a name="recommendations"></a>권장 구성
 
 * LightIngest가에서 수집 끝점을 사용 하는 것이 좋습니다 `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net` . 이러한 방식으로 Azure 데이터 탐색기 서비스는 수집 부하를 관리할 수 있으며 일시적인 오류를 쉽게 복구할 수 있습니다. 그러나 엔진 엔드포인트 ()로 직접 작업 하도록 LightIngest를 구성할 수도 있습니다 `https://{yourClusterNameAndRegion}.kusto.windows.net` .
 
@@ -67,15 +67,15 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 
 ## <a name="command-line-arguments"></a>명령줄 인수
 
-|인수 이름            |Type     |설명       |필수/선택 사항
+|인수 이름            |유형     |설명       |필수/선택 사항
 |------------------------------|--------|----------|-----------------------------|
 |                               |문자열   |수집을 처리 하는 Kusto 끝점을 지정 하는 [Azure 데이터 탐색기 연결 문자열](kusto/api/connection-strings/kusto.md) 입니다. 큰따옴표로 묶어야 합니다. | 필수
 |-database,-db          |문자열  |대상 Azure 데이터 탐색기 데이터베이스 이름 | 선택 사항  |
 |-테이블                  |문자열  |대상 Azure 데이터 탐색기 테이블 이름 | 필수 |
 |-sourcePath,-source      |문자열  |Blob 컨테이너의 원본 파일 또는 루트 URI에 대 한 경로입니다. 데이터가 blob에 있는 경우에는 저장소 계정 키 또는 SAS를 포함 해야 합니다. 큰따옴표로 묶는 것이 좋습니다. |필수 |
 |-접두사                  |문자열  |수집할 원본 데이터가 blob 저장소에 있는 경우이 URL 접두사는 컨테이너 이름을 제외 하 고 모든 blob에서 공유 됩니다. <br>예를 들어 데이터가에 있으면 `MyContainer/Dir1/Dir2` 접두사는 여야 합니다 `Dir1/Dir2` . 큰따옴표로 묶기를 권장 합니다. | 선택 사항  |
-|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 예들 들어 `"*.csv"`입니다. 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
-|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 예들 들어 `"*.csv"`입니다. 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 예: `"*.csv"` 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 예: `"*.csv"` 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
 |-format,-f           |문자열  | 원본 데이터 형식입니다. [지원 되는 형식](ingestion-supported-formats.md) 중 하나 여야 합니다. | 선택 사항  |
 |-ingestionMappingPath, -mappingPath |문자열  |수집 열 매핑의 로컬 파일 경로입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
 |-ingestionMappingRef, -mappingRef  |문자열  |테이블에 대해 이전에 만든 수집 열 매핑의 이름입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
@@ -168,7 +168,7 @@ To use the LightIngest command below:
 
 ### <a name="ingesting-blobs-using-a-storage-account-key-or-a-sas-token"></a>저장소 계정 키 또는 SAS 토큰을 사용 하 여 blob 수집
 
-* 지정 된 저장소 계정 `ACCOUNT` , 폴더 `DIR` , 컨테이너 아래 `CONT` 및 패턴과 일치 하는 10 개의 blob을 수집 합니다.`*.csv.gz`
+* 지정 된 저장소 계정 `ACCOUNT` , 폴더 `DIR` , 컨테이너 아래 `CONT` 및 패턴과 일치 하는 10 개의 blob을 수집 합니다. `*.csv.gz`
 * Destination은 database `DB` , table 이며 `TABLE` 대상에서 수집 매핑이 `MAPPING` 사전 생성 됩니다.
 * 이 도구는 수집 작업이 완료 될 때까지 대기 합니다.
 * 대상 데이터베이스와 저장소 계정 키 및 SAS 토큰을 지정 하는 다양 한 옵션을 확인 합니다.
@@ -196,7 +196,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True;In
 
 ### <a name="ingesting-all-blobs-in-a-container-not-including-header-rows"></a>헤더 행을 제외 하 고 컨테이너의 모든 blob을 수집 합니다.
 
-* 지정 된 저장소 계정 `ACCOUNT` , 폴더 `DIR1/DIR2` , 컨테이너 아래 `CONT` 및 패턴과 일치 하는 모든 blob을 수집 합니다.`*.csv.gz`
+* 지정 된 저장소 계정 `ACCOUNT` , 폴더 `DIR1/DIR2` , 컨테이너 아래 `CONT` 및 패턴과 일치 하는 모든 blob을 수집 합니다. `*.csv.gz`
 * Destination은 database `DB` , table 이며 `TABLE` 대상에서 수집 매핑이 `MAPPING` 사전 생성 됩니다.
 * 원본 blob에는 헤더 줄이 포함 되어 있으므로 각 blob의 첫 번째 레코드를 삭제 하도록 도구에 지시 합니다.
 * 이 도구는 수집을 위해 데이터를 게시 하 고 수집 작업이 완료 될 때까지 기다리지 않습니다.
@@ -215,8 +215,8 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
 
 ### <a name="ingesting-all-json-files-from-a-path"></a>경로에서 모든 JSON 파일 수집
 
-* 경로 아래에 있는 모든 파일 `PATH` 을 수집 합니다. 패턴과 일치 합니다.`*.json`
-* Destination이 데이터베이스 `DB` , 테이블 `TABLE` 및 수집 매핑이 로컬 파일에 정의 되어 있습니다.`MAPPING_FILE_PATH`
+* 경로 아래에 있는 모든 파일 `PATH` 을 수집 합니다. 패턴과 일치 합니다. `*.json`
+* Destination이 데이터베이스 `DB` , 테이블 `TABLE` 및 수집 매핑이 로컬 파일에 정의 되어 있습니다. `MAPPING_FILE_PATH`
 * 이 도구는 수집을 위해 데이터를 게시 하 고 수집 작업이 완료 될 때까지 기다리지 않습니다.
 
 ```
@@ -231,10 +231,10 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
 
 ### <a name="ingesting-files-and-writing-diagnostic-trace-files"></a>파일 수집 및 진단 추적 파일 쓰기
 
-* 경로 아래에 있는 모든 파일 `PATH` 을 수집 합니다. 패턴과 일치 합니다.`*.json`
-* Destination이 데이터베이스 `DB` , 테이블 `TABLE` 및 수집 매핑이 로컬 파일에 정의 되어 있습니다.`MAPPING_FILE_PATH`
+* 경로 아래에 있는 모든 파일 `PATH` 을 수집 합니다. 패턴과 일치 합니다. `*.json`
+* Destination이 데이터베이스 `DB` , 테이블 `TABLE` 및 수집 매핑이 로컬 파일에 정의 되어 있습니다. `MAPPING_FILE_PATH`
 * 이 도구는 수집을 위해 데이터를 게시 하 고 수집 작업이 완료 될 때까지 기다리지 않습니다.
-* 진단 추적 파일은 폴더에 로컬로 기록 됩니다.`LOGS_PATH`
+* 진단 추적 파일은 폴더에 로컬로 기록 됩니다. `LOGS_PATH`
 
 ```
 LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"

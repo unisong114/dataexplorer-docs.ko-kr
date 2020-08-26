@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2020
-ms.openlocfilehash: 7e5d836e25916a039a4df8e451d16e4f8a41cf18
-ms.sourcegitcommit: 537a7eaf8c8e06a5bde57503fedd1c3706dd2b45
+ms.openlocfilehash: 417d2b45e53abeba40f099a33880912a9300bc31
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/16/2020
-ms.locfileid: "86423174"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874854"
 ---
 # <a name="configure-streaming-ingestion-on-your-azure-data-explorer-cluster-using-the-azure-portal"></a>Azure Portal를 사용 하 여 Azure 데이터 탐색기 클러스터에서 스트리밍 수집 구성
 

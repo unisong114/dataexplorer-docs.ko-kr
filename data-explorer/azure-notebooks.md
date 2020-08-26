@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2020
-ms.openlocfilehash: 2f82c1f381bf377226579ca9fa3b086c1396f2d4
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.openlocfilehash: d41c9e2719ef5139d89986ff5333c03e6e34d26c
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872474"
 ---
 # <a name="use-azure-notebooks-to-analyze-data-in-azure-data-explorer"></a>Azure Notebooks를 사용 하 여 Azure 데이터 탐색기에서 데이터 분석
 
@@ -94,7 +94,7 @@ ms.locfileid: "88610392"
 
 ## <a name="execute-a-kusto-query"></a>Kusto 쿼리 실행
 
-1. Kusto 쿼리를 입력 하 고 **실행**을 선택 합니다. 다음은 그 예입니다. 
+1. Kusto 쿼리를 입력 하 고 **실행**을 선택 합니다. 예를 들면
 
     ```python
     query= "StormEvents | project State, EventType | take 10"

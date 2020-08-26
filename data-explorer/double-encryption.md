@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: toleibov
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 4a550d7596a74c3ae0bfca1718f10a69a183cc58
-ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
+ms.topic: how-to
+ms.date: 08/11/2020
+ms.openlocfilehash: e89ce6f77545b4f0b42cbb3d792edd5ceeb0ed34
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87515933"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874677"
 ---
 # <a name="enable-infrastructure-encryption-double-encryption-during-cluster-creation-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 클러스터를 만드는 동안 인프라 암호화 (이중 암호화)를 사용 하도록 설정
   
@@ -23,11 +23,20 @@ ms.locfileid: "87515933"
 > * 클러스터에서 인프라 암호화를 사용 하도록 설정한 후에는 사용 하지 않도록 설정할 **수 없습니다** .
 > * 이중 암호화는 인프라 암호화가 지원 되는 지역 에서만 사용할 수 있습니다. 자세한 내용은 [저장소 인프라 암호화](/azure/storage/common/infrastructure-encryption-enable)를 참조 하세요.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+1. [Azure 데이터 탐색기 클러스터 만들기](create-cluster-database-portal.md#create-a-cluster) 
+1. **보안** 탭에서 **이중 암호화 사용 > 설정** **을 선택 합니다**. 이중 암호화를 제거 하려면 **끄기**를 선택 합니다.
+1. **다음: 네트워크>** 또는 **검토 + 만들기** 를 선택 하 여 클러스터를 만듭니다.
+
+    :::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="이중 암호화 새 클러스터":::
+
+
 # <a name="c"></a>[C#](#tab/c-sharp)
 
 C #을 사용 하 여 클러스터를 만드는 동안 인프라 암호화를 사용 하도록 설정할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>전제 조건
 
 Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 관리 id를 설정 합니다.
 
@@ -67,7 +76,7 @@ Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 관리 id를 설
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
     
-2. 다음 명령을 실행 하 여 클러스터가 성공적으로 만들어졌는지 확인 합니다.
+1. 다음 명령을 실행 하 여 클러스터가 성공적으로 만들어졌는지 확인 합니다.
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
@@ -84,33 +93,33 @@ Azure Resource Manager 템플릿을 사용하여 Azure 리소스 배포를 자�
 ## <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 시스템 할당 id 추가
 
 1. ' EnableDoubleEncryption ' 형식을 추가 하 여 Azure에 클러스터에 대 한 인프라 암호화 (이중 암호화)를 사용 하도록 지시 합니다.
-
-```json
-{
-    "apiVersion": "2020-06-14",
-    "type": "Microsoft.Kusto/clusters",
-    "name": "[variables('clusterName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "trustedExternalTenants": [],
-        "virtualNetworkConfiguration": null,
-        "optimizedAutoscale": null,
-        "enableDiskEncryption": false,
-        "enableStreamingIngest": false,
-        "enableDoubleEncryption": true,
+    
+    ```json
+    {
+        "apiVersion": "2020-06-14",
+        "type": "Microsoft.Kusto/clusters",
+        "name": "[variables('clusterName')]",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "trustedExternalTenants": [],
+            "virtualNetworkConfiguration": null,
+            "optimizedAutoscale": null,
+            "enableDiskEncryption": false,
+            "enableStreamingIngest": false,
+            "enableDoubleEncryption": true,
+        }
     }
-}
-```
+    ```
 
-2. 클러스터를 만들면 다음과 같은 추가 속성이 있습니다.
+1. 클러스터를 만들면 다음과 같은 추가 속성이 있습니다.
 
-```json
-"identity": {
-    "type": "SystemAssigned",
-    "tenantId": "<TENANTID>",
-    "principalId": "<PRINCIPALID>"
-}
-```
+    ```json
+    "identity": {
+        "type": "SystemAssigned",
+        "tenantId": "<TENANTID>",
+        "principalId": "<PRINCIPALID>"
+    }
+    ```
 ---
 
 ## <a name="next-steps"></a>다음 단계

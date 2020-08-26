@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2019
-ms.openlocfilehash: e48b3356d01248eb34857c936f9ff2c8dfb7662a
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 398d2a4c72d1ebb0fcc4961987402fb953cb5608
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374004"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872542"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Azure 데이터 탐색기의 변칙 검색 및 예측
 
@@ -20,7 +20,7 @@ Azure 데이터 탐색기는 클라우드 서비스 또는 IoT 장치에서 원�
 
 이 문서에서는 Azure 데이터 탐색기 time series 변칙 검색 및 예측 기능을 자세히 설명 합니다. 적용 가능한 시계열 함수는 원래의 시계열이 계절, 추세 및 잔여 구성 요소로 분해 되는 강력한 잘 알려진 분해 모델을 기반으로 합니다. 이상 값은 잔여 구성 요소에서 이상 값으로 검색 되며, 예측은 계절 및 추세 구성 요소를 추정 하 여 수행 됩니다. Azure 데이터 탐색기 구현은 자동 계절성 검색, 강력한 이상 분석 및 벡터화 구현을 통해 기본 분해 모델을 크게 향상 시켜 몇 초만에 수천 개의 시계열을 처리할 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 시계열 기능 개요는 [Azure 데이터 탐색기에서 시계열 분석](time-series-analysis.md) 을 참조 하세요.
 
@@ -54,7 +54,7 @@ demo_make_series2
 
 ## <a name="time-series-anomaly-detection"></a>시계열 변칙 검색
 
-함수는 [`series_decompose_anomalies()`](kusto/query/series-decompose-anomaliesfunction.md) 시계열 집합에서 비정상 요소를 찾습니다. 이 함수 `series_decompose()` 는를 호출 하 여 분해 모델을 빌드한 다음 [`series_outliers()`](kusto/query/series-outliersfunction.md) 나머지 구성 요소에서 실행 합니다. `series_outliers()`는 Kekey의 fence 테스트를 사용 하 여 잔여 구성 요소의 변칙 점수를 계산 합니다. 1.5 이상인 1.5 이상 점수는 각각 가벼운 이상 증가 또는 거부를 의미 합니다. 3.0 이상인 이상 점수 또는-3.0은 강력한 비정상을 의미 합니다. 
+함수는 [`series_decompose_anomalies()`](kusto/query/series-decompose-anomaliesfunction.md) 시계열 집합에서 비정상 요소를 찾습니다. 이 함수 `series_decompose()` 는를 호출 하 여 분해 모델을 빌드한 다음 [`series_outliers()`](kusto/query/series-outliersfunction.md) 나머지 구성 요소에서 실행 합니다. `series_outliers()` 는 Kekey의 fence 테스트를 사용 하 여 잔여 구성 요소의 변칙 점수를 계산 합니다. 1.5 이상인 1.5 이상 점수는 각각 가벼운 이상 증가 또는 거부를 의미 합니다. 3.0 이상인 이상 점수 또는-3.0은 강력한 비정상을 의미 합니다. 
 
 다음 쿼리를 사용 하면 내부 웹 서비스 트래픽에서 변칙을 검색할 수 있습니다.
 

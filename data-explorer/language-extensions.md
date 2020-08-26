@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: orhasban
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2020
-ms.openlocfilehash: 104b3e4db18334f33c54177da7b996bc679db2de
-ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
+ms.openlocfilehash: e8868000f49845fb3dd9f5140def5863b4eafa2f
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87515892"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875211"
 ---
 # <a name="manage-language-extensions-in-your-azure-data-explorer-cluster-preview"></a>Azure 데이터 탐색기 클러스터에서 언어 확장 관리 (미리 보기)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87515892"
 > [!NOTE]
 > 현재 지원 되는 Azure 데이터 탐색기 언어 확장은 Python 및 R입니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md)를 만듭니다.

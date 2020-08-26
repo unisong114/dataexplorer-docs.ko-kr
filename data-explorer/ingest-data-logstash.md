@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: takamara
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: 0beb88cbcb2b72a79ad2d6c1ad6aac44bdcb13bc
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: b062b2da81662e89dc61720ebf6bb555f896a8ca
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350522"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874786"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Logstash에서 Azure Data Explorer로 데이터 수집
 

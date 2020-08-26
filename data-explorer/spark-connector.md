@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: maraheja
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 7/29/2020
-ms.openlocfilehash: 31aa478647b902353db9d39a5ad36b5d5830c127
-ms.sourcegitcommit: 6e84f50efc8c5c3fe57080341ed3effe72197886
+ms.openlocfilehash: 9eb10d9a87e8cf001b229d9c6c553e88ef355144
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87440000"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875279"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>Apache Spark 용 Azure 데이터 탐색기 커넥터
 
@@ -27,7 +27,7 @@ Spark에 대 한 Azure 데이터 탐색기 커넥터는 모든 Spark 클러스�
 > [!NOTE]
 > 아래 예제 중 일부는 [Azure Databricks](https://docs.azuredatabricks.net/) spark 클러스터를 참조 하지만, Azure 데이터 탐색기 spark 커넥터는 Databricks 또는 다른 spark 배포에 대 한 직접적인 종속성을 취하지 않습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 * [Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기](create-cluster-database-portal.md) 
 * Spark 클러스터 만들기

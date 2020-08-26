@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 0738df4b86fe7d602ad41e921d88501c58d8e500
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: b9a55915ebef61bef534e42ca0aef6a7c19868ac
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201654"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874956"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Event Hub에서 Azure Data Explorer로 데이터 수집
 
@@ -47,7 +47,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
     **Azure에 배포** 단추를 선택하면 Azure Portal에서 배포 양식을 작성할 수 있는 페이지로 이동하게 됩니다.
 
-    ![Deploy to Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Azure에 배포](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. 이벤트 허브를 만들려는 구독을 선택하고 이름이 *test-hub-rg*인 리소스 그룹을 만듭니다.
 
@@ -73,7 +73,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
 1. 프로비전 프로세스를 모니터링하려면 도구 모음에서 **알림**을 선택합니다. 배포가 정상적으로 완료되려면 몇 분 정도 걸릴 수 있지만 이제 다음 단계를 진행해도 됩니다.
 
-    ![공지](media/ingest-data-event-hub/notifications.png)
+    ![알림](media/ingest-data-event-hub/notifications.png)
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 대상 테이블 만들기
 

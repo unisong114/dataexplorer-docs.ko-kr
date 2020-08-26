@@ -1,30 +1,30 @@
 ---
 title: Kafka에서 Azure Data Explorer로 데이터 수집
-description: 이 문서에서는 Kafka에서 Azure 데이터 탐색기로 데이터를 수집(로드)하는 방법을 배웁니다.
+description: 이 문서에서는 Kafka에서 Azure 데이터 탐색기로 데이터를 수집 (로드) 하는 방법에 대해 알아봅니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 64b36db01bc1ab9867025723bf966279b4b4b115
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81500672"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874820"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Kafka에서 Azure Data Explorer로 데이터 수집
  
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure Data Explorer는 Kafka에서의 수집(데이터 로드)을 제공합니다. Kafka는 시스템 또는 애플리케이션 간에 데이터를 안정적으로 이동하는 실시간 스트리밍 데이터 파이프라인을 빌드할 수 있도록 하는 분산 스트리밍 플랫폼입니다.
  
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
  
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다. 
  
-* [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md).
+* [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)입니다.
  
-* 데이터를 생성하고 카프카로 전송하는 [샘플 앱입니다.](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)
+* 데이터를 생성 하 고 Kafka에 보내는 [샘플 앱](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) 입니다.
 
 * 샘플 앱을 실행하기 위한 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/).
  
@@ -131,7 +131,7 @@ cd ./azure-kusto-samples-dotnet/kafka/
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. 앱을 빌드 및 실행합니다. 앱이 Kafka 클러스터로 메시지를 전송하고 10초마다 해당 상태를 출력합니다.
+1. 앱을 빌드하여 실행합니다. 앱이 Kafka 클러스터로 메시지를 전송하고 10초마다 해당 상태를 출력합니다.
 
 1. 앱이 몇 개의 메시지를 보내면 다음 단계로 이동합니다.
  
@@ -162,4 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>다음 단계
  
-* [Azure 데이터 탐색기의 쿼리 데이터](web-query-data.md)
+* [Azure 데이터 탐색기에서 데이터 쿼리](web-query-data.md)

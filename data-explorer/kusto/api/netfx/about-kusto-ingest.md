@@ -9,16 +9,16 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 03/18/2020
-ms.openlocfilehash: a5655ac982ab65d06cdee7c93a166dce51377eed
-ms.sourcegitcommit: e66c5f4b833b4f6269bb7bfa5695519fcb11d9fa
+ms.openlocfilehash: c5a0bd91df6e12d90436e3b27a2b55021668117a
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83630073"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874344"
 ---
 # <a name="kusto-ingest-client-library"></a>Kusto 수집 클라이언트 라이브러리 
 
-`Kusto.Ingest`라이브러리는 Kusto 서비스로 데이터를 전송 하기 위한 .NET 4.6.2 라이브러리입니다.
+`Kusto.Ingest` 라이브러리는 Kusto 서비스로 데이터를 전송 하기 위한 .NET 4.6.2 라이브러리입니다.
 다음 라이브러리와 Sdk에 대 한 종속성을 가져옵니다.
 
 * Azure AD 인증용 ADAL
@@ -97,3 +97,4 @@ Kusto 서비스에 대 한 불필요 한 로드를 최소화 하려면 단일 ku
 * [Kusto. 수집 예제](kusto-ingest-client-examples.md) 에서는 데이터를 kusto로 수집 하는 다양 한 기술을 보여 주는 코드 조각을 보여 줍니다.
 
 * [Kusto. 수집 라이브러리 없이 데이터를 수집](kusto-ingest-client-rest.md) 하는 경우 KUSTO REST api를 사용 하 고 라이브러리에 종속 되지 않고 대기 중인 Kusto 수집을 구현 하는 방법을 설명 합니다. `Kusto.Ingest`
+

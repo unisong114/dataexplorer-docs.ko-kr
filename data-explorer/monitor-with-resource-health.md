@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: prvavill
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/31/2020
-ms.openlocfilehash: 297779b6431c15436e175a3269b2291340c51b79
-ms.sourcegitcommit: b8415e01464ca2ac9cd9939dc47e4c97b86bd07a
+ms.openlocfilehash: 5de30b4e6eb2ac9d01314482b693f6643075ca4a
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88028530"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872746"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Resource Health를 사용 하 여 Azure 데이터 탐색기 모니터링 (미리 보기)
 
@@ -51,14 +51,14 @@ Resource Health는 다음과 같은 다양 한 상태 검사를 검토 하 여 A
 > [!TIP]
 > [시스템 정보 명령을](kusto/management/systeminfo.md) 사용 하 여 문제의 원인을 찾을 수 있습니다.
 
-### <a name="unknown"></a>알 수 없음
+### <a name="unknown"></a>Unknown
 
 **알 수 없음** 상태는 **Resource Health** 이 Azure 데이터 탐색기 리소스에 대 한 정보를 10 분 넘게 수신 하지 못했음을 나타냅니다. 이 상태는 Azure 데이터 탐색기 리소스 상태를 명확 하 게 표시 하는 것이 아니라 문제 해결 프로세스의 중요 한 데이터 요소입니다. Azure 데이터 탐색기 클러스터가 예상 대로 작동 하는 경우 몇 분 내에 상태가 **사용 가능** 으로 변경 됩니다. **알 수 없는** 상태는 플랫폼의 이벤트가 리소스에 영향을 주는 것을 제안할 수 있습니다. 
 
 > [!TIP]
 > Azure 데이터 탐색기 클러스터 리소스 상태가 중지 됨 상태인 경우 **알** 수 없습니다.
 
-![알 수 없음](media/monitor-with-resource-health/unknown.png)
+![Unknown](media/monitor-with-resource-health/unknown.png)
 
 ## <a name="historical-information"></a>기록 정보
 

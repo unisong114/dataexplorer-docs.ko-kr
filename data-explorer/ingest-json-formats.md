@@ -5,20 +5,20 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 856749fc15a89ffe18c6b0cba92b62579c3ea8b0
-ms.sourcegitcommit: ee90472a4f9d751d4049744d30e5082029c1b8fa
+ms.openlocfilehash: 711ea8d819fbf8fc66c792a51c0ddc3844647a5e
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722136"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874752"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON 형식의 샘플 데이터를 Azure 데이터 탐색기 수집
 
 이 문서에서는 JSON 형식의 데이터를 Azure 데이터 탐색기 데이터베이스에 수집 하는 방법을 보여 줍니다. 원시 및 매핑된 JSON의 간단한 예제를 시작 하 고, 여러 줄로 된 JSON을 계속 진행 하 고, 배열 및 사전을 포함 하는 더 복잡 한 JSON 스키마를 다룰 수 있습니다.  이 예에서는 KQL (Kusto query language), c # 또는 Python을 사용 하 여 JSON 형식의 데이터를 수집 하는 프로세스를 자세히 설명 합니다. Kusto 쿼리 언어 `ingest` 제어 명령은 엔진 끝점에 직접 실행 됩니다. 프로덕션 시나리오에서 수집은 클라이언트 라이브러리 또는 데이터 연결을 사용 하 여 데이터 관리 서비스에 대해 실행 됩니다. Azure [데이터 탐색기 Python 라이브러리를 사용 하 여 데이터 수집](python-ingest-data.md) 을 읽고 [AZURE 데이터 탐색기 .NET Standard SDK를 사용 하 여 데이터를 수집 하 여](net-standard-ingest-data.md) 이러한 클라이언트 라이브러리와의 수집 데이터에 대 한 연습을 진행 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>전제 조건
 
 [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)
 
@@ -234,7 +234,7 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
     .ingest into table Events (h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D') with '{"format":"json", "ingestionMappingReference":"FlatEventMapping"}'
     ```
 
-    ' Simple. json ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.
+    ' simple.js의 ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.
 
 # <a name="c"></a>[C#](#tab/c-sharp)
 
@@ -297,7 +297,7 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
     ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
-    ' Simple. json ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.
+    ' simple.js의 ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -330,12 +330,12 @@ Python을 사용 하 여 원시 JSON 형식으로 데이터를 수집 합니다.
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-    ' Simple. json ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.    
+    ' simple.js의 ' 파일에는 몇 줄로 구분 된 JSON 레코드가 있습니다. 형식은 이며 `json` 수집 명령에 사용 된 매핑은 `FlatEventMapping` 사용자가 만든입니다.    
 ---
 
 ## <a name="ingest-multi-lined-json-records"></a>여러 줄로 이루어진 JSON 레코드 수집
 
-이 예제에서는 여러 줄로 이루어진 JSON 레코드를 수집 합니다. 각 JSON 속성은 테이블의 단일 열에 매핑됩니다. ' Multilined ' 파일에는 몇 가지 들여쓰기 된 JSON 레코드가 있습니다. 형식은 `multijson` JSON 구조에 따라 레코드를 읽도록 엔진에 지시 합니다.
+이 예제에서는 여러 줄로 이루어진 JSON 레코드를 수집 합니다. 각 JSON 속성은 테이블의 단일 열에 매핑됩니다. ' multilined.js의 ' 파일에는 몇 개의 들여쓰기 된 JSON 레코드가 있습니다. 형식은 `multijson` JSON 구조에 따라 레코드를 읽도록 엔진에 지시 합니다.
 
 # <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
@@ -677,4 +677,4 @@ INGESTION_CLIENT.ingest_from_blob(
 ## <a name="next-steps"></a>다음 단계
 
 * [데이터 수집 개요](ingest-data-overview.md)
-* [쿼리 쓰기](write-queries.md)
+* [쿼리 작성](write-queries.md)

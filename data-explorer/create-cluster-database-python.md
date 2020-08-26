@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: 60b485a7abe9f505da3ca32c4f35fbbfda101321
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: c2986fd436c5a6257efb9a537753d993a0a57169
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793882"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872015"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python을 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -26,7 +26,7 @@ ms.locfileid: "88793882"
 
 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다. Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등으로부터 대량의 데이터 스트리밍에 대한 실시간 분석을 제공하는 빠른 속도의 완전 관리형 데이터 분석 서비스입니다. Azure 데이터 탐색기을 사용 하려면 먼저 클러스터를 만들고 해당 클러스터에 하나 이상의 데이터베이스를 만듭니다. 그런 다음 데이터를 데이터베이스에 수집 하거나 로드 하 여 쿼리를 실행할 수 있도록 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * 활성 구독이 있는 Azure 계정. [체험 계정 만들기](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 

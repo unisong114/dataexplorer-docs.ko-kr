@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: e4b13b57e7a9c70464be7c754ee2b0f74dbebe4d
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5fe6776c1df631f6debc00bedabd579a9285f521
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350323"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872678"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell을 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -67,7 +67,7 @@ Azure Cloud Shell에서 명령을 실행하는 경우에는 다음 단계가 필
 
    |**설정** | **제안 값** | **필드 설명**|
    |---|---|---|
-   | Name | *mykustocluster* | 원하는 클러스터 이름입니다.|
+   | 이름 | *mykustocluster* | 원하는 클러스터 이름입니다.|
    | SKU | *D13_v2* | 클러스터에 사용될 SKU입니다. |
    | ResourceGroupName | *testrg* | 클러스터가 만들어질 리소스 그룹 이름입니다. |
 
@@ -92,7 +92,7 @@ Azure Cloud Shell에서 명령을 실행하는 경우에는 다음 단계가 필
    |**설정** | **제안 값** | **필드 설명**|
    |---|---|---|
    | ClusterName | *mykustocluster* | 데이터베이스가 만들어지는 클러스터의 이름입니다.|
-   | Name | *mykustodatabase* | 데이터베이스의 이름입니다.|
+   | 이름 | *mykustodatabase* | 데이터베이스의 이름입니다.|
    | ResourceGroupName | *testrg* | 클러스터가 만들어질 리소스 그룹 이름입니다. |
    | SoftDeletePeriod | *3650:00:00:00* | 데이터를 쿼리할 수 있도록 유지되는 시간입니다. |
    | HotCachePeriod | *3650:00:00:00* | 데이터가 캐시에 유지되는 시간입니다. |

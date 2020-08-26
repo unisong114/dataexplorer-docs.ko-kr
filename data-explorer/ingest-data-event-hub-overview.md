@@ -6,14 +6,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 5dadde42bcdade8d7839c149cf7ca335b8a49bc8
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: 8b24d6f771eaa4004b36a1b3171eb593e2fc0f6c
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88202465"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874888"
 ---
 # <a name="connect-to-event-hub"></a>Event Hub에 연결
 
@@ -92,13 +92,13 @@ eventHubClient.Close();
 |---|---|---|
 | x-opt-enqueued-time |Datetime | 이벤트를 큐에 넣은 UTC 시간 |
 | x-opt-sequence-number |long | 이벤트 허브의 파티션 스트림 내에 있는 이벤트의 논리적 시퀀스 번호입니다.
-| x-opt-offset |string | 이벤트 허브 파티션 스트림의 이벤트 오프셋입니다. 오프셋 식별자는 이벤트 허브 스트림의 파티션 내에서 고유 합니다. |
-| x opt-게시자 |string | 게시자 끝점에 메시지를 보낸 경우 게시자 이름 |
-| x-opt-partition-key |string |이벤트를 저장 한 해당 파티션의 파티션 키입니다. |
+| x-opt-offset |문자열 | 이벤트 허브 파티션 스트림의 이벤트 오프셋입니다. 오프셋 식별자는 이벤트 허브 스트림의 파티션 내에서 고유 합니다. |
+| x opt-게시자 |문자열 | 게시자 끝점에 메시지를 보낸 경우 게시자 이름 |
+| x-opt-partition-key |문자열 |이벤트를 저장 한 해당 파티션의 파티션 키입니다. |
 
 테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 속성을 포함 해야 합니다.
 
-### <a name="examples"></a>예제
+### <a name="examples"></a>예
 
 #### <a name="table-schema-example"></a>테이블 스키마 예제
 

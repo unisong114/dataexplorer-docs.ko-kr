@@ -1,18 +1,18 @@
 ---
 title: Azure 데이터 탐색기 클러스터의 상태 확인
-description: 이 문서에서는 Azure Data Explorer 클러스터의 상태를 모니터링하는 단계를 설명합니다.
+description: 이 문서에서는 Azure 데이터 탐색기 클러스터의 상태를 모니터링 하는 단계를 설명 합니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: a280d8869a3790444a97c38f792a3d9eeb6bde1d
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 85e75cafa4a89472b78a4e18b63b6c3eddcbdc51
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81496655"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872406"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Azure 데이터 탐색기 클러스터의 상태 확인
 

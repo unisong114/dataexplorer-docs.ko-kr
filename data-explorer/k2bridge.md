@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.openlocfilehash: bf479a7248033d2aa70a8e09b039814361c78031
-ms.sourcegitcommit: bcd0c96b1581e43e33aa35f4d68af6dcb4979d39
+ms.openlocfilehash: 0d6695ddf6923dcbf44ac3466a2388edc7618551
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88039236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874973"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>K2Bridge 오픈 소스 커넥터를 사용 하 여 Kibana의 Azure 데이터 탐색기에서 데이터 시각화
 
@@ -34,7 +34,7 @@ K2Bridge는 Kibana의 **검색** 탭을 지원 합니다.
 
    [![Kibana 페이지가 Azure 데이터 탐색기에 바인딩되어 있습니다.](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다음을 준비 해야 합니다.
 
@@ -94,7 +94,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a>K2Bridge 차트를 설치 합니다.
+    1. <a name="install-k2bridge-chart"></a> K2Bridge 차트를 설치 합니다.
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=latest] [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
@@ -102,7 +102,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
 
         [구성](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md)에서 전체 구성 옵션 집합을 찾을 수 있습니다.
 
-    1. <a name="install-kibana-service"></a>이전 명령의 출력은 Kibana를 배포 하는 다음 투구 명령을 제안 합니다. 필요에 따라 다음 명령을 실행 합니다.
+    1. <a name="install-kibana-service"></a> 이전 명령의 출력은 Kibana를 배포 하는 다음 투구 명령을 제안 합니다. 필요에 따라 다음 명령을 실행 합니다.
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
@@ -172,7 +172,7 @@ Azure 데이터 탐색기이 Kibana에 대 한 데이터 원본으로 구성 된
 1. 쿼리 표시줄에서 다음을 수행 하 여 데이터를 검색할 수 있습니다.
 
     * 검색 용어를 입력 합니다.
-    * Lucene 쿼리 구문을 사용 합니다. 다음은 그 예입니다.
+    * Lucene 쿼리 구문을 사용 합니다. 예를 들면
         * "오류"를 검색 하 여이 값을 포함 하는 모든 레코드를 찾습니다.
         * "상태: 200"을 검색 하 여 상태 값이 200 인 모든 레코드를 가져옵니다.
     * 논리 연산자 **and**, **OR**및 **NOT**을 사용 합니다.

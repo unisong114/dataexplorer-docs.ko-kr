@@ -5,19 +5,19 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: f8f67599872c920e323e788dd79e082fdc22e0f0
-ms.sourcegitcommit: 1faf502280ebda268cdfbeec2e8ef3d582dfc23e
+ms.openlocfilehash: 9794c9448ce8f7243d328eb039e8ca4322f3b933
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82616510"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872967"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook 및 kqlmagic 확장을 사용 하 여 Azure에서 데이터 분석 데이터 탐색기
 
 Jupyter Notebook은 라이브 코드, 수식, 시각화 및 내레이션 텍스트를 포함하는 문서를 만들고 공유할 수 있는 오픈 소스 웹 애플리케이션입니다. 사용에는 데이터 정리 및 변환, 숫자 시뮬레이션, 통계 모델링, 데이터 시각화 및 기계 학습이 포함됩니다.
-[Jupyter Notebook](https://jupyter.org/)은 추가 명령을 지원하여 커널의 기능을 확장하는 매직 함수를 지원합니다. kqlmagic는 Jupyter Notebook에서 Python 커널의 기능을 확장 하는 명령으로, Kusto 언어 쿼리를 기본적으로 실행할 수 있습니다. `render` 명령과 통합 된 리치 Plot.ly 라이브러리를 사용 하 여 Python 및 kusto 쿼리 언어와 손쉽게 통합 하 여 데이터를 쿼리하고 시각화할 수 있습니다. 쿼리 실행을 위한 데이터 원본이 지원됩니다. 이러한 데이터 원본에는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure 데이터 탐색기와 Azure Monitor 로그 및 Application Insights 포함 됩니다. 또한 kqlmagic은 Azure Notebooks, Jupyter 랩 및 Visual Studio Code Jupyter 확장을 사용 합니다.
+[Jupyter Notebook](https://jupyter.org/)은 추가 명령을 지원하여 커널의 기능을 확장하는 매직 함수를 지원합니다. kqlmagic는 Jupyter Notebook에서 Python 커널의 기능을 확장 하는 명령으로, Kusto 언어 쿼리를 기본적으로 실행할 수 있습니다. 명령과 통합 된 리치 Plot.ly 라이브러리를 사용 하 여 Python 및 Kusto 쿼리 언어와 손쉽게 통합 하 여 데이터를 쿼리하고 시각화할 수 있습니다 `render` . 쿼리 실행을 위한 데이터 원본이 지원됩니다. 이러한 데이터 원본에는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure 데이터 탐색기와 Azure Monitor 로그 및 Application Insights 포함 됩니다. 또한 kqlmagic은 Azure Notebooks, Jupyter 랩 및 Visual Studio Code Jupyter 확장을 사용 합니다.
 
 ## <a name="prerequisites"></a>전제 조건
 
@@ -128,7 +128,7 @@ df = _kql_raw_result_.to_dataframe()
 df.head(10)
 ```
 
-### <a name="example"></a>예제
+### <a name="example"></a>예
 
 다양한 분석 시나리오에서 많은 쿼리를 포함하고 한 쿼리의 결과를 후속 쿼리에 피드하는 재사용 가능한 Notebook을 만들 수 있습니다. 아래 예제에서는 Python 변수 `statefilter`를 사용하여 데이터를 필터링합니다.
 
@@ -168,7 +168,7 @@ df.head(10)
     ```
 
 > [!TIP]
-> 사용 가능한 모든 구성에 대 한 정보 `%config Kqlmagic`를 받으려면를 사용 합니다. 연결 문제 및 잘못 된 쿼리와 같은 Kusto 오류 문제를 해결 하 고 캡처하려면 다음을 사용 합니다.`%config Kqlmagic.short_errors=False`
+> 사용 가능한 모든 구성에 대 한 정보를 받으려면를 사용 `%config Kqlmagic` 합니다. 연결 문제 및 잘못 된 쿼리와 같은 Kusto 오류 문제를 해결 하 고 캡처하려면 다음을 사용 합니다. `%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>다음 단계
 

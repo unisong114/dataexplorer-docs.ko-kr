@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2020
-ms.openlocfilehash: 73d1308ab38cf032eca52f772627f0946b5ea252
-ms.sourcegitcommit: 537a7eaf8c8e06a5bde57503fedd1c3706dd2b45
+ms.openlocfilehash: 72525e15427d7c2135f881bc63e34826791050f2
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/16/2020
-ms.locfileid: "86424265"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874837"
 ---
 # <a name="configure-streaming-ingestion-on-your-azure-data-explorer-cluster-using-c"></a>C를 사용 하 여 Azure 데이터 탐색기 클러스터에서 스트리밍 수집 구성 #
 
@@ -22,7 +22,7 @@ ms.locfileid: "86424265"
 
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 * Visual Studio 2019가 설치 되어 있지 않으면 **무료** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드 하 여 사용 합니다.  Visual Studio를 설치 하는 동안 **Azure 개발** 을 사용 하도록 설정 합니다.
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.

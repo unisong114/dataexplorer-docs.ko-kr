@@ -6,14 +6,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: a98c1b07e71eecdd725790e6f64901a073f458b5
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: 8a009c82f787dac0bd4a86209b07ffc14d9ec8cf
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88202458"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874871"
 ---
 # <a name="connect-to-iot-hub"></a>IoT Hub에 연결
 
@@ -72,7 +72,7 @@ Azure 데이터 탐색기 클러스터에 대 한 IoT Hub 연결을 설정 하�
 |---|---|
 | message-id | 사용자가 설정할 수 있는 메시지에 대한 식별자는 요청-회신 패턴에 사용됩니다. |
 | sequence-number | 숫자(디바이스 큐 별로 고유함)는 IoT Hub에서 각 클라우드-디바이스 메시지에 할당됩니다. |
-| 다음으로 변경: | 클라우드-디바이스 메시지에 지정된 대상입니다. |
+| 을 | 클라우드-디바이스 메시지에 지정된 대상입니다. |
 | absolute-expiry-time | 메시지 만료 날짜 및 시간입니다. |
 | iothub-enqueuedtime | IoT Hub에서 디바이스-클라우드 메시지를 수신한 날짜 및 시간입니다. |
 | correlation-id| 일반적으로 요청-응답 패턴으로 요청의 MessageId가 포함된 응답 메시지의 String 속성입니다. |
@@ -84,7 +84,7 @@ Azure 데이터 탐색기 클러스터에 대 한 IoT Hub 연결을 설정 하�
 
 테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 속성을 포함 해야 합니다.
 
-### <a name="examples"></a>예제 
+### <a name="examples"></a>예 
 
 #### <a name="table-schema-example"></a>테이블 스키마 예제
 

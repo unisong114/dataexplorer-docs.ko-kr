@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: 4665064a645ad0001251a0c7246c9d799ff6e638
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 7825f7fad16d8194d1e97008e9958d30ca20ddd5
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780493"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875160"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure 데이터 탐색기의 기계 학습 기능
 
@@ -178,9 +178,9 @@ demo_clustering1
 
 ## <a name="clustering-the-difference-between-two-records-sets"></a>두 레코드 집합의 차이점 클러스터링
 
-[`diffpatterns()`](kusto/query/diffpatternsplugin.md)플러그 인은 및의 제한을 극복 합니다 `autocluster` `basket` . `Diffpatterns`두 개의 레코드 집합을 사용 하 고 다른 기본 세그먼트를 추출 합니다. 한 집합은 일반적으로 조사 중인 비정상 레코드 집합을 포함 합니다. 하나는 및에서 분석 됩니다 `autocluster` `basket` . 다른 집합에는 참조 레코드 집합인 기준이 포함 됩니다.
+[`diffpatterns()`](kusto/query/diffpatternsplugin.md)플러그 인은 및의 제한을 극복 합니다 `autocluster` `basket` . `Diffpatterns` 두 개의 레코드 집합을 사용 하 고 다른 기본 세그먼트를 추출 합니다. 한 집합은 일반적으로 조사 중인 비정상 레코드 집합을 포함 합니다. 하나는 및에서 분석 됩니다 `autocluster` `basket` . 다른 집합에는 참조 레코드 집합인 기준이 포함 됩니다.
 
-아래 쿼리에서는 기본에 `diffpatterns` 포함 된 클러스터와는 다른 스파이크의 2 분 내에 흥미로운 클러스터를 찾습니다. 스파이크가 시작 되 면 기준선 창은 15:00 이전의 8 분으로 정의 됩니다. 이진 열 (AB)으로 확장 하 고 특정 레코드가 기준 또는 비정상 집합에 속하는지 여부를 지정 합니다. `Diffpatterns`두 클래스 레이블이 비정상 및 기준 플래그 (AB)에서 생성 된 감독 학습 알고리즘을 구현 합니다.
+아래 쿼리에서는 기본에 `diffpatterns` 포함 된 클러스터와는 다른 스파이크의 2 분 내에 흥미로운 클러스터를 찾습니다. 스파이크가 시작 되 면 기준선 창은 15:00 이전의 8 분으로 정의 됩니다. 이진 열 (AB)으로 확장 하 고 특정 레코드가 기준 또는 비정상 집합에 속하는지 여부를 지정 합니다. `Diffpatterns` 두 클래스 레이블이 비정상 및 기준 플래그 (AB)에서 생성 된 감독 학습 알고리즘을 구현 합니다.
 
 **\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA)**\]**
 
@@ -227,6 +227,6 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 
 ## <a name="summary"></a>요약
 
-Azure 데이터 탐색기 Machine Learning 플러그 인은 많은 시나리오에서 유용 합니다. `autocluster`및는 `basket` 자율 학습 알고리즘을 구현 하 고 사용 하기 쉽습니다. `Diffpatterns`는 감독 된 학습 알고리즘을 구현 하 고 더 복잡 한 경우에는 RCA에 대 한 차별화 세그먼트를 추출 하는 것이 더 강력 합니다.
+Azure 데이터 탐색기 Machine Learning 플러그 인은 많은 시나리오에서 유용 합니다. `autocluster`및는 `basket` 자율 학습 알고리즘을 구현 하 고 사용 하기 쉽습니다. `Diffpatterns` 는 감독 된 학습 알고리즘을 구현 하 고 더 복잡 한 경우에는 RCA에 대 한 차별화 세그먼트를 추출 하는 것이 더 강력 합니다.
 
 이러한 플러그 인은 임시 시나리오 및 자동 거의 실시간 모니터링 서비스에서 대화형으로 사용 됩니다. Azure 데이터 탐색기에서 시계열 변칙 검색 후에는 진단 프로세스가 수행 됩니다. 이 프로세스는 필요한 성능 표준을 충족 하도록 최적화 되어 있습니다.

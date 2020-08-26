@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/14/2019
-ms.openlocfilehash: 61a43f767ea1f2bf048357e4032bb69025a85ad0
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 196bfdd69b5fc73676dc39c0d8fae92682cc2f93
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351627"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875126"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure 데이터 탐색기 클러스터에 올바른 VM SKU를 선택 합니다. 
 
@@ -47,7 +47,7 @@ Azure 데이터 탐색기 클러스터를 만들 때 계획 된 워크 로드에
 
 사용 가능한 SKU 유형 간의 주요 차이점은 다음 테이블에 설명 되어 있습니다.
  
-| attribute | D SKU | L SKU |
+| 특성 | D SKU | L SKU |
 |---|---|---
 |**소형 Sku**|최소 크기는 2 개 코어를 사용 합니다.|최소 크기는 4 개 코어를 사용 하는 L4입니다. |
 |**가용성**|모든 지역에서 사용 가능 (DS + PS 버전의 가용성이 제한 됨)|몇 개 지역에서 사용 가능 |

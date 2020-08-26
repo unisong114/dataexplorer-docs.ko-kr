@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: astauben
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/01/2020
-ms.openlocfilehash: bc8ce7a3d85a64a2a19e4194e7c9e6ab23b0fef6
-ms.sourcegitcommit: a7e040fc844098323aa1c00e254bcbcd41fe587f
+ms.openlocfilehash: c343ac1177e439f75116a3da77def5862d5d2a7f
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84426537"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88872134"
 ---
 # <a name="configure-customer-managed-keys-using-azure-cli"></a>Azure CLI를 사용 하 여 고객 관리 키 구성
 

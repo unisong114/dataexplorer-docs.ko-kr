@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/05/2019
-ms.openlocfilehash: 5187b6b91e18fa8e41e2be6480067e3c53b0bc54
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: 50e949d7ef15948dd46f5553fad8d10dad5faa96
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793913"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875058"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer Python 라이브러리를 사용하여 데이터 쿼리
 
@@ -22,7 +22,7 @@ Azure 데이터 탐색기는 [Python에 대한 데이터 클라이언트 라이�
 
 이 문서는 [Azure 노트북](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)으로도 사용할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>전제 조건
 
 * [Python 3.4 이상](https://www.python.org/downloads/)
 

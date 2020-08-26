@@ -5,20 +5,20 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 57f3ae587f449739f7e3aaaa0aa817530447097e
-ms.sourcegitcommit: 98eabf249b3f2cc7423dade0f386417fb8e36ce7
+ms.openlocfilehash: 58b384b502683b69020c1f211345bfcec8c095b5
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82868730"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874276"
 ---
 # <a name="azure-data-explorer-connector-to-power-automate-preview"></a>파워 자동화를 위한 Azure 데이터 탐색기 커넥터 (미리 보기)
 
 Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색기에서 [Microsoft 파워 자동화](https://flow.microsoft.com/)의 흐름 기능을 사용할 수 있습니다. 예약 되거나 트리거된 작업의 일부로 Kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다.
 
-다음과 같습니다.
+다음을 수행할 수 있습니다.
 
 * 테이블 및 차트를 포함 하는 일별 보고서를 보냅니다.
 * 쿼리 결과를 기반으로 알림을 설정 합니다.
@@ -46,7 +46,7 @@ Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색
 
    ![컨트롤 실행 명령 및 결과 시각화의 스크린샷](./media/flow/flow-addconnection.png)
 
-1. **서비스 사용자와** **새 연결** > 연결 추가를 선택 합니다.
+1. 서비스 사용자와 **새 연결 연결 추가**  >  **를**선택 합니다.
 
    ![서비스 사용자로 연결 옵션을 사용 하 여 Azure 데이터 탐색기 로그인 프롬프트의 스크린샷](./media/flow/flow-signin.png)
 
@@ -68,7 +68,7 @@ Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색
 
 Flow 커넥터를 사용 하려면 먼저 트리거를 추가 해야 합니다. 반복 된 기간에 따라 또는 이전 흐름 동작에 대 한 응답으로 트리거를 정의할 수 있습니다.
 
-1. [새 흐름을 만들거나](https://flow.microsoft.com/manage/flows/new)Microsoft Power 자동화 홈 페이지에서 **내 흐름** > **+ 새로**만들기를 선택 합니다.
+1. [새 흐름을 만들거나](https://flow.microsoft.com/manage/flows/new)Microsoft Power 자동화 홈 페이지에서 **내 흐름**  >  **+ 새로**만들기를 선택 합니다.
 
     ![내 흐름과 새로 강조 표시 된 Microsoft Power 자동화 홈 페이지의 스크린샷](./media/flow/flow-newflow.png)
 
@@ -80,7 +80,7 @@ Flow 커넥터를 사용 하려면 먼저 트리거를 추가 해야 합니다. 
     
     ![흐름 이름 옵션이 강조 표시 된 예약 된 흐름 페이지 작성의 스크린샷](./media/flow/flow-build-scheduled-flow.png)
 
-1. **만들기** > **+ 새 단계**를 선택 합니다.
+1. **만들기**  >  **+ 새 단계**를 선택 합니다.
 1. 검색 상자에 *Kusto*를 입력 하 고 **Azure 데이터 탐색기**를 선택 합니다.
 
     ![검색 상자 및 Azure 데이터 탐색기 강조 표시 된 작업 옵션 선택의 스크린샷](./media/flow/flow-actions.png)
@@ -95,7 +95,7 @@ Azure 데이터 탐색기 커넥터를 열면 흐름에 추가할 수 있는 세
 
 이 작업을 사용 하 여 [제어 명령을](kusto/management/index.md)실행 합니다.
 
-1. 클러스터 URL을 지정 합니다. `https://clusterName.eastus.kusto.windows.net`)을 입력합니다.
+1. 클러스터 URL을 지정 합니다. 예: `https://clusterName.eastus.kusto.windows.net`
 1. 데이터베이스의 이름을 입력합니다.
 1. 제어 명령을 지정 합니다.
    - 흐름에서 사용 되는 앱과 커넥터에서 동적 콘텐츠를 선택 합니다.

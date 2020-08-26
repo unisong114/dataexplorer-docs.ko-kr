@@ -5,110 +5,110 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: herauch
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2020
-ms.openlocfilehash: 7bbb8064cd71e61b6fdfb1205e783099ec21c687
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 5cffee705c6a9225112e7ada8154084de40035c4
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81501595"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875024"
 ---
-# <a name="create-an-azure-active-directory-application-registration-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 Azure Active 디렉터리 응용 프로그램 등록 만들기
+# <a name="create-an-azure-active-directory-application-registration-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 Azure Active Directory 응용 프로그램 등록 만들기
 
-Azure Active Directory(Azure AD) 응용 프로그램 인증은 사용자가 없는 Azure Data Explorer에 액세스해야 하는 무인 서비스 또는 예약된 흐름과 같은 응용 프로그램에 사용됩니다. 웹 앱과 같은 응용 프로그램을 사용하여 Azure Data Explorer 데이터베이스에 연결하는 경우 서비스 주체 인증을 사용하여 인증해야 합니다. 이 문서에서는 Azure AD 서비스 주체를 만들고 등록한 다음 Azure Data Explorer 데이터베이스에 액세스할 수 있는 권한을 부여하는 방법을 자세히 설명합니다.
+Azure Active Directory (Azure AD) 응용 프로그램 인증은 사용자가 없는 Azure 데이터 탐색기에 액세스 해야 하는 무인 서비스 또는 예약 된 흐름과 같은 응용 프로그램에 사용 됩니다. 웹 앱과 같은 응용 프로그램을 사용 하 여 Azure 데이터 탐색기 데이터베이스에 연결 하는 경우 서비스 주체 인증을 사용 하 여 인증 해야 합니다. 이 문서에서는 Azure AD 서비스 주체를 만들고 등록 한 다음 Azure 데이터 탐색기 데이터베이스에 액세스 하도록 권한을 부여 하는 방법에 대해 자세히 설명 합니다.
 
 ## <a name="create-azure-ad-application-registration"></a>Azure AD 응용 프로그램 등록 만들기
 
-Azure AD 응용 프로그램 인증을 사용하려면 Azure AD를 사용 하 여 응용 프로그램을 만들고 등록 해야 합니다. 서비스 주체는 Azure AD 테넌트에서 응용 프로그램 등록을 만들 때 자동으로 만들어집니다. 
+Azure AD 응용 프로그램 인증을 사용 하려면 Azure AD에 응용 프로그램을 만들고 등록 해야 합니다. 서비스 주체는 Azure AD 테 넌 트에서 응용 프로그램 등록을 만들 때 자동으로 생성 됩니다. 
 
-1. [Azure 포털에](https://portal.azure.com) 로그인하고 `Azure Active Directory` 블레이드를 엽니다.
+1. [Azure Portal](https://portal.azure.com) 에 로그인 하 여 블레이드를 엽니다. `Azure Active Directory`
 
-    ![포털 메뉴에서 Azure 활성 디렉터리 선택](media/provision-azure-ad-app/create-app-reg-select-azure-active-directory.png)
+    ![포털 메뉴에서 Azure Active Directory 선택](media/provision-azure-ad-app/create-app-reg-select-azure-active-directory.png)
 
-1. 앱 등록 블레이드를 선택하고 **새 등록을** **선택합니다.**
+1. **앱 등록** 블레이드를 선택 하 고 **새 등록** 을 선택 합니다.
 
     ![새 앱 등록 시작](media/provision-azure-ad-app/create-app-reg-new-registration.png)
 
 1. 다음 정보를 입력합니다. 
 
     * **이름** 
-    * **지원되는 계정 유형**
-    * **URI** > **웹** 리디렉션
+    * **지원 되는 계정 유형**
+    * **리디렉션 URI**  >  **웹**
         > [!IMPORTANT] 
-        > 응용 프로그램 유형은 **웹**이어야 합니다. URI는 선택 사항이며 이 경우 비어 있습니다.
-    * **레지스터** 선택
+        > 응용 프로그램 유형은 **웹**이어야 합니다. URI는 선택 사항이 며이 경우 비어 있습니다.
+    * **등록**을 선택합니다.
 
-    ![새 앱 등록](media/provision-azure-ad-app/create-app-reg-register-app.png)
+    ![새 앱 등록 등록](media/provision-azure-ad-app/create-app-reg-register-app.png)
 
-1. **개요** 블레이드를 선택하고 **응용 프로그램 ID를**복사합니다.
+1. **개요** 블레이드를 선택 하 고 **응용 프로그램 ID**를 복사 합니다.
 
     > [!NOTE]
-    > 서비스 주체가 데이터베이스에 액세스하도록 권한을 부여하려면 응용 프로그램 ID가 필요합니다.
+    > 데이터베이스에 액세스할 수 있도록 서비스 사용자에 게 권한을 부여 하려면 응용 프로그램 ID가 필요 합니다.
 
     ![앱 등록 ID 복사](media/provision-azure-ad-app/create-app-reg-copy-applicationid.png)
 
-1. 인증서 **& 비밀** 블레이드에서 **새 클라이언트 비밀을** 선택합니다.
+1. **인증서 & 비밀** 블레이드에서 **새 클라이언트 암호** 를 선택 합니다.
 
-    ![클라이언트 비밀 만들기 시작](media/provision-azure-ad-app/create-app-reg-new-client-secret.png)
+    ![클라이언트 암호 만들기 시작](media/provision-azure-ad-app/create-app-reg-new-client-secret.png)
 
     > [!TIP]
-    > 이 문서에서는 응용 프로그램의 자격 증명에 대 한 클라이언트 비밀을 사용 하 여 설명 합니다.  X509 인증서를 사용하여 응용 프로그램을 인증할 수도 있습니다. **인증서 업로드를** 선택하고 지침에 따라 인증서의 공개 부분을 업로드합니다.
+    > 이 문서에서는 응용 프로그램의 자격 증명에 클라이언트 암호를 사용 하는 방법을 설명 합니다.  X509 인증서를 사용 하 여 응용 프로그램을 인증할 수도 있습니다. **인증서 업로드** 를 선택 하 고 지침에 따라 인증서의 공개 부분을 업로드 합니다.
 
-1. 설명, 만료를 입력하고 **추가를** 선택합니다.
+1. 설명, 만료를 입력 하 고 **추가** 를 선택 합니다.
 
     ![클라이언트 비밀 매개 변수 입력](media/provision-azure-ad-app/create-app-reg-enter-client-secret-details.png)
 
 1. 키 값을 복사합니다.
 
     > [!NOTE]
-    > 이 페이지를 나가면 키 값에 액세스할 수 없습니다.  데이터베이스에 클라이언트 자격 증명을 구성하려면 키가 필요합니다.
+    > 이 페이지를 벗어나면 키 값에 액세스할 수 없습니다.  데이터베이스에 대 한 클라이언트 자격 증명을 구성 하려면 키가 필요 합니다.
 
     ![클라이언트 비밀 키 값 복사](media/provision-azure-ad-app/create-app-reg-copy-client-secret.png)
 
-응용 프로그램이 만들어집니다. 아래 프로그래밍 예제와 같이 권한이 부여된 Azure Data Explorer 리소스에만 액세스해야 하는 경우 다음 섹션을 건너뜁니다. 위임된 사용 권한 지원의 경우 [응용 프로그램 등록에 대해 위임된 사용 권한 구성을](#configure-delegated-permissions-for-the-application-registration)참조하십시오.
+응용 프로그램이 만들어집니다. 아래의 프로그래밍 예제에서와 같이 권한 있는 Azure 데이터 탐색기 리소스에만 액세스 해야 하는 경우 다음 섹션을 건너뜁니다. 위임 된 권한 지원은 [응용 프로그램 등록에 대 한 위임 된 권한 구성](#configure-delegated-permissions-for-the-application-registration)을 참조 하세요.
 
-## <a name="configure-delegated-permissions-for-the-application-registration"></a>응용 프로그램 등록에 대해 위임된 권한 구성
+## <a name="configure-delegated-permissions-for-the-application-registration"></a>응용 프로그램 등록에 대 한 위임 된 권한 구성
 
-응용 프로그램이 호출하는 사용자의 자격 증명을 사용하여 Azure Data Explorer에 액세스해야 하는 경우 응용 프로그램 등록에 대해 위임된 권한을 구성합니다. 예를 들어 Azure Data Explorer에 액세스하기 위해 웹 API를 빌드하는 경우 API를 *호출하는* 사용자의 자격 증명을 사용하여 인증하려는 경우  
+응용 프로그램에서 호출 하는 사용자의 자격 증명을 사용 하 여 Azure 데이터 탐색기에 액세스 해야 하는 경우 응용 프로그램 등록에 대 한 위임 된 권한을 구성 합니다. 예를 들어 Azure 데이터 탐색기에 액세스 하는 web API를 빌드하고 API를 *호출* 하는 사용자의 자격 증명을 사용 하 여 인증 하려는 경우를 예로 들 수 있습니다.  
 
-1. API 권한 블레이드에서 **권한 추가를** **선택합니다.**
-1. **조직에서 사용하는 API를**선택합니다. Azure 데이터 **탐색기를**검색하고 선택합니다.
+1. **API 권한** 블레이드에서 **사용 권한 추가**를 선택 합니다.
+1. **내 조직에서 사용 하는 api**를 선택 합니다. **Azure 데이터 탐색기**을 검색 하 고 선택 합니다.
 
     ![Azure 데이터 탐색기 API 권한 추가](media/provision-azure-ad-app/configure-delegated-add-api-permission.png)
 
-1. **위임된 사용 권한에서** **user_impersonation** 상자를 선택하고 **사용 권한 추가**
+1. **위임 된 권한**에서 **user_impersonation** 상자를 선택 하 고 **사용 권한을 추가** 합니다.
 
-    ![사용자 가장을 사용하여 위임된 권한 선택](media/provision-azure-ad-app/configure-delegated-click-add-permissions.png)     
+    ![사용자 가장을 사용 하 여 위임 된 권한 선택](media/provision-azure-ad-app/configure-delegated-click-add-permissions.png)     
 
-## <a name="grant-the-service-principal-access-to-an-azure-data-explorer-database"></a>Azure 데이터 탐색기 데이터베이스에 서비스 주체 액세스 권한 부여
+## <a name="grant-the-service-principal-access-to-an-azure-data-explorer-database"></a>서비스 사용자에 게 Azure 데이터 탐색기 데이터베이스에 대 한 액세스 권한 부여
 
-서비스 주체 응용 프로그램 등록이 만들어졌으면 Azure Data Explorer 데이터베이스에 해당 서비스 주체 액세스 권한을 부여해야 합니다. 
+이제 서비스 주체 응용 프로그램 등록을 만들었으므로 Azure 데이터 탐색기 데이터베이스에 대 한 해당 서비스 주체 액세스 권한을 부여 해야 합니다. 
 
-1. 웹 [UI에서](https://dataexplorer.azure.com/)데이터베이스에 연결하고 쿼리 탭을 엽니다.
+1. [웹 UI](https://dataexplorer.azure.com/)에서 데이터베이스에 연결 하 고 쿼리 탭을 엽니다.
 
-1. 다음 명령을 실행하십시오.
+1. 다음 명령을 실행합니다.
 
     ```kusto
     .add database <DatabaseName> viewers ('<ApplicationId>') '<Notes>'
     ```
 
-    다음은 그 예입니다.
+    예를 들면
     
     ```kusto
     .add database Logs viewers ('aadapp=f778b387-ba15-437f-a69e-ed9c9225278b') 'Azure Data Explorer App Registration'
     ```
 
-    마지막 매개 변수는 데이터베이스와 연결된 역할을 쿼리할 때 메모로 표시되는 문자열입니다.
+    마지막 매개 변수는 데이터베이스와 연결 된 역할을 쿼리할 때 메모로 표시 되는 문자열입니다.
     
     > [!NOTE]
-    > 응용 프로그램 등록을 만든 후 Azure Data 탐색기가 응용 프로그램을 참조할 수 있을 때까지 몇 분 지연될 수 있습니다. 명령을 실행할 때 응용 프로그램을 찾을 수 없다는 오류가 발생하면 기다렸다가 다시 시도하십시오.
+    > 응용 프로그램 등록을 만든 후 Azure 데이터 탐색기에서 참조할 수 있을 때까지 몇 분 지연 될 수 있습니다. 명령을 실행할 때 응용 프로그램을 찾을 수 없다는 오류가 표시 되 면 기다렸다가 다시 시도 합니다.
 
-자세한 내용은 [보안 역할 관리](kusto/management/security-roles.md) 및 수집 [권한을](kusto/api/netfx/kusto-ingest-client-permissions.md)참조하십시오.  
+자세한 내용은 [보안 역할 관리](kusto/management/security-roles.md) 및 수집 [권한](kusto/api/netfx/kusto-ingest-client-permissions.md)을 참조 하세요.  
 
-## <a name="using-application-credentials-to-access-a-database"></a>응용 프로그램 자격 증명을 사용하여 데이터베이스에 액세스
+## <a name="using-application-credentials-to-access-a-database"></a>응용 프로그램 자격 증명을 사용 하 여 데이터베이스 액세스
 
-응용 프로그램 자격 증명을 사용하여 Azure Data [Explorer 클라이언트 라이브러리를](kusto/api/netfx/about-kusto-data.md)사용하여 데이터베이스에 프로그래밍 방식으로 액세스합니다.
+응용 프로그램 자격 증명을 사용 하 여 [Azure 데이터 탐색기 클라이언트 라이브러리](kusto/api/netfx/about-kusto-data.md)를 통해 프로그래밍 방식으로 데이터베이스에 액세스 합니다.
 
 ```C#
 . . .
@@ -125,28 +125,28 @@ var queryResult = client.ExecuteQuery($"{query}");
 ```
 
    > [!NOTE]
-   > 이전에 만든 응용 프로그램 ID와 응용 프로그램 등록(서비스 주체)의 키를 지정합니다.
+   > 이전에 만든 응용 프로그램 등록 (서비스 사용자)의 응용 프로그램 id 및 키를 지정 합니다.
 
-자세한 내용은 [Azure 데이터 탐색기 액세스에 대한 Azure AD를 사용하여 인증하고](kusto/management/access-control/how-to-authenticate-with-aad.md) [.NET Core 웹 앱에서 Azure 키 자격 증명 모음을 사용합니다.](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app)
+자세한 내용은 Azure를 사용 [하 여 AZURE AD 인증 데이터 탐색기](kusto/management/access-control/how-to-authenticate-with-aad.md) [.net Core 웹 앱을 사용 하 여 Azure Key Vault](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app)액세스 및 사용을 참조 하세요.
 
 ## <a name="troubleshooting"></a>문제 해결
 
-### <a name="invalid-resource-error"></a>잘못된 리소스 오류
+### <a name="invalid-resource-error"></a>잘못 된 리소스 오류
 
-응용 프로그램이 Azure Data Explorer 액세스에 대한 사용자 또는 응용 프로그램을 인증하는 데 사용되는 경우 Azure Data Explorer 서비스 응용 프로그램에 대해 위임된 권한을 설정해야 합니다. 응용 프로그램이 Azure Data Explorer 액세스에 대한 사용자 또는 응용 프로그램을 인증할 수 있다고 선언합니다. 이렇게 하지 않으면 인증을 시도할 때 다음과 유사한 오류가 발생합니다.
+응용 프로그램을 사용 하 여 Azure 데이터 탐색기 액세스용 사용자 또는 응용 프로그램을 인증 하는 경우 Azure 데이터 탐색기 서비스 응용 프로그램에 대 한 위임 된 권한을 설정 해야 합니다. 응용 프로그램을 선언 하 여 Azure 데이터 탐색기 액세스를 위해 사용자 또는 응용 프로그램을 인증할 수 있습니다. 이렇게 하지 않으면 인증 시도가 수행 될 때 다음과 유사한 오류가 발생 합니다.
 
 `AADSTS650057: Invalid resource. The client has requested access to a resource which is not listed in the requested permissions in the client's application registration...`
 
-[Azure Data Explorer 서비스 응용 프로그램에 대해 위임된 사용 권한 설정에 대한](#configure-delegated-permissions-for-the-application-registration)지침을 따라야 합니다.
+[Azure 데이터 탐색기 서비스 응용 프로그램에 대 한 위임 된 권한 설정](#configure-delegated-permissions-for-the-application-registration)에 대 한 지침을 따라야 합니다.
 
-### <a name="enable-user-consent-error"></a>사용자 동의 오류 사용
+### <a name="enable-user-consent-error"></a>사용자 동의 사용 오류
 
-Azure AD 테넌트 관리자는 테넌트 사용자가 응용 프로그램에 동의하지 못하도록 하는 정책을 제정할 수 있습니다. 이 경우 사용자가 응용 프로그램에 로그인하려고 할 때 다음과 유사한 오류가 발생합니다.
+Azure AD 테 넌 트 관리자는 테 넌 트 사용자가 응용 프로그램에 동의 하지 못하도록 하는 정책을 시행할 수 있습니다. 이 경우 사용자가 응용 프로그램에 로그인 하려고 하면 다음과 같은 오류가 발생 합니다.
 
 `AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
 
-테넌트의 모든 사용자에 대한 동의를 부여하거나 특정 응용 프로그램에 대한 사용자 동의를 사용하도록 설정하려면 Azure AD 관리자에게 문의해야 합니다.
+테 넌 트의 모든 사용자에 게 동의를 부여 하거나 특정 응용 프로그램에 대 한 사용자 동의를 사용 하도록 설정 하려면 Azure AD 관리자에 게 문의 해야 합니다.
 
 ## <a name="next-steps"></a>다음 단계
 
-* 지원되는 연결 문자열 목록은 [Kusto 연결 문자열을](kusto/api/connection-strings/kusto.md) 참조하십시오.
+* 지원 되는 연결 문자열 목록은 [Kusto 연결 문자열](kusto/api/connection-strings/kusto.md) 을 참조 하세요.

@@ -5,14 +5,14 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.openlocfilehash: 59392c8ff555df99ccb7c4a5b7503266cb095552
-ms.sourcegitcommit: d9fbcd6c9787f90de62e8e832c92d43b8090cbfc
+ms.openlocfilehash: 121d9d3839b86b302fc15e9299797ac3ae3c6835
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87515841"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874735"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Azure 데이터 탐색기 클러스터에 대 한 관리 id 구성
 
@@ -60,7 +60,7 @@ ms.locfileid: "87515841"
 
 ### <a name="add-a-system-assigned-identity-using-c"></a>C를 사용 하 여 시스템 할당 id 추가 #
 
-#### <a name="prerequisites"></a>사전 요구 사항
+#### <a name="prerequisites"></a>전제 조건
 
 Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 관리 id를 설정 하려면:
 
@@ -113,7 +113,7 @@ Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 관리 id를 설
     var tenantId = cluster.Identity.TenantId;
     ```
 
-`PrincipalId`및 `TenantId` 는 guid로 대체 됩니다. `TenantId`속성은 id가 속하는 AAD 테 넌 트를 식별 합니다. 는 `PrincipalId` 클러스터의 새 id에 대 한 고유 식별자입니다. AAD 내에서 서비스 주체는 사용자가 App Service 또는 Azure Functions 인스턴스에 지정한 이름과 동일한 이름을 갖습니다.
+`PrincipalId` 및 `TenantId` 는 guid로 대체 됩니다. `TenantId`속성은 id가 속하는 AAD 테 넌 트를 식별 합니다. 는 `PrincipalId` 클러스터의 새 id에 대 한 고유 식별자입니다. AAD 내에서 서비스 주체는 사용자가 App Service 또는 Azure Functions 인스턴스에 지정한 이름과 동일한 이름을 갖습니다.
 
 # <a name="arm-template"></a>[ARM 템플릿](#tab/arm)
 
@@ -129,7 +129,7 @@ Azure Resource Manager 템플릿을 사용하여 Azure 리소스 배포를 자�
 }    
 ```
 
-예를 들면 다음과 같습니다.
+예를 들면
 
 ```json
 {
@@ -160,7 +160,7 @@ Azure Resource Manager 템플릿을 사용하여 Azure 리소스 배포를 자�
 }
 ```
 
-`<TENANTID>`및 `<PRINCIPALID>` 는 guid로 대체 됩니다. `TenantId`속성은 id가 속하는 AAD 테 넌 트를 식별 합니다. 는 `PrincipalId` 클러스터의 새 id에 대 한 고유 식별자입니다. AAD 내에서 서비스 주체는 사용자가 App Service 또는 Azure Functions 인스턴스에 지정한 이름과 동일한 이름을 갖습니다.
+`<TENANTID>` 및 `<PRINCIPALID>` 는 guid로 대체 됩니다. `TenantId`속성은 id가 속하는 AAD 테 넌 트를 식별 합니다. 는 `PrincipalId` 클러스터의 새 id에 대 한 고유 식별자입니다. AAD 내에서 서비스 주체는 사용자가 App Service 또는 Azure Functions 인스턴스에 지정한 이름과 동일한 이름을 갖습니다.
 
 ---
 

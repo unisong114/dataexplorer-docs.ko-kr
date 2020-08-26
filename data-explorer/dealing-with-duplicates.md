@@ -1,18 +1,18 @@
 ---
 title: Azure 데이터 탐색기에서 중복 데이터 처리
-description: 이 항목에서는 Azure Data Explorer를 사용할 때 중복 데이터를 처리하는 다양한 방법을 보여 줄 것입니다.
+description: 이 항목에서는 Azure 데이터 탐색기를 사용 하는 경우 중복 데이터를 처리 하는 다양 한 방법을 보여 줍니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.openlocfilehash: 681bb931f2ccb4291d7e186024ca89168b579e0a
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: ef71c978681c9e355e82791d4df3ad7da8db66f7
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81499047"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88874701"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 중복 데이터 처리
 
@@ -41,13 +41,13 @@ _data
 
 ## <a name="solutions-for-handling-duplicate-data"></a>중복 데이터 처리 방법
 
-### <a name="solution-1-dont-remove-duplicate-data"></a>솔루션 #1: 중복 데이터를 제거하지 마십시오.
+### <a name="solution-1-dont-remove-duplicate-data"></a>솔루션 #1: 중복 데이터를 제거 하지 않음
 
 비즈니스 요구 사항 및 중복 데이터 허용치를 파악하세요. 일부 데이터 세트는 일정 비율의 중복 데이터를 사용하여 관리할 수 있습니다. 중복 데이터가 큰 영향을 주지 않는다면 무시해도 됩니다. 중복 데이터를 제거하지 않을 경우 수집 프로세스나 쿼리 성능에 추가적인 부담을 주지 않는다는 장점이 있습니다.
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>솔루션 #2: 쿼리 중에 중복 행 처리
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>솔루션 #2: 쿼리 중 중복 행 처리
 
-또 다른 옵션은 쿼리 중 데이터의 중복 행을 필터링하는 것입니다. 집계된 함수를 [`arg_max()`](kusto/query/arg-max-aggfunction.md) 사용하여 중복 레코드를 필터링하고 타임스탬프(또는 다른 열)를 기반으로 마지막 레코드를 반환할 수 있습니다. 이 방법을 사용할 경우 쿼리 중에 중복 제거가 수행되므로 수집 시간이 단축된다는 장점이 있습니다. 또한 중복 항목을 포함한 모든 레코드를 감사 및 문제 해결에 사용할 수 있습니다. `arg_max` 함수 사용 시 데이터가 쿼리될 때마다 쿼리 시간과 CPU 로드가 늘어난다는 단점이 있습니다. 쿼리 중인 데이터 양에 따라 이 해결 방법이 효과가 없거나 메모리를 소모할 수 있으며, 이 경우 다른 옵션으로 전환해야 합니다.
+또 다른 옵션은 쿼리 중 데이터의 중복 행을 필터링하는 것입니다. [`arg_max()`](kusto/query/arg-max-aggfunction.md)집계 함수를 사용 하 여 중복 레코드를 필터링 하 고 타임 스탬프 또는 다른 열을 기반으로 마지막 레코드를 반환할 수 있습니다. 이 방법을 사용할 경우 쿼리 중에 중복 제거가 수행되므로 수집 시간이 단축된다는 장점이 있습니다. 또한 중복 항목을 포함한 모든 레코드를 감사 및 문제 해결에 사용할 수 있습니다. `arg_max` 함수 사용 시 데이터가 쿼리될 때마다 쿼리 시간과 CPU 로드가 늘어난다는 단점이 있습니다. 쿼리 중인 데이터 양에 따라 이 해결 방법이 효과가 없거나 메모리를 소모할 수 있으며, 이 경우 다른 옵션으로 전환해야 합니다.
 
 다음 예에서는 수집된 마지막 레코드에서 고유한 레코드를 결정하는 열 집합을 쿼리합니다.
 
@@ -68,9 +68,9 @@ DeviceEventsAll
 }
 ```
 
-### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>솔루션 #3: 섭취 과정에서 중복 필터
+### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>솔루션 #3: 수집 프로세스 중 중복 항목 필터링
 
-또 다른 해결 방법으로는 수집 프로세스 중에 중복 항목을 필터링하는 방법이 있습니다. 시스템은 Kusto 테이블에 데이터가 수집되는 동안 중복 데이터를 무시합니다. 데이터는 준비 테이블에 수집되고 중복 행 제거 과정을 거친 후 다른 테이블에 복사됩니다. 이 해결 방법은 쿼리 성능이 이전 해결 방법보다 크게 향상된다는 장점이 있습니다. 단점으로는 수집 시간 증가 및 데이터 스토리지 비용 추가 등이 있습니다. 또한 중복이 동시에 통합되지 않은 경우에만 이 솔루션이 작동합니다. 중복 레코드를 포함하는 여러 동시 인베이션이 있는 경우 중복 제거 프로세스에서 테이블에 있는 기존 일치 레코드를 찾을 수 없으므로 모두 인제스트될 수 있습니다.    
+또 다른 해결 방법으로는 수집 프로세스 중에 중복 항목을 필터링하는 방법이 있습니다. 시스템은 Kusto 테이블에 데이터가 수집되는 동안 중복 데이터를 무시합니다. 데이터는 준비 테이블에 수집되고 중복 행 제거 과정을 거친 후 다른 테이블에 복사됩니다. 이 해결 방법은 쿼리 성능이 이전 해결 방법보다 크게 향상된다는 장점이 있습니다. 단점으로는 수집 시간 증가 및 데이터 스토리지 비용 추가 등이 있습니다. Additionaly이 솔루션은 중복가 동시에 수집 않는 경우에만 작동 합니다. 중복 레코드를 포함 하는 동시 ingestions이 여러 개 있는 경우 중복 제거 프로세스에서 테이블에 있는 기존의 일치 하는 레코드를 찾지 못하므로 모든가 수집 수 있습니다.    
 
 다음 예에서는 이 방법을 보여줍니다.
 

@@ -1,18 +1,18 @@
 ---
-title: Azure 데이터 탐색기에서 DB 또는 테이블을 만들거나 삭제하지 못했습니다.
+title: Azure 데이터 탐색기에서 DB 또는 테이블을 만들거나 삭제 하지 못했습니다.
 description: 이 문서에서는 Azure 데이터 탐색기에서 데이터베이스와 테이블의 만들기 또는 삭제와 관련된 문제를 해결하는 단계를 설명합니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 67e4c33498b05884fe667a7977ddb40e647ab4c8
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: fdcc048c9abdbbc7b99ba938dd5f4ce3792fce41
+ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81499398"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88875364"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>문제 해결: Azure 데이터 탐색기에서 데이터베이스 또는 테이블을 만들거나 삭제하지 못함
 
