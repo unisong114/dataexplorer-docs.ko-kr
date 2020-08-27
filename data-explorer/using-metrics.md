@@ -7,12 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 0d1b570bc1fac901af67d9dd9602ef6864cb8336
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.custom: contperfq1
+ms.openlocfilehash: 51b595554029c29d961445e6013a668cbd110cd5
+ms.sourcegitcommit: d08b3344d7e9a6201cf01afc8455c7aea90335aa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875347"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88964764"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>메트릭을 사용 하 여 Azure 데이터 탐색기 성능, 상태 및 사용 현황 모니터링
 

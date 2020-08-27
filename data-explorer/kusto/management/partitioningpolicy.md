@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 944ada323a1a928d4b63c2d8f4e168c442e78ffa
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: cbafde1b87807c449923b8b010c57e3394c4a74f
+ms.sourcegitcommit: d08b3344d7e9a6201cf01afc8455c7aea90335aa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793674"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88964747"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -53,11 +53,11 @@ ms.locfileid: "88793674"
 * `MaxPartitionCount` 만들 파티션의 최대 수 (해시 모듈로 함수에 대 한 모듈로 인수)입니다.
   * 지원 되는 값은 범위 내에 `(1,1024]` 있습니다.
     * 값은 다음과 같아야 합니다.
-      * 클러스터의 노드 수보다 큽니다.
+      * 클러스터에 있는 노드 수의 5 배 보다 큽니다.
       * 열 카디널리티 보다 작습니다.
     * 값이 높을수록 클러스터의 노드에서 데이터 분할 프로세스의 오버 헤드가 증가 하 고 각 기간의 익스텐트 수가 커집니다.
-    * 노드가 30 개 미만인 클러스터의 경우 값으로 시작 하는 것이 좋습니다 `256` .
-      * 위의 고려 사항에 따라 필요에 따라 또는 쿼리 성능 및 데이터 사후 수집의 분할 오버 헤드에 따라 값을 조정 합니다.
+    * 50 노드 미만의 클러스터의 경우 값으로 시작 하는 것이 좋습니다 `256` .
+      * 위의 고려 사항 (예: 클러스터의 노드 수)에 따라 또는 쿼리 성능 및 데이터 사후 수집의 분할 오버 헤드에 따라 필요에 따라 값을 조정 합니다.
 * `Seed` 해시 값을 임의로 선택할 하는 데 사용할 값입니다.
   * 값은 양의 정수 여야 합니다.
   * 권장 값은 이며 `1` , 지정 되지 않은 경우 기본값입니다.
@@ -181,7 +181,7 @@ ms.locfileid: "88793674"
   * 이 속성은 선택 사항입니다. 기본값은 이며 `0` 기본 대상은 500만 레코드입니다.
     * 분할 작업에서 작업 당 매우 많은 양의 메모리 또는 CPU를 사용 하는 경우 5M 보다 낮은 값을 설정할 수 있습니다. 자세한 내용은 [Monitoring](#monitoring)을 참조 하세요.
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
@@ -205,7 +205,7 @@ ms.locfileid: "88793674"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들어:
 
 ```kusto
 .show commands 
