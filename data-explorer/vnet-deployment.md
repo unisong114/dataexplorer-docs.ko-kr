@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: 95c222bb1c04115927d799481bb817c8f2539fd3
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: ac291bb802214d8b877f905d440942ec2e0b802e
+ms.sourcegitcommit: 66d7b5d8fac6e69edfa2d7249c52828a8e00d428
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875245"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89041298"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -172,7 +172,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 미국 중북부 | 23.96.212.108 |
 | 북유럽 | 191.235.212.69 
 | 남아프리카 북부 | 104.211.224.189 |
-| 남아프리카 공화국 서 부 | 104.211.224.189 |
+| 남아프리카 공화국 서부 | 104.211.224.189 |
 | 미국 중남부 | 23.98.145.105 |
 | 인도 남부 | 23.99.5.162 |
 | 동남 아시아 | 168.63.173.234 |
@@ -195,7 +195,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 | **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **작업** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | Deny | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
 * `private-[clustername].[geo-region].kusto.windows.net` 엔진
@@ -221,7 +221,7 @@ wdcp.microsoft.com:443
 login.microsoftonline.com:443
 azureprofilerfrontdoor.cloudapp.net:443
 *.core.windows.net:443
-*.servicebus.windows.net:443
+*.servicebus.windows.net:443,5671
 shoebox2.metrics.nsatc.net:443
 prod-dsts.dsts.core.windows.net:443
 ocsp.msocsp.com:80
@@ -236,11 +236,14 @@ adl.windows.com:80
 crl3.digicert.com:80
 ```
 
+> [!NOTE]
+> [Azure 방화벽](/azure/firewall/overview) 을 사용 하는 경우 포트 443에 대해 *azuremonitor* (서비스 태그)를 허용 하려면 "네트워크 규칙"을 추가 해야 합니다.
+
 또한 비대칭 경로 문제를 방지 하기 위해 다음 홉 *인터넷* 을 사용 하는 [관리 주소](#azure-data-explorer-management-ip-addresses) 및 [상태 모니터링 주소](#health-monitoring-addresses) 를 사용 하 여 서브넷에서 [경로 테이블](/azure/virtual-network/virtual-networks-udr-overview) 을 정의 해야 합니다.
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| 이름 | 주소 접두사 | 다음 홉 |
+| Name | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |
