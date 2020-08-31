@@ -8,16 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 866436d74e3e37319ec06b477503c11e3d7d6be7
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: 1db42577a0d4d10da732b54b0a5032ab2be11b69
+ms.sourcegitcommit: 91e7d49a1046575bbc63a4f25724656ebfc070db
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201329"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89151164"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
 다음 명령은 Azure Blob Storage, Azure Data Lake Store Gen1 또는 Azure Data Lake Store Gen2에 있는 외부 테이블을 만드는 방법을 설명 합니다. 
+
+외부 Azure Storage 테이블 기능에 대 한 소개는 [Azure 데이터 탐색기를 사용 하 여 Azure Data Lake에서 데이터 쿼리](../../data-lake-query-data.md)를 참조 하세요.
 
 ## <a name="create-or-alter-external-table"></a>. create 또는. alter external table
 
@@ -81,6 +83,7 @@ ms.locfileid: "88201329"
   *PartitionName* `:` `datetime` `=` ( `startofyear` \| `startofmonth` \| `startofweek` \| `startofday` ) `(` *ColumnName*`)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan*`)`
 
+분할 정의 정확성을 확인 하려면 `sampleUris` 외부 테이블을 만들 때 속성을 사용 합니다.
 
 <a name="path-format"></a>
 *PathFormat*
@@ -113,6 +116,8 @@ ms.locfileid: "88201329"
 
 *Pathformat* 이 외부 테이블 정의에서 생략 된 경우에는 정확 하 게 정의 된 순서 대로 모든 파티션이 구분 기호를 사용 하 여 구분 됩니다 `/` . 파티션은 기본 문자열 표현을 사용 하 여 렌더링 됩니다.
 
+경로 형식 정의 정확성을 확인 하려면 `sampleUris` 외부 테이블을 만들 때 속성을 사용 합니다.
+
 <a name="format"></a>
 *형식과*
 
@@ -133,7 +138,7 @@ ms.locfileid: "88201329"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | 형식     | 설명       |
+| 속성         | 형식     | Description       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -238,9 +243,6 @@ dataformat=parquet
 )
 ```
 
-> [!NOTE]
-> 현재 가상 열은,,,,, `CSV` `TSV` `TSVE` `SCsv` `SOHsv` `PSV` `RAW` 및 `TXT` 데이터 형식에 대해 지원 되지 않습니다.
-
 <a name="file-filtering"></a>
 **파일 필터링 논리**
 
@@ -257,7 +259,7 @@ dataformat=parquet
 모든 조건이 충족 되 면 쿼리 엔진에서 파일을 페치 하 고 처리 합니다.
 
 > [!NOTE]
-> 초기 URI 패턴은 쿼리 조건자 값을 사용 하 여 빌드됩니다. 이는 닫힌 시간 범위 뿐만 아니라 제한 된 문자열 값 집합에 가장 적합 합니다. 
+> 초기 URI 패턴은 쿼리 조건자 값을 사용 하 여 빌드됩니다. 이는 닫힌 시간 범위 뿐만 아니라 제한 된 문자열 값 집합에 가장 적합 합니다.
 
 ## <a name="show-external-table-artifacts"></a>. 외부 테이블 아티팩트 표시
 
@@ -276,7 +278,7 @@ dataformat=parquet
 
 | 출력 매개 변수 | 형식   | 설명                       |
 |------------------|--------|-----------------------------------|
-| URI              | string | 외부 저장소 데이터 파일의 URI |
+| URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
 
 > [!TIP]
 > 외부 테이블에서 참조 하는 모든 파일에 대 한 반복은 파일 수에 따라 비용이 많이 들 수 있습니다. `limit`일부 URI 예제를 보려는 경우에는 매개 변수를 사용 해야 합니다.

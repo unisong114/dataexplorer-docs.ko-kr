@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: ac291bb802214d8b877f905d440942ec2e0b802e
-ms.sourcegitcommit: 66d7b5d8fac6e69edfa2d7249c52828a8e00d428
+ms.openlocfilehash: 93860688f798c3b9ac2552052f22cc1ca1ca565e
+ms.sourcegitcommit: 91e7d49a1046575bbc63a4f25724656ebfc070db
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89041298"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89151198"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -63,6 +63,14 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 > [!NOTE]
 > [저장소](/azure/storage/common/storage-introduction) 및 [이벤트 허브]와 함께 eventgrid 설치 프로그램을 사용 하는 경우 구독에 사용 되는 저장소 계정은 [방화벽 구성](/azure/storage/common/storage-network-security)에서 신뢰할 수 있는 azure platform 서비스를 허용 하는 동시에 azure 데이터 탐색기의 서브넷에 대 한 서비스 끝점을 사용 하 여 잠글 수 있지만 이벤트 허브는 신뢰할 수 있는 [azure 플랫폼 서비스](/azure/event-hubs/event-hubs-service-endpoints)를 지원 하지 않으므로 서비스 끝점을 사용 하도록 설정할 수
+
+## <a name="private-endpoints"></a>프라이빗 엔드포인트
+
+[개인 끝점](/azure/private-link/private-endpoint-overview) 은 Azure 리소스 (예: 저장소/이벤트 허브/Data Lake Gen 2)에 대 한 개인 액세스를 허용 하 고, Virtual Network에서 개인 IP를 사용 하 여 리소스를 VNet에 효과적으로 제공 합니다.
+이벤트 허브 및 저장소와 같은 데이터 연결에서 사용 되는 리소스에 대 한 [개인 끝점](/azure/private-link/private-endpoint-overview) 을 만들고, 저장소, Data Lake Gen 2 등의 외부 테이블과 VNet에서 SQL Database 하 여 내부 리소스에 대해 개인적으로 액세스 합니다.
+
+ [!NOTE]
+ > 개인 끝점을 설정 하려면 [DNS를 구성](/azure/private-link/private-endpoint-dns)해야 합니다. [Azure 사설 DNS 영역](/azure/dns/private-dns-privatednszone) 설치만 지원 합니다. 사용자 지정 DNS 서버는 지원 되지 않습니다. 
 
 ## <a name="dependencies-for-vnet-deployment"></a>VNet 배포에 대 한 종속성
 
@@ -195,7 +203,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 | **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **작업** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | Deny | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
 * `private-[clustername].[geo-region].kusto.windows.net` 엔진
