@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: 0b9080b0a76edbb046343eb3f67bc4bacd3df499
-ms.sourcegitcommit: 811cf98edefd919b412d80201400919eedcab5cd
+ms.openlocfilehash: 41899f49cdb980ba6ae31ff9a543b57026d07caa
+ms.sourcegitcommit: d54e4ebb611da2b30158720e14103e81a7daa5af
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 09/01/2020
-ms.locfileid: "89274578"
+ms.locfileid: "89286444"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -69,7 +69,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 [개인 끝점](/azure/private-link/private-endpoint-overview) 은 Azure 리소스 (예: 저장소/이벤트 허브/Data Lake Gen 2)에 대 한 개인 액세스를 허용 하 고, Virtual Network에서 개인 IP를 사용 하 여 리소스를 VNet에 효과적으로 제공 합니다.
 이벤트 허브 및 저장소와 같은 데이터 연결에서 사용 되는 리소스에 대 한 [개인 끝점](/azure/private-link/private-endpoint-overview) 을 만들고, 저장소, Data Lake Gen 2 등의 외부 테이블과 VNet에서 SQL Database 하 여 내부 리소스에 대해 개인적으로 액세스 합니다.
 
- [!NOTE]
+ > [!NOTE]
  > 개인 끝점을 설정 하려면 [DNS를 구성](/azure/private-link/private-endpoint-dns)해야 합니다. [Azure 사설 DNS 영역](/azure/dns/private-dns-privatednszone) 설치만 지원 합니다. 사용자 지정 DNS 서버는 지원 되지 않습니다. 
 
 ## <a name="dependencies-for-vnet-deployment"></a>VNet 배포에 대 한 종속성
