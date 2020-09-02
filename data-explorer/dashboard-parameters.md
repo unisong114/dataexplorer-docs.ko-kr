@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: fd33ea4d4607c9c3af0ded26ec7f58de761f24ea
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 4921a48ff879879084ec1941ab69c6e9d29b9773
+ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873851"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89366166"
 ---
 # <a name="use-parameters-in-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드에서 매개 변수 사용
 
@@ -22,7 +22,7 @@ ms.locfileid: "88873851"
 > [!NOTE]
 > 매개 변수 관리는 편집 모드에서 대시보드 편집기로 사용할 수 있습니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 [Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화](azure-data-explorer-dashboards.md)
 
@@ -44,10 +44,10 @@ ms.locfileid: "88873851"
 
 :::image type="content" source="media/dashboard-parameters/properties.png" alt-text="매개 변수 속성 추가":::
 
-|필드  |설명 |
+|필드  |Description |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
-|**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
+|**매개 변수 형식**    |다음 매개 변수 중 하나입니다.<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li><li>**자유 텍스트**: 필터에 입력 된 값이 없습니다. 사용자는 값을 입력 하거나 텍스트 필드에 값을 복사/붙여 넣을 수 있습니다. 필터는 최근 사용 된 값을 유지 합니다.</li></ul>    |
 |**변수 이름**     |   쿼리에서 사용 되는 매개 변수의 이름입니다.      |
 |**데이터 형식**    |    매개 변수 값의 데이터 형식입니다.     |
 |**대시보드 필터로 고정**   |   매개 변수 기반 필터를 대시보드에 고정 하거나 대시보드에서 고정 해제 합니다.       |
@@ -220,7 +220,7 @@ EventsAll
 
 #### <a name="use-a-parameter-in-the-query"></a>쿼리에서 매개 변수 사용
 
-1. 다음은 변수를 사용 하 여 새 이벤트 매개 변수를 사용 하는 예제 쿼리입니다 `_ event` .
+1. 새 이벤트 매개 변수를 사용 하는 다음 예제 쿼리에서는 변수를 사용 합니다 `_ event` .
 
     ``` kusto
     EventsAll
@@ -234,7 +234,7 @@ EventsAll
 
 ### <a name="use-the-multiple-selection-query-based-parameter"></a>다중 선택 쿼리 기반 매개 변수 사용
 
-쿼리 기반 매개 변수 값은 사용자 지정 쿼리를 실행 하 여 대시보드 로드 시에 파생 됩니다. 다음 예에서는 다중 선택 쿼리 기반 매개 변수를 만들 수 있는 방법을 보여 줍니다.
+쿼리 기반 매개 변수 값은 사용자 지정 쿼리를 실행 하 여 대시보드 로드 시에 파생 됩니다. 다음 예에서는 다중 선택 쿼리 기반 매개 변수를 만드는 방법을 보여 줍니다.
 
 #### <a name="create-a-parameter"></a>매개 변수 만들기
 
@@ -264,3 +264,43 @@ EventsAll
     새 매개 변수가 대시보드 맨 위에 있는 매개 변수 목록에 표시 됩니다. 
 
 1. 시각적 개체를 업데이트 하려면 하나 이상의 다른 값을 선택 합니다.
+
+### <a name="use-the-free-text-parameter"></a>자유 텍스트 매개 변수 사용
+
+자유 텍스트 매개 변수에는 값이 포함 되지 않습니다. 사용자 고유의 가치를 도입할 수 있습니다.
+
+#### <a name="create-the-parameter"></a>매개 변수 만들기
+
+1. 매개 **변수를 선택 하** 여 **매개 변수 창을** 열고 **새 매개 변수**를 선택 합니다.
+1. 세부 정보를 다음과 같이 입력 합니다.
+    * **매개 변수 표시 이름**: 회사
+    * **매개 변수 유형**: 자유 텍스트
+    * **변수 이름**: _company
+    * **데이터 형식**: 문자열
+    * **대시보드 필터로 고정**: 선택 됨
+    * **기본값**: 기본값 없음
+
+#### <a name="use-parameters-in-the-query"></a>쿼리에서 매개 변수 사용
+
+1. 변수 이름을 사용 하 여 새 *회사* 매개 변수를 사용 하 여 예제 쿼리를 실행 합니다 `_company` .
+
+    ```kusto
+    EventsAll
+    | where CreatedAt > ago(7d)
+    | where Type == "WatchEvent"
+    | where Repo.name has _company
+    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
+    | top 5 by WatchEvents
+    ```
+
+이제 대시보드 맨 위에 있는 매개 변수 목록에 새 매개 변수가 표시 됩니다.
+
+## <a name="use-filter-search-for-single-and-multiple-selection-filters"></a>단일 및 다중 선택 필터에 필터 검색 사용
+
+단일 및 다중 선택 필터에서 원하는 값을 입력 합니다. 필터 검색은 검색 용어와 일치 하는 최근 검색 된 모든 값을 표시 합니다.
+
+## <a name="next-steps"></a>다음 단계
+
+* [대시보드 시각적 개체 사용자 지정](dashboard-customize-visuals.md)
+* [Azure 데이터 탐색기에서 데이터 쿼리](web-query-data.md) 
+

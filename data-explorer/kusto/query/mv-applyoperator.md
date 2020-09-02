@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 656d1d5d9120baebced624fee476d261214eff57
-ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
+ms.openlocfilehash: ee6239b7e8ad4cbdd3d36e6b7b3c20f0cc0cdaeb
+ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87871853"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89366047"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
@@ -94,7 +94,7 @@ T | mv-apply Metric to typeof(real) on
 
 * *하위 쿼리*: 각 배열 확장 하위 테이블에 적용 되는 암시적 테이블 형식 소스를 포함 하는 테이블 형식 쿼리 식입니다.
 
-**참고 사항**
+**참고**
 
 * 연산자와 달리 [`mv-expand`](./mvexpandoperator.md) 연산자는 `mv-apply` 배열 확장만 지원 합니다. 속성 모음 확장은 지원 되지 않습니다.
 
@@ -163,7 +163,7 @@ _data
 |3|8|
 |4|10|
 
-## <a name="using-the-mv-apply-operator-to-sort-the-output-of-makelist-aggregate-by-some-key"></a>연산자를 사용 하 여 `mv-apply` 집계의 출력을 `makelist` 일부 키로 정렬
+## <a name="using-the-mv-apply-operator-to-sort-the-output-of-make_list-aggregate-by-some-key"></a>연산자를 사용 하 여 `mv-apply` 집계의 출력을 `make_list` 일부 키로 정렬
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

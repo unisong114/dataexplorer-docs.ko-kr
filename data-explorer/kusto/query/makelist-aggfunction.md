@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: c75924ed450b2995f2d35d206951adf05aecec0e
-ms.sourcegitcommit: fb54d71660391a63b0c107a9703adea09bfc7cb9
+ms.openlocfilehash: 7f17302475221bb259e6717987f7d31e96d7c118
+ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86946124"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89366030"
 ---
 # <a name="make_list-aggregation-function"></a>make_list () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "86946124"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_list(` *Expr* [ `,` *MaxSize*]`)`
 
@@ -40,9 +40,9 @@ ms.locfileid: "86946124"
 연산자에 대 한 입력 `summarize` 이 정렬 되는 경우 결과 배열의 요소 순서는 입력의를 추적 합니다.
 
 > [!TIP]
-> 연산자를 사용 [`mv-apply`](./mv-applyoperator.md) 하 여 일부 키로 정렬 된 목록을 만듭니다. [여기](./mv-applyoperator.md#using-the-mv-apply-operator-to-sort-the-output-of-makelist-aggregate-by-some-key)에서 예제를 참조합니다.
+> 연산자를 사용 [`mv-apply`](./mv-applyoperator.md) 하 여 일부 키로 정렬 된 목록을 만듭니다. [여기](./mv-applyoperator.md#using-the-mv-apply-operator-to-sort-the-output-of-make_list-aggregate-by-some-key)에서 예제를 참조합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="one-column"></a>한 열
 
@@ -124,4 +124,4 @@ shapes
 
 ## <a name="see-also"></a>추가 정보
 
-[`make_list_if`](./makelistif-aggfunction.md)연산자는 조건자를 `make_list` 수락 한다는 점을 제외 하 고와 비슷합니다.
+[`make_list_if`](./makelistif-aggfunction.md) 연산자는 조건자를 `make_list` 수락 한다는 점을 제외 하 고와 비슷합니다.

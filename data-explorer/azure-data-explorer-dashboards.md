@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: 0b5633dc7ed54f9b4a763400ae8de84ba32f09e6
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 47ca1ebdd4136b3add6b4476757f34a24b08eeea
+ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872593"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89366121"
 ---
 # <a name="visualize-data-with-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화
 
@@ -66,7 +66,7 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="매개 변수 창":::
 
-|필드  |설명 |
+|필드  |Description |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
 |**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
@@ -100,7 +100,63 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="대시보드 저장":::
 
+## <a name="share-dashboards"></a>대시보드 공유
+
+공유 메뉴를 사용 하 여 대시보드에 [사용 권한을 부여](#grant-permissions) 하 고, [사용자의 권한 수준을 변경](#change-a-user-permission-level)하 고, [대시보드 링크를 공유할](#share-the-dashboard-link)수 있습니다.
+
+> [!IMPORTANT]
+> 대시보드에 액세스 하려면 대시보드 뷰어에 다음이 필요 합니다.
+> * 액세스를 위한 대시보드 링크
+> * 대시보드 권한
+> * Azure 데이터 탐색기 클러스터의 기본 데이터베이스에 대 한 액세스  
+
+1. 대시보드의 위쪽 표시줄에서 **공유** 메뉴 항목을 선택 합니다.
+1. 드롭다운에서 **사용 권한 관리** 를 선택 합니다. 
+
+    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="대시보드 공유 드롭다운":::
+
+### <a name="grant-permissions"></a>권한 부여
+
+**대시보드 권한** 창에서 사용자에 게 사용 권한을 부여 하려면 다음을 수행 합니다.
+1. **새 구성원 추가** 상자에 사용자의 이름 또는 전자 메일을 작성 합니다.
+1. **보기** 또는 **편집할** 수 있는 **권한** 수준을 선택 하 고 **추가**를 클릭 합니다.
+
+:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="대시보드 사용 권한 관리":::
+
+### <a name="change-a-user-permission-level"></a>사용자 권한 수준 변경
+
+**대시보드 권한** 창에서 사용자 권한 수준을 변경 하려면 다음을 수행 합니다.
+1. 검색 상자를 사용 하거나 사용자 목록을 스크롤하여 사용자를 찾습니다.
+1. 필요에 따라 **권한** 수준을 변경 합니다.
+
+### <a name="share-the-dashboard-link"></a>대시보드 링크 공유
+
+대시보드 링크를 공유 하려면:
+* **공유** 드롭다운을 선택 하 고 **링크 복사** 를 선택 합니다.
+* **대시보드 권한** 창에서 **링크 복사**를 선택 합니다. 
+
+## <a name="enable-auto-refresh"></a>자동 새로 고침 사용 
+
+1. 대시보드 메뉴에서 **편집** 을 선택 하 여 편집 모드로 전환 합니다.
+1. **자동 새로 고침**을 선택 합니다. 
+ 
+    :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="자동 새로 고침 선택":::
+
+1. 자동 새로 고침이 **사용**되도록 옵션을 설정/해제 합니다. 
+1. **최소 시간 간격** 및 **기본 새로 고침 빈도**값을 선택 합니다. 
+
+    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="자동 새로 고침 사용":::
+
+1. **적용** 을 선택 하 고 대시보드를 **저장** 합니다.
+
+> [!NOTE]
+> * 클러스터에서 불필요 한 부하를 줄이려면 최소 최소 시간 간격을 선택 합니다. 
+> * 대시보드 뷰어: 
+>    * 개인 사용에 대 한 최소 시간 간격을 변경할 수 있습니다. 
+>    * 편집기에서 지정한 **최소 시간 간격** 보다 작은 값은 선택할 수 없습니다.
+
 ## <a name="next-steps"></a>다음 단계
 
 * [Azure 데이터 탐색기 대시보드에서 매개 변수 사용](dashboard-parameters.md)
+* [대시보드 시각적 개체 사용자 지정](dashboard-customize-visuals.md)
 * [Azure 데이터 탐색기에서 데이터 쿼리](web-query-data.md)
