@@ -4,18 +4,18 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 30/03/2020
 ms.author: orspodek
-ms.openlocfilehash: 0d4b0a5f6c466ac629a3ea35045f2c7146aafcbc
-ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.openlocfilehash: 3e916c26b95a77be5c35748c6a50e05fe0ef916d
+ms.sourcegitcommit: 811cf98edefd919b412d80201400919eedcab5cd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058870"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89274688"
 ---
-## <a name="quick-queries-and-tools"></a>빠른 쿼리 및 도구
+## <a name="explore-quick-queries-and-tools"></a>빠른 쿼리 및 도구 살펴보기
 
-오른쪽 메뉴에서 **빠른 쿼리** 또는 **도구**를 선택합니다. 
+수집 진행률 아래의 타일에서 **빠른 쿼리** 또는 **도구**를 살펴봅니다. 
  * **빠른 쿼리**에는 예제 쿼리가 있는 웹 UI에 대한 링크가 포함되어 있습니다.
- * **도구**에는 웹 UI의 **Drop 명령**에 대한 링크가 포함되어 있어 관련 `.drop` 명령을 실행하여 문제를 해결할 수 있습니다.
+ * **도구**에는 웹 UI의 **실행 취소** 또는 **새 데이터 삭제**에 대한 링크가 포함되어 있어 관련 `.drop` 명령을 실행하여 문제를 해결할 수 있습니다.
 
      > [!NOTE]
      > `.drop` 명령을 사용하면 데이터가 손실될 수 있습니다. 신중하게 사용하세요.

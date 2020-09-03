@@ -7,18 +7,23 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: 293425b54514b4ee1628fd6b96d892459a929d77
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 49195d39ed2c81a6f7dca685781cbe265e8843d3
+ms.sourcegitcommit: 811cf98edefd919b412d80201400919eedcab5cd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875092"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89274701"
 ---
 # <a name="use-one-click-ingestion-to-ingest-json-data-from-a-local-file-to-an-existing-table-in-azure-data-explorer"></a>Azure Data Explorer에서 원클릭 수집을 사용하여 로컬 파일의 JSON 데이터를 기존 테이블에 수집
 
+
+> [!div class="op_single_selector"]
+> * [컨테이너의 CSV 데이터를 새 테이블에 수집](one-click-ingestion-new-table.md)
+> * [로컬 파일의 JSON 데이터를 기존 테이블에 수집](one-click-ingestion-existing-table.md)
+
 [원클릭 수집](ingest-data-one-click.md)을 사용하면 JSON, CSV 및 기타 형식의 데이터를 신속하게 테이블로 수집하고 간단하게 매핑 구조를 만들 수 있습니다. 스토리지, 로컬 파일 또는 컨테이너의 데이터를 일회성 또는 지속적인 수집 프로세스로 수집할 수 있습니다.  
 
-이 문서에서는 직관적인 원클릭 마법사를 특정 사례에 사용하여 **로컬 파일**의 **JSON** 데이터를 **기존 테이블**에 수집하는 방법을 설명합니다. 동일한 프로세스를 살짝 변형하여 다양한 사용 사례를 처리할 수 있습니다.
+이 문서에서는 직관적인 원클릭 마법사를 특정 사례에 사용하여 **로컬 파일**의 **JSON** 데이터를 **기존 테이블**에 수집하는 방법을 설명합니다. 동일한 프로세스를 살짝 변형하여 다양한 사용 사례를 처리합니다.
 
 원클릭 수집의 개요와 필수 조건 목록은 [원클릭 수집](ingest-data-one-click.md)을 참조하세요.
 다양한 데이터 원본 형식에 대한 내용은 [Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집](one-click-ingestion-new-table.md)을 참조하세요.
@@ -45,12 +50,11 @@ ms.locfileid: "88875092"
     
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="파일에서 원클릭 수집":::
 
- 1. 데이터 샘플이 표시됩니다. 특정 문자로 시작하거나 끝나는 파일만 표시하도록 데이터를 필터링할 수 있습니다. 
+ 1. 데이터 샘플이 표시됩니다. 특정 문자로 시작하거나 끝나는 파일만 수집하도록 데이터를 필터링합니다. 
    
     >[!NOTE] 
     >필터를 조정하면 미리 보기가 자동으로 업데이트됩니다.
   
-
 > [!TIP]
 > **컨테이너에서** 수집하려면 [Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집](one-click-ingestion-new-table.md#select-an-ingestion-type)을 참조하세요.
 
@@ -60,8 +64,8 @@ ms.locfileid: "88875092"
 
 ### <a name="map-columns"></a>열 매핑 
 
-1. **열 매핑** 대화 상자가 열리고, 이 상자에서 하나 이상의 원본 열 또는 특성을 Azure Data Explorer 열에 연결할 수 있습니다.
-    * 새 매핑이 자동으로 설정됩니다. 기존 매핑을 사용할 수도 있습니다. 
+1. **맵 열** 대화 상자가 열립니다. 하나 이상의 원본 열 또는 특성을 Azure Data Explorer 열에 연결할 수 있습니다.
+    * 새 매핑을 자동으로 설정하거나 기존 매핑을 사용합니다. 
     * **원본 열** 필드에 **대상 열**로 매핑할 열 이름을 입력합니다.
     * 매핑에서 열을 삭제하려면 휴지통 아이콘을 선택합니다.
 
@@ -78,11 +82,13 @@ ms.locfileid: "88875092"
        > [!TIP]
        > **CSV** 파일을 사용하려면 [Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집](one-click-ingestion-new-table.md#edit-the-schema)을 참조하세요.
 
-### <a name="table"></a>테이블 
+### <a name="edit-the-table"></a>테이블 편집 
+
+기존 테이블에 데이터를 수집하면 테이블에 대해 수행할 수 있는 변경은 더욱 제한됩니다.
 
 테이블에서 다음을 수행합니다. 
-  * 새 열 헤더를 선택하여 **새 열**, **열 삭제**, **오름차순 정렬** 또는 **내림차순 정렬**을 추가합니다. 
- * 기존 열에서는 데이터 정렬만 사용할 수 있습니다.
+* 새 열 헤더를 선택하여 **새 열**, **열 삭제**, **오름차순 정렬** 또는 **내림차순 정렬**을 추가합니다. 
+* 기존 열에서는 데이터 정렬만 사용할 수 있습니다.
 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
@@ -94,7 +100,7 @@ ms.locfileid: "88875092"
 
 :::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="수집 시작":::
 
-## <a name="data-ingestion-completed"></a>데이터 수집 완료
+## <a name="complete-data-ingestion"></a>데이터 수집 완료
 
 데이터 수집이 성공적으로 완료되면 **데이터 수집 완료** 창에서 세 단계 모두 녹색 확인 표시가 나타납니다.
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: d77c02ee3da7c33fc77416fa712a9108411c2276
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: fa18a89e44a09a877cedb41c6d6e77384c965801
+ms.sourcegitcommit: 811cf98edefd919b412d80201400919eedcab5cd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874803"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89274605"
 ---
 # <a name="what-is-one-click-ingestion"></a>원클릭 수집이란?
 
@@ -36,7 +36,7 @@ ms.locfileid: "88874803"
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md)를 만듭니다.
 * [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com/)에 로그인하여 [클러스터에 연결을 추가](web-query-data.md#add-clusters)합니다.
 
-## <a name="ingest-new-data"></a>새 데이터 수집
+## <a name="access-the-one-click-wizard"></a>원클릭 마법사 액세스
 
 원클릭 수집 마법사는 원클릭 수집 프로세스를 안내합니다.
 
@@ -48,7 +48,9 @@ ms.locfileid: "88874803"
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="웹 UI에서 원클릭 수집 선택":::
 
-<!-- TODO either change the local file tutorial to blob storage or create another one to show users how to do this-->
+* Azure Portal에서 마법사에 액세스하려면 왼쪽 메뉴에서 **쿼리**를 선택하고 **데이터베이스** 또는 **테이블**을 마우스 오른쪽 단추로 클릭한 다음, **새 데이터(미리 보기) 수집**을 선택합니다.
+
+    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Azure Portal에서 원클릭 수집 마법사에 액세스":::
 
 ## <a name="one-click-ingestion-wizard"></a>원클릭 수집 마법사
 
@@ -112,7 +114,7 @@ ms.locfileid: "88874803"
  
 ### <a name="initial-data-exploration"></a>초기 데이터 탐색
    
-수집 후에는 마법사에서 데이터의 초기 탐색을 위한 **[빠른 명령](one-click-ingestion-existing-table.md#quick-queries-and-tools)** 옵션을 제공합니다.
+수집 후에는 마법사에서 데이터의 초기 탐색을 위한 **[빠른 명령](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** 옵션을 제공합니다.
 
 ## <a name="next-steps"></a>다음 단계
 

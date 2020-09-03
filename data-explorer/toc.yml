@@ -180,6 +180,8 @@
               href: azure-data-explorer-dashboards.md
             - name: 대시보드 매개 변수 사용
               href: dashboard-parameters.md
+            - name: 대시보드 시각적 개체 사용자 지정
+              href: dashboard-customize-visuals.md
         - name: Power BI
           items:
             - name: 모범 사례
