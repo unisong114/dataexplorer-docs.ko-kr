@@ -8,14 +8,14 @@ ms.reviewer: vladikbr
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/28/2020
-ms.openlocfilehash: ffab19c9ef06b440f525c02c38fb06681de2e764
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 256f302b877301efa78ba16c0d721ce125e5fb45
+ms.sourcegitcommit: 9e0289945270db517e173aa10024e0027b173b52
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350488"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89428331"
 ---
 # <a name="azure-data-explorer-java-sdk"></a>Azure 데이터 탐색기 Java SDK
 
-*Kusto java 클라이언트* 라이브러리는 java를 사용 하 여 Azure 데이터 탐색기 클러스터를 쿼리 하는 기능을 제공 합니다.
+Azure 데이터 탐색기 Java 클라이언트 라이브러리는 Java를 사용 하 여 Azure 데이터 탐색기 클러스터를 쿼리 하는 기능을 제공 합니다.
 Azure 데이터 탐색기 Java SDK는 [azure-kusto-java](https://github.com/Azure/azure-kusto-java)에서 사용할 수 있습니다.

@@ -9,22 +9,22 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 01/02/2019
-ms.openlocfilehash: 5511155eaa131c85a49a2082322ad95fcd022418
-ms.sourcegitcommit: f6cf88be736aa1e23ca046304a02dee204546b6e
+ms.openlocfilehash: 6766a817a1568eeb3cbcf2eb5bc0440cdd10eec6
+ms.sourcegitcommit: 9e0289945270db517e173aa10024e0027b173b52
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82862016"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89428432"
 ---
 # <a name="ms-tds-with-azure-active-directory"></a>Azure Active Directory 포함 된 TDS
 
-## <a name="aad-user-authentication"></a>AAD 사용자 인증
+## <a name="azure-ad-user-authentication"></a>Azure AD 사용자 인증
 
-AAD 사용자 인증을 지 원하는 SQL 클라이언트는 Kusto와 함께 사용할 수 있습니다.
+Azure AD 사용자 인증을 지 원하는 SQL 클라이언트는 Azure 데이터 탐색기와 함께 사용할 수 있습니다.
 
 ### <a name="net-sql-client-user"></a>.NET SQL 클라이언트 (사용자)
 
-예를 들어 통합 AAD의 경우:
+예를 들어 통합 Azure AD의 경우:
 ```csharp
     var csb = new SqlConnectionStringBuilder()
     {
@@ -80,13 +80,13 @@ public class Sample {
 }
 ```
 
-## <a name="aad-application-authentication"></a>AAD 응용 프로그램 인증
+## <a name="azure-ad-application-authentication"></a>Azure AD 응용 프로그램 인증
 
-Kusto에 대해 프로 비전 된 AAD 응용 프로그램은 Kusto에 연결 하기 위해 AAD를 지 원하는 SQL 클라이언트 라이브러리를 사용할 수 있습니다. AAD 응용 프로그램에 대 한 자세한 내용은 [Aad 응용 프로그램 만들기](../../management/access-control/how-to-provision-aad-app.md) 를 참조 하세요.
+Kusto에 대해 프로 비전 된 azure AD 응용 프로그램은 Kusto에 연결 하기 위해 Azure AD를 지 원하는 SQL 클라이언트 라이브러리를 사용할 수 있습니다. Azure AD 응용 프로그램에 대 한 자세한 내용은 [AZURE Ad 응용 프로그램 만들기](../../management/access-control/how-to-provision-aad-app.md)를 참조 하세요.
 
 ### <a name="net-sql-client-application"></a>.NET SQL 클라이언트 (응용 프로그램)
 
-*Applicationclientid* 및 *applicationclientid* 를 사용 하 여 aad 응용 프로그램을 프로 비전 하 고 Cluster *ClusterDnsName*의 데이터베이스 *DatabaseName* 에 액세스할 수 있는 권한을 부여 했다고 가정 하면 다음 샘플에서는이 AAD 응용 프로그램의 쿼리에 .net SQL 클라이언트를 사용 하는 방법을 보여 줍니다.
+*Applicationclientid* 및 *applicationclientid* 를 사용 하 여 azure ad 응용 프로그램을 프로 비전 하 고 Cluster *ClusterDnsName*의 데이터베이스 *DatabaseName* 에 액세스할 수 있는 권한을 부여 하는 경우 다음 샘플에서는이 Azure AD 응용 프로그램의 쿼리에 .net SQL 클라이언트를 사용 하는 방법을 보여 줍니다.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
