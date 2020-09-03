@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: 41899f49cdb980ba6ae31ff9a543b57026d07caa
-ms.sourcegitcommit: d54e4ebb611da2b30158720e14103e81a7daa5af
+ms.openlocfilehash: 9fa58d36815ede98a4f0239f1ce68a6542f24c4b
+ms.sourcegitcommit: cb55064b7cdd57c792ad259b09069525bf799fa0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89286444"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89410811"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -203,7 +203,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 | **사용**   | **원본** | **원본 서비스 태그** | **원본 포트 범위**  | **대상** | **대상 포트 범위** | * * 프로토콜 * * | **작업** | * * 우선 순위 * * |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | 거부 | 위의 규칙 보다 높은 값 |
+| 인터넷에서 액세스 사용 안 함 | 서비스 태그 | 인터넷 | *  | VirtualNetwork | * | 모두 | Deny | 위의 규칙 보다 높은 값 |
 
 이 규칙을 사용 하면 다음 DNS 레코드 (각 서비스의 개인 IP로 매핑됨)를 통해서만 Azure 데이터 탐색기 클러스터에 연결할 수 있습니다.
 * `private-[clustername].[geo-region].kusto.windows.net` 엔진
@@ -245,7 +245,10 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> [Azure 방화벽](/azure/firewall/overview) 을 사용 하는 경우 포트 443에 대해 *azuremonitor* (서비스 태그)를 허용 하려면 "네트워크 규칙"을 추가 해야 합니다.
+> [Azure 방화벽](/azure/firewall/overview)을 사용 하는 경우 다음 속성을 사용 하 여 **네트워크 규칙** 을 추가 합니다.
+> | **프로토콜**   | **원본 형식** | **원본** | **서비스 태그**  | **대상 포트** |
+> | ---   | --- | --- | ---  | --- |
+> | TCP | IP 주소 | * | AzureMonitor | 443 |
 
 또한 비대칭 경로 문제를 방지 하기 위해 다음 홉 *인터넷* 을 사용 하는 [관리 주소](#azure-data-explorer-management-ip-addresses) 및 [상태 모니터링 주소](#health-monitoring-addresses) 를 사용 하 여 서브넷에서 [경로 테이블](/azure/virtual-network/virtual-networks-udr-overview) 을 정의 해야 합니다.
 
