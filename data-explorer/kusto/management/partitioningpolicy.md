@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: cbafde1b87807c449923b8b010c57e3394c4a74f
-ms.sourcegitcommit: d08b3344d7e9a6201cf01afc8455c7aea90335aa
+ms.openlocfilehash: 0b85d0c4bd0604f46375e314cb1fe029647b8d32
+ms.sourcegitcommit: 9b96a0c1ba0d07fec81f29bdf8f71b9549e79b3a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88964747"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89472243"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -51,7 +51,7 @@ ms.locfileid: "88964747"
 * `Function` 사용할 hash 모듈로 함수의 이름입니다.
   * 지원 되는 값은 `XxHash64` 입니다.
 * `MaxPartitionCount` 만들 파티션의 최대 수 (해시 모듈로 함수에 대 한 모듈로 인수)입니다.
-  * 지원 되는 값은 범위 내에 `(1,1024]` 있습니다.
+  * 지원 되는 값은 범위 내에 `(1,2048]` 있습니다.
     * 값은 다음과 같아야 합니다.
       * 클러스터에 있는 노드 수의 5 배 보다 큽니다.
       * 열 카디널리티 보다 작습니다.
@@ -181,7 +181,7 @@ ms.locfileid: "88964747"
   * 이 속성은 선택 사항입니다. 기본값은 이며 `0` 기본 대상은 500만 레코드입니다.
     * 분할 작업에서 작업 당 매우 많은 양의 메모리 또는 CPU를 사용 하는 경우 5M 보다 낮은 값을 설정할 수 있습니다. 자세한 내용은 [Monitoring](#monitoring)을 참조 하세요.
 
-## <a name="notes"></a>메모
+## <a name="notes"></a>참고
 
 ### <a name="the-data-partitioning-process"></a>데이터 분할 프로세스
 
@@ -205,7 +205,7 @@ ms.locfileid: "88964747"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들어:
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예:
 
 ```kusto
 .show commands 
