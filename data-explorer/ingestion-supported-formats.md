@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c591c4f774f3af99004d398898b288256861bb75
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: 89ee29e70c71c29afb65ee81fc4ce8e498faee33
+ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373710"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89502639"
 ---
 # <a name="data-formats-supported-by-azure-data-explorer-for-ingestion"></a>수집을 위해 Azure 데이터 탐색기에서 지 원하는 데이터 형식
 
 데이터 수집은 테이블에 데이터를 추가 하 고 Azure 데이터 탐색기에서 쿼리에 사용할 수 있도록 하는 프로세스입니다. 수집 후 쿼리를 제외한 모든 수집 메서드의 경우 데이터는 지원 되는 형식 중 하나 여야 합니다. 다음 표에서는 Azure 데이터 탐색기에서 데이터 수집에 대해 지 원하는 형식을 나열 하 고 설명 합니다.
 
-|형식   |확장   |설명|
+|서식   |확장   |Description|
 |---------|------------|-----------|
 |Avro     |`.avro`     |[Avro 컨테이너 파일](https://avro.apache.org/docs/current/)입니다. `null`, `deflate` 코드가 지원됩니다(`snappy`는 현재 지원되지 않음).|
 |ApacheAvro|`.avro`    |[논리적 형식](https://avro.apache.org/docs/current/spec.html#Logical+Types) 및 압축 코덱에 대 한 지원을 포함 하는 [Avro](https://avro.apache.org/docs/current/) 형식의 실험적 네이티브 구현 `snappy` 입니다.|
@@ -47,9 +47,9 @@ ms.locfileid: "83373710"
 
 Blob 또는 파일 이름에 확장을 추가 하 여 압축을 표시 합니다.
 
-다음은 그 예입니다.
-* `MyData.csv.zip`CSV로 포맷 되 고 ZIP으로 압축 된 (archive 또는 단일 파일) blob 또는 파일을 나타냅니다.
-* `MyData.csv.gz`CSV로 포맷 되 고 GZip으로 압축 된 파일을 나타냅니다.
+예:
+* `MyData.csv.zip` CSV로 포맷 되 고 ZIP으로 압축 된 (archive 또는 단일 파일) blob 또는 파일을 나타냅니다.
+* `MyData.json.gz` GZip으로 압축 된 blob 또는 JSON 형식의 파일을 나타냅니다.
 
 형식 확장을 포함 하지 않는 Blob 또는 파일 이름 (예: `MyData.zip` )도 지원 됩니다. 이 경우 파일 형식을 유추할 수 없으므로 수집 속성으로 지정해야 합니다.
 

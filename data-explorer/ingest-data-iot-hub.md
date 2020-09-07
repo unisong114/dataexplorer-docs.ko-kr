@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/08/2020
-ms.openlocfilehash: 578141c63daeecd285d397b356260a4f22720621
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 4433126f67187d1bb2a190821dc6a59d96be3f5b
+ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874939"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89502792"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>IoT Hub에서 Azure 데이터 탐색기로 데이터 수집 
 
@@ -26,7 +26,9 @@ ms.locfileid: "88874939"
 
 이 문서에서는 빅 데이터 스트리밍 플랫폼과 IoT 수집 서비스인 IoT Hub에서 Azure 데이터 탐색기으로 데이터를 수집 하는 방법을 보여 줍니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+IoT Hub에서 Azure 데이터 탐색기에 수집에 대 한 일반 정보는 [IoT Hub에 연결](ingest-data-iot-hub-overview.md)을 참조 하세요.
+
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * 데이터베이스 이름이 *testdb*인 [테스트 클러스터 및 데이터베이스를](create-cluster-database-portal.md) 만듭니다.
@@ -106,7 +108,13 @@ ms.locfileid: "88874939"
     > * 동적 라우팅을 사용하려면 **라우팅 정보를 포함하는 내 데이터**를 선택합니다. [샘플 앱](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 주석에서 볼 수 있듯이 데이터에는 필수 라우팅 정보가 포함됩니다. 정적 및 동적 속성을 모두 설정하는 경우 동적 속성은 정적 속성을 재정의합니다. 
     > * 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집 됩니다.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+### <a name="event-system-properties-mapping"></a>이벤트 시스템 속성 매핑
+
+> [!Note]
+> * 시스템 속성은 단일 레코드 이벤트에 대해 지원 됩니다.
+> * `csv`매핑의 경우 레코드의 시작 부분에 속성이 추가 됩니다. `json`매핑의 경우 드롭다운 목록에 표시 되는 이름에 따라 속성이 추가 됩니다.
+
+테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 [시스템 속성](ingest-data-iot-hub-overview.md#system-properties) 을 포함 해야 합니다.
 
 ## <a name="generate-sample-data-for-testing"></a>테스트용 샘플 데이터 생성
 
@@ -177,7 +185,7 @@ IoT Hub를 다시 사용 하지 않으려는 경우에는 리소스 그룹을 �
 
 1. **test-resource-group** 아래에서 **리소스 그룹 삭제**를 선택합니다.
 
-2. 새 창에서 삭제할 리소스 그룹의 이름을 입력 하 고 **삭제**를 선택 합니다.
+1. 새 창에서 삭제할 리소스 그룹의 이름을 입력 하 고 **삭제**를 선택 합니다.
 
 ## <a name="next-steps"></a>다음 단계
 

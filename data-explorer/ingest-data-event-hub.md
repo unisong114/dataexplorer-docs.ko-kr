@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: b9a55915ebef61bef534e42ca0aef6a7c19868ac
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 84f4348f1d172238bd71de55e989ed8520f78b93
+ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874956"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89502758"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Event Hub에서 Azure Data Explorer로 데이터 수집
 
@@ -26,7 +26,9 @@ ms.locfileid: "88874956"
 
 Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 이벤트 수집 서비스인 이벤트 허브에서 데이터를 수집(로드)하는 기능을 제공합니다. [Event Hubs](/azure/event-hubs/event-hubs-about)에서는 초당 수백만 개의 이벤트를 거의 실시간으로 처리할 수 있습니다. 이 문서에서는 이벤트 허브를 만들고, Azure 데이터 탐색기에서 연결 하 고, 시스템을 통해 데이터 흐름을 확인 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+이벤트 허브에서 Azure 데이터 탐색기에 수집 하는 방법에 대 한 일반적인 내용은 [이벤트 허브에 연결](ingest-data-event-hub-overview.md)을 참조 하세요.
+
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)입니다.
@@ -43,11 +45,11 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
 1. 이벤트 허브를 만들려면 다음 단추를 사용하여 배포를 시작합니다. 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기**를 선택하면 이 문서의 나머지 단계를 수행할 수 있습니다.
 
-    [![Azure에 배포](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Azure 단추에 배포](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     **Azure에 배포** 단추를 선택하면 Azure Portal에서 배포 양식을 작성할 수 있는 페이지로 이동하게 됩니다.
 
-    ![Azure에 배포](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![이벤트 허브 폼 만들기](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. 이벤트 허브를 만들려는 구독을 선택하고 이름이 *test-hub-rg*인 리소스 그룹을 만듭니다.
 
@@ -73,7 +75,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
 1. 프로비전 프로세스를 모니터링하려면 도구 모음에서 **알림**을 선택합니다. 배포가 정상적으로 완료되려면 몇 분 정도 걸릴 수 있지만 이제 다음 단계를 진행해도 됩니다.
 
-    ![알림](media/ingest-data-event-hub/notifications.png)
+    ![알림 아이콘](media/ingest-data-event-hub/notifications.png)
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 대상 테이블 만들기
 
@@ -141,7 +143,15 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
     > * [샘플 앱](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)에 표시 된 것 처럼 동적 속성을 통해 압축 유형을 설정할 수도 있습니다.
     > * Avro, ORC 및 PARQUET 형식 및 이벤트 시스템 속성은 GZip 압축 페이로드에 지원 되지 않습니다.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+
+### <a name="event-system-properties-mapping"></a>이벤트 시스템 속성 매핑
+
+> [!Note]
+> * 시스템 속성은 단일 레코드 이벤트에 대해 지원 됩니다.
+> * `csv`매핑의 경우 레코드의 시작 부분에 속성이 추가 됩니다. `json`매핑의 경우 드롭다운 목록에 표시 되는 이름에 따라 속성이 추가 됩니다.
+
+테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 [시스템 속성](ingest-data-event-hub-overview.md#system-properties) 을 포함 해야 합니다.
+
 
 ## <a name="copy-the-connection-string"></a>연결 문자열 복사
 

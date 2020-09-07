@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 25c82c8890342e00279d137eb749f3acc7df986f
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: c96203ccfa0c4dc70fff83454dac217cccfc0a6c
+ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874990"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89502775"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid 알림을 구독하여 Azure Data Explorer에 Blob 수집
 
@@ -26,7 +26,9 @@ ms.locfileid: "88874990"
 
 이 문서에서는 Event Grid 데이터 연결을 사용 하 여 저장소 계정에서 Azure 데이터 탐색기로 blob을 수집 하는 방법에 대해 알아봅니다. [Azure Event Grid](/azure/event-grid/overview) 구독을 설정 하는 Event Grid 데이터 연결을 만듭니다. Event Grid 구독은 Azure 이벤트 허브를 통해 저장소 계정에서 Azure 데이터 탐색기로 이벤트를 라우팅합니다. 그런 다음 시스템 전체의 데이터 흐름에 대 한 예를 볼 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+Event Grid에서 Azure 데이터 탐색기에 수집에 대 한 일반 정보는 [Event Grid에 연결](ingest-data-event-grid-overview.md)을 참조 하세요.
+
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독 [무료 Azure 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-portal.md)
@@ -38,7 +40,7 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
 
 1. Azure Portal의 클러스터 아래에서 **쿼리**를 선택합니다.
 
-    :::image type="content" source="media/ingest-data-event-grid/query-explorer-link.png" alt-text="쿼리 탐색기 링크":::    
+    :::image type="content" source="media/ingest-data-event-grid/query-explorer-link.png" alt-text="쿼리 탐색기 링크"::: 
 
 1. 다음 명령을 창에 복사하고, **실행**을 선택하여 수집된 데이터를 받을 테이블(TestTable)을 만듭니다.
 
@@ -159,11 +161,7 @@ Azure Storage 리소스와 상호 작용하는 몇 가지 기본 Azure CLI 명�
 
 ### <a name="ingestion-properties"></a>수집 속성
 
-Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingestion-properties.md) 을 지정할 수 있습니다.
-
-이러한 속성은 다음과 같이 설정할 수 있습니다.
-
-[!INCLUDE [ingestion-properties-event-grid](includes/ingestion-properties-event-grid.md)]
+Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingest-data-event-grid-overview.md#set-ingestion-properties) 을 지정할 수 있습니다. 
 
 > [!NOTE]
 > Azure 데이터 탐색기는 blob 사후 수집을 삭제 하지 않습니다.

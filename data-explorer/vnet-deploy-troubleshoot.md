@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/24/2020
-ms.openlocfilehash: 498912016c595646e1ef4b4df9bec427c262b6e9
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 6f3831580c998814d956b57a58acc8acd7269abb
+ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873885"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89502435"
 ---
 # <a name="troubleshoot-access-ingestion-and-operation-of-your-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크에서 Azure 데이터 탐색기 클러스터의 액세스, 수집 및 작업 문제 해결
 
@@ -69,7 +69,7 @@ ms.locfileid: "88873885"
 
 ### <a name="check-ingestion-health"></a>수집 상태 확인
 
-[클러스터 수집 메트릭이](using-metrics.md#ingestion-health-and-performance-metrics) 정상 상태 인지 확인 합니다.
+[클러스터 수집 메트릭이](using-metrics.md#ingestion-metrics) 정상 상태 인지 확인 합니다.
 
 ### <a name="check-security-rules-on-data-source-resources"></a>데이터 원본 리소스에 대 한 보안 규칙 확인
 
