@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: ea32c7631681c12aa1262c4dbdb8debdcc22a3c7
-ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
+ms.openlocfilehash: 79816960b75735e226395f70286ea9d81829a173
+ms.sourcegitcommit: 08c54dabc1efe3d4e2d2581c4b668a6b73daf855
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87871921"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89510698"
 ---
 # <a name="create-and-alter-external-sql-tables"></a>외부 SQL 테이블 만들기 및 변경
 
 명령이 실행 되는 데이터베이스에서 외부 SQL 테이블을 만들거나 변경 합니다.  
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 ( `.create`  |  `.alter`  |  `.create-or-alter` ) `external` `table` *TableName* ([columnName: columnType], ...)  
 `kind` `=` `sql`  
@@ -40,7 +40,7 @@ ms.locfileid: "87871921"
 
 ## <a name="optional-properties"></a>선택적 속성
 
-| 속성            | Type            | 설명                          |
+| 속성            | 형식            | Description                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | 테이블의 폴더입니다.                  |
 | `docString`         | `string`        | 테이블을 문서화 하는 문자열입니다.      |
@@ -57,7 +57,7 @@ ms.locfileid: "87871921"
 **예제** 
 
 ```kusto
-.create external table ExternalSql (x:long, s:string) 
+.create external table MySqlExternalTable (x:long, s:string) 
 kind=sql
 table=MySqlTable
 ( 
@@ -77,14 +77,14 @@ with
 
 | TableName   | TableType | 폴더         | DocString | 속성                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
-| ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable '",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server = tcp: myserver. net.tcp, 1433; Authentication = Active Directory Integrated; 초기 카탈로그 = mydatabase; ",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
+| MySqlExternalTable | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable '",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server = tcp: myserver. net.tcp, 1433; Authentication = Active Directory Integrated; 초기 카탈로그 = mydatabase; ",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
-## <a name="querying-an-external-table-of-type-sql"></a>SQL 유형의 외부 테이블 쿼리 
+## <a name="querying-an-external-table-of-type-sql"></a>SQL 유형의 외부 테이블 쿼리
 
 외부 SQL 테이블 쿼리는 지원 됩니다. [외부 테이블 쿼리](../../data-lake-query-data.md)를 참조 하세요. 
 
 > [!Note]
-> SQL 외부 테이블 쿼리 구현에서는 SQL 테이블에서 전체 ' SELECT * ' (또는 관련 열 선택)를 실행 합니다. 쿼리의 나머지 부분은 Kusto 쪽에서 실행 됩니다. 
+> SQL external table 쿼리 구현은 문을 실행 합니다 `SELECT x, s FROM MySqlTable` . 여기서 `x` 및 `s` 는 외부 테이블 열 이름입니다. 쿼리의 나머지 부분은 Kusto 쪽에서 실행 됩니다.
 
 다음 외부 테이블 쿼리를 살펴보십시오. 
 
@@ -92,7 +92,7 @@ with
 external_table('MySqlExternalTable') | count
 ```
 
-Kusto는 SQL database에 대 한 ' SELECT * from TABLE ' 쿼리를 실행 한 다음, Kusto side의 수를 계산 합니다. 이러한 경우에는 외부 테이블 함수를 사용 하는 대신 T-sql을 사용 하 여 직접 작성 하는 경우 (' SELECT COUNT (1) FROM TABLE ') 및 [sql_request 플러그 인](../query/sqlrequestplugin.md)을 사용 하 여 실행 하는 경우 성능이 향상 될 것으로 예상 됩니다. 마찬가지로 필터는 SQL 쿼리로 푸시되 지 않습니다.  
+Kusto는 SQL database에 대 한 쿼리를 실행 한 `SELECT x, s FROM MySqlTable` 다음, kusto side의 수를 계산 합니다. 이러한 경우에는 외부 테이블 함수를 사용 하는 대신 T-sql에서 직접 작성 하 `SELECT COUNT(1) FROM MySqlTable` 고 [sql_request 플러그 인](../query/sqlrequestplugin.md)을 사용 하 여 실행 하는 경우 성능이 더 좋을 것으로 예상 됩니다. 마찬가지로 필터는 SQL 쿼리로 푸시되 지 않습니다.  
 
 외부 테이블을 사용 하 여 쿼리에서 전체 테이블 (또는 관련 열)을 읽어야 할 때 Kusto side에서 추가 실행을 위해 SQL 테이블을 쿼리할 수 있습니다. SQL 쿼리를 T-sql에서 최적화할 수 있는 경우 [sql_request 플러그 인](../query/sqlrequestplugin.md)을 사용 합니다.
 
