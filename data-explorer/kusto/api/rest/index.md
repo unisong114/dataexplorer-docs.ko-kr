@@ -8,16 +8,16 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/29/2019
-ms.openlocfilehash: 6abfe15490e5c633e1cb7912f4794ee90bec1947
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: e7598ccc2c04ab54a27830ba16e2b307e84bba2c
+ms.sourcegitcommit: 9e0289945270db517e173aa10024e0027b173b52
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373595"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89428280"
 ---
 # <a name="azure-data-explorer-rest-api"></a>Azure Data Explorer REST API
 
-이 문서에서는 HTTPS를 통해 Kusto를 조작하는 방법에 대해 설명합니다.
+이 문서에서는 HTTPS를 통해 Azure Data Explorer와 상호 작용하는 방법에 대해 설명합니다.
 
 ## <a name="supported-actions"></a>지원되는 작업
 
@@ -25,11 +25,11 @@ ms.locfileid: "83373595"
 
 |작업         |HTTP 동사   |URI 템플릿           |엔진|데이터 관리|인증 |
 |---------------|------------|-----------------------|------|---------------|---------------|
-|쿼리          |GET 또는 POST |/v1/rest/query         |예   |예             |예            |
-|쿼리          |GET 또는 POST |/v2/rest/query         |예   |예             |예            |
+|쿼리          |GET 또는 POST |/v1/rest/query         |예   |아니요             |예            |
+|쿼리          |GET 또는 POST |/v2/rest/query         |예   |아니요             |예            |
 |관리     |POST        |/v1/rest/mgmt          |예   |예            |예            |
-|UI             |GET         |/                      |예   |예             |예             |
-|UI             |GET         |/{dbname}              |예   |예             |예             |
+|UI             |GET         |/                      |예   |아니요             |예             |
+|UI             |GET         |/{dbname}              |예   |아니요             |예             |
 
 여기서 *작업*은 관련 작업 그룹을 나타냅니다.
 

@@ -220,6 +220,8 @@
               href: vnet-deployment.md
             - name: 'VNet 클러스터 만들기, 연결 및 작업 문제 해결'
               href: vnet-deploy-troubleshoot.md
+            - name: VNet 클러스터용 프라이빗 엔드포인트 만들기 - 포털
+              href: vnet-create-private-endpoint.md
         - name: 암호화
           items:
             - name: 클러스터 디스크 암호화 - 포털
