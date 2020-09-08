@@ -92,7 +92,7 @@
           href: lightingest.md
         - name: 이벤트 허브
           items:
-            - name: Event Hub에 연결
+            - name: Event Hub에 대한 연결 만들기
               href: ingest-data-event-hub-overview.md
             - name: Azure portal
               href: ingest-data-event-hub.md
@@ -104,7 +104,7 @@
               href: data-connection-event-hub-resource-manager.md
         - name: Event Grid
           items:
-            - name: Event Grid에 연결
+            - name: Event Grid에 대한 연결 만들기
               href: ingest-data-event-grid-overview.md
             - name: Azure portal
               href: ingest-data-event-grid.md
@@ -116,7 +116,7 @@
               href: data-connection-event-grid-resource-manager.md
         - name: IoT Hub
           items:
-            - name: IoT Hub에 연결
+            - name: IoT Hub에 대한 연결 만들기
               href: ingest-data-iot-hub-overview.md
             - name: Azure portal
               href: ingest-data-iot-hub.md
@@ -297,7 +297,8 @@
       items:
         - name: 진단 로그를 사용하여 수집 모니터링
           href: using-diagnostic-logs.md
-        - name: 메트릭을 사용하여 클러스터 상태 모니터링
+        - name: 메트릭을 사용하여 Azure Data Explorer 모니터링
+          displayName: 'health, performance'
           href: using-metrics.md
         - name: 리소스 상태를 사용하여 클러스터 상태 모니터링
           href: monitor-with-resource-health.md
