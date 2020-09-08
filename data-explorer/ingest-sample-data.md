@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
-ms.openlocfilehash: 3ece5a9d225e48654a0a3a96c3b7b78327565841
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 3b5958740460bf1c6439544ac095849064216fbb
+ms.sourcegitcommit: 626a0e8695d2655e724283cfc4bdbe8e1d371de4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81491918"
+ms.lasthandoff: 09/05/2020
+ms.locfileid: "89493626"
 ---
 # <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>빠른 시작: Azure 데이터 탐색기로 샘플 데이터 수집
 
@@ -43,7 +43,7 @@ ms.locfileid: "81491918"
 1. 다음 명령을 붙여넣고 **실행**을 선택하여 StormEvents 테이블에 데이터를 수집합니다.
 
     ```Kusto
-    .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
+    .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
     ```
 
 1. 수집이 완료되면 다음 쿼리를 붙여넣고 창에서 쿼리를 선택한 다음 **실행**을 선택합니다.
