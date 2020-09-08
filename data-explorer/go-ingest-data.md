@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/10/2020
-ms.openlocfilehash: b733e70c78d9792e53dfe9cf133efe759e8ea91e
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 82302fc2071eca8bf2fb1e4c89b96de50b1a8806
+ms.sourcegitcommit: f689547c0f77b1b8bfa50a19a4518cbbc6d408e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873987"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89557346"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-go-sdk"></a>Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집 
 
@@ -26,12 +26,13 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
 이 문서에서는 먼저 테스트 클러스터에서 테이블 및 데이터 매핑을 만듭니다. 그런 다음 Go SDK를 사용 하 여 클러스터에 대 한 수집을 큐에 대기 하 고 결과의 유효성을 검사 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.
 * 다음으로 [이동](https://golang.org/) [SDK 최소 요구 사항을](kusto/api/golang/kusto-golang-client-library.md#minimum-requirements)설치 합니다. 
 * [Azure 데이터 탐색기 클러스터와 데이터베이스](create-cluster-database-portal.md)를 만듭니다.
+* [앱 등록을 만들고 데이터베이스에 대 한 권한을 부여](provision-azure-ad-app.md)합니다. 나중에 사용 하기 위해 클라이언트 ID 및 클라이언트 암호를 저장 합니다.
 
 ## <a name="install-the-go-sdk"></a>Go SDK 설치
 

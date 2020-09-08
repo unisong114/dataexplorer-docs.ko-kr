@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: f86c952fdbfadd0b6ff4177ce7aa194019639b20
-ms.sourcegitcommit: d54e4ebb611da2b30158720e14103e81a7daa5af
+ms.openlocfilehash: 8bb30180a7506b594e5747e3591f0d1aff80f8c3
+ms.sourcegitcommit: f689547c0f77b1b8bfa50a19a4518cbbc6d408e5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89286427"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89557363"
 ---
 # <a name="externaldata-operator"></a>externaldata 연산자
 
@@ -36,7 +36,7 @@ ms.locfileid: "89286427"
 
 현재 지원 되는 속성은 다음과 같습니다.
 
-| 속성         | 유형     | 설명       |
+| 속성         | Type     | Description       |
 |------------------|----------|-------------------|
 | `format`         | `string` | 데이터 형식입니다. 지정 하지 않으면 파일 확장명 (기본값)에서 데이터 형식을 검색 하려고 시도 `CSV` 합니다. 수집 [데이터 형식이](../../ingestion-supported-formats.md) 지원 됩니다. |
 | `ignoreFirstRecord` | `bool` | True로 설정 하면 모든 파일의 첫 번째 레코드가 무시 됨을 나타냅니다. 이 속성은 헤더를 사용 하 여 CSV 파일을 쿼리할 때 유용 합니다. |
@@ -44,7 +44,8 @@ ms.locfileid: "89286427"
 
 
 > [!NOTE]
-> 이 연산자는 파이프라인 입력을 허용 하지 않습니다.
+> * 이 연산자는 파이프라인 입력을 허용 하지 않습니다.
+> * 표준 [쿼리 제한은](../concepts/querylimits.md) 외부 데이터 쿼리에도 적용 됩니다.
 
 ## <a name="returns"></a>반환
 
