@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 0b85d0c4bd0604f46375e314cb1fe029647b8d32
-ms.sourcegitcommit: 9b96a0c1ba0d07fec81f29bdf8f71b9549e79b3a
+ms.openlocfilehash: c3f7212b062adaae1bd56399753270653204ad22
+ms.sourcegitcommit: 53a727fceaa89e6022bc593a4aae70f1e0232f49
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89472243"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652107"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
 분할 정책은 특정 테이블에 대해 [익스텐트 (데이터 분할)](../management/extents-overview.md) 가 분할 되어야 하는지 여부 및 방법을 정의 합니다.
 
-정책의 주요 목적은 분할 된 열에 있는 값의 데이터 집합 범위를 좁히는 것으로 알려진 쿼리 성능을 향상 시키는 것이 고, 높은 카디널리티 문자열 열에는 집계/조인 하는 것입니다. 이로 인해 데이터 압축이 향상 될 수도 있습니다.
+정책의 주된 목적은 분할 된 열에 대해 필터링 하 여 데이터 집합의 범위를 좁히는 것으로 알려진 쿼리의 성능을 향상 시키는 것이 고, 높은 카디널리티 문자열 열에 대해서는 집계/조인 하는 것입니다. 이로 인해 데이터 압축이 향상 될 수도 있습니다.
 
 > [!CAUTION]
 > 정책을 정의할 수 있는 테이블의 수에는 하드 코드 된 제한이 설정 되어 있지 않습니다. 그러나 모든 추가 테이블은 클러스터의 노드에서 실행 되는 백그라운드 데이터 분할 프로세스에 오버 헤드를 추가 합니다. 그러면 더 많은 클러스터 리소스가 사용 될 수 있습니다. 자세한 내용은 [모니터링](#monitoring) 및 [용량](#capacity)을 참조 하세요.
@@ -41,7 +41,6 @@ ms.locfileid: "89472243"
 > * 대다수의 쿼리는 `string` ,, 또는와 같은 *큰 차원의* 특정 열 (10M 이상의 카디널리티)에 대해 집계/조인 합니다 `application_ID` `tenant_ID` `user_ID` .
 
 * 해시 모듈로 함수는 데이터를 분할 하는 데 사용 됩니다.
-* 동일한 파티션에 속하는 모든 동일 (분할 된) 익스텐트는 동일한 데이터 노드에 할당 됩니다.
 * 유형이 같은 (분할 된) 익스텐트의 데이터는 해시 파티션 키를 기준으로 정렬 됩니다.
   * 테이블에 해시 파티션 키가 정의 되어 있는 경우에는 해당 키를 [행 순서 정책](roworderpolicy.md)에 포함할 필요가 없습니다.
 * [순서 섞기 전략](../query/shufflequery.md)을 사용 하는 쿼리 및 `shuffle key` 에서 사용 되는 쿼리는 테이블의 해시 파티션 키에 사용 되는 것으로 `join` `summarize` 예상 됩니다 `make-series` . 클러스터 노드 간에 이동 하는 데 필요한 데이터 양이 크게 감소 하기 때문입니다.
@@ -61,8 +60,13 @@ ms.locfileid: "89472243"
 * `Seed` 해시 값을 임의로 선택할 하는 데 사용할 값입니다.
   * 값은 양의 정수 여야 합니다.
   * 권장 값은 이며 `1` , 지정 되지 않은 경우 기본값입니다.
+* `PartitionAssignmentMode` 는 클러스터의 노드에 파티션을 할당 하는 데 사용 되는 모드입니다.
+  * 지원 되는 모드:
+    * `Default`: 같은 파티션에 속하는 모든 동일 (분할 된) 익스텐트가 동일한 노드에 할당 됩니다.
+    * `Uniform`: 익스텐트의 파티션 값이 무시 되 고 익스텐트가 클러스터의 노드에 균일 하 게 할당 됩니다.
+  * 쿼리가 해시 파티션 키에서 조인 하거나 집계 하지 않는 경우-사용 `Uniform` 합니다. 그렇지 않으면 `Default`를 사용합니다.
 
-#### <a name="example"></a>예제
+#### <a name="example"></a>예
 
 이라는 형식화 된 열에 대 한 해시 파티션 키 `string` `tenant_id` 입니다.
 이 함수는 `XxHash64` 해시 함수를 사용 하며,의는와 기본값을 사용 `MaxPartitionCount` `256` `Seed` `1` 합니다.
@@ -74,7 +78,8 @@ ms.locfileid: "89472243"
   "Properties": {
     "Function": "XxHash64",
     "MaxPartitionCount": 256,
-    "Seed": 1
+    "Seed": 1,
+    "PartitionAssignmentMode": "Default"
   }
 }
 ```
@@ -98,7 +103,7 @@ ms.locfileid: "89472243"
   * 로 시작 하는 것이 좋습니다 `1970-01-01 00:00:00` .
   * Datetime 파티션 키에 값이 있는 레코드가 있는 경우 `null` 해당 파티션 값은의 값으로 설정 됩니다 `Reference` .
 
-#### <a name="example"></a>예제
+#### <a name="example"></a>예
 
 코드 조각은 이라는 형식화 된 열에 대해 균일 한 datetime 범위 파티션 키를 보여 줍니다 `datetime` `timestamp` .
 `datetime(1970-01-01)`각 파티션에 대해 크기를 사용 하 여를 참조 지점으로 사용 `1d` 합니다.
@@ -136,7 +141,7 @@ ms.locfileid: "89472243"
   * 이 속성은 선택 사항입니다. 지정 하지 않으면 정책이 적용 된 후에 정책이 데이터 수집 적용 됩니다.
   * 보존으로 인해 삭제 될 수 있는 유형이 아닌 (분할 되지 않은) 익스텐트는 테이블의 효과적인 일시 삭제 기간 중 90% 이상으로 생성 되므로 분할 프로세스에서 무시 됩니다.
 
-### <a name="example"></a>예제
+### <a name="example"></a>예
 
 두 개의 파티션 키가 있는 데이터 분할 정책 개체입니다.
 1. 이라는 형식화 된 열에 대 한 해시 파티션 키 `string` `tenant_id` 입니다.
@@ -153,7 +158,8 @@ ms.locfileid: "89472243"
       "Properties": {
         "Function": "XxHash64",
         "MaxPartitionCount": 256,
-        "Seed": 1
+        "Seed": 1,
+        "PartitionAssignmentMode": "Default"
       }
     },
     {
@@ -205,7 +211,7 @@ ms.locfileid: "89472243"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예:
+[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용률을 모니터링 합니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 .show commands 
