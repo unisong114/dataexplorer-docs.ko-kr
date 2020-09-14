@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 39865b049512252e08dac9c182a6b1e20a388abe
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 078737ff7e5cd74d15792cc2f0f058cb3ea12a19
+ms.sourcegitcommit: e0cf581d433bbbb2eda5a4209a8eabcdae80c21b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875007"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90059490"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
@@ -23,7 +23,7 @@ Azure 데이터 탐색기 프록시 흐름:
 
 ![ADX 프록시 흐름](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 > [!NOTE]
 > ADX 프록시는 미리 보기 모드입니다. [프록시에 연결](#connect-to-the-proxy) 하 여 클러스터에 대해 adx 프록시 기능을 사용 하도록 설정 합니다. [Adxproxy](mailto:adxproxy@microsoft.com) 팀에 질문을 합니다.
@@ -59,8 +59,11 @@ Azure 데이터 탐색기 프록시 흐름:
 
 Kusto 탐색기, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, REST API 등의 Kusto 쿼리를 지 원하는 클라이언트 도구를 사용 하 여 쿼리를 실행할 수 있습니다.
 
+> [!NOTE]
+> ADX 프록시 기능은 데이터 검색에만 사용 됩니다. 자세한 내용은 [함수 지원 가능성](#function-supportability)을 참조 하세요.
+
 > [!TIP]
-> * 데이터베이스 이름에는 프록시 클러스터에 지정 된 리소스와 같은 이름을 지정 해야 합니다. 이름은 대/소문자를 구분 합니다.
+> * 데이터베이스 이름에는 프록시 클러스터에 지정 된 리소스와 같은 이름을 지정 해야 합니다. 이름은 대/소문자를 구분합니다.
 > * 클러스터 간 쿼리에서 Application Insights 앱 및 Log Analytics 작업 영역의 이름이 올바른지 확인 합니다.
 > * 이름에 특수 문자가 포함 되어 있으면 프록시 클러스터 이름에서 URL 인코딩으로 바꿉니다. 
 > * 이름에 [KQL 식별자 이름 규칙](kusto/query/schema-entities/entity-names.md)을 충족 하지 않는 문자가 포함 된 경우에는 대시 문자로 대체 됩니다 **-** .
@@ -75,13 +78,13 @@ Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 
 ![LA 작업 영역 쿼리](media/adx-proxy/query-la.png)
 
-### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>LA 또는 AI ADX 프록시 클러스터와 ADX native cluster의 크로스 쿼리 
+### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>LA 또는 AI ADX 프록시 클러스터와 ADX native cluster의 크로스 쿼리
 
 프록시에서 클러스터 간 쿼리를 실행 하는 경우 왼쪽 창에서 ADX native cluster가 선택 되어 있는지 확인 합니다. 다음 예에서는 LA 작업 영역에서 ADX 클러스터 테이블 (사용)을 결합 하는 방법을 보여 줍니다 `union` .
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
-| take 10 
+| take 10
 ```
 
 ```kusto
@@ -103,7 +106,8 @@ Azure 데이터 탐색기 프록시 클러스터는 Application Insights 및 Log
 * `.show function {FunctionName}`
 * `.show database {DatabaseName} schema as json`
 
-다음 이미지는 Azure 데이터 탐색기 웹 UI에서 테이블 형식 함수를 쿼리 하는 예를 보여 줍니다. 함수를 사용 하려면 쿼리 창에서 이름을 실행 합니다.
+다음 이미지는 Azure 데이터 탐색기 웹 UI에서 테이블 형식 함수를 쿼리 하는 예를 보여 줍니다.
+함수를 사용 하려면 쿼리 창에서 이름을 실행 합니다.
 
   [![Azure 데이터 탐색기 웹 UI에서 테이블 형식 함수 쿼리](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
