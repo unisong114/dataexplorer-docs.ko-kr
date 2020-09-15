@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: 47ca1ebdd4136b3add6b4476757f34a24b08eeea
-ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
+ms.openlocfilehash: 66bbaddc6fcc953c620b2b439027ecec97016f19
+ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89366121"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90534020"
 ---
 # <a name="visualize-data-with-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화
 
@@ -27,6 +27,9 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 다음 이미지는 Azure 데이터 탐색기 대시보드를 보여 줍니다.
 
 :::image type="content" source="media/adx-dashboards/dash.png" alt-text="최종 대시보드":::
+
+> [!IMPORTANT]
+> 데이터를 안전 하 게 보호 합니다. 사용자에 대 한 대시보드 및 대시보드 관련 메타 데이터는 미사용 암호화 됩니다.
 
 ## <a name="create-a-dashboard"></a>대시보드 만들기
 
@@ -66,7 +69,7 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="매개 변수 창":::
 
-|필드  |Description |
+|필드  |설명 |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
 |**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |

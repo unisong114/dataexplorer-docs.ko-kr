@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: c2986fd436c5a6257efb9a537753d993a0a57169
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 8dfb0fb6637214d77df5bed436649bb10f808a47
+ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872015"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533969"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python을 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -75,11 +75,12 @@ pip install azure-mgmt-kusto
     cluster_name = 'mykustocluster'
     cluster = Cluster(location=location, sku=AzureSku(name=sku_name, capacity=capacity, tier=tier))
     
-    kustoManagementClient = KustoManagementClient(credentials, subscription_id)
-    
-    cluster_operations = kustoManagementClient.clusters
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
+
+    cluster_operations = kusto_management_client.clusters
     
     poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    poller.wait()
     ```
 
    |**설정** | **제안 값** | **필드 설명**|
@@ -96,7 +97,7 @@ pip install azure-mgmt-kusto
 1. 다음 명령을 실행하여 클러스터가 성공적으로 만들어졌는지 확인합니다.
 
     ```Python
-    cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
+    cluster_operations.get(resource_group_name = resource_group_name, cluster_name= cluster_name, custom_headers=None, raw=False)
     ```
 
 결과에 값이 `Succeeded`인 `provisioningState`가 있으면 클러스터가 성공적으로 만들어진 것입니다.
@@ -106,20 +107,40 @@ pip install azure-mgmt-kusto
 1. 다음 명령을 사용하여 데이터베이스를 만듭니다.
 
     ```Python
-    from azure.mgmt.kusto.models import Database
+    from azure.mgmt.kusto import KustoManagementClient
+    from azure.common.credentials import ServicePrincipalCredentials
+    from azure.mgmt.kusto.models import ReadWriteDatabase
     from datetime import timedelta
+
+    #Directory (tenant) ID
+    tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
+    client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
+    client_secret = "xxxxxxxxxxxxxx"
+    subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
     
-    softDeletePeriod = timedelta(days=3650)
-    hotCachePeriod = timedelta(days=3650)
-    databaseName="mykustodatabase"
+    location = 'Central US'
+    resource_group_name = 'testrg'
+    cluster_name = 'mykustocluster'
+    soft_delete_period = timedelta(days=3650)
+    hot_cache_period = timedelta(days=3650)
+    database_name = "mykustodatabase"
+
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
     
-    database_operations = kusto_management_client.databases 
-    _database = ReadWriteDatabase(location=location,
-                        soft_delete_period=softDeletePeriod,
-                        hot_cache_period=hotCachePeriod)
+    database_operations = kusto_management_client.databases
+    database = ReadWriteDatabase(location=location,
+                        soft_delete_period=soft_delete_period,
+                        hot_cache_period=hot_cache_period)
     
-    #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
-    poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
+    poller = database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name, parameters = database)
+    poller.wait()
     ```
 
     > [!NOTE]
@@ -136,7 +157,7 @@ pip install azure-mgmt-kusto
 1. 다음 명령을 실행하여 직접 만든 데이터베이스를 살펴봅니다.
 
     ```Python
-    database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)
+    database_operations.get(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name)
     ```
 
 이제 클러스터와 데이터베이스가 있습니다.
@@ -147,7 +168,7 @@ pip install azure-mgmt-kusto
 * 리소스를 정리하려면 클러스터를 삭제합니다. 클러스터를 삭제하면 해당 클러스터에 있는 모든 데이터베이스도 함께 삭제됩니다. 다음 명령을 사용하여 클러스터를 삭제합니다.
 
     ```Python
-    cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
+    cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = cluster_name)
     ```
 
 ## <a name="next-steps"></a>다음 단계

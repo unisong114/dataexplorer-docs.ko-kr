@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 42254e00e629a19dfceeef2d4a6c2d1877400c05
-ms.sourcegitcommit: 283cce0e7635a2d8ca77543f297a3345a5201395
+ms.openlocfilehash: ad2a4180be714e5220121dfeaff5b34f801c4745
+ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84011553"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533986"
 ---
 # <a name="callout-policy"></a>설명선 정책
 
@@ -21,10 +21,10 @@ Azure 데이터 탐색기 클러스터는 다양 한 시나리오에서 외부 �
 클러스터 관리자는 클러스터의 콜아웃 정책을 업데이트 하 여 외부 호출에 대해 권한 있는 도메인을 관리할 수 있습니다.
 
 콜아웃 정책은 클러스터 수준에서 관리 되며 다음 유형으로 분류 됩니다.
-* `kusto`-Azure 데이터 탐색기 클러스터 간 쿼리를 제어 합니다.
-* `sql`- [SQL 플러그 인](../query/sqlrequestplugin.md)을 제어 합니다.
-
-* `webapi`-다른 외부 웹 호출을 제어 합니다.
+* `kusto` -Azure 데이터 탐색기 클러스터 간 쿼리를 제어 합니다.
+* `sql` - [SQL 플러그 인](../query/sqlrequestplugin.md)을 제어 합니다.
+* `cosmosdb` - [CosmosDB 플러그 인](../query/cosmosdb-plugin.md)을 제어 합니다.
+* `webapi` -다른 외부 웹 호출을 제어 합니다.
 * `sandbox_artifacts`-샌드박스 플러그 인 ([python](../query/pythonplugin.md)  |  [R](../query/rplugin.md))을 제어 합니다.
 
 콜아웃 정책은 다음과 같이 구성 됩니다.

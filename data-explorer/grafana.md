@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/13/2019
-ms.openlocfilehash: 30a78efa9cc9a54ac12eeaa6bfbdf8f5a7541eeb
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.date: 09/09/2020
+ms.openlocfilehash: 08093fd06fed1facc1d8e55d98785abb952632c8
+ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874446"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90534089"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana의 Azure Data Explorer에서 데이터 시각화
 
@@ -22,15 +22,15 @@ Grafana는 데이터를 쿼리하고 시각화한 다음, 시각화에 따라 �
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
-또는 아래 문서에 설명 된 대로 [데이터 원본을 구성](#configure-the-data-source) 하 고 [데이터를 시각화할](#visualize-data) 수 있습니다.
+대신 아래의 문서에 설명 된 대로 [데이터 원본을 구성](#configure-the-data-source) 하 고 [데이터를 시각화할](#visualize-data) 수 있습니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 이 문서를 완료 하려면 다음이 필요 합니다.
 
 * 운영 체제용 [Grafana 버전 5.3.0 이상](https://docs.grafana.org/installation/)
 
-* Grafana용 [Azure Data Explorer 플러그 인](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation)
+* Grafana에 대 한 [Azure 데이터 탐색기 플러그 인](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) 입니다. Grafana 쿼리 작성기를 사용 하려면 플러그 인 버전 3.0.5 이상이 필요 합니다.
 
 * StormEvents 샘플 데이터가 포함된 클러스터입니다. 자세한 내용은 [빠른 시작: Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기](create-cluster-database-portal.md) 및 [Azure 데이터 탐색기로 샘플 데이터 수집](ingest-sample-data.md)을 참조하세요.
 
@@ -70,13 +70,13 @@ Grafana는 데이터를 쿼리하고 시각화한 다음, 시각화에 따라 �
 
 ## <a name="visualize-data"></a>데이터 시각화
 
-Grafana에 대한 데이터 원본으로 Azure Data Explorer 구성을 완료했다면, 이제 데이터를 시각화할 차례입니다. 여기에서는 기본적인 예제만 살펴보지만 다양한 작업을 수행할 수 있습니다. 샘플 데이터 세트에 대해 실행할 다른 쿼리의 예제로 [Azure Data Explorer에 대한 쿼리 작성](write-queries.md)을 볼 것을 권장합니다.
+Grafana에 대한 데이터 원본으로 Azure Data Explorer 구성을 완료했다면, 이제 데이터를 시각화할 차례입니다. 쿼리 편집기의 쿼리 작성기 모드와 raw 모드를 모두 사용 하는 기본 예제를 보여 드리겠습니다. 샘플 데이터 세트에 대해 실행할 다른 쿼리의 예제로 [Azure Data Explorer에 대한 쿼리 작성](write-queries.md)을 볼 것을 권장합니다.
 
 1. Grafana의 왼쪽 메뉴에서 더하기 아이콘을 선택한 다음, **대시 보드**를 선택합니다.
 
     ![대시보드 만들기](media/grafana/create-dashboard.png)
 
-1. **추가** 탭 아래에 있는 **그래프**를 선택합니다.
+1. **추가** 탭에서 **추가 새 패널**을 선택 합니다.
 
     ![그래프 추가](media/grafana/add-graph.png)
 
@@ -88,7 +88,46 @@ Grafana에 대한 데이터 원본으로 Azure Data Explorer 구성을 완료했
 
     ![데이터 원본 선택](media/grafana/select-data-source.png)
 
-1. 쿼리 창에서 다음 쿼리를 복사한 다음, 선택 **실행**을 선택합니다. 쿼리는 샘플 데이터 세트에 대한 일별 이벤트 수를 버킷합니다.
+### <a name="query-builder-mode"></a>쿼리 작성기 모드
+
+쿼리 편집기에는 두 가지 모드가 있습니다. 쿼리 작성기 모드와 raw 모드입니다. 쿼리 작성기 모드를 사용 하 여 쿼리를 정의 합니다.
+
+1. 데이터 원본 아래에서 **데이터베이스** 를 선택 하 고 드롭다운에서 데이터베이스를 선택 합니다. 
+1. **에서를** 선택 하 고 드롭다운에서 테이블을 선택 합니다.
+
+    :::image type="content" source="media/grafana/query-builder-from-table.png" alt-text="쿼리 작성기에서 테이블 선택":::    
+
+1. 테이블이 정의 된 후에는 데이터를 필터링 하 고 표시할 값을 선택 하 고 해당 값의 그룹화를 정의 합니다.
+
+    **Filter**
+    1. **+** **Where (필터)** 오른쪽을 클릭 하 여 테이블에서 하나 이상의 열을 드롭다운에서 선택 합니다. 
+    1. 각 필터에 대해 적용 가능한 연산자를 사용 하 여 값을 정의 합니다. 
+    이 선택은 Kusto 쿼리 언어에서 [where 연산자](kusto/query/whereoperator.md) 를 사용 하는 것과 유사 합니다.
+
+    **값 선택**
+    1. **+** **값 열** 을 오른쪽으로 클릭 하 여 패널에 표시 될 값 열을 드롭다운에서 선택 합니다.
+    1. 각 값 열에 대해 집계 유형을 설정 합니다. 
+    하나 이상의 값 열을 설정할 수 있습니다. 이 선택 항목은 [요약 연산자](kusto/query/summarizeoperator.md)를 사용 하는 것과 같습니다.
+
+    **값 그룹화** <br> 
+    **+** **Group by (요약)** 오른쪽을 클릭 하 여 값을 그룹으로 정렬 하는 데 사용할 하나 이상의 열을 드롭다운에서 선택 합니다. 이는 요약 연산자의 그룹 식과 같습니다.
+
+1. 쿼리를 실행 하려면 **쿼리 실행**을 선택 합니다.
+
+    :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="모든 값이 완료 된 쿼리 작성기":::
+
+    > [!TIP]
+    > 쿼리 작성기에서 설정을 완료 하는 동안 Kusto 쿼리 언어 쿼리가 생성 됩니다. 이 쿼리는 그래픽 쿼리 편집기를 사용 하 여 생성 한 논리를 보여 줍니다. 
+
+1. **KQL 편집** 을 선택 하 여 원시 모드로 전환 하 고 Kusto 쿼리 언어의 유연성 및 성능을 사용 하 여 쿼리를 편집 합니다.
+
+:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="원시 쿼리를 사용 하는 쿼리 작성기":::
+
+### <a name="raw-mode"></a>Raw 모드
+
+Raw 모드를 사용 하 여 쿼리를 편집 합니다. 
+
+1. 쿼리 창에서 다음 쿼리를 복사한 다음 **쿼리 실행**을 선택 합니다. 쿼리는 샘플 데이터 세트에 대한 일별 이벤트 수를 버킷합니다.
 
     ```kusto
     StormEvents
@@ -110,6 +149,11 @@ Grafana에 대한 데이터 원본으로 Azure Data Explorer 구성을 완료했
     ![완성된 그래프](media/grafana/finished-graph.png)
 
 1. 상단 메뉴에서 저장 아이콘을 선택합니다. ![저장 아이콘](media/grafana/save-icon.png).
+
+> [!IMPORTANT]
+> 쿼리 작성기 모드로 전환 하려면 **작성기로 전환**을 선택 합니다. Grafana는 쿼리를 쿼리 작성기에서 사용 가능한 논리로 변환 합니다. 쿼리 작성기 논리는 제한 되므로 쿼리에 대 한 수동 변경 내용이 손실 될 수 있습니다.
+
+:::image type="content" source="media/grafana/raw-mode.png" alt-text="Raw 모드에서 작성기로 이동":::
 
 ## <a name="create-alerts"></a>경고 만들기
 

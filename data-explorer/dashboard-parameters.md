@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 4921a48ff879879084ec1941ab69c6e9d29b9773
-ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
+ms.openlocfilehash: 4e11ccd1c775fa2cae2e25f7cf1bd8b802a11567
+ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89366166"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90534003"
 ---
 # <a name="use-parameters-in-azure-data-explorer-dashboards"></a>Azure 데이터 탐색기 대시보드에서 매개 변수 사용
 
@@ -44,7 +44,7 @@ ms.locfileid: "89366166"
 
 :::image type="content" source="media/dashboard-parameters/properties.png" alt-text="매개 변수 속성 추가":::
 
-|필드  |Description |
+|필드  |설명 |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
 |**매개 변수 형식**    |다음 매개 변수 중 하나입니다.<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li><li>**자유 텍스트**: 필터에 입력 된 값이 없습니다. 사용자는 값을 입력 하거나 텍스트 필드에 값을 복사/붙여 넣을 수 있습니다. 필터는 최근 사용 된 값을 유지 합니다.</li></ul>    |
@@ -297,10 +297,9 @@ EventsAll
 
 ## <a name="use-filter-search-for-single-and-multiple-selection-filters"></a>단일 및 다중 선택 필터에 필터 검색 사용
 
-단일 및 다중 선택 필터에서 원하는 값을 입력 합니다. 필터 검색은 검색 용어와 일치 하는 최근 검색 된 모든 값을 표시 합니다.
+단일 및 다중 선택 필터에서 원하는 값을 입력 합니다. 필터 검색에는 검색 용어와 일치 하는 최근 검색 된 값만 표시 됩니다.
 
 ## <a name="next-steps"></a>다음 단계
 
 * [대시보드 시각적 개체 사용자 지정](dashboard-customize-visuals.md)
 * [Azure 데이터 탐색기에서 데이터 쿼리](web-query-data.md) 
-
