@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a98fe59755e47be8f4f4e53595d25bb260004236
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 8a3711594ec5d1cbcaf36c7286f1484a708c29a0
+ms.sourcegitcommit: 50c799c60a3937b4c9e81a86a794bdb189df02a3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349230"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90067524"
 ---
 # <a name="beta_cdf"></a>beta_cdf()
 
@@ -27,7 +27,7 @@ beta_cdf(0.2, 10.0, 50.0)
 
 베타 분포는 일반적으로 샘플에 있는 특정 항목의 백분율 편차(예: 하루 중 TV를 시청하는 시간)를 연구하는 데 사용됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `beta_cdf(`*x* `, ` *알파* `, ` *베타*`)`
 
@@ -47,7 +47,9 @@ beta_cdf(0.2, 10.0, 50.0)
 
 X < 0 또는 x > 1 인 경우 beta_cdf ()은 NaN 값을 반환 합니다.
 
-Alpha ≤ 0 또는 beta ≤ 0 인 경우 beta_cdf ()은 NaN 값을 반환 합니다.
+Alpha ≤ 0 또는 alpha > 1만 beta_cdf ()은 NaN 값을 반환 합니다.
+
+Beta ≤ 0 또는 beta > 1만 인 경우 beta_cdf ()는 NaN 값을 반환 합니다.
 
 ## <a name="examples"></a>예제
 

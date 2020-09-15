@@ -7,12 +7,12 @@ ms.reviewer: elbirnbo
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/09/2020
-ms.openlocfilehash: 55de6b9560b2b47496c122e6454e1a128dc26428
-ms.sourcegitcommit: 9e0289945270db517e173aa10024e0027b173b52
+ms.openlocfilehash: 7c2dfe62852b05239215f0c88c711cea4093808e
+ms.sourcegitcommit: 50c799c60a3937b4c9e81a86a794bdb189df02a3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89428977"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90067575"
 ---
 # <a name="create-a-private-endpoint-in-your-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크의 Azure 데이터 탐색기 클러스터에 개인 끝점을 만듭니다.
 
@@ -20,10 +20,12 @@ ms.locfileid: "89428977"
 
 [개인 링크 서비스](https://docs.microsoft.com/azure/private-link/private-link-service-overview)를 설정 하려면 Azure VNet 주소 공간의 IP 주소를 사용 하 여 개인 끝점을 사용 합니다. [Azure 개인 끝점](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) 은 VNet의 개인 IP 주소를 사용 하 여 개인적으로 안전 하 게 azure 데이터 탐색기에 연결 합니다. 또한 개인 끝점을 사용 하 여 연결 하려면 클러스터의 [DNS 구성을](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) 다시 구성 해야 합니다. 이 설정을 사용 하면 개인 네트워크의 클라이언트와 Azure 데이터 탐색기 클러스터 간의 네트워크 트래픽이 VNet을 통해 이동 하 고 공용 인터넷에서 노출을 제거 하 여 Microsoft 백본 네트워크의 [개인 링크로](https://docs.microsoft.com/azure/private-link/) 이동 합니다. 이 문서에서는 쿼리 (엔진) 및 수집 (데이터 관리)을 위해 클러스터에서 개인 끝점을 만들고 구성 하는 방법을 보여 줍니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * [가상 네트워크에서 Azure 데이터 탐색기 클러스터](https://docs.microsoft.com/azure/data-explorer/vnet-create-cluster-portal) 만들기
-* NSG (네트워크 보안 그룹)와 같은 [네트워크 정책을 사용 하지 않도록 설정](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) 합니다. 이러한 그룹은 개인 끝점에 대해 지원 되지 않습니다.
+* 네트워크 정책 사용 안 함:
+  * Azure 데이터 탐색기 클러스터 가상 네트워크에서 [개인 링크 서비스 정책을](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)사용 하지 않도록 설정 합니다.
+  * Azure 데이터 탐색기 클러스터 가상 네트워크와 동일할 수 있는 개인 끝점 가상 네트워크에서 [개인 끝점 정책을](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy)사용 하지 않도록 설정 합니다.
 
 ## <a name="create-private-link-service"></a>개인 링크 서비스 만들기
 
@@ -43,8 +45,8 @@ ms.locfileid: "89428977"
     |---|---|---|
     | Subscription | 사용자의 구독 | 가상 네트워크 클러스터를 보유 하는 Azure 구독을 선택 합니다.|
     | Resource group | 리소스 그룹 | 가상 네트워크 클러스터를 보유 하는 리소스 그룹을 선택 합니다. |
-    | Name | AzureDataExplorerPLS | 리소스 그룹에서 개인 링크 서비스를 식별 하는 이름을 선택 합니다. |
-    | 지역 | 가상 네트워크와 동일 | 가상 네트워크 지역과 일치 하는 지역을 선택 합니다. |
+    | 이름 | AzureDataExplorerPLS | 리소스 그룹에서 개인 링크 서비스를 식별 하는 이름을 선택 합니다. |
+    | Azure 지역 | 가상 네트워크와 동일 | 가상 네트워크 지역과 일치 하는 지역을 선택 합니다. |
 
 1. **아웃 바운드 설정** 창에서 다음 필드를 입력 합니다.
 
@@ -75,8 +77,8 @@ ms.locfileid: "89428977"
     |---|---|---|
     | Subscription | 사용자의 구독 | 개인 끝점에 사용 하려는 Azure 구독을 선택 합니다.|
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
-    | Name | AzureDataExplorerPE | 리소스 그룹에서 가상 네트워크를 식별 하는 이름을 선택 합니다.
-    | 지역 | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
+    | 이름 | AzureDataExplorerPE | 리소스 그룹에서 가상 네트워크를 식별 하는 이름을 선택 합니다.
+    | Azure 지역 | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
     
 1. **리소스** 창에서 다음 필드를 입력 합니다.
 

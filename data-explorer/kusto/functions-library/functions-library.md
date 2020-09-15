@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: 66f8da1655fada7429fcd3087810904bd184546c
-ms.sourcegitcommit: 993bc7b69096ab5516d3c650b9df97a1f419457b
+ms.openlocfilehash: 5b3457d52be37d4c0090db2f34c89994bc829a53
+ms.sourcegitcommit: 50c799c60a3937b4c9e81a86a794bdb189df02a3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614515"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90067541"
 ---
 # <a name="functions-library"></a>함수 라이브러리
 
@@ -22,14 +22,14 @@ ms.locfileid: "89614515"
 
 |함수 이름     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[predict_lf ()](predict-lf.md)|기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
-|[predict_onnx_lf ()](predict-onnx-lf.md)| ONNX 형식으로 기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
+|[predict_fl ()](predict-fl.md)|기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
+|[predict_onnx_fl ()](predict-onnx-fl.md)| ONNX 형식으로 기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
 
 ## <a name="series-processing-functions"></a>계열 처리 함수
 
 |함수 이름     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[quantize_lf ()](quantize-lf.md)|양자화 metric 열. |
-|[series_fit_poly_lf ()](series-fit-poly-lf.md)|회귀 분석을 사용 하 여 계열에 다항식을 맞춥니다. |
-|[series_moving_avg_lf ()](series-moving-avg-lf.md)|계열에 이동 평균 필터를 적용 합니다. |
-|[series_rolling_lf ()](series-rolling-lf.md)|계열에 롤링 집계 함수를 적용 합니다. |
+|[quantize_fl ()](quantize-fl.md)|양자화 metric 열. |
+|[series_fit_poly_fl ()](series-fit-poly-fl.md)|회귀 분석을 사용 하 여 계열에 다항식을 맞춥니다. |
+|[series_moving_avg_fl ()](series-moving-avg-fl.md)|계열에 이동 평균 필터를 적용 합니다. |
+|[series_rolling_fl ()](series-rolling-fl.md)|계열에 롤링 집계 함수를 적용 합니다. |
