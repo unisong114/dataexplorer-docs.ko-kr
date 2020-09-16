@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: ad2a4180be714e5220121dfeaff5b34f801c4745
-ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
+ms.openlocfilehash: 809088f35567f85444755d89ab30e02fad46abaf
+ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533986"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90680680"
 ---
 # <a name="callout-policy"></a>설명선 정책
 
@@ -26,6 +26,7 @@ Azure 데이터 탐색기 클러스터는 다양 한 시나리오에서 외부 �
 * `cosmosdb` - [CosmosDB 플러그 인](../query/cosmosdb-plugin.md)을 제어 합니다.
 * `webapi` -다른 외부 웹 호출을 제어 합니다.
 * `sandbox_artifacts`-샌드박스 플러그 인 ([python](../query/pythonplugin.md)  |  [R](../query/rplugin.md))을 제어 합니다.
+* `external_data` - [외부 테이블](../query/schema-entities/externaltables.md) 또는 [externaldata](../query/externaldata-operator.md) 연산자를 통해 외부 데이터에 대 한 액세스를 제어 합니다.
 
 콜아웃 정책은 다음과 같이 구성 됩니다.
 

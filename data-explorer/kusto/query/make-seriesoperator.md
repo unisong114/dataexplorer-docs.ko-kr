@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: 4f303726532da7ead1c2416f3d485979d045b0b2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 6ed841a6f47eb9a0a1e73182a3b9acd1c0209bd9
+ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346969"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90680758"
 ---
 # <a name="make-series-operator"></a>make-series 연산자
 
@@ -39,7 +39,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 * *Groupexpression:* 고유 값 집합을 제공 하는 열에 대 한 식입니다. 일반적으로 이미 제한된 값 집합을 제공하는 열 이름입니다. 
 * *MakeSeriesParameters*: *Name* `=` 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다. 
   
-  |Name           |값                                        |설명                                                                                        |
+  |Name           |값                                        |Description                                                                                        |
   |---------------|-------------------------------------|------------------------------------------------------------------------------|
   |`kind`          |`nonempty`                               |시리즈 시리즈 연산자의 입력이 비어 있는 경우 기본 결과를 생성 합니다.|                                
 
@@ -73,22 +73,27 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|함수|설명|
+|기능|Description|
 |--------|-----------|
 |[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[avg ()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
+|[avgif()](avgif-aggfunction.md)|그룹의 조건자를 사용 하 여 평균을 반환 합니다.|
 |[count ()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
 |[countif()](countif-aggfunction.md)|그룹의 조건자를 포함 하는 개수를 반환 합니다.|
 |[dcount()](dcount-aggfunction.md)|그룹 요소의 대략적인 고유 개수를 반환 합니다.|
+|[dcountif()](dcountif-aggfunction.md)|그룹의 조건자를 사용 하 여 대략적인 고유 카운트를 반환 합니다.|
 |[max()](max-aggfunction.md)|그룹의 최댓값을 반환합니다.|
+|[maxif()](maxif-aggfunction.md)|그룹의 조건자를 사용 하 여 최 댓 값을 반환 합니다.|
 |[min()](min-aggfunction.md)|그룹의 최솟값을 반환합니다.|
+|[minif()](minif-aggfunction.md)|그룹의 조건자와 함께 최소값을 반환 합니다.|
 |[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
 |[sum ()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
+|[sumif()](sumif-aggfunction.md)|그룹의 조건자를 사용 하 여 요소의 합계를 반환 합니다.|
 |[variance()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
 
 ## <a name="list-of-series-analysis-functions"></a>계열 분석 함수 목록
 
-|함수|설명|
+|기능|Description|
 |--------|-----------|
 |[series_fir()](series-firfunction.md)|[유한 임펄스 응답](https://en.wikipedia.org/wiki/Finite_impulse_response) 필터 적용|
 |[series_iir()](series-iirfunction.md)|[무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터 적용|
@@ -104,7 +109,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   
 ## <a name="list-of-series-interpolation-functions"></a>계열 보간 함수 목록
 
-|함수|설명|
+|기능|Description|
 |--------|-----------|
 |[series_fill_backward()](series-fill-backwardfunction.md)|계열의 누락 값에 대 한 역방향 채우기 보간을 수행 합니다.|
 |[series_fill_const()](series-fill-constfunction.md)|계열의 누락 값을 지정 된 상수 값으로 대체 합니다.|
@@ -113,7 +118,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 * 참고: 기본적으로 보간 함수 `null` 는 누락 값으로 가정 합니다. 따라서 `default=` *double* `null` `make-series` 계열에 보간 함수를 사용 하려는 경우에 double ()을 지정 합니다. 
 
-## <a name="example"></a>예제
+## <a name="example"></a>예
   
  지정 된 범위의 타임 스탬프를 기준으로 정렬 된 각 공급 업체의 각 과일에 대 한 숫자 및 평균 가격의 배열을 보여 주는 테이블입니다. 과일과 공급자의 각 고유 조합에 대 한 행이 출력에 있습니다. 출력 열에는 개수, 평균 및 전체 타임 라인 (2016-01-01부터 2016-01-10까지)의 과일, 공급자 및 배열이 표시 됩니다. 모든 배열은 해당 타임 스탬프를 기준으로 정렬 되며 모든 간격이 기본값으로 채워집니다 (이 예제에서는 0). 모든 다른 입력된 열은 무시됩니다.
   

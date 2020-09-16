@@ -7,14 +7,14 @@ ms.reviewer: elbirnbo
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/09/2020
-ms.openlocfilehash: 7c2dfe62852b05239215f0c88c711cea4093808e
-ms.sourcegitcommit: 50c799c60a3937b4c9e81a86a794bdb189df02a3
+ms.openlocfilehash: aeb807db9b69c6c5b806a7f4b152330ea2dabc72
+ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90067575"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90680744"
 ---
-# <a name="create-a-private-endpoint-in-your-azure-data-explorer-cluster-in-your-virtual-network"></a>가상 네트워크의 Azure 데이터 탐색기 클러스터에 개인 끝점을 만듭니다.
+# <a name="create-a-private-endpoint-in-your-azure-data-explorer-cluster-in-your-virtual-network-preview"></a>가상 네트워크 (미리 보기)의 Azure 데이터 탐색기 클러스터에 개인 끝점을 만듭니다.
 
 개인 끝점과 개인 링크를 사용 하 여 VNet (가상 네트워크)에서 Azure 데이터 탐색기 클러스터에 안전 하 게 액세스할 수 있습니다. 
 
@@ -45,8 +45,8 @@ ms.locfileid: "90067575"
     |---|---|---|
     | Subscription | 사용자의 구독 | 가상 네트워크 클러스터를 보유 하는 Azure 구독을 선택 합니다.|
     | Resource group | 리소스 그룹 | 가상 네트워크 클러스터를 보유 하는 리소스 그룹을 선택 합니다. |
-    | 이름 | AzureDataExplorerPLS | 리소스 그룹에서 개인 링크 서비스를 식별 하는 이름을 선택 합니다. |
-    | Azure 지역 | 가상 네트워크와 동일 | 가상 네트워크 지역과 일치 하는 지역을 선택 합니다. |
+    | Name | AzureDataExplorerPLS | 리소스 그룹에서 개인 링크 서비스를 식별 하는 이름을 선택 합니다. |
+    | Region | 가상 네트워크와 동일 | 가상 네트워크 지역과 일치 하는 지역을 선택 합니다. |
 
 1. **아웃 바운드 설정** 창에서 다음 필드를 입력 합니다.
 
@@ -77,8 +77,8 @@ ms.locfileid: "90067575"
     |---|---|---|
     | Subscription | 사용자의 구독 | 개인 끝점에 사용 하려는 Azure 구독을 선택 합니다.|
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
-    | 이름 | AzureDataExplorerPE | 리소스 그룹에서 가상 네트워크를 식별 하는 이름을 선택 합니다.
-    | Azure 지역 | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
+    | Name | AzureDataExplorerPE | 리소스 그룹에서 가상 네트워크를 식별 하는 이름을 선택 합니다.
+    | Region | *미국 서부* | 요구에 가장 적합한 지역을 선택합니다.
     
 1. **리소스** 창에서 다음 필드를 입력 합니다.
 

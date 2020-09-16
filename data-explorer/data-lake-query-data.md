@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 7762ec885a52df7ba47c90d5ac91c1019150cf17
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 058a42cc21c6af9642d91231e6b1620315f94f55
+ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873259"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90680699"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure 데이터 탐색기를 사용 하 여 Azure Data Lake에서 데이터 쿼리
 
@@ -125,7 +125,7 @@ dataformat=multijson
 데이터 필드를 외부 테이블 정의 필드에 매핑하는 JSON 매핑을 정의 합니다.
 
 ```kusto
-.create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
+.create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.timestamp"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
 ```
 
 외부 테이블을 쿼리하면 매핑이 호출 되 고 관련 데이터가 외부 테이블 열에 매핑됩니다.
