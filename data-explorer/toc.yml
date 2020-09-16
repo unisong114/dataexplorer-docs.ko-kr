@@ -248,6 +248,8 @@
       items:
         - name: 클러스터
           items:
+            - name: Advisor 권장 사항을 사용하여 클러스터 최적화
+              href: azure-advisor.md
             - name: 클러스터 VM SKU 선택
               href: manage-cluster-choose-sku.md
             - name: 클러스터 수평적 크기 조정 관리
@@ -452,6 +454,8 @@
                   href: ./kusto/query/bag-unpackplugin.md
                 - name: basket 플러그 인
                   href: ./kusto/query/basketplugin.md
+                - name: cosmosdb_sql_request 플러그인
+                  href: ./kusto/query/cosmosdb-plugin.md
                 - name: dcount_intersect 플러그 인
                   href: ./kusto/query/dcount-intersect-plugin.md
                 - name: diffpatterns 플러그 인
@@ -1682,18 +1686,18 @@
       items:
         - name: 함수 목록
           href: kusto/functions-library/functions-library.md
-        - name: predict_lf()
-          href: kusto/functions-library/predict-lf.md
-        - name: predict_onnx_lf()
-          href: kusto/functions-library/predict-onnx-lf.md
-        - name: quantize_lf()
-          href: kusto/functions-library/quantize-lf.md
-        - name: series_fit_poly_lf()
-          href: kusto/functions-library/series-fit-poly-lf.md
-        - name: series_moving_avg_lf()
-          href: kusto/functions-library/series-moving-avg-lf.md
-        - name: series_rolling_lf()
-          href: kusto/functions-library/series-rolling-lf.md
+        - name: predict_fl()
+          href: kusto/functions-library/predict-fl.md
+        - name: predict_onnx_fl()
+          href: kusto/functions-library/predict-onnx-fl.md
+        - name: quantize_fl()
+          href: kusto/functions-library/quantize-fl.md
+        - name: series_fit_poly_fl()
+          href: kusto/functions-library/series-fit-poly-fl.md
+        - name: series_moving_avg_fl()
+          href: kusto/functions-library/series-moving-avg-fl.md
+        - name: series_rolling_fl()
+          href: kusto/functions-library/series-rolling-fl.md
 - name: 리소스
   items:
     - name: 블로그
