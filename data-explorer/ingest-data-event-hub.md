@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 84f4348f1d172238bd71de55e989ed8520f78b93
-ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
+ms.openlocfilehash: 69438457dfcbfc4e29805d5d193c227538910e45
+ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89502758"
+ms.lasthandoff: 09/21/2020
+ms.locfileid: "90832665"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Event Hub에서 Azure Data Explorer로 데이터 수집
 
@@ -28,7 +28,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
 이벤트 허브에서 Azure 데이터 탐색기에 수집 하는 방법에 대 한 일반적인 내용은 [이벤트 허브에 연결](ingest-data-event-hub-overview.md)을 참조 하세요.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)입니다.
@@ -64,7 +64,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
     **설정** | **제안 값** | **필드 설명**
     |---|---|---|
     | Subscription | 사용자의 구독 | 이벤트 허브에 사용할 Azure 구독을 선택합니다.|
-    | 리소스 그룹 | *test-hub-rg* | 새 리소스 그룹 만들기 |
+    | Resource group | *test-hub-rg* | 새 리소스 그룹 만들기 |
     | 위치 | *미국 서부* | 이 문서에 대 한 *미국 서 부* 를 선택 합니다. 프로덕션 시스템의 경우 요구에 가장 적합한 지역을 선택합니다. 최상의 성능을 위해 Kusto 클러스터와 동일한 위치에 Event Hub 네임스페이스를 만듭니다(처리량이 높은 Event Hub 네임스페이스에 가장 중요).
     | 네임스페이스 이름 | 고유한 네임스페이스 이름 | 네임스페이스를 식별하는 고유한 이름을 선택합니다. 예를 들어 *mytestnamespace*를 선택합니다. 입력한 이름에 도메인 이름 *servicebus.windows.net*이 추가됩니다. 이 이름에는 문자, 숫자 및 하이픈만 포함할 수 있습니다. 이름은 문자로 시작하고 문자나 숫자로 끝나야 합니다. 값의 길이는 6자에서 50자 사이여야 합니다.
     | 이벤트 허브 이름 | *test-hub* | 이벤트 허브는 고유한 범위 지정 컨테이너 역할을 하는 네임스페이스 아래에 배치됩니다. 이벤트 허브 이름은 네임스페이스 내에서 고유해야 합니다. |
@@ -109,40 +109,45 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
     ![테스트 데이터베이스 선택](media/ingest-data-event-hub/select-test-database.png)
 
-1. **데이터 수집** 및 **데이터 연결 추가**를 선택합니다. 그런 다음, 다음 정보로 양식을 작성합니다. 작업을 마쳤으면 **만들기**를 선택합니다.
+1. **데이터 수집** 및 **데이터 연결 추가**를 선택합니다. 
 
-    ![이벤트 허브 연결](media/ingest-data-event-hub/event-hub-connection.png)
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="이벤트 허브에서 데이터 수집 및 데이터 연결 추가 선택-Azure 데이터 탐색기":::
 
-    **데이터 원본:**
+### <a name="create-a-data-connection"></a>데이터 연결 만들기
+
+1. 다음 정보로 양식을 작성합니다.
+
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="데이터 연결 창 이벤트 허브-Azure 데이터 탐색기":::
 
     **설정** | **제안 값** | **필드 설명**
     |---|---|---|
     | 데이터 연결 이름 | *test-hub-connection* | Azure 데이터 탐색기에서 만들 연결의 이름입니다.|
+    | 구독 |      | 이벤트 허브 리소스가 있는 구독 ID입니다.  |
     | 이벤트 허브 네임스페이스 | 고유한 네임스페이스 이름 | 앞에서 선택한 네임스페이스를 식별하는 이름입니다. |
-    | 이벤트 허브 | *test-hub* | 앞에서 만든 이벤트 허브입니다. |
-    | 소비자 그룹 | *test-group* | 앞에서 만든 이벤트 허브에 정의된 소비자 그룹입니다. |
+    | 이벤트 허브 | *test-hub* | 만든 이벤트 허브입니다. |
+    | 소비자 그룹 | *test-group* | 만든 이벤트 허브에 정의 된 소비자 그룹입니다. |
     | 이벤트 시스템 속성 | 관련 속성 선택 | [이벤트 허브 시스템 속성](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)입니다. 이벤트 메시지 마다 여러 레코드가 있는 경우 시스템 속성이 첫 번째 속성에 추가 됩니다. 시스템 속성을 추가 하는 경우 선택한 속성을 포함 하도록 테이블 스키마 및 [매핑을](kusto/management/mappings.md) [만들거나](kusto/management/create-table-command.md) [업데이트](kusto/management/alter-table-command.md) 합니다. |
     | 압축 | *없음* | 이벤트 허브 메시지 페이로드의 압축 유형입니다. 지원 되는 압축 유형: *None, GZip*.|
-    | | |
+    
+#### <a name="target-table"></a>대상 테이블
 
-    **대상 테이블:**
+수집된 데이터를 라우팅하기 위한 옵션으로는 *고정* 라우팅과 *동적* 라우팅이라는 두 가지 옵션이 있습니다. 이 문서에서는 테이블 이름, 데이터 형식 및 매핑을 기본값으로 지정 하는 정적 라우팅을 사용 합니다. 이벤트 허브 메시지가 데이터 라우팅 정보를 포함 하는 경우이 라우팅 정보는 기본 설정을 재정의 합니다.
 
-    수집된 데이터를 라우팅하기 위한 옵션으로는 *고정* 라우팅과 *동적* 라우팅이라는 두 가지 옵션이 있습니다. 
-    이 문서에서는 고정 라우팅을 사용합니다. 이 경우 테이블 이름, 데이터 형식 및 매핑을 직접 지정합니다. 따라서 **내 데이터에 라우팅 정보 포함**을 선택 취소한 상태로 둡니다.
+1. 다음 라우팅 설정을 입력 합니다.
+  
+   :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="이벤트 허브에 수집 데이터에 대 한 기본 라우팅 설정-Azure 데이터 탐색기":::
+        
+   |**설정** | **제안 값** | **필드 설명**
+   |---|---|---|
+   | 테이블 이름 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
+   | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO 및 W3CLOG입니다. |
+   | 매핑 | *TestMapping* | **Testdatabase**에서 만든 [매핑으로](kusto/management/mappings.md) , 들어오는 데이터를 **testdatabase**의 열 이름 및 데이터 형식에 매핑합니다. JSON, 여러 줄 JSON 및 AVRO에 필요 하 고 다른 형식의 경우 선택 사항입니다.|
+    
+   > [!NOTE]
+   > * 모든 **기본 라우팅 설정을**지정할 필요는 없습니다. 부분 설정도 허용 됩니다.
+   > * 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집 됩니다.
 
-     **설정** | **제안 값** | **필드 설명**
-    |---|---|---|
-    | 테이블 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
-    | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO 및 W3CLOG입니다. |
-    | 열 매핑 | *TestMapping* | **Testdatabase**에서 만든 [매핑으로](kusto/management/mappings.md) , 들어오는 JSON 데이터를 **testdatabase**의 열 이름 및 데이터 형식에 매핑합니다. JSON 또는 여러 줄 JSON에 필요 하 고 다른 형식의 경우 선택 사항입니다.|
-    | | |
-
-    > [!NOTE]
-    > * 동적 라우팅을 사용하려면 **라우팅 정보를 포함하는 내 데이터**를 선택합니다. [샘플 앱](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 주석에서 볼 수 있듯이 데이터에는 필수 라우팅 정보가 포함됩니다. 정적 및 동적 속성을 모두 설정하는 경우 동적 속성은 정적 속성을 재정의합니다. 
-    > * 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집 됩니다.
-    > * [샘플 앱](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)에 표시 된 것 처럼 동적 속성을 통해 압축 유형을 설정할 수도 있습니다.
-    > * Avro, ORC 및 PARQUET 형식 및 이벤트 시스템 속성은 GZip 압축 페이로드에 지원 되지 않습니다.
-
+1. **만들기**를 선택합니다. 
 
 ### <a name="event-system-properties-mapping"></a>이벤트 시스템 속성 매핑
 

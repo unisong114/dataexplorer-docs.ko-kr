@@ -72,6 +72,8 @@
           href: create-cluster-database-python.md
         - name: Azure Resource Manager 템플릿
           href: create-cluster-database-resource-manager.md
+    - name: 테이블 만들기
+      href: one-click-table.md
     - name: 데이터 수집
       items:
         - name: 한 번 클릭으로 수집
@@ -316,10 +318,12 @@
       items:
         - name: Power Automate
           items:
-            - name: Power Automate 흐름 커넥터
+            - name: Power Automate 커넥터
               href: flow.md
+              displayName: 'Microsoft Flow, flow, flow connector'
             - name: Power Automate 커넥터 사용 예
               href: flow-usage.md
+              displayName: 'Microsoft Flow, flow, flow connector'
         - name: Logic Apps
           href: kusto/tools/logicapps.md
         - name: Apache Spark 커넥터

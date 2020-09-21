@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: c96203ccfa0c4dc70fff83454dac217cccfc0a6c
-ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
+ms.openlocfilehash: 5cab29b20ad726c1482fa892ad4dadece464f01d
+ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89502775"
+ms.lasthandoff: 09/21/2020
+ms.locfileid: "90832728"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid 알림을 구독하여 Azure Data Explorer에 Blob 수집
 
@@ -28,7 +28,7 @@ ms.locfileid: "89502775"
 
 Event Grid에서 Azure 데이터 탐색기에 수집에 대 한 일반 정보는 [Event Grid에 연결](ingest-data-event-grid-overview.md)을 참조 하세요.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독 [무료 Azure 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-portal.md)
@@ -68,19 +68,20 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
 
     :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="데이터 수집에 대 한 데이터 연결 추가":::
 
+### <a name="data-connection---basics-tab"></a>데이터 연결-기본 사항 탭
+
 1. 연결 유형: **Blob storage**를 선택 합니다.
 
 1. 다음 정보로 양식을 작성합니다.
 
-    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-basics.png" alt-text="연결 기본 사항을 사용 하 여 event grid 폼 작성":::
-
-     데이터 원본:
+    :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="연결 기본 사항을 사용 하 여 event grid 폼 작성":::
 
     |**설정** | **제안 값** | **필드 설명**|
     |---|---|---|
     | 데이터 연결 이름 | *test-grid-connection* | Azure Data Explorer에서 만들 연결의 이름입니다.|
     | 스토리지 계정 구독 | 구독 ID | 저장소 계정이 있는 구독 ID입니다.|
     | 스토리지 계정 | *gridteststorage1* | 이전에 만든 스토리지 계정의 이름입니다.|
+    | 이벤트 유형 | *만든 blob* 또는 *blob의 이름을 바꿨습니다* . | 수집을 트리거하는 이벤트의 유형입니다. |
     | 리소스 만들기 | *자동* | Azure 데이터 탐색기에서 Event Grid 구독, 이벤트 허브 네임 스페이스 및 이벤트 허브를 만들지 여부를 정의 합니다. 수동으로 Event Grid 구독을 만드는 방법에 대 한 자세한 설명은 [저장소 계정에서 Event Grid 구독 만들기](ingest-data-event-grid.md) 섹션의 참조에서 찾을 수 있습니다.|
 
 1. 특정 주제를 추적 하려면 **필터 설정** 을 선택 합니다. 알림에 대한 필터를 다음과 같이 설정합니다.
@@ -95,25 +96,36 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
 
 1. **다음: 수집 속성**을 선택 합니다.
 
-1. 다음 정보를 사용 하 여 양식을 작성 하 고 **다음: 검토 + 만들기**를 선택 합니다. 테이블 및 매핑 이름은 대/소문자를 구분 합니다.
+### <a name="data-connection---ingest-properties-tab"></a>데이터 연결-수집 속성 탭
 
-   :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png" alt-text="테이블 및 매핑 수집 속성 검토 및 만들기":::
+1. 다음 정보로 양식을 작성합니다. 테이블 및 매핑 이름은 대/소문자를 구분 합니다.
+
+   :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="테이블 및 매핑 수집 속성 검토 및 만들기":::
 
     수집 속성:
 
      **설정** | **제안 값** | **필드 설명**
     |---|---|---|
-    | 테이블 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
+    | 테이블 이름 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
     | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW 및 W3CLOG입니다. 지원 되는 압축 옵션은 Zip 및 GZip입니다. |
     | 매핑 | *TestMapping* | **TestDatabase**에서 생성된 것으로, 들어오는 JSON 데이터를 **TestTable**의 열 이름 및 데이터 형식에 매핑.|
+    | 고급 설정 | *내 데이터에 머리글 있음* | 헤더를 무시 합니다. * SV 형식 파일에 대해 지원 됩니다.|
+
+   > [!NOTE]
+   > 모든 **기본 라우팅 설정을**지정할 필요는 없습니다. 부분 설정도 허용 됩니다.
+1. 다음을 선택 합니다 **. 검토 + 만들기**
+
+### <a name="data-connection---review--create-tab"></a>데이터 연결-검토 + 만들기 탭
 
 1. 자동으로 생성 된 리소스를 검토 하 고 **만들기**를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Event grid에 대 한 데이터 연결 검토 및 만들기":::
 
-1. 배포가 완료될 때까지 기다립니다. 배포에 실패 한 경우 실패 한 단계 옆에 있는 **작업 세부** 정보를 선택 하 여 실패 원인에 대 한 자세한 정보를 가져옵니다. 다시 **배포를 선택 하** 여 리소스 배포를 다시 시도 합니다.
+### <a name="deployment"></a>배포
 
-    :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Event grid 리소스 배포":::
+배포가 완료될 때까지 기다립니다. 배포에 실패 한 경우 실패 한 단계 옆에 있는 **작업 세부** 정보를 선택 하 여 실패 원인에 대 한 자세한 정보를 가져옵니다. 다시 **배포를 선택 하** 여 리소스 배포를 다시 시도 합니다. 배포 하기 전에 매개 변수를 변경할 수 있습니다.
+
+:::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Event grid 리소스 배포":::
 
 ## <a name="generate-sample-data"></a>샘플 데이터 생성
 

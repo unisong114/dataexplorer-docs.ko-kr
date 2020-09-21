@@ -7,12 +7,12 @@ ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
-ms.openlocfilehash: 13406b7bca657a7a9ae2b2e1d9e0ec9cf51e5e7c
-ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
+ms.openlocfilehash: 61e0a4f13aba871a92bdcf36a8af9ed78bb09624
+ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90680781"
+ms.lasthandoff: 09/21/2020
+ms.locfileid: "90832572"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-commands-and-queries-using-diagnostic-logs"></a>진단 로그를 사용 하 여 Azure 데이터 탐색기 수집, 명령 및 쿼리 모니터링
 
@@ -21,7 +21,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 > [!IMPORTANT] 
 > 진단 로그 데이터에는 중요 한 데이터가 포함 될 수 있습니다. 모니터링 요구 사항에 따라 로그 대상의 사용 권한을 제한 합니다. 
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>전제 조건
 
 * Azure 구독이 없는 경우 [무료 azure 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Portal](https://portal.azure.com/)에 로그인합니다.
@@ -64,11 +64,14 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
     1. 진단 설정의 **이름을** 선택 합니다.
     1. 하나 이상의 대상 (저장소 계정, 이벤트 허브 또는 Log Analytics)을 선택 합니다.
-    1. 수집할 로그 (,, 또는)를 선택 `SucceededIngestion` `FailedIngestion` `Commands` `Queries` 합니다.
+    1. 수집할 로그 (,, 또는)를 선택 `SucceededIngestion` `FailedIngestion` `Command` `Query` 합니다.
     1. 수집할 [메트릭](using-metrics.md#supported-azure-data-explorer-metrics) (선택 사항)을 선택 합니다.  
     1. **저장** 을 선택 하 여 새 진단 로그 설정 및 메트릭을 저장 합니다.
 
 몇 분 안에 새 설정이 설정 됩니다. 그러면 로그는 구성 된 보관 대상 (저장소 계정, 이벤트 허브 또는 Log Analytics)에 표시 됩니다. 
+
+    > [!NOTE]
+    > If you send logs to Log Analytics, the `SucceededIngestion`, `FailedIngestion`, `Command`, and `Query` logs will be stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXCommand`, `ADXQuery`, respectively.
 
 ## <a name="diagnostic-logs-schema"></a>진단 로그 스키마
 
@@ -80,7 +83,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 로그 JSON 문자열에는 다음 표에 나열 된 요소가 포함 됩니다.
 
-|Name               |Description
+|Name               |설명
 |---                |---
 |time               |보고서의 시간
 |resourceId         |Azure Resource Manager 리소스 ID
@@ -114,7 +117,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 ```
 **성공한 작업 진단 로그의 속성**
 
-|Name               |Description
+|Name               |설명
 |---                |---
 |succeededOn        |수집 완료 시간
 |operationId        |Azure 데이터 탐색기 수집 작업 ID
@@ -155,7 +158,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 **실패 한 작업 진단 로그의 속성**
 
-|Name               |Description
+|Name               |설명
 |---                |---
 |failedOn           |수집 완료 시간
 |operationId        |Azure 데이터 탐색기 수집 작업 ID
@@ -176,7 +179,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 로그 JSON 문자열에는 다음 표에 나열 된 요소가 포함 됩니다.
 
-|Name               |Description
+|Name               |설명
 |---                |---
 |time               |보고서의 시간
 |resourceId         |Azure Resource Manager 리소스 ID
@@ -216,7 +219,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 ```
 **명령 진단 로그의 속성**
 
-|Name               |Description
+|Name               |설명
 |---                |---
 |RootActivityId |루트 작업 ID
 |StartedOn        |이 명령이 시작 된 시간 (UTC)
@@ -302,7 +305,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 **쿼리 진단 로그의 속성**
 
-|Name               |Description
+|Name               |설명
 |---                |---
 |RootActivityId |루트 작업 ID
 |StartedOn        |이 명령이 시작 된 시간 (UTC)

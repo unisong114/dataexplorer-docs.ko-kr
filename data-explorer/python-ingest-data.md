@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: d3fedb37042dabbede106b036e7351a0a24d2a7d
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: c20897b0bf3d02e1dfac7e791b4c15189090703c
+ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875296"
+ms.lasthandoff: 09/21/2020
+ms.locfileid: "90832589"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer Python 라이브러리를 사용하여 데이터 수집
 
@@ -50,7 +50,7 @@ pip install azure-kusto-ingest
 azure-kusto-data에서 클래스를 가져옵니다.
 
 ```python
-from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
@@ -96,7 +96,6 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 추가 클래스를 가져오고 데이터 원본 파일에 대한 상수를 설정합니다. 이 예제에서는 Azure Blob Storage에 호스트된 예제 파일을 사용합니다. **Stormevents** 샘플 데이터 집합에는 [환경적 정보에 대 한 국가별 센터](https://www.ncdc.noaa.gov/stormevents/)의 날씨 관련 데이터가 포함 되어 있습니다.
 
 ```python
-from azure.storage.blob import BlockBlobService
 from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
