@@ -7,34 +7,34 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/15/2020
-ms.openlocfilehash: a9f2be17e02103a64fa31a10bc6195076addb1fc
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 03422de8987e125b5565b0625434ef660426b40a
+ms.sourcegitcommit: c2ab3176db4dd55ac9ca8eee52bbd24096d1277f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874531"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90740272"
 ---
 # <a name="usage-examples-for-azure-data-explorer-connector-to-power-automate-preview"></a>전원 자동화를 위한 Azure 데이터 탐색기 커넥터의 사용 예 (미리 보기)
 
-Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색기에서 [Microsoft 파워 자동화](https://flow.microsoft.com/)의 흐름 기능을 사용할 수 있습니다. 예약 되거나 트리거된 작업의 일부로 Kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다. 이 문서에는 몇 가지 일반적인 흐름 커넥터 사용 예가 포함 되어 있습니다.
+Azure 데이터 탐색기 파워 자동화 (이전 Microsoft flow) 커넥터를 사용 하면 Azure 데이터 탐색기에서 [Microsoft 파워 자동화](https://flow.microsoft.com/)의 흐름 기능을 사용할 수 있습니다. 예약 되거나 트리거된 작업의 일부로 Kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다. 이 문서에는 몇 가지 일반적인 전원 자동화 커넥터 사용 예가 포함 되어 있습니다.
 
-자세한 내용은 [Azure 데이터 탐색기 flow 커넥터 (미리 보기)](flow.md)를 참조 하세요.
+자세한 내용은 [Azure 데이터 탐색기 파워 자동화 커넥터 (미리 보기)](flow.md)를 참조 하세요.
 
-## <a name="flow-connector-and-your-sql-database"></a>Flow 커넥터 및 SQL database
+## <a name="power-automate-connector-and-your-sql-database"></a>전원 자동화 커넥터 및 SQL database
 
-흐름 커넥터를 사용 하 여 데이터를 쿼리하고 SQL database에서 집계 합니다.
+파워 자동화 커넥터를 사용 하 여 데이터를 쿼리하고 SQL database에서 집계 합니다.
 
 > [!Note]
-> 적은 양의 출력 데이터에 대해서만 flow 커넥터를 사용 합니다. SQL 삽입 작업은 각 행에 대해 개별적으로 수행 됩니다. 
+> 적은 양의 출력 데이터에 대해서만 전원 자동화 커넥터를 사용 합니다. SQL 삽입 작업은 각 행에 대해 개별적으로 수행 됩니다. 
 
-![흐름 커넥터를 사용 하 여 데이터를 쿼리 하는 스크린샷](./media/flow-usage/flow-sqlexample.png)
+![전원 자동화 커넥터를 사용 하 여 데이터를 쿼리 하는 스크린샷](./media/flow-usage/flow-sqlexample.png)
 
 > [!IMPORTANT]
 > **클러스터 이름** 필드에 클러스터 URL을 입력 합니다.
 
 ## <a name="push-data-to-a-microsoft-power-bi-dataset"></a>Microsoft Power BI 데이터 집합에 데이터 푸시
 
-Power BI 커넥터를 사용 하 여 flow 커넥터를 사용 하 여 Kusto 쿼리에서 데이터를 Power BI 스트리밍 데이터 집합에 푸시할 수 있습니다.
+Power BI 커넥터를 사용 하 여 파워 자동화 커넥터를 사용 하 여 Kusto 쿼리를 통해 데이터를 Power BI 스트리밍 데이터 집합에 푸시할 수 있습니다.
 
 1. 새 **쿼리 실행 및 결과 나열** 작업을 만듭니다.
 1. **새 단계**를 선택합니다.
@@ -54,7 +54,7 @@ Power BI 커넥터를 사용 하 여 flow 커넥터를 사용 하 여 Kusto 쿼�
 
 ## <a name="conditional-queries"></a>조건부 쿼리
 
-Kusto 쿼리 결과를 다음 흐름 작업의 입력 또는 조건으로 사용할 수 있습니다.
+Kusto 쿼리 결과를 다음 전원 자동화 작업에 대 한 입력 또는 조건으로 사용할 수 있습니다.
 
 다음 예제에서는 마지막 날에 발생 한 인시던트에 대해 Kusto를 쿼리 합니다. 해결 된 각 인시던트에 대해 여유 시간 메시지가 게시 되 고 푸시 알림이 생성 됩니다.
 여전히 활성 상태인 각 인시던트에 대해 Kusto를 쿼리하여 유사한 인시던트에 대 한 자세한 정보를 제공 합니다. 해당 정보를 전자 메일로 보내고 Azure DevOps Server에서 관련 작업을 엽니다.

@@ -7,25 +7,25 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 58b384b502683b69020c1f211345bfcec8c095b5
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 7c40d6b1f62014e8ede6ed3328dd3a3974d41a88
+ms.sourcegitcommit: c2ab3176db4dd55ac9ca8eee52bbd24096d1277f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874276"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90740306"
 ---
 # <a name="azure-data-explorer-connector-to-power-automate-preview"></a>파워 자동화를 위한 Azure 데이터 탐색기 커넥터 (미리 보기)
 
-Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색기에서 [Microsoft 파워 자동화](https://flow.microsoft.com/)의 흐름 기능을 사용할 수 있습니다. 예약 되거나 트리거된 작업의 일부로 Kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다.
+Azure 데이터 탐색기 파워 자동화 (이전에 Microsoft Flow) 커넥터를 사용 하면 Azure 데이터 탐색기에서 [Microsoft 파워 자동화](https://flow.microsoft.com/)의 흐름 기능을 사용할 수 있습니다. 예약 되거나 트리거된 작업의 일부로 Kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다.
 
-다음을 수행할 수 있습니다.
+다음과 같습니다.
 
 * 테이블 및 차트를 포함 하는 일별 보고서를 보냅니다.
 * 쿼리 결과를 기반으로 알림을 설정 합니다.
 * 클러스터에 대 한 제어 명령을 예약 합니다.
 * Azure 데이터 탐색기와 다른 데이터베이스 간에 데이터를 내보내고 가져옵니다. 
 
-자세한 내용은 [Azure 데이터 탐색기 flow 커넥터 사용 예제](flow-usage.md)를 참조 하세요.
+자세한 내용은 [Azure 데이터 탐색기 전원 자동화 커넥터 사용 예제](flow-usage.md)를 참조 하세요.
 
 ##  <a name="sign-in"></a>로그인 
 
@@ -66,7 +66,7 @@ Azure 데이터 탐색기 flow 커넥터를 사용 하면 Azure 데이터 탐색
 
 ## <a name="find-the-azure-kusto-connector"></a>Azure Kusto 커넥터 찾기
 
-Flow 커넥터를 사용 하려면 먼저 트리거를 추가 해야 합니다. 반복 된 기간에 따라 또는 이전 흐름 동작에 대 한 응답으로 트리거를 정의할 수 있습니다.
+전원 자동화 커넥터를 사용 하려면 먼저 트리거를 추가 해야 합니다. 반복 된 기간에 따라 또는 이전 흐름 동작에 대 한 응답으로 트리거를 정의할 수 있습니다.
 
 1. [새 흐름을 만들거나](https://flow.microsoft.com/manage/flows/new)Microsoft Power 자동화 홈 페이지에서 **내 흐름**  >  **+ 새로**만들기를 선택 합니다.
 
@@ -95,18 +95,18 @@ Azure 데이터 탐색기 커넥터를 열면 흐름에 추가할 수 있는 세
 
 이 작업을 사용 하 여 [제어 명령을](kusto/management/index.md)실행 합니다.
 
-1. 클러스터 URL을 지정 합니다. 예: `https://clusterName.eastus.kusto.windows.net`
+1. 클러스터 URL을 지정 합니다. 예들 들어 `https://clusterName.eastus.kusto.windows.net`입니다.
 1. 데이터베이스의 이름을 입력합니다.
 1. 제어 명령을 지정 합니다.
-   - 흐름에서 사용 되는 앱과 커넥터에서 동적 콘텐츠를 선택 합니다.
-   - 식을 추가 하 여 값을 액세스, 변환 및 비교 합니다.
+   * 흐름에서 사용 되는 앱과 커넥터에서 동적 콘텐츠를 선택 합니다.
+   * 식을 추가 하 여 값을 액세스, 변환 및 비교 합니다.
 1. 이 작업의 결과를 전자 메일을 통해 테이블 또는 차트로 보내려면 차트 종류를 지정 합니다. 로컬 환경은 다음과 같은 시스템일 수 있습니다.
-   - HTML 테이블입니다.
-   - 원형 차트입니다.
-   - 시간 차트입니다.
-   - 가로 막대형 차트입니다.
+   * HTML 테이블입니다.
+   * 원형 차트입니다.
+   * 시간 차트입니다.
+   * 가로 막대형 차트입니다.
 
-![컨트롤 실행 명령 및 결과 시각화의 스크린샷](./media/flow/flow-runcontrolcommand.png)
+![되풀이 창에서 컨트롤 실행 명령 및 결과 시각화의 스크린샷](./media/flow/flow-runcontrolcommand.png)
 
 > [!IMPORTANT]
 > **클러스터 이름** 필드에 클러스터 URL을 입력 합니다.

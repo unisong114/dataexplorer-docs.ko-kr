@@ -212,6 +212,8 @@
           href: k2bridge.md
     - name: 보안
       items:
+        - name: 격리된 컴퓨팅
+          href: isolated-compute.md
         - name: 네트워크 격리(VNet)
           items:
             - name: VNet에서 클러스터 만들기 - 포털
@@ -297,7 +299,7 @@
               href: dealing-with-duplicates.md
     - name: 모니터
       items:
-        - name: 진단 로그를 사용하여 수집 모니터링
+        - name: '진단 로그를 사용하여 수집, 명령 및 쿼리 모니터링'
           href: using-diagnostic-logs.md
         - name: 메트릭을 사용하여 Azure Data Explorer 모니터링
           displayName: 'health, performance'

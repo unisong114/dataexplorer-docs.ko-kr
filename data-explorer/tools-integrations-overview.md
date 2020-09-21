@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9522ee72e639c967f7b735c9c52d67c236498522
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: e341b70dfc2a7c0d3038d6d60d9c8ae2b40b6218
+ms.sourcegitcommit: c2ab3176db4dd55ac9ca8eee52bbd24096d1277f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201697"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90740255"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -75,7 +75,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 ### <a name="query-integrations"></a>통합 쿼리
 
 * [Azure Monitor](query-monitor-data.md)
-* [Azure 데이터 레이크](data-lake-query-data.md)
+* [Azure Data Lake](data-lake-query-data.md)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
@@ -93,7 +93,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 ## <a name="orchestration"></a>오케스트레이션
 
 * Power Automate
-    * [전원 자동화 흐름 커넥터](flow.md)
+    * [전원 자동화 커넥터](flow.md)
     * [Power Automate 커넥터 사용 예](flow-usage.md)
 * [Microsoft 논리 앱](kusto/tools/logicapps.md) 
 * [Azure Data Factory](data-factory-integration.md)
