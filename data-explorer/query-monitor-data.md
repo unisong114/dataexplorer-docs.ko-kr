@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 078737ff7e5cd74d15792cc2f0f058cb3ea12a19
-ms.sourcegitcommit: e0cf581d433bbbb2eda5a4209a8eabcdae80c21b
+ms.openlocfilehash: b8de71ffcda28a7baa0f8452e501c7485e861122
+ms.sourcegitcommit: 5aba5f694420ade57ef24b96699d9b026cdae582
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90059490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90999013"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
@@ -95,6 +95,20 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
    [![Azure 데이터 탐색기 프록시의 크로스 쿼리](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
 연산자를 사용 하는 대신 [ `join` 연산자](kusto/query/joinoperator.md)를 사용 하 여 [`hint`](kusto/query/joinoperator.md#join-hints) Azure 데이터 탐색기 기본 클러스터 (프록시가 아닌)에서 실행 해야 할 수 있습니다. 
+
+### <a name="join-data-from-an-adx-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>다른 테 넌 트에서 Azure Monitor 리소스를 사용 하 여 ADX 클러스터의 데이터를 연결 합니다.
+
+테 넌 트 간 쿼리는 ADX Proxy에서 지원 되지 않습니다. 두 리소스를 모두 확장 하는 쿼리를 실행 하기 위해 단일 테 넌 트에 로그인 되어 있습니다.
+
+Azure 데이터 탐색기 리소스가 테 넌 트 ' A '에 있고 LA 작업 영역이 테 넌 트 ' B '에 있는 경우 다음 두 가지 방법 중 하나를 사용 합니다.
+
+1. Azure 데이터 탐색기를 사용 하면 다른 테 넌 트의 보안 주체에 대 한 역할을 추가할 수 있습니다. 테 넌 트 ' B '의 사용자 ID를 Azure 데이터 탐색기 클러스터의 권한 있는 사용자로 추가 합니다. Azure 데이터 탐색기 클러스터의 *' external' 테 넌 트* ' 속성에 테 넌 트 ' B '가 포함 되어 있는지 확인 합니다. ' B ' 테 넌 트에서 완전히 쿼리를 실행 합니다. 
+
+2. [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 를 사용 하 여 Azure Monitor 리소스를 테 넌 트 ' A '에 프로젝션 합니다.
+
+### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>다른 테 넌 트에서 Azure 데이터 탐색기 클러스터에 연결
+
+Kusto Explorer는 사용자 계정이 원래 속한 테 넌 트에 자동으로 로그인 합니다. 동일한 사용자 계정을 사용 하 여 다른 테 넌 트의 리소스에 액세스 하려면 `tenantId` 연결 문자열에을 명시적으로 지정 해야 합니다. `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=\*\*TenantId**`
 
 ## <a name="function-supportability"></a>함수 지원 가능성
 

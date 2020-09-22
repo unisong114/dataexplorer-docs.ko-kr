@@ -7,20 +7,21 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: 38c3933eb7e09709594892d0d73082c1171a6355
-ms.sourcegitcommit: 50c799c60a3937b4c9e81a86a794bdb189df02a3
+ms.openlocfilehash: 218ef000869e4cea0f237137a0481a9b4d72d65e
+ms.sourcegitcommit: 5aba5f694420ade57ef24b96699d9b026cdae582
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90075201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90998996"
 ---
-# <a name="series_rolling_fl"></a>series_rolling_fl ()
+# <a name="series_rolling_fl"></a>series_rolling_fl()
 
 
 함수는 `series_rolling_fl()` 계열에 롤링 집계를 적용 합니다. 여러 계열 (동적 숫자 배열)을 포함 하는 테이블을 사용 하 여 각 계열에 대해 롤링 집계 함수를 적용 합니다.
 
 > [!NOTE]
-> `series_rolling_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다.  이 함수는 인라인 Python을 ontains 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
+> * `series_rolling_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다.
+> * 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 
 ## <a name="syntax"></a>구문
 

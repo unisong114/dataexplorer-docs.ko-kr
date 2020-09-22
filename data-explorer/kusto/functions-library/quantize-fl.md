@@ -7,20 +7,21 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: f5cff6a5ef8490a90126a8cd90297067bdd709ad
-ms.sourcegitcommit: 50c799c60a3937b4c9e81a86a794bdb189df02a3
+ms.openlocfilehash: 38d353caf1e0352688ee91edfe7f1d2cef94d18a
+ms.sourcegitcommit: 5aba5f694420ade57ef24b96699d9b026cdae582
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90075218"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90998945"
 ---
-# <a name="quantize_fl"></a>quantize_fl ()
+# <a name="quantize_fl"></a>quantize_fl()
 
 
 함수는 `quantize_fl()` 메트릭 열을 bin 합니다. Quantizes 알고리즘에 따라 메트릭 열을 범주 레이블로 다시 설정 합니다.
 
 > [!NOTE]
-> `quantize_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다. 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
+> * `quantize_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다.
+> * 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 
 ## <a name="syntax"></a>구문
 
