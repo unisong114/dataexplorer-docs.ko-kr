@@ -8,26 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 7c9bc193e739011a5f91d9bd5d4d8746a7ce2591
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 871ad751105ba6a3f6ce5dcba55b3a0fd1c17789
+ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780561"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91056988"
 ---
 # <a name="retention-policy"></a>보존 정책
 
-보존 정책은 테이블에서 데이터를 자동으로 제거 하는 메커니즘을 제어 합니다. 테이블에 지속적으로 흐르는 데이터를 제거 하는 것이 유용 합니다. 예를 들어 2 주 후에 필요 하지 않은 될 수 있는 진단 이벤트를 포함 하는 테이블에 정책을 사용할 수 있습니다.
+보존 정책은 테이블 또는 [구체화 된 뷰에서](materialized-views/materialized-view-overview.md)데이터를 자동으로 제거 하는 메커니즘을 제어 합니다. 테이블에 지속적으로 흐르는 데이터를 제거 하는 것이 유용 합니다. 예를 들어 2 주 후에 필요 하지 않은 될 수 있는 진단 이벤트를 포함 하는 테이블에 정책을 사용할 수 있습니다.
 
-특정 테이블이 나 전체 데이터베이스에 대해 보존 정책을 구성할 수 있습니다.
-그런 다음 정책을 재정의 하지 않는 데이터베이스의 모든 테이블에 적용 됩니다.
+특정 테이블이 나 구체화 된 뷰나 전체 데이터베이스에 대해 보존 정책을 구성할 수 있습니다. 그런 다음 정책을 재정의 하지 않는 데이터베이스의 모든 테이블에 적용 됩니다.
 
 보존 정책을 설정 하는 것은 데이터를 지속적으로 수집 하 여 비용을 제한 하는 클러스터에 중요 합니다.
 
-"외부" 데이터는 보존 정책을 제거 하는 데 적합 합니다. Kusto는 제거 발생을 보장 하지 않습니다. 보존 정책이 트리거되는 경우에도 데이터가 "링거" 할 수 있습니다.
+"외부" 데이터는 보존 정책을 제거 하는 데 적합 합니다. 제거를 수행 하는 경우 특정 한 보장은 없습니다. 보존 정책이 트리거되는 경우에도 데이터가 "링거" 할 수 있습니다.
 
-보존 정책은 수집 이후 데이터의 보관 기간을 제한 하기 위해 가장 일반적으로 설정 됩니다.
-자세한 내용은 [소프트 Deleteperiod](#the-policy-object)를 참조 하세요.
+보존 정책은 수집 이후 데이터의 보관 기간을 제한 하기 위해 가장 일반적으로 설정 됩니다. 자세한 내용은 [소프트 Deleteperiod](#the-policy-object)를 참조 하세요.
 
 > [!NOTE]
 > * 삭제 시간이 정확 하지 않습니다. 시스템은 한도를 초과 하기 전에 데이터를 삭제 하지 않도록 보장 하지만 해당 지점 다음에는 삭제를 즉시 수행 하지 않습니다.
@@ -51,8 +49,8 @@ ms.locfileid: "84780561"
 
 ## <a name="control-commands"></a>제어 명령
 
-* 를 사용 [합니다. 정책 보존 표시](../management/retention-policy.md) 를 사용 하 여 데이터베이스 또는 테이블에 대 한 현재 보존 정책을 표시 합니다.
-* 을 사용 하 여 데이터베이스 또는 테이블에 대 한 현재 보존 정책을 변경 [합니다.](../management/retention-policy.md)
+* 를 사용 [합니다. 정책 보존 표시](../management/retention-policy.md) 를 사용 하 여 데이터베이스, 테이블 또는 [구체화 된 뷰에](materialized-views/materialized-view-overview.md)대 한 현재 보존 정책을 표시 합니다.
+* 을 사용 하 여 데이터베이스, 테이블 또는 [구체화 된 뷰의](materialized-views/materialized-view-overview.md)현재 보존 정책을 변경 [합니다.](../management/retention-policy.md)
 
 ## <a name="defaults"></a>기본값
 
@@ -64,6 +62,7 @@ ms.locfileid: "84780561"
 ```kusto
 .alter database DatabaseName policy retention "{}"
 .alter table TableName policy retention "{}"
+.alter materialized-view ViewName policy retention "{}"
 ```
 
 이 명령은 데이터베이스 또는 테이블에 적용 되는 다음 정책 개체를 반환 합니다.
@@ -96,6 +95,7 @@ ms.locfileid: "84780561"
 .delete table MyTable2 policy retention        // optional, only if the table previously had its policy set
 .delete table MySpecialTable policy retention  // optional, only if the table previously had its policy set
 .alter-merge database MyDatabase policy retention softdelete = 7d recoverability = disabled
+.alter-merge materialized-view ViewName policy retention softdelete = 7d 
 ```
 
 * *옵션 2*: 각 테이블에 대해 일시 삭제 기간이 7 일이 고 복구를 사용 하지 않도록 설정 하 여 테이블 수준 보존 정책을 설정 합니다.
