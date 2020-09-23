@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 11/25/2019
-ms.openlocfilehash: 7031ecf15ea3f7a472fbfbe1791d166e2e35b065
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 7b97d62e007b5294bf776fb5d5adcbac435056ef
+ms.sourcegitcommit: 3fc8e9b6a313a863916031d4beba84123edcf123
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763894"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90847856"
 ---
 # <a name="kusto-access-control-overview"></a>Kusto 액세스 제어 개요
 
@@ -61,7 +61,7 @@ Kusto 클라이언트 라이브러리를 사용하고 Azure AD를 Azure Data Exp
 ### <a name="microsoft-accounts-msas"></a>MSA(Microsoft 계정)
 
 MSA(Microsoft 계정)는 조직 이외의 모든 Microsoft 관리형 사용자 계정에 대한 용어입니다(예: `hotmail.com`, `live.com`, `outlook.com`).
-Kusto는 UPN(범용 사용자 이름)으로 식별되는 MSA(보안 그룹 개념이 없음)에 대한 사용자 인증을 지원합니다.
+Kusto는 UPN(사용자 계정 이름)으로 식별되는 MSA(보안 그룹 개념이 없음)에 대한 사용자 인증을 지원합니다.
 
 MSA 보안 주체가 Azure Data Explorer 리소스에 구성된 경우 Azure Data Explorer는 제공된 UPN을 확인하지 **않습니다**.
 
