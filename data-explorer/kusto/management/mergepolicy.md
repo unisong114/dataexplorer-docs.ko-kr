@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 830db0da43da241ffb77ff05f15c0a5f62eb1725
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 87980046e6f0ebbbdd17a9037aa1206779d2a61e
+ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967573"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91057039"
 ---
 # <a name="merge-policy"></a>병합 정책
 
@@ -60,6 +60,7 @@ ms.locfileid: "85967573"
     * 작업이 사용 되는지 여부를 정의 합니다 `Merge` .이 경우 작업 보다 우선 순위가 낮습니다 `Rebuild` .
 * **Maxrange Inhours**:
     * 기본값은 8입니다.
+        * 구체화 된 뷰의 유효 [보존 정책](retentionpolicy.md)에서 복구를 사용 하지 않도록 설정 하지 않는 한 [구체화 된 뷰의](materialized-views/materialized-view-overview.md)기본값은 14 일입니다.
     * 다른 두 익스텐트의 생성 시간 사이에 허용 되는 최대 차이 (시간)로, 계속 병합할 수 있습니다.
     * 타임 스탬프는 범위를 만들고 범위에 포함 된 실제 데이터와는 관련이 없습니다.
     * 병합 및 다시 작성 작업에 모두 적용 됩니다.

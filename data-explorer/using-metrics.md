@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/19/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d12e1d2382c3d7fe9a980b2b777a02205d28e5de
-ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
+ms.openlocfilehash: e2adf84e869638d6019b149af7623e12a64930d8
+ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/21/2020
-ms.locfileid: "90832555"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91056971"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>메트릭을 사용 하 여 Azure 데이터 탐색기 성능, 상태 및 사용 현황 모니터링
 
@@ -21,7 +21,7 @@ Azure 데이터 탐색기 메트릭은 Azure 데이터 탐색기 클러스터 �
 
 Azure 메트릭 탐색기에 대 한 자세한 내용은 [메트릭 탐색기](/azure/azure-monitor/platform/metrics-getting-started)을 참조 하세요.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독 계정이 없는 경우 [무료 Azure 계정을](https://azure.microsoft.com/free/)만들 수 있습니다.
 * [클러스터 및 데이터베이스](create-cluster-database-portal.md)
@@ -59,6 +59,7 @@ Azure 데이터 탐색기 메트릭은 수집, 쿼리 등의 특정 작업에 �
 * [수집 메트릭](#ingestion-metrics) 
 * [스트리밍 수집 메트릭](#streaming-ingest-metrics)
 * [쿼리 메트릭](#query-metrics) 
+* [구체화 된 뷰 메트릭](#materialized-view-metrics)
 
 Azure 데이터 탐색기에 대 한 Azure Monitor 메트릭의 사전순 목록은 [지원 되는 azure 데이터 탐색기 클러스터 메트릭](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)을 참조 하세요.
 
@@ -124,6 +125,17 @@ Azure 데이터 탐색기에 대 한 Azure Monitor 메트릭의 사전순 목록
 | 쿼리 기간 | 밀리초 | Avg, Min, Max, Sum | 쿼리 결과가 수신 될 때까지 걸리는 총 시간입니다 (네트워크 대기 시간을 포함 하지 않음). | QueryStatus |
 | 총 동시 쿼리 수 | 개수 | Avg, Max, Min, Sum | 클러스터에서 병렬로 실행 되는 쿼리 수입니다. 이 메트릭은 클러스터의 부하를 예측 하는 좋은 방법입니다. | 없음 |
 | 제한 된 쿼리의 총 수 | 개수 | Avg, Max, Min, Sum | 클러스터에서 제한 된 (거부 된) 쿼리의 수입니다. 허용 되는 동시 쿼리 (병렬)의 최대 수는 동시 쿼리 정책에 정의 되어 있습니다. | 없음 |
+
+## <a name="materialized-view-metrics"></a>구체화 된 뷰 메트릭
+
+|**메트릭** | **단위** | **요약** | **메트릭 설명** | **차원** |
+|---|---|---|---|---|
+|MaterializedViewHealth                    | 1, 0    | 평균     |  뷰가 정상으로 간주 되 면 값은 1이 고, 그렇지 않으면 0입니다. | 데이터베이스, MaterializedViewName |
+|MaterializedViewAgeMinutes                | 분 | 평균     | `age`뷰의는 현재 시간에서 뷰에서 처리 된 마지막 수집 시간을 뺀 값으로 정의 됩니다. 메트릭 값은 시간 (분)입니다. 값이 낮을수록 뷰가 "healthier"입니다. | 데이터베이스, MaterializedViewName |
+|MaterializedViewResult                    | 1       | 평균     | 메트릭은 `Result` 마지막 구체화 주기의 결과를 나타내는 차원을 포함 합니다 (아래의 가능한 값 참조). 메트릭 값은 항상 1과 같습니다. | 데이터베이스, MaterializedViewName, 결과 |
+|MaterializedViewRecordsInDelta            | 레코드 수 | 평균 | 원본 테이블에서 현재 처리 되지 않은 부분에 있는 레코드 수입니다. 자세한 내용은 [구체화 된 뷰 작동 방식](./kusto/management/materialized-views/materialized-view-overview.md#how-materialized-views-work) 을 참조 하세요.| 데이터베이스, MaterializedViewName |
+|MaterializedViewExtentsRebuild            | 익스텐트 수 | 평균 | 구체화 주기에서 다시 작성 된 익스텐트 수입니다. | 데이터베이스, MaterializedViewName|
+|MaterializedViewDataLoss                  | 1       | 최대    | 처리 되지 않은 원본 데이터가 보존에 근접 하는 경우 메트릭이 발생 합니다. | Database, MaterializedViewName, Kind |
 
 ## <a name="next-steps"></a>다음 단계
 
