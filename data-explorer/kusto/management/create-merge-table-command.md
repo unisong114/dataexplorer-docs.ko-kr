@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/05/2020
-ms.openlocfilehash: afe5011717fd77d654eaf6c2b70e9ffbdea87128
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 19dc7db9e344a516b5c92917dccbf8362b1ca858
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967632"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91102873"
 ---
-# <a name="create-merge-table"></a>. create-merge 테이블
+# <a name="create-merge-table"></a>.create-merge table
 
 새 테이블을 만들거나 기존 테이블을 확장 합니다. 
 
@@ -23,7 +23,7 @@ ms.locfileid: "85967632"
 
 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
-**구문**
+## <a name="syntax"></a>구문
 
 `.create-merge``table` *TableName* ([columnName: columnType], ...)  [ `with` `(` [ `docstring` `=` *설명서*] [ `,` `folder` `=` *FolderName*] `)` ]
 
@@ -35,7 +35,7 @@ ms.locfileid: "85967632"
 * 에 없는 T의 모든 열은 <columns specification> t에서 제거 되지 않습니다.
 * T에는 <columns specification> 있지만 데이터 형식이 다른의 모든 열은 명령이 실패 합니다.
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * [.create-merge tables](create-merge-tables-command.md)
-* [.create table](create-table-command.md)
+* [. create table](create-table-command.md)

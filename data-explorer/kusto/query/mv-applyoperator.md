@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ee6239b7e8ad4cbdd3d36e6b7b3c20f0cc0cdaeb
-ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
+ms.openlocfilehash: 8380e26b01f74585b2c3e99bb3eb4cd8c51df01c
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89366047"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103062"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
@@ -98,7 +98,7 @@ T | mv-apply Metric to typeof(real) on
 
 * 연산자와 달리 [`mv-expand`](./mvexpandoperator.md) 연산자는 `mv-apply` 배열 확장만 지원 합니다. 속성 모음 확장은 지원 되지 않습니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ## <a name="getting-the-largest-element-from-the-array"></a>배열에서 가장 큰 요소 가져오기
 
@@ -138,7 +138,6 @@ _data
 |-----|---------|---------|
 |1    |[1, 3, 5, 7]|12       |
 |0    |[2, 4, 6, 8]|14       |
-
 
 ## <a name="using-with_itemindex-for-working-with-a-subset-of-the-array"></a>`with_itemindex`배열의 하위 집합 작업에 사용
 
@@ -192,7 +191,6 @@ datatable(command:string, command_time:datetime, user_id:string)
 |user1|[<br>  "ls",<br>  "mkdir",<br>  "chmod",<br>  "dir",<br>  "pwd",<br>  rm<br>]|
 |user2|[<br>  "rm",<br>  pwd<br>]|
 
-
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * [mv-expand](./mvexpandoperator.md) 연산자.

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: dda177c39959f860ad7e019371133f16e1de91e2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9090e752f018c4abcce759c37a8ecb3571e2fbd6
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346935"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91102917"
 ---
 # <a name="make_list_if-aggregation-function"></a>make_list_if () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87346935"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_list_if(` *Expr*, *Predicate* [ `,` *MaxSize*]`)`
 
@@ -55,6 +55,6 @@ T
 |----|
 |["George", "Ringo"]|
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
-[`make_list`](./makelist-aggfunction.md)조건자 식 없이 동일 하 게 작동 하는 함수입니다.
+[`make_list`](./makelist-aggfunction.md) 조건자 식 없이 동일 하 게 작동 하는 함수입니다.

@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: 314244c58eca6082b9042b263e6b3e6faeb69840
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: b62e5032d6f2ccedc2883b6cbccaf7be69e1cebf
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351202"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103509"
 ---
 # <a name="set_has_element"></a>set_has_element()
 
 지정 된 집합에 지정 된 요소가 포함 되어 있는지 여부를 확인 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `set_has_element(`*배열*,*값*`)`
 
@@ -44,6 +44,6 @@ print arr=dynamic(["this", "is", "an", "example"])
 |---|
 |1|
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 [`array_index_of(arr, value)`](arrayindexoffunction.md)를 사용 하 여 배열에 값이 있는 위치를 찾습니다. 두 함수는 모두 동일 하 게 작동 합니다.

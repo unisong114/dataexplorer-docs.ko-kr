@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 1f8e6e8100472ed8e68a5dc1801c282b5a48ff77
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9eaf28787fb3d4ad37408235430559620d876a82
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351474"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103581"
 ---
 # <a name="series_greater_equals"></a>series_greater_equals()
 
 `>=`두 숫자 계열 입력의 요소 단위 크거나 같음 () 논리 연산을 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_greater_equals (`*Series1* `,` *Series2*`)`
 
@@ -43,7 +43,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1, 2, 4]|[4, 2, 1]|[false, true, true]|
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 전체 계열 통계 비교는 다음을 참조 하세요.
 * [series_stats()](series-statsfunction.md)

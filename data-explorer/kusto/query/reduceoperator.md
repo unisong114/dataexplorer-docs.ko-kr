@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 42eb17b6aca5fc722597bcbf656f18c6d92ba545
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: d844f693b1509a823702b12bd28b85a9f19a07bd
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345864"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91102898"
 ---
 # <a name="reduce-operator"></a>reduce 연산자
 
@@ -38,14 +38,14 @@ T | reduce by LogMessage with threshold=0.1
 
 ## <a name="returns"></a>반환
 
-이 연산자는 세 개의 열 ( `Pattern` , `Count` 및)과 그룹 수 만큼의 행을 포함 하는 테이블을 반환 합니다 `Representative` . `Pattern`는 그룹의 패턴 값으로, `*` 임의 삽입 문자열을 나타내는 와일드 카드로 사용 되며, `Count` 연산자에 대 한 입력의 행 수가이 패턴으로 표시 되는 횟수를 계산 하 고, `Representative` 이 그룹에 속하는 입력의 값 중 하나입니다.
+이 연산자는 세 개의 열 ( `Pattern` , `Count` 및)과 그룹 수 만큼의 행을 포함 하는 테이블을 반환 합니다 `Representative` . `Pattern` 는 그룹의 패턴 값으로, `*` 임의 삽입 문자열을 나타내는 와일드 카드로 사용 되며, `Count` 연산자에 대 한 입력의 행 수가이 패턴으로 표시 되는 횟수를 계산 하 고, `Representative` 이 그룹에 속하는 입력의 값 중 하나입니다.
 
 `[kind=source]`이 지정 된 경우 연산자는 `Pattern` 기존 테이블 구조에 열을 추가 합니다.
 이 버전의 스키마 구문은 나중에 변경 될 수 있습니다.
 
 예를 들어 `reduce by city`의 결과는 포함할 수도 있습니다. 
 
-|패턴     |개수 |Representative|
+|무늬     |개수 |Representative|
 |------------|------|--------------|
 | San *      | 5182 |San Bernard   |
 | Saint *    | 2846 |세인트 루시    |
@@ -62,11 +62,11 @@ range x from 1 to 1000 step 1
 | reduce by MyText  with threshold=0.001 , characters = "X" 
 ```
 
-|패턴         |개수|Representative   |
+|무늬         |개수|Representative   |
 |----------------|-----|-----------------|
 |MachineLearning*|1000 |MachineLearningX4|
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 다음 예에서는 감소 `reduce` 하기 전에 감소 하는 열의 guid가 대체 되는 "삭제 된" 입력에 연산자를 적용 하는 방법을 보여 줍니다.
 
@@ -82,7 +82,7 @@ Trace | take 10000
 | reduce by Text with characters="-_"
 ```
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 [autocluster](./autoclusterplugin.md)
 

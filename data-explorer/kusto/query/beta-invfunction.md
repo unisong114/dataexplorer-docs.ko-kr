@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b69fed2b3d7028fdc29d8098e8358c0088fcd8bb
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: deb91e6131d5662017ebdf714a79d0ee391c8ba1
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349213"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103301"
 ---
 # <a name="beta_inv"></a>beta_inv()
 
@@ -27,7 +27,7 @@ beta_inv(0.1, 10.0, 50.0)
 
 예상 완료 시간과 가변성이 주어질 경우, 프로젝트 계획에 베타 분포를 사용하여 가능한 완료 시간을 모델링할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `beta_inv(`*확률* `, ` *알파* `, ` *베타*`)`
 
@@ -70,7 +70,7 @@ datatable(p:double, alpha:double, beta:double, comment:string)
 |1.5|10|20|p > 1, null 생성||
 |0.1|-1|20|alpha는 0 < NaN을 생성 합니다.|NaN|
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * 누적 베타 배포 함수를 계산 하려면 [베타-cdf ()](./beta-cdffunction.md)를 참조 하세요.
 * 계산 확률 베타 밀도 함수는 [beta-pdf ()](./beta-pdffunction.md)를 참조 하세요.

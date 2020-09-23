@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: 283cd1427dedb04b036d7cb23e650d8f0651a58c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: e81266bf43da93d2b36f0be5846e5d74f3157c7f
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347139"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103225"
 ---
 # <a name="log"></a>log()
 
-`log()`자연 로그 함수를 반환 합니다.  
+`log()` 자연 로그 함수를 반환 합니다.  
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `log(`*.x*`)`
 
@@ -30,9 +30,9 @@ ms.locfileid: "87347139"
 ## <a name="returns"></a>반환
 
 * 자연 로그의 밑은 자연 지 수 함수 (exp)의 역함수입니다.
-* `null`인수가 음수 이거나 null 이거나 값으로 변환할 수 없는 경우 `real` 입니다. 
+* `null` 인수가 음수 이거나 null 이거나 값으로 변환할 수 없는 경우 `real` 입니다. 
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * 일반 (밑수 10)의 경우 [log10 ()](log10-function.md)를 참조 하세요.
 * 밑이 2 인 경우 [log2 ()](log2-function.md) 를 참조 하세요.

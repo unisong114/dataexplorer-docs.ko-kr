@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 5eb1dae8c45aee918ccec5a18d9f6ce16834acf6
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: d6ed6f073b1b1aa93b5767c46459a7c8a7b4bf55
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351406"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103528"
 ---
 # <a name="series_less"></a>series_less()
 
 `<`두 숫자 계열 입력의 요소 단위 less () 논리 연산을 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_less (`*Series1* `,` *Series2*`)`
 
@@ -43,7 +43,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1, 2, 4]|[4, 2, 1]|[true, false, false]|
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 전체 계열 통계 비교는 다음을 참조 하세요.
 * [series_stats()](series-statsfunction.md)

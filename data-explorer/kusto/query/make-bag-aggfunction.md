@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 18d0bf2eaa0f5215e38b8b787178ea5934fb3737
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3258a847a526e0e3b6ac8f0186b0a1aaabc3ffe5
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347037"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103199"
 ---
 # <a name="make_bag-aggregation-function"></a>make_bag () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87347037"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_bag(` *`Expr`* [ `,` *MaxSize*]`)`
 
@@ -40,7 +40,7 @@ ms.locfileid: "87347037"
 사전 값이 아닌 값을 건너뜁니다.
 키가 두 개 이상의 행에 표시 되는 경우이 키에 사용할 수 있는 값 중 임의의 값이 선택 됩니다.
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 동적 JSON 개체를 속성 모음 키를 사용 하는 열로 확장 하는 데 [bag_unpack ()](bag-unpackplugin.md) 플러그 인을 사용 합니다. 
 

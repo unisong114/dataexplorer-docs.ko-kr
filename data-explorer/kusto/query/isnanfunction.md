@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 5597f21d5e426329e2793978a6b207efc3868d13
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: f73effae8d91524f46548d57288a23d79cffd0a5
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347224"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103272"
 ---
 # <a name="isnan"></a>isnan()
 
 입력이 NaN (숫자가 아님) 값 인지 여부를 반환 합니다.  
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `isnan(`*.x*`)`
 
@@ -31,7 +31,7 @@ ms.locfileid: "87347224"
 
 X가 NaN 이면 0이 아닌 값 (true)입니다. 그렇지 않으면 0 (false)입니다.
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * 값이 null 인지 확인 하려면 [isnull ()](isnullfunction.md)을 참조 하세요.
 * 값이 유한 인지 확인 하려면 [isfinite ()](isfinitefunction.md)을 참조 하세요.

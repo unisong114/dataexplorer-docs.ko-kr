@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/27/2019
-ms.openlocfilehash: e4d97aac09138c0268bc5c466c67f64cd1da6ebe
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 377fea9906c6078bc4c4ff685e2d06c670f2cafb
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350624"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103469"
 ---
 # <a name="unixtime_microseconds_todatetime"></a>unixtime_microseconds_todatetime()
 
@@ -25,13 +25,13 @@ Unix epoch 마이크로초를 UTC 날짜/시간으로 변환 합니다.
 
 ## <a name="arguments"></a>인수
 
-* *마이크로초*: 실수는 epoch 타임 스탬프 (마이크로초)를 나타냅니다. `Datetime`epoch 시간 (1970-01-01 00:00:00)에 음수 타임 스탬프 값이 발생 하기 전에 발생 합니다.
+* *마이크로초*: 실수는 epoch 타임 스탬프 (마이크로초)를 나타냅니다. `Datetime` epoch 시간 (1970-01-01 00:00:00)에 음수 타임 스탬프 값이 발생 하기 전에 발생 합니다.
 
 ## <a name="returns"></a>반환
 
 성공적으로 변환 되 면 결과는 [datetime](./scalar-data-types/datetime.md) 값이 됩니다. 변환이 실패 하면 결과는 null이 됩니다.
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * [Unixtime_seconds_todatetime ()](unixtime-seconds-todatetimefunction.md)를 사용 하 여 unix epoch 초를 UTC 날짜/시간으로 변환 합니다.
 * [Unixtime_milliseconds_todatetime ()](unixtime-milliseconds-todatetimefunction.md)를 사용 하 여 unix epoch 밀리초를 UTC 날짜/시간으로 변환 합니다.

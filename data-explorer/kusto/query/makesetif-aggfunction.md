@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8d6b26a13539d88aae57774cc35cf57d321b67f4
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 262676e2ee40b619c4984a23c23818c493aad47a
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346901"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103048"
 ---
 # <a name="make_set_if-aggregation-function"></a>make_set_if () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87346901"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_set_if(` *Expr*, *Predicate* [ `,` *MaxSize*]`)`
 
@@ -39,9 +39,9 @@ ms.locfileid: "87346901"
 > [!TIP]
 > 고유 값만 계산 하려면 [dcountif ()](dcountif-aggfunction.md) 를 사용 합니다.
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
-[`make_set`](./makeset-aggfunction.md)조건자 식 없이 동일 하 게 작동 하는 함수입니다.
+[`make_set`](./makeset-aggfunction.md) 조건자 식 없이 동일 하 게 작동 하는 함수입니다.
 
 ## <a name="example"></a>예제
 

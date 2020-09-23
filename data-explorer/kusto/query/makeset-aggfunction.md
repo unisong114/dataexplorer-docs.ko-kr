@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: c85738928aa65bf2a4476f10afa065c2a8ca1faf
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0ae1a01af019e18e8e9f05454a1c52ef6a1f856c
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346918"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103077"
 ---
 # <a name="make_set-aggregation-function"></a>make_set () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87346918"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_set(` *Expr* [ `,` *MaxSize*]`)`
 
@@ -48,9 +48,9 @@ PageViewLog
 | summarize countries=make_set(country) by continent
 ```
 
-:::image type="content" source="images/makeset-aggfunction/makeset.png" alt-text="Makeset":::
+:::image type="content" source="images/makeset-aggfunction/makeset.png" alt-text="Kusto 쿼리를 보여 주는 표는 Azure에서 대륙을 기준으로 국가를 요약 데이터 탐색기":::
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 * [`mv-expand`](./mvexpandoperator.md)반대쪽 함수에 연산자를 사용 합니다.
-* [`make_set_if`](./makesetif-aggfunction.md)연산자는 조건자를 `make_set` 수락 한다는 점을 제외 하 고와 비슷합니다.
+* [`make_set_if`](./makesetif-aggfunction.md) 연산자는 조건자를 `make_set` 수락 한다는 점을 제외 하 고와 비슷합니다.

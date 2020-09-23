@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 1c362dd57cc804e0705023f4744602d93ad47c0b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 579cc4a7b86340b7e2df3e47482406ce7d31e388
+ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351372"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91103556"
 ---
 # <a name="series_not_equals"></a>series_not_equals()
 
 `!=`두 숫자 계열 입력의 요소 중심 같지 않음 () 논리 연산을 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_not_equals (`*Series1* `,` *Series2*`)`
 
@@ -43,7 +43,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1, 2, 4]|[4, 2, 1]|[true, false, true]|
 
-**참고 항목**
+## <a name="see-also"></a>참고 항목
 
 전체 계열 통계 비교는 다음을 참조 하세요.
 * [series_stats()](series-statsfunction.md)
