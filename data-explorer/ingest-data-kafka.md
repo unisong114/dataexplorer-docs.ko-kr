@@ -3,163 +3,363 @@ title: Kafka에서 Azure Data Explorer로 데이터 수집
 description: 이 문서에서는 Kafka에서 Azure 데이터 탐색기로 데이터를 수집 (로드) 하는 방법에 대해 알아봅니다.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
-ms.openlocfilehash: 64b36db01bc1ab9867025723bf966279b4b4b115
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.date: 09/22/2020
+ms.openlocfilehash: 14f4ed38ecb2e5b4a94dad8a73fb43ea3ff1e5ee
+ms.sourcegitcommit: c8256390d745e345f44d401e33e775702d62721d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91007807"
 ---
-# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Kafka에서 Azure Data Explorer로 데이터 수집
+# <a name="ingest-data-from-apache-kafka-into-azure-data-explorer"></a>Apache Kafka에서 Azure 데이터 탐색기로 데이터 수집
  
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure Data Explorer는 Kafka에서의 수집(데이터 로드)을 제공합니다. Kafka는 시스템 또는 애플리케이션 간에 데이터를 안정적으로 이동하는 실시간 스트리밍 데이터 파이프라인을 빌드할 수 있도록 하는 분산 스트리밍 플랫폼입니다.
- 
-## <a name="prerequisites"></a>필수 구성 요소
- 
-* Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다. 
- 
-* [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)입니다.
- 
-* 데이터를 생성 하 고 Kafka에 보내는 [샘플 앱](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) 입니다.
+Azure 데이터 탐색기는 [Apache Kafka](http://kafka.apache.org/documentation/)에서 [데이터](ingest-data-overview.md) 수집을 지원 합니다. Apache Kafka는 시스템 또는 응용 프로그램 간에 데이터를 안정적으로 이동 하는 실시간 스트리밍 데이터 파이프라인을 빌드하기 위한 분산형 스트리밍 플랫폼입니다. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) 는 Apache Kafka와 다른 데이터 시스템 간에 확장 가능 하 고 안정적으로 데이터를 스트리밍하는 도구입니다. Azure 데이터 탐색기 [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) 는 kafka의 커넥터 역할을 하며 코드를 사용할 필요가 없습니다. 이 [Git 리포지토리](https://github.com/Azure/kafka-sink-azure-kusto/releases) 또는 [Confluent 커넥터 허브](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto)에서 싱크 커넥터 jar를 다운로드 합니다.
 
-* 샘플 앱을 실행하기 위한 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/).
- 
-## <a name="kafka-connector-setup"></a>Kafka 커넥터 설치
+이 문서에서는 자체 포함 Docker 설치를 사용 하 여 kafka을 Azure 데이터 탐색기에 수집 하 여 kafka 클러스터 및 Kafka 커넥터 클러스터 설정을 간소화 하는 방법을 보여 줍니다. 
 
-Kafka Connect는 Apache Kafka와 기타 시스템 간에 측정 가능하면서 안정적으로 데이터를 스트리밍하기 위한 도구입니다. 이 도구를 사용하면 Kafka와 대규모 데이터 컬렉션을 주고 받는 커넥터를 신속하고 간단하게 정의할 수 있습니다. ADX Kafka Sink는 Kafka의 커넥터 역할을 합니다.
- 
-### <a name="bundle"></a>번들
+자세한 내용은 [Git 리포지토리](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) 및 [버전 세부](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics)사항 커넥터를 참조 하세요.
 
-Kafka는 `.jar`을 사용자 지정 커넥터로 작동할 플러그 인으로 로드할 수 있습니다. 이러한 `.jar`을 생성하기 위해 코드를 로컬로 복제하고 Maven을 사용하여 빌드합니다. 
+## <a name="prerequisites"></a>사전 요구 사항
 
-#### <a name="clone"></a>복제
+* [Microsoft Azure 계정을](https://docs.microsoft.com/azure/)만듭니다.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)를 설치합니다.
+* [Docker](https://docs.docker.com/get-docker/) 를 설치 하 고 [Docker Compose](https://docs.docker.com/compose/install)합니다.
+* 기본 캐시 및 보존 정책을 사용 하 여 [Azure Portal에서 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다](create-cluster-database-portal.md) .
 
-```bash
-git clone git://github.com:Azure/kafka-sink-azure-kusto.git
-cd ./kafka-sink-azure-kusto/kafka/
-```
+## <a name="create-an-azure-active-directory-service-principal"></a>Azure Active Directory 서비스 사용자 만들기
 
-#### <a name="build"></a>빌드
+Azure Active Directory 서비스 주체는 다음 예제와 같이 [Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal) 를 통해 또는 프로그래밍 방식으로 만들 수 있습니다.
 
-Maven으로 로컬로 빌드하여 종속성을 갖춘 `.jar`을 생성합니다.
+이 서비스 주체는 Azure 데이터 탐색기 테이블에 쓰기 위해 커넥터에서 활용 하는 id입니다. 나중에이 서비스 사용자가 Azure 데이터 탐색기에 액세스할 수 있는 권한을 부여 합니다.
 
-* JDK >= 1.8 [download](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Maven [download](https://maven.apache.org/install.html)
- 
+1. Azure CLI를 통해 Azure 구독에 로그인 합니다. 그런 다음 브라우저에서 인증 합니다.
 
-루트 디렉터리 *kafka-sink-azure-kusto* 내부에서 다음을 실행합니다.
+   ```azurecli-interactive
+   az login
+   ```
 
-```bash
-mvn clean compile assembly:single
-```
 
-### <a name="deploy"></a>배포 
+1. 랩을 실행 하는 데 사용할 구독을 선택 합니다. 여러 구독이 있는 경우이 단계가 필요 합니다.
 
-Kafka에 플러그 인을 로드합니다. docker를 사용하는 배포 예제는 [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)에서 확인할 수 있습니다.
- 
+   ```azurecli-interactive
+   az account set --subscription YOUR_SUBSCRIPTION_GUID
+   ```
 
-Kafka 커넥터와 이 커넥터를 배포하는 방법에 대한 자세한 설명서는 [Kafka Connect](https://kafka.apache.org/documentation/#connect)에서 찾을 수 있습니다. 
+1. 서비스 주체를 만듭니다. 이 예제에서는 서비스 사용자가 호출 됩니다 `kusto-kafka-spn` .
 
-### <a name="example-configuration"></a>구성 예 
- 
-```config
-name=KustoSinkConnector 
-connector.class=com.microsoft.azure.kusto.kafka.connect.sink.KustoSinkConnector 
-kusto.sink.flush_interval_ms=300000 
-key.converter=org.apache.kafka.connect.storage.StringConverter 
-value.converter=org.apache.kafka.connect.storage.StringConverter 
-tasks.max=1 
-topics=testing1 
-kusto.tables.topics_mapping=[{'topic': 'testing1','db': 'daniel', 'table': 'TestTable','format': 'json', 'mapping':'TestMapping'}] 
-kusto.auth.authority=XXX 
-kusto.url=https://ingest-{mycluster}.kusto.windows.net/ 
-kusto.auth.appid=XXX 
-kusto.auth.appkey=XXX 
-kusto.sink.tempdir=/var/tmp/ 
-kusto.sink.flush_size=1000
-```
- 
-## <a name="create-a-target-table-in-adx"></a>ADX에서 대상 테이블 만들기
- 
-Kafka가 데이터를 보낼 수 있는 ADX의 테이블을 만듭니다. **필수 구성 요소**에서 프로비전했던 클러스터와 데이터베이스에서 테이블을 만듭니다.
- 
-1. Azure Portal에서 클러스터로 이동한 후 **쿼리**를 선택합니다.
- 
-    ![쿼리 애플리케이션 링크](media/ingest-data-event-hub/query-explorer-link.png)
- 
-1. 다음 명령을 창에 복사하고 **실행**을 선택합니다.
- 
-    ```Kusto
-    .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
-    ```
- 
-    ![쿼리 만들기 실행](media/ingest-data-event-hub/run-create-query.png)
- 
-1. 다음 명령을 창에 복사하고 **실행**을 선택합니다.
- 
-    ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+   ```azurecli-interactive
+   az ad sp create-for-rbac -n "kusto-kafka-spn"
+   ```
+
+1. 아래와 같이 JSON 응답을 받게 됩니다. `appId` `password` `tenant` 이후 단계에서 필요 하므로, 및를 복사 합니다.
+
+    ```json
+    {
+      "appId": "fe7280c7-5705-4789-b17f-71a472340429",
+      "displayName": "kusto-kafka-spn",
+      "name": "http://kusto-kafka-spn",
+      "password": "29c719dd-f2b3-46de-b71c-4004fb6116ee",
+      "tenant": "42f988bf-86f1-42af-91ab-2d7cd011db42"
+    }
     ```
 
-    이 명령은 테이블(TestTable)의 열 이름과 데이터 형식에 들어오는 JSON 데이터를 매핑합니다.
+## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 대상 테이블 만들기
 
+1. [Azure 포털](https://portal.azure.com)
 
-## <a name="generate-sample-data"></a>샘플 데이터 생성
+1. Azure 데이터 탐색기 클러스터로 이동 합니다.
 
-Kafka 클러스터가 ADX에 연결되었으므로 다운로드한 [샘플 앱](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)을 사용하여 데이터를 생성합니다.
+1. `Storms`다음 명령을 사용 하 여 라는 테이블을 만듭니다.
 
-### <a name="clone"></a>복제
-
-로컬로 샘플 앱을 복제합니다.
-
-```cmd
-git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
-cd ./azure-kusto-samples-dotnet/kafka/
-```
-
-### <a name="run-the-app"></a>앱 실행
-
-1. Visual Studio에서 샘플 앱 솔루션을 엽니다.
-
-1. `Program.cs` 파일에서 `connectionString` 상수를 Kafka 연결 문자열로 업데이트합니다.
-
-    ```csharp    
-    const string connectionString = @"<YourConnectionString>";
+    ```kusto
+    .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
     ```
 
-1. 앱을 빌드하여 실행합니다. 앱이 Kafka 클러스터로 메시지를 전송하고 10초마다 해당 상태를 출력합니다.
+    :::image type="content" source="media/ingest-data-kafka/create-table.png" alt-text="Azure 데이터 탐색기 포털에서 테이블 만들기 ":::
+    
+1. `Storms_CSV_Mapping`다음 명령을 사용 하 여 수집 데이터에 대 한 해당 테이블 매핑을 만듭니다.
+    
+    ```kusto
+    .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
+    ```    
 
-1. 앱이 몇 개의 메시지를 보내면 다음 단계로 이동합니다.
+1. 구성 가능한 수집 대기 시간에 대 한 테이블에서 일괄 처리 수집 정책을 만듭니다.
+
+    > [!TIP]
+    > 수집 [일괄 처리 정책은](kusto/management/batchingpolicy.md) 성능 최적화 프로그램으로, 세 개의 매개 변수를 포함 합니다. 첫 번째 매개 변수는 Azure 데이터 탐색기 테이블로 수집 하는 트리거를 충족 합니다.
+
+    ```kusto
+    .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
+    ```
+
+1. [Azure Active Directory 서비스 주체 만들기](#create-an-azure-active-directory-service-principal) 의 서비스 주체를 사용 하 여 데이터베이스에 대 한 작업 권한을 부여 합니다.
+
+    ```kusto
+    .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
+    ```
+
+## <a name="run-the-lab"></a>랩 실행
+
+다음 랩에서는 데이터 만들기, Kafka 커넥터 설정 및 커넥터를 사용 하 여이 데이터를 Azure 데이터 탐색기로 스트리밍 작업을 시작 하는 환경을 제공 하도록 설계 되었습니다. 그런 다음 수집 데이터를 살펴볼 수 있습니다.
+
+### <a name="clone-the-git-repo"></a>Git 리포지토리를 복제 합니다.
+
+랩의 git [리포지토리](https://github.com/Azure/azure-kusto-labs)를 복제 합니다.
+
+1. 컴퓨터에 로컬 디렉터리를 만듭니다.
+
+    ```
+    mkdir ~/kafka-kusto-hol
+    cd ~/kafka-kusto-hol
+    ```
+
+1. 리포지토리를 복제 합니다.
+
+    ```shell
+    cd ~/kafka-kusto-hol
+    git clone https://github.com/Azure/azure-kusto-labs
+    cd azure-kusto-labs/kafka-integration/dockerized-quickstart
+    ```
+
+#### <a name="contents-of-the-cloned-repo"></a>복제 된 리포지토리의 내용
+
+다음 명령을 실행 하 여 복제 된 리포지토리의 콘텐츠를 나열 합니다.
+
+```
+cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
+tree
+```
+
+이 검색의 결과는 다음과 같습니다.
+
+```
+├── README.md
+├── adx-query.png
+├── adx-sink-config.json
+├── connector
+│   └── Dockerfile
+├── docker-compose.yaml
+└── storm-events-producer
+    ├── Dockerfile
+    ├── StormEvents.csv
+    ├── go.mod
+    ├── go.sum
+    ├── kafka
+    │   └── kafka.go
+    └── main.go
+ ```
+
+### <a name="review-the-files-in-the-cloned-repo"></a>복제 된 리포지토리의 파일 검토
+
+다음 섹션에서는 위의 파일 트리에서 파일의 중요 한 부분에 대해 설명 합니다.
+
+#### <a name="adx-sink-configjson"></a>adx-sink-config.js
+
+이 파일에는 특정 구성 세부 정보를 업데이트 하는 Kusto 싱크 속성 파일이 포함 되어 있습니다.
  
-## <a name="query-and-review-the-data"></a>데이터 쿼리 및 검토
+```json
+{
+    "name": "storm",
+    "config": {
+        "connector.class": "com.microsoft.azure.kusto.kafka.connect.sink.KustoSinkConnector",
+        "flush.size.bytes": 10000,
+        "flush.interval.ms": 10000,
+        "tasks.max": 1,
+        "topics": "storm-events",
+        "kusto.tables.topics.mapping": "[{'topic': 'storm-events','db': '<enter database name>', 'table': 'Storms','format': 'csv', 'mapping':'Storms_CSV_Mapping'}]",
+        "aad.auth.authority": "<enter tenant ID>",
+        "aad.auth.appid": "<enter application ID>",
+        "aad.auth.appkey": "<enter client secret>",
+        "kusto.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "value.converter": "org.apache.kafka.connect.storage.StringConverter"
+    }
+}
+```
 
-1. 수집하는 동안 오류가 발생하지 않도록 하려면:
+Azure 데이터 탐색기 설정에 따라 `aad.auth.authority` ,, `aad.auth.appid` `aad.auth.appkey` , `kusto.tables.topics.mapping` (데이터베이스 이름) 및 `kusto.url` 특성의 값을로 바꿉니다.
 
-    ```Kusto
+#### <a name="connector---dockerfile"></a>커넥터-Dockerfile
+
+이 파일에는 커넥터 인스턴스의 docker 이미지를 생성 하는 명령이 있습니다.  Git 리포지토리 릴리스 디렉터리에서 커넥터 다운로드를 포함 합니다.
+
+#### <a name="storm-events-producer-directory"></a>스톰-이벤트-생산자 디렉터리
+
+이 디렉터리에는 로컬 "StormEvents.csv" 파일을 읽고 Kafka 토픽에 데이터를 게시 하는 Go 프로그램이 있습니다.
+
+#### <a name="docker-composeyaml"></a>docker-작성 .yaml
+
+```yaml
+version: "2"
+services:
+  zookeeper:
+    image: debezium/zookeeper:1.2
+    ports:
+      - 2181:2181
+  kafka:
+    image: debezium/kafka:1.2
+    ports:
+      - 9092:9092
+    links:
+      - zookeeper
+    depends_on:
+      - zookeeper
+    environment:
+      - ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+  kusto-connect:
+    build:
+      context: ./connector
+      args:
+        KUSTO_KAFKA_SINK_VERSION: 1.0.1
+    ports:
+      - 8083:8083
+    links:
+      - kafka
+    depends_on:
+      - kafka
+    environment:
+      - BOOTSTRAP_SERVERS=kafka:9092
+      - GROUP_ID=adx
+      - CONFIG_STORAGE_TOPIC=my_connect_configs
+      - OFFSET_STORAGE_TOPIC=my_connect_offsets
+      - STATUS_STORAGE_TOPIC=my_connect_statuses
+  events-producer:
+    build:
+      context: ./storm-events-producer
+    links:
+      - kafka
+    depends_on:
+      - kafka
+    environment:
+      - KAFKA_BOOTSTRAP_SERVER=kafka:9092
+      - KAFKA_TOPIC=storm-events
+      - SOURCE_FILE=StormEvents.csv
+```
+
+### <a name="start-the-containers"></a>컨테이너 시작
+
+1. 터미널에서 컨테이너를 시작 합니다.
+    
+    ```shell
+    docker-compose up
+    ```
+
+    생산자 응용 프로그램은 토픽으로 이벤트를 보내기 시작 합니다 `storm-events` . 
+    다음 로그와 유사한 로그가 표시 됩니다.
+
+    ```shell
+    ....
+    events-producer_1  | sent message to partition 0 offset 0
+    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 00:00:00.0000000,13208,NORTH CAROLINA,Thunderstorm Wind,Public
+    events-producer_1  | 
+    events-producer_1  | sent message to partition 0 offset 1
+    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 05:00:00.0000000,23358,WISCONSIN,Winter Storm,COOP Observer
+    ....
+    ```
+    
+1. 로그를 확인 하려면 별도의 터미널에서 다음 명령을 실행 합니다.
+
+    ```shell
+    docker-compose logs -f | grep kusto-connect
+    ```
+    
+### <a name="start-the-connector"></a>커넥터 시작
+
+커넥터를 시작 하려면 Kafka Connect REST 호출을 사용 합니다.
+
+1. 별도의 터미널에서 다음 명령을 사용 하 여 싱크 작업을 시작 합니다.
+
+    ```shell
+    curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
+    ```
+    
+1. 상태를 확인 하려면 별도의 터미널에서 다음 명령을 실행 합니다.
+    
+    ```shell
+    curl http://localhost:8083/connectors/storm/status
+    ```
+
+커넥터에서 Azure 데이터 탐색기에 대 한 수집 프로세스를 시작 합니다.
+
+> [!NOTE]
+> 로그 커넥터 문제가 있는 경우 문제를 [만듭니다](https://github.com/Azure/kafka-sink-azure-kusto/issues).
+
+## <a name="query-and-review-data"></a>데이터 쿼리 및 검토
+
+### <a name="confirm-data-ingestion"></a>데이터 수집 확인
+
+1. 테이블에 데이터가 도착할 때까지 기다립니다 `Storms` . 데이터 전송을 확인 하려면 행 개수를 확인 합니다.
+    
+    ```kusto
+    Storms | count
+    ```
+
+1. 수집 프로세스에 오류가 없는지 확인 합니다.
+
+    ```kusto
     .show ingestion failures
     ```
+    
+    데이터가 표시 되 면 몇 가지 쿼리를 사용해 보세요. 
 
-1. 새로 수집된 데이터를 보려면
+### <a name="query-the-data"></a>데이터 쿼리
 
-    ```Kusto
-    TestTable 
-    | count
+1. 모든 레코드를 보려면 다음 [쿼리](write-queries.md)를 실행 합니다.
+    
+    ```kusto
+    Storms
     ```
 
-1. 메시지의 콘텐츠를 보려면
- 
-    ```Kusto
-    TestTable
+1. `where`및 `project` 를 사용 하 여 특정 데이터를 필터링 합니다.
+    
+    ```kusto
+    Storms
+    | where EventType == 'Drought' and State == 'TEXAS'
+    | project StartTime, EndTime, Source, EventId
     ```
- 
-    결과 세트는 다음과 같이 표시됩니다.
- 
-    ![메시지 결과 집합](media/ingest-data-event-hub/message-result-set.png)
- 
+    
+1. 연산자를 사용 합니다 [`summarize`](https://docs.microsoft.com/azure/data-explorer/write-queries#summarize) .
+
+    ```kusto
+    Storms
+    | summarize event_count=count() by State
+    | where event_count > 10
+    | project State, event_count
+    | render columnchart
+    ```
+    
+    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Azure 데이터 탐색기의 kafka 쿼리 세로 막대형 차트 결과":::
+
+더 많은 쿼리 예제 및 지침은 [Azure 데이터 탐색기에 대 한 쿼리 작성](write-queries.md) 및 [kusto 쿼리 언어 설명서](https://docs.microsoft.com/azure/data-explorer/kusto/query/)를 참조 하세요.
+
+## <a name="reset"></a>다시 설정
+
+다시 설정 하려면 다음 단계를 수행 합니다.
+
+1. 컨테이너 중지 ( `docker-compose down -v` )
+1. 삭제 (`drop table Storms`)
+1. 테이블을 다시 만듭니다. `Storms`
+1. 테이블 매핑 다시 만들기
+1. 컨테이너 다시 시작 ( `docker-compose up` )
+
+## <a name="clean-up-resources"></a>리소스 정리
+
+Azure 데이터 탐색기 리소스를 삭제 하려면 [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) 또는 [Az kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete)를 사용 합니다.
+
+```azurecli-interactive
+az kusto cluster delete -n <cluster name> -g <resource group name>
+az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
+```
+
 ## <a name="next-steps"></a>다음 단계
- 
-* [Azure 데이터 탐색기에서 데이터 쿼리](web-query-data.md)
+
+* [빅 데이터 아키텍처](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)에 대해 자세히 알아보세요.
+* [JSON 형식의 샘플 데이터를 Azure 데이터 탐색기에 수집 하는 방법](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language)에 대해 알아봅니다.
+* 추가 Kafka labs의 경우:
+   * [분산 모드의 Confluent 클라우드 Kafka에서 수집 하기 위한 실습](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
+   * [분산 모드의 HDInsight Kafka에서 수집 하기 위한 실습](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
+   * [분산 모드의 AKS Confluent IaaS Kafka에서 수집 하기 위한 실습](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
