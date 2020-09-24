@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bb3f217b1ec0631f533a10433a7be368945667d7
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 8433773111f65e0271692bc3d1ba68cf0bc7c544
+ms.sourcegitcommit: 44a4f7ea5c5d75301d7a09b7dc1254a1e5f08eaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87344538"
+ms.lasthandoff: 09/24/2020
+ms.locfileid: "91210514"
 ---
 # <a name="series_fill_const"></a>series_fill_const()
 
 계열의 누락 값을 지정 된 상수 값으로 바꿉니다.
 
-동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 missing_value_placeholder의 모든 인스턴스를 지정 된 constant_value로 바꾸고 결과 배열을 반환 합니다.
+동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 missing_value_placeholder의 모든 인스턴스를 지정 된 constant_value 바꾸고 결과 배열을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
-`series_fill_const(`*x* `[, ` *constant_value* `[,` *missing_value_placeholder*`]])`
+`series_fill_const(`*x* `, ` *constant_value* `[,` *missing_value_placeholder*`])`
 * 는 *missing_value_placeholder* 의 모든 인스턴스가 *constant_value*로 바뀐 series *x* 를 반환 합니다.
 
 ## <a name="arguments"></a>인수
 
 * *x*: 숫자 값의 배열인 동적 배열 스칼라 식입니다.
-* *constant_value*: 대체할 누락 값에 대 한 자리 표시자를 지정 하는 매개 변수입니다. 기본값은 *0*입니다. 
+* *constant_value*: 누락 된 값을 대체 하는 값입니다. 
 * *missing_value_placeholder*: 교체할 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
 
 **참고**
-* DefaultValue 구문을 사용 하 여 상수 값으로 채워지는 계열을 만들 수 있습니다 `default = ` *DefaultValue* (또는 0이 아닌 것으로 가정). 자세한 내용은 [시리즈 만들기](make-seriesoperator.md)를 참조 하세요.
+* [시리즈 시리즈 연산자를](make-seriesoperator.md) 사용 하 여 계열을 만드는 경우 누락 된 값은 기본적으로 0으로 채워지고 `default = ` series 문에 *DefaultValue* 를 지정 하 여 채울 상수 값을 지정할 수 있습니다.
 
 ```kusto
 make-series num=count() default=-1 on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
