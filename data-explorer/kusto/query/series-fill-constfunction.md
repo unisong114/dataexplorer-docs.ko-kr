@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8433773111f65e0271692bc3d1ba68cf0bc7c544
-ms.sourcegitcommit: 44a4f7ea5c5d75301d7a09b7dc1254a1e5f08eaa
+ms.openlocfilehash: 7e587ab08c009516788e3a44b0b8e4a321741d94
+ms.sourcegitcommit: 8853e50a798ee7c78b69bf9822bbf1ced3abe73c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91227027"
 ---
 # <a name="series_fill_const"></a>series_fill_const()
 
@@ -33,7 +33,7 @@ ms.locfileid: "91210514"
 * *missing_value_placeholder*: 교체할 누락 값에 대 한 자리 표시자를 지정 하는 선택적 매개 변수입니다. 기본값은 `double` (*null*)입니다.
 
 **참고**
-* [시리즈 시리즈 연산자를](make-seriesoperator.md) 사용 하 여 계열을 만드는 경우 누락 된 값은 기본적으로 0으로 채워지고 `default = ` series 문에 *DefaultValue* 를 지정 하 여 채울 상수 값을 지정할 수 있습니다.
+* [시리즈 시리즈 연산자를](make-seriesoperator.md) 사용 하 여 계열을 만드는 경우 기본값 0을 사용 하 여 누락 된 값을 채웁니다. 또는 `default = ` series 문에 *DefaultValue* 를 지정 하 여 채울 상수 값을 지정할 수 있습니다.
 
 ```kusto
 make-series num=count() default=-1 on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
