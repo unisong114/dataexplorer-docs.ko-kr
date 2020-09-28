@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/06/2020
-ms.openlocfilehash: 8732edf3b2cb9600fcce1ed03097d893c6615528
-ms.sourcegitcommit: c2ab3176db4dd55ac9ca8eee52bbd24096d1277f
+ms.openlocfilehash: 3302e7cb94a2184be64664f3c3d8698b8bea7643
+ms.sourcegitcommit: 92b8057a36bd7daa16226f1526b29253bceb3602
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90740953"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91402748"
 ---
 # <a name="create-a-table-in-azure-data-explorer-preview"></a>Azure 데이터 탐색기에서 테이블 만들기 (미리 보기)
 
 Azure 데이터 탐색기에서 [데이터](ingest-data-overview.md) 수집 및 [쿼리](write-queries.md) 프로세스의 중요 한 단계는 테이블을 만드는 것입니다. [Azure 데이터 탐색기에서 클러스터 및 데이터베이스를 만든](create-cluster-database-portal.md)후에는 테이블을 만들 수 있습니다. 다음 문서에서는 Azure 데이터 탐색기 웹 UI를 사용 하 여 테이블과 스키마 매핑을 쉽고 빠르게 만드는 방법을 보여 줍니다. 
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md)를 만듭니다.
@@ -41,19 +41,19 @@ Azure 데이터 탐색기에서 [데이터](ingest-data-overview.md) 수집 및 
 1. **원본 유형**에서 테이블 매핑을 만드는 데 사용할 데이터 원본을 선택 합니다. **Blob**, **파일**또는 **컨테이너**에서 다음 옵션 중 하나를 선택 합니다.
    
     
-    * **Blob**을 사용 하는 경우:
+    * **컨테이너**를 사용 하는 경우:
         * Blob의 저장소 url을 입력 하 고 필요에 따라 샘플 크기를 입력 합니다. 
         * **파일**필터를 사용 하 여 파일을 필터링 합니다. 
         * 다음 단계에서 스키마를 정의 하는 데 사용할 파일을 선택 합니다.
 
-        :::image type="content" source="media/one-click-table/blob.png" alt-text="Blob을 사용 하 여 테이블을 만들어 스키마 매핑 만들기":::
+        :::image type="content" source="media/one-click-table/storage.png" alt-text="Blob을 사용 하 여 테이블을 만들어 스키마 매핑 만들기":::
     
     * **로컬 파일**을 사용 하는 경우:
         * **찾아보기**를 선택하여 파일을 찾거나, 파일을 필드로 끕니다.
 
         :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="로컬 파일의 데이터를 기반으로 테이블 만들기 ":::
 
-    * **컨테이너**를 사용 하는 경우:
+    * **Blob**을 사용 하는 경우:
         * **저장소에 대 한 링크** 필드에서 컨테이너의 [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) 을 추가 하 고 필요에 따라 샘플 크기를 입력 합니다. 
 
 1. 스키마 **편집** 을 선택 하 여 **스키마** 탭을 계속 진행 합니다.
