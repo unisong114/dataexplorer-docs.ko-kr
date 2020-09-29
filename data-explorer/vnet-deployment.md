@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: 74d72ced89b1953b2f7e327656517f1febe4166f
-ms.sourcegitcommit: 803a572ab6f04494f65dbc60a4c5df7fcebe1600
+ms.openlocfilehash: 5a7f680dc2ab76a9f952efa52d60b59c7b1d1c93
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90714026"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452853"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -37,7 +37,7 @@ Azure 데이터 탐색기는 VNet (Virtual Network)의 서브넷에 클러스터
 
 * `[clustername].[geo-region].kusto.windows.net` (엔진) `ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 공용 IP에 매핑됩니다. 
 
-* `private-[clustername].[geo-region].kusto.windows.net` (엔진) `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 개인 IP에 매핑됩니다.
+* `private-[clustername].[geo-region].kusto.windows.net`(엔진) `ingest-private-[clustername].[geo-region].kusto.windows.net` \\ `private-ingest-[clustername].[geo-region].kusto.windows.net` (데이터 관리)는 각 서비스에 대 한 개인 IP에 매핑됩니다.
 
 ## <a name="plan-subnet-size-in-your-vnet"></a>VNet에서 서브넷 크기를 계획 합니다.
 
@@ -45,7 +45,7 @@ Azure 데이터 탐색기 클러스터를 호스트 하는 데 사용 되는 서
 
 총 IP 주소 수:
 
-| Windows Server Update Services와 함께 | 주소 수 |
+| 기능 | 주소 수 |
 | --- | --- |
 | 엔진 서비스 | 인스턴스당 1 개 |
 | 데이터 관리 서비스 | 2 |
@@ -252,7 +252,7 @@ crl3.digicert.com:80
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| Name | 주소 접두사 | 다음 홉 |
+| 속성 | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |

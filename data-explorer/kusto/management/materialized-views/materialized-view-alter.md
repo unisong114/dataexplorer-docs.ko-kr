@@ -8,18 +8,18 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: ac9fb575f46bb60e313da4fa2b3c023ac826daec
-ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
+ms.openlocfilehash: eaa4e759f0987940a86c509788f5e8a58b2f9e75
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91057270"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452734"
 ---
-# <a name="alter-materialized-view"></a>. alter 구체화-뷰
+# <a name="alter-materialized-view"></a>.alter materialized-view
 
 구체화 된 [뷰를](materialized-view-overview.md) 변경 하는 것은 뷰에서 기존 데이터를 유지 하면서 구체화 된 뷰의 쿼리를 변경 하는 데 사용할 수 있습니다.
 
-구체화 된 뷰를 변경 하려면 [데이터베이스 관리자](../access-control/role-based-authorization.md) 권한 또는 구체화 된 뷰의 관리자가 필요 합니다. 자세한 내용은 [보안 역할 관리](../security-roles.md)를 참조 하세요.
+[데이터베이스 관리자](../access-control/role-based-authorization.md) 권한 또는 구체화 된 뷰의 관리자가 필요 합니다.
 
 > [!WARNING]
 > 구체화 된 뷰를 변경 하는 경우 각별히 주의 해야 합니다. 잘못 된 사용으로 인해 데이터가 손실 될 수 있습니다.
@@ -35,7 +35,7 @@ ms.locfileid: "91057270"
 
 ## <a name="arguments"></a>인수
 
-|인수|형식|설명
+|인수|유형|설명
 |----------------|-------|---|
 |ViewName|String|구체화 된 뷰 이름입니다.|
 |(|String|뷰가 정의 된 원본 테이블의 이름입니다.|

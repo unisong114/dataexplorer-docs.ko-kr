@@ -8,20 +8,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: b8de71ffcda28a7baa0f8452e501c7485e861122
-ms.sourcegitcommit: 5aba5f694420ade57ef24b96699d9b026cdae582
+ms.openlocfilehash: 334d2bc27709c78c53bd57c92c8c3b3364bbe3bb
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90999013"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452914"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
 ADX Proxy (Azure 데이터 탐색기 proxy cluster)는 [Azure Monitor](/azure/azure-monitor/) 서비스에서 azure 데이터 탐색기, [Application Insights (AI](/azure/azure-monitor/app/app-insights-overview)) 및 [Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs) 간에 제품 간 쿼리를 수행할 수 있도록 하는 엔터티입니다. Azure Monitor Log Analytics 작업 영역 또는 Application Insights 앱을 프록시 클러스터로 매핑할 수 있습니다. 그런 다음 Azure 데이터 탐색기 도구를 사용 하 여 프록시 클러스터를 쿼리하고 클러스터 간 쿼리에서이를 참조할 수 있습니다. 이 문서에서는 프록시 클러스터에 연결 하 고, Azure 데이터 탐색기 웹 UI에 프록시 클러스터를 추가 하 고, Azure 데이터 탐색기에서 AI 앱 또는 LA 작업 영역에 대해 쿼리를 실행 하는 방법을 보여 줍니다.
 
-Azure 데이터 탐색기 프록시 흐름: 
+Azure 데이터 탐색기 프록시 흐름:
 
-![ADX 프록시 흐름](media/adx-proxy/adx-proxy-flow.png)
+![ADX 프록시 흐름](media/adx-proxy/adx-proxy-workflow.png)
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
@@ -102,13 +102,13 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 Azure 데이터 탐색기 리소스가 테 넌 트 ' A '에 있고 LA 작업 영역이 테 넌 트 ' B '에 있는 경우 다음 두 가지 방법 중 하나를 사용 합니다.
 
-1. Azure 데이터 탐색기를 사용 하면 다른 테 넌 트의 보안 주체에 대 한 역할을 추가할 수 있습니다. 테 넌 트 ' B '의 사용자 ID를 Azure 데이터 탐색기 클러스터의 권한 있는 사용자로 추가 합니다. Azure 데이터 탐색기 클러스터의 *' external' 테 넌 트* ' 속성에 테 넌 트 ' B '가 포함 되어 있는지 확인 합니다. ' B ' 테 넌 트에서 완전히 쿼리를 실행 합니다. 
+1. Azure 데이터 탐색기를 사용 하면 다른 테 넌 트의 보안 주체에 대 한 역할을 추가할 수 있습니다. 테 넌 트 ' B '의 사용자 ID를 Azure 데이터 탐색기 클러스터의 권한 있는 사용자로 추가 합니다. Azure 데이터 탐색기 클러스터의 *[' TrustedExternalTenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* 속성에 테 넌 트 ' B '가 포함 되어 있는지 확인 합니다. ' B ' 테 넌 트에서 완전히 쿼리를 실행 합니다.
 
 2. [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 를 사용 하 여 Azure Monitor 리소스를 테 넌 트 ' A '에 프로젝션 합니다.
 
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>다른 테 넌 트에서 Azure 데이터 탐색기 클러스터에 연결
 
-Kusto Explorer는 사용자 계정이 원래 속한 테 넌 트에 자동으로 로그인 합니다. 동일한 사용자 계정을 사용 하 여 다른 테 넌 트의 리소스에 액세스 하려면 `tenantId` 연결 문자열에을 명시적으로 지정 해야 합니다. `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=\*\*TenantId**`
+Kusto Explorer는 사용자 계정이 원래 속한 테 넌 트에 자동으로 로그인 합니다. 동일한 사용자 계정을 사용 하 여 다른 테 넌 트의 리소스에 액세스 하려면 `tenantId` 연결 문자열에을 명시적으로 지정 해야 합니다. `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
 
 ## <a name="function-supportability"></a>함수 지원 가능성
 

@@ -8,24 +8,24 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/01/2020
-ms.openlocfilehash: c5a66255f719d3bd0da962a8eb9d3cae23a8c254
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: f86ec0349b4e84215e9b2fdff33b2d705967bcac
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347836"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452819"
 ---
 # <a name="geo_line_densify"></a>geo_line_densify()
 
-중간 요소를 추가 하 여 평면 선 가장자리를 geodesics으로 변환 합니다.
+중간 요소를 추가 하 여 평면 선 또는 여러 줄 가장자리를 geodesics 변환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `geo_line_densify(`*lineString* `, ` *허용 오차*`)`
 
 ## <a name="arguments"></a>인수
 
-* *lineString*: [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 줄입니다.
+* *lineString*: [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 줄 또는 여러 줄입니다.
 * *허용 오차*: 원래 평면 가장자리와 변환 된 측 지 edge 체인 사이의 최대 거리 (미터)를 정의 하는 선택적 숫자입니다. 지원 되는 값은 [0.1, 1만] 범위에 있습니다. 지정 하지 않으면 기본값이 `10` 사용 됩니다.
 
 ## <a name="returns"></a>반환
@@ -39,11 +39,13 @@ ms.locfileid: "87347836"
 
 dynamic ({"type": "LineString", "좌표계": [[lng_1, lat_1], [lng_2, lat_2],..., [lng_N, lat_N]]})
 
+dynamic ({"type": "MultiLineString", "좌표계": [[line_1, line_2,..., line_N]]})
+
 * LineString 좌표 배열에는 두 개 이상의 항목이 포함 되어야 합니다.
 * [경도, 위도] 좌표는 유효 해야 합니다. 경도는 [-180, + 180] 범위의 실수 여야 하 고, 위도는 [-90, + 90] 범위의 실수 여야 합니다.
 * 가장자리 길이는 180도 미만 이어야 합니다. 두 꼭 짓 점 사이의 최단 가장자리가 선택 됩니다.
 
-**제약 조건**
+**적용**
 
 * Densified 줄의 최대 요소 수는 10485760 개로 제한 됩니다.
 * [동적](./scalar-data-types/dynamic.md) 형식으로 줄을 저장 하면 크기 제한이 있습니다.
@@ -53,7 +55,7 @@ dynamic ({"type": "LineString", "좌표계": [[lng_1, lat_1], [lng_2, lat_2],...
 * [GeoJSON format](https://tools.ietf.org/html/rfc7946) 은 두 요소 사이의 가장자리를 일자형 직교 선으로 정의 합니다.
 * 측 지 또는 평면 가장자리를 사용 하도록 결정 하는 것은 데이터 집합에 따라 달라질 수 있으며 특히 긴 가장자리와 관련이 있습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 맨해튼 아일랜드의도로를 densifies 합니다. 가장자리가 짧고, 평면 가장자리와 해당 측 지의 거리는 허용 오차로 지정 된 거리 보다 짧습니다. 따라서 결과는 변경 되지 않고 그대로 유지 됩니다.
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/29/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: cf10a18a699e1e93521b4927008858cbebd2baf8
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5485088ba8dd4e348733c9d8e14e2dc54dd2c858
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345847"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452836"
 ---
 # <a name="render-operator"></a>render 연산자
 
@@ -30,11 +30,11 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * Render 연산자는 데이터를 수정 하지 않습니다. 결과의 확장 속성에 주석 ("시각화")을 삽입 합니다. 주석에는 쿼리에 연산자가 제공 하는 정보가 포함 되어 있습니다.
 > * 시각화 정보의 해석은 사용자 에이전트에 의해 수행 됩니다. 다른 에이전트 (예: Kusto. 탐색기, Kusto. WebExplorer)는 다른 시각화를 지원할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `render` *시각화* [ `with` `(` *PropertyName* `=` *PropertyValue* [ `,` ...] `)` ]
 
-여기서
+위치:
 
 * *시각화* 는 사용할 시각화의 종류를 나타냅니다. 지원되는 값은
 
@@ -55,7 +55,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 | `stackedareachart` | 누적 영역형 그래프입니다. 첫 번째 열은 x 축 이며 숫자 열 이어야 합니다. 다른 숫자 열은 y 축입니다. |
 | `table`            | 기본값-결과가 테이블로 표시 됩니다.|
 | `timechart`        | 선 그래프입니다. 첫 번째 열은 x축이며 날짜/시간이어야 합니다. 다른 (숫자) 열은 y 축입니다. 숫자 열을 "그룹화" 하 고 차트에서 다른 선을 만드는 데 사용 되는 값을 갖는 문자열 열이 하나 있습니다 (추가 문자열 열은 무시 됨). |
-| `timepivot`        | 이벤트 시간 행에 대 한 대화형 탐색 (시간 축에서 피벗)|
+| `timepivot`        | 이벤트 타임라인에 대한 대화형 탐색입니다(시간 축에서 피벗).|
 
 ::: zone-end
 
@@ -110,7 +110,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 ::: zone-end
 
 일부 시각화는 속성을 제공 하 여 보다 구체화 될 수 있습니다 `kind` .
-이러한 항목은 다음과 같습니다.
+해당 경고는 다음과 같습니다.
 
 |*시각화*|`kind`             |설명                        |
 |---------------|-------------------|-----------------------------------|
@@ -126,8 +126,8 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |               |`unstacked`        |`default`와 동일합니다.                 |
 |               |`stacked`          |"Columns"를 다른 쪽으로 쌓습니다.|
 |               |`stacked100`       |"Columns"를 스택과 각 항목을 다른 높이와 같은 높이로 늘립니다.|
+|`scatterchart` |`map`              |필요한 열은 [경도, 위도] 또는 GeoJSON point입니다. 계열 열은 선택 사항입니다.|
 |`piechart`     |`map`              |필요한 열은 [경도, 위도] 또는 GeoJSON 점, 색 축 및 숫자입니다. Kusto Explorer 데스크톱에서 지원 됩니다.|
-|`scatterchart` |`map`              |필요한 열은 [경도, 위도] 또는 GeoJSON point입니다. 계열 열은 선택 사항입니다. Kusto Explorer 데스크톱에서 지원 됩니다.|
 
 ::: zone pivot="azuredataexplorer"
 
@@ -170,6 +170,6 @@ range x from -2 to 2 step 0.1
 
 [자습서의 렌더링 예제](./tutorial.md#render-display-a-chart-or-table)
 
-[변칙 탐지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
+[이상 감지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
 
 ::: zone-end

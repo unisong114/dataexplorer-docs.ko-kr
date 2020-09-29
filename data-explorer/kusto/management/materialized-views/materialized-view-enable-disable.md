@@ -8,21 +8,20 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 1be8f66300b2d605c4004661c68e64f741437dc1
-ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
+ms.openlocfilehash: bb1fab3f211de4b33ca0dd2cee6a8cfa0cc796a9
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91057203"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452683"
 ---
-# <a name="disable--enable-materialized-view"></a>. 사용 안 함 |. 구체화 된 뷰 사용
+# <a name="disable--enable-materialized-view"></a>.disable | .enable materialized-view
 
 구체화 된 뷰는 다음과 같은 방법으로 사용 하지 않도록 설정할 수 있습니다.
 
 * **시스템에서 자동으로 사용 안 함:**  구체화 된 뷰는 영구 오류로 인해 구체화가 실패할 경우 자동으로 비활성화 됩니다. 이 프로세스는 다음과 같은 경우에 발생할 수 있습니다. 
     * 뷰 정의와 일치 하지 않는 스키마 변경  
-    * 구체화 된 뷰 쿼리가 의미 체계를 초래 하는 원본 테이블에 대 한 변경 내용이 잘못 되었습니다. <br>
-    자세한 내용은 [구체화 된 뷰 만들기](materialized-view-create.md)를 참조 하세요.
+    * 구체화 된 뷰 쿼리가 의미 체계를 초래 하는 원본 테이블에 대 한 변경 내용이 잘못 되었습니다. 
 * **구체화 된 뷰를 명시적으로 사용 하지 않도록 설정:**  구체화 된 뷰가 클러스터의 상태에 부정적인 영향을 주는 경우 (예: CPU를 너무 많이 사용 하는 경우) 아래 [명령을](#syntax) 사용 하 여 뷰를 사용 하지 않도록 설정 합니다.
 
 > [!NOTE]
@@ -37,7 +36,7 @@ ms.locfileid: "91057203"
 
 ## <a name="properties"></a>속성
 
-|속성|형식|설명
+|속성|유형|설명
 |----------------|-------|---|
 |MaterializedViewName|String|구체화 된 뷰의 이름입니다.|
 

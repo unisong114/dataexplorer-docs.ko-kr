@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 809088f35567f85444755d89ab30e02fad46abaf
-ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
+ms.openlocfilehash: 6e3bb943347e4ea794733451fcf65674e5e23ca7
+ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90680680"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91452666"
 ---
 # <a name="callout-policy"></a>설명선 정책
 
@@ -24,13 +24,12 @@ Azure 데이터 탐색기 클러스터는 다양 한 시나리오에서 외부 �
 * `kusto` -Azure 데이터 탐색기 클러스터 간 쿼리를 제어 합니다.
 * `sql` - [SQL 플러그 인](../query/sqlrequestplugin.md)을 제어 합니다.
 * `cosmosdb` - [CosmosDB 플러그 인](../query/cosmosdb-plugin.md)을 제어 합니다.
-* `webapi` -다른 외부 웹 호출을 제어 합니다.
 * `sandbox_artifacts`-샌드박스 플러그 인 ([python](../query/pythonplugin.md)  |  [R](../query/rplugin.md))을 제어 합니다.
 * `external_data` - [외부 테이블](../query/schema-entities/externaltables.md) 또는 [externaldata](../query/externaldata-operator.md) 연산자를 통해 외부 데이터에 대 한 액세스를 제어 합니다.
 
 콜아웃 정책은 다음과 같이 구성 됩니다.
 
-* **Callouttype** -설명선의 형식을 정의 하며, 또는 일 수 있습니다 `kusto` . `sql``webapi`
+* **Callouttype** -설명선의 형식을 정의 하며, 또는 일 수 있습니다 `kusto` `sql` .
 * **Callouturiregex** -설명선 도메인의 허용 된 regex를 지정 합니다.
 * **Cancall** -설명선이 외부 호출을 허용 하는지 여부를 나타냅니다.
 
@@ -63,13 +62,13 @@ Azure 데이터 탐색기 클러스터는 다양 한 시나리오에서 외부 �
 **콜아웃 정책 변경**
 
 ```kusto
-.alter cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}]'
+.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
 
 **허용 되는 설명선 집합 추가**
 
 ```kusto
-.alter-merge cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}, {"CalloutType": "webapi","CalloutUriRegex": "bing\\.com","CanCall": true}]'
+.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
 
 **변경할 수 없는 모든 콜아웃 정책을 삭제 합니다.**
