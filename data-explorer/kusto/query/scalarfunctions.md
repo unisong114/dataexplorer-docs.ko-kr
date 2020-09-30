@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
-ms.openlocfilehash: 652b08afc15d1405d6b7f17523088ed0ec5bef61
-ms.sourcegitcommit: 31ebf208d6bfd901f825d048ea69c9bb3d8b87af
+ms.openlocfilehash: eb974793875fd5f797fe1a1b801598abdc60e354
+ms.sourcegitcommit: 454b9bf6449449fc3382ff5794894502f920795a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88501623"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91517619"
 ---
 # <a name="scalar-function-types"></a>스칼라 함수 유형
 
@@ -47,13 +47,13 @@ ms.locfileid: "88501623"
 |[datetime_add ()](datetime-addfunction.md)|지정 된 날짜/시간에 지정한 값을 곱하여 지정 된 날짜/시간에 추가 된 새 날짜/시간을 계산 합니다.|
 |[datetime_part ()](datetime-partfunction.md)|요청 된 날짜 부분을 정수 값으로 추출 합니다.|
 |[datetime_diff ()](datetime-difffunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 끝을 반환 합니다.|
-|[dayofmonth ()](dayofmonthfunction.md)|지정 된 월의 일 수를 나타내는 정수를 반환 합니다.|
-|[dayofweek ()](dayofweekfunction.md)|이전 일요일 이후의 날짜 수를 timespan으로 반환 합니다.|
-|[dayofyear ()](dayofyearfunction.md)|지정 된 연도의 일 수를 나타내는 정수를 반환 합니다.|
+|[dayofmonth()](dayofmonthfunction.md)|지정 된 월의 일 수를 나타내는 정수를 반환 합니다.|
+|[dayofweek()](dayofweekfunction.md)|이전 일요일 이후의 날짜 수를 timespan으로 반환 합니다.|
+|[dayofyear()](dayofyearfunction.md)|지정 된 연도의 일 수를 나타내는 정수를 반환 합니다.|
 |[endofday()](endofdayfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 일의 끝을 반환 합니다.|
-|[endofmonth()](endofmonthfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 월의 끝을 반환 합니다.|
+|[endofmonth ()](endofmonthfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 월의 끝을 반환 합니다.|
 |[endofweek()](endofweekfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 주의 끝을 반환 합니다.|
-|[endofyear()](endofyearfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 끝을 반환 합니다.|
+|[endofyear ()](endofyearfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 끝을 반환 합니다.|
 |[format_datetime()](format-datetimefunction.md)|형식 패턴 매개 변수를 기반으로 datetime 매개 변수의 형식을 지정 합니다.|
 |[format_timespan()](format-timespanfunction.md)|형식 패턴 매개 변수를 기반으로 형식 timespan 매개 변수의 형식을 지정 합니다.|
 |[getmonth()](getmonthfunction.md)|datetime에서 월 번호(1-12)를 가져옵니다.|
@@ -62,11 +62,11 @@ ms.locfileid: "88501623"
 |[make_datetime()](make-datetimefunction.md)|지정 된 날짜 및 시간에서 datetime 스칼라 값을 만듭니다.|
 |[make_timespan()](make-timespanfunction.md)|지정 된 기간에서 timespan 스칼라 값을 만듭니다.|
 |[monthofyear()](monthofyearfunction.md)|지정 된 연도의 월 수를 나타내는 정수를 반환 합니다.|
-|[now()](nowfunction.md)|지정 된 시간 범위에 따라 선택적으로 오프셋 되는 현재 UTC 시계 시간을 반환 합니다.|
+|[now ()](nowfunction.md)|지정 된 시간 범위에 따라 선택적으로 오프셋 되는 현재 UTC 시계 시간을 반환 합니다.|
 |[startofday()](startofdayfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 일의 시작을 반환 합니다.|
-|[startofmonth()](startofmonthfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 월의 시작을 반환 합니다.|
+|[startofmonth ()](startofmonthfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 월의 시작을 반환 합니다.|
 |[startofweek()](startofweekfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 주의 시작을 반환 합니다.|
-|[startofyear()](startofyearfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 시작을 반환 합니다.|
+|[startofyear ()](startofyearfunction.md)|지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 시작을 반환 합니다.|
 |[todatetime()](todatetimefunction.md)|입력을 datetime 스칼라로 변환 합니다.|
 |[totimespan()](totimespanfunction.md)|입력을 timespan 스칼라로 변환 합니다.|
 |[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Unix epoch 마이크로초를 UTC 날짜/시간으로 변환 합니다.|
@@ -91,10 +91,10 @@ ms.locfileid: "88501623"
 |[pack_all()](packallfunction.md)|테이블 형식 식의 모든 열에서 동적 개체 (속성 모음)를 만듭니다.|
 |[pack_array()](packarrayfunction.md)|모든 입력 값을 동적 배열로 압축 합니다.|
 |[repeat()](repeatfunction.md)|일련의 동일한 값을 포함 하는 동적 배열을 생성 합니다.|
-|[set_difference ()](setdifferencefunction.md)|첫 번째 배열에 있지만 다른 배열에는 없는 모든 고유 값 집합의 배열을 반환 합니다.|
+|[set_difference()](setdifferencefunction.md)|첫 번째 배열에 있지만 다른 배열에는 없는 모든 고유 값 집합의 배열을 반환 합니다.|
 |[set_has_element()](sethaselementfunction.md)|지정 된 배열에 지정 된 요소가 포함 되어 있는지 여부를 확인 합니다.|
 |[set_intersect()](setintersectfunction.md)|모든 배열에 있는 모든 고유 값 집합의 배열을 반환 합니다.|
-|[set_union ()](setunionfunction.md)|제공 된 배열에 있는 모든 고유 값 집합의 배열을 반환 합니다.|
+|[set_union()](setunionfunction.md)|제공 된 배열에 있는 모든 고유 값 집합의 배열을 반환 합니다.|
 |[treepath()](treepathfunction.md)|동적 개체의 리프를 식별하는 모든 path 식을 열거합니다.|
 |[zip()](zipfunction.md)|Zip 함수는 임의 개수의 동적 배열을 허용 합니다. 요소가 동일한 인덱스의 입력 배열 요소를 포함 하는 배열을 포함 하는 배열을 반환 합니다.|
 
@@ -141,7 +141,7 @@ ms.locfileid: "88501623"
 |[loggamma()](loggammafunction.md)|감마 함수의 절대값 로그를 계산 합니다.|
 |[not ()](notfunction.md)|Bool 인수의 값을 반대로 바꿉니다.|
 |[pi ()](pifunction.md)|Pi (π)의 상수 값을 반환 합니다.|
-|[pow ()](powfunction.md)|거듭제곱 한 결과를 반환 합니다.|
+|[pow()](powfunction.md)|거듭제곱 한 결과를 반환 합니다.|
 |[라디안 ()](radiansfunction.md)|각도 단위 = (PI/180) * 각도 단위를 사용 하 여 각도의 각도 값을 라디안으로 값으로 변환 합니다.|
 |[rand ()](randfunction.md)|난수를 반환 합니다.|
 |[range ()](rangefunction.md)|간격이 동일한 일련의 값을 포함 하는 동적 배열을 생성 합니다.|
@@ -182,7 +182,7 @@ ms.locfileid: "88501623"
 |함수 이름     |설명                                          |
 |-------------------------|--------------------------------------------------------|
 |[case()](casefunction.md)|조건자 목록을 평가 하 고 조건자가 충족 된 첫 번째 결과 식을 반환 합니다.|
-|[coalesce()](coalescefunction.md)|식 목록을 계산 하 고 null이 아닌 첫 번째 (또는 문자열의 경우 비어 있지 않은) 식을 반환 합니다.|
+|[병합 ()](coalescefunction.md)|식 목록을 계산 하 고 null이 아닌 첫 번째 (또는 문자열의 경우 비어 있지 않은) 식을 반환 합니다.|
 |[iif ()/iff ()](iiffunction.md)|첫 번째 인수 (조건자)를 계산 하 고 두 번째 또는 세 번째 인수 값을 반환 합니다 .이는 조건자가 true (second) 또는 false (셋째)로 평가 되는지에 따라 달라 집니다.|
 |[max_of()](max-offunction.md)|계산 된 여러 숫자 식의 최 댓 값을 반환 합니다.|
 |[min_of()](min-offunction.md)|계산 된 여러 숫자 식의 최 솟 값을 반환 합니다.|
@@ -213,13 +213,13 @@ ms.locfileid: "88501623"
 |[series_fill_const()](series-fill-constfunction.md)|계열의 누락 값을 지정 된 상수 값으로 바꿉니다.|
 |[series_fill_forward()](series-fill-forwardfunction.md)|계열의 누락 값에 대 한 전방 채우기 보간을 수행 합니다.|
 |[series_fill_linear()](series-fill-linearfunction.md)|계열의 누락 값에 대 한 선형 보간을 수행 합니다.|
-|[series_fft ()](series-fft-function.md)|계열에 FFT (Fast 푸리에 변환)를 적용 합니다.|
+|[series_fft()](series-fft-function.md)|계열에 FFT (Fast 푸리에 변환)를 적용 합니다.|
 |[series_fir()](series-firfunction.md)|계열에 유한 임펄스 응답 필터를 적용 합니다.|
 |[series_fit_2lines()](series-fit-2linesfunction.md)|계열에서 두 세그먼트 선형 회귀를 적용 하 여 여러 열을 반환 합니다.|
 |[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|계열에서 두 세그먼트 선형 회귀를 적용 하 여 동적 개체를 반환 합니다.|
 |[series_fit_line()](series-fit-linefunction.md)|계열에 선형 회귀를 적용 하 여 여러 열을 반환 합니다.|
 |[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|계열에 선형 회귀를 적용 하 여 동적 개체를 반환 합니다.|
-|[series_ifft ()](series-ifft-function.md)|계열에 역 IFFT (빠른 푸리에 변환)를 적용 합니다.|
+|[series_ifft()](series-ifft-function.md)|계열에 역 IFFT (빠른 푸리에 변환)를 적용 합니다.|
 |[series_iir()](series-iirfunction.md)|계열에 무한 임펄스 응답 필터를 적용 합니다.|
 |[series_outliers()](series-outliersfunction.md)|계열에서 변칙 점수를 점수가 있습니다.|
 |[series_pearson_correlation()](series-pearson-correlationfunction.md)|두 계열의 피어슨 상관 계수를 계산 합니다.|
@@ -236,12 +236,12 @@ ms.locfileid: "88501623"
 |[base64_encode_tostring()](base64_encode_tostringfunction.md)|문자열을 base64 문자열로 인코딩합니다.|
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Base64 문자열을 UTF-8 문자열로 디코딩합니다.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Base64 문자열을 long 값 배열로 디코딩합니다.|
-|[countof()](cotfunction.md)|문자열의 부분 문자열 발생을 계산합니다. 일반 문자열 일치는 겹칠 수 있습니다. regex는 그렇지 않습니다.|
+|[countof()](countoffunction.md)|문자열의 부분 문자열 발생을 계산합니다. 일반 문자열 일치는 겹칠 수 있습니다. regex는 그렇지 않습니다.|
 |[extract()](extractfunction.md)|텍스트 문자열에서 정규식 에 대한 일치 항목을 가져옵니다.|
 |[extract_all()](extractallfunction.md)|텍스트 문자열에서 정규식에 대 한 모든 일치 항목을 가져옵니다.|
 |[extractjson()](extractjsonfunction.md)|path 식을 사용하여 JSON 텍스트에서 지정된 요소를 가져옵니다.|
 |[indexof ()](indexoffunction.md)|함수는 입력 문자열에서 맨 처음 발견 되는 지정 된 문자열의 0부터 시작 하는 인덱스를 보고 합니다.|
-|[isempty()](isemptyfunction.md)|인수가 빈 문자열 이거나 null 이면 true를 반환 합니다.|
+|[isempty ()](isemptyfunction.md)|인수가 빈 문자열 이거나 null 이면 true를 반환 합니다.|
 |[isnotempty()](isnotemptyfunction.md)|인수가 빈 문자열 또는 null이 아닌 경우 true를 반환 합니다.|
 |[isnotnull()](isnotnullfunction.md)|인수가 null이 아닌 경우 true를 반환 합니다.|
 |[isnull ()](isnullfunction.md)|유일한 인수를 계산 하 고 인수가 null 값으로 계산 되는지를 나타내는 부울 값을 반환 합니다.|
@@ -257,15 +257,15 @@ ms.locfileid: "88501623"
 |[parse_version()](parse-versionfunction.md)|버전의 입력 문자열 표현을 비교할 수 있는 10 진수로 변환 합니다.|
 |[replace ()](replacefunction.md)|모든 정규식 일치 항목을 다른 문자열로 바꿉니다.|
 |[reverse ()](reversefunction.md)|함수는 입력 문자열을 역순으로 만듭니다.|
-|[split ()](splitfunction.md)|지정 된 구분 기호에 따라 지정 된 문자열을 분할 하 고 포함 된 부분 문자열을 포함 하는 문자열 배열을 반환 합니다.|
+|[split()](splitfunction.md)|지정 된 구분 기호에 따라 지정 된 문자열을 분할 하 고 포함 된 부분 문자열을 포함 하는 문자열 배열을 반환 합니다.|
 |[strcat()](strcatfunction.md)|1에서 64 사이의 인수를 연결 합니다.|
 |[strcat_delim()](strcat-delimfunction.md)|첫 번째 인수로 제공 되는 구분 기호를 사용 하 여 2 및 64 인수를 연결 합니다.|
 |[strcmp()](strcmpfunction.md)|두 문자열을 비교합니다.|
 |[strlen()](strlenfunction.md)|입력 문자열의 길이 (문자)를 반환 합니다.|
 |[strrep()](strrepfunction.md)|지정 된 문자열을 지정 된 횟수 만큼 반복 합니다 (기본값-1).|
 |[substring ()](substringfunction.md)|일부 인덱스부터 문자열 끝 까지의 소스 문자열에서 부분 문자열을 추출 합니다.|
-|[toupper ()](toupperfunction.md)|문자열을 대문자로 변환합니다.|
-|[translate()](translatefunction.md)|지정 된 문자열에서 문자 집합 (' searchList ')을 다른 문자 집합 (' replacementList ')으로 바꿉니다.|
+|[toupper()](toupperfunction.md)|문자열을 대문자로 변환합니다.|
+|[변환 ()](translatefunction.md)|지정 된 문자열에서 문자 집합 (' searchList ')을 다른 문자 집합 (' replacementList ')으로 바꿉니다.|
 |[trim ()](trimfunction.md)|지정 된 정규식에 대 한 선행 및 후행 일치 항목을 모두 제거 합니다.|
 |[trim_end()](trimendfunction.md)|지정 된 정규식의 후행 일치 항목을 제거 합니다.|
 |[trim_start()](trimstartfunction.md)|지정 된 정규식의 선행 일치를 제거 합니다.|
