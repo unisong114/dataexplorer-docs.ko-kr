@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 77c86708a20349f5864bd10fa298719dce0fbab9
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: f19104111d8db615c82eff2e399fb4857f27c841
+ms.sourcegitcommit: 463ee13337ed6d6b4f21eaf93cf58885d04bccaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452802"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91572162"
 ---
 # <a name="materialized-views-preview"></a>구체화 된 뷰 (미리 보기)
 
@@ -48,6 +48,8 @@ ms.locfileid: "91452802"
 * 원시 데이터에 대 한 주기적인 통계를 계산 하 여 데이터의 해상도를 줄입니다. 기간별로 다양 한 [집계 함수](materialized-view-create.md#supported-aggregation-functions) 를 사용 합니다.
     * 예를 들어를 사용 `T | summarize dcount(User) by bin(Timestamp, 1d)` 하 여 하루에 고유한 사용자의 최신 스냅숏을 유지 합니다.
 
+모든 사용 사례에 대 한 예제는 [구체화 된 뷰 만들기 명령](materialized-view-create.md#examples)을 참조 하세요.
+
 ## <a name="how-materialized-views-work"></a>구체화 된 뷰 작동 방법
 
 구체화 된 뷰는 다음과 같은 두 가지 구성 요소로 구성 됩니다.
@@ -66,7 +68,7 @@ ms.locfileid: "91452802"
 
 뷰는 클러스터 간 또는 데이터베이스 간 쿼리에 참여할 수 있지만 와일드 카드 공용 구조체 또는 검색에는 포함 되지 않습니다.
 
-### <a name="examples"></a>예
+### <a name="examples"></a>예제
 
 1. 전체 뷰를 쿼리 합니다. 원본 테이블의 최신 레코드는 다음과 같습니다.
     

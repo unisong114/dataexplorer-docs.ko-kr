@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 354908df7ab0e65c8d4110dbff3a45a876b748a0
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: f67b2d61cfed297886447a97dd178dfb578a2c68
+ms.sourcegitcommit: 463ee13337ed6d6b4f21eaf93cf58885d04bccaa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452751"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91572146"
 ---
 # <a name="create-materialized-view"></a>.create materialized-view
 
@@ -45,7 +45,7 @@ ms.locfileid: "91452751"
 
 ## <a name="arguments"></a>인수
 
-|인수|유형|설명
+|인수|Type|Description
 |----------------|-------|---|
 |ViewName|String|구체화 된 뷰 이름입니다. 뷰 이름은 같은 데이터베이스에 있는 테이블 또는 함수 이름과 충돌 하지 않으며 [식별자 명명 규칙](../../query/schema-entities/entity-names.md#identifier-naming-rules)을 따라야 합니다. |
 |(|String|뷰가 정의 된 원본 테이블의 이름입니다.|
@@ -80,7 +80,7 @@ ms.locfileid: "91452751"
 
 다음은 절에서 지원 됩니다 `with(propertyName=propertyValue)` . 모든 속성은 선택 사항입니다.
 
-|속성|유형|설명 |
+|속성|Type|Description |
 |----------------|-------|---|
 |가득|bool|현재 *SourceTable* ()에 있는 모든 레코드를 기반으로 뷰를 만들지 아니면 `true` "온-" ()로 만들지 여부를 지정 `false` 합니다. 기본값은 `false`입니다.| 
 |effectiveDateTime|Datetime| 와 함께 지정 하 `backfill=true` 는 경우 datetime 이후의 레코드를 수집 하는 backfills 생성 됩니다. 또한 백필을 true로 설정 해야 합니다. 에는 datetime 리터럴이 필요 합니다 (예:). `effectiveDateTime=datetime(2019-05-01)`|
@@ -97,9 +97,9 @@ ms.locfileid: "91452751"
 > * 이러한 이유로 보기를 사용 하지 않도록 설정 하면 [구체화 된 뷰 사용](materialized-view-enable-disable.md) 명령을 사용 하 여 문제를 해결 한 후 다시 사용 하도록 설정할 수 있습니다.
 >
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
-1. 지금은 수집 레코드를 구체화 하는 빈 보기를 만듭니다. 
+1. 현재 수집 레코드를 구체화 하는 빈 arg_max 보기를 만듭니다.
 
     <!-- csl -->
     ```
@@ -109,7 +109,7 @@ ms.locfileid: "91452751"
     }
     ```
     
-1. 다음을 사용 하 여 백필 옵션으로 구체화 된 뷰를 만듭니다 `async` .
+1. 다음을 사용 하 여 백필 옵션을 사용 하 여 일일 집계에 대 한 구체화 된 뷰를 만듭니다 `async` .
 
     <!-- csl -->
     ```
@@ -132,7 +132,17 @@ ms.locfileid: "91452751"
         | summarize count(), dcount(User), max(Duration) by Customer, Day
     } 
     ```
-    
+1. EventId 열을 기반으로 하 여 원본 테이블의 복제를 취소 하는 구체화 된 뷰입니다.
+
+    <!-- csl -->
+    ```
+    .create materialized-view DedupedT on table T
+    {
+        T
+        | summarize any(*) by EventId
+    }
+    ```
+
 1. 이 정의에는 문 앞에 추가 연산자가 포함 될 수 있습니다 `summarize` `summarize` .
 
     <!-- csl -->
@@ -146,7 +156,7 @@ ms.locfileid: "91452751"
         | summarize count(), dcount(User), max(Duration) by Customer, Api, Month
     }
     ```
-    
+
 1. 차원 테이블과 조인 하는 구체화 된 뷰:
 
     <!-- csl -->
@@ -279,13 +289,13 @@ ms.locfileid: "91452751"
 
 ### <a name="properties"></a>속성
 
-|속성|유형|설명
+|속성|Type|Description
 |----------------|-------|---|
 |operationId|GUID|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
 
 ### <a name="output"></a>출력
 
-|출력 매개 변수 |유형 |설명
+|출력 매개 변수 |Type |Description
 |---|---|---
 |OperationId|GUID|구체화 된 뷰 만들기 명령의 작업 ID입니다.
 |작업(Operation)|String|작업 종류입니다.
