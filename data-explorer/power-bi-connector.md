@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 591f8add363f0d1b09d8314c21a209fdc4cbedac
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: d6c3e49aa2141e2428251f806b29b47a9c65c164
+ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875177"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91615056"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI용 Azure Data Explorer 커넥터를 사용하여 데이터 시각화
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Power BI는 데이터를 시각화하고 조직 전체에서 결과를 공유할 수 있는 비즈니스 분석 솔루션입니다. Azure Data Explorer는 Power BI에서 데이터에 연결하기 위한 세 가지 옵션, 즉 기본 제공 커넥터 사용, Azure Data Explorer에서 쿼리 가져오기 또는 SQL 쿼리 사용을 제공합니다. 이 문서에서는 기본 제공 커넥터를 사용 하 여 데이터를 가져오고 Power BI 보고서에서 시각화 하는 방법을 보여 줍니다. Power BI 대시보드를 만들기 위해 Azure 데이터 탐색기 native connector를 사용 하는 것은 간단 합니다. Power BI 커넥터는 [가져오기 및 직접 쿼리 연결 모드](https://docs.microsoft.com/power-bi/desktop-directquery-about)를 지원 합니다. 시나리오, 규모 및 성능 요구 사항에 따라 **가져오기** 또는 **DirectQuery** 모드를 사용 하 여 대시보드를 빌드할 수 있습니다. 
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 문서를 완료 하려면 다음이 필요 합니다.
 
@@ -42,26 +42,35 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
     ![클러스터, 데이터베이스, 테이블 옵션](media/power-bi-connector/cluster-database-table.png)
 
-    **설정** | **값** | **필드 설명**
-    |---|---|---|
+    | 설정 | 값 | 필드 설명
+    |---|---|---
     | 클러스터 | *https://help.kusto.windows.net* | 도움말 클러스터의 URL입니다. 다른 클러스터의 경우 URL은 https://. 형식으로 *되어 \<ClusterName\> \<Region\> 있습니다. kusto.windows.net*. |
     | 데이터베이스 | 비워 둠 | 연결 중인 클러스터에서 호스트되는 데이터베이스입니다. 이후 단계에서 이 데이터베이스를 선택하게 됩니다. |
     | 테이블 이름 | 비워 둠 | 데이터베이스의 테이블 중 하나 또는 <code>StormEvents \| take 1000</code> 이후 단계에서 이 데이터베이스를 선택하게 됩니다. |
-    | 고급 옵션 | 비워 둠 | 쿼리에 대한 옵션(예: 결과 세트 크기)입니다. |
+    | 고급 옵션 | 비워 둠 | 쿼리에 대한 옵션(예: 결과 세트 크기)입니다.
     | 데이터 연결 모드 | *DirectQuery* | Power BI가 데이터를 가져올지 또는 데이터 원본에 직접 연결될지를 결정합니다. 이 커넥터에서는 두 옵션을 모두 사용할 수 있습니다. |
-    | | | |
-    
+
     > [!NOTE]
     > **가져오기** 모드에서 데이터는 Power BI로 이동 됩니다. **DirectQuery** 모드에서는 Azure 데이터 탐색기 클러스터에서 직접 데이터를 쿼리 합니다.
     >
     > **가져오기** 모드를 사용 하는 경우:
+    >
     > * 데이터 집합이 작습니다.
-    > * 거의 실시간 데이터가 필요 하지 않습니다. 
-    > * 데이터가 이미 집계 되었거나 [Kusto에서 집계](kusto/query/summarizeoperator.md#list-of-aggregation-functions) 를 수행 하 고 있습니다.    
+    > * 거의 실시간 데이터가 필요 하지 않습니다.
+    > * 데이터가 이미 집계 되었거나 [Kusto에서 집계](kusto/query/summarizeoperator.md#list-of-aggregation-functions) 를 수행 하 고 있습니다.
     >
     > **DirectQuery** 모드를 사용 하는 경우:
-    > * 데이터 집합이 매우 큰 경우 
-    > * 거의 실시간 데이터가 필요 합니다.   
+    > * 데이터 집합이 매우 큰 경우
+    > * 거의 실시간 데이터가 필요 합니다.
+
+    ### <a name="advanced-options"></a>고급 옵션
+
+    | 설정 | 샘플 값 | 필드 설명
+    |---|---|---
+    | 쿼리 결과 레코드 수 제한| `300000` | 결과에 반환할 최대 레코드 수입니다. |
+    | 쿼리 결과 데이터 크기 제한 | `4194304` | 결과에 반환할 최대 데이터 크기 (바이트)입니다. |
+    | 결과 집합 잘림을 사용 하지 않도록 설정 | `true` | Notruncation 요청 옵션을 사용 하 여 결과 잘림 사용/사용 안 함 |
+    | 추가 set 문 | `set query_datascope=hotcache` | 쿼리 기간에 대 한 쿼리 옵션을 설정 합니다. 쿼리 옵션은 쿼리가 실행되고 결과가 반환되는 방법을 제어합니다. |
 
 1. 도움말 클러스터에 아직 연결되지 않은 경우 로그인합니다. 조직 계정을 사용하여 로그인한 다음 **연결**을 선택합니다.
 

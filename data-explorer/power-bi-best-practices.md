@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: f277ff9caaaf29b39b7e1fac4175ce2fa862c269
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 404d8f2d6b7eacc61571575613fd8017baadb54d
+ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872984"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614852"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하는 방법에 대 한 모범 사례
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. [Power BI](https://docs.microsoft.com/power-bi/) 은 데이터를 시각화 하 고 조직 전체에서 결과를 공유할 수 있는 비즈니스 분석 솔루션입니다. Azure 데이터 탐색기는 Power BI 데이터에 연결 하기 위한 세 가지 옵션을 제공 합니다. [기본 제공 커넥터](power-bi-connector.md)를 사용 하 여 [Azure 데이터 탐색기에서 Power BI로 쿼리를 가져오거나](power-bi-imported-query.md) [SQL 쿼리](power-bi-sql-query.md)를 사용 합니다. 이 문서에서는 Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하기 위한 팁을 제공 합니다. 
 
-## <a name="best-practices-for-using-power-bi"></a>Power BI 사용에 대 한 모범 사례 
+## <a name="best-practices-for-using-power-bi"></a>Power BI 사용에 대 한 모범 사례
 
 Tb의 새로운 원시 데이터로 작업 하는 경우 다음 지침에 따라 Power BI 대시보드 및 보고서를 계속 해 서 snappy 하 고 업데이트 합니다.
 
@@ -30,15 +30,16 @@ Tb의 새로운 원시 데이터로 작업 하는 경우 다음 지침에 따라
 
 * **병렬 처리** – Azure 데이터 탐색기는 선형 확장 가능 데이터 플랫폼 이므로 다음과 같이 종단 간 흐름의 병렬 처리를 증가 시켜 대시보드 렌더링의 성능을 향상 시킬 수 있습니다.
 
-   * [Power BI에서 DirectQuery의 동시 연결](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)수를 늘립니다.
+  * [Power BI에서 DirectQuery의 동시 연결](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)수를 늘립니다.
 
-   * [병렬 처리를 향상 시키기 위해 약한 일관성을](kusto/concepts/queryconsistency.md)사용 합니다. 이는 데이터의 새로 고침에 영향을 미칠 수 있습니다.
+  * [병렬 처리를 향상 시키기 위해 약한 일관성을](kusto/concepts/queryconsistency.md)사용 합니다. 이는 데이터의 새로 고침에 영향을 미칠 수 있습니다.
 
 * **효과적인 슬라이서** – [동기화 슬라이서](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) 를 사용 하 여 보고서가 준비 되기 전에 데이터를 로드 하지 못하도록 합니다. 데이터 집합을 구조화 하 고 모든 시각적 개체를 배치한 후 모든 슬라이서를 표시 한 후에는 동기화 슬라이서를 선택 하 여 필요한 데이터만 로드할 수 있습니다.
 
 * **필터 사용** -가능한 한 많은 Power BI 필터를 사용 하 여 Azure 데이터 탐색기 검색에 관련 데이터 분할 집중 합니다.
 
 * **효율적인 시각적 개체** – 데이터에 가장 적합 한 시각적 개체를 선택 합니다.
+
 
 ## <a name="tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data"></a>Azure 데이터 탐색기 Power BI 커넥터를 사용 하 여 데이터를 쿼리 하기 위한 팁
 
@@ -62,15 +63,39 @@ Power BI는와 같은 *상대* 날짜/시간 연산자를 포함 하지 않습�
 
 다음과 같은 쿼리를 사용 합니다.
 
-```powerquery-m
+```m
 let
-    Source = Kusto.Contents("help", "Samples", "StormEvents", []),
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", []),
     #"Filtered Rows" = Table.SelectRows(Source, each [StartTime] > (DateTime.FixedLocalNow()-#duration(5,0,0,0)))
 in
     #"Filtered Rows"
 ```
 
-### <a name="reaching-kusto-query-limits"></a>Kusto 쿼리 제한에 도달 
+### <a name="configuring-azure-data-explorer-connector-options-in-m-query"></a>M 쿼리에서 Azure 데이터 탐색기 커넥터 옵션 구성
+
+M 쿼리 언어의 PBI 고급 편집기에서 Azure 데이터 탐색기 커넥터의 옵션을 구성할 수 있습니다. 이러한 옵션을 사용 하 여 Azure 데이터 탐색기 클러스터로 전송 되는 생성 된 쿼리를 제어할 수 있습니다.
+
+```m
+let
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", [<options>])
+in
+    Source
+```
+
+M 쿼리에서 다음 옵션 중 하나를 사용할 수 있습니다.
+
+| 옵션 | 샘플 | Description
+|---|---|---
+| MaxRows | `[MaxRows=300000]` | `truncationmaxrecords`쿼리에 set 문을 추가 합니다. 쿼리가 호출자에 게 반환할 수 있는 기본 최대 레코드 수를 재정의 합니다 (잘림).
+| MaxSize | `[MaxSize=4194304]` | `truncationmaxsize`쿼리에 set 문을 추가 합니다. 쿼리가 호출자에 게 반환할 수 있는 기본 최대 데이터 크기 (잘림)를 재정의 합니다.
+| NoTruncate | `[NoTruncate=true]` | `notruncation`쿼리에 set 문을 추가 합니다. 호출자에 게 반환 되는 쿼리 결과를 무시 하도록 설정 합니다.
+| AdditionalSetStatements | `[AdditionalSetStatements="set query_datascope=hotcache"]` | 제공 된 set 문을 쿼리에 추가 합니다. 이러한 문은 쿼리 기간에 대 한 쿼리 옵션을 설정 하는 데 사용 됩니다. 쿼리 옵션은 쿼리가 실행되고 결과가 반환되는 방법을 제어합니다.
+| 구분 | `[CaseInsensitive=true]` | 커넥터에서 대/소문자를 구분 하지 않는 쿼리를 생성 하도록 합니다 `=~` . 쿼리는 값을 비교할 때 연산자 대신 연산자를 사용 `==` 합니다.
+
+    > [!NOTE]
+    > You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
+
+### <a name="reaching-kusto-query-limits"></a>Kusto 쿼리 제한에 도달
 
 Kusto 쿼리는 [쿼리 제한](kusto/concepts/querylimits.md)에 설명 된 대로 기본적으로 최대 50만 행 또는 64 MB를 반환 합니다. **Azure 데이터 탐색기 (Kusto)** 연결 창에서 **고급 옵션** 을 사용 하 여 이러한 기본값을 재정의할 수 있습니다.
 
@@ -78,9 +103,21 @@ Kusto 쿼리는 [쿼리 제한](kusto/concepts/querylimits.md)에 설명 된 대
 
 이러한 옵션은 쿼리를 사용 하 여 [set 문을](kusto/query/setstatement.md) 실행 하 여 기본 쿼리 제한을 변경 합니다.
 
-  * **쿼리 결과 레코드 수 제한** 에서을 생성 합니다. `set truncationmaxrecords`
-  * **쿼리 결과 데이터 크기 제한 (바이트)** 을 생성 합니다. `set truncationmaxsize`
-  * **비활성화 결과-잘림 집합** 을 생성 합니다. `set notruncation`
+* **쿼리 결과 레코드 수 제한** 에서을 생성 합니다. `set truncationmaxrecords`
+* **쿼리 결과 데이터 크기 제한 (바이트)** 을 생성 합니다. `set truncationmaxsize`
+* **비활성화 결과-잘림 집합** 을 생성 합니다. `set notruncation`
+
+### <a name="case-sensitivity"></a>대/소문자 구분
+
+기본적으로 커넥터는 문자열 값을 비교할 때 대/소문자 구분 연산자를 사용 하는 쿼리를 생성 합니다 `==` . 데이터의 대/소문자를 구분 하지 않는 경우에는 원하는 동작이 아닙니다. 생성 된 쿼리를 변경 하려면 커넥터 옵션을 사용 합니다 `CaseInsensitive` .
+
+```m
+let
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", [CaseInsensitive=true]),
+    #"Filtered Rows" = Table.SelectRows(Source, each [State] == "aLaBama")
+in
+    #"Filtered Rows"
+```
 
 ### <a name="using-query-parameters"></a>쿼리 매개 변수 사용
 
@@ -94,28 +131,28 @@ Kusto 쿼리는 [쿼리 제한](kusto/concepts/querylimits.md)에 설명 된 대
 
 1. 쿼리에서 다음 섹션을 찾습니다.
 
-    ```powerquery-m
-    Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
+    ```m
+    Source = AzureDataExplorer.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
-   
-   예를 들면
 
-    ```powerquery-m
-    Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
+   예를 들면 다음과 같습니다.
+
+    ```m
+    Source = AzureDataExplorer.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
 1. 쿼리의 관련 부분을 매개 변수로 바꿉니다. 쿼리를 여러 부분으로 분할 하 고 매개 변수와 함께 앰퍼샌드 (&)를 사용 하 여 다시 연결 합니다.
 
    예를 들어 위의 쿼리에서는 `State == 'ALABAMA'` 파트를 가져와서: 및로 분할 하 고 `State == '` `'` `State` 매개 변수 사이에 매개 변수를 추가 합니다.
-   
+
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
     ```
 
-1. 쿼리에 따옴표가 포함 되어 있으면 해당 기호를 올바르게 인코딩합니다. 예를 들어 다음 쿼리는 다음과 같습니다. 
+1. 쿼리에 따옴표가 포함 되어 있으면 해당 기호를 올바르게 인코딩합니다. 예를 들어 다음 쿼리는 다음과 같습니다.
 
    ```kusto
-   "StormEvents | where State == "ALABAMA" | take 100" 
+   "StormEvents | where State == "ALABAMA" | take 100"
    ```
 
    는 다음과 같이 두 개의 따옴표를 사용 하 여 **고급 편집기** 에 나타납니다.
@@ -147,7 +184,3 @@ Power BI에서 쿼리를 실행 하면 _"DataSource. 오류: 웹에서 콘텐츠
 ## <a name="next-steps"></a>다음 단계
 
 [Power BI용 Azure Data Explorer 커넥터를 사용하여 데이터 시각화](power-bi-connector.md)
-
-
-
-

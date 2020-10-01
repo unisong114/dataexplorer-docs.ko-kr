@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/27/2020
-ms.openlocfilehash: 4de0e749ad47b8f2e3f2c0f26d5d18466efaff97
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 4678cd23e8c92f0b53b26be965f614c009c9f0bd
+ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967301"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91615005"
 ---
 # <a name="tables-management"></a>테이블 관리
 
@@ -21,13 +21,14 @@ ms.locfileid: "85967301"
 
 아래 표에서 링크를 선택 하 여 자세한 내용을 참조 하십시오.
 
-| 명령                                                                                                                 | 작업                       |
+| 명령                                                                                                                 | 작업(Operation)                       |
 |--------------------------------------------------------------------------------------------------------------------------|---------------------------------|
 | [`.alter table docstring`](alter-table-docstring-command.md), [`.alter table folder`](alter-table-folder-command.md)                                                                                                                                                                                                   | 테이블 표시 속성 관리 |
 | [`.create ingestion mapping`](create-ingestion-mapping-command.md), [`.show ingestion mappings`](show-ingestion-mapping-command.md), [`.alter ingestion mapping`](alter-ingestion-mapping-command.md), [`.drop ingestion mapping`](drop-ingestion-mapping-command.md)                                                                    | 수집 매핑 관리        |
 | [`.create tables`](create-tables-command.md), [`.create table`](create-table-command.md), [`.alter table`](alter-table-command.md), [`.alter-merge table`](alter-table-command.md), [`.drop tables`](drop-table-command.md), [`.drop table`](drop-table-command.md), [`.undo drop table`](undo-drop-table-command.md), [`.rename table`](rename-table-command.md) | 테이블 만들기/수정/삭제       |
 | [`.show tables`](show-tables-command.md) [`.show table details`](show-table-details-command.md)[`.show table schema`](show-table-schema-command.md)                                                                                      | 데이터베이스의 테이블 열거  |
-| `.ingest`, `.set`, `.append`, `.set-or-append`(자세한 내용은 [데이터 수집](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands) 참조))                                                                                                                                                                                      | 테이블에 데이터 수집     |
+| `.ingest`, `.set` , `.append` , `.set-or-append` (자세한 내용은 [데이터](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands) 수집 참조).                                                                                                                                                                                      | 테이블에 데이터 수집     |
+| [`.clear table data`](clear-table-data-command.md)                            | 테이블의 모든 데이터를 지웁니다.  |
 
 ## <a name="crud-naming-conventions-for-tables"></a>테이블에 대 한 CRUD 명명 규칙 
 위의 표에 나와 있는에 연결 된 섹션에서 전체 세부 정보를 참조 하세요.
