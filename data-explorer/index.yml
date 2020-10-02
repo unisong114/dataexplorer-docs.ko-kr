@@ -9,12 +9,12 @@ metadata:
   author: orspod
   ms.author: orspodek
   ms.date: 03/19/2020
-  ms.openlocfilehash: e9e434423919643e75dd7c90c60ae3c90072283f
-  ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+  ms.openlocfilehash: 19fee896eb9e3d6dd857b8c85bd7962b820ff3b3
+  ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
   ms.translationtype: HT
   ms.contentlocale: ko-KR
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85763907"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91452700"
 landingContent:
 - title: Azure Data Explorer 정보
   linkLists:
@@ -22,6 +22,10 @@ landingContent:
     links:
     - text: Azure 데이터 탐색기란?
       url: data-explorer-overview.md
+  - linkListType: whats-new
+    links:
+    - text: Azure Data Explorer의 새로운 기능을 보려면 2020년 10월 14일 온라인 이벤트에 조인하세요.
+      url: https://azuredataexplorer.events.idloom.com/azure-data-explorer-online-event
   - linkListType: video
     links:
     - text: Azure 데이터 탐색기란? (19:47)
