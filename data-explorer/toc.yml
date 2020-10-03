@@ -1333,6 +1333,8 @@
                   href: ./kusto/management/show-table-details-command.md
                 - name: .show table schema
                   href: ./kusto/management/show-table-schema-command.md
+                - name: .clear table data
+                  href: ./kusto/management/clear-table-data-command.md
             - name: 외부 테이블
               items:
                 - name: 외부 테이블 일반 제어 명령
