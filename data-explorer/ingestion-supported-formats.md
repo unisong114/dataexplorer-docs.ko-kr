@@ -7,21 +7,21 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 89ee29e70c71c29afb65ee81fc4ce8e498faee33
-ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
+ms.openlocfilehash: 4f7e61755b12c84fc49373a12edc0b507aee9bf4
+ms.sourcegitcommit: 2764e739b4ad51398f4f0d3a9742d7168c4f5fd7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89502639"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712054"
 ---
 # <a name="data-formats-supported-by-azure-data-explorer-for-ingestion"></a>수집을 위해 Azure 데이터 탐색기에서 지 원하는 데이터 형식
 
 데이터 수집은 테이블에 데이터를 추가 하 고 Azure 데이터 탐색기에서 쿼리에 사용할 수 있도록 하는 프로세스입니다. 수집 후 쿼리를 제외한 모든 수집 메서드의 경우 데이터는 지원 되는 형식 중 하나 여야 합니다. 다음 표에서는 Azure 데이터 탐색기에서 데이터 수집에 대해 지 원하는 형식을 나열 하 고 설명 합니다.
 
-|서식   |확장   |Description|
+|서식   |확장명   |Description|
 |---------|------------|-----------|
-|Avro     |`.avro`     |[Avro 컨테이너 파일](https://avro.apache.org/docs/current/)입니다. `null`, `deflate` 코드가 지원됩니다(`snappy`는 현재 지원되지 않음).|
-|ApacheAvro|`.avro`    |[논리적 형식](https://avro.apache.org/docs/current/spec.html#Logical+Types) 및 압축 코덱에 대 한 지원을 포함 하는 [Avro](https://avro.apache.org/docs/current/) 형식의 실험적 네이티브 구현 `snappy` 입니다.|
+|ApacheAvro|`.avro`    |[논리적 형식](https://avro.apache.org/docs/current/spec.html#Logical+Types) 및 압축 코덱에 대 한 지원을 포함 하는 [Avro](https://avro.apache.org/docs/current/) 형식 `snappy` 입니다.|
+|Avro     |`.avro`     |[Avro 컨테이너 파일](https://avro.apache.org/docs/current/)에 대 한 레거시 구현입니다. 지원 되는 코드는 다음과 같습니다. `null` , `deflate` ( `snappy` 사용 하는 경우 `apacheavro` 파일 형식).|
 |CSV      |`.csv`      |쉼표(`,`)로 구분된 값을 사용하는 텍스트 파일입니다. [ _쉼표로 구분 된 값 (CSV) 파일에 대 한 RFC 4180: 일반 형식 및 MIME 형식_](https://www.ietf.org/rfc/rfc4180.txt)을 참조 하세요.|
 |JSON     |`.json`     |JSON 개체가 `\n` 또는 `\r\n`으로 구분된 텍스트 파일입니다. [JSON Lines(JSONL)](http://jsonlines.org/)를 참조하세요.|
 |MultiJSON|`.multijson`|JSON 속성 모음 배열(각각 레코드를 나타냄) 또는 공백으로 구분된 여러 속성 모음(`\n` 또는 `\r\n`)이 있는 텍스트 파일입니다. 각 속성 모음을 여러 줄에 분배할 수 있습니다. `JSON`데이터가 속성 모음이 아닌 경우에는이 형식이 보다 좋습니다.|
@@ -40,7 +40,7 @@ ms.locfileid: "89502639"
 
 다음 압축 알고리즘을 통해 blob 및 파일을 압축할 수 있습니다.
 
-|압축|확장|
+|압축|확장명|
 |-----------|---------|
 |GZip       |.gz      |
 |Zip        |.zip     |

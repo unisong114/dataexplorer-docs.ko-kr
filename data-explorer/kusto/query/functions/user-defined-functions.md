@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: f1d77e91ba625b3f38c4b1fde31a841377bb88a5
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.openlocfilehash: 769ebc16da0780f1d1832dcbf49bad516c47abd3
+ms.sourcegitcommit: 2764e739b4ad51398f4f0d3a9742d7168c4f5fd7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610521"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712020"
 ---
 # <a name="user-defined-functions"></a>사용자 정의 함수
 
@@ -61,9 +61,9 @@ ArgName:ArgType [= ArgDefaultValue]
 ```
  테이블 형식 인수의 경우 *Argtype* 은 테이블 정의 (괄호 및 열 이름/형식 쌍의 목록)와 동일한 구문을 사용 하며, `(*)` "모든 테이블 형식 스키마"를 나타내는 독립를 추가로 지원 합니다.
 
-다음은 그 예입니다. 
+예:
 
-|구문                        |입력 인수 목록 설명                                 |
+|Syntax                        |입력 인수 목록 설명                                 |
 |------------------------------|-----------------------------------------------------------------|
 |`()`                          |인수 없음|
 |`(s:string)`                  |`s`형식의 값을 가져오는 단일 스칼라 인수를 호출 합니다.`string`|
@@ -73,7 +73,7 @@ ArgName:ArgType [= ArgDefaultValue]
 > [!NOTE]
 > 테이블 형식 입력 인수와 스칼라 입력 인수를 모두 사용 하는 경우 모든 테이블 형식 입력 인수 앞에 스칼라 입력 인수를 추가 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 스칼라 함수:
 
@@ -282,7 +282,7 @@ union T*
 다음 제한 사항이 적용됩니다.
 
 * 사용자 정의 함수는 함수가 호출 되는 행 컨텍스트에 종속 된 [toscalar ()](../toscalarfunction.md) 호출 정보를 전달할 수 없습니다.
-* 테이블 형식 식을 반환 하는 사용자 정의 함수는 행 컨텍스트에 따라 달라 지는 인수를 사용 하 여 호출 됩니다.
+* 테이블 형식 식을 반환 하는 사용자 정의 함수는 행 컨텍스트에 따라 달라 지는 인수를 사용 하 여 호출할 수 없습니다.
 * 하나 이상의 테이블 형식 입력을 가져오는 함수는 원격 클러스터에서 호출할 수 없습니다.
 * 원격 클러스터에서는 스칼라 함수를 호출할 수 없습니다.
 
