@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: a7f434f2425815f154ffda701832fa5e3ee70f05
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: fa5ae1266b97c7ee01a65bc36c7508cac0779ab2
+ms.sourcegitcommit: 2764e739b4ad51398f4f0d3a9742d7168c4f5fd7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91102816"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712088"
 ---
 # <a name="array_rotate_left"></a>array_rotate_left()
 
-`array_rotate_left()` 배열 내의 값을 왼쪽으로 회전 합니다.
+배열 내의 값 `dynamic` 을 왼쪽으로 회전 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `array_rotate_left(`*arr*, *rotate_count*`)`
 
@@ -32,13 +32,13 @@ ms.locfileid: "91102816"
 
 각 요소가 *rotate_count*에 따라 회전 된 원래 배열과 동일한 양의 요소를 포함 하는 동적 배열입니다.
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * 배열을 오른쪽으로 회전 하려면 [array_rotate_right ()](array_rotate_rightfunction.md)를 참조 하세요.
 * 배열을 왼쪽으로 이동 하려면 [array_shift_left ()](array_shift_leftfunction.md)를 참조 하세요.
 * 배열을 오른쪽으로 이동 하려면 [array_shift_right ()](array_shift_rightfunction.md)를 참조 하세요.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 * 왼쪽으로 두 위치를 회전 합니다.
 
