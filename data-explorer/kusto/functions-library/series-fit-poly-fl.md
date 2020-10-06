@@ -7,19 +7,25 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: 7be785a7a3a0abe0c1f6483e016484ee0124f29b
-ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
+ms.openlocfilehash: eff9a5cd8ed2d9ed7e518be9aade9ecf2aded7bf
+ms.sourcegitcommit: d0f8d71261f8f01e7676abc77283f87fc450c7b1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/21/2020
-ms.locfileid: "90832606"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91765479"
 ---
 # <a name="series_fit_poly_fl"></a>series_fit_poly_fl()
 
-함수는 `series_fit_poly_fl()` 계열에 다항식 회귀를 적용 합니다. 여러 계열 (동적 숫자 배열)을 포함 하는 테이블을 사용 하 고 각 계열에 대해 [다항식 회귀](https://en.wikipedia.org/wiki/Polynomial_regression)를 사용 하 여 가장 잘 맞는 큰 다항식을 생성 합니다. 이 함수는 계열의 범위에서 다항식 계수와 보간된 다항식을 모두 반환 합니다.
+함수는 `series_fit_poly_fl()` 계열에 다항식 회귀를 적용 합니다. 이 함수는 여러 계열 (동적 숫자 배열)을 포함 하는 테이블을 사용 하 고 [다항식 회귀](https://en.wikipedia.org/wiki/Polynomial_regression)를 사용 하 여 각 계열에 대해 가장 적합 한 최고 수준의 다항식을 생성 합니다. 이 함수는 계열의 범위에서 다항식 계수와 보간된 다항식을 모두 반환 합니다.
 
 > [!NOTE]
-> `series_fit_poly_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다. 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요. [시리즈 연산자](../query/make-seriesoperator.md)를 사용 하 여 만든 것과 같이 균일 하 게 배치 된 계열의 선형 회귀의 경우 native 함수 [series_fit_line ()](../query/series-fit-linefunction.md)를 사용 합니다.
+> Native 함수 [series_fit_poly ()](../query/series-fit-poly-function.md)를 사용 합니다. 아래 함수는 참조용 으로만 사용할 수 있습니다.
+
+
+> [!NOTE]
+> * `series_fit_poly_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다.
+> * 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
+> * [시리즈 연산자](../query/make-seriesoperator.md)를 사용 하 여 만든 것과 같이 균일 하 게 배치 된 계열의 선형 회귀의 경우 native 함수 [series_fit_line ()](../query/series-fit-linefunction.md)를 사용 합니다.
 
 ## <a name="syntax"></a>구문
 
@@ -81,7 +87,7 @@ let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff
      | evaluate python(typeof(*), code, kwargs)
 };
 //
-// Fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series
+// Fit fifth order polynomial to a regular (evenly spaced) time series, created with make-series
 //
 let max_t = datetime(2016-09-03);
 demo_make_series1
@@ -143,7 +149,7 @@ series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:stri
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 //
-// Fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series
+// Fit fifth order polynomial to a regular (evenly spaced) time series, created with make-series
 //
 let max_t = datetime(2016-09-03);
 demo_make_series1
@@ -155,7 +161,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="일반 시계열에 맞는 5 번째 순서 다항식을 보여 주는 그래프" border="false":::
+:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프" border="false":::
 
 ## <a name="additional-examples"></a>추가 예
 
@@ -165,9 +171,6 @@ demo_make_series1
     
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
-    //
-    //  Test irregular (unevenly spaced) time series
-    //
     let max_t = datetime(2016-09-03);
     demo_make_series1
     | where TimeStamp between ((max_t-2d)..max_t)
@@ -180,20 +183,16 @@ demo_make_series1
     | render timechart with(ycolumns=num, fnum)
     ```
     
-    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="불규칙 한 시계열에 맞는 8 번째 순서 다항식을 보여 주는 그래프" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프" border="false":::
 
-1. x & y 축에서 노이즈가 있는 5 번째 순서 다항식
+1. X & y 축에 노이즈를 사용 하는 다섯 번째 순서 다항식
 
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
-    //
-    // 5th order polynomial with noise on x & y axes
-    //
     range x from 1 to 200 step 1
     | project x = rand()*5 - 2.3
     | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
     | extend y = y + (rand() - 0.5)*0.5*y
-    | order by x asc 
     | summarize x=make_list(x), y=make_list(y)
     | extend y_fit = dynamic(null), coeff=dynamic(null)
     | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
@@ -201,6 +200,6 @@ demo_make_series1
     | render linechart
     ```
         
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="X & y 축에 노이즈가 있는 5 번째 순서 다항식의 맞춤 그래프":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프":::
        
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="노이즈가 있는 5 번째 순서 다항식의 계수" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프" border="false":::

@@ -8,24 +8,24 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 90942906908f58f321e5a81ec9ca8419fe9a2ec5
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 087ff2fc38f3b72e4abdbb86ce4b7ac98a5569e6
+ms.sourcegitcommit: d0f8d71261f8f01e7676abc77283f87fc450c7b1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348924"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91765364"
 ---
 # <a name="case"></a>case()
 
 조건자 목록을 평가 하 고 조건자가 충족 된 첫 번째 결과 식을 반환 합니다.
 
 조건자가 반환 `true` 되지 않으면 마지막 식 ()의 결과가 `else` 반환 됩니다.
-모든 홀수 인수 (개수는 1부터 시작)는 값으로 계산 되는 식 이어야 합니다 `boolean` .
+모든 홀수 인수 (개수는 1부터 시작)는 값으로 계산 되는 식 이어야 합니다  `boolean` .
 모든 짝수 인수 ( `then` s)와 마지막 인수 ( `else` )는 동일한 형식 이어야 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
-`case(`*predicate_1* `,` *then_1*, *predicate_2* `,` *then_2*, *predicate_3* `,` *then_3*, *기타*`)`
+`case(`*predicate_1*, *then_1*, *predicate_2*, *then_2*, *predicate_3*, *then_3*, *기타*`)`
 
 ## <a name="arguments"></a>인수
 
@@ -37,7 +37,7 @@ ms.locfileid: "87348924"
 
 *Predicate_i* 가로 계산 되는 첫 번째 *then_i* 의 값 `true` 또는 조건자가 모두 충족 되지 않는 경우 *else* 의 값입니다.
 
-## <a name="example"></a>예제
+## <a name="example"></a>예제: 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -49,11 +49,11 @@ range Size from 1 to 15 step 2
 
 |크기|bucket|
 |---|---|
-|1|작음|
-|3|작음|
+|1|소형|
+|3|소형|
 |5|중간|
 |7|중간|
 |9|중간|
-|11|큼|
-|13|큼|
-|15|큼|
+|11|대형|
+|13|대형|
+|15|대형|
