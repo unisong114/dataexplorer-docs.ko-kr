@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1db42577a0d4d10da732b54b0a5032ab2be11b69
-ms.sourcegitcommit: 91e7d49a1046575bbc63a4f25724656ebfc070db
+ms.openlocfilehash: c10e6502c4e18a5c30d971c4814c2270a0b27ff1
+ms.sourcegitcommit: 830837607f344f1ce1f146f946a41e45bfebcb22
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89151164"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91806685"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -138,7 +138,7 @@ ms.locfileid: "89151164"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | 형식     | Description       |
+| 속성         | 유형     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -276,9 +276,11 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | 형식   | 설명                       |
+| 출력 매개 변수 | 유형   | 설명                       |
 |------------------|--------|-----------------------------------|
 | URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
+| 크기             | long   | 파일 길이 (바이트)              |
+| 파티션        | 동적 | 분할 된 외부 테이블에 대 한 파일 파티션을 설명 하는 동적 개체 |
 
 > [!TIP]
 > 외부 테이블에서 참조 하는 모든 파일에 대 한 반복은 파일 수에 따라 비용이 많이 들 수 있습니다. `limit`일부 URI 예제를 보려는 경우에는 매개 변수를 사용 해야 합니다.
@@ -291,9 +293,19 @@ dataformat=parquet
 
 **출력:**
 
-| URI                                                                     |
-|-------------------------------------------------------------------------|
-| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
+| URI                                                                     | 크기 | 파티션 |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` | 10743 | `{}`   |
+
+
+분할 된 테이블의 경우 `Partition` 열에 추출 된 파티션 값이 포함 됩니다.
+
+**출력:**
+
+| URI                                                                     | 크기 | 파티션 |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/customer=john.doe/dt=20200101/file.csv` | 10743 | `{"Customer": "john.doe", "Date": "2020-01-01T00:00:00.0000000Z"}` |
+
 
 ## <a name="create-external-table-mapping"></a>. 외부 테이블 매핑 만들기
 
@@ -309,7 +321,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                           |
+| 속성     | 종류 | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -327,7 +339,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                                |
+| 속성     | 종류 | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -349,7 +361,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                                         |
+| 속성     | 종류 | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
