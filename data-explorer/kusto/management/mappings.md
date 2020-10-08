@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 데이터 매핑�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: ohbitton
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: cd498d43d98250bad0a7ce00c4a8fec7b4f3ad4f
-ms.sourcegitcommit: d08b3344d7e9a6201cf01afc8455c7aea90335aa
+ms.openlocfilehash: 9695bd1a1330b4dc7cd44131d566c538c0264de4
+ms.sourcegitcommit: eff06eb34f78630fd78470d918ebc04ff5dc863e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88964730"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91847199"
 ---
 # <a name="data-mappings"></a>데이터 매핑
 
@@ -67,19 +67,6 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 > [!NOTE]
 > 위의 매핑이 제어 명령의 일부로 제공 되는 경우 `.ingest` JSON 문자열로 serialize 됩니다.
 
-* 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
-
-```kusto
-.ingest into Table123 (@"source1", @"source2")
-    with 
-    (
-        format="csv", 
-        ingestionMappingReference = "Mapping1"
-    )
-```
-
-* 위의 매핑이 제어 명령의 일부로 제공 되는 경우 `.ingest` JSON 문자열로 serialize 됩니다.
-
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
@@ -93,7 +80,20 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
     )
 ```
 
-**참고:** 속성 모음이 없는 다음 매핑 형식은 `Properties` 더 이상 사용 되지 않습니다.
+> [!NOTE]
+> 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with 
+    (
+        format="csv", 
+        ingestionMappingReference = "Mapping1"
+    )
+```
+
+> [!NOTE]
+> 속성 모음이 없는 다음 매핑 형식은 `Properties` 더 이상 사용 되지 않습니다.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -116,7 +116,7 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 
 |속성|설명|
 |----|--|
-|`path`|If로 시작 하는 경우 `$` json 문서에서 열의 내용이 될 필드의 json 경로 (전체 문서를 나타내는 json 경로 `$` )입니다. 값이로 시작 하지 않으면 `$` 상수 값이 사용 됩니다.|
+|`path`|If로 시작 하는 경우 `$` json 문서에서 열의 내용이 될 필드의 json 경로 (전체 문서를 나타내는 json 경로 `$` )입니다. 값이로 시작 하지 않으면 `$` 상수 값이 사용 됩니다. 공백을 포함 하는 JSON 경로는 [속성 이름]으로 이스케이프 되어야 합니다 \' \' .|
 |`transform`|필드 [매핑 변형을](#mapping-transformations)사용 하 여 콘텐츠에 적용 해야 하는 변환입니다.|
 
 ### <a name="example-of-json-mapping"></a>JSON 매핑 예제
@@ -141,6 +141,23 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 > 위의 매핑이 제어 명령의 일부로 제공 되는 경우 `.ingest` JSON 문자열로 serialize 됩니다.
 
 ```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "json", 
+      ingestionMapping = 
+      "["
+        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
+        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
+      "]"
+  )
+```
+
+> [!NOTE]
+> 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
+
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -149,7 +166,8 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
     )
 ```
 
-**참고:** 속성 모음이 없는 다음 매핑 형식은 `Properties` 더 이상 사용 되지 않습니다.
+> [!NOTE]
+> 속성 모음이 없는 다음 매핑 형식은 `Properties` 더 이상 사용 되지 않습니다.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -173,7 +191,7 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 |속성|설명|
 |----|--|
 |`Field`|Avro 레코드의 필드 이름입니다.|
-|`Path`|를 사용 하 `field` 는 대신, 필요한 경우 Avro 레코드 필드의 내부 부분을 사용할 수 있습니다. 값은 레코드의 루트에서의 JSON 경로를 나타냅니다. 자세한 내용은 아래 참고를 참조 하세요. |
+|`Path`|를 사용 하 `field` 는 대신, 필요한 경우 Avro 레코드 필드의 내부 부분을 사용할 수 있습니다. 값은 레코드의 루트에서의 JSON 경로를 나타냅니다. 자세한 내용은 아래 참고를 참조 하세요. 공백을 포함 하는 JSON 경로는 [속성 이름]으로 이스케이프 되어야 합니다 \' \' .|
 |`transform`|필드 [지원 되는 변환이](#mapping-transformations)있는 콘텐츠에 적용 해야 하는 변환입니다.|
 
 **참고**
@@ -214,6 +232,22 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 > 위의 매핑이 제어 명령의 일부로 제공 되는 경우 `.ingest` JSON 문자열로 serialize 됩니다.
 
 ```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "avro", 
+      ingestionMapping = 
+      "["
+        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
+      "]"
+  )
+```
+
+> [!NOTE]
+> 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
+
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -222,7 +256,8 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
     )
 ```
 
-**참고:** 속성 모음이 없는 다음 매핑 형식은 `Properties` 더 이상 사용 되지 않습니다.
+> [!NOTE]
+> 속성 모음이 없는 다음 매핑 형식은 `Properties` 더 이상 사용 되지 않습니다.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -245,7 +280,7 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 
 |속성|설명|
 |----|--|
-|`path`|If로 시작 하는 경우 `$` Parquet 문서에서 열의 내용이 될 필드의 json 경로 (전체 문서를 나타내는 json 경로 `$` )입니다. 값이로 시작 하지 않으면 `$` 상수 값이 사용 됩니다.|
+|`path`|If로 시작 하는 경우 `$` Parquet 문서에서 열의 내용이 될 필드의 json 경로 (전체 문서를 나타내는 json 경로 `$` )입니다. 값이로 시작 하지 않으면 `$` 상수 값이 사용 됩니다. 공백을 포함 하는 JSON 경로는 [속성 이름]으로 이스케이프 되어야 합니다 \' \' . |
 |`transform`|필드 콘텐츠에 적용 해야 하는 [매핑 변환](#mapping-transformations) 입니다.
 
 
@@ -268,7 +303,22 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 > [!NOTE]
 > 위의 매핑이 제어 명령의 일부로 제공 되는 경우 `.ingest` JSON 문자열로 serialize 됩니다.
 
-* 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
+```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "parquet", 
+      ingestionMapping = 
+      "["
+        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
+        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
+      "]"
+  )
+```
+
+> [!NOTE]
+> 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -279,21 +329,6 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
     )
 ```
 
-* 위의 매핑이 제어 명령의 일부로 제공 되는 경우 `.ingest` JSON 문자열로 serialize 됩니다.
-
-```kusto
-.ingest into Table123 (@"source1", @"source2") 
-  with 
-  (
-      format = "parquet", 
-      ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
-      "]"
-  )
-```
-
 ## <a name="orc-mapping"></a>Orc 매핑
 
 원본 파일이 Orc 형식이 면 파일 내용이 Kusto 테이블에 매핑됩니다. 매핑된 모든 열에 대해 유효한 데이터 형식이 지정 되지 않은 경우이 테이블은 Kusto 데이터베이스에 있어야 합니다. 모든 비 기존 열에 대해 datatype을 지정 하지 않으면 Orc 매핑에서 매핑된 열이 Kusto 테이블에 있어야 합니다.
@@ -302,7 +337,7 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
 
 |속성|설명|
 |----|--|
-|`path`|If로 시작 하는 경우 `$` Orc 문서에서 열의 내용이 될 필드의 json 경로 (전체 문서를 나타내는 json 경로 `$` )입니다. 값이로 시작 하지 않으면 `$` 상수 값이 사용 됩니다.|
+|`path`|If로 시작 하는 경우 `$` Orc 문서에서 열의 내용이 될 필드의 json 경로 (전체 문서를 나타내는 json 경로 `$` )입니다. 값이로 시작 하지 않으면 `$` 상수 값이 사용 됩니다. 공백을 포함 하는 JSON 경로는 [속성 이름]으로 이스케이프 되어야 합니다 \' \' .|
 |`transform`|필드 콘텐츠에 적용 해야 하는 [매핑 변환](#mapping-transformations) 입니다.
 
 ### <a name="example-of-orc-mapping"></a>Orc 매핑의 예
@@ -332,9 +367,22 @@ CSV 매핑은 모든 구분 기호로 분리 된 형식 (CSV, TSV, PSV, SCSV 및
       ingestionMapping = 
       "["
         "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
+        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
       "]"
   )
+```
+
+> [!NOTE]
+> 위의 매핑을 [미리 만든](create-ingestion-mapping-command.md) 경우 제어 명령에서 참조할 수 있습니다 `.ingest` .
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with 
+    (
+        format="orc", 
+        ingestionMappingReference = "Mapping1"
+    )
 ```
 
 ## <a name="mapping-transformations"></a>매핑 매핑
