@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/20/2020
-ms.openlocfilehash: 00d205a710b7b3bf41dc181e79e5e6d0baa95fc6
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: 9514f7c94568e73a704e6ba6f4bcc5bf61590d2f
+ms.sourcegitcommit: 6f610cd9c56dbfaff4eb0470ac0d1441211ae52d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793931"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91954776"
 ---
 # <a name="summarize-operator"></a>summarize 연산자
 
@@ -63,7 +63,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|기능|설명|
+|함수|설명|
 |--------|-----------|
 |[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[anyif()](anyif-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값 (조건자 포함)을 반환 합니다.|
@@ -90,7 +90,7 @@ T | summarize count() by price_range=bin(price, 10.0)
 |[maxif()](maxif-aggfunction.md)|그룹 전체에서 최대 값을 반환 합니다 (조건자 포함).|
 |[min()](min-aggfunction.md)|그룹의 최솟값을 반환합니다.|
 |[minif()](minif-aggfunction.md)|그룹 전체에서 최 솟 값을 반환 합니다 (조건자 포함).|
-|[백분위 수 ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
+|[percentiles()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentiles_array ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentilesw()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
 |[percentilesw_array ()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
@@ -113,11 +113,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 
  Null 값을 포함 하는 엔터티에 대해 이러한 집계를 사용 하는 경우 null 값은 무시 되며 계산에 참여 하지 않습니다 (아래 예제 참조).
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 :::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="과일 및 공급 업체 별로 가격 요약":::
 
-## <a name="example"></a>예제
+## <a name="example-unique-combination"></a>예: 고유 조합
 
 테이블에 있는 및의 고유한 조합을 결정 `ActivityType` `CompletionStatus` 합니다. 집계 함수는 없으며 그룹별 키만 있습니다. 출력에는 해당 결과에 대 한 열만 표시 됩니다.
 
@@ -132,7 +132,7 @@ Activities | summarize by ActivityType, completionStatus
 |`dancing`|`abandoned`
 |`singing`|`completed`
 
-## <a name="example"></a>예제
+## <a name="example-minimum-and-maximum-timestamp"></a>예: 최소 및 최대 타임 스탬프
 
 활동 테이블에서 모든 레코드의 최소 및 최대 타임 스탬프를 찾습니다. 출력에 행이 한 개만 있으므로 group-by 절은 없습니다.
 
@@ -144,7 +144,7 @@ Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 |---|---
 |`1975-06-09 09:21:45` | `2015-12-24 23:45:00`
 
-## <a name="example"></a>예제
+## <a name="example-distinct-count"></a>예: 고유 카운트
 
 각 대륙에 대해 작업을 수행 하는 도시 수를 표시 하는 행을 만듭니다. "대륙"의 값이 거의 없으므로 ' by ' 절에는 그룹화 함수가 필요 하지 않습니다.
 
@@ -159,7 +159,7 @@ Activities | summarize cities=dcount(city) by continent
 |`2673`|`North America`|
 
 
-## <a name="example"></a>예제
+## <a name="example-histogram"></a>예: 히스토그램
 
 다음 예에서는 각 활동 유형에 대 한 히스토그램을 계산 합니다. 에는 `Duration` 많은 값이 있으므로를 사용 `bin` 하 여 값을 10 분 간격으로 그룹화 합니다.
 

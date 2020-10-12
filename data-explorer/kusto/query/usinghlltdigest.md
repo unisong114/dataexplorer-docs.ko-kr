@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: f56bd1c9f87833f7c1a9d29580a71557fedb894c
-ms.sourcegitcommit: ed902a5a781e24e081cd85910ed15cd468a0db1e
+ms.openlocfilehash: 30d4f6bd315b5a32c67570ab16b9abc3160f0177
+ms.sourcegitcommit: 6f610cd9c56dbfaff4eb0470ac0d1441211ae52d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88072398"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91954487"
 ---
 # <a name="using-hll-and-tdigest"></a>hll() 및 tdigest() 사용
 
@@ -82,7 +82,7 @@ MyTable
 |0|
 
 
-## <a name="example"></a>예제
+## <a name="example-count-with-binned-timestamp"></a>예: 바인딩된 타임 스탬프를 사용 하는 개수
 
 `PageViewsHllTDigest` `hll` 각 시간에 표시 되는 페이지 값을 포함 하는 테이블이 있습니다. 이러한 값은에 맞게 표시 하려고 `12h` 합니다. `hll`타임 스탬프를 사용 하 여 집계 함수를 사용 하 여 값을 병합 `hll_merge()` `12h` 합니다. 함수를 사용 `dcount_hll` 하 여 최종 값을 반환 합니다 `dcount` .
 
@@ -128,7 +128,7 @@ PageViewsHllTDigest
 |2016-05-02 12:00:00.0000000|181315|
 |2016-05-03 00:00:00.0000000|146817|
  
-## <a name="example"></a>예제
+## <a name="example-temporary-table"></a>예: 임시 테이블
 
 너무 커서 데이터 집합에 대 한 주기적인 쿼리를 실행 해야 하지만, 일반 쿼리를 실행 하 여 계산 [`percentile()`](percentiles-aggfunction.md) 하거나 대량 데이터 집합을 초과 하는 데이터 집합을 사용 하 여 kusto 제한에 도달 했습니다 [`dcount()`](dcount-aggfunction.md) .
 
@@ -179,7 +179,7 @@ PageViewsHllTDigest
 
 이 쿼리는 더 작은 테이블에서 실행 되므로 성능이 더 우수 합니다. 이 예에서 첫 번째 쿼리는 215M 개 이상의 레코드를 실행 하는 반면 두 번째 쿼리는 32 개 레코드를 초과 하 여 실행 됩니다.
 
-## <a name="example"></a>예제
+## <a name="example-intermediate-results"></a>예: 중간 결과
 
 보존 쿼리입니다.
 각 위키백과 페이지가 표시 되는 시간을 요약 하는 테이블이 있다고 가정 합니다 (샘플 크기는 10M). 각 날짜/시간을 찾으려면 date1 (date1 < date2)에 표시 된 페이지를 기준으로 날짜 1과 날짜 2 모두에서 검토 된 페이지의 백분율을 찾으려고 합니다.
