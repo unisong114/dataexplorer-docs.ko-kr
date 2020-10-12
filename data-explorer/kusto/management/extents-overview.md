@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/13/2020
-ms.openlocfilehash: 6c7910a222227dbb6b22e1fc4f0f4136897a0ef9
-ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
+ms.openlocfilehash: 2ad77b1763c8f4d85d676b34039a9300fca5912d
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84665115"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941845"
 ---
 # <a name="extents-data-shards"></a>익스텐트 (데이터 분할)
 
@@ -54,7 +54,7 @@ Kusto는 많은 수의 레코드 (행)와 많은 양의 데이터가 포함 된 
 
 1. **보존** -앞에서 만든 익스텐트가 이전에 삭제 됩니다.
 1. **캐싱** -최근에 만든 익스텐트가 [핫 캐시](cachepolicy.md)에 보관 됩니다.
-1. **샘플링** -최신 익스텐트는와 같은 쿼리 작업을 사용할 때 선호 됩니다.`take`
+1. **샘플링** -최신 익스텐트는와 같은 쿼리 작업을 사용할 때 선호 됩니다. `take`
 
 실제로 Kusto는 `datetime` 익스텐트 및의 두 값을 추적 `MinCreatedOn` `MaxCreatedOn` 합니다.
 처음에는 두 값이 동일 합니다. 범위가 다른 범위와 병합 되 면 새 값은 병합 된 익스텐트의 원래 최소값 및 최대값에 따라 만들어집니다.
@@ -77,7 +77,7 @@ Kusto는 값이 형식 *접두사* *접미사*를 갖는 모든 익스텐트 태
 
 접두사로 시작 하는 태그는 `drop-by:` 병합할 다른 범위를 제어 하는 데 사용할 수 있습니다. 지정 된 태그를 포함 하는 익스텐트는 `drop-by:` 함께 병합할 수 있지만 다른 범위와 병합 되지 않습니다. 그런 다음 명령을 실행 하 여 해당 태그에 따라 익스텐트를 삭제할 수 있습니다 `drop-by:` .
 
-예를 들면 다음과 같습니다.
+예를 들어:
 
 ```kusto
 .ingest ... with @'{"tags":"[\"drop-by:2016-02-17\"]"}'
@@ -112,5 +112,5 @@ Kusto는 값이 형식 *접두사* *접미사*를 갖는 모든 익스텐트 태
 
 * 과도 `ingest-by` 태그는 권장 되지 않습니다.
 파이프라인을 공급할 Kusto가 데이터 중복 하는 것으로 알려진 경우 데이터를 Kusto에 수집 하기 전에 가능한 한 이러한 중복을 해결 하는 것이 좋습니다. 또한 kusto로 `ingest-by` 수집 하는 파트가 중복 항목을 포함할 수 있는 경우에만 kusto의 태그를 사용 합니다. 예를 들어 이미 진행 중인 수집 호출과 겹칠 수 있는 재시도 메커니즘이 있습니다. `ingest-by`각 수집 호출에 대해 고유한 태그를 설정 하려고 하면 성능에 심각한 영향을 줄 수 있습니다.
-* 이러한 태그가 데이터가 수집 된 후 일정 기간 동안 필요 하지 않은 경우 [태그를 삭제](extents-commands.md#drop-extent-tags)하는 것이 좋습니다.
+* 이러한 태그가 데이터가 수집 된 후 일정 기간 동안 필요 하지 않은 경우 [익스텐트 태그를 삭제](drop-extent-tags.md)하는 것이 좋습니다.
  

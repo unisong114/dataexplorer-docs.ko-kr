@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 404d8f2d6b7eacc61571575613fd8017baadb54d
-ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
+ms.openlocfilehash: 3d1e8b4df2507a9b2eb7126973dea891edc1d6ac
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614852"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941981"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하는 방법에 대 한 모범 사례
 
@@ -92,8 +92,8 @@ M 쿼리에서 다음 옵션 중 하나를 사용할 수 있습니다.
 | AdditionalSetStatements | `[AdditionalSetStatements="set query_datascope=hotcache"]` | 제공 된 set 문을 쿼리에 추가 합니다. 이러한 문은 쿼리 기간에 대 한 쿼리 옵션을 설정 하는 데 사용 됩니다. 쿼리 옵션은 쿼리가 실행되고 결과가 반환되는 방법을 제어합니다.
 | 구분 | `[CaseInsensitive=true]` | 커넥터에서 대/소문자를 구분 하지 않는 쿼리를 생성 하도록 합니다 `=~` . 쿼리는 값을 비교할 때 연산자 대신 연산자를 사용 `==` 합니다.
 
-    > [!NOTE]
-    > You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
+> [!NOTE]
+> 여러 옵션을 함께 결합 하 여 원하는 동작에 도달할 수 있습니다. `[NoTruncate=true, CaseInsensitive=true]`
 
 ### <a name="reaching-kusto-query-limits"></a>Kusto 쿼리 제한에 도달
 
@@ -135,7 +135,7 @@ in
     Source = AzureDataExplorer.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
 
-   예를 들면 다음과 같습니다.
+   예를 들어:
 
     ```m
     Source = AzureDataExplorer.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])

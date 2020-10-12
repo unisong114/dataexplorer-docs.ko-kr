@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 03/18/2020
-ms.openlocfilehash: c5a0bd91df6e12d90436e3b27a2b55021668117a
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: a79c815202e65fa32f62a76c700d808d0fda86ea
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874344"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941998"
 ---
 # <a name="kusto-ingest-client-library"></a>Kusto 수집 클라이언트 라이브러리 
 
@@ -45,7 +45,7 @@ ms.locfileid: "88874344"
 
 다음 다이어그램은 Kusto와의 대기 중인 수집 클라이언트 상호 작용을 간략하게 설명 합니다.
 
-:::image type="content" source="../images/about-kusto-ingest/queued-ingest.png" alt-text="대기 중인 수집":::
+:::image type="content" source="../images/about-kusto-ingest/queued-ingest.png" alt-text="쿼리 된 수집 모드에서 kusto. 수집 라이브러리가 쿼리를 Kusto 서비스로 보내는 방법을 보여 주는 다이어그램입니다.":::
  
 ### <a name="direct-ingestion"></a>직접 수집
 
@@ -53,7 +53,7 @@ IKustoDirectIngestClient에 의해 정의 되는 직접 수집 모드는 Kusto E
 
 다음 다이어그램은 Kusto와의 직접 수집 클라이언트 상호 작용을 간략하게 설명 합니다.
 
-:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="직접 수집":::
+:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="쿼리 된 수집 모드에서 kusto. 수집 라이브러리가 쿼리를 Kusto 서비스로 보내는 방법을 보여 주는 다이어그램입니다.":::
 
 > [!NOTE]
 > 프로덕션 등급 수집 솔루션에는 직접 모드를 권장 하지 않습니다.

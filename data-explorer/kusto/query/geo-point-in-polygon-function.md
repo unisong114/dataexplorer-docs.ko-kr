@@ -8,18 +8,18 @@ ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/10/2020
-ms.openlocfilehash: 49b3e8b92d022ac5d1d8191bef8f00436b9f7211
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: d8bbebc4043ed2b3a64e90e12f629a1ab9521e6d
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347802"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941794"
 ---
 # <a name="geo_point_in_polygon"></a>geo_point_in_polygon()
 
 지리 공간적 좌표가 다각형 내부에 있는지 아니면 지구에 multipolygon 인지를 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `geo_point_in_polygon(`*경도* `, ` *위도* `, ` *다각형*`)`
 
@@ -29,7 +29,7 @@ ms.locfileid: "87347802"
 * *위도*: 지리 공간적 좌표, 위도 값 (도)입니다. 유효한 값은 [-90, + 90] 범위의 실수입니다.
 * *polygon*: [GeoJSON 형식](https://tools.ietf.org/html/rfc7946) 및 [동적](./scalar-data-types/dynamic.md) 데이터 형식의 다각형 또는 multipolygon입니다.
 
-## <a name="returns"></a>반환
+## <a name="returns"></a>반환 값
 
 지리 공간적 좌표가 다각형 내에 있는지 여부를 나타냅니다. 좌표 또는 다각형이 잘못 된 경우 쿼리는 null 결과를 생성 합니다. 
 
@@ -61,7 +61,7 @@ dynamic ({"type": "Polygon", "좌표": [LinearRingShell, LinearRingHole_1,..., L
 
 맨해튼 섬 (중앙 공원 불포함)
 
-:::image type="content" source="images/geo-point-in-polygon-function/polygon-manhattan-with-hole.png" alt-text="구멍이 있는 맨해튼":::
+:::image type="content" source="images/geo-point-in-polygon-function/polygon-manhattan-with-hole.png" alt-text="이정표, 박물관 및 공항에 대 한 표식을 포함 하는 맨해튼 영역 지도의 스크린샷 중앙 공원를 제외 하 고 아일랜드는 흐리게 표시 됩니다.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -80,7 +80,7 @@ datatable(longitude:real, latitude:real, description:string)
 
 Multipolygon의 좌표를 검색 합니다.
 
-:::image type="content" source="images/geo-point-in-polygon-function/multipolygon-manhattan.png" alt-text="구멍이 있는 맨해튼":::
+:::image type="content" source="images/geo-point-in-polygon-function/multipolygon-manhattan.png" alt-text="이정표, 박물관 및 공항에 대 한 표식을 포함 하는 맨해튼 영역 지도의 스크린샷 중앙 공원를 제외 하 고 아일랜드는 흐리게 표시 됩니다.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -103,7 +103,7 @@ coordinates
 
 캘리포니아의 스톰 이벤트입니다. 이벤트는 캘리포니아 상태 polygon을 기준으로 필터링 되 고 이벤트 유형 및 해시로 집계 됩니다.
 
-:::image type="content" source="images/geo-point-in-polygon-function/california-storm-events.png" alt-text="캘리포니아의 스톰 이벤트":::
+:::image type="content" source="images/geo-point-in-polygon-function/california-storm-events.png" alt-text="이정표, 박물관 및 공항에 대 한 표식을 포함 하는 맨해튼 영역 지도의 스크린샷 중앙 공원를 제외 하 고 아일랜드는 흐리게 표시 됩니다.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

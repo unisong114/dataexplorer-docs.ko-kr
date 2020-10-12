@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/05/2018
-ms.openlocfilehash: f926daa248a74b7b61ea4867d3a54f857444823e
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 2642ffc6b87afab785dc5f7ba962e1f659232cc2
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226026"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942270"
 ---
 # <a name="querymanagement-http-response"></a>쿼리/관리 HTTP 응답
 
@@ -24,7 +24,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 
 다음 상태 코드는 현재 사용 중입니다. 유효한 HTTP 코드가 반환 될 수도 있습니다.
 
-|코드|하위        |설명                                    |
+|코드|하위        |Description                                    |
 |----|---------------|-----------------------------------------------|
 |100 |계속       |클라이언트는 요청을 계속 해 서 보낼 수 있습니다.       |
 |200 |확인             |요청이 처리를 시작 했습니다.       |
@@ -34,7 +34,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 |404 |NotFound       |요청에서 존재 하지 않는 엔터티를 참조 합니다.      |
 |413 |PayloadTooLarge|요청 페이로드가 제한을 초과 했습니다.               |
 |429 |TooManyRequests|제한으로 인해 요청이 거부 되었습니다. |
-|504 |시간 제한        |요청 시간이 초과 되었습니다.                         |
+|504 |제한 시간        |요청 시간이 초과 되었습니다.                         |
 |520 |ServiceError   |서비스에서 요청을 처리 하는 동안 오류가 발생 했습니다.|
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 
 다음 사용자 지정 헤더가 반환 됩니다.
 
-|사용자 지정 헤더           |설명                                                                                               |
+|사용자 지정 헤더           |Description                                                                                               |
 |------------------------|----------------------------------------------------------------------------------------------------------|
 |`x-ms-client-request-id`|동일한 이름의 요청 헤더 또는 일부 고유 식별자에 전송 된 고유한 요청 식별자입니다.     |
 |`x-ms-activity-id`      |요청에 대 한 전역적으로 고유한 상관 관계 식별자입니다. 서비스에 의해 생성 됩니다.                    |
@@ -53,7 +53,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 ## <a name="response-body"></a>응답 본문
 
 상태 코드가 200 인 경우 응답 본문은 쿼리 또는 제어 명령의 결과를 사각형 테이블 시퀀스로 인코딩하는 JSON 문서입니다.
-자세한 내용은 다음을 참조하세요.
+자세한 내용은 다음을 참조하십시오.
 
 > [!NOTE]
 > 테이블 시퀀스는 SDK에 의해 반영 됩니다. 예를 들어 .NET Framework Kusto. 데이터 라이브러리를 사용 하는 경우 테이블의 시퀀스는 SDK에서 반환 되는 개체의 결과가 됩니다 `System.Data.IDataReader` .
@@ -68,13 +68,13 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 
 테이블 시퀀스의 JSON 인코딩은 다음 이름/값 쌍을 포함 하는 단일 JSON 속성 모음입니다.
 
-|속성  |값                              |
+|Name  |값                              |
 |------|-----------------------------------|
 |테이블|테이블 속성 모음에 대 한 배열입니다.|
 
 테이블 속성 모음에는 다음과 같은 이름/값 쌍이 있습니다.
 
-|속성     |값                               |
+|Name     |값                               |
 |---------|------------------------------------|
 |TableName|테이블을 식별 하는 문자열입니다. |
 |열  |열 속성 모음에 대 한 배열입니다.|
@@ -82,7 +82,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 
 열 속성 모음에는 다음과 같은 이름/값 쌍이 있습니다.
 
-|속성      |값                                                          |
+|Name      |값                                                          |
 |----------|---------------------------------------------------------------|
 |ColumnName|열을 식별하는 문자열입니다.                           |
 |DataType  |열의 대략적인 .NET 형식을 제공 하는 문자열입니다.|
@@ -107,9 +107,9 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 }
 ```
 
-다른 예제: 
+다음은 또 다른 예제입니다. 
 
-:::image type="content" source="../images/rest-json-representation.png" alt-text="rest-json 표시":::
+:::image type="content" source="../images/rest-json-representation.png" alt-text="테이블 개체의 배열을 포함 하는 JSON 파일의 트리 뷰를 보여 주는 스크린샷":::
 
 ## <a name="the-meaning-of-tables-in-the-response"></a>응답에 있는 테이블의 의미
 
@@ -126,7 +126,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
   
   이 테이블에는 `string` JSON과 유사한 값을 포함 하는 형식의 단일 열이 있습니다.
 
-  |Value|
+  |값|
   |-----|
   |{"시각화": "piechart",...}|
   |{"Cursor": "637239957206013576"}|
@@ -145,7 +145,7 @@ Http 응답 상태 줄은 HTTP 표준 응답 코드를 따릅니다.
 
   이 테이블에 대 한 예는 다음과 같습니다.
 
-  |Ordinal|종류            |속성               |Id                                  |PrettyName|
+  |서수|종류            |name               |Id                                  |PrettyName|
   |-------|----------------|-------------------|------------------------------------|----------|
   |0      | QueryResult    |PrimaryResult      |db9520f9-0455-4cb5-b257-53068497605a||
   |1      | QueryProperties|@ExtendedProperties|908901f6-5319-4809-ae9e-009068c267c7||

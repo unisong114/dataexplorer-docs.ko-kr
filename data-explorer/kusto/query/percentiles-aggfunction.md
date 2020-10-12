@@ -8,23 +8,23 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 13cc0edad5e0e4673c34e7e5b1b517f097fa4e9a
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0322dd6a8ba900fa4d55bea6b3568a5c42f61b52
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346187"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942372"
 ---
 # <a name="percentile-percentiles-aggregation-function"></a>백분위 수 (), 백분위 수 () (집계 함수)
 
 에서 정의한 모집단의 지정 된 [가장 가까운 순위 백분위](#nearest-rank-percentile) 수에 대 한 예상 값을 반환 합니다 `*Expr*` .
 정확도는 백분위수 지역의 인구 밀도에 따라 달라집니다. 이 함수는 [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-* `percentiles()`는와 유사 `percentile()` 하지만 각 백분위 수를 개별적으로 계산 하는 것 보다 더 빠른 백분위 수 값을 계산 합니다.
-* `percentilesw()`는와 유사 `percentilew()` 하지만 각 백분위 수를 개별적으로 계산 하는 것 보다 더 빠른 가중치가 적용 된 백분위 수 값의 수를 계산 합니다.
-* `percentilew()`가중치가 적용 되는 `percentilesw()` 백분위 수을 계산할 수 있습니다. 가중치가 적용 된 백분위 수는 입력에서 각 값을 반복 된 시간으로 처리 하 여 "가중치가 적용 된" 방식으로 지정 된 백분위 수를 계산 합니다 `weight` .
+* `percentiles()` 는와 유사 `percentile()` 하지만 각 백분위 수를 개별적으로 계산 하는 것 보다 더 빠른 백분위 수 값을 계산 합니다.
+* `percentilesw()` 는와 유사 `percentilew()` 하지만 각 백분위 수를 개별적으로 계산 하는 것 보다 더 빠른 가중치가 적용 된 백분위 수 값의 수를 계산 합니다.
+* `percentilew()` 가중치가 적용 되는 `percentilesw()` 백분위 수을 계산할 수 있습니다. 가중치가 적용 된 백분위 수는 입력에서 각 값을 반복 된 시간으로 처리 하 여 "가중치가 적용 된" 방식으로 지정 된 백분위 수를 계산 합니다 `weight` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `percentile(` *식* `,` *백분위* 수 요약`)`
 
@@ -49,7 +49,7 @@ ms.locfileid: "87346187"
 * `*Percentile*`: 백분위 수를 지정 하는 double 상수입니다.
 * `*Dynamic array*`: 정수 또는 부동 소수점 숫자의 동적 배열에 있는 백분위 수의 목록입니다.
 
-## <a name="returns"></a>반환
+## <a name="returns"></a>반환 값
 
 그룹의 지정 된 백분위 수에 대 한 예상 값을 반환 합니다 `*Expr*` . 
 
@@ -68,7 +68,7 @@ CallDetailRecords
 | summarize percentiles(Duration, 5, 50, 95) by continent
 ```
 
-:::image type="content" source="images/percentiles-aggfunction/percentiles.png" alt-text="백분위수":::
+:::image type="content" source="images/percentiles-aggfunction/percentiles.png" alt-text="대륙의 열과 다섯 번째, fiftieth 및 90-5 번째 백분위 수의 duration 값을 포함 하는 결과를 나열 하는 테이블입니다.":::
 
 결과는 유럽에서 5%의 호출이 11.55 s 보다 짧습니다. 50%의 호출이 3 분, 18.46 초 미만, 95%는 40 분 48 초 보다 짧습니다.
 
@@ -83,13 +83,13 @@ CallDetailRecords
 
 `summarize percentilesw(Duration, BucketSize, ...)`지정 된 백분위 수를 "가중치가 적용 된" 방식으로 계산 하는 데 사용 합니다. BucketSize 시간이 입력에서 반복 되는 것 처럼 지속 되는 것 처럼 각 기간 값을 실제로 처리 합니다.
 
-## <a name="example"></a>예제
+## <a name="example"></a>예
 
 고객의 대기 시간 값은 밀리초로 설정 `{ 1, 1, 2, 2, 2, 5, 7, 7, 12, 12, 15, 15, 15, 18, 21, 22, 26, 35 }` 됩니다.
 
 대역폭과 저장소를 줄이려면 다음 버킷에 대 한 사전 집계를 수행 `{ 10, 20, 30, 40, 50, 100 }` 합니다. 각 버킷의 이벤트 수를 계산 하 여 다음 테이블을 생성 합니다.
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-table.png" alt-text="Percentilesw 테이블":::
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-table.png" alt-text="대륙의 열과 다섯 번째, fiftieth 및 90-5 번째 백분위 수의 duration 값을 포함 하는 결과를 나열 하는 테이블입니다.":::
 
 테이블에 다음이 표시 됩니다.
  * 10-ms 버킷의 8 개 이벤트 (하위 집합에 해당 `{ 1, 1, 2, 2, 2, 5, 7, 7 }` )
@@ -113,12 +113,12 @@ datatable (ReqCount:long, LatencyBucket:long)
 
 위의 쿼리 결과는 다음과 같습니다.
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="Percentilesw 결과" border="false":::
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="대륙의 열과 다섯 번째, fiftieth 및 90-5 번째 백분위 수의 duration 값을 포함 하는 결과를 나열 하는 테이블입니다." border="false":::
 
 
 위의 쿼리는 `percentiles(LatencyBucket, 50, 75, 99.9)` 데이터가 다음 형식으로 확장 된 경우 함수에 해당 합니다.
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-rawtable.png" alt-text="Percentilesw raw 테이블":::
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-rawtable.png" alt-text="대륙의 열과 다섯 번째, fiftieth 및 90-5 번째 백분위 수의 duration 값을 포함 하는 결과를 나열 하는 테이블입니다.":::
 
 ## <a name="getting-multiple-percentiles-in-an-array"></a>배열에서 여러 백분위 수 가져오기
 
@@ -129,7 +129,7 @@ CallDetailRecords
 | summarize percentiles_array(Duration, 5, 25, 50, 75, 95), avg(Duration)
 ```
 
-:::image type="content" source="images/percentiles-aggfunction/percentiles-array-result.png" alt-text="백분위 수 배열 결과":::
+:::image type="content" source="images/percentiles-aggfunction/percentiles-array-result.png" alt-text="대륙의 열과 다섯 번째, fiftieth 및 90-5 번째 백분위 수의 duration 값을 포함 하는 결과를 나열 하는 테이블입니다.":::
 
 마찬가지로 가중치가 적용 된 백분위 수는를 사용 하 여 동적 배열로 반환 될 수 있습니다 `percentilesw_array` .
 

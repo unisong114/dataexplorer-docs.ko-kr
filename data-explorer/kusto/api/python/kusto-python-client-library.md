@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: 7718eb5983f1d7893a27df5db7ae0c52983dea85
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: 355d7e5e9135087fd0023a235990b8c9589a2e86
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763836"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942253"
 ---
 # <a name="azure-data-explorer-python-sdk"></a>Azure 데이터 탐색기 Python SDK
 
@@ -38,8 +38,8 @@ Azure 데이터 탐색기 *Kusto Python 클라이언트* 라이브러리를 사�
 * Pypi 패키지:
 
     * [azure-kusto-데이터](https://pypi.org/project/azure-kusto-data/) 
-     [ ![ Pypi 버전](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
+     [ ![ P Y p I 패키지 1.0.2 이라는 레이블이 지정 된 단추의 스크린샷](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
     * [azure-kusto 수집](https://pypi.org/project/azure-kusto-ingest/) 
-     [ ![ Pypi 버전](https://badge.fury.io/py/azure-kusto-ingest.svg)](https://badge.fury.io/py/azure-kusto-ingest)
+     [ ![ 단추의 스크린샷 단추에는 P Y P I 패키지 1.0.2이 표시 됩니다.](https://badge.fury.io/py/azure-kusto-ingest.svg)](https://badge.fury.io/py/azure-kusto-ingest)
     * [azure-관리-kusto](https://pypi.org/project/azure-mgmt-kusto/) 
-     [ ![ Pypi 버전](https://badge.fury.io/py/azure-mgmt-kusto.svg)](https://badge.fury.io/py/azure-mgmt-kusto)
+     [ ![ P Y p I 패키지 0.9.0 이라는 레이블이 지정 된 단추의 스크린샷](https://badge.fury.io/py/azure-mgmt-kusto.svg)](https://badge.fury.io/py/azure-mgmt-kusto)

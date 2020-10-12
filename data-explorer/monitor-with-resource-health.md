@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/31/2020
-ms.openlocfilehash: 5de30b4e6eb2ac9d01314482b693f6643075ca4a
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 630b03fc0e89005f1031aba4cbd1a86d803ff275
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872746"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942032"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Resource Health를 사용 하 여 Azure 데이터 탐색기 모니터링 (미리 보기)
 
@@ -40,13 +40,13 @@ Resource Health는 다음과 같은 다양 한 상태 검사를 검토 하 여 A
 
 **사용 가능** 상태는 Azure 데이터 탐색기 리소스가 정상이 고 문제가 없음을 나타냅니다.
 
-![사용 가능](media/monitor-with-resource-health/available.png)
+:::image type="content" source="media/monitor-with-resource-health/available.png" alt-text="Azure 데이터 탐색기 리소스에 대 한 리소스 상태 페이지의 스크린샷 상태가 사용 가능으로 나열 되 고 강조 표시 됩니다." border="false":::
 
 ### <a name="unavailable"></a>Unavailable
 
 **사용할 수 없음** 상태는 쿼리 및 수집에 사용할 수 없게 되는 Azure 데이터 탐색기 리소스에 지속적으로 문제가 있음을 나타냅니다. 예를 들어 Azure 데이터 탐색기 리소스의 노드가 예기치 않게 다시 부팅 되었을 수 있습니다. Azure 데이터 탐색기 리소스가 오랜 시간 동안이 상태를 유지 하는 경우 [지원]()담당자에 게 문의 하세요.
 
-![Unavailable](media/monitor-with-resource-health/unavailable.png)
+:::image type="content" source="media/monitor-with-resource-health/unavailable.png" alt-text="Azure 데이터 탐색기 리소스에 대 한 리소스 상태 페이지의 스크린샷 상태가 사용 가능으로 나열 되 고 강조 표시 됩니다." border="false":::
 
 > [!TIP]
 > [시스템 정보 명령을](kusto/management/systeminfo.md) 사용 하 여 문제의 원인을 찾을 수 있습니다.
@@ -58,7 +58,7 @@ Resource Health는 다음과 같은 다양 한 상태 검사를 검토 하 여 A
 > [!TIP]
 > Azure 데이터 탐색기 클러스터 리소스 상태가 중지 됨 상태인 경우 **알** 수 없습니다.
 
-![Unknown](media/monitor-with-resource-health/unknown.png)
+:::image type="content" source="media/monitor-with-resource-health/unknown.png" alt-text="Azure 데이터 탐색기 리소스에 대 한 리소스 상태 페이지의 스크린샷 상태가 사용 가능으로 나열 되 고 강조 표시 됩니다." border="false":::
 
 ## <a name="historical-information"></a>기록 정보
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 25bdd9c36c63d521cd662ab5c69f3dfec974b1e6
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 0ff2b0892231f52390f103fe299f219a7a3f3860
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874769"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942049"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure 데이터 탐색기 데이터베이스 권한 관리
 
@@ -54,11 +54,11 @@ Azure 데이터 탐색기에는 다음 역할이 있습니다.
 
 1. 주체를 조회하여 선택하고 **선택**을 선택합니다.
 
-    ![Azure Portal에서 권한 관리](media/manage-database-permissions/new-principals.png)
+    :::image type="content" source="media/manage-database-permissions/new-principals.png" alt-text="새 보안 주체 페이지 Azure Portal의 스크린샷 사용자 이름 및 이미지가 선택 되 고 강조 표시 됩니다. 선택 단추도 강조 표시 됩니다." border="false":::
 
 1. **저장**을 선택합니다.
 
-    ![Azure Portal에서 권한 관리](media/manage-database-permissions/save-permission.png)
+    :::image type="content" source="media/manage-database-permissions/save-permission.png" alt-text="새 보안 주체 페이지 Azure Portal의 스크린샷 사용자 이름 및 이미지가 선택 되 고 강조 표시 됩니다. 선택 단추도 강조 표시 됩니다." border="false":::
 
 ## <a name="manage-permissions-with-management-commands"></a>관리 명령으로 권한 관리
 

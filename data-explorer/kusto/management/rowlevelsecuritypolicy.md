@@ -1,21 +1,21 @@
 ---
-title: 행 수준 보안 (미리 보기)-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기에서 행 수준 보안 (미리 보기)에 대해 설명 합니다.
+title: 행 수준 보안-Azure 데이터 탐색기
+description: 이 문서에서는 Azure 데이터 탐색기 행 수준 보안에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2020
-ms.openlocfilehash: f3d42835733ffe9303806687891c69df4dcc2178
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.date: 10/11/2020
+ms.openlocfilehash: 2b81319740143a1c0ebc31c4a9b93d7b3b2e5223
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610460"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941811"
 ---
-# <a name="row-level-security-preview"></a>행 수준 보안 (미리 보기)
+# <a name="row-level-security"></a>행 수준 보안
 
 그룹 멤버 자격 또는 실행 컨텍스트를 사용 하 여 데이터베이스 테이블의 행에 대 한 액세스를 제어 합니다.
 
@@ -102,7 +102,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 먼저 테이블 이름을 문자열 매개 변수로 받는 함수를 정의 하 고 연산자를 사용 하 여 테이블을 참조 `table()` 합니다. 
 
-다음은 그 예입니다. 
+예를 들어:
 
 ```kusto
 .create-or-alter function RLSForCustomersTables(TableName: string) {
@@ -137,7 +137,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 프로덕션 데이터베이스에서 구성 하는 RLS 정책은 종동체 데이터베이스에도 적용 됩니다. 프로덕션 및 종동체 데이터베이스에서 다른 RLS 정책을 구성할 수 없습니다. 그러나 RLS 쿼리에서 함수를 사용 하 여 [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) 종동체 테이블에 다른 RLS 쿼리를 포함 하는 것과 동일한 결과를 얻을 수 있습니다.
 
-다음은 그 예입니다. 
+예를 들어:
 
 ```kusto
 .create-or-alter function RLSForCustomersTables() {
@@ -163,7 +163,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 * Azure Active Directory에서 구성원 자격 확인
 * 데이터에 적용 되는 필터입니다.
 
-다음은 그 예입니다. 
+예를 들어:
 
 ```kusto
 let IsRestrictedUser = current_principal_is_member_of('aadgroup=some_group@domain.com');

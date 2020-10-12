@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 41e3f58ba857e23d31062484f11f30e80fb37317
-ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
+ms.openlocfilehash: 3f003c5e9c6733391d61a2130528c9babc4aae67
+ms.sourcegitcommit: d157e661de293aa4c2b5ad334a554eda0295bd2c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90680730"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91886301"
 ---
 # <a name="parse_xml"></a>parse_xml()
 
 는를 `string` XML 값으로 해석 하 고, 값을 JSON으로 변환 하 고, 값을로 반환 합니다 `dynamic` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `parse_xml(`*xml*`)`
 
@@ -33,7 +33,7 @@ ms.locfileid: "90680730"
 
 변환은 다음과 같이 수행 됩니다.
 
-XML                                |JSON                                            |Access
+XML                                |JSON                                            |액세스 권한
 -----------------------------------|------------------------------------------------|--------------         
 `<e/>`                             | {"e": null}                                  | e. o
 `<e>text</e>`                      | {"e": "text"}                                | e. o
@@ -48,7 +48,7 @@ XML                                |JSON                                        
 * 의 최대 입력 `string` 길이 `parse_xml` 는 1mb (1048576 바이트)입니다. 문자열을 더 길게 해석 하면 null 개체가 생성 됩니다.
 * 요소 노드, 특성 및 텍스트 노드만 변환 됩니다. 다른 모든 항목을 건너뜁니다.
  
-## <a name="example"></a>예
+## <a name="example"></a>예제
 
 다음 예제에서 `context_custom_metrics`가 `string`인 경우 다음과 유사합니다. 
 
@@ -81,7 +81,7 @@ XML                                |JSON                                        
 }
 ```
 
-및는 개체에서 슬롯의 값을 검색 하 고, `duration` 여기서는 두 슬롯과 `duration.value` `duration.min` ( `118.0` 각각 및)를 검색 `110.0` 합니다.
+및는 개체에서 슬롯의 값을 검색 하 고, `duration` 여기서는 두 슬롯과 `duration.value` `duration.min` ( `118.0` 각각 및)를 검색 `100.0` 합니다.
 
 ```kusto
 T

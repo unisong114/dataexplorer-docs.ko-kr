@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 5b72bb604ef7de1b5ca01b5720566b977c2e1ab2
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 46ccf006c6f2cf167953c64bcaa2f3de0fbaf4b6
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872049"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942219"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기
 
@@ -104,11 +104,11 @@ Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.
 
 1. 클러스터 및 데이터베이스를 만들려면 다음 단추를 사용 하 여 배포를 시작 합니다. 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기**를 선택하면 이 문서의 나머지 단계를 수행할 수 있습니다.
 
-    [![Azure에 배포](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
+    [![클라우드를 그림으로 만들고 Azure에 배포 라는 레이블이 지정 된 파랑 단추의 스크린샷](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
     **Azure에 배포** 단추를 선택하면 Azure Portal에서 배포 양식을 작성할 수 있는 페이지로 이동하게 됩니다.
 
-    ![Azure에 배포](media/create-cluster-database-resource-manager/deploy-2-azure.png)
+    :::image type="content" source="media/create-cluster-database-resource-manager/deploy-2-azure.png" alt-text="Azure Portal 템플릿의 스크린샷 편집에 사용 되는 모든 단추, 상자 및 확인란이 강조 표시 됩니다." border="false":::
 
     형식을 사용 하 여 [Azure Portal에서 템플릿을 편집 하 고 배포할](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) 수 있습니다.
 

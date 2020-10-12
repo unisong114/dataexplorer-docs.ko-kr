@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: 6ed841a6f47eb9a0a1e73182a3b9acd1c0209bd9
-ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
+ms.openlocfilehash: 56742b04386bfda9e2cdbaa40a85d2220f2373d5
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90680758"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942355"
 ---
 # <a name="make-series-operator"></a>make-series 연산자
 
@@ -23,7 +23,7 @@ ms.locfileid: "90680758"
 T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from datetime(2016-01-01) to datetime(2016-01-10) step 1d by fruit, supplier
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| make-series` [*MakeSeriesParamters*] [*열* `=` ] *집계* [ `default` `=` *DefaultValue*] [ `,` ...] `on` *AxisColumn* [ `from` *start*] [ `to` *end*] `step` *step* [ `by` [*Column* `=` ] *groupexpression* [ `,` ...]]
 
@@ -43,7 +43,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   |---------------|-------------------------------------|------------------------------------------------------------------------------|
   |`kind`          |`nonempty`                               |시리즈 시리즈 연산자의 입력이 비어 있는 경우 기본 결과를 생성 합니다.|                                
 
-## <a name="returns"></a>반환
+## <a name="returns"></a>반환 값
 
 입력 행은 `by` 식과 `bin_at(` *AxisColumn* `, ` *step* `, ` *시작* `)` 식의 값이 동일한 그룹으로 정렬 됩니다. 그런 다음 지정된 집계 함수를 각 그룹에 대해 계산하여 각 그룹에 대해 한 행을 생성합니다. 결과에는 `by` 열 *AxisColumn* 열과 계산 된 각 집계에 대 한 열이 하나 이상 포함 됩니다. 집계는 여러 열 또는 숫자가 아닌 결과를 지원 하지 않습니다.
 
@@ -73,10 +73,10 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|기능|Description|
+|함수|Description|
 |--------|-----------|
 |[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
-|[avg ()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
+|[avg()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
 |[avgif()](avgif-aggfunction.md)|그룹의 조건자를 사용 하 여 평균을 반환 합니다.|
 |[count ()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
 |[countif()](countif-aggfunction.md)|그룹의 조건자를 포함 하는 개수를 반환 합니다.|
@@ -86,14 +86,14 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[maxif()](maxif-aggfunction.md)|그룹의 조건자를 사용 하 여 최 댓 값을 반환 합니다.|
 |[min()](min-aggfunction.md)|그룹의 최솟값을 반환합니다.|
 |[minif()](minif-aggfunction.md)|그룹의 조건자와 함께 최소값을 반환 합니다.|
-|[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
-|[sum ()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
+|[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
+|[sum()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
 |[sumif()](sumif-aggfunction.md)|그룹의 조건자를 사용 하 여 요소의 합계를 반환 합니다.|
-|[variance()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
+|[variance ()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
 
 ## <a name="list-of-series-analysis-functions"></a>계열 분석 함수 목록
 
-|기능|Description|
+|함수|Description|
 |--------|-----------|
 |[series_fir()](series-firfunction.md)|[유한 임펄스 응답](https://en.wikipedia.org/wiki/Finite_impulse_response) 필터 적용|
 |[series_iir()](series-iirfunction.md)|[무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터 적용|
@@ -109,7 +109,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   
 ## <a name="list-of-series-interpolation-functions"></a>계열 보간 함수 목록
 
-|기능|Description|
+|함수|Description|
 |--------|-----------|
 |[series_fill_backward()](series-fill-backwardfunction.md)|계열의 누락 값에 대 한 역방향 채우기 보간을 수행 합니다.|
 |[series_fill_const()](series-fill-constfunction.md)|계열의 누락 값을 지정 된 상수 값으로 대체 합니다.|
@@ -127,7 +127,7 @@ T | make-series PriceAvg=avg(Price) default=0
 on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplier, Fruit
 ```
 
-:::image type="content" source="images/make-seriesoperator/makeseries.png" alt-text="Makeseries":::  
+:::image type="content" source="images/make-seriesoperator/makeseries.png" alt-text="3 개의 테이블 첫 번째는 원시 데이터를 나열 하 고, 두 번째는 별도의 공급자-과일-날짜 조합만 포함 하 고, 세 번째는 시리즈 시리즈 결과를 포함 합니다.":::  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples --> 
 ```kusto

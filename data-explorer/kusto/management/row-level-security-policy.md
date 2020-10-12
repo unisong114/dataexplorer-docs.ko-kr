@@ -1,21 +1,21 @@
 ---
-title: RowLevelSecurity 정책 (미리 보기)-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Azure 데이터 탐색기의 RowLevelSecurity 정책 (미리 보기)에 대해 설명 합니다.
+title: RowLevelSecurity 정책-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 RowLevelSecurity 정책에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2020
-ms.openlocfilehash: 2df8178bbc75b9338699c00cdd8a16e7ab3b057f
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.date: 10/11/2020
+ms.openlocfilehash: f73cf5718a80528415c9aed201917c1bd52bb660
+ms.sourcegitcommit: 86636f80a12f47ea434f128fa04fe9fc09629730
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967522"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91942636"
 ---
-# <a name="row_level_security-policy-command-preview"></a>row_level_security 정책 명령 (미리 보기)
+# <a name="row_level_security-policy-command"></a>row_level_security 정책 명령
 
 이 문서에서는 데이터베이스 테이블에 대 한 [row_level_security 정책을](rowlevelsecuritypolicy.md) 구성 하는 데 사용 되는 명령을 설명 합니다.
 
