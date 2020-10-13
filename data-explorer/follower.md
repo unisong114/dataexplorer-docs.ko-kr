@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/07/2019
-ms.openlocfilehash: 36c5201f7b9d9f1cad2b82d569733c9d9f2abb90
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.date: 10/06/2020
+ms.openlocfilehash: d07dc282ba3996113903bd1b7c5ab08672d46543
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92003051"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>종동체 데이터베이스를 사용 하 여 Azure 데이터 탐색기에 데이터베이스 연결
 
@@ -34,18 +34,21 @@ ms.locfileid: "88874004"
 
 ## <a name="attach-a-database"></a>데이터베이스 연결
 
-데이터베이스를 연결 하는 데 사용할 수 있는 여러 가지 방법이 있습니다. 이 문서에서는 c #, Python 또는 Azure Resource Manager 템플릿을 사용 하 여 데이터베이스를 연결 하는 방법을 설명 합니다. 데이터베이스를 연결 하려면 리더 클러스터 및 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다. [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) 및 [ARM 템플릿을](/azure/role-based-access-control/role-assignments-template)사용 하 여 역할 할당을 추가 하거나 제거할 수 있습니다. Azure [RBAC (역할 기반 액세스 제어)](/azure/role-based-access-control/overview) 및 [다른 역할](/azure/role-based-access-control/rbac-and-directory-admin-roles)에 대해 자세히 알아볼 수 있습니다. 
+데이터베이스를 연결 하는 데 사용할 수 있는 여러 가지 방법이 있습니다. 이 문서에서는 c #, Python, Powershell 또는 Azure Resource Manager 템플릿을 사용 하 여 데이터베이스를 연결 하는 방법을 설명 합니다. 데이터베이스를 연결 하려면 리더 클러스터 및 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다. [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) 및 [ARM 템플릿을](/azure/role-based-access-control/role-assignments-template)사용 하 여 역할 할당을 추가 하거나 제거할 수 있습니다. Azure [RBAC (역할 기반 액세스 제어)](/azure/role-based-access-control/overview) 및 [다른 역할](/azure/role-based-access-control/rbac-and-directory-admin-roles)에 대해 자세히 알아볼 수 있습니다. 
+
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="attach-a-database-using-c"></a>C를 사용 하 여 데이터베이스 연결 #
 
 #### <a name="needed-nugets"></a>필요한 Nuget
 
-* [Microsoft. ..kusto를](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)설치 합니다.
+* [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)를 설치합니다.
 * [인증을 위해 Microsoft Azure 인증을](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)설치 합니다.
 
-#### <a name="code-example"></a>코드 예
+#### <a name="example"></a>예제
 
-```Csharp
+```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
@@ -77,6 +80,8 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
 ### <a name="attach-a-database-using-python"></a>Python을 사용 하 여 데이터베이스 연결
 
 #### <a name="needed-modules"></a>필요한 모듈
@@ -86,7 +91,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-#### <a name="code-example"></a>코드 예
+#### <a name="example"></a>예제
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -124,6 +129,51 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
+
+# <a name="powershell"></a>[슬래시](#tab/azure-powershell)
+
+### <a name="attach-a-database-using-powershell"></a>Powershell을 사용 하 여 데이터베이스 연결
+
+#### <a name="needed-modules"></a>필요한 모듈
+
+```
+Install : Az.Kusto
+```
+
+#### <a name="example"></a>예제
+
+```Powershell
+$FollowerClustername = 'follower'
+$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$FollowerResourceGroupName = 'followerResouceGroup'
+$DatabaseName = "db"  ## Can be specific database name or * for all databases
+$LeaderClustername = 'leader'
+$LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$LeaderClusterResourceGroup = 'leaderResouceGroup'
+$DefaultPrincipalsModificationKind = 'Union'
+##Construct the LeaderClusterResourceId and Location
+$getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
+$LeaderClusterResourceid = $getleadercluster.Id
+$Location = $getleadercluster.Location
+##Handle the config name if all databases needs to be followed
+if($DatabaseName -eq '*')  {
+        $configname = $FollowerClustername + 'config'
+       } 
+else {
+        $configname = $DatabaseName   
+     }
+New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
+    -Name $configname `
+    -ResourceGroupName $FollowerResourceGroupName `
+    -SubscriptionId $FollowerClusterSubscriptionID `
+    -DatabaseName $DatabaseName `
+    -ClusterResourceId $LeaderClusterResourceid `
+    -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
+    -Location $Location `
+    -ErrorAction Stop 
+```
+
+# <a name="resource-manager-template"></a>[Resource Manager 템플릿](#tab/azure-resource-manager)
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 데이터베이스 연결
 
@@ -200,7 +250,6 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
    ![템플릿 배포](media/follower/template-deployment.png)
 
-
 |**설정**  |**설명**  |
 |---------|---------|
 |종동체 클러스터 이름     |  종동체 클러스터의 이름입니다. 템플릿이 배포 되는 위치입니다.  |
@@ -209,28 +258,38 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 |리더 클러스터 리소스 ID    |   리더 클러스터의 리소스 ID입니다.      |
 |기본 보안 주체 수정 종류    |   기본 보안 주체 수정 종류입니다. 는, 또는 일 수 있습니다 `Union` `Replace` `None` . 기본 보안 주체 수정 종류에 대 한 자세한 내용은 [principal 수정 kind 제어 명령](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind)을 참조 하세요.      |
 |위치   |   모든 리소스의 위치입니다. 리더와 종동체는 동일한 위치에 있어야 합니다.       |
- 
-### <a name="verify-that-the-database-was-successfully-attached"></a>데이터베이스가 성공적으로 연결 되었는지 확인 합니다.
 
-데이터베이스가 성공적으로 연결 되었는지 확인 하려면 [Azure Portal](https://portal.azure.com)에서 연결 된 데이터베이스를 찾습니다. 
+---
+
+## <a name="verify-that-the-database-was-successfully-attached"></a>데이터베이스가 성공적으로 연결 되었는지 확인 합니다.
+
+데이터베이스가 성공적으로 연결 되었는지 확인 하려면 [Azure Portal](https://portal.azure.com)에서 연결 된 데이터베이스를 찾습니다. 데이터베이스를 [종동체](#check-your-follower-cluster) 또는 [리더](#check-your-leader-cluster) 클러스터에 성공적으로 연결 되었는지 확인할 수 있습니다.
+
+### <a name="check-your-follower-cluster"></a>종동체 클러스터 확인  
 
 1. 종동체 클러스터로 이동 하 고 **데이터베이스** 를 선택 합니다.
 1. 데이터베이스 목록에서 새 읽기 전용 데이터베이스를 검색 합니다.
 
     ![읽기 전용 종동체 데이터베이스](media/follower/read-only-follower-database.png)
 
-또는 다음과 같습니다.
+### <a name="check-your-leader-cluster"></a>리더 클러스터 확인
 
 1. 리더 클러스터로 이동 하 고 **데이터베이스** 를 선택 합니다.
 2. 관련 데이터베이스가 **다른 사용자와 공유**로 표시 되었는지 확인 합니다.  >  **예**
 
     ![연결 된 데이터베이스 읽기 및 쓰기](media/follower/read-write-databases-shared.png)
 
-## <a name="detach-the-follower-database-using-c"></a>C를 사용 하 여 종동체 데이터베이스 분리 # 
+## <a name="detach-the-follower-database"></a>종동체 데이터베이스 분리  
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>연결 된 종동체 데이터베이스를 종동체 클러스터에서 분리
+> [!NOTE]
+> 종동체 또는 리더 쪽에서 데이터베이스를 분리 하려면 데이터베이스를 분리 하는 클러스터에 대 한 사용자, 그룹, 서비스 주체 또는 관리 id가 적어도 기여자 역할 이어야 합니다. 아래 예제에서는 서비스 주체를 사용 합니다.
 
-종동체 클러스터는 다음과 같이 연결 된 데이터베이스를 분리할 수 있습니다.
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster-using-c"></a>C를 사용 하 여 종동체 클러스터에서 연결 된 종동체 데이터베이스 분리 #
+
+
+종동체 클러스터는 연결 된 종동체 데이터베이스를 다음과 같이 분리할 수 있습니다.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -252,10 +311,7 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-종동체 쪽에서 데이터베이스를 분리 하려면 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다.
-위의 예제에서는 서비스 주체를 사용 합니다.
-
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>연결 된 종동체 데이터베이스를 리더 클러스터에서 분리 합니다.
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster-using-c"></a>C를 사용 하 여 리더 클러스터에서 연결 된 종동체 데이터베이스 분리 #
 
 리더 클러스터는 연결 된 모든 데이터베이스를 다음과 같이 분리할 수 있습니다.
 
@@ -285,11 +341,9 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-주 서버에서 데이터베이스를 분리 하려면 리더 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다. 위의 예제에서는 서비스 주체를 사용 합니다.
+# <a name="python"></a>[Python](#tab/python)
 
-## <a name="detach-the-follower-database-using-python"></a>Python을 사용 하 여 종동체 데이터베이스 분리
-
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>연결 된 종동체 데이터베이스를 종동체 클러스터에서 분리
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster-using-python"></a>Python을 사용 하 여 종동체 클러스터에서 연결 된 종동체 데이터베이스 분리
 
 종동체 클러스터는 다음과 같이 연결 된 데이터베이스를 분리할 수 있습니다.
 
@@ -319,10 +373,8 @@ attached_database_configurationName = "uniqueName"
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
-종동체 쪽에서 데이터베이스를 분리 하려면 종동체 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다.
-위의 예제에서는 서비스 주체를 사용 합니다.
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>연결 된 종동체 데이터베이스를 리더 클러스터에서 분리 합니다.
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster-using-python"></a>Python을 사용 하 여 리더 클러스터에서 연결 된 종동체 데이터베이스 분리
 
 리더 클러스터는 연결 된 모든 데이터베이스를 다음과 같이 분리할 수 있습니다.
 
@@ -356,13 +408,40 @@ attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
-
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
-주 서버에서 데이터베이스를 분리 하려면 리더 클러스터에 대 한 참가자 역할의 사용자, 그룹, 서비스 주체 또는 관리 id가 있어야 합니다.
-위의 예제에서는 서비스 주체를 사용 합니다.
+# <a name="powershell"></a>[슬래시](#tab/azure-powershell)
+
+### <a name="detach-a-database-using-powershell"></a>Powershell을 사용 하 여 데이터베이스 분리
+
+#### <a name="needed-modules"></a>필요한 모듈
+
+```
+Install : Az.Kusto
+```
+
+#### <a name="example"></a>예제
+
+```Powershell
+$FollowerClustername = 'follower'
+$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$FollowerResourceGroupName = 'followerResouceGroup'
+$DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
+
+##Construct the Configuration name 
+$confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
+$configname =$confignameraw.Name.Split("/")[1]
+
+Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName
+```
+
+# <a name="resource-manager-template"></a>[Resource Manager 템플릿](#tab/azure-resource-manager)
+
+C #, Python 또는 PowerShell을 사용 하 여 [종동체 데이터베이스를 분리](#detach-the-follower-database) 합니다.
+
+---
 
 ## <a name="manage-principals-permissions-and-caching-policy"></a>보안 주체, 권한 및 캐싱 정책 관리
 
@@ -397,3 +476,4 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 ## <a name="next-steps"></a>다음 단계
 
 * 종동체 클러스터 구성에 대 한 자세한 내용은 [종동체 클러스터를 관리 하는 명령 제어](kusto/management/cluster-follower.md)를 참조 하세요.
+

@@ -1,6 +1,6 @@
 ---
 title: 쿼리 결과 캐시 지우기-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기에서 캐시 된 데이터베이스 스키마를 지우기 위한 관리 명령을 설명 합니다.
+description: Azure 데이터 탐색기에서 캐시 된 쿼리 결과를 지우는 방법에 대해 알아봅니다. 사용할 명령을 알아보고 예제를 확인 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: amitof
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
-ms.openlocfilehash: 27806155d105a109c7419d04d945fbc854c44286
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 72678453211ada2a6366b771153eeb11a717d7a3
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349927"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92002944"
 ---
 # <a name="clear-query-results-cache"></a>쿼리 결과 캐시 지우기
 

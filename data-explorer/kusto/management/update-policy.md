@@ -1,6 +1,6 @@
 ---
 title: Kusto 업데이트 정책 관리-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 업데이트 정책에 대해 설명 합니다.
+description: Azure 데이터 탐색기의 업데이트 정책 명령에 대해 알아봅니다. 테이블 업데이트 정책을 표시, 설정, 변경 및 삭제 하는 방법을 참조 하세요.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/04/2020
-ms.openlocfilehash: 111110ac69e726c8367af4a2741a79061df7531a
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: c9ef5b2a205665c692c383654f3d050c4658c0f1
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803865"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92002986"
 ---
-# <a name="update-policy-commands"></a>정책 업데이트 명령
+# <a name="update-policy-commands"></a>업데이트 정책 명령
 
 [업데이트 정책은](updatepolicy.md) 쿼리를 자동으로 실행 한 다음 데이터를 다른 테이블에 수집 때 결과를 수집 하는 테이블 수준 정책 개체입니다.
 
@@ -63,7 +63,7 @@ ms.locfileid: "87803865"
 > * 업데이트 정책 개체의 속성에 대해 저장 된 함수를 사용 `Query` 합니다.
    전체 정책 개체 대신 함수 정의를 수정 해야 합니다.
 > * `IsEnabled`가로 설정 된 경우 `true` 설정 되는 업데이트 정책에 대해 다음 유효성 검사가 수행 됩니다.
->    * `Source`-테이블이 대상 데이터베이스에 있는지 검사 합니다.
+>    * `Source` -테이블이 대상 데이터베이스에 있는지 검사 합니다.
 >    * `Query` 
 >        * 스키마에 정의 된 스키마가 대상 테이블의 스키마와 일치 하는지 확인 합니다.
 >        * 쿼리가 업데이트 정책 테이블을 참조 하는지 확인 `source` 합니다. 

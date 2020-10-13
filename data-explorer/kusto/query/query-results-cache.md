@@ -8,12 +8,12 @@ ms.reviewer: amitof
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
-ms.openlocfilehash: 4bfc7b591683940e10d2737ec776421f65d1427a
-ms.sourcegitcommit: 93510ef1e5570ce4da2cbf76eb77946c93a7dec8
+ms.openlocfilehash: d0942a949454bf12840626ff25d3703a23aed2cc
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85372471"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92002941"
 ---
 # <a name="query-results-cache"></a>쿼리 결과 캐시
 
@@ -55,7 +55,6 @@ GithubEvent
     * [current_principal](current-principalfunction.md)
     * [current_principal_details](current-principal-detailsfunction.md)
     * [current_principal_is_member_of](current-principal-ismemberoffunction.md)
-* 이 쿼리는 [클러스터 간 쿼리입니다](cross-cluster-or-database-queries.md).
 * 쿼리가 [외부 테이블](schema-entities/externaltables.md) 또는 [외부 데이터](externaldata-operator.md)에 액세스 합니다.
 * 이 쿼리에서는 [evaluate plugin](evaluateoperator.md) 연산자를 사용 합니다.
 
@@ -71,12 +70,12 @@ GithubEvent
 서비스는 쿼리 결과가 캐시에서 제공 되 고 있음을 어떻게 표시 하나요?
 쿼리에 응답 하는 경우 Kusto는 열 및 열을 포함 하는 추가 [Extendedproperties](../api/rest/response.md) 응답 테이블을 보냅니다 `Key` `Value` .
 캐시 된 쿼리 결과에는 해당 테이블에 추가 행이 추가 됩니다.
-* 행의 열에는 `Key` 문자열이 포함 됩니다.`ServerCache`
+* 행의 열에는 `Key` 문자열이 포함 됩니다. `ServerCache`
 * 행의 열에는 `Value` 두 개의 필드가 있는 속성 모음이 포함 됩니다.
-   * `OriginalClientRequestId`-원래 요청의 [Clientrequestid](../api/netfx/request-properties.md#the-clientrequestid-x-ms-client-request-id-named-property)를 지정 합니다.
-   * `OriginalStartedOn`-원래 요청의 실행 시작 시간을 지정 합니다.
+   * `OriginalClientRequestId` -원래 요청의 [Clientrequestid](../api/netfx/request-properties.md#the-clientrequestid-x-ms-client-request-id-named-property)를 지정 합니다.
+   * `OriginalStartedOn` -원래 요청의 실행 시작 시간을 지정 합니다.
 
-## <a name="distribution"></a>분포
+## <a name="distribution"></a>배포
 
 캐시는 클러스터 노드에서 공유 되지 않습니다. 모든 노드에는 자체의 전용 저장소에 전용 캐시가 있습니다. 두 개의 동일한 쿼리가 서로 다른 노드에 있으면 쿼리가 실행 되 고 두 노드에서 모두 캐시 됩니다. 이 프로세스는 [약한 일관성](../concepts/queryconsistency.md) 을 사용 하는 경우에 발생할 수 있습니다.
 

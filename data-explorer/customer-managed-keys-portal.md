@@ -1,18 +1,18 @@
 ---
 title: Azure Portal를 사용 하 여 고객이 관리 하는 키 구성
-description: 이 문서에서는 Azure 데이터 탐색기의 데이터에서 고객이 관리 하는 키 암호화를 구성 하는 방법을 설명 합니다.
+description: Azure Portal를 사용 하 여 Azure 데이터 탐색기 데이터를 암호화 하도록 고객이 관리 하는 키를 구성 하는 방법을 알아봅니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 4d828905ce673c3b1c6453d31974334312bd3b5e
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 3c8aaf6f4a6a876707a362ac163de146630a86cb
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872151"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92003013"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-portal"></a>Azure Portal를 사용 하 여 고객 관리 키 구성
 
@@ -59,6 +59,5 @@ Azure 데이터 탐색기 클러스터에 대해 고객이 관리 하는 키를 
 * 미사용 암호화를 사용 하도록 설정 하 여 [Azure Azure Portal 데이터 탐색기에서 디스크 암호화를 사용 하 여 클러스터를 보호](cluster-disk-encryption.md) 합니다.
 * [Azure Resource Manager 템플릿을 사용 하 여 고객 관리 키 구성](customer-managed-keys-resource-manager.md)
 * [C를 사용 하 여 고객 관리 키 구성 #](customer-managed-keys-csharp.md)
-
 
 

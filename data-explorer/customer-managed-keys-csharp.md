@@ -1,18 +1,18 @@
 ---
 title: 'C를 사용 하 여 고객 관리 키 구성 #'
-description: 이 문서에서는 Azure 데이터 탐색기의 데이터에서 고객이 관리 하는 키 암호화를 구성 하는 방법을 설명 합니다.
+description: '이 문서에서는 c #을 사용 하 여 Azure 데이터 탐색기 데이터를 암호화 하도록 고객이 관리 하는 키를 구성 하는 방법을 설명 합니다.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: ade06e6fffb31a5c76fa12fe02d5192e4126091e
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: db20566a9aa9b5c720ea9f72ec9c980042db0625
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872100"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92003000"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>C를 사용 하 여 고객 관리 키 구성 #
 
@@ -27,17 +27,17 @@ ms.locfileid: "88872100"
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys part 2](includes/data-explorer-configure-customer-managed-keys-b.md)]
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>고객 관리 키를 사용 하 여 암호화 구성
+## <a name="configure-encryption-with-customer-managed-keys"></a>고객 관리형 키로 암호화 구성
 
 이 섹션에서는 Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 고객 관리 키 암호화를 구성 하는 방법을 보여 줍니다. 
 
-### <a name="prerequisites"></a>전제 조건
+### <a name="prerequisites"></a>필수 구성 요소
 
 * Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발**을 사용하도록 설정합니다.
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 
-### <a name="install-c-nuget"></a>C # NuGet 설치
+### <a name="install-c-nuget"></a>C# NuGet 설치
 
 * [Azure 데이터 탐색기 (Kusto) NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)를 설치 합니다.
 

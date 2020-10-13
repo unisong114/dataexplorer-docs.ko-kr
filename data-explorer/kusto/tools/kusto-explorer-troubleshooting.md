@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 6dd52dbe9b69000b109f613957d1405190194b13
-ms.sourcegitcommit: 6db94135b9902ad0ea84f9cef00ded8ec0a90fc3
+ms.openlocfilehash: 9a697cfd37590f0368d5a8f0bacf91d02e1c8725
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86870093"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92003165"
 ---
 # <a name="troubleshooting"></a>문제 해결
 
@@ -22,11 +22,11 @@ ms.locfileid: "86870093"
 
 ### <a name="kustoexplorer-shows-error-dialog-during-or-after-start-up"></a>시작 하는 동안 또는 이후에 탐색기에서 오류 대화 상자 표시
 
-**증상**
+#### <a name="symptom"></a>증상
 
 시작 시 Kusto 탐색기에서 오류를 표시 합니다. `InvalidOperationException`
 
-**가능한 해결 방법**
+#### <a name="possible-solution"></a>가능한 해결 방법
 
 이 오류가 발생 하면 운영 체제가 손상 되거나 일부 필수 모듈이 누락 될 수 있습니다.
 누락 되거나 손상 된 시스템 파일을 확인 하려면 여기에 설명 된 단계를 따르세요.   
@@ -34,11 +34,11 @@ ms.locfileid: "86870093"
 
 ## <a name="kustoexplorer-always-downloads-even-when-there-are-no-updates"></a>업데이트가 없는 경우에도 kusto 탐색기는 항상를 다운로드 합니다.
 
-**증상**
+#### <a name="symptom"></a>증상
 
 Kusto. 탐색기를 열 때마다 새 버전을 설치 하 라는 메시지가 표시 됩니다. Kusto 탐색기는 이미 설치 된 버전을 업데이트 하지 않고 전체 패키지를 다운로드 합니다.
 
-**가능한 해결 방법**
+#### <a name="possible-solution"></a>가능한 해결 방법
 
 이 증상은 로컬 ClickOnce 저장소의 손상으로 인해 발생할 수 있습니다. 관리자 권한 명령 프롬프트에서 다음 명령을 실행 하 여 로컬 ClickOnce 저장소를 지울 수 있습니다.
 
@@ -54,7 +54,7 @@ rd /q /s %userprofile%\appdata\local\apps\2.0
 
 ### <a name="clickonce-error-cannot-start-application"></a>ClickOnce 오류: 응용 프로그램을 시작할 수 없습니다.
 
-**증상**  
+#### <a name="symptoms"></a>증상
 
 프로그램이 시작 되지 않고 다음 오류 중 하나가 표시 됩니다. 
 * `External component has thrown an exception`
@@ -82,7 +82,7 @@ Following errors were detected during this operation.
             at System.Deployment.Application.ApplicationActivator.ActivateDeploymentWorker(Object state)
 ```
 
-**제안 된 솔루션 단계**
+#### <a name="proposed-solution-steps"></a>제안 된 솔루션 단계
 
 1. `Programs and Features`()를 사용 하 여 Kusto 탐색기를 제거 합니다. `appwiz.cpl`
 
@@ -124,8 +124,10 @@ Following errors were detected during this operation.
         copy %LOCALAPPDATA%\Kusto.Explorer.bak\User*.xml %LOCALAPPDATA%\Kusto.Explorer
         ```
 
+#### <a name="enabling-clickonce-verbose-logging"></a>ClickOnce 자세한 정보 로깅 사용
+
 1. 응용 프로그램이 여전히 시작 되지 않는 경우:
-    1. 아래에서 LogVerbosityLevel 문자열 값 1을 만들어 자세한 ClickOnce 로깅을 사용 하도록 설정 합니다.
+    1. 아래에서 LogVerbosityLevel 문자열 값 1을 만들어 [자세한 ClickOnce 로깅을 사용 하도록 설정](https://docs.microsoft.com/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) 합니다.
 
         ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
@@ -136,12 +138,12 @@ Following errors were detected during this operation.
 
 ### <a name="clickonce-error-your-administrator-has-blocked-this-application-because-it-potentially-poses-a-security-risk-to-your-computer"></a>ClickOnce 오류: 컴퓨터에 보안 위험이 발생할 수 있으므로 관리자가이 응용 프로그램을 차단 했습니다.
 
-**증상**  
+#### <a name="symptom"></a>증상 
 다음 오류 중 하나를 사용 하 여 응용 프로그램을 설치 하지 못했습니다.
 * `Your administrator has blocked this application because it potentially poses a security risk to your computer`.
 * `Your security settings do not allow this application to be installed on your computer.`
 
-**해결 방법**
+#### <a name="solution"></a>해결 방법
 
 이 증상은 다른 응용 프로그램에서 기본 ClickOnce 신뢰 프롬프트 동작을 재정의 하기 때문에 발생할 수 있습니다. 
 1. 기본 구성 설정을 확인 합니다.

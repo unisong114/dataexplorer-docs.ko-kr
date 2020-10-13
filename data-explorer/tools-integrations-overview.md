@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: e341b70dfc2a7c0d3038d6d60d9c8ae2b40b6218
-ms.sourcegitcommit: c2ab3176db4dd55ac9ca8eee52bbd24096d1277f
+ms.openlocfilehash: c1be494fd290b051455010d6e6e082d01650107c
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90740255"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92003144"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -30,31 +30,18 @@ Azure 데이터 탐색기는 데이터 수집, 쿼리, 시각화, 오케스트�
 ### <a name="azure-data-explorer-ingestion-tools"></a>Azure 데이터 탐색기 수집 도구
 
 * [LightIngest](lightingest.md) - Azure Data Explorer로의 임시 데이터 수집에 대한 도움말 유틸리티
-* 한 번 클릭으로 수집
-    * [한 번 클릭으로 수집 개요](ingest-data-one-click.md) 
-    * [컨테이너의 데이터를 새 테이블로 수집](one-click-ingestion-new-table.md)
-    * [로컬 파일의 데이터를 기존 테이블로 수집](one-click-ingestion-existing-table.md)
+* 한 번 클릭으로 수집: [개요](ingest-data-one-click.md) 및 [컨테이너에서 새 테이블](one-click-ingestion-new-table.md) 또는 [로컬 파일에서 기존 테이블로](one-click-ingestion-existing-table.md) 데이터 수집
 
 ### <a name="ingestion-integrations"></a>수집 통합
 
-* 이벤트 허브
-    * [이벤트 허브에서 수집](ingest-data-event-hub-overview.md)
-    * [Azure Portal](ingest-data-event-hub.md), [c #](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-event-hub-resource-manager.md) 사용 하 여 이벤트 허브에서 수집
-* Event Grid
-    * [Event Grid에서 수집](ingest-data-event-grid-overview.md)
-    * [Azure Portal](ingest-data-event-grid.md), [c #](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-event-grid-resource-manager.md) 사용 하 여 Event Grid 수집
-* IoT Hub
-    * [IoT Hub에서 수집](ingest-data-iot-hub-overview.md)
-    * [Azure Portal](ingest-data-iot-hub.md), [c #](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-iot-hub-resource-manager.md) 사용 하 여 IoT Hub 수집
+* 이벤트 허브: [이벤트 허브 개요에서 수집](ingest-data-event-hub-overview.md) 하 고 [Azure Portal](ingest-data-event-hub.md), [c #](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) 또는 [Azure Resource Manager 템플릿을](data-connection-event-hub-resource-manager.md) 사용 합니다.
+* Event Grid: [Event Grid 개요에서 수집](ingest-data-event-grid-overview.md) 하 고 [Azure Portal](ingest-data-event-grid.md), [c #](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) 또는 [Azure Resource Manager 템플릿](data-connection-event-grid-resource-manager.md) 사용
+* IoT Hub: [IoT Hub 개요에서 수집](ingest-data-iot-hub-overview.md) 하 고 [Azure Portal](ingest-data-iot-hub.md), [c #](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) 또는 [Azure Resource Manager 템플릿](data-connection-iot-hub-resource-manager.md) 사용
 * [Logstash](ingest-data-logstash.md)
-* Azure 데이터 팩터리
-    * [Azure Data Factory와 통합](data-factory-integration.md)
-    * [데이터 복사](data-factory-load-data.md)
-    * [Azure Data Factory 템플릿을 사용 하 여 데이터베이스에서 대량 복사](data-factory-template.md)
-    * [Azure Data Factory 명령 작업을 사용 하 여 Azure 데이터 탐색기 제어 명령 실행](data-factory-command-activity.md)
-* Apache 
-    * [Spark](spark-connector.md)
-    * [Kafka](ingest-data-kafka.md)
+* Azure Data Factory: [통합 개요](data-factory-integration.md), [데이터 복사](data-factory-load-data.md), [Azure Data Factory 템플릿을 사용 하 여 대량 복사](data-factory-template.md)및 [Azure Data Factory 명령 작업을 사용 하 여 Azure 데이터 탐색기 제어 명령 실행](data-factory-command-activity.md)
+* [Azure Synapse Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context)
+* [Apache Spark](spark-connector.md)
+* [Apache Kafka](ingest-data-kafka.md)
 * [Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
 * [Power Automate](flow.md)
 
@@ -65,10 +52,8 @@ Azure 데이터 탐색기는 데이터 수집, 쿼리, 시각화, 오케스트�
 Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는 몇 가지 도구가 있습니다.
 
 * Kusto.Explorer
-    * [설치 및 사용자 인터페이스](kusto/tools/kusto-explorer.md)
-    * [Kusto.Explorer 사용](kusto/tools/kusto-explorer-using.md)
-    * [options](kusto/tools/kusto-explorer-options.md)
-    * [문제 해결](kusto/tools/kusto-explorer-troubleshooting.md), [바로 가기 키](kusto/tools/kusto-explorer-shortcuts.md), [코드 리팩터링](kusto/tools/kusto-explorer-refactor.md), [코드 탐색](kusto/tools/kusto-explorer-codenav.md), 코드 [분석](kusto/tools/kusto-explorer-code-analyzer.md) 등의 추가 항목이 포함 되어 있습니다.
+    * [설치 및 사용자 인터페이스](kusto/tools/kusto-explorer.md), [Kusto 탐색기 사용](kusto/tools/kusto-explorer-using.md)
+    * 추가 항목으로는 [옵션](kusto/tools/kusto-explorer-options.md), [문제 해결](kusto/tools/kusto-explorer-troubleshooting.md), [바로 가기 키](kusto/tools/kusto-explorer-shortcuts.md), [코드 리팩터링](kusto/tools/kusto-explorer-refactor.md), [코드 탐색](kusto/tools/kusto-explorer-codenav.md), 코드 [분석](kusto/tools/kusto-explorer-code-analyzer.md) 등이 있습니다.
 * [웹 UI](web-query-data.md)
 * [Kusto.Cli](kusto/tools/kusto-cli.md)
 
@@ -76,9 +61,10 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 
 * [Azure Monitor](query-monitor-data.md)
 * [Azure Data Lake](data-lake-query-data.md)
+* [Azure Synapse Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
+* Azure Data Studio: [kusto 확장 개요](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context), [Kusto 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context)및 [Kqlmagic 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?context=/azure/data-explorer/context/context)
 
 ## <a name="visualizations-dashboards-and-reporting"></a>시각화, 대시보드 및 보고
 
@@ -88,12 +74,12 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 
 * [Azure 노트](azure-notebooks.md)
 * [Jupyter Notebook](kqlmagic.md)
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
+* Azure Data Studio: [kusto 확장 개요](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context), [Kusto 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context)및 [Kqlmagic 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?context=/azure/data-explorer/context/context)
 
 ## <a name="orchestration"></a>오케스트레이션
 
 * Power Automate
-    * [전원 자동화 커넥터](flow.md)
+    * [Power Automate 커넥터](flow.md)
     * [Power Automate 커넥터 사용 예](flow-usage.md)
 * [Microsoft 논리 앱](kusto/tools/logicapps.md) 
 * [Azure Data Factory](data-factory-integration.md)

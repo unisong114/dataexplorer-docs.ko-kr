@@ -1,6 +1,6 @@
 ---
 title: Kusto RestrictedViewAccess 정책 관리-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 RestrictedViewAccess 정책에 대해 설명 합니다.
+description: Azure 데이터 탐색기의 RestrictedViewAccess 정책 명령에 대해 알아봅니다. 이 정책을 확인, 활성화, 비활성화, 변경 및 삭제 하는 방법을 참조 하세요.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 33f21bdad11555ad2a55f285cbf40239236c561f
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 9ec328e3a15af3cedb833354f7e8ecea0fdc22c8
+ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967607"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92002920"
 ---
 # <a name="restricted_view_access-policy-command"></a>restricted_view_access 정책 명령
 
