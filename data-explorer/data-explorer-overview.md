@@ -7,16 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: aae60156ec6035f354378e4f56f993efa33e0a7c
-ms.sourcegitcommit: fb54d71660391a63b0c107a9703adea09bfc7cb9
+ms.openlocfilehash: 323e8ba2d7f49a2d44ac4000d207316d75e9bd6e
+ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86946158"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91942083"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure 데이터 탐색기란?
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 최신 소프트웨어에서 생성되는 많은 데이터 스트림을 처리할 수 있으므로 데이터를 수집, 저장 및 분석할 수 있습니다. Azure 데이터 탐색기는 웹 사이트, 애플리케이션, IoT 디바이스 등과 같은 데이터 원본의 다양한 대규모 데이터를 분석하는 데 적합합니다. 이 데이터는 진단, 모니터링, 보고, 기계 학습 및 추가 분석 기능에 사용됩니다. Azure Data Explorer를 사용하면 이 데이터를 쉽게 수집할 수 있고 데이터에 대한 복잡한 임시 쿼리를 몇 초 안에 처리할 수 있습니다.
+
+뉴스, 공지 사항 및 고객 사례 등 Azure Data Explorer에 대해 자세히 알아보세요. 
+[온라인 이벤트 등록 2020년 10월 14일](https://aka.ms/adxevent)
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Azure 데이터 탐색기의 특성은 무엇인가요?
 
@@ -58,7 +61,7 @@ Azure 데이터 탐색기는 대용량의 구조적, 반구조적(JSON 같은 �
 
 Azure Data Explorer 기능은 [Azure Monitor 로그](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/) 및 [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/)을 비롯한 강력한 쿼리 언어를 기반으로 빌드된 다른 서비스에 의해 확장됩니다.
 
-## <a name="feedback"></a>사용자 의견
+## <a name="how-to-provide-feedback"></a>피드백을 제공하는 방법
 
 Azure 데이터 탐색기 및 해당 쿼리 언어에 대한 사용자 의견을 보내 주세요.
 
