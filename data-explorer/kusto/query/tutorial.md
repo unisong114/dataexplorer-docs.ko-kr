@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/23/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 2060d2996338cf1eee33b5905e9929c46040afa9
-ms.sourcegitcommit: b286703209f1b657ac3d81b01686940f58e5e145
+ms.openlocfilehash: 64736d944c71d84c4950dea0341089732b258f27
+ms.sourcegitcommit: a10e7c6ba96bdb94d95ef23f5d1506eb8fda0041
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86188594"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058685"
 ---
 # <a name="tutorial"></a>자습서
 
@@ -123,7 +123,7 @@ StormEvents
 StormEvents
 | sort by StartTime desc
 | take 5
-| project  StartTime, EndLat, EventType, EventNarrative
+| project  StartTime, EndTime, EventType, EventNarrative
 ```
 
 ## <a name="extend-compute-derived-columns"></a>확장: 파생 열 계산
@@ -147,7 +147,7 @@ StormEvents
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|뇌우를 동반한 바람|그루지야|
 
 열 이름을 다시 사용 하 고 계산 결과를 동일한 열에 할당할 수 있습니다.
-예:
+예를 들면 다음과 같습니다.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -256,7 +256,7 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/time-series-start-bin.png" alt-text="시간별로 범주화 된 꺾은선형 차트 이벤트":::
+:::image type="content" source="images/tutorial/time-series-start-bin.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 ## <a name="multiple-series"></a>여러 계열
 
@@ -270,11 +270,11 @@ StormEvents
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
-:::image type="content" source="images/tutorial/table-count-source.png" alt-text="원본으로 테이블 수":::
+:::image type="content" source="images/tutorial/table-count-source.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 위의에 렌더링 용어를 추가 하기만 하면 `| render timechart` 됩니다.
 
-:::image type="content" source="images/tutorial/line-count-source.png" alt-text="원본 별 꺾은선형 차트 수":::
+:::image type="content" source="images/tutorial/line-count-source.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 는 `render timechart` 첫 번째 열을 x 축으로 사용 하 고 다른 열은 별도의 선으로 표시 합니다.
 
@@ -293,11 +293,11 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="시간별 시간 차트 수":::
+:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 현재는 `render` 기간에 레이블을 올바르게 나타내지 않지만를 대신 사용할 수 있습니다 `| render columnchart` .
 
-:::image type="content" source="images/tutorial/column-count-hour.png" alt-text="시간별 세로 막대형 차트 수":::
+:::image type="content" source="images/tutorial/column-count-hour.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 ## <a name="compare-multiple-daily-series"></a>여러 개의 일일 계열 비교
 
@@ -312,7 +312,7 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="시간별 시간 차트":::
+:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 `1h`X 축을 시간 대신 시간으로 전환 하려면로 나눕니다.
 
@@ -325,7 +325,7 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="시간별 및 상태별 세로 막대형 차트":::
+:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 ## <a name="join"></a>Join
 
@@ -344,7 +344,7 @@ StormEvents
 | distinct State
 ```
 
-:::image type="content" source="images/tutorial/join-events-la.png" alt-text="이벤트를 라이트닝 및 아 발 조인":::
+:::image type="content" source="images/tutorial/join-events-la.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 ## <a name="user-session-example-of-join"></a>사용자 세션 조인의 예
 
@@ -370,7 +370,7 @@ Events
 | take 10
 ```
 
-:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="사용자 세션 확장":::
+:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 조인을 수행하기 전에 `project`을(를) 사용하여 필요한 열만 선택하는 것이 좋습니다.
 동일한 절에서 타임스탬프 열의 이름을 바꿉니다.
@@ -391,11 +391,11 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="기간별 이벤트 수 시간 차트":::
+:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 또는 다음을 사용 합니다 `| render columnchart` .
 
-:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="기간별로 시간 차트 세로 막대형 차트 이벤트 수":::
+:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 ## <a name="percentiles"></a>백분위수
 
@@ -409,7 +409,7 @@ StormEvents
 
 이 경우 `by` 절을 제공 하지 않았으므로 결과는 단일 행입니다.
 
-:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="기간별 백분위 수 요약":::
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 확인할 수 있는 사항:
 
@@ -431,7 +431,7 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="상태별 백분위 수 기간 요약":::
+:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="상태별 스톰 이벤트 수의 세로 막대형 차트":::
 
 ## <a name="let-assign-a-result-to-a-variable"></a>Let: 변수에 결과 할당
 
