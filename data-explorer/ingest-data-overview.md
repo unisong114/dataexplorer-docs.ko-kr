@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e6630067cb02f3bf4685e274d2d5d2a6d00a97c5
-ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
+ms.openlocfilehash: 04b1f53ad16d8658d3a12d36370261afac02fe86
+ms.sourcegitcommit: 58588ba8d1fc5a6adebdce2b556db5bc542e38d8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91615039"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92098424"
 ---
 # <a name="azure-data-explorer-data-ingestion-overview"></a>Azure 데이터 탐색기 데이터 수집 개요 
 
@@ -122,11 +122,11 @@ KQL (Kusto Query Language) 명령을 통해 데이터를 엔진에 직접 수집
 | [**Python**](python-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Node.js**](node-ingest-data.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조 | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Java**](kusto/api/java/kusto-java-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
-| [**REST**](kusto/api/netfx/kusto-ingest-client-rest.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접| 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
+| [**REST (영문)**](kusto/api/netfx/kusto-ingest-client-rest.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접| 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 | [**Go**](kusto/api/golang/kusto-golang-client-library.md) | 지원 되는 모든 형식 | 1gb 압축 되지 않음 (참고 참조) | 일괄 처리, 스트리밍, 직접 | 조직 요구 사항에 따라 사용자 고유의 코드 작성 |
 
 > [!Note] 
-> 위의 표에서 참조 하는 경우 수집은 최대 파일 크기 5gb를 지원 합니다. 100MB에서 1GB 사이의 파일을 수집하는 것이 좋습니다.
+> 위의 표에서 참조 하는 경우 수집은 최대 파일 크기인 4gb를 지원 합니다. 100MB에서 1GB 사이의 파일을 수집하는 것이 좋습니다.
 
 ## <a name="ingestion-process"></a>수집 프로세스
 

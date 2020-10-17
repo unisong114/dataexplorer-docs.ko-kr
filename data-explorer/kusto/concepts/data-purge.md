@@ -8,12 +8,12 @@ ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/12/2020
-ms.openlocfilehash: 86712a2e85f2785666b0b6245962aca39cd82729
-ms.sourcegitcommit: 4507466bdcc7dd07e6e2a68c0707b6226adc25af
+ms.openlocfilehash: 053581b5109d0eeacd7b69fd0eda2b53f43ac701
+ms.sourcegitcommit: 468b4ad125657c5131e4c3c839f702ebb6e455a0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87106490"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92134747"
 ---
 # <a name="data-purge"></a>데이터 제거
 
@@ -55,9 +55,9 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 * `.purge`명령은 데이터 관리 끝점에 대해 실행 됩니다 `https://ingest-[YourClusterName].[region].kusto.windows.net` .
    이 명령에는 관련 데이터베이스에 대 한 [데이터베이스 관리자](../management/access-control/role-based-authorization.md) 권한이 필요 합니다. 
-* 제거 프로세스 성능에 영향을 주거나 [제거 지침](#purge-guidelines) 을 준수 하도록 하기 위해 호출자는 최소한의 테이블에 관련 데이터가 포함 되도록 데이터 스키마를 수정 하 고 테이블 마다 일괄 처리 명령을 수행 하 여 제거 프로세스의 심각한 COGS 영향을 줄여야 합니다.
+* 제거 프로세스 성능에 영향을 주거나  [제거 지침](#purge-guidelines) 을 준수 하도록 하기 위해 호출자는 최소한의 테이블에 관련 데이터가 포함 되도록 데이터 스키마를 수정 하 고 테이블 마다 일괄 처리 명령을 수행 하 여 제거 프로세스의 심각한 COGS 영향을 줄여야 합니다.
 * Purge `predicate` 명령의 매개 변수 [.purge](#purge-table-tablename-records-command) 는 제거할 레코드를 지정 하는 데 사용 됩니다.
-`Predicate`크기는 63 KB로 제한 됩니다. 을 생성할 때 `predicate` :
+`Predicate` 크기는 63 KB로 제한 됩니다. 을 생성할 때 `predicate` :
     * [' In ' 연산자](../query/inoperator.md)를 사용 합니다 (예:) `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')` . 
     * [' In ' 연산자](../query/inoperator.md) 의 제한을 확인 합니다 (목록에 최대 값이 포함 될 수 있음 `1,000,000` ).
     * 쿼리 크기가 큰 경우 [ `externaldata` 연산자](../query/externaldata-operator.md)를 사용 합니다 (예:) `where UserId in (externaldata(UserId:string) ["https://...blob.core.windows.net/path/to/file?..."])` . 파일은 제거할 Id의 목록을 저장 합니다.
@@ -94,11 +94,11 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
   .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
    ```
 
-  > [!NOTE]
-  > [Kusto 클라이언트 라이브러리](../api/netfx/about-kusto-data.md) NuGet 패키지의 일부로 사용할 수 있는 CslCommandGenerator API를 사용 하 여이 명령을 생성 합니다.
+* 인간 호출: 별도의 단계로 명시적 확인이 필요한 2 단계 프로세스입니다. 명령의 첫 번째 호출은 실제 제거를 실행 하기 위해 제공 해야 하는 확인 토큰을 반환 합니다. 이 순서는 잘못 된 데이터를 실수로 삭제 하는 위험을 줄여 줍니다.
 
-* 인간 호출: 별도의 단계로 명시적 확인이 필요한 2 단계 프로세스입니다. 명령의 첫 번째 호출은 실제 제거를 실행 하기 위해 제공 해야 하는 확인 토큰을 반환 합니다. 이 순서는 잘못 된 데이터를 실수로 삭제 하는 위험을 줄여 줍니다. 이 옵션을 사용 하면 상당한 콜드 캐시 데이터가 있는 큰 테이블에서 완료 하는 데 시간이 오래 걸릴 수 있습니다.
-    <!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
+ > [!NOTE]
+ > 두 단계 호출의 첫 번째 단계에서는 제거할 레코드를 식별 하기 위해 전체 데이터 집합에 대해 쿼리를 실행 해야 합니다.
+ > 특히 많은 양의 콜드 캐시 데이터를 사용 하 여 큰 테이블에서이 쿼리가 시간 초과 되거나 실패할 수 있습니다. 오류가 발생 하는 경우에는 조건자의 유효성을 검사 하 고 정확성을 확인 한 후 옵션으로 단일 단계 제거를 사용 하십시오 `noregrets` .
 
   **구문**
 
@@ -113,7 +113,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
   ```
     
-    | 매개 변수  | 설명  |
+    | 매개 변수  | Description  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스 이름      |
     | `TableName`     |     테이블 이름입니다.    |
@@ -159,7 +159,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 | `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
 
 #### <a name="example-single-step-purge"></a>예: 단일 단계 제거
 
@@ -176,7 +176,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 | `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약됨 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |예약 | | | |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...|
 
 ### <a name="cancel-purge-operation-command"></a>제거 작업 취소 명령
 
@@ -214,7 +214,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 ### <a name="show-purges-command"></a>제거 명령 표시
 
-`Show purges`명령에서 요청 된 기간 내에 작업 ID를 지정 하 여 작업 상태 제거를 표시 합니다. 
+`Show purges` 명령에서 요청 된 기간 내에 작업 ID를 지정 하 여 작업 상태 제거를 표시 합니다. 
 
 ```kusto
 .show purges <OperationId>
@@ -223,7 +223,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 .show purges from '<StartDate>' to '<EndDate>' [in database <DatabaseName>]
 ```
 
-| 속성  |설명  |필수/선택 사항|
+| 속성  |Description  |필수/선택 사항|
 |---------|------------|-------|
 |`OperationId `   |      단일 단계 또는 두 번째 단계를 실행 한 후 데이터 관리 작업 ID가 출력 됩니다.   |필수
 |`StartDate`    |   필터링 작업의 시간 제한이 더 낮습니다. 생략 하는 경우 기본값은 현재 시간 보다 24 시간입니다.      |선택 사항
@@ -249,24 +249,24 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |완료됨 |제거가 완료 되었습니다 (저장소 아티팩트 삭제 보류 중). |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE. RunCommand; 1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD 앱 id = ...
 
-* `OperationId`-제거를 실행할 때 반환 되는 DM 작업 ID입니다. 
+* `OperationId` -제거를 실행할 때 반환 되는 DM 작업 ID입니다. 
 * `DatabaseName`* *-데이터베이스 이름 (대/소문자 구분). 
-* `TableName`-테이블 이름 (대/소문자 구분)입니다. 
-* `ScheduledTime`-DM 서비스에 대 한 제거 명령을 실행 하는 시간입니다. 
-* `Duration`-실행 DM 큐 대기 시간을 포함 하 여 제거 작업의 총 기간입니다. 
-* `EngineOperationId`-엔진에서 실행 중인 실제 제거의 작업 ID입니다. 
-* `State`-제거 상태 이며 다음 값 중 하나일 수 있습니다. 
-    * `Scheduled`-제거 작업이 실행 되도록 예약 되었습니다. 작업이 예약 된 상태로 유지 되는 경우 제거 작업의 백로그가 있을 수 있습니다. 이 백로그를 지우려면 [성능 제거](#purge-performance) 를 참조 하세요. 일시적 오류 발생 시 제거 작업이 실패 하는 경우 DM에서 다시 시도 되 고 다시 예약 됨으로 설정 됩니다. 따라서 예약 됨에서 InProgress로, 다시 예약 됨에서 작업으로 전환 되는 것을 볼 수 있습니다.
-    * `InProgress`-제거 작업이 엔진에서 진행 중입니다. 
-    * `Completed`-제거를 완료 했습니다.
-    * `BadInput`-잘못 된 입력을 제거 하지 않았으므로 다시 시도 되지 않습니다. 이 오류는 조건자의 구문 오류, 제거 명령에 대 한 잘못 된 조건자, 제한을 초과 하는 쿼리 (예: 연산자의 1M 엔터티 `externaldata` 이상 또는 64의 총 확장 된 쿼리 크기) 403 404와 같은 다양 한 문제 때문에 발생할 수 있습니다 `externaldata` .
-    * `Failed`-제거 하지 못했으며 다시 시도 되지 않습니다. 이 오류는 다른 제거 작업의 백로그가 나 다시 시도 제한을 초과 하는 여러 오류가 발생 하 여 작업이 큐에서 너무 오래 (14 일 이상) 대기 중인 경우에 발생할 수 있습니다. 후자는 내부 모니터링 경고를 발생 시키고 Azure 데이터 탐색기 팀에서 조사 됩니다. 
-* `StateDetails`-상태에 대 한 설명입니다.
-* `EngineStartTime`-엔진에 명령이 실행 된 시간입니다. 이 시간과 ScheduledTime 사이에 큰 차이가 있는 경우 일반적으로 제거 작업의 중요 한 백로그가 있으며 클러스터는 속도를 유지 하지 않습니다. 
-* `EngineDuration`-엔진에서의 실제 삭제 실행 시간입니다. 제거를 여러 번 다시 시도 하는 경우 모든 실행 기간의 합계입니다. 
-* `Retries`-일시적인 오류로 인해 DM 서비스에서 작업을 다시 시도한 횟수입니다.
-* `ClientRequestId`-DM 제거 요청의 클라이언트 활동 ID입니다. 
-* `Principal`-제거 명령 발급자의 id입니다.
+* `TableName` -테이블 이름 (대/소문자 구분)입니다. 
+* `ScheduledTime` -DM 서비스에 대 한 제거 명령을 실행 하는 시간입니다. 
+* `Duration` -실행 DM 큐 대기 시간을 포함 하 여 제거 작업의 총 기간입니다. 
+* `EngineOperationId` -엔진에서 실행 중인 실제 제거의 작업 ID입니다. 
+* `State` -제거 상태 이며 다음 값 중 하나일 수 있습니다. 
+    * `Scheduled` -제거 작업이 실행 되도록 예약 되었습니다. 작업이 예약 된 상태로 유지 되는 경우 제거 작업의 백로그가 있을 수 있습니다. 이 백로그를 지우려면 [성능 제거](#purge-performance) 를 참조 하세요. 일시적 오류 발생 시 제거 작업이 실패 하는 경우 DM에서 다시 시도 되 고 다시 예약 됨으로 설정 됩니다. 따라서 예약 됨에서 InProgress로, 다시 예약 됨에서 작업으로 전환 되는 것을 볼 수 있습니다.
+    * `InProgress` -제거 작업이 엔진에서 진행 중입니다. 
+    * `Completed` -제거를 완료 했습니다.
+    * `BadInput` -잘못 된 입력을 제거 하지 않았으므로 다시 시도 되지 않습니다. 이 오류는 조건자의 구문 오류, 제거 명령에 대 한 잘못 된 조건자, 제한을 초과 하는 쿼리 (예: 연산자의 1M 엔터티 `externaldata` 이상 또는 64의 총 확장 된 쿼리 크기) 403 404와 같은 다양 한 문제 때문에 발생할 수 있습니다 `externaldata` .
+    * `Failed` -제거 하지 못했으며 다시 시도 되지 않습니다. 이 오류는 다른 제거 작업의 백로그가 나 다시 시도 제한을 초과 하는 여러 오류가 발생 하 여 작업이 큐에서 너무 오래 (14 일 이상) 대기 중인 경우에 발생할 수 있습니다. 후자는 내부 모니터링 경고를 발생 시키고 Azure 데이터 탐색기 팀에서 조사 됩니다. 
+* `StateDetails` -상태에 대 한 설명입니다.
+* `EngineStartTime` -엔진에 명령이 실행 된 시간입니다. 이 시간과 ScheduledTime 사이에 큰 차이가 있는 경우 일반적으로 제거 작업의 중요 한 백로그가 있으며 클러스터는 속도를 유지 하지 않습니다. 
+* `EngineDuration` -엔진에서의 실제 삭제 실행 시간입니다. 제거를 여러 번 다시 시도 하는 경우 모든 실행 기간의 합계입니다. 
+* `Retries` -일시적인 오류로 인해 DM 서비스에서 작업을 다시 시도한 횟수입니다.
+* `ClientRequestId` -DM 제거 요청의 클라이언트 활동 ID입니다. 
+* `Principal` -제거 명령 발급자의 id입니다.
 
 ## <a name="purging-an-entire-table"></a>전체 테이블 제거
 
@@ -307,7 +307,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
      ```
 
-    | 매개 변수  |설명  |
+    | 매개 변수  |Description  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스의 이름입니다.      |
     | `TableName`    |     테이블 이름입니다.    |

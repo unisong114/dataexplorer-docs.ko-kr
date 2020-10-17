@@ -29,6 +29,8 @@
       href: visualize-power-bi.md
 - name: 개념
   items:
+    - name: EngineV3
+      href: engine-v3.md
     - name: 데이터 수집
       items:
         - name: 데이터 수집 개요
@@ -316,26 +318,43 @@
           href: follower.md
     - name: 다른 도구와 통합
       items:
-        - name: Power Automate
+        - name: 오케스트레이션
           items:
-            - name: Power Automate 커넥터
-              href: flow.md
-              displayName: 'Microsoft Flow, flow, flow connector'
-            - name: Power Automate 커넥터 사용 예
-              href: flow-usage.md
-              displayName: 'Microsoft Flow, flow, flow connector'
-        - name: Logic Apps
-          href: kusto/tools/logicapps.md
-        - name: Apache Spark 커넥터
-          href: spark-connector.md
+            - name: Power Automate
+              items:
+                - name: Power Automate 커넥터
+                  href: flow.md
+                  displayName: 'Microsoft Flow, flow, flow connector'
+                - name: Power Automate 커넥터 사용 예
+                  href: flow-usage.md
+                  displayName: 'Microsoft Flow, flow, flow connector'
+            - name: Logic Apps
+              href: kusto/tools/logicapps.md
         - name: Cosmos DB
           href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
+        - name: Apache Spark 커넥터
+          href: spark-connector.md
+        - name: Azure Synapse Apache Spark에서 연결
+          href: 'https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json'
         - name: Azure Databricks에서 연결
           href: connect-from-databricks.md
-        - name: Jupyter Notebook 및 Kqlmagic에서 데이터 분석
-          href: kqlmagic.md
-        - name: Azure Notebooks에서 데이터 분석
-          href: azure-notebooks.md
+        - name: Notebooks
+          items:
+            - name: Jupyter Notebook 및 Kqlmagic에서 데이터 분석
+              href: kqlmagic.md
+            - name: Azure Notebooks에서 데이터 분석
+              href: azure-notebooks.md
+            - name: Azure Data Studio
+              items:
+                - name: Kusto 확장 개요
+                  displayName: Azure Data Studio
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json'
+                - name: Kusto 확장 사용
+                  displayName: Azure Data Studio
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json'
+                - name: Kqlmagic 사용
+                  displayName: Azure Data Studio
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context'
         - name: Azure Pipelines
           href: devops.md
         - name: Kusto 동기화

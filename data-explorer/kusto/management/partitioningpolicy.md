@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: c3f7212b062adaae1bd56399753270653204ad22
-ms.sourcegitcommit: 53a727fceaa89e6022bc593a4aae70f1e0232f49
+ms.openlocfilehash: d1e1af6e7fef39295dde61034f63701a466abb51
+ms.sourcegitcommit: 58588ba8d1fc5a6adebdce2b556db5bc542e38d8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652107"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92098390"
 ---
 # <a name="data-partitioning-policy"></a>데이터 분할 정책
 
@@ -66,7 +66,7 @@ ms.locfileid: "89652107"
     * `Uniform`: 익스텐트의 파티션 값이 무시 되 고 익스텐트가 클러스터의 노드에 균일 하 게 할당 됩니다.
   * 쿼리가 해시 파티션 키에서 조인 하거나 집계 하지 않는 경우-사용 `Uniform` 합니다. 그렇지 않으면 `Default`를 사용합니다.
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 이라는 형식화 된 열에 대 한 해시 파티션 키 `string` `tenant_id` 입니다.
 이 함수는 `XxHash64` 해시 함수를 사용 하며,의는와 기본값을 사용 `MaxPartitionCount` `256` `Seed` `1` 합니다.
@@ -103,7 +103,7 @@ ms.locfileid: "89652107"
   * 로 시작 하는 것이 좋습니다 `1970-01-01 00:00:00` .
   * Datetime 파티션 키에 값이 있는 레코드가 있는 경우 `null` 해당 파티션 값은의 값으로 설정 됩니다 `Reference` .
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 코드 조각은 이라는 형식화 된 열에 대해 균일 한 datetime 범위 파티션 키를 보여 줍니다 `datetime` `timestamp` .
 `datetime(1970-01-01)`각 파티션에 대해 크기를 사용 하 여를 참조 지점으로 사용 `1d` 합니다.
@@ -140,8 +140,10 @@ ms.locfileid: "89652107"
   * 정책이 적용 되는 UTC 날짜/시간입니다.
   * 이 속성은 선택 사항입니다. 지정 하지 않으면 정책이 적용 된 후에 정책이 데이터 수집 적용 됩니다.
   * 보존으로 인해 삭제 될 수 있는 유형이 아닌 (분할 되지 않은) 익스텐트는 테이블의 효과적인 일시 삭제 기간 중 90% 이상으로 생성 되므로 분할 프로세스에서 무시 됩니다.
+  * **참고:** 과거의 날짜/시간 값을 설정할 수 있으며,이로 인해 이미 수집 데이터를 분할 된 데이터와 함께 가져올 수 있습니다.
+    그러나 이렇게 하면 분할 프로세스의 리소스 사용률이 현저 하 게 증가 하 고 그에 따른 이점을 고려해 야 합니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 두 개의 파티션 키가 있는 데이터 분할 정책 개체입니다.
 1. 이라는 형식화 된 열에 대 한 해시 파티션 키 `string` `tenant_id` 입니다.
