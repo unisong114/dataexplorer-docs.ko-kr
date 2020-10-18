@@ -118,6 +118,9 @@
               href: data-connection-event-grid-python.md
             - name: Azure Resource Manager 템플릿
               href: data-connection-event-grid-resource-manager.md
+            - name: Azure Portal에서 수동으로 리소스 만들기
+              displayName: Manually create resources for Event Grid ingestion
+              href: ingest-data-event-grid-manual.md
         - name: IoT Hub
           items:
             - name: IoT Hub에 대한 연결 만들기
