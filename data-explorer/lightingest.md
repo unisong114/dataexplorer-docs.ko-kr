@@ -7,19 +7,19 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/28/2020
-ms.openlocfilehash: 1825ef642e5427df58800c8d6a71f75ff484bcf5
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: f3925ed2b3012dffbd7e96ca6dd6a795b0499071
+ms.sourcegitcommit: 88923cfb2495dbf10b62774ab2370b59681578b9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872644"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92175696"
 ---
 # <a name="use-lightingest-to-ingest-data-to-azure-data-explorer"></a>LightIngest를 사용 하 여 Azure 데이터 탐색기에 데이터 수집
  
 LightIngest는 Azure 데이터 탐색기에 대 한 임시 데이터 수집을 위한 명령줄 유틸리티입니다. 유틸리티는 로컬 폴더 또는 Azure blob 저장소 컨테이너에서 원본 데이터를 끌어올 수 있습니다.
 LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 데이터를 수집 하려는 경우에 가장 유용 합니다. 이는 나중에 생성 된 시간에 따라 레코드를 쿼리 하 고 수집 시간이 아닌 경우에도 유용 합니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
 * LightIngest- [Microsoft Azure .Kusto. Tools NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 의 일부로 다운로드 합니다.
 
@@ -36,8 +36,9 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 
 1. 컴퓨터에서 추출 된 *tools* 디렉터리로 이동 합니다.
 1. 위치 표시줄에서 기존 위치 정보를 삭제 합니다.
-    
-    :::image type="content" source="kusto/tools/images/KustoTools-Lightingest/lightingest-locationbar.png" alt-text="LightIngest에 대 한 기존 위치 정보 삭제":::
+
+    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Lightingest 다운로드":::
+
 
 1. `cmd`을 입력하고 **Enter** 키를 누릅니다.
 1. 명령 프롬프트에서를 입력 한 `LightIngest.exe` 다음 관련 명령줄 인수를 입력 합니다.
@@ -45,18 +46,18 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
     > [!Tip]
     > 지원 되는 명령줄 인수 목록을 보려면를 입력 하십시오 `LightIngest.exe /help` .
     >
-    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="LightIngest에 대 한 명령줄 도움말":::
+    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Lightingest 다운로드":::
 
 1. `ingest-`그런 다음 수집을 관리할 Azure 데이터 탐색기 클러스터에 대 한 연결 문자열을 입력 합니다.
     연결 문자열을 큰따옴표로 묶고 [Kusto 연결 문자열 사양을](kusto/api/connection-strings/kusto.md)따릅니다.
 
-    예를 들면
+    예를 들면 다음과 같습니다.
 
     ```
     ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-### <a name="recommendations"></a>권장 구성
+### <a name="recommendations"></a>권장 사항
 
 * LightIngest가에서 수집 끝점을 사용 하는 것이 좋습니다 `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net` . 이러한 방식으로 Azure 데이터 탐색기 서비스는 수집 부하를 관리할 수 있으며 일시적인 오류를 쉽게 복구할 수 있습니다. 그러나 엔진 엔드포인트 ()로 직접 작업 하도록 LightIngest를 구성할 수도 있습니다 `https://{yourClusterNameAndRegion}.kusto.windows.net` .
 
@@ -67,15 +68,15 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 
 ## <a name="command-line-arguments"></a>명령줄 인수
 
-|인수 이름            |유형     |설명       |필수/선택 사항
+|인수 이름            |Type     |Description       |필수/선택 사항
 |------------------------------|--------|----------|-----------------------------|
 |                               |문자열   |수집을 처리 하는 Kusto 끝점을 지정 하는 [Azure 데이터 탐색기 연결 문자열](kusto/api/connection-strings/kusto.md) 입니다. 큰따옴표로 묶어야 합니다. | 필수
 |-database,-db          |문자열  |대상 Azure 데이터 탐색기 데이터베이스 이름 | 선택 사항  |
 |-테이블                  |문자열  |대상 Azure 데이터 탐색기 테이블 이름 | 필수 |
 |-sourcePath,-source      |문자열  |Blob 컨테이너의 원본 파일 또는 루트 URI에 대 한 경로입니다. 데이터가 blob에 있는 경우에는 저장소 계정 키 또는 SAS를 포함 해야 합니다. 큰따옴표로 묶는 것이 좋습니다. |필수 |
 |-접두사                  |문자열  |수집할 원본 데이터가 blob 저장소에 있는 경우이 URL 접두사는 컨테이너 이름을 제외 하 고 모든 blob에서 공유 됩니다. <br>예를 들어 데이터가에 있으면 `MyContainer/Dir1/Dir2` 접두사는 여야 합니다 `Dir1/Dir2` . 큰따옴표로 묶기를 권장 합니다. | 선택 사항  |
-|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 예: `"*.csv"` 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
-|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 예: `"*.csv"` 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 정의합니다(예: `"*.csv"`). 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 정의합니다(예: `"*.csv"`). 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
 |-format,-f           |문자열  | 원본 데이터 형식입니다. [지원 되는 형식](ingestion-supported-formats.md) 중 하나 여야 합니다. | 선택 사항  |
 |-ingestionMappingPath, -mappingPath |문자열  |수집 열 매핑의 로컬 파일 경로입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
 |-ingestionMappingRef, -mappingRef  |문자열  |테이블에 대해 이전에 만든 수집 열 매핑의 이름입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
@@ -84,12 +85,12 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 |-태그            |문자열   |수집 데이터와 연결할 [태그](kusto/management/extents-overview.md#extent-tagging) 입니다. 여러 번 발생할 수 있습니다. | 선택 사항  |
 |-dontWait           |bool     |' T r u e '로 설정 되 면 수집 완료를 기다리지 않습니다. 많은 양의 파일/b s 수집 경우 유용 합니다. |선택 사항  |
 |-압축,-cr          |double |압축률 힌트입니다. Azure 데이터 탐색기 원시 데이터 크기를 평가 하는 데 도움이 되는 압축 된 파일/a p i를 수집 때 유용 합니다. 원래 크기를 압축 크기로 나눈 값 |선택 사항  |
-|-limit,-l           |integer   |설정 하는 경우 수집을 처음 N 개 파일로 제한 합니다. |선택 사항  |
+|-limit,-l           |정수   |설정 하는 경우 수집을 처음 N 개 파일로 제한 합니다. |선택 사항  |
 |-listOnly,-list        |bool    |설정 되 면 수집 하도록 선택 된 항목만 표시 됩니다.| 선택 사항  |
-|-ingestTimeout   |integer  |모든 수집 작업 완료에 대 한 시간 제한 (분)입니다. 기본값은 `60`입니다.| 선택 사항  |
+|-ingestTimeout   |정수  |모든 수집 작업 완료에 대 한 시간 제한 (분)입니다. 기본값은 `60`입니다.| 선택 사항  |
 |-forceSync        |bool  |설정 되 면 동기 수집을 강제로 수행 합니다. 기본값은 `false`입니다. |선택 사항  |
-|-dataBatchSize        |integer  |각 수집 작업의 총 크기 제한 (MB, 압축 되지 않음)을 설정 합니다. |선택 사항  |
-|-filesInBatch            |integer |각 수집 작업의 파일/b a p 수 제한을 설정 합니다. |선택 사항  |
+|-dataBatchSize        |정수  |각 수집 작업의 총 크기 제한 (MB, 압축 되지 않음)을 설정 합니다. |선택 사항  |
+|-filesInBatch            |정수 |각 수집 작업의 파일/b a p 수 제한을 설정 합니다. |선택 사항  |
 |-devTracing,-trace       |문자열    |설정 하는 경우에는 기본적으로 현재 디렉터리에 있는 로컬 디렉터리에 진단 로그가 기록 `RollingLogs` 되거나 스위치 값을 설정 하 여 수정할 수 있습니다. | 선택 사항  |
 
 ## <a name="azure-blob-specific-capabilities"></a>Azure blob 관련 기능

@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: 8cdccf261f755a0ea7a3d6a6299aa54ce021f366
-ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
+ms.openlocfilehash: ebde38055cb2d962b6007668117a55c779cc9c94
+ms.sourcegitcommit: 88923cfb2495dbf10b62774ab2370b59681578b9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614982"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92175505"
 ---
 # <a name="functions-library"></a>함수 라이브러리
 
@@ -22,16 +22,18 @@ ms.locfileid: "91614982"
 
 ## <a name="machine-learning-functions"></a>기계 학습 함수
 
-|함수 이름     |설명                                          |
+|함수 이름     |Description                                          |
 |-------------------------|--------------------------------------------------------|
+|[kmeans_fl ()](kmeans-fl.md)|K를 사용 하는 것은 알고리즘을 사용 하는 것입니다. |
 |[predict_fl()](predict-fl.md)|기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
 |[predict_onnx_fl()](predict-onnx-fl.md)| ONNX 형식으로 기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
 
 ## <a name="series-processing-functions"></a>계열 처리 함수
 
-|함수 이름     |설명                                          |
+|함수 이름     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[quantize_fl()](quantize-fl.md)|양자화 metric 열. |
+|[series_dot_product_fl ()](series-dot-product-fl.md)|두 숫자 벡터의 내적을 계산 합니다. |
 |[series_fit_poly_fl()](series-fit-poly-fl.md)|회귀 분석을 사용 하 여 계열에 다항식을 맞춥니다. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|계열에 이동 평균 필터를 적용 합니다. |
 |[series_rolling_fl()](series-rolling-fl.md)|계열에 롤링 집계 함수를 적용 합니다. |

@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: b3a8c379ad010a9787fdb8b7d4e2961fb58ead9e
-ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
+ms.openlocfilehash: c20e18a31105dca584ebe35198462e8755cf8dc4
+ms.sourcegitcommit: 88923cfb2495dbf10b62774ab2370b59681578b9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89502667"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92175721"
 ---
-# <a name="create-a-connection-to-event-hub"></a>이벤트 허브에 대 한 연결 만들기
+# <a name="create-a-connection-to-event-hub"></a>Event Hub에 대한 연결 만들기
 
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) 는 빅 데이터 스트리밍 플랫폼 및 이벤트 수집 서비스입니다. Azure 데이터 탐색기는 고객이 관리 하는 Event Hubs에서 지속적인 수집을 제공 합니다.
 
@@ -30,7 +30,7 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
     > [!NOTE]
     > 이벤트 허브는. raw 형식을 지원 하지 않습니다.
 
-* [지원 되는 압축](ingestion-supported-formats.md#supported-data-compression-formats)을 참조 하세요.
+* 압축 알고리즘을 사용 하 여 데이터를 압축할 수 있습니다 `GZip` . 수집 `Compression` [속성](#set-ingestion-properties)에서를 지정 합니다.
    * 압축 형식 (Avro, Parquet, ORC)에 대해서는 데이터 압축이 지원 되지 않습니다.
    * 사용자 지정 인코딩 및 포함 된 [시스템 속성](#set-event-system-properties-mapping) 은 압축 된 데이터에서 지원 되지 않습니다.
   
