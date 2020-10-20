@@ -7,19 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 323e8ba2d7f49a2d44ac4000d207316d75e9bd6e
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 764dea2e3fe82bf795db81a4e8d3f89e256d3517
+ms.sourcegitcommit: 58588ba8d1fc5a6adebdce2b556db5bc542e38d8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91942083"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92098458"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure 데이터 탐색기란?
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 최신 소프트웨어에서 생성되는 많은 데이터 스트림을 처리할 수 있으므로 데이터를 수집, 저장 및 분석할 수 있습니다. Azure 데이터 탐색기는 웹 사이트, 애플리케이션, IoT 디바이스 등과 같은 데이터 원본의 다양한 대규모 데이터를 분석하는 데 적합합니다. 이 데이터는 진단, 모니터링, 보고, 기계 학습 및 추가 분석 기능에 사용됩니다. Azure Data Explorer를 사용하면 이 데이터를 쉽게 수집할 수 있고 데이터에 대한 복잡한 임시 쿼리를 몇 초 안에 처리할 수 있습니다.
-
-뉴스, 공지 사항 및 고객 사례 등 Azure Data Explorer에 대해 자세히 알아보세요. 
-[온라인 이벤트 등록 2020년 10월 14일](https://aka.ms/adxevent)
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Azure 데이터 탐색기의 특성은 무엇인가요?
 
