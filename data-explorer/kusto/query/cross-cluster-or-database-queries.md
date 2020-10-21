@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 데이터베이
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: a1516f3b3410c1a27f27a91d2eb120539441f712
-ms.sourcegitcommit: c3bbb9a6bfd7c5506f05afb4968fdc2043a9fbbf
+ms.openlocfilehash: 57b7b6b4c67e0e8903903cef670a561b30b3904e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85332507"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252572"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>데이터베이스 간/클러스터 간 쿼리
 
@@ -117,7 +117,7 @@ database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCa
 
 ## <a name="limitations-of-cross-cluster-function-calls"></a>클러스터 간 함수 호출의 제한 사항
 
-테이블 형식 함수 또는 뷰를 클러스터에서 참조할 수 있습니다. 다음 제한 사항이 적용됩니다.
+테이블 형식 함수 또는 뷰를 클러스터에서 참조할 수 있습니다. 다음과 같은 제한 사항이 적용됩니다.
 
 * 원격 함수는 테이블 형식 스키마를 반환 해야 합니다. 스칼라 함수는 동일한 클러스터 에서만 액세스할 수 있습니다.
 * 원격 함수는 스칼라 매개 변수만 사용할 수 있습니다. 하나 이상의 테이블 인수를 가져오는 함수는 동일한 클러스터 에서만 액세스할 수 있습니다.

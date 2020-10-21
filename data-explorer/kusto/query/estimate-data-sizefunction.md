@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 estimate_data_s
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 00438528f00c91a95fde9a77a7aa18a75002fce9
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 09d722b07b3ff49a294d4d8ce19a89563fc8f66e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348244"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253017"
 ---
 # <a name="estimate_data_size"></a>estimate_data_size()
 
@@ -24,7 +24,7 @@ estimate_data_size(*)
 estimate_data_size(Col1, Col2, Col3)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `estimate_data_size(*)`
 
@@ -38,7 +38,7 @@ estimate_data_size(Col1, Col2, Col3)
 
 * 레코드 크기의 예상 데이터 크기 (바이트)입니다. 예측은 데이터 형식 및 값 길이를 기준으로 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음을 사용 하 여 총 데이터 크기 계산 `estimated_data_size()` :
 

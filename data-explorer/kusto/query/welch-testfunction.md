@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 welch_test ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: cc0cc7ca77efeae583adeaf7a983d18498e5af96
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 063e0db08b3566ed69957dda675082d8ea6942cf
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338272"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253169"
 ---
 # <a name="welch_test"></a>welch_test()
 
@@ -31,7 +31,7 @@ print
 // pValue = 0.021
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `welch_test(`*mean1* `, ` *variance1* `, ` *count1* `, ` *mean2* `, ` *variance2* `, ` *count2*`)`
 

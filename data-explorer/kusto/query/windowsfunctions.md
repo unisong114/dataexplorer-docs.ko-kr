@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 창 함수에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
-ms.openlocfilehash: 1e93764058c6d890568e90f67472ec4306a092f8
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: 067edde1e9a1adb519d4e485f816793e462de046
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128702"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253162"
 ---
 # <a name="window-functions-overview"></a>창 함수 개요
 

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 endofweek ()에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 57fa1764753e730f9ff0a2b01a70e0c221217d23
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 47a5c9dd11af7282c38aabdd08b8b3bec571e57a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348278"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253031"
 ---
 # <a name="endofweek"></a>endofweek()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87348278"
 
 주의 마지막 요일은 토요일로 간주 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `endofweek(`*날짜* [ `,` *오프셋*]`)`
 

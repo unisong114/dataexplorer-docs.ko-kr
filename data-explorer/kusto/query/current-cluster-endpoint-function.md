@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 current_cluster
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2c3ddbee55e729ae8afbb6c1fbcc213bd6bfd9ce
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: cfd35837b0c1affbb2101e6c71a4fa638ef8e466
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348720"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252558"
 ---
 # <a name="current_cluster_endpoint"></a>current_cluster_endpoint()
 
 현재 쿼리 중인 클러스터의 네트워크 끝점 (DNS 이름)을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `current_cluster_endpoint()`
 

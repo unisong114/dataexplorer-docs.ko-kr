@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 바구니 플러�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/26/2019
-ms.openlocfilehash: cf83690d61bb84d1b6b877e76a77d5776be35ad4
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9436254d72f364edc1f6a758ce2325e272367293
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349247"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252682"
 ---
 # <a name="basket-plugin"></a>basket 플러그 인
 
@@ -23,7 +23,7 @@ T | evaluate basket()
 
 바구니는 데이터에서 불연속 특성 (차원)의 모든 빈번한 패턴을 찾습니다. 그런 다음 원래 쿼리에서 빈도 임계값을 통과 한 빈번한 패턴을 반환 합니다. 바구니는 데이터에서 자주 발생 하는 모든 패턴을 찾을 수 있지만 다항식 런타임이 보장 되지는 않습니다. 쿼리의 런타임은 행의 수에 선형 이지만 열 수 (차원)의 지 수를 지정할 수 있습니다. Basket은 바구니 분석 데이터 마이닝용으로 개발된 Apriori 알고리즘을 기준으로 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `T | evaluate basket(`*인수*`)`
 

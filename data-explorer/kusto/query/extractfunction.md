@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 extract ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 98b0f30c968279fcc757ab49bfda982612379026
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: 63b6e966724efc92431b5a7017144a188c81f8d3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793764"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252997"
 ---
 # <a name="extract"></a>extract()
 
@@ -42,7 +42,7 @@ extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
 
 일치 항목이 없거나 형식 변환에 실패한 경우 `null`입니다. 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 예제 문자열 `Trace`에서 `Duration`에 대한 정의를 검색합니다. 일치 항목은 `real`로 변환된 다음, 시간 상수(`1s`)를 곱하여 `Duration`이 `timespan` 형식이 됩니다. 이 예제에서 이는 123.45초와 같음:
 

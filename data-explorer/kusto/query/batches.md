@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 일괄 처리에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e5a38d53fb9b28fc7da0ddf71132e3a047e8188e
-ms.sourcegitcommit: 974d5f2bccabe504583e387904851275567832e7
+ms.openlocfilehash: efd4b4c5387016bd66027bcf5e0722f8039f0837
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83550336"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252628"
 ---
 # <a name="batches"></a>Batch
 
@@ -34,5 +34,5 @@ m | where n > 2000;
 m | where n < 10
 ```
 
-메모:
+참고:
 * [`materialize`](materializefunction.md) [포크 연산자](forkoperator.md)를 사용 하 여 일괄 처리를 사용 하는 것이 좋습니다.

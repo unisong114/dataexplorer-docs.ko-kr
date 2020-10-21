@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 indexof ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8e237441d28f12ffc6f27f8a591980a701825e39
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 1558e2463c2958965fcb501aff99c7ec14fe8688
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347462"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252944"
 ---
 # <a name="indexof"></a>indexof()
 
@@ -23,7 +23,7 @@ Lookup 또는 input 문자열이 *문자열* 유형이 아닌 경우 함수는 �
 
 자세한 내용은 [`indexof_regex()`](indexofregexfunction.md)를 참조하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `indexof(`*원본* `,` *조회* `[,` *start_index* `[,` *길이* `[,` *발생*`]]])`
 
@@ -31,9 +31,9 @@ Lookup 또는 input 문자열이 *문자열* 유형이 아닌 경우 함수는 �
 
 * *원본*: 입력 문자열입니다.  
 * *lookup*: 조회할 문자열입니다.
-* *start_index*: 시작 위치를 검색 합니다. (선택 사항)
-* *length*: 검사할 문자 위치의 수입니다. 값이-1 이면 길이 제한이 없음을 의미 합니다. (선택 사항)
-* *발생*횟수: 발생 횟수입니다. 기본값은 1입니다. (선택 사항)
+* *start_index*: 시작 위치를 검색 합니다. 선택 사항입니다.
+* *length*: 검사할 문자 위치의 수입니다. 값이-1 이면 길이 제한이 없음을 의미 합니다. 선택 사항입니다.
+* *발생*횟수: 발생 횟수입니다. 기본값은 1입니다. 선택 사항입니다.
 
 ## <a name="returns"></a>반환
 
@@ -43,7 +43,7 @@ Lookup 또는 input 문자열이 *문자열* 유형이 아닌 경우 함수는 �
 
 관련이 없는 (0 보다 작음) *start_index*, *발생*또는 (-1 미만) *길이* 매개 변수는 *null*을 반환 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 ```kusto
 print
  idx1 = indexof("abcdefg","cde")    // lookup found in input string

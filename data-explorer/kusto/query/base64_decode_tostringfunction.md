@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 base64_decode_t
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
-ms.openlocfilehash: 17d88c8be518b6d31b67a327a7a5d42818132cb9
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: eab1065713bcbc73913a2ab17a99894d9af9f8a4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349298"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252715"
 ---
 # <a name="base64_decode_tostring"></a>base64_decode_tostring()
 
 Base64 문자열을 UTF-8 문자열로 디코딩합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `base64_decode_tostring(`*문자열*`)`
 
@@ -52,6 +52,6 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 print Empty=base64_decode_tostring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```
 
-|비어 있음|
+|Empty|
 |-----|
 ||

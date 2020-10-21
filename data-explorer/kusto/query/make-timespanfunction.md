@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_timespan (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 3904f852fdf813d8b2aff264d6b1bc0019335d78
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 93b8ed12bcfb83c39964f820e61f928357af62c8
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346952"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253185"
 ---
 # <a name="make_timespan"></a>make_timespan()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87346952"
 make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `make_timespan(`*시간*,*분*`)`
 

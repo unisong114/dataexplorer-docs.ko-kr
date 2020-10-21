@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기의 atan2 ()에 대해
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 60b500109f140290427a6d1ad3baba8e25849b57
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 1229ff1476afe2863f07cfc0ff7aecffadd5867f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349451"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252755"
 ---
 # <a name="atan2"></a>atan2()
 
 양수 x 축과 원점에서 점 (y, x) 까지의 광선 사이의 각도를 라디안으로 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `atan2(`*y* `,` *x*`)`
 
@@ -32,7 +32,7 @@ ms.locfileid: "87349451"
 
 * 양의 x 축과 원점에서 점 (y, x) 까지의 광선 사이의 각도 (라디안)입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 print atan2_0 = atan2(1,1) // Pi / 4 radians (45 degrees)

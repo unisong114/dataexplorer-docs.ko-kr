@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 beta_cdf ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b500f5f0e727fde315bea8d77ab60f600f127271
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 16365c7445ca5436098028cbfbe5709e5b425a38
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103401"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253096"
 ---
 # <a name="beta_cdf"></a>beta_cdf()
 
@@ -51,7 +51,7 @@ Alpha ≤ 0 또는 alpha > 1만 beta_cdf ()은 NaN 값을 반환 합니다.
 
 Beta ≤ 0 또는 beta > 1만 인 경우 beta_cdf ()는 NaN 값을 반환 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -73,7 +73,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 |0.1|-1|20|alpha는 0 < NaN을 생성 합니다.|NaN|
 
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 
 * 베타 누적 확률 밀도 함수의 역함수를 계산 하려면 [beta-inv ()](./beta-invfunction.md)를 참조 하세요.

@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 base64_encode_t
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
-ms.openlocfilehash: 218f87a3c11695c4aa8135f98b0c445580de9ad0
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 6fca71cbc7cf33f49a9f4698553391a84ddbb728
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349264"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252654"
 ---
 # <a name="base64_encode_tostring"></a>base64_encode_tostring()
 
 문자열을 base64 문자열로 인코딩합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `base64_encode_tostring(`*문자열*`)`
 

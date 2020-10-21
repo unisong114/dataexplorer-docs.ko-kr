@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 외부 데이터 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 8bb30180a7506b594e5747e3591f0d1aff80f8c3
-ms.sourcegitcommit: f689547c0f77b1b8bfa50a19a4518cbbc6d408e5
+ms.openlocfilehash: 5b17b69fd49e937b672da07dd0b5c8abae9100fb
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89557363"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92253059"
 ---
 # <a name="externaldata-operator"></a>externaldata 연산자
 
@@ -36,7 +36,7 @@ ms.locfileid: "89557363"
 
 현재 지원 되는 속성은 다음과 같습니다.
 
-| 속성         | Type     | Description       |
+| 속성         | Type     | 설명       |
 |------------------|----------|-------------------|
 | `format`         | `string` | 데이터 형식입니다. 지정 하지 않으면 파일 확장명 (기본값)에서 데이터 형식을 검색 하려고 시도 `CSV` 합니다. 수집 [데이터 형식이](../../ingestion-supported-formats.md) 지원 됩니다. |
 | `ignoreFirstRecord` | `bool` | True로 설정 하면 모든 파일의 첫 번째 레코드가 무시 됨을 나타냅니다. 이 속성은 헤더를 사용 하 여 CSV 파일을 쿼리할 때 유용 합니다. |
@@ -51,7 +51,7 @@ ms.locfileid: "89557363"
 
 `externaldata`연산자는 저장소 연결 문자열에 표시 된 지정 된 저장소 아티팩트에서 데이터를 구문 분석 한 지정 된 스키마의 데이터 테이블을 반환 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 **Azure Blob Storage에 저장 된 사용자 Id 목록 가져오기**
 

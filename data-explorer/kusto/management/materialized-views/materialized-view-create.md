@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: f67b2d61cfed297886447a97dd178dfb578a2c68
-ms.sourcegitcommit: 463ee13337ed6d6b4f21eaf93cf58885d04bccaa
+ms.openlocfilehash: 95f8ce19c6edb419de4fb5053a79c243e3e332c4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91572146"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252843"
 ---
 # <a name="create-materialized-view"></a>.create materialized-view
 
@@ -45,7 +45,7 @@ ms.locfileid: "91572146"
 
 ## <a name="arguments"></a>인수
 
-|인수|Type|Description
+|인수|Type|설명
 |----------------|-------|---|
 |ViewName|String|구체화 된 뷰 이름입니다. 뷰 이름은 같은 데이터베이스에 있는 테이블 또는 함수 이름과 충돌 하지 않으며 [식별자 명명 규칙](../../query/schema-entities/entity-names.md#identifier-naming-rules)을 따라야 합니다. |
 |(|String|뷰가 정의 된 원본 테이블의 이름입니다.|
@@ -80,7 +80,7 @@ ms.locfileid: "91572146"
 
 다음은 절에서 지원 됩니다 `with(propertyName=propertyValue)` . 모든 속성은 선택 사항입니다.
 
-|속성|Type|Description |
+|속성|Type|설명 |
 |----------------|-------|---|
 |가득|bool|현재 *SourceTable* ()에 있는 모든 레코드를 기반으로 뷰를 만들지 아니면 `true` "온-" ()로 만들지 여부를 지정 `false` 합니다. 기본값은 `false`입니다.| 
 |effectiveDateTime|Datetime| 와 함께 지정 하 `backfill=true` 는 경우 datetime 이후의 레코드를 수집 하는 backfills 생성 됩니다. 또한 백필을 true로 설정 해야 합니다. 에는 datetime 리터럴이 필요 합니다 (예:). `effectiveDateTime=datetime(2019-05-01)`|
@@ -97,7 +97,7 @@ ms.locfileid: "91572146"
 > * 이러한 이유로 보기를 사용 하지 않도록 설정 하면 [구체화 된 뷰 사용](materialized-view-enable-disable.md) 명령을 사용 하 여 문제를 해결 한 후 다시 사용 하도록 설정할 수 있습니다.
 >
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 1. 현재 수집 레코드를 구체화 하는 빈 arg_max 보기를 만듭니다.
 
@@ -161,14 +161,14 @@ ms.locfileid: "91572146"
 
     <!-- csl -->
     ```
-    .create materialized-view EnrichedArgMax on table T with (dimensionTable = ['DimUsers'])
+    .create materialized-view EnrichedArgMax on table T with (dimensionTables = ['DimUsers'])
     {
         T
         | lookup DimUsers on User  
         | summarize arg_max(Timestamp, *) by User 
     }
     
-    .create materialized-view EnrichedArgMax on table T with (dimensionTable = ['DimUsers'])
+    .create materialized-view EnrichedArgMax on table T with (dimensionTables = ['DimUsers'])
     {
         DimUsers | project User, Age, Address
         | join kind=rightouter hint.strategy=broadcast T on User
@@ -289,15 +289,15 @@ ms.locfileid: "91572146"
 
 ### <a name="properties"></a>속성
 
-|속성|Type|Description
+|속성|Type|설명
 |----------------|-------|---|
-|operationId|GUID|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
+|operationId|Guid|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
 
 ### <a name="output"></a>출력
 
-|출력 매개 변수 |Type |Description
+|출력 매개 변수 |Type |설명
 |---|---|---
-|OperationId|GUID|구체화 된 뷰 만들기 명령의 작업 ID입니다.
+|OperationId|Guid|구체화 된 뷰 만들기 명령의 작업 ID입니다.
 |작업(Operation)|String|작업 종류입니다.
 |StartedOn|Datetime|만들기 작업의 시작 시간입니다.
 |CancellationState|문자열|- `Cancelled successfully` (생성이 취소 된 경우), ( `Cancellation failed` 취소 시간이 초과 될 때까지 대기), ( `Unknown` 뷰 생성이 더 이상 실행 되지 않고이 작업으로 인해 취소 되지 않음)

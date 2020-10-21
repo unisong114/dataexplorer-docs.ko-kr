@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 active_users_co
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 75f1c92dfb76c56894d1f38dec24a31690f3f789
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a35cbb4c9078d58f2c9de3c681453c578baf1476
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349842"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252859"
 ---
 # <a name="active_users_count-plugin"></a>active_users_count 플러그 인
 
@@ -25,7 +25,7 @@ Lookback 기간의 최소 기간 이상에 각 값이 표시 되는 고유 값 �
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `active_users_count(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *LookbackWindow* `,` *Period* `,` *ActivePeriodsCount* `,` *Bin* `,` [*dim1* `,` *dim2* `,` ...]`)`
 
@@ -53,7 +53,7 @@ ActivePeriodCounts에 표시 된 Id에 대 한 고유 카운트 값이 있는 �
 |유형: *TimelineColumn*|..|..|..|long|
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 지난 8 일 동안 3 일 이상 경과 된 개별 사용자 수를 계산 합니다. 분석 기간: 7 월 2018입니다.
 
@@ -83,7 +83,7 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 
 ```
 
-|Timestamp|`dcount`|
+|타임스탬프|`dcount`|
 |---|---|
 |2018-07-01 00:00:00.0000000|1|
 |2018-07-15 00:00:00.0000000|1|
@@ -92,6 +92,6 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 * 사용자가 3 개 이상의 고유 요일 (Period = 1d, ActivePeriods = 3)에 표시 되었습니다.
 * 사용자가 8d의 lookback 창에 표시 되었으며 현재 모양을 포함 하 고 있습니다.
 
-아래 그림에서이 조건에 의해 활성화 되는 유일한 모양은 다음과 같습니다. 사용자 A on 7/20 및 7/4의 사용자 B (위의 플러그 인 결과 참조) 사용자 B의 모양은 7/4에 lookback 창에 포함 되어 있지만 시작/종료 시간 범위 6/29-30에는 포함 되어 있지 않습니다. 
+아래 그림에서이 조건에 의해 활성화 되는 유일한 모양은 다음과 같습니다. 사용자 A on 7/20 및 7/4의 사용자 B (위의 플러그 인 결과 참조) 사용자 B의 모양은 7/4에 lookback 창에 포함 되지만 Start-End 시간 범위 6/29-30에는 포함 되지 않습니다. 
 
 :::image type="content" source="images/queries/active-users-count.png" alt-text="활성 사용자 수 예":::

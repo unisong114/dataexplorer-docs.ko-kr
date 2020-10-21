@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 어설션 ()에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 050974af47b0f5cd0e041694ee5f680b8c321614
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 442fbec2742a4d1edc7a9ad03a81db27e6d18574
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803321"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252785"
 ---
 # <a name="assert"></a>assert()
 
@@ -29,11 +29,11 @@ ms.locfileid: "87803321"
 * *메시지*: 어설션이로 계산 되는 경우에 사용 되는 메시지 `false` 입니다. *메시지* 는 문자열 리터럴이어야 합니다.
 
 > [!NOTE]
-> `condition`쿼리 분석 단계에서 상수로 계산 되어야 합니다. 즉, 상수를 참조 하는 다른 식에서 생성 될 수 있으며 행 컨텍스트에 바인딩할 수 없습니다.
+> `condition` 쿼리 분석 단계에서 상수로 계산 되어야 합니다. 즉, 상수를 참조 하는 다른 식에서 생성 될 수 있으며 행 컨텍스트에 바인딩할 수 없습니다.
 
 ## <a name="returns"></a>반환
 
-* `true`-조건이 인 경우`true`
+* `true` -조건이 인 경우 `true`
 * 조건이로 평가 되는 경우 의미 오류를 발생 시킵니다 `false` .
 
 ## <a name="examples"></a>예

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 session_count �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: c46430fe7acc75685b90d2322d709392c91ed6dc
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0790a3ab173bc653cbd3c4c15b3f28e5a0c70cd5
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351219"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252902"
 ---
 # <a name="session_count-plugin"></a>session_count 플러그 인
 
@@ -55,7 +55,7 @@ T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday
 - 타임 라인: 1에서 1만 사이의 실행 수
 - Id: 사용자의 Id는 1 ~ 50입니다.
 
-`Id`는 `Timeline` `Timeline` (타임 라인% Id = = 0)의 구분선 인 경우 특정 슬롯에 표시 됩니다.
+`Id` 는 `Timeline` `Timeline` (타임 라인% Id = = 0)의 구분선 인 경우 특정 슬롯에 표시 됩니다.
 
 가 있는 이벤트는 `Id==1` 모든 `Timeline` 슬롯, 모든 `Id==2` 초 슬롯에 있는 이벤트 등에 표시 됩니다 `Timeline` .
 
