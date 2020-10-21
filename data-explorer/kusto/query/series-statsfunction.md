@@ -4,20 +4,20 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_stats ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
-ms.openlocfilehash: 69e09ec9528e99e250986657bf5d7cc0756b14f8
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5eb6bb2d11b35a7844a0366fc10797db621f6120
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351253"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241971"
 ---
 # <a name="series_stats"></a>series_stats()
 
-`series_stats()`여러 열의 계열에 대 한 통계를 반환 합니다.  
+`series_stats()` 여러 열의 계열에 대 한 통계를 반환 합니다.  
 
 `series_stats()`함수는 동적 숫자 배열을 포함 하는 열을 입력으로 사용 하 고 다음 열을 계산 합니다.
 * `min`: 입력 배열의 최 솟 값
@@ -31,7 +31,7 @@ ms.locfileid: "87351253"
 > [!NOTE] 
 > 이 함수는 여러 열을 반환 하므로 다른 함수의 인수로 사용할 수 없습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 project `series_stats(` *x* `[,` *ignore_nonfinite* `])` 또는 extend `series_stats(` *x* `)` 는 앞에서 언급 한 모든 열을 series_stats_x_min, series_stats_x_min_idx 등의 이름으로 반환 합니다.
  

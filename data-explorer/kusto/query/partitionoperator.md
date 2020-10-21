@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 파티션 연산�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2b082e516a1118638bc8e61b545471326dd400e5
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 8587995a6836a1f8a180eada19d450277709a6e7
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346238"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248598"
 ---
 # <a name="partition-operator"></a>partition 연산자
 
@@ -25,7 +25,7 @@ T | partition by Col1 ( top 10 by MaxValue )
 T | partition by Col1 { U | where Col2=toscalar(Col1) }
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `partition` [*파티션 매개 변수*] `by` *열* `(` *ContextualSubquery*`)`
 

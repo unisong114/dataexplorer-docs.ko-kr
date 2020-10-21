@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기의 startofyear ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: c4ff0509f0ed7de98daf9bcec6c40ed5b8d76fd3
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 973ea6d5043db0f173fa0ebe98548b20968371b3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87343365"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241172"
 ---
 # <a name="startofyear"></a>startofyear()
 
 지정 된 경우 오프셋으로 이동한 날짜를 포함 하는 연도의 시작을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `startofyear(`*날짜* [ `,` *오프셋*]`)`
 

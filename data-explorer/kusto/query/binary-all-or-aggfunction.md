@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 binary_all_or (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: 35478b435814fe716f7130576c16714403490be6
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: bff5d631493b9431d6e1a5fa88d3dd419147df96
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349128"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247968"
 ---
 # <a name="binary_all_or-aggregation-function"></a>binary_all_or () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87349128"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `binary_all_or(` *식* 요약`)`
 

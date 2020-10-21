@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 activity_counts
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: df7b994350297d911a0f3be59c791b6538899d67
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: f44af0b7c1623bfd8393ddeefee57f7f8ca27d2b
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349791"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241724"
 ---
 # <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics 플러그 인
 
@@ -23,7 +23,7 @@ ms.locfileid: "87349791"
 T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `activity_counts_metrics(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Window* [ `,` *코 호트*] [ `,` *dim1* `,` *dim2* ] `,` [ `,` *Lookback*]`)`
 
@@ -45,7 +45,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 
 |`TimelineColumn`|`dim1`|...|`dim_n`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`
 |---|---|---|---|---|---|---|---|---|
-|형식: 다음으로*`TimelineColumn`*|..|..|..|long|long|long|long|long
+|형식: 다음으로 *`TimelineColumn`*|..|..|..|long|long|long|long|long
 
 
 * *`TimelineColumn`*: 시간 창 시작 시간입니다.
@@ -54,7 +54,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 * *`new_dcount`*: 모든 이전 시간 창과 비교 하 여 시간 창과 *dim* 의 고유 ID 값입니다. 
 * *`aggregated_dcount`*: 첫 번째 창에서 현재 (포함)까지 *dim* 의 총 집계 된 고유 ID 값입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="daily-activity-counts"></a>일별 활동 수 
 

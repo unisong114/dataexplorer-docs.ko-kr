@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 isnull ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d1bea6260ca86e6ca47be843a6acc4fb43a037b3
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: afaff2c00ca9136e113639deed886d039d21fda9
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347173"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241529"
 ---
 # <a name="isnull"></a>isnull()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87347173"
 isnull(parse_json("")) == true
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `isnull(`*Expr*`)`
 
@@ -33,7 +33,7 @@ isnull(parse_json("")) == true
 
 **참고**
 
-* `string`값은 null 일 수 없습니다. [Isempty](./isemptyfunction.md) 를 사용 하 여 형식의 값이 비어 있는지 여부를 확인 `string` 합니다.
+* `string` 값은 null 일 수 없습니다. [Isempty](./isemptyfunction.md) 를 사용 하 여 형식의 값이 비어 있는지 여부를 확인 `string` 합니다.
 
 |x                |`isnull(x)`|
 |-----------------|-----------|

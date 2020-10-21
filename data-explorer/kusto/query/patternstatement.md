@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 pattern 문을 설
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 03d183bd042bb75d8bb44f530575bd3b91cb2102
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: 1fa4c303624c62b7c43d2ddd0de58977ed6e42aa
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793810"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241331"
 ---
 # <a name="pattern-statement"></a>pattern 문
 
@@ -88,7 +88,7 @@ app("ApplicationX").StartEvents
 * *PatternName* `(` *ArgValue1* [ `,` *ArgValue2* ] `).` *Pathvalue*
 * *PatternName* `(` *ArgValue1* [ `,` *ArgValue2* ] `).["` *Pathvalue*`"]`
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 **시나리오**
 
@@ -125,7 +125,7 @@ union app("ApplicationX").*
 
 Kusto는 누락 된 단일 패턴 호출을 보고 `app("ApplicationX").["*"]` 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 단일 패턴 호출 이상으로 쿼리 합니다.
 

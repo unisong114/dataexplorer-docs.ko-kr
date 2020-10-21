@@ -4,26 +4,26 @@ description: 이 문서에서는 Azure 데이터 탐색기의 has_any 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: 4485dde5eb77478e5fd75ce388ada7f4232f2ddb
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 012a6b0555778a30055ac9d7f4619c7b74d13988
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347632"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241620"
 ---
 # <a name="has_any-operator"></a>has_any 연산자
 
-`has_any`제공 된 값 집합을 기반으로 하는 연산자 필터입니다.
+`has_any` 제공 된 값 집합을 기반으로 하는 연산자 필터입니다.
 
 ```kusto
 Table1 | where col has_any ('value1', 'value2')
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `where` *col* `has_any` `(` *스칼라 식의* T 열 목록`)`   
 *T* `|` `where` *col* `has_any` `(` *테이블 형식 식*`)`   
@@ -37,7 +37,7 @@ Table1 | where col has_any ('value1', 'value2')
 
 ## <a name="returns"></a>반환
 
-조건자가 인 *T* 의 행`true`
+조건자가 인 *T* 의 행 `true`
 
 **참고**
 

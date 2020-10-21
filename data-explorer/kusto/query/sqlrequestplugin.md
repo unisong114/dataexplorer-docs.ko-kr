@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 sql_request 플
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: e4752828b3e4b145026f7ee47a1ade3f8685262e
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 1a6349547d5cf1eb3af5a21f6e8c504573f15e52
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803474"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241769"
 ---
 # <a name="sql_request-plugin"></a>sql_request 플러그 인
 
@@ -111,8 +111,8 @@ Sql_request 플러그 인은 SQL Server 끝점에 대 한 세 가지 인증 방�
 
 다음 연결 속성은 보안상의 이유로 SQL Server 네트워크 끝점에 연결 하는 경우 강제 적용 됩니다.
 
-* `Encrypt`는 무조건로 설정 됩니다 `true` .
-* `TrustServerCertificate`는 무조건로 설정 됩니다 `false` .
+* `Encrypt` 는 무조건로 설정 됩니다 `true` .
+* `TrustServerCertificate` 는 무조건로 설정 됩니다 `false` .
 
 따라서 유효한 SSL/TLS 서버 인증서를 사용 하 여 SQL Server를 구성 해야 합니다.
 

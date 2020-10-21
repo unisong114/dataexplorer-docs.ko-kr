@@ -8,14 +8,14 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/14/2020
-ms.openlocfilehash: 4eaa7e8cc6f3c0f321abb9744bfe1608521e7b0e
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: c8fa3a000de67559c83745c598da40797e31f9b9
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84784534"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248341"
 ---
-# <a name="execute-database-script"></a>. 데이터베이스 스크립트 실행
+# <a name="execute-database-script"></a>.execute database script
 
 단일 데이터베이스 범위에서 제어 명령의 일괄 처리를 실행 합니다.
 
@@ -33,7 +33,7 @@ ms.locfileid: "84784534"
 
 ### <a name="optional-properties"></a>선택적 속성
 
-| 속성            | Type            | Description                          |
+| 속성            | Type            | 설명                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `ContinueOnErrors`            | `bool`        | 로 설정 `false` 되 면 첫 번째 오류 발생 시 스크립트가 중지 됩니다. 로 설정 하면 `true` 스크립트 실행이 계속 됩니다. 기본값: `false`. |
 
@@ -41,7 +41,7 @@ ms.locfileid: "84784534"
 
 스크립트에 표시 되는 각 명령은 출력 테이블에 별도의 레코드로 보고 됩니다. 각 레코드에는 다음과 같은 필드가 있습니다.
 
-|출력 매개 변수 |Type |Description
+|출력 매개 변수 |Type |설명
 |---|---|--- 
 |OperationId  |Guid |명령의 식별자입니다.
 |CommandType  |String |명령의 유형입니다.
@@ -60,13 +60,13 @@ ms.locfileid: "84784534"
 
 ```kusto
 .execute database script <|
-
+//
 // Create tables
 .create-merge table T(a:string, b:string)
-
+//
 // Apply policies
 .alter-merge table T policy retention softdelete = 10d 
-
+//
 // Create functions
 .create-or-alter function
   with (skipvalidation = "true") 

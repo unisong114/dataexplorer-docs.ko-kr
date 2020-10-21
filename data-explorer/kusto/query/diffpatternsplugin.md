@@ -4,27 +4,27 @@ description: 이 문서에서는 Azure 데이터 탐색기의 diffpatterns plugi
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0be0dc12f48723bc83376a36db04f764991f7f0d
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: f269bb12c4e4f73f7a7e6c4e9818d47dfc8002ef
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803100"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249475"
 ---
 # <a name="diff-patterns-plugin"></a>diff 패턴 플러그 인
 
 동일한 구조체의 두 데이터 집합을 비교 하 고 두 데이터 집합 간의 차이를 특징으로 하는 불연속 특성 (차원)의 패턴을 찾습니다.
- `Diffpatterns`는 오류를 분석 하는 데 도움이 되도록 개발 되었지만 (예를 들어 지정 된 시간 프레임 내에 오류가 아닌 오류를 비교 하 여) 같은 구조의 두 데이터 집합 간에 차이가 있을 수 있습니다. 
+ `Diffpatterns` 는 오류를 분석 하는 데 도움이 되도록 개발 되었지만 (예를 들어 지정 된 시간 프레임 내에 오류가 아닌 오류를 비교 하 여) 같은 구조의 두 데이터 집합 간에 차이가 있을 수 있습니다. 
 
 ```kusto
 T | evaluate diffpatterns(splitColumn)
 ```
 > [!NOTE]
-> `diffpatterns`는 집합 간 데이터 차이의 일부를 캡처하는 중요 한 패턴을 찾고 행 단위 차이점에 대해서는 다루지 않습니다.
+> `diffpatterns` 는 집합 간 데이터 차이의 일부를 캡처하는 중요 한 패턴을 찾고 행 단위 차이점에 대해서는 다루지 않습니다.
 
 ## <a name="syntax"></a>구문
 
@@ -81,7 +81,7 @@ T | evaluate diffpatterns(splitColumn)
 
 ## <a name="returns"></a>반환
 
-`Diffpatterns`두 집합에 있는 데이터의 서로 다른 부분 (즉, 첫 번째 데이터 집합에서 높은 비율의 행을 캡처하고 두 번째 집합에 있는 행의 비율이 낮은 패턴)을 캡처하는 작은 패턴 집합을 반환 합니다. 각 패턴은 결과의 행으로 표시됩니다.
+`Diffpatterns` 두 집합에 있는 데이터의 서로 다른 부분 (즉, 첫 번째 데이터 집합에서 높은 비율의 행을 캡처하고 두 번째 집합에 있는 행의 비율이 낮은 패턴)을 캡처하는 작은 패턴 집합을 반환 합니다. 각 패턴은 결과의 행으로 표시됩니다.
 
 결과는 `diffpatterns` 다음 열을 반환 합니다.
 
@@ -118,7 +118,7 @@ StormEvents
 | evaluate diffpatterns(Damage, "0", "1" )
 ```
 
-|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|주|EventType|원본|DamageCrops|
+|SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|시스템 상태|EventType|원본|DamageCrops|
 |---|---|---|---|---|---|---|---|---|---|
 |0|2278|93|49.8|7.1|42.7||우박||0|
 |1|779|512|17.03|39.08|22.05||뇌우를 동반한 바람|||

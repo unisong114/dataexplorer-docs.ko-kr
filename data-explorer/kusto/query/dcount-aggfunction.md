@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 dcount () (집계 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 45ab913fdc659444ac578ca725e2afb24256a38b
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: b35bb7944e894256056e03eb756ac85cf1354ba8
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803712"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247692"
 ---
 # <a name="dcount-aggregation-function"></a>dcount () (집계 함수)
 
@@ -80,4 +80,4 @@ T | summarize dcount(B) by G | count
 
 다음 이미지는 지원 되는 모든 정확도 설정에 대해 상대적 예측 오류의 확률 분포 함수를 백분율로 보여 줍니다.
 
-:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll 오류 배포":::
+:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="D 개수":::

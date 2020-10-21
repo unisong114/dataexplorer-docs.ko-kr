@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 array_rotate_le
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: fa5ae1266b97c7ee01a65bc36c7508cac0779ab2
-ms.sourcegitcommit: 2764e739b4ad51398f4f0d3a9742d7168c4f5fd7
+ms.openlocfilehash: 7c9e6a318ebcd0a0911b3a86c1bf0ad99aeb2f51
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712088"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248115"
 ---
 # <a name="array_rotate_left"></a>array_rotate_left()
 
 배열 내의 값 `dynamic` 을 왼쪽으로 회전 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `array_rotate_left(`*arr*, *rotate_count*`)`
 

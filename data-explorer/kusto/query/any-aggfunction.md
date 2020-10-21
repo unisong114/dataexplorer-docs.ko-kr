@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기의 모든 () (집계 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 73c3a660dc7a34f1f9fef840b13f47c13b4d1b2f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c4d718cfb46e3a404c943d579feaf4733499ab3e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349740"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248220"
 ---
 # <a name="any-aggregation-function"></a>any () (집계 함수)
 
 임의로 [요약 연산자](summarizeoperator.md)의 각 그룹에 대해 하나의 레코드를 선택 하 고 각 레코드에 대해 하나 이상의 식의 값을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``any` `(` (*Expr* [ `,` *Expr2* ...]) | `*``)`
 
@@ -42,7 +42,7 @@ ms.locfileid: "87349740"
 
 이 함수의 임의 특성의 결과로 연산자의 단일 응용 프로그램에서이 함수를 여러 번 사용 하는 것 `summarize` 은 여러 식이 포함 된 단일 시간을 사용 하는 것과 동일 하지 않습니다. 이전에는 각 응용 프로그램이 다른 레코드를 선택 하 고, 후자는 모든 값이 단일 레코드 (고유 그룹별)를 통해 계산 되도록 보장 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 임의 대륙 표시:
 
@@ -58,7 +58,7 @@ Continents | summarize any(Continent)
 Continents | summarize any(*)
 ```
 
-:::image type="content" source="images/aggfunction/any2.png" alt-text="모든 2":::
+:::image type="content" source="images/aggfunction/any2.png" alt-text="모든 1":::
 
 각 무작위 대륙의 세부 정보를 모두 표시 합니다.
 
@@ -66,4 +66,4 @@ Continents | summarize any(*)
 Continents | summarize any(*) by Continent
 ```
 
-:::image type="content" source="images/aggfunction/any3.png" alt-text="모든 3":::
+:::image type="content" source="images/aggfunction/any3.png" alt-text="모든 1":::

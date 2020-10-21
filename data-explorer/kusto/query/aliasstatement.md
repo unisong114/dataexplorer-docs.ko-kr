@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 별칭 문에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 5e243984bd6a011b8de224d2c9cdd0108ab1b38f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 822c8eccf50dc30fd3f56f4402c10a9fafb34084
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349757"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248284"
 ---
 # <a name="alias-statement"></a>Alias 문
 
@@ -28,9 +28,9 @@ Alias 문을 사용 하면 나중에 동일한 쿼리에서 사용할 수 있는
 
 ## <a name="syntax"></a>구문
 
-`alias`데이터베이스 [*' DatabaseAliasName '*] `=` cluster ("https://*clustername*. kusto. net.tcp: 443") .database ("*databasename*")
+`alias` 데이터베이스 [*' DatabaseAliasName '*] `=` cluster ("https://*clustername*. kusto. net.tcp: 443") .database ("*databasename*")
 
-`alias`database *DatabaseAliasName* `=` cluster ("https://*clustername*. kusto. net: 443") .database ("*databasename*")
+`alias` database *DatabaseAliasName* `=` cluster ("https://*clustername*. kusto. net: 443") .database ("*databasename*")
 
 * *' DatabaseAliasName '* 는 기존 이름 이거나 새 이름일 수 있습니다.
 * 매핑된 클러스터 uri와 매핑된 데이터베이스 이름은 큰따옴표 (") 또는 작은따옴표 (') 안에 표시 되어야 합니다.

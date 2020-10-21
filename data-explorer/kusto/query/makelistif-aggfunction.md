@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_list_if ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9090e752f018c4abcce759c37a8ecb3571e2fbd6
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 362fd1b64ba156115515efa3db3214b0f86c5ad7
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91102917"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241379"
 ---
 # <a name="make_list_if-aggregation-function"></a>make_list_if () (집계 함수)
 
@@ -55,6 +55,6 @@ T
 |----|
 |["George", "Ringo"]|
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 [`make_list`](./makelist-aggfunction.md) 조건자 식 없이 동일 하 게 작동 하는 함수입니다.

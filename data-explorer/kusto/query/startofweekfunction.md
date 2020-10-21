@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 startofweek ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 24763297585a7f043847e3037103a61650f65bd1
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: d5f53dfca4183c4dae623b41abf4c5bce6a3e828
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87343484"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241181"
 ---
 # <a name="startofweek"></a>startofweek()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87343484"
 
 주의 시작은 일요일이 되는 것으로 간주 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `startofweek(`*날짜* [ `,` *오프셋*]`)`
 

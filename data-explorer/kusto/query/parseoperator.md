@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 구문 분석 연�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f9dc6e49e9e3d04aadb5aecf8507b7132d8a366a
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a942015908c9608a76d3c49c411de9d17d6e70f5
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346323"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248618"
 ---
 # <a name="parse-operator"></a>parse 연산자
 
@@ -24,7 +24,7 @@ ms.locfileid: "87346323"
 T | parse Text with "ActivityName=" name ", ActivityType=" type
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| parse` [ `kind=regex` [ `flags=regex_flags` ] | `simple` | `relaxed` ] *식* `with` `*` (*stringconstant* *ColumnName* [ `:` *ColumnType*]) `*` ...
 
@@ -75,13 +75,13 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
 
     Parse 문에서는 구문 분석에 의해 내부적으로 생성 되는 regex가 `.*?<regex1>(.*?)<regex2>(\-\d+)` 입니다.
         
-    * `*`가로 변환 되었습니다 `.*?` .
+    * `*` 가로 변환 되었습니다 `.*?` .
         
-    * `string`가로 변환 되었습니다 `.*?` .
+    * `string` 가로 변환 되었습니다 `.*?` .
         
-    * `long`가로 변환 되었습니다 `\-\d+` .
+    * `long` 가로 변환 되었습니다 `\-\d+` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 `parse`연산자는 `extend` 동일한 식에서 여러 응용 프로그램을 사용 하 여 테이블에 간소화 된 방법을 제공 `extract` `string` 합니다. 이 결과는 테이블에 `string` 개별 열로 나눌 여러 값이 포함 된 열이 있는 경우에 유용 합니다. 예를 들어 개발자 추적 (" `printf` "/"") 문에 의해 생성 된 열입니다 `Console.WriteLine` .
 
@@ -164,7 +164,7 @@ Traces
 |PipelineScheduler, totalSlices = 27, sliceNumber = 16, lockTime = 02/17/2016 08:41:00, releaseTime = 02/17/2016 08:41:00|
 
 기본 모드가 greedy 이기 때문에 예상 되는 결과를 얻을 수 없습니다.
-몇 개의 레코드가 있는 경우 (예를 들어, 경우에 따라 대/소문자가 소문자로 표시 *되는 경우* ) 일부 값에 대해 null을 얻을 수 있습니다.
+몇 개의 레코드가 있는 경우 (예를 들어, 경우에 따라 대/소문자가 소문자로 표시 *되는 경우*  ) 일부 값에 대해 null을 얻을 수 있습니다.
 
 원하는 결과를 얻으려면 non-greedy를 사용 하 여 쿼리를 실행 하 `U` 고 대/소문자를 구분 하는 regex 플래그를 사용 하지 않도록 설정 합니다 `i` .
 

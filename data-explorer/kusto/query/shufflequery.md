@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 순서 섞기 쿼�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d3625be5a3a97b456a2d6d84802b11602f959f3e
-ms.sourcegitcommit: bb7c2ba9f9dcae08710be2345ee6e63004629ea1
+ms.openlocfilehash: a7f9388b85b673237ca676f828fc093b01b2e69d
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88218975"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241929"
 ---
 # <a name="shuffle-query"></a>쿼리 순서 섞기
 
@@ -23,7 +23,7 @@ Kusto에서 순서 섞기를 지 원하는 연산자는 [조인](joinoperator.md
 
 쿼리 매개 변수 또는를 사용 하 여 순서 섞기 쿼리 전략을 설정 `hint.strategy = shuffle` `hint.shufflekey = <key>` 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 ```kusto
 T | where Event=="Start" | project ActivityId, Started=Timestamp
@@ -144,7 +144,7 @@ on ActivityId, numeric_column
 > [!Note]
 > 많은 파티션이 있으면 클러스터 리소스를 더 많이 사용 하 고 성능이 저하 될 수 있습니다. 대신 힌트를 사용 하 여 파티션 번호를 신중 하 게 선택 합니다. 전략 = 순서 섞기 및 파티션을 점차적으로 늘립니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 순서 섞기에서 `summarize` 성능을 크게 향상 시키는 방법을 보여 줍니다.
 

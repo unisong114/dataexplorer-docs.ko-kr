@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 autocluster 플러
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 959b11eca2dc369a3f737e01175f77ff6626f773
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 5a7caa8935176b2d4d52bf8955262509bb2069dd
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803848"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248061"
 ---
 # <a name="autocluster-plugin"></a>autocluster 플러그 인
 
@@ -21,10 +21,10 @@ ms.locfileid: "87803848"
 T | evaluate autocluster()
 ```
 
-`autocluster`데이터에서 불연속 특성 (차원)의 일반적인 패턴을 찾습니다. 그런 다음 원래 쿼리 결과를 100 또는 100,000 개 행이 든 적은 수의 패턴으로 줄입니다. 플러그 인은 오류 (예: 예외 또는 충돌)를 분석 하는 데 도움이 되도록 개발 되었지만 모든 필터링 된 데이터 집합에서 작동할 수 있습니다.
+`autocluster` 데이터에서 불연속 특성 (차원)의 일반적인 패턴을 찾습니다. 그런 다음 원래 쿼리 결과를 100 또는 100,000 개 행이 든 적은 수의 패턴으로 줄입니다. 플러그 인은 오류 (예: 예외 또는 충돌)를 분석 하는 데 도움이 되도록 개발 되었지만 모든 필터링 된 데이터 집합에서 작동할 수 있습니다.
 
 > [!NOTE]
-> `autocluster`는 주로 [불연속 특성을 사용 하는 원격 분석 데이터 마이닝 알고리즘에 대 한](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1)다음 문서의 초기값 확장 알고리즘을 기반으로 합니다. 
+> `autocluster` 는 주로 [불연속 특성을 사용 하 여 원격 분석 데이터 마이닝에 대 한 알고리즘](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1)의 Seed-Expand 알고리즘을 기반으로 합니다. 
 
 
 ## <a name="syntax"></a>구문
@@ -73,7 +73,7 @@ StormEvents
 | evaluate autocluster(0.6)
 ```
 
-|SegmentId|개수|백분율|주|EventType|피해|
+|SegmentId|개수|백분율|시스템 상태|EventType|피해|
 |---|---|---|---|---|---|---|---|---|
 |0|2278|38.7||우박|아니요
 |1|512|8.7||뇌우를 동반한 바람|YES
@@ -90,7 +90,7 @@ StormEvents
 | evaluate autocluster(0.2, '~', '~', '*')
 ```
 
-|SegmentId|개수|백분율|주|EventType|피해|
+|SegmentId|개수|백분율|시스템 상태|EventType|피해|
 |---|---|---|---|---|---|---|---|---|
 |0|2278|38.7|\*|우박|아니요
 |1|512|8.7|\*|뇌우를 동반한 바람|YES

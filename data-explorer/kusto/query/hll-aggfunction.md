@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 hll () (집계 함
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/15/2020
-ms.openlocfilehash: e602a920dd07089f688f39115805a2f99d505c9c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 4474299c804e1b54d3060d639d171652e770d989
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347564"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241618"
 ---
 # <a name="hll-aggregation-function"></a>hll () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87347564"
 
 [기본 알고리즘 (*H*yper*L*og*l*og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)에 대해 읽어 보십시오.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize hll(`*`Expr`* `[,` *`Accuracy`*`])`
 
@@ -33,7 +33,7 @@ ms.locfileid: "87347564"
   |정확도 값 |정확도  |속도  |오류  |
   |---------|---------|---------|---------|
   |`0` | lowest | 빨리 | 1.6% |
-  |`1` | 기본값  | 조정이 | 0.8% |
+  |`1` | default  | 조정이 | 0.8% |
   |`2` | high | slow | 0.4%  |
   |`3` | high | slow | 0.28% |
   |`4` | 매우 높음 | 최저 | 0.2% |
@@ -48,7 +48,7 @@ ms.locfileid: "87347564"
 
 1. 함수를 사용 하 여 [`dcount_hll`](dcount-hllfunction.md) `dcount` `hll`  /  집계 함수에서를 계산할 수 있습니다 `hll_merge` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

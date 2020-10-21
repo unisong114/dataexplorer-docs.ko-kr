@@ -4,17 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 조인 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 4952e315a974e72135c722b255a96f57bf89cc12
-ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.openlocfilehash: 8324d0c6537d6d22a2814a7aa80625278dc36aec
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058782"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92241502"
 ---
 # <a name="join-operator"></a>join 연산자
 
@@ -24,9 +25,9 @@ ms.locfileid: "86058782"
 Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
-*왼쪽 테이블* `|` `join`[*Joinparameters*] `(` *righttable* `)` `on` *특성*
+*왼쪽 테이블* `|` `join` [*Joinparameters*] `(` *righttable* `)` `on` *특성*
 
 ## <a name="arguments"></a>인수
 
@@ -38,7 +39,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
   **규칙** 은 다음 중 하나일 수 있습니다.
 
-  |규칙 종류        |Syntax          |Predicate    |
+  |규칙 종류        |구문          |Predicate    |
   |-----------------|--------------|-------------------------|
   |이름으로 같음 |*ColumnName*    |`where`*왼쪽 테이블*. *ColumnName* `==` *Righttable*. *ColumnName*|
   |값으로 같음|`$left.`*왼쪽 열* `==` `$right.` *Rightcolumn*|`where``$left.` *왼쪽* `==` 열 `$right.` *Rightcolumn*       |
@@ -91,7 +92,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 |---|---|
 |`kind=leftanti`, `kind=leftantisemi`| 오른쪽에서 일치 하는 항목이 없는 왼쪽의 모든 레코드를 반환 합니다.|
 | `kind=rightanti`, `kind=rightantisemi`| 왼쪽에서 일치 하는 항목이 없는 우변의 모든 레코드를 반환 합니다.|
-| `kind`지정 되지 않은`kind=innerunique`| `on` 키의 각 값에 대해 좌변의 한 개의 행만 일치합니다. 출력은 오른쪽부터 이 행과 행 일치 각각에 대해 한 개의 행을 포함하고 있습니다.|
+| `kind` 지정 되지 않은 `kind=innerunique`| `on` 키의 각 값에 대해 좌변의 한 개의 행만 일치합니다. 출력은 오른쪽부터 이 행과 행 일치 각각에 대해 한 개의 행을 포함하고 있습니다.|
 | `kind=leftsemi`| 오른쪽에서 일치 하는 항목이 있는 왼쪽의 모든 레코드를 반환 합니다. |
 | `kind=rightsemi`| 왼쪽에서 일치 하는 항목을 포함 하는 오른쪽의 모든 레코드를 반환 합니다. |
 |`kind=inner`| 왼쪽 및 오른쪽에서 일치 하는 행의 모든 조합에 대해 출력에 행을 포함 합니다. |
@@ -134,12 +135,12 @@ Join 연산자의 정확한 버전은 *kind* 키워드를 사용 하 여 지정 
 
 |조인 종류/버전|설명|
 |--|--|
-|[`innerunique`](#default-join-flavor)(또는 기본값으로 비어 있음)|왼쪽 중복 제거를 사용 하는 내부 조인|
+|[`innerunique`](#default-join-flavor) (또는 기본값으로 비어 있음)|왼쪽 중복 제거를 사용 하는 내부 조인|
 |[`inner`](#inner-join-flavor)|표준 내부 조인|
 |[`leftouter`](#left-outer-join-flavor)|왼쪽 우선 외부 조인|
 |[`rightouter`](#right-outer-join-flavor)|오른쪽 우선 외부 조인|
 |[`fullouter`](#full-outer-join-flavor)|완전 외부 조인|
-|[`leftanti`](#left-anti-join-flavor), [`anti`](#left-anti-join-flavor) 또는[`leftantisemi`](#left-anti-join-flavor)|왼쪽 앤티 조인|
+|[`leftanti`](#left-anti-join-flavor), [`anti`](#left-anti-join-flavor) 또는 [`leftantisemi`](#left-anti-join-flavor)|왼쪽 앤티 조인|
 |[`rightanti`](#right-anti-join-flavor) 또는 [`rightantisemi`](#right-anti-join-flavor)|오른쪽 앤티 조인|
 |[`leftsemi`](#left-semi-join-flavor)|왼쪽 세미 조인|
 |[`rightsemi`](#right-semi-join-flavor)|오른쪽 세미 조인|
@@ -158,7 +159,7 @@ X | join kind=innerunique Y on Key
 
 **테이블 X**
 
-|Key |값1
+|키 |값1
 |---|---
 |a |1
 |b |2
@@ -167,7 +168,7 @@ X | join kind=innerunique Y on Key
 
 **테이블 Y**
 
-|Key |값2
+|키 |값2
 |---|---
 |b |10
 |c |20
@@ -176,11 +177,11 @@ X | join kind=innerunique Y on Key
 
 기본 조인은 조인 키에서 왼쪽을 복제 한 후 내부 조인을 수행 합니다 (중복 제거는 첫 번째 레코드를 유지 합니다).
 
-다음 문이 제공 됩니다.`X | join Y on Key`
+다음 문이 제공 됩니다. `X | join Y on Key`
 
 조인 왼쪽에 있는 표 X는 중복 제거 후에 다음을 수행 합니다.
 
-|Key |값1
+|키 |값1
 |---|---
 |a |1
 |b |2
@@ -206,7 +207,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join Y on Key
 ```
 
-|Key|값1|Key1|값2|
+|키|값1|Key1|값2|
 |---|---|---|---|
 |b|2|b|10|
 |c|4|c|20|
@@ -237,7 +238,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=inner Y on Key
 ```
 
-|Key|값1|Key1|값2|
+|키|값1|Key1|값2|
 |---|---|---|---|
 |b|3|b|10|
 |b|2|b|10|
@@ -352,7 +353,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=leftouter Y on Key
 ```
 
-|Key|값1|Key1|값2|
+|키|값1|Key1|값2|
 |---|---|---|---|
 |b|3|b|10|
 |b|2|b|10|
@@ -382,7 +383,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=rightouter Y on Key
 ```
 
-|Key|값1|Key1|값2|
+|키|값1|Key1|값2|
 |---|---|---|---|
 |b|3|b|10|
 |b|2|b|10|
@@ -412,7 +413,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=fullouter Y on Key
 ```
 
-|Key|값1|Key1|값2|
+|키|값1|Key1|값2|
 |---|---|---|---|
 |b|3|b|10|
 |b|2|b|10|
@@ -443,7 +444,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=leftanti Y on Key
 ```
 
-|Key|값1|
+|키|값1|
 |---|---|
 |a|1|
 
@@ -472,7 +473,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=rightanti Y on Key
 ```
 
-|Key|값2|
+|키|값2|
 |---|---|
 |일|40|
 
@@ -501,7 +502,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=leftsemi Y on Key
 ```
 
-|Key|값1|
+|키|값1|
 |---|---|
 |b|3|
 |b|2|
@@ -529,7 +530,7 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=rightsemi Y on Key
 ```
 
-|Key|값2|
+|키|값2|
 |---|---|
 |b|10|
 |c|20|

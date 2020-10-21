@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기의 사용자 분석�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/17/2019
-ms.openlocfilehash: 5a9ca6259296f2fa2c5ad83622e7f3012169864e
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 63e19b00fef5361b1651bb1f1c88647ab8fd62fe
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85966978"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248356"
 ---
 # <a name="user-analytics-plugins"></a>사용자 분석 플러그 인
 
 이 섹션에서는 사용자 분석 시나리오에 대 한 Kusto 확장 (플러그 인)을 설명 합니다.
 
-|시나리오|플러그 인|설명|사용자 환경|
+|시나리오|플러그 인|세부 정보|사용자 환경|
 |--------|------|--------|-------|
 | 시간에 따른 새 사용자 수 계산 | [activity_counts_metrics](activity-counts-metrics-plugin.md)|각 기간에 대 한 개수/시간/새 개수를 반환 합니다. 각 기간 *을 이전 시간* 창과 비교 합니다.|Kusto 탐색기: 보고서 갤러리|
 | 기간 초과: 보존/변동 률 및 새 사용자 | [activity_metrics](activity-metrics-plugin.md)|`dcount`각 기간에 대 한 보존/변동 률을 반환 합니다. 각 기간을 *이전* 시간 창과 비교할 때|Kusto 탐색기: 보고서 갤러리|
