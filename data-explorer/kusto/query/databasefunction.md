@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 데이터베이스
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 6511006373cd1f6245a0dcc04537f3994183d63e
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 24abca1d6ff930796a4f57b3f21de4552405112c
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803763"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252460"
 ---
 # <a name="database-scope-function"></a>database () (범위 함수)
 

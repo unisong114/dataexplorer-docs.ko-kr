@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 activity_engage
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: cdee53ad7f46aacb71b8a8277e5b875e60438874
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: e7c968470c772e977a8bdcfc5db3e4910b117ead
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349825"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247096"
 ---
 # <a name="activity_engagement-plugin"></a>activity_engagement 플러그 인
 
@@ -25,7 +25,7 @@ activity_engagement 플러그 인은 6AU/WAU/MAU (일별/주별/월별 활동)�
 T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `activity_engagement(` *idcolumn* `,` *TimelineColumn* `,` [*Start* `,` *End* `,` ] *inneractivitywindow* `,` *OuterActivityWindow* [ `,` *dim1* `,` *dim2* `,` ...]`)`
 
@@ -51,7 +51,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 |유형: *TimelineColumn*|long|long|double|..|..|..|
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="dauwau-calculation"></a>WAU 계산
 
@@ -95,7 +95,7 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="활동 참여 (& u)":::
+:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="활동 참여 wau":::
 
 ### <a name="daumau-calculation-with-additional-dimensions"></a>추가 차원이 포함 된 AAU/MAU 계산
 
@@ -118,4 +118,4 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="활동 참여-au mau mod 3":::
+:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="활동 참여 wau":::

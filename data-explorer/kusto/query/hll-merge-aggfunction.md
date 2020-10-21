@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 hll_merge () (�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
-ms.openlocfilehash: 4681f92155181f85cad5c46ed70a79cb173d437f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a6aa19e3a88e7338494d6f6fad0e23a5ab4a03e4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347547"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252299"
 ---
 # <a name="hll_merge-aggregation-function"></a>hll_merge () (집계 함수)
 
@@ -23,7 +23,7 @@ ms.locfileid: "87347547"
 
 자세한 내용은 [기본 알고리즘 (*H*yper*L*og*l*og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)를 참조 하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``hll_merge(` *Expr*`)`
 

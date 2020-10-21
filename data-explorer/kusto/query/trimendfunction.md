@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 trim_end ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: cab78680a3b996234724bc052d75959928520289
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 6a764752f126408ceb48f1c4a1af5c74014b6eab
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87339853"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251989"
 ---
 # <a name="trim_end"></a>trim_end()
 
 지정 된 정규식의 후행 일치 항목을 제거 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `trim_end(`*regex* `,` *텍스트*`)`
 

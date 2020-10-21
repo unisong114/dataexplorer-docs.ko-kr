@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_list_with_
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/09/2020
-ms.openlocfilehash: c53faca94e273bf816abcfa34ed400708a7433a3
-ms.sourcegitcommit: 62476f682b7812cd9cff7e6958ace5636ee46755
+ms.openlocfilehash: 18d10aa15e25979c0945ec26efb8bfe9a66dfde4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169560"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252214"
 ---
 # <a name="make_list_with_nulls-aggregation-function"></a>make_list_with_nulls () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92169560"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_list_with_nulls(` *Expr*`)`
 

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 varianceif () (집
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bf1009d2d269bf21ea5ae14a9c828724d8bf8c70
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 71c80afa5a2cfe79fb17aeb610f62c3076dd5f84
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338476"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245592"
 ---
 # <a name="varianceif-aggregation-function"></a>varianceif () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87338476"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `varianceif(` *Expr* `, ` *조건자* 요약`)`
 
@@ -34,7 +34,7 @@ ms.locfileid: "87338476"
 
 *조건자* 가로 평가 되는 그룹 전체에 대 한 *Expr* 의 가변성 값 `true` 입니다.
  
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 range x from 1 to 100 step 1

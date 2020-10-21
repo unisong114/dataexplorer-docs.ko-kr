@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 current_princip
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 7fa1ad900eb91390436e88c44ad9fd7394ad087d
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a2530b93bd5102b7c21aa535eb8e7ca7c4360ddf
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348652"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252495"
 ---
 # <a name="current_principal"></a>current_principal()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87348652"
 
 쿼리를 실행 하는 현재 사용자 이름을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `current_principal()`
 

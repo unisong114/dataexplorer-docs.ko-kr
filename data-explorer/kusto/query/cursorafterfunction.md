@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 cursor_after ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 0f555cd1ebec8d95a3e7d0e46c986b04154c721e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3b1a89ab84b62241058a24573c0362f7215f82c7
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348635"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252479"
 ---
 # <a name="cursor_after"></a>cursor_after()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87348635"
 
 테이블의 레코드에 대 한 조건자를 통해 해당 수집 시간을 데이터베이스 커서와 비교할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `cursor_after``(` *RHS*`)`
 

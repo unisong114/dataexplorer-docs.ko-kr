@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 감소 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d844f693b1509a823702b12bd28b85a9f19a07bd
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 6ef5e42dc9c41426cd66dbf4d857ec0d2c32e2ae
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91102898"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252123"
 ---
 # <a name="reduce-operator"></a>reduce 연산자
 
@@ -45,7 +45,7 @@ T | reduce by LogMessage with threshold=0.1
 
 예를 들어 `reduce by city`의 결과는 포함할 수도 있습니다. 
 
-|무늬     |개수 |Representative|
+|패턴     |개수 |Representative|
 |------------|------|--------------|
 | San *      | 5182 |San Bernard   |
 | Saint *    | 2846 |세인트 루시    |
@@ -62,11 +62,11 @@ range x from 1 to 1000 step 1
 | reduce by MyText  with threshold=0.001 , characters = "X" 
 ```
 
-|무늬         |개수|Representative   |
+|패턴         |개수|Representative   |
 |----------------|-----|-----------------|
 |MachineLearning*|1000 |MachineLearningX4|
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 감소 `reduce` 하기 전에 감소 하는 열의 guid가 대체 되는 "삭제 된" 입력에 연산자를 적용 하는 방법을 보여 줍니다.
 
@@ -82,7 +82,7 @@ Trace | take 10000
 | reduce by Text with characters="-_"
 ```
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 [autocluster](./autoclusterplugin.md)
 

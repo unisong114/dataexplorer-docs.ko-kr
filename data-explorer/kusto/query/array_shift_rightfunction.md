@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 array_shift_rig
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: a38eda3fb595256527c277b12a16f359ef9eb910
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: af983f63046280d4ddd237107d1d2cf35d6cce2d
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91102706"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246998"
 ---
 # <a name="array_shift_right"></a>array_shift_right()
 
@@ -33,13 +33,13 @@ ms.locfileid: "91102706"
 
 원래 배열과 동일한 양의 요소를 포함 하는 동적 배열입니다. 각 요소는에 따라 이동 되었습니다 *`shift_count`* . 제거 된 요소 대신 추가 된 새 요소는의 값을 갖습니다 *`fill_value`* .
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * 배열을 왼쪽으로 이동 하려면 [array_shift_left ()](array_shift_leftfunction.md)를 참조 하세요.
 * 배열 오른쪽 회전의 경우 [array_rotate_right ()](array_rotate_rightfunction.md)를 참조 하세요.
 * 배열의 회전을 왼쪽으로 [array_rotate_left ()](array_rotate_leftfunction.md)를 참조 하세요.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 * 오른쪽에서 두 위치로 이동:
 

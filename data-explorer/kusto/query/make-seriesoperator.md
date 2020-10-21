@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 series 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: 56742b04386bfda9e2cdbaa40a85d2220f2373d5
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 1e39e71aa9406815338974b2da03d05315054b65
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91942355"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247362"
 ---
 # <a name="make-series-operator"></a>make-series 연산자
 
@@ -39,11 +39,11 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 * *Groupexpression:* 고유 값 집합을 제공 하는 열에 대 한 식입니다. 일반적으로 이미 제한된 값 집합을 제공하는 열 이름입니다. 
 * *MakeSeriesParameters*: *Name* `=` 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다. 
   
-  |Name           |값                                        |Description                                                                                        |
+  |Name           |값                                        |설명                                                                                        |
   |---------------|-------------------------------------|------------------------------------------------------------------------------|
   |`kind`          |`nonempty`                               |시리즈 시리즈 연산자의 입력이 비어 있는 경우 기본 결과를 생성 합니다.|                                
 
-## <a name="returns"></a>반환 값
+## <a name="returns"></a>반환
 
 입력 행은 `by` 식과 `bin_at(` *AxisColumn* `, ` *step* `, ` *시작* `)` 식의 값이 동일한 그룹으로 정렬 됩니다. 그런 다음 지정된 집계 함수를 각 그룹에 대해 계산하여 각 그룹에 대해 한 행을 생성합니다. 결과에는 `by` 열 *AxisColumn* 열과 계산 된 각 집계에 대 한 열이 하나 이상 포함 됩니다. 집계는 여러 열 또는 숫자가 아닌 결과를 지원 하지 않습니다.
 
@@ -73,12 +73,12 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|함수|Description|
+|함수|설명|
 |--------|-----------|
-|[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
+|[any()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[avg()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
 |[avgif()](avgif-aggfunction.md)|그룹의 조건자를 사용 하 여 평균을 반환 합니다.|
-|[count ()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
+|[count()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
 |[countif()](countif-aggfunction.md)|그룹의 조건자를 포함 하는 개수를 반환 합니다.|
 |[dcount()](dcount-aggfunction.md)|그룹 요소의 대략적인 고유 개수를 반환 합니다.|
 |[dcountif()](dcountif-aggfunction.md)|그룹의 조건자를 사용 하 여 대략적인 고유 카운트를 반환 합니다.|
@@ -89,11 +89,11 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
 |[sum()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
 |[sumif()](sumif-aggfunction.md)|그룹의 조건자를 사용 하 여 요소의 합계를 반환 합니다.|
-|[variance ()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
+|[variance()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
 
 ## <a name="list-of-series-analysis-functions"></a>계열 분석 함수 목록
 
-|함수|Description|
+|함수|설명|
 |--------|-----------|
 |[series_fir()](series-firfunction.md)|[유한 임펄스 응답](https://en.wikipedia.org/wiki/Finite_impulse_response) 필터 적용|
 |[series_iir()](series-iirfunction.md)|[무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터 적용|
@@ -109,7 +109,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   
 ## <a name="list-of-series-interpolation-functions"></a>계열 보간 함수 목록
 
-|함수|Description|
+|함수|설명|
 |--------|-----------|
 |[series_fill_backward()](series-fill-backwardfunction.md)|계열의 누락 값에 대 한 역방향 채우기 보간을 수행 합니다.|
 |[series_fill_const()](series-fill-constfunction.md)|계열의 누락 값을 지정 된 상수 값으로 대체 합니다.|
@@ -118,7 +118,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 * 참고: 기본적으로 보간 함수 `null` 는 누락 값으로 가정 합니다. 따라서 `default=` *double* `null` `make-series` 계열에 보간 함수를 사용 하려는 경우에 double ()을 지정 합니다. 
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
   
  지정 된 범위의 타임 스탬프를 기준으로 정렬 된 각 공급 업체의 각 과일에 대 한 숫자 및 평균 가격의 배열을 보여 주는 테이블입니다. 과일과 공급자의 각 고유 조합에 대 한 행이 출력에 있습니다. 출력 열에는 개수, 평균 및 전체 타임 라인 (2016-01-01부터 2016-01-10까지)의 과일, 공급자 및 배열이 표시 됩니다. 모든 배열은 해당 타임 스탬프를 기준으로 정렬 되며 모든 간격이 기본값으로 채워집니다 (이 예제에서는 0). 모든 다른 입력된 열은 무시됩니다.
   

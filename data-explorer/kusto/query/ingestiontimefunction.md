@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 ingestion_time 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: f40a592521082667815fe3ff38843a2376bda0aa
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: ba4429639f7c4775eab34797b7d7ff04fa247482
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347411"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252271"
 ---
 # <a name="ingestion_time"></a>ingestion_time()
 
@@ -36,7 +36,7 @@ ms.locfileid: "87347411"
 > [!NOTE]
 > 수집 프로세스를 완료 하는 데 몇 분 정도 걸릴 수 있으며 여러 수집 작업이 동시에 수행 될 수 있으므로이 함수에서 반환 되는 값은 근사값입니다. 정확히 한 번만 보장 되는 테이블의 모든 레코드를 처리 하려면 [데이터베이스 커서](../management/databasecursor.md)를 사용 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `ingestion_time()`
 

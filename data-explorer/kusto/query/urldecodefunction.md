@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 url_decode ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0019e318b90f9626d9e55a593f19526cdc7cc9c7
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: b58fea5d367cf31b495b23a09bc0a0dcb6bb95c6
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350590"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251859"
 ---
 # <a name="url_decode"></a>url_decode()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87350590"
 
 URL 디코딩 및 인코딩에 대 한 자세한 내용은 [여기](https://en.wikipedia.org/wiki/Percent-encoding)에서 찾을 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `url_decode(`*인코딩된 url*`)`
 
@@ -33,7 +33,7 @@ URL 디코딩 및 인코딩에 대 한 자세한 내용은 [여기](https://en.w
 
 일반 표현의 URL (문자열)입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 let url = @'https%3a%2f%2fwww.bing.com%2f';

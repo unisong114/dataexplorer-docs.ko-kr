@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 ()에 대해 설�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fed2a55c8fa1c7689c087ccdeaa64ff576bea401
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3224c48b963c051d0d65d27a2e64ec8317be30c3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346595"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252181"
 ---
 # <a name="not"></a>not()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87346595"
 not(false) == true
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `not(`*expr*`)`
 

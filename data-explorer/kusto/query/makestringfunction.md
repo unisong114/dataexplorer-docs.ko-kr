@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_string ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 36d31e88a89f23006dac73b92777b13db4933d06
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c8f3497e10c15bfd6df0337758d8dc3002419fa1
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346884"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252231"
 ---
 # <a name="make_string"></a>make_string()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87346884"
     
 ## <a name="syntax"></a>구문
 
-`make_string (`*Arg1*[, *argn*] ...`)`
+`make_string (`*Arg1*[, *argn*] ... `)`
 
 ## <a name="arguments"></a>인수
 

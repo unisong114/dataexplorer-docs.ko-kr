@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 변환 ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2019
-ms.openlocfilehash: d0e99048f3f1b0e3ce5c6c59a65ea645b22d15fe
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5d186172a0be1780347dbf89600c200c00687291
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87340057"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252037"
 ---
 # <a name="translate"></a>translate()
 

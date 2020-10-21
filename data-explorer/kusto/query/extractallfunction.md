@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 extract_all ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e52f90b911331bca6374318869d3f8ebf262d81f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 85c118e8cd68c52278a34080eda4936151600cd5
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348074"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247525"
 ---
 # <a name="extract_all"></a>extract_all()
 
@@ -30,10 +30,10 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 ## <a name="arguments"></a>인수
 
-|인수        |Description                                  |필수 또는 선택  |
+|인수        |설명                                  |필수 또는 선택  |
 |----------------|---------------------------------------------|----------------------|
 |regex           | [정규식](./re2.md)입니다. 식에는 캡처링 그룹이 하나 이상 있어야 하 고 캡처링 그룹은 16 개 보다 작거나 같아야 합니다.                                                         |필수              |
-|captureGroups   |추출할 캡처 그룹을 나타내는 동적 배열 상수입니다. 유효한 값은 정규식의 캡처링 그룹 수에서 1까지입니다. 명명 된 캡처 그룹도 사용할 수 있습니다 ( [예제](#examples)참조).|선택 사항         |
+|captureGroups   |추출할 캡처 그룹을 나타내는 동적 배열 상수입니다. 유효한 값은 정규식의 캡처링 그룹 수에서 1까지입니다. 명명 된 캡처 그룹도 사용할 수 있습니다 ( [예제](#examples)참조).|옵션         |
 |text            |`string`검색할입니다.                         |필수              |
 
 ## <a name="returns"></a>반환

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 datetime_part (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
-ms.openlocfilehash: c786f0edc94a9b92ca0f4484d0d71166ee699883
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: a901c7dd3c8d2011411b18faf2be33cc9434ea3f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803984"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252425"
 ---
 # <a name="datetime_part"></a>datetime_part()
 
@@ -51,7 +51,7 @@ datetime_part("Day",datetime(2015-12-14))
 추출 된 파트를 나타내는 정수입니다.
 
 > [!NOTE]
-> `week_of_year`주 번호를 나타내는 정수를 반환 합니다. 주 번호는 첫 번째 목요일을 포함 하는 1 년의 첫 번째 주에서 계산 됩니다.
+> `week_of_year` 주 번호를 나타내는 정수를 반환 합니다. 주 번호는 첫 번째 목요일을 포함 하는 1 년의 첫 번째 주에서 계산 됩니다.
 
 ## <a name="examples"></a>예
 
@@ -73,10 +73,10 @@ nanosecond = datetime_part("nanosecond", dt)
 
 ```
 
-|year|quarter|month|weekOfYear|일|dayOfYear|hour|minute|second|밀리초|microsecond|나노초|
+|연도|quarter|month|weekOfYear|일|dayOfYear|hour|minute|second|밀리초|microsecond|나노초|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |2017|4|10|44|30|303|1|2|3|765|765432|765432100|
 
 > [!NOTE]
-> `weekofyear`은 (는) 사용 되지 않는 파트의 변형입니다 `week_of_year` . `weekofyear`ISO 8601 규격이 아닙니다. 1 년의 첫 번째 주는 연도의 첫 번째 주 수요일의 주로 정의 되었습니다.
-> `week_of_year`ISO 8601 호환 됨 1 년의 첫 번째 주는 해당 연도의 첫 번째 주 목요일의 주로 정의 됩니다. [자세한 내용](https://en.wikipedia.org/wiki/ISO_8601#Week_dates)
+> `weekofyear` 은 (는) 사용 되지 않는 파트의 변형입니다 `week_of_year` . `weekofyear` ISO 8601 규격이 아닙니다. 1 년의 첫 번째 주는 연도의 첫 번째 주 수요일의 주로 정의 되었습니다.
+> `week_of_year` ISO 8601 호환 됨 1 년의 첫 번째 주는 해당 연도의 첫 번째 주 목요일의 주로 정의 됩니다. [자세한 내용](https://en.wikipedia.org/wiki/ISO_8601#Week_dates)

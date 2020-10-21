@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 미리 보기 플�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7c4ee69c4f82c25c6f4cf7d4b63ad9a659892a28
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 455ff1d4d3a42c09a39673028405d51b7acd1f5b
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87802998"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251642"
 ---
 # <a name="preview-plugin"></a>preview 플러그 인
 
@@ -36,7 +36,7 @@ T | evaluate preview(50)
   예를 들어 위의 예제 쿼리는를 실행 하는 것과 같습니다 `T | count` .
 
 > [!TIP]
-> `evaluate`이 앞에 복잡 한 필터를 포함 하는 테이블 형식 원본이 나 대부분의 원본 테이블 열을 참조 하는 필터가 있는 경우 함수를 사용 하는 것이 좋습니다 [`materialize`](materializefunction.md) . 예를 들어:
+> `evaluate`이 앞에 복잡 한 필터를 포함 하는 테이블 형식 원본이 나 대부분의 원본 테이블 열을 참조 하는 필터가 있는 경우 함수를 사용 하는 것이 좋습니다 [`materialize`](materializefunction.md) . 예:
 
 ```kusto
 let MaterializedT = materialize(T);

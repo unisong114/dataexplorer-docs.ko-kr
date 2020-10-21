@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 쿼리 매개 변�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 54c09908096f9df4ac8b568cd5e897c6e4ecc8c2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: d9c5e3b41eef933477981945b22b3aceef958dd8
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345966"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251657"
 ---
 # <a name="query-parameters-declaration-statement"></a>쿼리 매개 변수 선언문
 
@@ -34,7 +34,7 @@ Kusto에 전송 된 쿼리에는 이름 또는 값 쌍 집합이 포함 될 수 
 
 쿼리 매개 변수, 쿼리 텍스트 또는 쿼리 텍스트를 참조 하려면에서 사용 하는 쿼리 매개 변수를 먼저 선언 해야 합니다. 각 매개 변수에 대해 선언은 이름 및 스칼라 형식을 제공 합니다. 필요에 따라 매개 변수는 기본값을 가질 수도 있습니다. 요청에서 매개 변수에 대 한 구체적인 값을 제공 하지 않으면 기본값이 사용 됩니다. 그런 다음, kusto는 해당 형식에 대 한 일반적인 구문 분석 규칙에 따라 쿼리 매개 변수의 값을 구문 분석 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `declare``query_parameters` `(` *Name1* `:` *Type1* [ `=` *DefaultValue1*] [ `,` ...]`);`
 
@@ -46,7 +46,7 @@ Kusto에 전송 된 쿼리에는 이름 또는 값 쌍 집합이 포함 될 수 
 > [!NOTE]
 > [사용자 정의 함수와](functions/user-defined-functions.md)마찬가지로 형식의 쿼리 매개 변수는 `dynamic` 기본값을 가질 수 없습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 declare query_parameters(UserName:string, Password:string);

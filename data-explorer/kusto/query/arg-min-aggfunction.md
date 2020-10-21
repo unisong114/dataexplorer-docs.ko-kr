@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 arg_min () (집
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/12/2019
-ms.openlocfilehash: 33e2657f2569957002d17d7061cfec863402027e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5c3e7912839dd3258c4a3f96530fbf438bf4ef4f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349689"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245608"
 ---
 # <a name="arg_min-aggregation-function"></a>arg_min () (집계 함수)
 

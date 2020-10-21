@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 funnel_sequence
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 67a5e05a5720c8a9290523344f793c07c47c5ed2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 34159fb6d02cd30907924109c861d5e9fd963568
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347921"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252343"
 ---
 # <a name="funnel_sequence-plugin"></a>funnel_sequence 플러그 인
 
@@ -23,7 +23,7 @@ ms.locfileid: "87347921"
 T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `funnel_sequence(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
@@ -57,7 +57,7 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
     samples: `IdColumn` 행의 시퀀스에 해당 하는 id (에서)의 배열입니다 (최대 128 id가 반환 됨). 
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 
@@ -74,7 +74,7 @@ StormEvents
 
 결과에는 다음 세 개의 테이블이 포함 됩니다.
 
-* 표 #1: 시퀀스 전후에 발생 하는 모든 가능한 변형입니다. 예를 들어 두 번째 줄은 다음 시퀀스가 있는 87 다른 이벤트가 있음을 의미 합니다.`Hail` -> `Tornado` -> `Hail`
+* 표 #1: 시퀀스 전후에 발생 하는 모든 가능한 변형입니다. 예를 들어 두 번째 줄은 다음 시퀀스가 있는 87 다른 이벤트가 있음을 의미 합니다. `Hail` -> `Tornado` -> `Hail`
 
 
 |`StartTime`|`prev`|`next`|`dcount`|

@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 current_princip
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/09/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 67d589f15a414ed715a75cc1871549b06f3dba9b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 87742fd0e7678ecdc3441e0eb25c9b9acbb56804
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348669"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252505"
 ---
 # <a name="current_principal_is_member_of"></a>current_principal_is_member_of()
 
@@ -31,7 +31,7 @@ print current_principal_is_member_of(
     )
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `current_principal_is_member_of`(`*list of string literals*`)
 

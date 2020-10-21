@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 maxif () (집계 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 471ca0e3d6623b77fd2d799949bfe060643798e2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 4df30f50d82e0ad5af87acaaa88b55f151a2a77a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346816"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251716"
 ---
 # <a name="maxif-aggregation-function"></a>maxif () (집계 함수)
 
@@ -23,7 +23,7 @@ ms.locfileid: "87346816"
 
 조건자 식을 사용 하지 않고 그룹 전체에서 최대값을 반환 하는- [max ()](max-aggfunction.md) 함수를 참조 하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``maxif(` *Expr* `,` *조건자*`)`
 
@@ -36,7 +36,7 @@ ms.locfileid: "87346816"
 
 *조건자* 가로 계산 되는 그룹 전체의 *Expr* 의 최대값입니다 `true` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 range x from 1 to 100 step 1

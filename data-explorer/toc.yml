@@ -345,16 +345,14 @@
           items:
             - name: Jupyter Notebook 및 Kqlmagic에서 데이터 분석
               href: kqlmagic.md
-            - name: Azure Notebooks에서 데이터 분석
-              href: azure-notebooks.md
             - name: Azure Data Studio
               items:
                 - name: Kusto 확장 개요
                   displayName: Azure Data Studio
-                  href: 'https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json'
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context'
                 - name: Kusto 확장 사용
                   displayName: Azure Data Studio
-                  href: 'https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json'
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context'
                 - name: Kqlmagic 사용
                   displayName: Azure Data Studio
                   href: 'https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context'

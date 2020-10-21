@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 parse_path ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: e2914e913402de7442d2533cf5159c2bd30fac60
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 07224c01e1bd226575aff6555ca7cd0a82c049b2
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346306"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251670"
 ---
 # <a name="parse_path"></a>parse_path()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87346306"
 * DirectoryPath
 * DirectoryName
 * FileName
-* 내선 번호
+* 확장명
 * AlternateDataStreamName
 
 함수는 두 가지 형식의 슬래시가 있는 간단한 경로 외에도 다음과 같은 경로를 지원 합니다.
@@ -32,7 +32,7 @@ ms.locfileid: "87346306"
 * 긴 경로. 예 \\ : "? \c: ..." "
 * 대체 데이터 스트림 예: "file1.exe:file2.exe"
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `parse_path(`*path*`)`
 

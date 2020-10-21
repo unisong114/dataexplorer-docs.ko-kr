@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 bin_auto ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 6df5d9793f2d076eb8f97156e911fb49aba4cc9c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: dba71c3b9b52a4edaf3a9b1260f56fc94eb935e3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349162"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245440"
 ---
 # <a name="bin_auto"></a>bin_auto()
 
 쿼리 속성에서 제공 하는 bin 크기 및 시작 지점에 대 한 제어를 사용 하 여 값을 고정 크기 "bin"으로 내림 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `bin_auto``(` *식*`)`
 
@@ -36,7 +36,7 @@ ms.locfileid: "87349162"
 
 아래 식의 가장 가까운 배수 `query_bin_auto_at` 이며, 그 *Expression* `query_bin_auto_at` 자체로 변환 될 수 있도록 이동 했습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 set query_bin_auto_size=1h;
@@ -45,7 +45,7 @@ range Timestamp from datetime(2017-01-01 00:05) to datetime(2017-01-01 02:00) st
 | summarize count() by bin_auto(Timestamp)
 ```
 
-|Timestamp                    | count_|
+|타임스탬프                    | count_|
 |-----------------------------|-------|
 |2017-01-01 00:05:00.0000000  | 60    |
 |2017-01-01 01:05:00.0000000  | 56    |

@@ -4,24 +4,24 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 Kusto 쿼리 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
-ms.openlocfilehash: cc00da54cad69c36041e36fd60524c7e4ef0ba35
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 216d8c0eeacf6733eb1f7d4b4880bbad1d408e02
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967148"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247092"
 ---
-# <a name="sql-to-kusto-cheat-sheet"></a>SQL to Kusto 참고 자료 시트
+# <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
 Kusto는 SQL 언어의 하위 집합을 지원 합니다. 지원 되지 않는 기능의 전체 목록은 [SQL의 알려진 문제](../api/tds/sqlknownissues.md) 목록을 참조 하세요.
 
 Kusto와 상호 작용 하는 주 언어는 KQL (Kusto 쿼리 언어)입니다. 전환 및 학습 환경을 보다 쉽게 만들기 위해 Kusto를 사용 하 여 SQL 쿼리를 KQL로 변환할 수 있습니다. ' 설명 ' 동사를 접두사로 사용 하 여 Kusto에 SQL 쿼리를 보냅니다.
 
-예:
+예를 들면 다음과 같습니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -33,7 +33,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 |---|
 |StormEvents<br>| C = count () 요약<br>| 프로젝트 C|
 
-## <a name="sql-to-kusto-cheat-sheet"></a>SQL to Kusto 참고 자료 시트
+## <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
 다음 표에서는 SQL의 예제 쿼리와 그에 해당 하는 KQL를 보여 줍니다.
 

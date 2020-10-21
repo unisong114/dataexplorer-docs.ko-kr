@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 percentile_tdig
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 814124dc0ae9fa5f26a198fafc1bf1d7fd2b83e4
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7111f34fcd42e025b22960aa013310d7e4b672fd
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346204"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252176"
 ---
 # <a name="percentile_tdigest"></a>percentile_tdigest()
 
 `tdigest` [Tdigest ()](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md)에 의해 생성 된 결과에서 백분위 수 결과를 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `percentile_tdigest(`*`Expr`*`,`*Percentile1* [ `,` *typeLiteral*]`)`
 
@@ -46,7 +46,7 @@ ms.locfileid: "87346204"
 
 * 에 *`Expr`* `tdigest` 다른 형식의 함수가 포함 되어 있으면 형식을 제공 하지 않습니다. 결과는 동적 형식이 됩니다. 아래 예제를 참조하세요.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

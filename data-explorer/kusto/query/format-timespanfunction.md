@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 format_timespan
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 923008d05ebc8c51a39955e29450e55af4100941
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: ca0f0e00e54f31c5dcc29c06150b824c0988d30f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347955"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92247396"
 ---
 # <a name="format_timespan"></a>format_timespan()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87347955"
 format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `format_timespan(`*timespan* `,` *형식*`)`
 
@@ -38,7 +38,7 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 
 ## <a name="supported-formats"></a>지원되는 형식
 
-|형식 지정자   |설명    |예제
+|형식 지정자   |설명    |예
 |---|---|---
 |`d`-`dddddddd` |시간 간격의 전체 일 수입니다. 필요한 경우 0으로 채워집니다.|   15.13:45:30: d-> 15, dd-> 15, ddd-> 015
 |`f`    |시간 간격의 1/10 초입니다. |15.13:45:30.6170000 > 6, 15.13:45:30.05-> 0
@@ -68,7 +68,7 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 
 형식 지정자는 다음 구분 기호 문자를 포함할 수 있습니다.
 
-|구분 기호가|주석|
+|구분 기호가|의견|
 |---------|-------|
 |`' '`| Space|
 |`'/'`||
@@ -80,7 +80,7 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 |`'['`||
 |`']'`||
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

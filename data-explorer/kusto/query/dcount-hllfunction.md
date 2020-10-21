@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 dcount_hll ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
-ms.openlocfilehash: 2e3847f0ad6c120f076461c5b4774f60349d6125
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 743f35b6bf6d461c1d08c3082bb235b88b57ada2
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348431"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92252377"
 ---
 # <a name="dcount_hll"></a>dcount_hll()
 
@@ -21,7 +21,7 @@ Hll 또는 [hll_merge](hll-merge-aggfunction.md) [에서 생성](hll-aggfunction
 
 [기본 알고리즘 (*H*yper*L*og*l*og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)에 대해 읽어 보십시오.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `dcount_hll(`*Expr*`)`
 
@@ -33,7 +33,7 @@ Hll 또는 [hll_merge](hll-merge-aggfunction.md) [에서 생성](hll-aggfunction
 
 *Expr* 의 각 값에 대 한 고유 개수입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

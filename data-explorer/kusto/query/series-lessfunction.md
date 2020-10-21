@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_less ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: d6ed6f073b1b1aa93b5767c46459a7c8a7b4bf55
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: ccf5638c2393ca4fbd63474d93c60d96972580fd
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103528"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251539"
 ---
 # <a name="series_less"></a>series_less()
 
@@ -43,7 +43,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1, 2, 4]|[4, 2, 1]|[true, false, false]|
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 전체 계열 통계 비교는 다음을 참조 하세요.
 * [series_stats()](series-statsfunction.md)

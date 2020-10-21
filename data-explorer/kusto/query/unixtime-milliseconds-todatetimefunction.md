@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 unixtime_millis
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/25/2019
-ms.openlocfilehash: d30190f320cd728de3cfd851f763954e58abf65f
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 9f029b18a147907a9e77e5ade7a1b708d3bed877
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103476"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245650"
 ---
 # <a name="unixtime_milliseconds_todatetime"></a>unixtime_milliseconds_todatetime()
 
@@ -31,7 +31,7 @@ Unix epoch 밀리초를 UTC 날짜/시간으로 변환 합니다.
 
 성공적으로 변환 되 면 결과는 [datetime](./scalar-data-types/datetime.md) 값이 됩니다. 변환이 실패 하면 결과는 null이 됩니다.
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * [Unixtime_seconds_todatetime ()](unixtime-seconds-todatetimefunction.md)를 사용 하 여 unix epoch 초를 UTC 날짜/시간으로 변환 합니다.
 * [Unixtime_microseconds_todatetime ()](unixtime-microseconds-todatetimefunction.md)를 사용 하 여 unix epoch 마이크로초를 UTC 날짜/시간으로 변환 합니다.
