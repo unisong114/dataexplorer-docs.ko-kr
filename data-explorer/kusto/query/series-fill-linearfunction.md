@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_fill_lin
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 3fa07fee38ab42c61035f68773b603607d0aa858
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 01a2e5dfee4f68a0a5aee55946960e8cc0fd25cd
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803457"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250787"
 ---
 # <a name="series_fill_linear"></a>series_fill_linear()
 
@@ -34,7 +34,7 @@ ms.locfileid: "87803457"
 * *fill_edges*: 배열의 시작과 끝에 있는 *missing_value_placeholder* 를 가장 가까운 값으로 바꾸어야 하는지 여부를 나타내는 부울 값입니다. 기본적으로 *True* 입니다. *False*로 설정 하면 배열의 시작과 끝에 있는 *missing_value_placeholder* 유지 됩니다.
 * *constant_value*: 배열에만 관련 된 선택적 매개 변수는 모두 *null* 값으로 구성 됩니다. 이 매개 변수는 계열을 채울 상수 값을 지정 합니다. 기본값은 *0*입니다. 이 매개 변수를 `double` (*null*)로 설정 하면 *null* 값은 그대로 유지 됩니다.
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 * [시리즈](make-seriesoperator.md)를 만든 후에 보간 함수를 적용 하려면 *null* 을 기본값으로 지정 합니다. 
 

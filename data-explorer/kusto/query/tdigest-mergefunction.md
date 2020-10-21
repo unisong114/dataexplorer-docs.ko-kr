@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 tdigest_merge (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: f85c2c45ff4e69ba59f2a13313c8c2ac494c56a6
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 4b7c143d29b8a2f446f4929098e9fac4e6166796
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87340992"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250619"
 ---
 # <a name="tdigest_merge"></a>tdigest_merge()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87340992"
 
 기본 알고리즘 (T-다이제스트) 및 예상 되는 오류에 대 한 자세한 내용은 [여기](percentiles-aggfunction.md#estimation-error-in-percentiles)를 참조 하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `merge_tdigests(`*Expr1* `,` *Expr2*`, ...)`
 
@@ -35,7 +35,7 @@ ms.locfileid: "87340992"
 
 열 `*Expr1*` ,, ...을 `*Expr2*` `*ExprN*` 1로 병합 하는 결과 `tdigest` 입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

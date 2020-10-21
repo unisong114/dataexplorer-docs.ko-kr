@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 샘플을 설명 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bc28fcb860dc067d55dd2e5ce9de3f3a17b402f2
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 0db8c472ed3b23a1bf46f8fce9cbd38b0ca960b3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91942321"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251030"
 ---
 # <a name="samples"></a>샘플
 
@@ -73,7 +73,7 @@ Events
 1. 마지막으로, `project` 도 역시 활동의 기간을 표시하는 열을 추가합니다.
 
 
-|구/군/시|SessionId|StartTime|StopTime|기간|
+|구/군/시|SessionId|StartTime|StopTime|Duration|
 |---|---|---|---|---|
 |London|2817330|2015-12-09T10:12:02.32|2015-12-09T10:23:43.18|00:11:40.46|
 |맨체스터|4267667|2015-12-09T10:14:02.23|2015-12-09T10:28:31.72|00:14:29.49|
@@ -352,7 +352,7 @@ Logs
 | project Count, Pattern
 ```
 
-|개수|무늬
+|개수|패턴
 |---|---
 |7125|' RunCycleFromInterimData ' 메서드에 대 한 ExecuteAlgorithmMethod가 실패 했습니다.
 |  7125|InferenceHostService failed..System를 호출 합니다. NullReferenceException: 개체 참조가 개체의 인스턴스로 설정 되지 않았습니다.
@@ -494,7 +494,7 @@ Devices
 
 ## <a name="create-and-use-query-time-dimension-tables"></a>쿼리 시간 차원 테이블 만들기 및 사용
 
-쿼리 결과를 데이터베이스에 저장 되지 않은 임시 차원 테이블과 조인 하는 경우가 종종 있습니다. 결과가 단일 쿼리로 범위가 지정 된 테이블 인 식을 정의할 수 있습니다. 예를 들어:
+쿼리 결과를 데이터베이스에 저장 되지 않은 임시 차원 테이블과 조인 하는 경우가 종종 있습니다. 결과가 단일 쿼리로 범위가 지정 된 테이블 인 식을 정의할 수 있습니다. 예를 들면 다음과 같습니다.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -540,7 +540,7 @@ JobHistory
 
 열의 각 값에 대 한 최신 두 레코드를 반환 하는 쿼리입니다 `ID` . 여기에서 "최신"은 `timestamp` [상위 중첩 연산자](topnestedoperator.md)를 사용 하 여 "가장 높은 값을 갖는"로 정의 됩니다.
 
-예를 들어:
+예를 들면 다음과 같습니다.
 
 ```kusto
 datatable(id:string, timestamp:datetime, bla:string)           // #1

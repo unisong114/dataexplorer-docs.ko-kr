@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 검색 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: edd35e5e259666e8ce4360c072aaac6717e6f8c3
-ms.sourcegitcommit: f9d3f54114fb8fab5c487b6aea9230260b85c41d
+ms.openlocfilehash: 24e79b7feeb51a0626ed270a90c3d323fa94cbf3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85071872"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250285"
 ---
 # <a name="search-operator"></a>search 연산자
 
@@ -81,7 +81,7 @@ ms.locfileid: "85071872"
 1. `withsource=`: 출력은 항상 해당 `$table` `string` 값이 각 레코드가 검색 된 테이블 이름인 형식의 이라는 열을 포함 하 고, 원본이 테이블이 아닌 복합 식일 경우 시스템에서 생성 된 이름을 포함 합니다.
 2. `project=`, `project-smart` : 출력 스키마는 출력 스키마와 동일 합니다 `project-smart` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 // 1. Simple term search over all unrestricted tables and views of the database in scope

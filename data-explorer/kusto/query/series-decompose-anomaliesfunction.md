@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_decompos
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019
-ms.openlocfilehash: 770eded43fff091c8c500fcda59efcc2d4f95d9e
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: ded1f7ed499d0a8379fdf5b8e9949fa06351fc07
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803576"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250195"
 ---
 # <a name="series_decompose_anomalies"></a>series_decompose_anomalies()
 
@@ -63,7 +63,7 @@ ms.locfileid: "87803576"
 
 ### <a name="detect-anomalies-in-weekly-seasonality"></a>주간 계절성의 변칙 검색
 
-다음 예에서는 주간 계절성를 사용 하 여 계열을 생성 하 고 그에 대 한 이상 값을 추가 합니다. `series_decompose_anomalies`계절성를 자동으로 검색 하 고 반복 패턴을 캡처하는 기준선을 생성 합니다. 추가한 이상 값은 ad_score 구성 요소에서 명확 하 게 파악할 수 있습니다.
+다음 예에서는 주간 계절성를 사용 하 여 계열을 생성 하 고 그에 대 한 이상 값을 추가 합니다. `series_decompose_anomalies` 계절성를 자동으로 검색 하 고 반복 패턴을 캡처하는 기준선을 생성 합니다. 추가한 이상 값은 ad_score 구성 요소에서 명확 하 게 파악할 수 있습니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -99,7 +99,7 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="추세와 함께 주간 계절성 이상 값" border="false":::
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="기준선 및 이상 값을 보여 주는 주간 계절성" border="false":::
 
 다음으로 동일한 예제를 실행 하지만 계열에서 추세를 예상 하므로 `linefit` trend 매개 변수에서를 지정 합니다. 기준이 입력 계열에 훨씬 더 가깝게 표시 되는 것을 볼 수 있습니다. 모든 삽입 된 이상 값이 검색 되 고 일부 거짓 긍정도 검색 됩니다. 임계값을 조정 하는 다음 예제를 참조 하세요.
 
@@ -118,7 +118,7 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart  
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-linefit-trend.png" alt-text="Linefit 추세를 사용 하는 주간 계절성 이상" border="false":::
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-linefit-trend.png" alt-text="기준선 및 이상 값을 보여 주는 주간 계절성" border="false":::
 
 ### <a name="tweak-the-anomaly-detection-threshold"></a>변칙 검색 임계값 조정
 
@@ -139,4 +139,4 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart  
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-higher-threshold.png" alt-text="비정상 임계값이 높은 주간 시리즈 이상" border="false":::
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-higher-threshold.png" alt-text="기준선 및 이상 값을 보여 주는 주간 계절성" border="false":::

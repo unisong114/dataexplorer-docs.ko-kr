@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 부분 문자열 (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b0e83e8d0baf33e5c11cb8b7ecafa607a08fe32b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3780aac9ad2675e901ffff63a89177b478d461ea
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350862"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251388"
 ---
 # <a name="substring"></a>substring()
 
@@ -25,7 +25,7 @@ ms.locfileid: "87350862"
 substring("abcdefg", 1, 2) == "bc"
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `substring(`*원본* `,` *startingIndex* [ `,` *길이*]`)`
 
@@ -43,7 +43,7 @@ substring("abcdefg", 1, 2) == "bc"
 
 지정된 문자열에서 나온 부분 문자열입니다. 부분 문자열은 startingIndex(0 기반) 문자 위치에서 시작하며 문자열의 끝 또는 length 문자(지정된 경우)까지 계속합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 substring("123456", 1)        // 23456

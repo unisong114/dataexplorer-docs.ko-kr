@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 take operator에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a57dd8cde9ea00b0b68ae95ff557bd3b530357cc
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 5192bb2d752a5754ae36840611b9f7b0e84da256
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87804154"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250728"
 ---
 # <a name="take-operator"></a>take 연산자
 
@@ -26,7 +26,7 @@ T | take 5
 원본 데이터가 정렬 되지 않은 경우 레코드가 반환 되는 것을 보장 하지 않습니다.
 
 > [!NOTE]
-> `take`는 데이터 집합이 변경 되지 않은 경우에도 데이터를 대화형으로 검색할 때 작은 레코드 샘플을 볼 수 있는 간단 하 고 빠르고 효율적인 방법 이지만 여러 번 실행 하는 경우 결과의 일관성을 보장 하지는 않습니다.
+> `take` 는 데이터 집합이 변경 되지 않은 경우에도 데이터를 대화형으로 검색할 때 작은 레코드 샘플을 볼 수 있는 간단 하 고 빠르고 효율적인 방법 이지만 여러 번 실행 하는 경우 결과의 일관성을 보장 하지는 않습니다.
 > 쿼리에서 반환 되는 행 수가 쿼리에 의해 명시적으로 제한 되지 않더라도 (연산자 사용 안 함 `take` ) Kusto 기본적으로 해당 수를 제한 합니다. 자세한 내용은 [Kusto 쿼리 제한](../concepts/querylimits.md)을 참조 하세요.
 
 ## <a name="syntax"></a>구문

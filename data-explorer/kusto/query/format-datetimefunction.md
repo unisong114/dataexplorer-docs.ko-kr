@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 format_datetime
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d0a60a61e5319d9a190f6172b9c0bd8fb7fe1300
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: b9523bf62232c09bdb7fd45298c9430095e39363
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347972"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92244676"
 ---
 # <a name="format_datetime"></a>format_datetime()
 
@@ -38,7 +38,7 @@ format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "
 
 ## <a name="supported-formats"></a>지원되는 형식
 
-|형식 지정자   |Description    |예
+|형식 지정자   |설명    |예
 |---|---|---
 |`d`    |1부터 31까지의 일(월 기준)입니다. | 2009-06-01T13:45:30-> 1, 2009-06-15T13:45:30-> 15
 |`dd`   |01부터 31까지의 일(월 기준)입니다.| 2009-06-01T13:45:30-> 01, 2009-06-15T13:45:30-> 15
@@ -75,7 +75,7 @@ format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "
 
 형식 지정자는 다음 구분 기호 문자를 포함할 수 있습니다.
 
-|구분 기호가|설명|
+|구분 기호가|의견|
 |---------|-------|
 |`' '`| Space|
 |`'/'`||

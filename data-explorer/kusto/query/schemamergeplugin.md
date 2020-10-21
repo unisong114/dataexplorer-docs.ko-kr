@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 schema_merge �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: 2873f3d010464b82ef8cb6a9a3e09f7b0a56b8d9
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 9a6f25a7ea1c75211d043fdbca7f99c16ff98e1b
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345711"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250337"
 ---
 # <a name="schema_merge-plugin"></a>schema_merge 플러그 인
 
@@ -29,7 +29,7 @@ let Schema2=Table2 | getschema;
 union Schema1, Schema2 | evaluate schema_merge()
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `T``|` `evaluate` `schema_merge(` *PreserveOrder*`)`
 
@@ -41,7 +41,7 @@ union Schema1, Schema2 | evaluate schema_merge()
 
 `schema_merge`플러그 인은 반환 되는 연산자와 유사한 출력을 반환 [`getschema`](./getschemaoperator.md) 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 새 열이 추가 된 스키마와 병합 합니다.
 

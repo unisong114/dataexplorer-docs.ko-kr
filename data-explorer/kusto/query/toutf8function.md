@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 to_utf8 ()에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 891a2bb079136d9a7c21c1992b79e3e0eab4c970
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c47c37dbbde7bd2276f1b5788dc6eb7b062f39a3
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350675"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251269"
 ---
 # <a name="to_utf8"></a>to_utf8()
 
 입력 문자열의 유니코드 문자 (make_string의 역 작업)에 대 한 동적 배열을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `to_utf8(`*원본*`)`
 
@@ -32,7 +32,7 @@ ms.locfileid: "87350675"
 이 함수에 제공 된 문자열을 구성 하는 유니코드 문자의 동적 배열을 반환 합니다.
 참조 [`make_string()`](makestringfunction.md) )
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 print arr = to_utf8("⒦⒰⒮⒯⒪")

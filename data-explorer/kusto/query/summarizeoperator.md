@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 요약 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/20/2020
-ms.openlocfilehash: 9514f7c94568e73a704e6ba6f4bcc5bf61590d2f
-ms.sourcegitcommit: 6f610cd9c56dbfaff4eb0470ac0d1441211ae52d
+ms.openlocfilehash: 1317f9767182ad76f226fae6995763ea832cd36a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91954776"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250853"
 ---
 # <a name="summarize-operator"></a>summarize 연산자
 
@@ -59,23 +59,23 @@ T | summarize count() by price_range=bin(price, 10.0)
 
 > [!NOTE]
 > * 집계와 그룹화 식에 대해 모두 임의 식을 제공할 수 있지만 단순 열 이름을 사용하거나 `bin()`을(를) 숫자 열에 적용하는 것이 더 효율적입니다.
-> * Datetime 열에 대 한 자동 매시간 저장소는 더 이상 지원 되지 않습니다. 대신 명시적 범주화를 사용 해야 합니다. 예들 들어 `summarize by bin(timestamp, 1h)`입니다.
+> * Datetime 열에 대 한 자동 매시간 저장소는 더 이상 지원 되지 않습니다. 대신 명시적 범주화를 사용 해야 합니다. `summarize by bin(timestamp, 1h)`)을 입력합니다.
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
 |함수|설명|
 |--------|-----------|
-|[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
+|[any()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
 |[anyif()](anyif-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값 (조건자 포함)을 반환 합니다.|
 |[arg_max()](arg-max-aggfunction.md)|인수가 최대화 된 경우 하나 이상의 식을 반환 합니다.|
 |[arg_min()](arg-min-aggfunction.md)|인수가 최소화 될 때 하나 이상의 식을 반환 합니다.|
-|[avg ()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
+|[avg()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
 |[avgif()](avgif-aggfunction.md)|그룹 전체에서 평균 값 (조건자 포함)을 반환 합니다.|
 |[binary_all_and](binary-all-and-aggfunction.md)|그룹의 이진을 사용 하 여 집계 된 값을 반환 합니다. `AND`|
 |[binary_all_or](binary-all-or-aggfunction.md)|그룹의 이진을 사용 하 여 집계 된 값을 반환 합니다. `OR`|
 |[binary_all_xor](binary-all-xor-aggfunction.md)|그룹의 이진을 사용 하 여 집계 된 값을 반환 합니다. `XOR`|
 |[buildschema()](buildschema-aggfunction.md)|입력의 모든 값을 인정 하는 최소 스키마를 반환 합니다. `dynamic`|
-|[count ()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
+|[count()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
 |[countif()](countif-aggfunction.md)|그룹의 조건자를 포함 하는 개수를 반환 합니다.|
 |[dcount()](dcount-aggfunction.md)|그룹 요소의 대략적인 고유 개수를 반환 합니다.|
 |[dcountif()](dcountif-aggfunction.md)|그룹 요소의 대략적인 고유 개수 (조건자 포함)를 반환 합니다.|
@@ -94,11 +94,11 @@ T | summarize count() by price_range=bin(price, 10.0)
 |[percentiles_array ()](percentiles-aggfunction.md)|그룹의 백분위 수 근사치를 반환 합니다.|
 |[percentilesw()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
 |[percentilesw_array ()](percentiles-aggfunction.md)|그룹의 가중치가 적용 된 백분위 수 근사치를 반환 합니다.|
-|[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
+|[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
 |[stdevif()](stdevif-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다 (조건자 포함).|
-|[sum ()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
+|[sum()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
 |[sumif()](sumif-aggfunction.md)|그룹 내에 있는 요소의 합 (조건자 포함)을 반환 합니다.|
-|[variance ()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
+|[variance()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
 |[varianceif()](varianceif-aggfunction.md)|그룹 전반의 분산 (조건자 포함)을 반환 합니다.|
 
 ## <a name="aggregates-default-values"></a>기본값 집계

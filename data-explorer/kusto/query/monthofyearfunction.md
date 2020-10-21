@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 monthofyear ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: af015146bb2f07d83d4333312a96d5b80c67190a
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: bd40612236b9c9b249c9c070bc784c518be0faae
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346731"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250995"
 ---
 # <a name="monthofyear"></a>monthofyear()
 
@@ -25,7 +25,7 @@ ms.locfileid: "87346731"
 monthofyear(datetime("2015-12-14"))
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `monthofyear(`*a_date*`)`
 
@@ -35,4 +35,4 @@ monthofyear(datetime("2015-12-14"))
 
 ## <a name="returns"></a>반환
 
-`month number`지정 된 연도의입니다.
+`month number` 지정 된 연도의입니다.

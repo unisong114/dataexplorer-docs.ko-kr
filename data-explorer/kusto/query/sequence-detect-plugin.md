@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 sequence_detect
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7b4b3d2b43bea2eeb96c9bbca94131cb7887db8c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c284a1044e3e5a48cddeec352a945b48b665ce36
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250227"
 ---
 # <a name="sequence_detect-plugin"></a>sequence_detect 플러그 인
 
@@ -23,7 +23,7 @@ ms.locfileid: "87345694"
 T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 = (Col2 == 'Val2'), Dim1, Dim2)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `sequence_detect` `(` *TimelineColumn* `,` *MaxSequenceStepWindow* `,` *MaxSequenceSpan* `,` *Expr1* `,` *Expr2* `,` ..., *Dim1* `,` *Dim2* `,` ...`)`
 
@@ -44,7 +44,7 @@ T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 
 * *Expr1*_*TimelineColumn*, *Expr2*_*TimelineColumn*, ...: 시간 값이 있는 열은 각 시퀀스 단계의 타임 라인을 나타냅니다.
 * *기간*: 전체 시퀀스 시간 창
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 

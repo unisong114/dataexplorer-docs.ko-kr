@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 테이블 () (범�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: ba61537de8925b3eeaaffc8b5337e2ecfa343d88
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 80035e20110b8a1f2fb705ef73f75275f60fcdda
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87342396"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92251302"
 ---
 # <a name="table-scope-function"></a>table () (범위 함수)
 
@@ -25,7 +25,7 @@ Table () 함수는 이름을 형식의 식으로 제공 하 여 테이블을 참
 table('StormEvent')
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `table``(` *TableName* [ `,` *DataScope*가는`)`
 
@@ -55,7 +55,7 @@ table('StormEvent')
 
 ::: zone-end
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="use-table-to-access-table-of-the-current-database"></a>Table ()을 사용 하 여 현재 데이터베이스의 테이블에 액세스
 
