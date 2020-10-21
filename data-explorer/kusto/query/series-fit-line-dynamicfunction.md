@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_fit_line
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 80b54dce81799304a4297ee1192f2ee1475d2ec2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 157a9d88327cc4f35566c9e0b3890e2124098048
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351525"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242059"
 ---
 # <a name="series_fit_line_dynamic"></a>series_fit_line_dynamic()
 
@@ -29,7 +29,7 @@ ms.locfileid: "87351525"
 
 이 연산자는 [series_fit_line](series-fit-linefunction.md)와 비슷하지만,와는 달리 `series-fit-line` 동적 모음을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_fit_line_dynamic(`*.x*`)`
 
@@ -40,7 +40,7 @@ ms.locfileid: "87351525"
 > [!TIP]
 > 이 함수를 사용 하는 가장 편리한 방법은 [series](make-seriesoperator.md) 연산자의 결과에 적용 하는 것입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 make_bag () 집계
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 3258a847a526e0e3b6ac8f0186b0a1aaabc3ffe5
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 41eb9703f1718bb43b41927f9ec4d7cac52d67c4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103199"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249938"
 ---
 # <a name="make_bag-aggregation-function"></a>make_bag () (집계 함수)
 
@@ -40,11 +40,11 @@ ms.locfileid: "91103199"
 사전 값이 아닌 값을 건너뜁니다.
 키가 두 개 이상의 행에 표시 되는 경우이 키에 사용할 수 있는 값 중 임의의 값이 선택 됩니다.
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 동적 JSON 개체를 속성 모음 키를 사용 하는 열로 확장 하는 데 [bag_unpack ()](bag-unpackplugin.md) 플러그 인을 사용 합니다. 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 let T = datatable(prop:string, value:string)

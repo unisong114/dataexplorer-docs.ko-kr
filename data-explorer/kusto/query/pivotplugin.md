@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 피벗 플러그 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ed7f6f69669cd580482beb2d3debd0e5c45bf54b
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 430370404a7111f808a5d343b7fcd58c4eef0b41
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803151"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249677"
 ---
 # <a name="pivot-plugin"></a>pivot 플러그 인
 

@@ -1,19 +1,19 @@
 ---
-title: toupper() - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기에서 toupper()에 대해 설명합니다.
+title: toupper ()-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 toupper ()에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 5f1ca86d08d4fa92be0e4b036e0c05142d68fbf7
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: e542b86fe593d94091903939ec1cb1d802279466
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81505851"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243765"
 ---
 # <a name="toupper"></a>toupper()
 

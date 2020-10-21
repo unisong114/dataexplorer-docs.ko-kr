@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 확장 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 32100f6668c2fb20ae715b985b0bf3612e13e69b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0398efc3f97e9af1f994b16b91a9888fb4fcfa0b
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348159"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243324"
 ---
 # <a name="extend-operator"></a>extend 연산자
 
@@ -23,7 +23,7 @@ ms.locfileid: "87348159"
 T | extend duration = endTime - startTime
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| extend` [*columnname*  |  `(` *columnname*[ `,` ...] `)` `=` ] *식* [ `,` ...]
 

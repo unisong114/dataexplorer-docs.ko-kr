@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 bin ()에 대해 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: bb6c7c51e295f9af9d6e43a5de5936dfea13f5b6
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: 9bafeee9cec5ac81034b879f054e445d8b118dcf
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201670"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243405"
 ---
 # <a name="bin"></a>bin()
 
@@ -26,7 +26,7 @@ Null 값, null bin 크기 또는 음수 bin 크기를 반환 하면 null이 반�
 
 함수에 대 한 별칭 `floor()` 입니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `bin(`*값* `,` *roundTo*`)`
 
@@ -43,7 +43,7 @@ Null 값, null bin 크기 또는 음수 bin 크기를 반환 하면 null이 반�
 (toint((value/roundTo))) * roundTo`
 ```
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 식 | 결과
 ---|---

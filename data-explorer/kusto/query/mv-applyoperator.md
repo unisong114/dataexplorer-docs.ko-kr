@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 mv 적용 연산�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4fb1ca893f80c045432715cd99e2dc4ea3d18c2a
-ms.sourcegitcommit: 62476f682b7812cd9cff7e6958ace5636ee46755
+ms.openlocfilehash: c15b3aaf14c9f859c3d93c48406ec642897e59d4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169526"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243214"
 ---
 # <a name="mv-apply-operator"></a>mv-apply 연산자
 
@@ -57,7 +57,7 @@ T | mv-apply Metric to typeof(real) on
 
 연산자는 `mv-apply` 연산자의 일반화로 간주할 수 있습니다 [`mv-expand`](./mvexpandoperator.md) . 즉, 하위 쿼리에 프로젝션이만 포함 된 경우에는 후자를 이전에 구현할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `mv-apply` [*itemindex*] *columnstoexpand* [*rowlimit*] `on` `(` *하위 쿼리*`)`
 
@@ -162,6 +162,6 @@ _data
 |3|8|
 |4|10|
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * [mv-expand](./mvexpandoperator.md) 연산자.

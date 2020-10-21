@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_decompos
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 9ff0df578f174bc6964e39e799b91068f89a28e4
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.openlocfilehash: 2e2c2811dfa4e5b895f0c5b14a9a45b64c2a9291
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793937"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242169"
 ---
 # <a name="series_decompose"></a>series_decompose()
 
@@ -66,7 +66,7 @@ ms.locfileid: "88793937"
 
 이 메서드는 일반적으로 주기 및/또는 추세 동작에 필요한 메트릭의 시계열에 적용 됩니다. 메서드를 사용 하 여 미래 메트릭 값을 예측 하거나 비정상 값을 검색할 수 있습니다. 이 회귀 프로세스의 암시적 가정은 계절 및 추세 동작과는 달리 시계열은 추계 되 고 무작위로 분산 된다는 것입니다. 잔여 부분을 무시 하 고 계절 및 추세 구성 요소에서 향후 메트릭 값을 예측 합니다. 잔여 부분만 해당 하는 이상 값 검색을 기준으로 비정상 값을 검색 합니다. 자세한 내용은 [시계열 분해 챕터](https://otexts.com/fpp2/decomposition.html)에서 찾을 수 있습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 **주간 계절성**
 
@@ -104,7 +104,7 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose2.png" alt-text="시리즈 분해 2":::
+:::image type="content" source="images/samples/series-decompose2.png" alt-text="계열 분해 1":::
 
 다음으로 동일한 예제를 다시 실행 합니다. 계열에서 추세를 예상 하므로 `linefit` trend 매개 변수에서를 지정 합니다. 긍정 추세가 검색 되 고 기준이 입력 계열에 훨씬 더 가까운 것을 볼 수 있습니다. 잔차는 영 (0)에 가깝습니다. 차트에서 계열의 모든 구성 요소를 볼 수 있습니다.
 
@@ -121,4 +121,4 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose3.png" alt-text="계열 분해 3":::
+:::image type="content" source="images/samples/series-decompose3.png" alt-text="계열 분해 1":::

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 indexof_regex (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 85c39128eeb9b6ded38366ccd3bea228820c67a7
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 472fdea209cc416893043f15b3796862ef91fa82
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347445"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243279"
 ---
 # <a name="indexof_regex"></a>indexof_regex()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87347445"
 
 [`indexof()`](indexoffunction.md)을 참조하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `indexof_regex(`*원본* `,` *조회* `[,` *start_index* `[,` *길이* `[,` *발생*`]]])`
 
@@ -31,10 +31,10 @@ ms.locfileid: "87347445"
 |--------------|-------------------------------------------------|--------------------|
 |source        | 입력 문자열                                    |필수            |
 |조회        | 검색할 문자열                                  |필수            |
-|start_index   | 검색 시작 위치                           |선택 사항            |
-|length        | 검사할 문자 위치의 수입니다. -1은 무제한 길이를 정의 합니다. |선택 사항            |
+|start_index   | 검색 시작 위치                           |옵션            |
+|length        | 검사할 문자 위치의 수입니다. -1은 무제한 길이를 정의 합니다. |옵션            |
 |occurrence    | 패턴의 N 번째 모양에 대 한 인덱스를 찾습니다. 
-                 기본값은 1, 첫 번째 항목의 인덱스입니다. |선택 사항            |
+                 기본값은 1, 첫 번째 항목의 인덱스입니다. |옵션            |
 
 ## <a name="returns"></a>반환
 
@@ -47,7 +47,7 @@ ms.locfileid: "87347445"
      * 길이 매개 변수가-1 보다 작은 경우
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 print

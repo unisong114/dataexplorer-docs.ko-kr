@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_bag_if () 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 67e408653a4873dce3b5e8f21a91775573affbe2
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 997ba519016bf6f6774af3f305ab78515c36c4ed
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347020"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249918"
 ---
 # <a name="make_bag_if-aggregation-function"></a>make_bag_if () (집계 함수)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87347020"
 > [!NOTE]
 > [요약](summarizeoperator.md)내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_bag_if(` *Expr*, *Predicate* [ `,` *MaxSize*]`)`
 
@@ -41,7 +41,7 @@ ms.locfileid: "87347020"
 > [!NOTE]
 > [`make_bag`](./make-bag-aggfunction.md)함수는 조건자 식이 없는 make_bag_if ()와 유사 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 let T = datatable(prop:string, value:string, predicate:bool)

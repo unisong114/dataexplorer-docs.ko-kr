@@ -3,26 +3,26 @@ title: Jupyter Notebook를 사용 하 여 Azure 데이터 탐색기에서 데이
 description: 이 항목에서는 Jupyter Notebook 및 kqlmagic 확장을 사용 하 여 Azure 데이터 탐색기에서 데이터를 분석 하는 방법을 보여 줍니다.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: 9794c9448ce8f7243d328eb039e8ca4322f3b933
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.date: 10/20/2020
+ms.openlocfilehash: 3af348677bf520d1ccd78388bb6a7a30506e572d
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872967"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249993"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook 및 kqlmagic 확장을 사용 하 여 Azure에서 데이터 분석 데이터 탐색기
 
 Jupyter Notebook은 라이브 코드, 수식, 시각화 및 내레이션 텍스트를 포함하는 문서를 만들고 공유할 수 있는 오픈 소스 웹 애플리케이션입니다. 사용에는 데이터 정리 및 변환, 숫자 시뮬레이션, 통계 모델링, 데이터 시각화 및 기계 학습이 포함됩니다.
-[Jupyter Notebook](https://jupyter.org/)은 추가 명령을 지원하여 커널의 기능을 확장하는 매직 함수를 지원합니다. kqlmagic는 Jupyter Notebook에서 Python 커널의 기능을 확장 하는 명령으로, Kusto 언어 쿼리를 기본적으로 실행할 수 있습니다. 명령과 통합 된 리치 Plot.ly 라이브러리를 사용 하 여 Python 및 Kusto 쿼리 언어와 손쉽게 통합 하 여 데이터를 쿼리하고 시각화할 수 있습니다 `render` . 쿼리 실행을 위한 데이터 원본이 지원됩니다. 이러한 데이터 원본에는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure 데이터 탐색기와 Azure Monitor 로그 및 Application Insights 포함 됩니다. 또한 kqlmagic은 Azure Notebooks, Jupyter 랩 및 Visual Studio Code Jupyter 확장을 사용 합니다.
+[Jupyter Notebook](https://jupyter.org/)은 추가 명령을 지원하여 커널의 기능을 확장하는 매직 함수를 지원합니다. kqlmagic는 Jupyter Notebook에서 Python 커널의 기능을 확장 하는 명령으로, Kusto 언어 쿼리를 기본적으로 실행할 수 있습니다. 명령과 통합 된 리치 Plot.ly 라이브러리를 사용 하 여 Python 및 Kusto 쿼리 언어와 손쉽게 통합 하 여 데이터를 쿼리하고 시각화할 수 있습니다 `render` . 쿼리 실행을 위한 데이터 원본이 지원됩니다. 이러한 데이터 원본에는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure 데이터 탐색기와 Azure Monitor 로그 및 Application Insights 포함 됩니다. 또한 kqlmagic은 Azure Data Studio, Jupyter 랩 및 Visual Studio Code Jupyter 확장을 사용 합니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
-- AAD(Azure Active Directory)의 멤버인 조직 메일 계정
-- 로컬 머신에 설치된 Jupyter Notebook 또는 Azure Notebooks를 사용하고 샘플 [Azure Notebooks](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb) 복제
+- Azure Active Directory (Azure AD)의 멤버인 조직 전자 메일 계정입니다.
+- 로컬 컴퓨터에 설치 된 Jupyter Notebook [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic?view=sql-server-ver15) 사용
 
 ## <a name="install-kqlmagic-library"></a>Kqlmagic 라이브러리 설치
 
@@ -31,8 +31,6 @@ Jupyter Notebook은 라이브 코드, 수식, 시각화 및 내레이션 텍스�
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
-    > [!NOTE]
-    > Azure Notebooks를 사용 하는 경우이 단계가 필요 하지 않습니다.
 
 1. Load kqlmagic:
 
@@ -44,11 +42,15 @@ Jupyter Notebook은 라이브 코드, 수식, 시각화 및 내레이션 텍스�
     
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Azure Data Explorer 도움말 클러스터에 연결
 
-다음 명령을 사용하여 ‘도움말’ 클러스터에 호스트된 ‘샘플’ 데이터베이스에 연결합니다.**** 타사 AAD 사용자의 경우 테넌트 이름 `Microsoft.com`을 AAD 테넌트로 바꿉니다.
+다음 명령을 사용하여 ‘도움말’ 클러스터에 호스트된 ‘샘플’ 데이터베이스에 연결합니다.**** Microsoft Azure AD 않은 사용자의 경우 테 넌 트 이름을 `Microsoft.com` AZURE AD 테 넌 트로 바꿉니다.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
+
+> [!Note]
+> 고유의 ADX 클러스터를 사용하는 경우 다음과 같이 연결 문자열에서 지역을 포함해야 합니다.   
+   ```%kql azuredataexplorer://tenant="youecompany.com";code;cluster='mycluster.westus';database='mykustodb'```
 
 ## <a name="query-and-visualize"></a>쿼리 및 시각화
 
@@ -128,7 +130,7 @@ df = _kql_raw_result_.to_dataframe()
 df.head(10)
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다양한 분석 시나리오에서 많은 쿼리를 포함하고 한 쿼리의 결과를 후속 쿼리에 피드하는 재사용 가능한 Notebook을 만들 수 있습니다. 아래 예제에서는 Python 변수 `statefilter`를 사용하여 데이터를 필터링합니다.
 

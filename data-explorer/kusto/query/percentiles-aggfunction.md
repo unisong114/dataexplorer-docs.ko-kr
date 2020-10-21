@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 백분위 수 (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 0322dd6a8ba900fa4d55bea6b3568a5c42f61b52
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 6b48a962e1016b681525c9ee493a7a8a6e436395
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91942372"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249716"
 ---
 # <a name="percentile-percentiles-aggregation-function"></a>백분위 수 (), 백분위 수 () (집계 함수)
 
@@ -49,11 +49,11 @@ ms.locfileid: "91942372"
 * `*Percentile*`: 백분위 수를 지정 하는 double 상수입니다.
 * `*Dynamic array*`: 정수 또는 부동 소수점 숫자의 동적 배열에 있는 백분위 수의 목록입니다.
 
-## <a name="returns"></a>반환 값
+## <a name="returns"></a>반환
 
 그룹의 지정 된 백분위 수에 대 한 예상 값을 반환 합니다 `*Expr*` . 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 `Duration`샘플 집합의 95% 보다 크고 샘플 집합의 5% 보다 작은의 값입니다.
 
@@ -83,7 +83,7 @@ CallDetailRecords
 
 `summarize percentilesw(Duration, BucketSize, ...)`지정 된 백분위 수를 "가중치가 적용 된" 방식으로 계산 하는 데 사용 합니다. BucketSize 시간이 입력에서 반복 되는 것 처럼 지속 되는 것 처럼 각 기간 값을 실제로 처리 합니다.
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
 
 고객의 대기 시간 값은 밀리초로 설정 `{ 1, 1, 2, 2, 2, 5, 7, 7, 12, 12, 15, 15, 15, 18, 21, 22, 26, 35 }` 됩니다.
 

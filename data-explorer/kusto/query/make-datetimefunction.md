@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_datetime (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 589be4fbbc285309e86647ce8d7392840aedea0e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 09a199e907f8e09a845fa037129330a2b660187e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347003"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249840"
 ---
 # <a name="make_datetime"></a>make_datetime()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87347003"
 make_datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `make_datetime(`*년*,*월*,*일*`)`
 

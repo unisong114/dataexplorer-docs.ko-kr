@@ -4,23 +4,23 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 percentrank_tdi
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 33eb35e51f403a3c0b7a2f030604b12c705221ea
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: dd784d8968b45a735bd2df840a09c349e2fdcbd2
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346170"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249689"
 ---
 # <a name="percentrank_tdigest"></a>percentrank_tdigest()
 
 집합에 있는 값의 대략적인 순위를 계산 합니다. 여기서 rank는 집합 크기의 백분율로 표현 됩니다.
 이 함수는 백분위 수의 역함수로 볼 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `percentrank_tdigest(`*Tdigest* `,` *Expr*`)`
 
@@ -39,7 +39,7 @@ ms.locfileid: "87346170"
 
 2) 첫 번째 매개 변수는 [tdigest ()](tdigest-aggfunction.md) 또는 [tdigest_merge ()](tdigest-merge-aggfunction.md) 에서 생성 된 tdigest 여야 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 $4490 값이 인 손상 속성의 percentrank_tdigest () 가져오기 (~ 85%):
 

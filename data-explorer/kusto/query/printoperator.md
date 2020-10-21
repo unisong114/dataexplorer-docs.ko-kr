@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 인쇄 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2019
-ms.openlocfilehash: 9a5a780a6f7bdf277566d1c0421c5ca2a3a93602
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 19fa7a22a4f26d7d66a6224b4943f7ed976b531f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346068"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249587"
 ---
 # <a name="print-operator"></a>print 연산자
 
@@ -24,9 +24,9 @@ ms.locfileid: "87346068"
 print x=1, s=strcat("Hello", ", ", "World!")
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
-`print`[*ColumnName* `=` ] *ScalarExpression* [', ' ...]
+`print` [*ColumnName* `=` ] *ScalarExpression* [', ' ...]
 
 ## <a name="arguments"></a>인수
 
@@ -37,10 +37,10 @@ print x=1, s=strcat("Hello", ", ", "World!")
 
 단일 셀에 계산 된 *ScalarExpression*의 값이 있는 단일 열 단일 행 테이블입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 `print`연산자는 하나 이상의 스칼라 식을 계산 하 고 결과 값에서 단일 행 테이블을 만드는 빠른 방법으로 유용 합니다.
-예를 들어:
+예:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

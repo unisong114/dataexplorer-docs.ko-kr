@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 strcmp ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 11951195d95d956f70d4bfce32d22a9f9c73dc3d
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5c1e4cb9a4ad77d0d48f52ca7e47fc6cea06cff4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350930"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243736"
 ---
 # <a name="strcmp"></a>strcmp()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87350930"
 
 함수는 각 문자열의 첫 번째 문자 비교를 시작 합니다. 서로 같으면 문자가 다르거나 짧은 문자열의 끝에 도달할 때까지 다음 쌍으로 계속 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `strcmp(`*string1* `,` *문자열 2*`)` 
 
@@ -37,7 +37,7 @@ ms.locfileid: "87350930"
 * *0* -두 문자열의 내용이 동일 합니다.
 * *>0* -일치 하지 않는 첫 번째 문자가 문자열 2의 값 보다 큽니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```
 datatable(string1:string, string2:string)

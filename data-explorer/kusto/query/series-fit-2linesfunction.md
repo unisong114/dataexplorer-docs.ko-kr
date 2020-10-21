@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_fit_2lin
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 89e93a3c4365e0f215a797ee0b01669e6bcbdcfa
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: f056a14d7f1a88a7f4b77e01920ae2f00ae4bc45
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87343892"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242099"
 ---
 # <a name="series_fit_2lines"></a>series_fit_2lines()
 
@@ -22,7 +22,7 @@ ms.locfileid: "87343892"
 동적 숫자 배열을 포함 하는 식을 입력으로 사용 하 고 계열에서 추세 변화를 식별 하 고 수량화 하기 위해 [두 세그먼트 선형 회귀](https://en.wikipedia.org/wiki/Segmented_regression) 를 적용 합니다. 함수는 계열 인덱스를 반복 합니다. 각 반복에서 함수는 계열을 두 부분으로 분할 하 고, 각 부분에 별도의 줄 ( [series_fit_line ()](series-fit-linefunction.md)사용)을 사용 하 고, 전체 r 제곱을 계산 합니다. 가장 적합한 분할은 r 제곱을 최대화한 분할입니다. 이 함수는 해당 매개 변수를 반환합니다.
 
 
-|매개 변수  |Description  |
+|매개 변수  |설명  |
 |---------|---------|
 |`rsquare`     | [R 제곱](https://en.wikipedia.org/wiki/Coefficient_of_determination) 은 맞춤 품질의 표준 측정값입니다. [0-1] 범위의 숫자입니다. 여기서 1은 가장 적합 한 맞춤입니다. 0은 데이터가 정렬 되지 않고 어떠한 줄에도 맞지 않음을 의미 합니다.        |
 |`split_idx`     |   두 세그먼트 (0부터 시작)에 대 한 중단점의 인덱스입니다.      |

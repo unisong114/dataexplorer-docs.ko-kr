@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_periods_
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2019
-ms.openlocfilehash: 24b47981e90c15e8a0f295d845ca28a03f324a88
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: dbf87c65668289e58fab7280a4b70f04152bcba8
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351304"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242039"
 ---
 # <a name="series_periods_validate"></a>series_periods_validate()
 
@@ -27,7 +27,7 @@ ms.locfileid: "87351304"
 * *기간*: 유효성을 검사할 마침표 (입력에 제공 됨)를 포함 하는 동적 배열입니다.
 * *점수*: 0에서 1 사이의 점수를 포함 하는 동적 배열입니다. 점수는 *마침표* 배열의 해당 위치에 있는 기간의 중요도를 표시 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_periods_validate(`*x* `,` *period1* [ `,` *period2* `,` . . . ] `)`
 

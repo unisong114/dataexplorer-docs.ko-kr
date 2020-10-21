@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_decompos
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
-ms.openlocfilehash: 21a57e4c49e982fbb113917abe173f89426c74ed
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 4cf02f01504f3111050f28430de9907fb4aad18b
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345150"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92250108"
 ---
 # <a name="series_decompose_forecast"></a>series_decompose_forecast()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87345150"
 
 계열 (동적 숫자 배열)을 포함 하는 식을 입력으로 사용 하 고 마지막 끝 지점의 값을 예측 합니다. 자세한 내용은 [series_decompose](series-decomposefunction.md)를 참조 하세요.
  
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_decompose_forecast(`*계열* `,` *요소* `[,` *계절성* `,` *추세* `,` *Seasonality_threshold*`])`
 
@@ -39,7 +39,7 @@ ms.locfileid: "87345150"
     * `none`: 추세 없음 .이 구성 요소 추출을 건너뜁니다.
 * *Seasonality_threshold*: *계절성* 가 자동 검색으로 설정 된 경우 계절성 점수에 대 한 임계값입니다. 기본 점수 임계값은 `0.6` 입니다. 자세한 내용은 [series_periods_detect](series-periods-detectfunction.md)를 참조 하세요.
 
-**돌려**
+**Return**
 
  예측 계열을 포함 하는 동적 배열입니다.
 
@@ -49,7 +49,7 @@ ms.locfileid: "87345150"
 
 ## <a name="example"></a>예제
 
-다음 예에서는 주간 계절성 및 작은 상향 추세를 사용 하 여 시간별로 4 주 시리즈를 생성 합니다. 그런 다음를 사용 `make-series` 하 고 다른 빈 주를 계열에 추가 합니다. `series_decompose_forecast`는 주 (24 * 7 개 점)를 사용 하 여 호출 되 고 계절성 및 추세를 자동으로 검색 하 여 전체 5 주 기간의 예측을 생성 합니다.
+다음 예에서는 주간 계절성 및 작은 상향 추세를 사용 하 여 시간별로 4 주 시리즈를 생성 합니다. 그런 다음를 사용 `make-series` 하 고 다른 빈 주를 계열에 추가 합니다. `series_decompose_forecast` 는 주 (24 * 7 개 점)를 사용 하 여 호출 되 고 계절성 및 추세를 자동으로 검색 하 여 전체 5 주 기간의 예측을 생성 합니다.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

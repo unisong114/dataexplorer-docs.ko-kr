@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 상위 중첩 연�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 85a59adc355c3d8855c34bcf97d29d3bd6eea4a1
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: ce56040e2135a455e29a8ff0ce83d832cbf5c5f7
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803134"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243725"
 ---
 # <a name="top-nested-operator"></a>top-nested 연산자
 
@@ -28,7 +28,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 예를 들어 `top-nested` 다음 질문에 대답 하는 데 연산자를 사용할 수 있습니다. "국가, 영업 사원 및 판매 금액 등 판매 수치를 포함 하는 테이블의 경우 판매액 별 상위 5 개 국가는 무엇 인가요? 이러한 각 국가에서 상위 3 개 직원은 무엇 인가요? "
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `top-nested` *TopNestedClause2* [ `,` *TopNestedClause2*]
 
@@ -64,7 +64,7 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
    * [백분위 수 ()](percentiles-aggfunction.md)및
    * [percentilew ()](percentiles-aggfunction.md). 집계의 대 수 조합도 지원 됩니다.
 
-* `asc`또는 `desc` (기본값)을 선택 하 여 선택 항목이 실제로 집계 된 값 범위의 "아래쪽" 또는 "위쪽" 중 어디에 있는지를 제어할 수 있습니다.
+* `asc` 또는 `desc` (기본값)을 선택 하 여 선택 항목이 실제로 집계 된 값 범위의 "아래쪽" 또는 "위쪽" 중 어디에 있는지를 제어할 수 있습니다.
 
 ## <a name="returns"></a>반환
 
@@ -74,20 +74,20 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 
 * 하나의 열에 *집계* 계산 결과가 포함 됩니다 (지정 된 경우 *AggregationName* 열 이름 포함).
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 값으로 지정 되지 않은 입력 열은 *`Expr`* 출력 되지 않습니다.
 특정 수준에서 모든 값을 가져오려면 다음을 수행 하는 집계 수를 추가 합니다.
 
 * *N* 값을 생략 합니다.
-* 열 이름을 값으로 사용 합니다.*`Expr`*
+* 열 이름을 값으로 사용 합니다. *`Expr`*
 * 는를 `Ignore=max(1)` 집계로 사용 하 고 열을 무시 (또는 프로젝트) `Ignore` 합니다.
 
 집계 절 ((N1 + 1) \* (N2 + 1) ...)의 수를 사용 하 여 레코드 수가 급격 하 게 증가할 수 있습니다. \* *N* 제한이 지정 되지 않은 경우에는 레코드 증가가 훨씬 더 빨라집니다. 이 연산자는 상당한 양의 리소스를 사용할 수 있다는 것을 고려 합니다.
 
 집계 분포가 균일 하지 않은 경우 *N*을 사용 하 여 반환할 고유 값의 수를 제한 하 고 `with others=` *ConstExpr* 옵션을 사용 하 여 다른 모든 사례의 "가중치"에 대 한 표시를 가져옵니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -97,7 +97,7 @@ StormEvents
   top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -118,7 +118,7 @@ StormEvents
 
 ```
 
-|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
+|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |캔자스|87771.2355000001|사법 기관|18744.823|FT SCOTT|264.858|
 |캔자스|87771.2355000001|공용|22855.6206|BUCKLIN|488.2457|
@@ -159,7 +159,7 @@ StormEvents
 | project-away tmp
 ```
 
-|주|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
+|시스템 상태|aggregated_State|원본|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
 |---|---|---|---|---|---|---|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|뇌우를 동반한 바람|
 |캔자스|87771.2355000001|숙련된 관찰자|21279.7083|SHARON SPGS|388.7404|우박|
@@ -184,7 +184,7 @@ StormEvents
 | mv-expand EndLocations, endLocationSums, indicies
 ```
 
-|주|원본|EndLocations|endLocationSums|색인|
+|시스템 상태|원본|EndLocations|endLocationSums|색인|
 |---|---|---|---|---|
 |텍사스|숙련된 관찰자|CLAUDE|421.44|0|
 |텍사스|숙련된 관찰자|AMARILLO|316.8892|1|

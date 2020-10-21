@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 좁은 플러그 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: e597a2467da21a2c9e83aba28a1e83b242f61c75
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 5a27794647eed3e8b30533d73456a0b1fb8ccde6
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346680"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243192"
 ---
 # <a name="narrow-plugin"></a>narrow 플러그 인
 
@@ -25,11 +25,11 @@ T | evaluate narrow()
 
 `narrow`플러그 인은 가로로 스크롤할 필요 없이 넓은 테이블이 편안 하 게 표시 될 수 있도록 주로 표시를 위해 설계 되었습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `T | evaluate narrow()`
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예제에서는 Kusto 제어 명령의 출력을 쉽게 읽는 방법을 보여 줍니다 `.show diagnostics` .
 
@@ -43,8 +43,8 @@ T | evaluate narrow()
 행  | 열                              | 값
 -----|-------------------------------------|-----------------------------
 0    | I시트                           | True
-0    | IsRebalanceRequired                 | False
-0    | IsScaleOutRequired                  | False
+0    | IsRebalanceRequired                 | 거짓
+0    | IsScaleOutRequired                  | 거짓
 0    | MachinesTotal                       | 2
 0    | MachinesOffline                     | 0
 0    | NodeLastRestartedOn                 | 2017-03-14 10:59:18.9263023
@@ -62,12 +62,12 @@ T | evaluate narrow()
 0    | BuildVersion                        | 1.0.6281.19882
 0    | BuildTime                           | 2017-03-13 11:02:44.0000000
 0    | ClusterDataCapacityFactor           | 0.130552847673333
-0    | IsDataWarmingRequired               | False
+0    | IsDataWarmingRequired               | 거짓
 0    | RebalanceLastRunOn                  | 2017-03-21 09:14:53.8523455
 0    | DataWarmingLastRunOn                | 2017-03-21 09:19:54.1438800
 0    | MergesSuccessRate                   | 100
 0    | NotHealthyReason                    | n
-0    | IsAttentionRequired                 | False
+0    | IsAttentionRequired                 | 거짓
 0    | Attyonereason             | n
 0    | ProductVersion                      | KustoRelease_2017 03.13.2
 0    | FailedIngestOperations              | 0

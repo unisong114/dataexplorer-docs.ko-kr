@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 strcat_delim ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 2568196dc20042e95521ed0818bd625f3394599b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: de34f4a2f6efb3af84b61f53da8d58cb60dea7ae
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87342566"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243697"
 ---
 # <a name="strcat_delim"></a>strcat_delim()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87342566"
 
  * 인수가 문자열 형식이 아니면 문자열이 강제로 문자열로 변환 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `strcat_delim(`*delimiter*, *인수 1*, *인수 2*[, *argumentn*]`)`
 
@@ -34,7 +34,7 @@ ms.locfileid: "87342566"
 
 인수는 *구분 기호*를 사용 하 여 단일 문자열에 연결 됩니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 print st = strcat_delim('-', 1, '2', 'A', 1s)

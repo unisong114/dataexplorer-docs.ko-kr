@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 binary_not ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b0672652836edce82be0fc13cd17d6d5d6fe5b62
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: e514f8ce7ee53262c1ef82b650c7ad620151a689
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349077"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243528"
 ---
 # <a name="binary_not"></a>binary_not()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87349077"
 binary_not(x)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `binary_not(`*num1*`)`
 

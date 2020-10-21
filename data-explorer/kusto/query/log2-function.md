@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 log2 ()에 대해 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
-ms.openlocfilehash: e04d71ad0e88d42f93f9f34576c4f5f6e752ddb6
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: c5bab8e2f4106ddafc085fa35da424db60616a46
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103259"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243251"
 ---
 # <a name="log2"></a>log2()
 
@@ -32,7 +32,7 @@ ms.locfileid: "91103259"
 * 로그는 밑이 2 인 지 수 함수 (exp)의 역함수 인 상용 로그입니다.
 * `null` 인수가 음수 이거나 null 이거나 값으로 변환할 수 없는 경우 `real` 입니다. 
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * 자연 (밑수-e) [로그는 log ()](log-function.md)를 참조 하세요.
 * 일반 (밑수 10)의 경우 [log10 ()](log10-function.md)를 참조 하세요.

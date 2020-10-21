@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 hash_many ()에
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/06/2020
-ms.openlocfilehash: 3d0f389264d078d2b55ac06214bb3b820fcf7f13
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a323491a2d3c4e78684c8bcaff6de8c55573d61a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347598"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243302"
 ---
 # <a name="hash_many"></a>hash_many()
 
 여러 값의 결합 된 해시 값을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `hash_many(`*s1* `,` *s2* [ `,` *s3* ...]`)`
 
@@ -31,7 +31,7 @@ ms.locfileid: "87347598"
 
 지정 된 스칼라의 결합 된 해시 값입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
