@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a96e47eeb8c0a27ffb1f1446b68d6adc8e564e4b
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.openlocfilehash: 8f56568f87c391122b468d7f3ae8027eabe4641e
+ms.sourcegitcommit: 9dbbdf0c339f9af78d754e3fb44b9a4f2469003a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610647"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92292848"
 ---
 # <a name="kustoexplorer-installation-and-user-interface"></a>Kusto.Explorer 설치 및 사용자 인터페이스
 
@@ -26,10 +26,12 @@ Kusto.Explorer를 사용하면 다음을 수행할 수 있습니다.
 
 ## <a name="installing-kustoexplorer"></a>Kusto.Explorer 설치
 
-* [https://aka.ms/ke](https://aka.ms/ke)에서 Kusto.Explorer 도구를 다운로드 및 설치
+* 다음에서 Kusto.Explorer 도구를 다운로드 및 설치합니다.
+     * [https://aka.ms/ke](https://aka.ms/ke)(CDN 위치)
+     * [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror)(비 CDN 위치)
 
-* 대신 `https://<your_cluster>.kusto.windows.net.`에서 브라우저를 사용하여 Kusto 클러스터에 액세스합니다.
-   &lt;your_cluster&gt;를 Azure Data Explorer 클러스터 이름으로 바꿉니다.
+* 대신 `https://<your_cluster>.<region>.kusto.windows.net.`에서 브라우저를 사용하여 Kusto 클러스터에 액세스합니다.
+   &lt;your_cluster&gt;와 &lt;지역&gt;을 Azure Data Explorer 클러스터 이름과 배포 지역으로 바꿉니다.
 
 ### <a name="using-chrome-and-kustoexplorer"></a>Chrome 및 Kusto.Explorer 사용
 
@@ -63,7 +65,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="home-tab"></a>홈 탭
 
-:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Kusto Explorer 홈 탭":::
+:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Kusto Explorer 시작":::
 
 [홈] 탭에는 가장 최근에 사용한 함수가 섹션으로 구분되어 표시됩니다.
 
@@ -75,7 +77,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="query-section"></a>쿼리 섹션
 
-:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Kusto Explorer 쿼리 메뉴":::
+:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴|    동작|
 |----|----------|
@@ -84,7 +86,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="share-section"></a>공유 섹션
 
-:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Kusto Explorer 공유 메뉴":::
+:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴|    동작|
 |----|----------|
@@ -94,7 +96,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="visualizations-section"></a>시각화 섹션
 
-:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Kusto Explorer 시각화 메뉴":::
+:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴         | 동작|
 |-------------|---------|
@@ -118,7 +120,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="view-section"></a>보기 섹션
 
-:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Kusto Explorer 보기 메뉴":::
+:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴           | 동작|
 |---------------|---------|
@@ -136,7 +138,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="file-tab"></a>파일 탭
 
-:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Kusto Explorer 파일 탭":::
+:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴| 동작|
 |---------------|---------|
@@ -164,7 +166,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="connections-tab"></a>연결 탭
 
-:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer 연결 탭":::
+:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴|동작|
 |----|----------|
@@ -189,7 +191,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="view-tab"></a>보기 탭
 
-:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer 보기 탭":::
+:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴|동작|
 |----|----------|
@@ -218,7 +220,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="tools-tab"></a>도구 탭
 
-:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer 도구 탭":::
+:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴|동작|
 |----|----------|
@@ -238,7 +240,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="monitoring-tab"></a>모니터링 탭
 
-:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer 모니터링 탭":::
+:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴             | 동작|
 |-----------------|---------| 
@@ -249,7 +251,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="management-tab"></a>관리 탭
 
-:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer 관리 탭":::
+:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴             | 동작|
 |-----------------|---------|
@@ -261,7 +263,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="help-tab"></a>도움말 탭
 
-:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer 도움말 탭":::
+:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer 시작":::
 
 |메뉴             | 동작|
 |-----------------|---------|
@@ -274,7 +276,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="connections-panel"></a>연결 패널
 
-:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Kusto Explorer 연결 패널":::
+:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Kusto Explorer 시작":::
 
 [연결] 창에는 구성된 클러스터 연결이 모두 표시됩니다. 각 클러스터에 대해 저장한 데이터베이스, 테이블 및 특성(열)이 표시됩니다. 기본 패널에서 검색/쿼리에 대한 암시적 컨텍스트를 설정하는 항목을 선택하거나 항목을 두 번 클릭하여 이름을 검색/쿼리 패널에 복사합니다.
 
@@ -309,7 +311,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 >[!NOTE]
 > 사용자의 도메인 이름은 클러스터를 호스팅하는 테넌트의 도메인 이름과 반드시 같을 필요는 없습니다.
 
-:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer 고급 연결 문자열":::
+:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer 시작":::
 
 ## <a name="keyboard-shortcuts"></a>바로 가기 키
 
@@ -321,7 +323,7 @@ Kusto.Explorer는 결과 패널에서 각 행의 심각도 또는 세부 정보 
 
 출력 색 구성표를 수정하거나 이 동작을 해제하려면 **도구** 메뉴에서 **옵션** > **결과 뷰어** > **색 구성표 세부 정보 표시**를 차례로 선택합니다.
 
-:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer 색 구성표 수정":::
+:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer 시작":::
 
 ## <a name="next-steps"></a>다음 단계
 
