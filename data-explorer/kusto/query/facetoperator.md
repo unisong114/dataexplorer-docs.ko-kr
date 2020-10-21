@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 패싯 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0e5bc062b99a97b8d11c11312aac2d5829d6584b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 2398652e7cad7456d294f11353cfdfe049080503
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348023"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249061"
 ---
 # <a name="facet-operator"></a>facet 연산자
 
@@ -21,7 +21,7 @@ ms.locfileid: "87348023"
 각 테이블은 해당 열에서 사용 하는 값 목록을 지정 합니다.
 절을 사용 하 여 추가 테이블을 만들 수 있습니다 `with` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| facet by` *ColumnName* [ `, ` ...] [ `with (` *filterpipe*`)`
 

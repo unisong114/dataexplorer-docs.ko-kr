@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 row_number ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ea51e6171b8a7683a0454d177dc729ed754b8896
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 457e9445aa113e76052b9c4d96019352215d08f9
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351593"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242807"
 ---
 # <a name="row_number"></a>row_number()
 
@@ -22,7 +22,7 @@ ms.locfileid: "87351593"
 필요에 따라 행 인덱스는와 다른 값으로 시작 될 수 있습니다 `1` .
 또한 일부 제공 된 조건자에 따라 행 인덱스를 다시 설정할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `row_number``(`[*StartingIndex* [ `,` *다시 시작*]]`)`
 
@@ -33,7 +33,7 @@ ms.locfileid: "87351593"
 
 함수는 현재 행의 행 인덱스를 형식의 값으로 반환 합니다 `long` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 두 개의 열 ()이 포함 된 테이블을 반환 합니다. 첫 번째 열 ( `a` )의 값은 아래에서 사이 `10` `1` 이 고, 두 번째 열 ( `rn` )의 값은 `1` 최대입니다 `10` .
 

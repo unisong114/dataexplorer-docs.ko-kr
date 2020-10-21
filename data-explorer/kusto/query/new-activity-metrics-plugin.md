@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 new_activity_me
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: b376afda0874fdb70934ffc6861192ef9028e9aa
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 447191158ce3de69c4429b5af4a33d24150af77c
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347088"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248861"
 ---
 # <a name="new_activity_metrics-plugin"></a>new_activity_metrics 플러그 인
 
@@ -22,7 +22,7 @@ ms.locfileid: "87347088"
 T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `new_activity_metrics(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Window* [ `,` *코 호트*] [ `,` *dim1* `,` *dim2* ] `,` [ `,` *Lookback*]`)`
 
@@ -48,20 +48,20 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 |---|---|---|---|---|---|---|---|---|---|
 |유형: *TimelineColumn*|동일|long|long|double|double|double|..|..|..|
 
-* `from_TimelineColumn`-새 사용자의 코 호트. 이 레코드의 메트릭은이 기간에 처음으로 표시 된 모든 사용자를 나타냅니다. *처음 표시* 되는 결정은 분석 기간의 모든 이전 기간을 고려 합니다. 
-* `to_TimelineColumn`-비교 되는 기간입니다. 
-* `dcount_new_values`- `to_TimelineColumn` 및를 포함 하 여 이전에 *모든* 기간에 표시 되지 않은 고유 사용자 수입니다 `from_TimelineColumn` . 
-* `dcount_retained_values`에 처음으로 표시 되는 모든 새 사용자 중 `from_TimelineColumn` 에서 표시 된 고유 사용자 수입니다 `to_TimelineCoumn` .
-* `dcount_churn_values`에 처음으로 표시 되는 모든 새 사용자의 경우 `from_TimelineColumn` 에는 표시 *되지* 않은 고유한 사용자 수가 표시 `to_TimelineCoumn` 됩니다.
-* `retention_rate`- `dcount_retained_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
-* `churn_rate`- `dcount_churn_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
+* `from_TimelineColumn` -새 사용자의 코 호트. 이 레코드의 메트릭은이 기간에 처음으로 표시 된 모든 사용자를 나타냅니다. *처음 표시* 되는 결정은 분석 기간의 모든 이전 기간을 고려 합니다. 
+* `to_TimelineColumn` -비교 되는 기간입니다. 
+* `dcount_new_values` - `to_TimelineColumn` 및를 포함 하 여 이전에 *모든* 기간에 표시 되지 않은 고유 사용자 수입니다 `from_TimelineColumn` . 
+* `dcount_retained_values` 에 처음으로 표시 되는 모든 새 사용자 중 `from_TimelineColumn` 에서 표시 된 고유 사용자 수입니다 `to_TimelineCoumn` .
+* `dcount_churn_values` 에 처음으로 표시 되는 모든 새 사용자의 경우 `from_TimelineColumn` 에는 표시 *되지* 않은 고유한 사용자 수가 표시 `to_TimelineCoumn` 됩니다.
+* `retention_rate` - `dcount_retained_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
+* `churn_rate` - `dcount_churn_values` 코 호트 (에서 사용자가 처음으로 확인)의 백분율입니다 `from_TimelineColumn` .
 
 **참고**
 
 및에 대 한 정의는 `Retention Rate` `Churn Rate` [activity_metrics 플러그 인](./activity-metrics-plugin.md) 설명서의 **참고** 섹션을 참조 하세요.
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 샘플 데이터 집합은 어떤 사용자가 어떤 날짜에 표시 되는지 보여 줍니다. 테이블은 다음과 같이 원본 테이블을 기반으로 생성 되었습니다 `Users` . 
 
@@ -69,7 +69,7 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Timestamp asc;
 ```
 
-|Timestamp|set_user|
+|타임스탬프|set_user|
 |---|---|
 |2019-11-01 00:00:00.0000000|[0, 2, 3, 4]|
 |2019-11-02 00:00:00.0000000|[0, 1, 3, 4, 5]|
@@ -104,15 +104,15 @@ Users
 다음은 출력에서 몇 가지 레코드를 분석 한 것입니다. 
 * 레코드 `R=3` , `from_TimelineColumn`  =  `2019-11-01` , `to_TimelineColumn`  =  `2019-11-03` :
     * 이 레코드를 고려 하는 사용자는 모두 11/1에 표시 되는 모든 새 사용자입니다. 이것은 첫 번째 기간 이므로 해당 bin의 모든 사용자-[0, 2, 3, 4]입니다.
-    * `dcount_new_values`– 11/1에 표시 되지 않은 11/3 사용자의 수입니다. 여기에는 단일 사용자 ()가 포함 됩니다 `5` . 
-    * `dcount_retained_values`-11/1에 대 한 모든 새 사용자 중에서 11/3까지 보존 된 수는 얼마 인가요? 3 ( `[0,2,4]` )이 있고,는 `count_churn_values` 1 (사용자 = `3` )입니다. 
-    * `retention_rate`= 0.75 – 처음에는 11/1에 표시 된 사용자 4 명에 게 보존 된 세 사용자가 있습니다. 
+    * `dcount_new_values` – 11/1에 표시 되지 않은 11/3 사용자의 수입니다. 여기에는 단일 사용자 ()가 포함 됩니다 `5` . 
+    * `dcount_retained_values` -11/1에 대 한 모든 새 사용자 중에서 11/3까지 보존 된 수는 얼마 인가요? 3 ( `[0,2,4]` )이 있고,는 `count_churn_values` 1 (사용자 = `3` )입니다. 
+    * `retention_rate` = 0.75 – 처음에는 11/1에 표시 된 사용자 4 명에 게 보존 된 세 사용자가 있습니다. 
 
 * 레코드 `R=9` , `from_TimelineColumn`  =  `2019-11-02` , `to_TimelineColumn`  =  `2019-11-04` :
     * 이 레코드는 11/2 – 사용자 및에 처음으로 표시 된 새 사용자를 중심으로 설명 `1` `5` 합니다. 
-    * `dcount_new_values`– 모든 기간 동안 표시 되지 않은 11/4의 사용자 수입니다 `T0 .. from_Timestamp` . 즉, 11/4에는 있지만 11/1 또는 11/2에는 표시 되지 않은 사용자는 해당 사용자가 없습니다. 
-    * `dcount_retained_values`-11/2 ()의 모든 새 사용자 중 `[1,5]` 에서 11/4까지 유지 된 수는 얼마 인가요? 이러한 사용자 ()는 하나 `[1]` 이며 count_churn_values (사용자 `5` )입니다. 
-    * `retention_rate`0.5 – 11/2의 새 두 항목 중 11/4에 보존 된 단일 사용자입니다. 
+    * `dcount_new_values` – 모든 기간 동안 표시 되지 않은 11/4의 사용자 수입니다 `T0 .. from_Timestamp` . 즉, 11/4에는 있지만 11/1 또는 11/2에는 표시 되지 않은 사용자는 해당 사용자가 없습니다. 
+    * `dcount_retained_values` -11/2 ()의 모든 새 사용자 중 `[1,5]` 에서 11/4까지 유지 된 수는 얼마 인가요? 이러한 사용자 ()는 하나 `[1]` 이며 count_churn_values (사용자 `5` )입니다. 
+    * `retention_rate` 0.5 – 11/2의 새 두 항목 중 11/4에 보존 된 단일 사용자입니다. 
 
 
 ### <a name="weekly-retention-rate-and-churn-rate-single-week"></a>주간 보존 률 및 변동 률 (1 주)

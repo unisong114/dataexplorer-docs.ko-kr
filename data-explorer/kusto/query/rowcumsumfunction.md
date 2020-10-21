@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 row_cumsum ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 83dc48589fce7332c8e24d1e5a47c75a6cfca608
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 6ad1df20972238bee17217f5d9de19a020b4cbce
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345728"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242851"
 ---
 # <a name="row_cumsum"></a>row_cumsum()
 
 [직렬화 된 행 집합](./windowsfunctions.md#serialized-row-set)에 있는 열의 누적 합계를 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `row_cumsum``(` *용어* [ `,` *다시 시작*]`)`
 
@@ -31,7 +31,7 @@ ms.locfileid: "87345728"
 
 함수는 인수의 누적 합계를 반환 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예제에서는 처음 몇 개의 짝수 정수의 누적 합계를 계산 하는 방법을 보여 줍니다.
 

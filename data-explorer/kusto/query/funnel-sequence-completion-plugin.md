@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 funnel_sequence
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/16/2020
-ms.openlocfilehash: 3511d15ebf0f5e3708deeeed981a8a6808da2e48
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: cd4d0d07c191d70951c4cfafb549a2bc31f5d153
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347938"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249045"
 ---
 # <a name="funnel_sequence_completion-plugin"></a>funnel_sequence_completion 플러그 인
 
@@ -23,7 +23,7 @@ ms.locfileid: "87347938"
 T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| evaluate` `funnel_sequence_completion(` *idcolumn* `,` *TimelineColumn* `,` *Start* `,` *End* `,` *Step* `,` *StateColumn* `,` *Sequence* `,` *MaxSequenceStepWindows*`)`
 
@@ -48,7 +48,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 * `Period`: 깔때기형 시퀀스의 단계를 완료 하는 데 허용 되는 최대 기간 (기간)으로 시퀀스의 첫 번째 단계에서 측정 됩니다. *MaxSequenceStepWindows* 의 각 값은 별도의 기간을 사용 하 여 깔때기형 분석을 생성 합니다. 
 * `dcount`: `IdColumn` 첫 번째 시퀀스 상태에서 값으로 전환 된의 고유 카운트 기간입니다 `StateColumn` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="exploring-storm-events"></a>스톰 이벤트 탐색 
 

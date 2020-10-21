@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 countof)에 대해
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d4d4ac00ad05d62f95901c24ea91af8cace0322e
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.openlocfilehash: 5204aff94f2fd6e6c824f66bdc30000b46c05501
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610538"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249243"
 ---
 # <a name="countof"></a>countof()
 
@@ -38,7 +38,7 @@ countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
 
 검색 문자열이 컨테이너에서 일치시킬 수 있는 횟수입니다. 일반 문자열 일치는 겹칠 수 있으며, 정규식 일치는 겹칠 수 없습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 |함수 호출|결과|
 |---|---

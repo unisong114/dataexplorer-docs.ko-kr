@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 샘플 고유 연�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 3cb1de08604964d4d71c5868ef7564c728b1f2c4
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: cfd8385a5dc8f959e1fe195bfe333a6868f55cb4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351542"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242737"
 ---
 # <a name="sample-distinct-operator"></a>sample-distinct 연산자
 
@@ -25,7 +25,7 @@ ms.locfileid: "87351542"
 T | sample-distinct 5 of DeviceId
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| sample-distinct` *numberofvalues* `of` *ColumnName*
 
@@ -40,7 +40,7 @@ T | sample-distinct 5 of DeviceId
 
  특정 열 값이 아닌 데이터 행을 샘플링 하려면 [sample 연산자](sampleoperator.md) 를 참조 하세요.
 
-## <a name="examples"></a>예제  
+## <a name="examples"></a>예  
 
 모집단에서 10 개의 고유 값 가져오기
 

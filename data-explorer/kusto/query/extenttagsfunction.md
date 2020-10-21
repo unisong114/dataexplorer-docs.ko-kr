@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 extent_tags ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: f745d9cb180842e86c184a24ed24c4e2f024f129
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: da705d558a09bdcc52bf07fc807e53fdccb9396c
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348125"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249090"
 ---
 # <a name="extent_tags"></a>extent_tags()
 
@@ -25,7 +25,7 @@ ms.locfileid: "87348125"
 
 데이터 분할 된 데이터에 연결 되지 않은 계산 된 데이터에이 함수를 적용 하면 빈 값이 반환 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `extent_tags()`
 
@@ -33,7 +33,7 @@ ms.locfileid: "87348125"
 
 `dynamic`현재 레코드의 범위 태그를 포함 하는 배열 또는 빈 값 형식의 값입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 1 시간 전에 레코드를 포함 하는 모든 데이터 분할의 태그를 열에 대 한 특정 값으로 나열 하는 방법을 보여 줍니다 `ActivityId` . 일부 쿼리 연산자 (여기서는 `where` 연산자 이지만 및의 경우에도 해당 됨 `extend` )는 레코드를 호스트 하는 데이터 분할 된 `project` 데이터에 대 한 정보를 유지 하는 것을 보여 줍니다.
 

@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 렌더링 연산�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/29/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 5485088ba8dd4e348733c9d8e14e2dc54dd2c858
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: 069733d2215257106ede58f4fd6e4f2a923a8982
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452836"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243124"
 ---
 # <a name="render-operator"></a>render 연산자
 
@@ -110,7 +110,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 ::: zone-end
 
 일부 시각화는 속성을 제공 하 여 보다 구체화 될 수 있습니다 `kind` .
-해당 경고는 다음과 같습니다.
+이러한 항목은 다음과 같습니다.
 
 |*시각화*|`kind`             |설명                        |
 |---------------|-------------------|-----------------------------------|
@@ -170,6 +170,6 @@ range x from -2 to 2 step 0.1
 
 [자습서의 렌더링 예제](./tutorial.md#render-display-a-chart-or-table)
 
-[이상 감지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
+[변칙 검색](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
 
 ::: zone-end

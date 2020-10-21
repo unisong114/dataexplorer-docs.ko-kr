@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 notbetween 연산�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 3ae821e76c78f8beba465651ffc759bfefdfa001
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7dd8f04010cbc10afa34fa8b27e6be8d31feae9d
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346612"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248706"
 ---
 # <a name="not-between-operator-between"></a>not-between 연산자(!between)
 
@@ -24,9 +24,9 @@ Table1 | where Num1 !between (1 .. 10)
 Table1 | where Time !between (datetime(2017-01-01) .. datetime(2017-01-01))
 ```
 
-`!between`는 임의의 숫자, datetime 또는 timespan 식에 대해 작동할 수 있습니다.
+`!between` 는 임의의 숫자, datetime 또는 timespan 식에 대해 작동할 수 있습니다.
  
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `|` `where` *expr* `!between` `(` *leftRange* ` .. ` *rightRange*`)`   
  
@@ -45,7 +45,7 @@ Table1 | where Time !between (datetime(2017-01-01) .. datetime(2017-01-01))
 
 ( *T* *Expr*  <  *leftRange* 또는 *expr*  >  *rightRange*)의 조건자가로 계산 되는 T의 행 `true` 입니다.
 
-## <a name="examples"></a>예제  
+## <a name="examples"></a>예  
 
 **'! Between ' 연산자를 사용 하 여 숫자 값 필터링**  
 

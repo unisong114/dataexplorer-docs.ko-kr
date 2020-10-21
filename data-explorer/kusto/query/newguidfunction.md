@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 new_guid ()에 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 1f4e4245ddd49d2340eab5a118e5ac94be1b4f77
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7e40f097d04bcc3fad8abf70c9af57b7efc53e4d
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346646"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248744"
 ---
 # <a name="new_guid"></a>new_guid()
 
@@ -23,6 +23,6 @@ ms.locfileid: "87346646"
 new_guid()
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
-* `new_guid()`-형식의 새 값을 생성 `guid` 합니다.
+* `new_guid()` -형식의 새 값을 생성 `guid` 합니다.

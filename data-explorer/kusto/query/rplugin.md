@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 R 플러그 인 (�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 429140a1ae74dc0d7189e4b8dec1a32428fe3bb3
-ms.sourcegitcommit: 7dd20592bf0e08f8b05bd32dc9de8461d89cff14
+ms.openlocfilehash: ae8a82253dfd17b7d3667cd4c72648df0c42658a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85902144"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242784"
 ---
 # <a name="r-plugin-preview"></a>R 플러그 인 (미리 보기)
 
@@ -88,7 +88,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     * 또한 [partition 연산자](partitionoperator.md) 를 사용 하 여 입력 데이터 집합을 분할할 수 있습니다.
 * 가능 하면 Kusto 쿼리 언어를 사용 하 여 R 스크립트의 논리를 구현 합니다.
 
-    예를 들어:
+    예를 들면 다음과 같습니다.
 
     ```kusto    
     .show operations
@@ -109,7 +109,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     * R `"` 스크립트에서 r 문자열 리터럴에 큰따옴표 문자 ()를 사용 합니다.
 * 외부 [데이터 연산자](externaldata-operator.md) 를 사용 하 여 Azure blob storage 또는 공용 GitHub 리포지토리와 같은 외부 위치에 저장 한 스크립트의 콘텐츠를 가져올 수 있습니다.
   
-  예를 들어:
+  예를 들면 다음과 같습니다.
 
     ```kusto
     let script = 

@@ -4,23 +4,23 @@ description: 이 문서에서는 Azure 데이터 탐색기의 역방향 ()에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: fa87dae85b158e162cea90c276057abb210ea23b
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: dc348643ff6e098b2291e69d68ca817c1f5af9c2
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345779"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92243007"
 ---
 # <a name="reverse"></a>reverse()
 
 함수는 입력 문자열의 순서를 반대로 바꿉니다.
 입력 값이 형식이 아닌 경우 `string` 함수는 값을 강제로 형식으로 캐스팅 합니다 `string` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `reverse(`*원본*`)`
 
@@ -32,7 +32,7 @@ ms.locfileid: "87345779"
 
 문자열 값의 반대 순서입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

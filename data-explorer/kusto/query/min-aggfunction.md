@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 min () (집계 함
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/24/2019
-ms.openlocfilehash: c7b3b189a85f46cb577c37a956c35bc755321d68
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c6cd5b219b1f89e68d34b37b21135e5ec02d6ee8
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346782"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248944"
 ---
 # <a name="min-aggregation-function"></a>min () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87346782"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``min(` *Expr*`)`
 

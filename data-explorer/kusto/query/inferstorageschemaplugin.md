@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 infer_storage_s
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: f5ad4cdc2b74ddb62a4572249bb06fab6c656243
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3c3aa61bdb804d2a1bd6735ea4a22e06e1f1878e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347428"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249003"
 ---
 # <a name="infer_storage_schema-plugin"></a>infer_storage_schema 플러그 인
 
@@ -30,7 +30,7 @@ let options = dynamic({
 evaluate infer_storage_schema(options)
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `evaluate` `infer_storage_schema(` *옵션* `)`
 

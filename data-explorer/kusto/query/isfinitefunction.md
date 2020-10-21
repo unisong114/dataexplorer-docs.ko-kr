@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 isfinite ()에 대
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: d1f70675a1f455c6cd0c392483eb574867088394
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: b428d43afd7984bbcf19351da702517a3a1244a9
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103280"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242316"
 ---
 # <a name="isfinite"></a>isfinite()
 
@@ -31,7 +31,7 @@ ms.locfileid: "91103280"
 
 X가 유한 하면 0이 아닌 값 (true)입니다. 그렇지 않으면 0 (false)입니다.
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * 값이 null 인지 확인 하려면 [isnull ()](isnullfunction.md)을 참조 하세요.
 * 값이 무한 인지 확인 하려면 [isinf ()](isinffunction.md)를 참조 하세요.

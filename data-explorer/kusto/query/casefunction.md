@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 사례 ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 087ff2fc38f3b72e4abdbb86ce4b7ac98a5569e6
-ms.sourcegitcommit: d0f8d71261f8f01e7676abc77283f87fc450c7b1
+ms.openlocfilehash: 809c11f337db86e9b9bdfbd93439e5f743008c38
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91765364"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92249320"
 ---
 # <a name="case"></a>case()
 
@@ -37,7 +37,7 @@ ms.locfileid: "91765364"
 
 *Predicate_i* 가로 계산 되는 첫 번째 *then_i* 의 값 `true` 또는 조건자가 모두 충족 되지 않는 경우 *else* 의 값입니다.
 
-## <a name="example"></a>예제: 
+## <a name="example"></a>예제
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

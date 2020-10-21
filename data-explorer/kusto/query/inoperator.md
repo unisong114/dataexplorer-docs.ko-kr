@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 및 notin 연산�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: a6551ee2d4ac01d6d896cc8daff466f3c4a7852e
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 52e26bb5564079de56817e75a203a400ef7f1a50
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803967"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248985"
 ---
 # <a name="in-and-in-operators"></a>in 및 !in 연산자
 
@@ -157,7 +157,7 @@ Lightning_By_State
 | summarize sum(lightning_events) by State 
 ```
 
-| 주     | sum_lightning_events |
+| 시스템 상태     | sum_lightning_events |
 |-----------|----------------------|
 | ALABAMA   | 29                   |
 | 위스콘신 | 31                   |
@@ -185,6 +185,6 @@ StormEvents | where State in (InterestingStates()) | count
 .show function InterestingStates
 ```
 
-|이름|매개 변수|본문|폴더|DocString|
+|Name|매개 변수|본문|폴더|DocString|
 |---|---|---|---|---|
 |InterestingStates|()|{dynamic (["워싱턴", "플로리다", "그루지야", "뉴욕"])}}

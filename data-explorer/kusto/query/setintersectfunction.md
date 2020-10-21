@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 set_intersect (
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/02/2019
-ms.openlocfilehash: 709da983599b4e8b0c8b06cf7bff4276ba03b5cf
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 682cff2dc5a4334a4543767048429b1ea04dc329
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351168"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242437"
 ---
 # <a name="set_intersect"></a>set_intersect()
 
 `dynamic`모든 배열 (arr1 ∩ arr2 ∩ ...)에 있는 모든 고유 값 집합의 배열을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `set_intersect(`*arr1* `, ` *arr2* `[` ,` *arr3*, ...])`
 

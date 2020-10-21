@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 row_window_sess
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: ce8da96733dd483b8600c7cfb3618ed986e9d2b0
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: f872004a8291adc95f594c6301075faa02c8ec6c
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351559"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92242869"
 ---
 # <a name="row_window_session"></a>row_window_session()
 
 `row_window_session()`[serialize 된 행 집합](./windowsfunctions.md#serialized-row-set)에서 열의 세션 시작 값을 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `row_window_session` `(` *`Expr`* `,` *`MaxDistanceFromFirst`* `,` *`MaxDistanceBetweenNeighbors`* [`,` *`Restart`*] `)`
 
@@ -57,7 +57,7 @@ ms.locfileid: "87351559"
 
 * 의 값이와 *`Expr`* 같거나 이전 값을 더한 값 보다 큰 경우 *`Expr`* *`MaxDistanceBetweenNeighbors`*
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 다음 예에서는 `ID` 시퀀스를 식별 하는 열과 `Timestamp` 각 레코드가 발생 한 시간을 제공 하는 열이 있는 테이블에 대 한 세션 시작 값을 계산 하는 방법을 보여 줍니다. 이 예제에서 세션은 1 시간을 초과할 수 없으며 레코드가 5 분 미만인 경우 계속 됩니다.
 

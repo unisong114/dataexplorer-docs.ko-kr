@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 다음 ()에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a265d536f655df3086ece1b9953eaade4717781c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: ca9361c0a43a2881f7448312e4f8a5129426e55a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346629"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92248739"
 ---
 # <a name="next"></a>next()
 
@@ -36,7 +36,7 @@ ms.locfileid: "87346629"
 * `default_value`: 값을 가져올 다음 행이 없는 경우 사용 되는 기본값입니다. 기본값을 지정 하지 않으면 null이 사용 됩니다.
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 ```kusto
 Table | serialize | extend nextA = next(A,1)
 | extend diff = A - nextA
