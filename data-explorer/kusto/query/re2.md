@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 정규식에 대�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 6bdf666b46adea8105b61fc2b907fc060530ba96
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 1923b46aa7ec7176d2a41181326d32a2214f00c4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967590"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92244829"
 ---
 # <a name="re2-syntax"></a>RE2 구문
 

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_not_equa
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 579cc4a7b86340b7e2df3e47482406ce7d31e388
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: c55cd4c4846f568dccc7f17e11e024f97c87f14b
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103556"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246049"
 ---
 # <a name="series_not_equals"></a>series_not_equals()
 
@@ -43,7 +43,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1, 2, 4]|[4, 2, 1]|[true, false, true]|
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 전체 계열 통계 비교는 다음을 참조 하세요.
 * [series_stats()](series-statsfunction.md)

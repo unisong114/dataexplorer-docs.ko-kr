@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_set_if () 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 262676e2ee40b619c4984a23c23818c493aad47a
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 8fd126728c93cfdfca677c059c338c9fd8f7a155
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103048"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246329"
 ---
 # <a name="make_set_if-aggregation-function"></a>make_set_if () (집계 함수)
 
@@ -39,7 +39,7 @@ ms.locfileid: "91103048"
 > [!TIP]
 > 고유 값만 계산 하려면 [dcountif ()](dcountif-aggfunction.md) 를 사용 합니다.
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 [`make_set`](./makeset-aggfunction.md) 조건자 식 없이 동일 하 게 작동 하는 함수입니다.
 

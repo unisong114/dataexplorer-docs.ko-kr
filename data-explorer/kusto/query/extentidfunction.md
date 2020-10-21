@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 extent_id ()에
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 22f1b36b851c6e629abd2524feb4c40c74bbb1fa
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: eb1984ba80b5d2940591428fea4b1f6c3982f9d9
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348142"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246634"
 ---
 # <a name="extent_id"></a>extent_id()
 
@@ -25,7 +25,7 @@ ms.locfileid: "87348142"
 
 데이터 분할 된 데이터에 연결 되지 않은 계산 된 데이터에이 함수를 적용 하면 빈 guid (모두 0)가 반환 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `extent_id()`
 

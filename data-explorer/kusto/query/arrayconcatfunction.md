@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 array_concat ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: ecaca4aea221ca2b880b798757de64787901a0cb
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 4c8e2da4d2ba4ed205987b5a1d063ac2e75ed289
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349604"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246914"
 ---
 # <a name="array_concat"></a>array_concat()
 
 여러 동적 배열을 단일 배열에 연결 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `array_concat(`*arr1* `[` , ` *arr2*, ...]` ) '
 

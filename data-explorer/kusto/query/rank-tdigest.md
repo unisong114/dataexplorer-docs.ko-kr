@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 rank_tdigest ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-ms.openlocfilehash: 143257a586bb951caeb116882551e55f89c8636e
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: bc0fff9d70c8260781332be61c701aaaca364555
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87345881"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92244849"
 ---
 # <a name="rank_tdigest"></a>rank_tdigest()
 
 집합에 있는 값의 대략적인 순위를 계산 합니다. `v`집합의 값 순위 `S` 는 보다 작거나 같은의 멤버 수로 정의 되며 `S` `v` 는로 `S` 표시 됩니다 `tdigest` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `rank_tdigest(`*`TDigest`*`,` *`Expr`*`)`
 
@@ -36,7 +36,7 @@ ms.locfileid: "87345881"
 
 1) 순위를 가져오려는 값은와 같은 형식 이어야 합니다 `tdigest` .
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 정렬 된 목록 (1-1000)에서 685의 순위는 인덱스입니다.
 

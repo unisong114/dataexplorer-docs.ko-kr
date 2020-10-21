@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 parse_json ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: abe49795b7b997abf677fd0fafff10ae38787f44
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 0f49ee6763d4afadf12e9e008bd7ea8e61c49acc
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346340"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246097"
 ---
 # <a name="parse_json"></a>parse_json()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87346340"
 
 JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우이 함수는 [extractjson () 함수](./extractjsonfunction.md) 보다 낫습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `parse_json(`*json*`)`
 

@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 union 연산자에
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 4995c989b04df5dd66e20e3405b5fb7da7c739ce
-ms.sourcegitcommit: 6f610cd9c56dbfaff4eb0470ac0d1441211ae52d
+ms.openlocfilehash: b3b7d571662d8a9ed0fd592547f32a131d26e277
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91954708"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245739"
 ---
 # <a name="union-operator"></a>union 연산자
 

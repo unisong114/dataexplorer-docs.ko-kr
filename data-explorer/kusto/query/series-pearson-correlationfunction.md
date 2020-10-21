@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_pearson_
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/31/2019
-ms.openlocfilehash: 3b65dff40e644852555465fe6ce07ed94c4920ea
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: aa75e3cb2f2aefbc50c148486cb687841408e1d4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351321"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245956"
 ---
 # <a name="series_pearson_correlation"></a>series_pearson_correlation()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87351321"
 
 참조: [피어슨 상관 계수](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_pearson_correlation(`*Series1* `,` *Series2*`)`
 

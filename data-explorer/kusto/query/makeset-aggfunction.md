@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_set () (�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: 0ae1a01af019e18e8e9f05454a1c52ef6a1f856c
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 8f5494c9d54d2950ba82da8de0b0094b2d17f798
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91103077"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246413"
 ---
 # <a name="make_set-aggregation-function"></a>make_set () (집계 함수)
 
@@ -50,7 +50,7 @@ PageViewLog
 
 :::image type="content" source="images/makeset-aggfunction/makeset.png" alt-text="Kusto 쿼리를 보여 주는 표는 Azure에서 대륙을 기준으로 국가를 요약 데이터 탐색기":::
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * [`mv-expand`](./mvexpandoperator.md)반대쪽 함수에 연산자를 사용 합니다.
 * [`make_set_if`](./makesetif-aggfunction.md) 연산자는 조건자를 `make_set` 수락 한다는 점을 제외 하 고와 비슷합니다.

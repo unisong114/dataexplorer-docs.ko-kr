@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 조회 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 5eda79977ee641d7ca7835d3d394cb943b4ebac4
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3305d78dd903160491ac3cdabd274ce8ace8ba2f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347054"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246419"
 ---
 # <a name="lookup-operator"></a>lookup 연산자
 
@@ -32,7 +32,7 @@ FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 =
 * 성능 측면에서 시스템은 기본적으로 `$left` 테이블이 더 큰 (팩트) 테이블이 고 `$right` 테이블이 더 작은 (차원) 테이블 이라고 가정 합니다. 이는 연산자에서 사용 하는 가정과 정확히 반대입니다 `join` .
 * 연산자는 테이블 `lookup` `$right` 을 테이블에 자동으로 브로드캐스트합니다 (기본적으로는 `$left` `hint.broadcast` 가 지정 된 것 처럼 동작). 이는 테이블의 크기를 제한 합니다 `$right` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *왼쪽 테이블* `|` `lookup`[ `kind` `=` ( `leftouter` | `inner` )] `(` *Righttable* `)` `on` *특성*
 
@@ -46,7 +46,7 @@ FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 =
 * *특성*: *왼쪽 테이블* 의 행이 *righttable*의 행과 일치 하는 방식을 설명 하는 쉼표로 구분 된 하나 이상의 규칙 목록입니다. 논리 연산자를 사용 하 여 여러 규칙을 평가 `and` 합니다.
   규칙은 다음 중 하나일 수 있습니다.
 
-  |규칙 종류        |Syntax                                          |Predicate                                                      |
+  |규칙 종류        |구문                                          |Predicate                                                      |
   |-----------------|------------------------------------------------|---------------------------------------------------------------|
   |이름으로 같음 |*ColumnName*                                    |`where`*왼쪽 테이블*. *ColumnName* `==` *Righttable*. *ColumnName*|
   |값으로 같음|`$left.`*왼쪽 열* `==` `$right.` *Rightcolumn*|`where``$left.` *왼쪽* `==` 열 `$right.` * RightColumn        |
@@ -65,7 +65,7 @@ FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 =
 * 입력된 테이블 간의 모든 일치 항목에 대한 행. 일치 항목은 한 테이블에서 선택된 행이며 모든 `on` 필드에 대해 다른 테이블의 행과 같은 값을 가지고 있습니다. 
 * 특성 (조회 키)은 출력 테이블에 한 번만 표시 됩니다.
 
- * `kind`지정 되지 않은`kind=leftouter`
+ * `kind` 지정 되지 않은 `kind=leftouter`
 
      내부 일치 외에도 일치 항목이 없더라도 왼쪽(및/또는 오른쪽)의 모든 행에 대한 행이 있습니다. 이 경우 일치하지 않는 출력 셀에는 null 값이 포함되어 있습니다.
 
@@ -73,7 +73,7 @@ FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 =
 
      왼쪽 및 오른쪽에서 일치하는 행의 모든 조합에 대해 한 개의 출력 행이 있습니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 let FactTable=datatable(Row:string,Personal:string,Family:string) [

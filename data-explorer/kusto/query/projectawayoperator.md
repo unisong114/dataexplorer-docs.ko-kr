@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기의 프로젝트 자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 40bc5eafee803123ea1d73e763c32b5210f741ca
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a708a83e4bef1c1d9b774f0304e2dd8c7cba8cda
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346051"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92244798"
 ---
 # <a name="project-away-operator"></a>project-away 연산자
 
@@ -25,7 +25,7 @@ T | project-away price, quantity, zz*
 
 결과의 열 순서는 테이블에서 원래 순서로 결정 됩니다. 인수로 지정 된 열만 삭제 됩니다. 다른 열은 결과에 포함 됩니다.  ( `project`참조)
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 *T* `| project-away` *columnnameorpattern* [ `,` ...]
 
@@ -46,7 +46,7 @@ T | project-away price, quantity, zz*
 * `project-away`원래 테이블에 있거나 쿼리의 일부로 계산 된 모든 열을 사용할 수 있습니다.
 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 입력 테이블 `T`에는 `long` 형식의 열로 `A`, `B`, `C`의 3개가 있습니다.
 
@@ -56,7 +56,7 @@ datatable(A:long, B:long, C:long) [1, 2, 3]
 | project-away C    // Removes column C from the output
 ```
 
-|A|b|
+|A|B|
 |---|---|
 |1|2|
 

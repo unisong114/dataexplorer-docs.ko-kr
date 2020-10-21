@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 parse_csv ()에
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: eddf893d3c0d8096f57a3f624ddedf753fe35f91
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 1b0f1a0279dcb35e4e196b0f2170f4a64d58eca9
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346357"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246119"
 ---
 # <a name="parse_csv"></a>parse_csv()
 
@@ -23,7 +23,7 @@ ms.locfileid: "87346357"
 parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
 ```
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `parse_csv(`*원본*`)`
 
@@ -39,7 +39,7 @@ parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
 
 큰따옴표 (' "')를 사용 하 여 포함 된 줄 바꿈, 쉼표 및 따옴표를 이스케이프할 수 있습니다. 이 함수는 행 마다 여러 레코드를 지원 하지 않습니다. 첫 번째 레코드만 가져옵니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

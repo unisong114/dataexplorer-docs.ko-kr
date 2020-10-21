@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_stats_dy
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
-ms.openlocfilehash: d74ba88062f49e9f3274b7f38704aa7760dc7250
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 681e4e1b734fb9bf9d2357ec77be4ba1d61365dd
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351270"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245918"
 ---
 # <a name="series_stats_dynamic"></a>series_stats_dynamic()
 
@@ -28,7 +28,7 @@ ms.locfileid: "87351270"
 * `variance`: 입력 배열의 표본 분산
 * `stdev`: 입력 배열의 샘플 표준 편차
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_stats_dynamic(`*x* `[,` *ignore_nonfinite*`])`
 

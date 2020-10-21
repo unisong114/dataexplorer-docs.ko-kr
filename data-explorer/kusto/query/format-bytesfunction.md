@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 format_bytes ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: f19883335149603fe7fc7429dabb62f565a0b402
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: c324813ed53b57673f8962f87374eb998f2a3443
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87347989"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92244761"
 ---
 # <a name="format_bytes"></a>format_bytes()
 

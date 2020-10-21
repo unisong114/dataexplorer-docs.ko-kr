@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 찾기 연산자�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 4be61920fe22c7b77eb54f849e86ba06a8bf533b
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: d1e01f366c1bae677111c67b0e60fde59683706e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763817"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245038"
 ---
 # <a name="find-operator"></a>find 연산자
 
@@ -55,9 +55,9 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 * `withsource=`*ColumnName*: 선택 사항입니다. 기본적으로 출력에는 각 행을 제공한 원본 테이블을 나타내는 값이 *source_* 라는 열이 포함 됩니다. 지정 하는 경우 *source_* 대신 *ColumnName* 이 사용 됩니다.
 와일드 카드 일치 후 쿼리에서 둘 이상의 데이터베이스 (기본 데이터베이스 포함)의 테이블을 참조 하는 경우이 열의 값에는 데이터베이스와 함께 정규화 된 테이블 이름이 포함 됩니다. 두 개 이상의 클러스터를 참조 하는 경우에는 유사한 *클러스터* 및 *데이터베이스* 의 자격도 값에 표시 됩니다.
-* *조건자*: `boolean` [expression](./scalar-data-types/bool.md) 입력 테이블 *테이블* [ `,` *table*, ...]의 열에 대 한 식입니다. 각 입력 테이블의 각 행에 대해 평가 됩니다. 자세한 내용은 [조건자-구문 정보](./findoperator.md#predicate-syntax)를 참조 하세요.
+* *조건자*: `boolean` [expression](./scalar-data-types/bool.md) 입력 테이블 *테이블* [ `,` *table*, ...]의 열에 대 한 식입니다. 각 입력 테이블의 각 행에 대해 평가 됩니다. 자세한 내용은  [조건자-구문 정보](./findoperator.md#predicate-syntax)를 참조 하세요.
 * `Table`: 선택 사항입니다. 기본적으로 *찾기* 는 현재 데이터베이스의 모든 테이블에서 다음을 찾습니다.
-    *  테이블의 이름 (예:)`Events`
+    *  테이블의 이름 (예:) `Events`
     *  `(Events | where id==42)`
     *  와일드 카드를 사용하여 지정한 테이블 집합입니다. 예를 들어는 `E*` 데이터베이스에서 이름이로 시작 하는 모든 테이블의 합집합을 형성 합니다 `E` .
 * `project-smart` | `project`: 지정 하지 않으면 `project-smart` 기본적으로가 사용 됩니다. 자세한 내용은 [출력 스키마 세부 정보](./findoperator.md#output-schema)를 참조 하세요.
@@ -67,9 +67,9 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 ::: zone pivot="azuremonitor"
 
 * `withsource=`*ColumnName*: 선택 사항입니다. 기본적으로 출력에는 각 행을 제공 하는 원본 테이블을 나타내는 값이 *source_* 라는 열이 포함 됩니다. 지정 하는 경우 *source_* 대신 *ColumnName* 이 사용 됩니다.
-* *조건자*: `boolean` [expression](./scalar-data-types/bool.md) 입력 테이블 *테이블* [ `,` *table*, ...]의 열에 대 한 식입니다. 각 입력 테이블의 각 행에 대해 평가 됩니다. 자세한 내용은 [조건자-구문 정보](./findoperator.md#predicate-syntax)를 참조 하세요.
+* *조건자*: `boolean` [expression](./scalar-data-types/bool.md) 입력 테이블 *테이블* [ `,` *table*, ...]의 열에 대 한 식입니다. 각 입력 테이블의 각 행에 대해 평가 됩니다. 자세한 내용은  [조건자-구문 정보](./findoperator.md#predicate-syntax)를 참조 하세요.
 * `Table`: 선택 사항입니다. 기본적으로 *find* 는 다음에 대 한 모든 테이블을 검색 합니다.
-    *  테이블의 이름 (예:)`Events` 
+    *  테이블의 이름 (예:) `Events` 
     *  `(Events | where id==42)`
     *  와일드 카드를 사용하여 지정한 테이블 집합입니다. 예를 들어은 `E*` 이름이로 시작 하는 모든 테이블의 합집합을 형성 합니다 `E` .
 * `project-smart` | `project`: 지정 하지 않으면 `project-smart` 기본적으로 사용 됩니다. 자세한 내용은 [출력 스키마 세부 정보](./findoperator.md#output-schema)를 참조 하세요.
@@ -112,12 +112,12 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 일부 필터링 함수에 대 한 요약은 [where 연산자](./whereoperator.md)를 참조 하세요.
 
-## <a name="notes"></a>참고
+## <a name="notes"></a>메모
 
 * `project`절이 여러 테이블에 표시 되는 열을 참조 하 고 형식이 여러 개인 경우에는 형식이 project 절에서이 열 참조 다음에와 야 합니다.
 * 열이 여러 테이블에 표시 되 고 여러 형식이 있으며 `project-smart` 사용 중인 경우 `find` [union](./unionoperator.md) 에 설명 된 대로 결과의 각 형식에 해당 하는 열이 있습니다.
 * *Project-smart*를 사용 하는 경우 조건자의 변경 내용, 원본 테이블 집합 또는 테이블 스키마에서 출력 스키마가 변경 될 수 있습니다. 상수 결과 스키마가 필요한 경우 대신 *project* 를 사용 하십시오.
-* `find`범위는 [함수](../management/functions.md)를 포함할 수 없습니다. 찾기 범위에 함수를 포함 하려면 [view 키워드](./letstatement.md)를 사용 하 여 [let 문을](./letstatement.md) 정의 합니다.
+* `find` 범위는 [함수](../management/functions.md)를 포함할 수 없습니다. 찾기 범위에 함수를 포함 하려면 [view 키워드](./letstatement.md)를 사용 하 여 [let 문을](./letstatement.md) 정의 합니다.
 
 ## <a name="performance-tips"></a>성능 팁
 
@@ -129,7 +129,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 * 여러 테이블에 표시 되 고 여러 형식이 있는 열은 참조 하지 않는 것이 좋습니다. 두 개 이상의 형식에 대해 이러한 열 유형을 확인할 때 조건자가 유효 하면 쿼리는 다시 union으로 대체 됩니다.
 예를 들어 [find가 union으로 작동 하는 경우의 예](./findoperator.md#examples-of-cases-where-find-will-act-as-union)를 참조 하세요.
  
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ::: zone pivot="azuredataexplorer"
 
@@ -204,8 +204,8 @@ find "Kusto"
 
 |Session_Id|Level|EventText|Version
 |---|---|---|---|
-|acbd207d-51aa-4df7-bfa7-be70eb68f04e|정보|일부 Text1|v 1.0.0
-|acbd207d-51aa-4df7-bfa7-be70eb68f04e|오류|일부 텍스트|v 1.0.0
+|acbd207d-51aa-4df7-bfa7-be70eb68f04e|정보|일부 Text1|v1.0.0
+|acbd207d-51aa-4df7-bfa7-be70eb68f04e|오류|일부 텍스트|v1.0.0
 |28b8e46e-3c31-43cf-83cb-48921c3986fc|오류|일부 텍스트 3|v 1.0.1
 |8f057b11-3281-45c3-a856-05ebb18a3c59|정보|일부 텍스트 4|v 1.1.0
 
@@ -228,7 +228,7 @@ find in (EventsTable1, EventsTable2)
 
 |source_|EventText|Version|EventName|pack_
 |---|---|---|---|---|
-|EventsTable1|일부 텍스트|v 1.0.0||{"Session_Id": "acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level": "Error"}
+|EventsTable1|일부 텍스트|v1.0.0||{"Session_Id": "acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level": "Error"}
 |EventsTable2|다른 텍스트 3||Event3|{"Session_Id": "acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level": "Error"}
 
 
@@ -240,8 +240,8 @@ find Version == 'v1.0.0' or EventName == 'Event1' project Session_Id, EventText,
 
 |source_|Session_Id|EventText|Version|EventName|
 |---|---|---|---|---|
-|EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|일부 Text1|v 1.0.0
-|EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|일부 텍스트|v 1.0.0
+|EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|일부 Text1|v1.0.0
+|EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|일부 텍스트|v1.0.0
 |EventsTable2|f7d5f95f-f580-4ea6-830b-5776c8d64fdd|다른 텍스트 1||Event1
 
 참고: 실제로 *EventsTable1* 행은 조건자를 사용 하 여 필터링 되 ```Version == 'v1.0.0'``` 고 *EventsTable2* 행은 조건자를 사용 하 여 필터링 됩니다 ```EventName == 'Event1'``` .

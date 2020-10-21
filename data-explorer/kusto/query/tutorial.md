@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 자습서를 설�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/23/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 64736d944c71d84c4950dea0341089732b258f27
-ms.sourcegitcommit: a10e7c6ba96bdb94d95ef23f5d1506eb8fda0041
+ms.openlocfilehash: 61b9dff7d03732611f0a0f47b7c8fc9d6784ac96
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058685"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246035"
 ---
 # <a name="tutorial"></a>자습서
 
@@ -138,7 +138,7 @@ StormEvents
 | project StartTime, EndTime, Duration, EventType, State
 ```
 
-|StartTime|EndTime|기간|EventType|시스템 상태|
+|StartTime|EndTime|Duration|EventType|시스템 상태|
 |---|---|---|---|---|
 |2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|22:00:00|과도 한 비|플로리다|
 |2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|00:08:00|토네이도|플로리다|

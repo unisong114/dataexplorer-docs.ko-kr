@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_multiply
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 112fe4135b6ed996c798e5f03a34120e4078c623
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 21095174a9b2f25a4c48fdd65c05579ed7efff7d
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351389"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246080"
 ---
 # <a name="series_multiply"></a>series_multiply()
 
 두 숫자 계열 입력의 요소 단위 곱하기를 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_multiply(`*series1* `,` *series2*`)`
 

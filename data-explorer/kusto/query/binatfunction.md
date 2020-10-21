@@ -4,23 +4,23 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 bin_at ()에 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 530f58aaf733add61b5f0aeb54ca12180f5a818e
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: ae888fc050387af28281b84229044114a72a5dbf
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201676"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245386"
 ---
 # <a name="bin_at"></a>bin_at()
 
 Bin의 시작점에 대 한 제어를 사용 하 여 값을 고정 크기 "bin"으로 내림 합니다.
 (참고 항목 [`bin function`](./binfunction.md) )
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `bin_at``(` *식* `,` *binsize* `, ` *fixedpoint*`)`
 
@@ -34,7 +34,7 @@ Bin의 시작점에 대 한 제어를 사용 하 여 값을 고정 크기 "bin"�
 
 *식*아래에서 가장 근접 한 *binsize* 의 가장 가까운 배수 이며,이는 *fixedpoint* 가 자체로 변환 되도록 이동 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 |식                                                                    |결과                           |주석                   |
 |------------------------------------------------------------------------------|---------------------------------|---------------------------|

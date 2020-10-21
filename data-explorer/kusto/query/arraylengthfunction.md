@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 array_length ()
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 14203e3078b7fe30222ea26320ed1391000d5c05
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 3777194270e91d75d68c3af544e18b62358f709e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349553"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246785"
 ---
 # <a name="array_length"></a>array_length()
 
 동적 배열의 요소 수를 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `array_length(`*array*`)`
 
@@ -31,7 +31,7 @@ ms.locfileid: "87349553"
 
 *array*의 배열 수 또는 *array*가 배열이 아닌 경우 `null`입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ```kusto
 print array_length(parse_json('[1, 2, 3, "four"]')) == 4

@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 external_table 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/21/2019
-ms.openlocfilehash: 30de02ba0ae18fbfd7944a97ad95d78dbe51066b
-ms.sourcegitcommit: 08c54dabc1efe3d4e2d2581c4b668a6b73daf855
+ms.openlocfilehash: 5ec069979d41a7c750c140ad84ef0db4ba5638a4
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510681"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245058"
 ---
 # <a name="external_table"></a>external_table()
 
@@ -27,7 +27,7 @@ external_table('StormEvent')
 > * 함수에는 `external_table` [테이블](tablefunction.md) 함수와 유사한 제한이 있습니다.
 > * 표준 [쿼리 제한은](../concepts/querylimits.md) 외부 테이블 쿼리에도 적용 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `external_table``(` *TableName* [ `,` *MappingName* ]`)`
 

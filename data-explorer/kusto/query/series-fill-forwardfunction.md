@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_fill_for
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 711a8eb851e7df8ba5b78bd03c42a77eb05d8510
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 6aaa9a321792b7160d9a77ac74d3e5d650f67c6a
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87344505"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92244725"
 ---
 # <a name="series_fill_forward"></a>series_fill_forward()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87344505"
 
 동적 숫자 배열을 포함 하는 식은 입력입니다. 함수는 missing_value_placeholder의 모든 인스턴스를 missing_value_placeholder이 아닌 왼쪽의 가장 가까운 값으로 바꾸고 결과 배열을 반환 합니다. Missing_value_placeholder의 맨 왼쪽 인스턴스는 그대로 유지 됩니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_fill_forward(`*x* `[, ` *missing_value_placeholder*`])`
 * 는 *missing_value_placeholder* 채워진 전달의 모든 인스턴스가 포함 된 series *x* 를 반환 합니다.

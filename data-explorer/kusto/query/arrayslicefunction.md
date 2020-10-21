@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 array_slice ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/03/2018
-ms.openlocfilehash: e2216361022f055078be66f37f3d2b084afaa4c6
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: ecb30d00a6c95e3754686eb264d9439c1c1e605f
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87349536"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246766"
 ---
 # <a name="array_slice"></a>array_slice()
 
 동적 배열의 조각을 추출 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `array_slice`(*`arr`*, *`start`*, *`end`*)
 
@@ -35,7 +35,7 @@ ms.locfileid: "87349536"
 
 의 [] 범위에 있는 값의 동적 배열 `start..end` `arr` 입니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

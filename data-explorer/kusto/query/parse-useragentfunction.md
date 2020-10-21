@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 parse_user_agen
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 4b4371ee691cea65096cff683a348fcac31e7e48
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a7261f6996aecdf10446c990dac54afa4638147e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346408"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246304"
 ---
 # <a name="parse_user_agent"></a>parse_user_agent()
 

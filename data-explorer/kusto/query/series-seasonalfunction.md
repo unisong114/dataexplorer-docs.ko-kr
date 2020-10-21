@@ -4,22 +4,22 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_seasonal
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: fb1f07c4b964615342adcf4d5ae51e7c99c05d13
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 7997e6312f43316918c197c5ec10eec281495c63
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351287"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92245934"
 ---
 # <a name="series_seasonal"></a>series_seasonal()
 
 검색 되거나 지정 된 계절 기간에 따라 계열의 계절 구성 요소를 계산 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_seasonal(`*계열* `[,` *기간*`])`
 
@@ -35,7 +35,7 @@ ms.locfileid: "87351287"
 
 계열의 계산 된 계절 구성 요소가 포함 된 *계열* 입력과 동일한 길이의 동적 배열입니다. 계절 구성 요소는 전체 기간의 bin 위치에 해당 하는 모든 값의 *중앙값* 으로 계산 됩니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="auto-detect-the-period"></a>기간 자동 검색
 
@@ -49,7 +49,7 @@ print s=dynamic([2,5,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1])
 | extend s_seasonal = series_seasonal(s)
 ```
 
-|s|s_seasonal|
+|초|s_seasonal|
 |---|---|
 |[2, 5, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1]|[1.0, 2.0, 3.0, 4.0, 3.0, 2.0, 1.0, 2.0, 3.0, 4.0, 3.0, 2.0, 1.0, 2.0, 3.0, 4.0, 3.0, 2.0, 1.0, 2.0, 3.0, 4.0, 3.0, 2.0, 1.0]|
 |[8, 12, 14, 12, 10, 10, 12, 14, 12, 10, 10, 12, 14, 12, 10, 10, 12, 14, 12, 10]|[10.0, 12.0, 14.0, 12.0, 10.0, 10.0, 12.0, 14.0, 12.0, 10.0, 10.0, 12.0, 14.0, 12.0, 10.0, 10.0, 12.0, 14.0, 12.0, 10.0]|
@@ -66,7 +66,7 @@ print s=dynamic([1,3,5,1,3,5,2,4,6])
 | extend s_seasonal = series_seasonal(s,3)
 ```
 
-|s|s_seasonal|
+|초|s_seasonal|
 |---|---|
 |[1, 3, 5, 1, 3, 5, 2, 4, 6]|[1.0, 3.0, 5.0, 1.0, 3.0, 5.0, 1.0, 3.0, 5.0]|
 |[1, 3, 5, 2, 4, 6, 1, 3, 5, 2, 4, 6]|[1.5, 3.5, 5.5, 1.5, 3.5, 5.5, 1.5, 3.5, 5.5, 1.5, 3.5, 5.5]|

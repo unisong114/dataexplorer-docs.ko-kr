@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 series_fir ()�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2019
-ms.openlocfilehash: ef72ce93dd0cc6d4ab95c46365bfb0351d9d565a
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: 8085455616fc97337ca115c1ef5b0c0e2422e08e
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87343977"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246192"
 ---
 # <a name="series_fir"></a>series_fir()
 
@@ -21,7 +21,7 @@ ms.locfileid: "87343977"
 
 함수는 동적 숫자 배열을 입력으로 포함 하는 식을 사용 하 여 [유한 임펄스 Response](https://en.wikipedia.org/wiki/Finite_impulse_response) 필터를 적용 합니다. 계수를 지정 하 여 `filter` 이동 평균, 다듬기, 변경 검색 및 많은 사용 사례를 계산 하는 데 사용할 수 있습니다. 함수는 동적 배열과 필터 계수의 정적 동적 배열을 포함 하는 열을 입력으로 사용 하 고 열에 필터를 적용 합니다. 필터링된 출력을 포함하는 새 동적 배열 열을 출력합니다.  
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `series_fir(`*x* `,` *필터* [ `,` *정규화*[ `,` *센터*]]`)`
 
@@ -33,7 +33,7 @@ ms.locfileid: "87343977"
 정규화는 계수의 합계가 1 인지 확인 하는 편리한 방법입니다. 그런 다음 필터는 계열을 강화 하거나 경우 하지 않습니다. 예를 들어 4 개의 bin의 이동 평균은 *filter*= [1, 1, 1, 1] 및 *정규화*됨 = true로 지정할 수 있으며이는 [0.25, 0.25.0.25, 0.25]를 입력 하는 것 보다 더 쉽습니다.
 * *center*: 필터가 현재 지점 전후에 대칭으로 적용 되는지 아니면 현재 지점에서 역순으로 적용 되는지 여부를 나타내는 선택적 부울 값입니다. 기본적으로 center는 false로, 스트리밍 데이터의 시나리오에 적합 합니다. 여기서는 현재 및 이전 지점 에서만 필터를 적용할 수 있습니다. 그러나 임시 처리의 경우이를로 설정 하 여 `true` 시계열과 동기화 된 상태로 유지할 수 있습니다. 아래 예제를 참조하세요. 이 매개 변수는 필터의 [그룹 지연을](https://en.wikipedia.org/wiki/Group_delay_and_phase_delay)제어 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 * *Filter*= [1, 1, 1, 1, 1] 및 *정규화* = (기본값)를 설정 하 여 5 개 점의 이동 평균을 계산 `true` 합니다. *Center* = `false` (기본값) 및 `true` :
 
@@ -64,4 +64,4 @@ range t from bin(now(), 1h)-11h to bin(now(), 1h) step 1h
 | render timechart
 ```
 
-:::image type="content" source="images/series-firfunction/series-fir2.png" alt-text="시리즈 전나무 2" border="false":::
+:::image type="content" source="images/series-firfunction/series-fir2.png" alt-text="시리즈 전나무" border="false":::

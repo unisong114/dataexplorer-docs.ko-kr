@@ -4,18 +4,18 @@ description: 이 문서에서는 Azure 데이터 탐색기의 클러스터 간 �
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: dc22d44bd861a02d0db7fd0d8f7cc80ddcb5c8d4
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: a7c8f89886a8c12941dbc218ad69b35eebd7f1c7
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128467"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246595"
 ---
 # <a name="cross-cluster-join"></a>클러스터 간 조인
 
@@ -23,7 +23,7 @@ ms.locfileid: "85128467"
 
 클러스터 간 쿼리에 대 한 일반적인 설명은 [클러스터 간 또는 데이터베이스 간 쿼리](cross-cluster-or-database-queries.md) 를 참조 하세요.
 
-다른 클러스터에 있는 데이터 집합에 대 한 조인 작업을 수행할 수 있습니다. 예를 들어:
+다른 클러스터에 있는 데이터 집합에 대 한 조인 작업을 수행할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 T | ... | join (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1 // (1)
@@ -33,7 +33,7 @@ cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2"
 
 위의 예제에서 조인 작업은 현재 클러스터가 "SomeCluster" 또는 "SomeCluster2"가 아님을 가정 하 고 클러스터 간 조인입니다.
 
-다음 예제에서는
+다음 예제에서,
 
 ```kusto
 cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster").database("SomeDB2").T2 | ...) on Col1 
@@ -59,11 +59,11 @@ Kusto가 클러스터 간 조인을 발견 하면 자동으로 조인 작업을 
 T | ... | join hint.remote=<strategy> (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1
 ```
 
-다음은에 대 한 올바른 값입니다.`strategy`
-* `left`-왼쪽 피연산자의 클러스터에서 join을 실행 합니다. 
-* `right`-오른쪽 피연산자의 클러스터에서 join을 실행 합니다.
-* `local`-현재 클러스터의 클러스터에서 join을 실행 합니다.
-* `auto`-(기본값) 자동 원격 결정을 수행 하도록 Kusto
+다음은에 대 한 올바른 값입니다. `strategy`
+* `left` -왼쪽 피연산자의 클러스터에서 join을 실행 합니다. 
+* `right` -오른쪽 피연산자의 클러스터에서 join을 실행 합니다.
+* `local` -현재 클러스터의 클러스터에서 join을 실행 합니다.
+* `auto` -(기본값) 자동 원격 결정을 수행 하도록 Kusto
 
 > [!Note]
 > 힌트 전략이 조인 작업에 적용 되지 않는 경우에는 Kusto에서 조인 원격 힌트가 무시 됩니다.

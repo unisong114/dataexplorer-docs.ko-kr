@@ -4,16 +4,16 @@ description: 이 문서에서는 Azure 데이터 탐색기에서 make_list () (�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
-ms.openlocfilehash: ecfcaa39195caec06184b966403bd6655a00b714
-ms.sourcegitcommit: 62476f682b7812cd9cff7e6958ace5636ee46755
+ms.openlocfilehash: f5a4c16f1f259de457ef963f2a400d6c9fd79727
+ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169543"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92246392"
 ---
 # <a name="make_list-aggregation-function"></a>make_list () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92169543"
 
 * [요약](summarizeoperator.md) 내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `summarize``make_list(` *Expr* [ `,` *MaxSize*]`)`
 
@@ -122,6 +122,6 @@ shapes
 |false|[{"name": "삼각형", "sideCount": 3}, {"name": "오각형", "sideCount": 5}, {"name": "heptagon", "sideCount": 7}, {"name": "nonagon", "sideCount": 9}]|
 |true|[{"name": "square", "sideCount": 4}, {"name": "rectangle", "sideCount": 4}, {"name": "육각형", "sideCount": 6}, {"name": "octogon", "sideCount": 8}, {"name": "decagon", "sideCount": 10}]|
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 [`make_list_if`](./makelistif-aggfunction.md) 연산자는 조건자를 `make_list` 수락 한다는 점을 제외 하 고와 비슷합니다.
