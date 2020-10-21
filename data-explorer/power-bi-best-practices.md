@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 4cb2c64e2a66d8412277717e505626965bca1052
-ms.sourcegitcommit: 7024f73c76bf5b506557fd0ef7a0f4f40ec7d313
+ms.openlocfilehash: a508d40d4e48205288dcb6133e267578a54198f9
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92021222"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343524"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하는 방법에 대 한 모범 사례
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. [Power BI](https://docs.microsoft.com/power-bi/) 은 데이터를 시각화 하 고 조직 전체에서 결과를 공유할 수 있는 비즈니스 분석 솔루션입니다. Azure 데이터 탐색기는 Power BI 데이터에 연결 하기 위한 세 가지 옵션을 제공 합니다. [기본 제공 커넥터](power-bi-connector.md)를 사용 하 여 [Azure 데이터 탐색기에서 Power BI로 쿼리를 가져오거나](power-bi-imported-query.md) [SQL 쿼리](power-bi-sql-query.md)를 사용 합니다. 이 문서에서는 Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하기 위한 팁을 제공 합니다. 
+Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. [Power BI](/power-bi/) 은 데이터를 시각화 하 고 조직 전체에서 결과를 공유할 수 있는 비즈니스 분석 솔루션입니다. Azure 데이터 탐색기는 Power BI 데이터에 연결 하기 위한 세 가지 옵션을 제공 합니다. [기본 제공 커넥터](power-bi-connector.md)를 사용 하 여 [Azure 데이터 탐색기에서 Power BI로 쿼리를 가져오거나](power-bi-imported-query.md) [SQL 쿼리](power-bi-sql-query.md)를 사용 합니다. 이 문서에서는 Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하기 위한 팁을 제공 합니다. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Power BI 사용에 대 한 모범 사례
 
@@ -24,17 +24,17 @@ Tb의 새로운 원시 데이터로 작업 하는 경우 다음 지침에 따라
 
 * **여행 광원** -보고서를 Power BI 하는 데 필요한 데이터만 가져옵니다. 심층 대화형 분석을 위해 Kusto 쿼리 언어를 사용 하 여 임시 탐색에 최적화 된 [Azure 데이터 탐색기 웹 UI](web-query-data.md) 를 사용 합니다.
 
-* **복합 모델** - [복합 모델](https://docs.microsoft.com/power-bi/desktop-composite-models) 을 사용 하 여 최상위 대시보드에 대 한 집계 데이터를 필터링 된 작업 원시 데이터와 결합할 수 있습니다. 원시 데이터를 사용 하는 시기와 집계 뷰를 사용 하는 시기를 명확 하 게 정의할 수 있습니다. 
+* **복합 모델** - [복합 모델](/power-bi/desktop-composite-models) 을 사용 하 여 최상위 대시보드에 대 한 집계 데이터를 필터링 된 작업 원시 데이터와 결합할 수 있습니다. 원시 데이터를 사용 하는 시기와 집계 뷰를 사용 하는 시기를 명확 하 게 정의할 수 있습니다. 
 
-* **가져오기 모드와 DirectQuery 모드 비교** -더 작은 데이터 집합의 상호 작용을 위해 **가져오기** 모드를 사용 합니다. 자주 업데이트 되는 크고 많은 데이터 집합에는 **DirectQuery** 모드를 사용 합니다. 예를 들어 **가져오기** 모드를 사용 하 여 차원 테이블이 작으며 자주 변경 되지 않으므로이를 사용 하 여 차원 테이블을 만듭니다. 데이터 업데이트의 예상 률에 따라 새로 고침 간격을 설정 합니다. **DirectQuery** 모드를 사용 하 여 팩트 테이블을 만듭니다. 이러한 테이블은 크고 원시 데이터를 포함 하기 때문입니다. Power BI [드릴스루](https://docs.microsoft.com/power-bi/desktop-drillthrough)를 사용 하 여 필터링 된 데이터를 표시 하려면 다음 표를 사용 합니다.
+* **가져오기 모드와 DirectQuery 모드 비교** -더 작은 데이터 집합의 상호 작용을 위해 **가져오기** 모드를 사용 합니다. 자주 업데이트 되는 크고 많은 데이터 집합에는 **DirectQuery** 모드를 사용 합니다. 예를 들어 **가져오기** 모드를 사용 하 여 차원 테이블이 작으며 자주 변경 되지 않으므로이를 사용 하 여 차원 테이블을 만듭니다. 데이터 업데이트의 예상 률에 따라 새로 고침 간격을 설정 합니다. **DirectQuery** 모드를 사용 하 여 팩트 테이블을 만듭니다. 이러한 테이블은 크고 원시 데이터를 포함 하기 때문입니다. Power BI [드릴스루](/power-bi/desktop-drillthrough)를 사용 하 여 필터링 된 데이터를 표시 하려면 다음 표를 사용 합니다.
 
 * **병렬 처리** – Azure 데이터 탐색기는 선형 확장 가능 데이터 플랫폼 이므로 다음과 같이 종단 간 흐름의 병렬 처리를 증가 시켜 대시보드 렌더링의 성능을 향상 시킬 수 있습니다.
 
-  * [Power BI에서 DirectQuery의 동시 연결](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)수를 늘립니다.
+  * [Power BI에서 DirectQuery의 동시 연결](/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)수를 늘립니다.
 
   * [병렬 처리를 향상 시키기 위해 약한 일관성을](kusto/concepts/queryconsistency.md)사용 합니다. 이는 데이터의 새로 고침에 영향을 미칠 수 있습니다.
 
-* **효과적인 슬라이서** – [동기화 슬라이서](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) 를 사용 하 여 보고서가 준비 되기 전에 데이터를 로드 하지 못하도록 합니다. 데이터 집합을 구조화 하 고 모든 시각적 개체를 배치한 후 모든 슬라이서를 표시 한 후에는 동기화 슬라이서를 선택 하 여 필요한 데이터만 로드할 수 있습니다.
+* **효과적인 슬라이서** – [동기화 슬라이서](/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) 를 사용 하 여 보고서가 준비 되기 전에 데이터를 로드 하지 못하도록 합니다. 데이터 집합을 구조화 하 고 모든 시각적 개체를 배치한 후 모든 슬라이서를 표시 한 후에는 동기화 슬라이서를 선택 하 여 필요한 데이터만 로드할 수 있습니다.
 
 * **필터 사용** -가능한 한 많은 Power BI 필터를 사용 하 여 Azure 데이터 탐색기 검색에 관련 데이터 분할 집중 합니다.
 

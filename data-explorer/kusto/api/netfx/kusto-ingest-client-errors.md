@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: 6b94dfc0fab1150b598fad9d55beec2f3a81ad73
-ms.sourcegitcommit: f34535b0ca63cff22e65c598701cec13856c1742
+ms.openlocfilehash: 61c183f11aa7658faba00c5dd3c4795f235e5467
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87402341"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337485"
 ---
 # <a name="kustoingest-errors-and-exceptions"></a>Kusto. 수집 오류 및 예외
 클라이언트 쪽에서 수집을 처리 하는 동안 발생 하는 모든 오류는 c # 예외로 표시 됩니다.
@@ -24,7 +24,7 @@ ms.locfileid: "87402341"
 
 여러 소스에서 수집을 시도 하는 동안 수집 프로세스 중에 오류가 발생할 수 있습니다. 원본 중 하나에 대해 수집에 실패 하는 경우 기록 되 고 클라이언트는 계속 해 서 나머지 원본을 수집 합니다. 모든 원본에서 수집을 수행한 후에는 `IngestClientAggregateException` 멤버가 포함 된이 throw 됩니다 `IList<IngestClientException> IngestionErrors` .
 
-`IngestClientException`및 해당 파생 클래스에는 필드 `IngestionSource` 와 `Error` 필드가 포함 됩니다. 두 필드는 수집에 실패 한 원본에서 수집을 시도 하는 동안 발생 한 오류에 대 한 매핑을 만듭니다. 이 정보를 목록에서 사용 하 여 수집에 `IngestionErrors` 실패 한 원본 및 이유를 조사할 수 있습니다. `IngestClientAggregateException`또한 예외에는 `GlobalError` 모든 원본에 대 한 오류가 발생 했는지 여부를 나타내는 부울 속성도 포함 되어 있습니다.
+`IngestClientException` 및 해당 파생 클래스에는 필드 `IngestionSource` 와 `Error` 필드가 포함 됩니다. 두 필드는 수집에 실패 한 원본에서 수집을 시도 하는 동안 발생 한 오류에 대 한 매핑을 만듭니다. 이 정보를 목록에서 사용 하 여 수집에 `IngestionErrors` 실패 한 원본 및 이유를 조사할 수 있습니다. `IngestClientAggregateException`또한 예외에는 `GlobalError` 모든 원본에 대 한 오류가 발생 했는지 여부를 나타내는 부울 속성도 포함 되어 있습니다.
 
 ### <a name="failures-ingesting-from-files-or-blobs"></a>파일이 나 blob에서 수집 오류
 
@@ -38,7 +38,7 @@ DataReader에서 수집 하는 동안 수집 되는 데이터는 기본 위치�
 
 ## <a name="kustoqueuedingestclient-exceptions"></a>KustoQueuedIngestClient 예외
 
-`KustoQueuedIngestClient`Azure 큐에 메시지를 업로드 하 여 데이터를 수집 합니다. 큐 프로세스 도중 이나 도중에 오류가 발생 하는 경우 `IngestClientAggregateException` 프로세스가 종료 될 때이 throw 됩니다. Throw 된 예외에는 `IngestClientException` 각 오류의 소스가 포함 되 고 큐에 게시 되지 않은의 컬렉션이 포함 됩니다. 메시지 게시를 시도 하는 동안 발생 한 오류도 throw 됩니다.
+`KustoQueuedIngestClient` Azure 큐에 메시지를 업로드 하 여 데이터를 수집 합니다. 큐 프로세스 도중 이나 도중에 오류가 발생 하는 경우 `IngestClientAggregateException` 프로세스가 종료 될 때이 throw 됩니다. Throw 된 예외에는 `IngestClientException` 각 오류의 소스가 포함 되 고 큐에 게시 되지 않은의 컬렉션이 포함 됩니다. 메시지 게시를 시도 하는 동안 발생 한 오류도 throw 됩니다.
 
 ### <a name="posting-to-queue-failures-with-a-file-or-blob-as-a-source"></a>파일이 나 blob을 원본으로 사용 하 여 큐 오류에 게시
 
@@ -59,9 +59,9 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 |<blob path>이유로 Blob 제외: JSON 패턴은 jsonMapping 매개 변수를 사용 하 여 수집 여야 합니다.| Json 매핑이 제공 되지 않는 경우 JSON 수집.|JSON 매핑 제공 |
 |Blob을 다운로드 하지 못했습니다. ' 원격 서버에서 오류를 반환 했습니다. (404)를 찾을 수 없습니다. '| Blob이 존재하지 않습니다.|Blob이 있는지 확인 합니다. 있는 경우 다시 시도 하 고 Kusto 팀에 문의 하세요. |
 |JSON 열 매핑이 잘못 되었습니다. 둘 이상의 매핑 요소가 동일한 열을 가리킵니다.| JSON 매핑에 다른 경로를 사용 하는 2 개의 열이 있습니다.|JSON 매핑 수정 |
-|EngineError-[UtilsException] `IngestionDownloader.Download` : 하나 이상의 파일을 다운로드 하지 못했습니다 (작업 id: <GUID1> , rootactivityid id: <GUID2> ).| 하나 이상의 파일을 다운로드 하지 못했습니다. |다시 시도 |
+|EngineError-[UtilsException] `IngestionDownloader.Download` : 하나 이상의 파일을 다운로드 하지 못했습니다 (작업 id: <GUID1> , rootactivityid id: <GUID2> ).| 하나 이상의 파일을 다운로드 하지 못했습니다. |재시도 |
 |구문 분석 하지 못했습니다. ID가 ' <stream name> ' 인 스트림에 잘못 된 형식의 CSV 형식이 있습니다 .이는 ValidationOptions 정책에 따라 실패 합니다. |CSV 파일의 형식이 잘못 되었습니다 (예: 모든 줄에 동일한 수의 열을 포함 하지 않음). 유효성 검사 정책이로 설정 된 경우에만 실패 `ValidationOptions` 합니다. ValidateCsvInputConstantColumns |CSV 파일을 확인 합니다. 이 메시지는 CSV/TSV 파일에만 적용 됩니다. |
-|`IngestClientAggregateException`"올바른 공유 액세스 서명에 대 한 필수 매개 변수가 없습니다." 라는 오류 메시지가 |사용 중인 SAS는 저장소 계정이 아닌 서비스의 서비스입니다. |저장소 계정의 SAS 사용 |
+|`IngestClientAggregateException` "올바른 공유 액세스 서명에 대 한 필수 매개 변수가 없습니다." 라는 오류 메시지가 |사용 중인 SAS는 저장소 계정이 아닌 서비스의 서비스입니다. |저장소 계정의 SAS 사용 |
 
 ### <a name="ingestion-error-codes"></a>수집 오류 코드
 
@@ -108,11 +108,11 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 
 데이터 관리 클러스터에서 큐가 반환 되지 않은 경우 발생 합니다.
 
-기본 클래스: [예외](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+기본 클래스: [예외](/dotnet/api/system.exception)
 
-|필드 이름 |형식     |의미
+|필드 이름 |유형     |의미
 |-----------|---------|------------------------------|
-|Error      | 문자열  | DM에서 큐를 검색 하는 동안 발생 한 오류입니다.
+|Error      | String  | DM에서 큐를 검색 하는 동안 발생 한 오류입니다.
                             
 [Kusto 대기 중인 수집 클라이언트](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient)를 사용 하는 경우에만 해당 됩니다.
 수집 프로세스 중에는 DM에 연결 된 Azure 큐를 검색 하기 위해 몇 번의 시도가 수행 됩니다. 이러한 시도가 실패할 경우 실패 이유를 포함 하는 예외는 ' 오류 ' 필드에서 발생 합니다. ' InnerException ' 필드의 내부 예외도 발생할 수 있습니다.
@@ -122,11 +122,11 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 
 데이터 관리 클러스터에서 blob 컨테이너가 반환 되지 않은 경우 발생 합니다.
 
-기본 클래스: [예외](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+기본 클래스: [예외](/dotnet/api/system.exception)
 
-|필드 이름   |형식     |의미       
+|필드 이름   |유형     |의미       
 |-------------|---------|------------------------------|
-|KustoEndpoint| 문자열  | 관련 DM의 끝점입니다.
+|KustoEndpoint| String  | 관련 DM의 끝점입니다.
                             
 [Kusto 대기 중인 수집 클라이언트](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient)를 사용 하는 경우에만 해당 됩니다.  
 수집가 아직 Azure 컨테이너에 없는 소스 (예: 파일, DataReader 또는 스트림)를 사용할 경우 수집을 위해 임시 blob에 데이터를 업로드 합니다. 데이터를 업로드할 컨테이너가 없는 경우 예외가 발생 합니다.
@@ -135,29 +135,29 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 
 수집 속성이 두 번 이상 구성 될 때 발생 합니다.
 
-기본 클래스: [예외](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+기본 클래스: [예외](/dotnet/api/system.exception)
 
-|필드 이름   |형식     |의미       
+|필드 이름   |유형     |의미       
 |-------------|---------|------------------------------------|
-|PropertyName | 문자열  | 중복 속성의 이름입니다.
+|PropertyName | String  | 중복 속성의 이름입니다.
                             
 ### <a name="postmessagetoqueuefailedexception"></a>PostMessageToQueueFailedException
 
 큐에 메시지를 게시 하지 못할 때 발생 합니다.
 
-기본 클래스: [예외](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+기본 클래스: [예외](/dotnet/api/system.exception)
 
-|필드 이름   |형식     |의미       
+|필드 이름   |유형     |의미       
 |-------------|---------|---------------------------------|
-|QueueUri     | 문자열  | 큐의 URI입니다.
-|Error        | 문자열  | 큐에 게시 하는 동안 생성 된 오류 메시지입니다.
+|QueueUri     | String  | 큐의 URI입니다.
+|Error        | String  | 큐에 게시 하는 동안 생성 된 오류 메시지입니다.
                             
 [Kusto 대기 중인 수집 클라이언트](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient)를 사용 하는 경우에만 해당 됩니다.  
 대기 중인 수집 클라이언트는 관련 Azure 큐에 메시지를 업로드 하 여 데이터를 수집 합니다. Post 오류가 발생 하면 예외가 발생 합니다. 여기에는 큐 URI, ' 오류 ' 필드의 실패 이유 및 ' InnerException ' 필드의 내부 예외가 포함 됩니다.
 
 ### <a name="dataformatnotspecifiedexception"></a>DataFormatNotSpecifiedException
 
-데이터 형식이 필요 하지만에 지정 되지 않은 경우 발생 합니다.`IngestionProperties`
+데이터 형식이 필요 하지만에 지정 되지 않은 경우 발생 합니다. `IngestionProperties`
 
 기본 클래스: IngestClientException
 
@@ -189,7 +189,7 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 
 기본 클래스: IngestClientException
 
-|필드 이름   |형식     |의미       
+|필드 이름   |유형     |의미       
 |-------------|---------|-----------------------|
 |크기         | long    | 수집 원본의 크기
 |MaxSize      | long    | 수집에 허용 되는 최대 크기
@@ -218,9 +218,9 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 
 수집 하는 동안 하나 이상의 오류가 발생할 때 발생 합니다.
 
-기본 클래스: [AggregateException](https://msdn.microsoft.com/library/system.aggregateexception(v=vs.110).aspx)
+기본 클래스: [AggregateException](/dotnet/api/system.aggregateexception)
 
-|필드 이름      |형식                             |의미       
+|필드 이름      |유형                             |의미       
 |----------------|---------------------------------|-----------------------|
 |IngestionErrors | IList<IngestClientException>    | 수집 하려고 하는 동안 발생 하는 오류 및 해당 오류와 관련 된 소스
 |IsGlobalError   | bool                            | 모든 원본에 대 한 예외가 발생 했는지 여부를 나타냅니다.

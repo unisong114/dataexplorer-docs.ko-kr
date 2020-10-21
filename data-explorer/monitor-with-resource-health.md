@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/31/2020
-ms.openlocfilehash: 630b03fc0e89005f1031aba4cbd1a86d803ff275
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 0fe11b4218f86d501c88e6a217f9ae867a17f5f4
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91942032"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343473"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Resource Health를 사용 하 여 Azure 데이터 탐색기 모니터링 (미리 보기)
 
@@ -42,7 +42,7 @@ Resource Health는 다음과 같은 다양 한 상태 검사를 검토 하 여 A
 
 :::image type="content" source="media/monitor-with-resource-health/available.png" alt-text="Azure 데이터 탐색기 리소스에 대 한 리소스 상태 페이지의 스크린샷 상태가 사용 가능으로 나열 되 고 강조 표시 됩니다." border="false":::
 
-### <a name="unavailable"></a>Unavailable
+### <a name="unavailable"></a>사용할 수 없음
 
 **사용할 수 없음** 상태는 쿼리 및 수집에 사용할 수 없게 되는 Azure 데이터 탐색기 리소스에 지속적으로 문제가 있음을 나타냅니다. 예를 들어 Azure 데이터 탐색기 리소스의 노드가 예기치 않게 다시 부팅 되었을 수 있습니다. Azure 데이터 탐색기 리소스가 오랜 시간 동안이 상태를 유지 하는 경우 [지원]()담당자에 게 문의 하세요.
 
@@ -51,7 +51,7 @@ Resource Health는 다음과 같은 다양 한 상태 검사를 검토 하 여 A
 > [!TIP]
 > [시스템 정보 명령을](kusto/management/systeminfo.md) 사용 하 여 문제의 원인을 찾을 수 있습니다.
 
-### <a name="unknown"></a>Unknown
+### <a name="unknown"></a>알 수 없음
 
 **알 수 없음** 상태는 **Resource Health** 이 Azure 데이터 탐색기 리소스에 대 한 정보를 10 분 넘게 수신 하지 못했음을 나타냅니다. 이 상태는 Azure 데이터 탐색기 리소스 상태를 명확 하 게 표시 하는 것이 아니라 문제 해결 프로세스의 중요 한 데이터 요소입니다. Azure 데이터 탐색기 클러스터가 예상 대로 작동 하는 경우 몇 분 내에 상태가 **사용 가능** 으로 변경 됩니다. **알 수 없는** 상태는 플랫폼의 이벤트가 리소스에 영향을 주는 것을 제안할 수 있습니다. 
 
@@ -68,6 +68,6 @@ Resource Health는 다음과 같은 다양 한 상태 검사를 검토 하 여 A
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Resource Health 경고 구성](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resource Health 경고 구성](/azure/service-health/resource-health-alert-arm-template-guide)
 * [자습서: Azure 데이터 탐색기에서 모니터링 데이터 수집 및 쿼리](ingest-data-no-code.md)
 * [메트릭을 사용 하 여 Azure 데이터 탐색기 성능, 상태 및 사용 현황 모니터링](using-metrics.md)

@@ -7,12 +7,12 @@ ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: e954b66c59e480d7fc713841e9a029da61dabd8f
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: aefbde03b123e9c5413b1ed39e85db096f3ff3d7
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87350539"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343456"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Azure 데이터 탐색기 예약 된 용량을 사용 하 여 Azure 데이터 탐색기 태그 단위에 대 한 선불
 
@@ -74,7 +74,7 @@ Azure 예약에 대한 자세한 내용은 다음 문서를 참조하세요.
 * [Azure 예약 할인 이해](/azure/cost-management-billing/reservations/understand-reservation-charges)
 * [종량제 구독의 예약 사용량 이해](/azure/cost-management-billing/reservations/understand-reserved-instance-usage)
 * [엔터프라이즈 등록에서 예약 사용량 이해](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
-* [파트너 센터 CSP(클라우드 솔루션 공급자) 프로그램의 Azure 예약](https://docs.microsoft.com/partner-center/azure-reservations)
+* [파트너 센터 CSP(클라우드 솔루션 공급자) 프로그램의 Azure 예약](/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>도움 필요 시 문의처
 

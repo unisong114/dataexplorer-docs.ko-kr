@@ -7,18 +7,18 @@ ms.reviewer: takamara
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: b062b2da81662e89dc61720ebf6bb555f896a8ca
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 228722bab25dc19532860f92b8194c4fd2d79a38
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874786"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343099"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Logstash에서 Azure Data Explorer로 데이터 수집
 
 [Logstash](https://www.elastic.co/products/logstash)는 동시에 여러 원본의 데이터를 수집하고, 데이터를 변환한 다음, 데이터를 즐겨찾는 “스태시”에 전송하는 오픈 소스인 서버 쪽 데이터 처리 파이프라인입니다. 이 문서에서는 로그 및 원격 분석 데이터에 대 한 빠르고 확장성이 뛰어난 데이터 탐색 서비스인 Azure 데이터 탐색기로 해당 데이터를 보냅니다. 처음에 테이블 및 데이터 매핑을 테스트 클러스터에 만든 다음, 테이블에 데이터를 보내고 결과를 확인하도록 Logstash로 보냅니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독 구독이 없으면 시작하기 전에 [체험 Azure 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * Azure Data Explorer [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md).
@@ -89,7 +89,7 @@ Logstash를 이미 사용 중이며 자체 이벤트 스트림에 액세스할 �
 
 ## <a name="configure-logstash-to-send-data-to-azure-data-explorer"></a>Azure Data Explorer로 데이터를 보내도록 Logstash 구성
 
-이전 단계에서 사용된 동일한 구성 파일에 다음 설정을 붙여넣습니다. 모든 자리 표시자를 설치 프로그램에 대한 관련 값으로 바꿉니다. 자세한 내용은 [AAD 애플리케이션 만들기](kusto/management/access-control/how-to-provision-aad-app.md)를 참조하세요. 
+이전 단계에서 사용된 동일한 구성 파일에 다음 설정을 붙여넣습니다. 모든 자리 표시자를 설치 프로그램에 대한 관련 값으로 바꿉니다. 자세한 내용은 [AAD 애플리케이션 만들기](./provision-azure-ad-app.md)를 참조하세요. 
 
 ```ruby
 output {

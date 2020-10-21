@@ -8,25 +8,25 @@ ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/28/2020
-ms.openlocfilehash: f330c10e95cdc36eae497811ef895ef827918b43
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.openlocfilehash: a13e3def33ea7098a48db7ffefa4406097863c2a
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87346493"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342725"
 ---
 # <a name="parse_command_line"></a>parse_command_line()
 
 유니코드 명령줄 문자열을 구문 분석 하 고 명령줄 인수의 동적 배열을 반환 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `parse_command_line(`*command_line*,*parser_type*`)`
 
 ## <a name="arguments"></a>인수
 
 * *command_line*: 구문 분석할 명령줄입니다.
-* *parser_type*: 현재 지원 되는 유일한 값은 `"Windows"` [CommandLineToArgvW](https://docs.microsoft.com/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw)와 동일한 방식으로 명령줄을 구문 분석 하는입니다.
+* *parser_type*: 현재 지원 되는 유일한 값은 `"Windows"` [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw)와 동일한 방식으로 명령줄을 구문 분석 하는입니다.
 
 ## <a name="returns"></a>반환
 

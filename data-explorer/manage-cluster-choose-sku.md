@@ -7,12 +7,12 @@ ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/13/2020
-ms.openlocfilehash: 5381b558d54002ddcd50fbbec2e4fbef6d44fdbc
-ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
+ms.openlocfilehash: 44c115cd509b72d5f83b1c1109ae09dc050d1a74
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92003078"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337451"
 ---
 # <a name="select-the-correct-compute-sku-for-your-azure-data-explorer-cluster"></a>Azure 데이터 탐색기 클러스터에 올바른 계산 SKU를 선택 합니다. 
 
@@ -23,7 +23,7 @@ ms.locfileid: "92003078"
 언제 든 지 [클러스터를 확장](manage-cluster-vertical-scaling.md)하 여 엔진 클러스터에 대 한 계산 SKU를 변경할 수 있습니다. 초기 시나리오에 맞는 가장 작은 SKU 크기로 시작 하는 것이 가장 좋습니다. 클러스터를 확장 하면 새 SKU를 사용 하 여 클러스터를 다시 만드는 동안 최대 30 분의 가동 중지 시간이 발생 합니다. [Azure Advisor 권장 사항을](azure-advisor.md) 사용 하 여 계산 SKU를 최적화할 수도 있습니다.
 
 > [!TIP]
-> [계산 예약 인스턴스 (RI)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) 는 Azure 데이터 탐색기 클러스터에 적용 됩니다.  
+> [계산 예약 인스턴스 (RI)](/azure/virtual-machines/windows/prepay-reserved-vm-instances) 는 Azure 데이터 탐색기 클러스터에 적용 됩니다.  
 
 이 문서에서는 다양 한 계산 SKU 옵션을 설명 하 고 가장 적합 한 기술 세부 정보를 제공 합니다.
 
@@ -128,4 +128,3 @@ Small Sku에 대 한 클러스터 당 인스턴스 수가 제한 되므로 RAM�
 * 변화 하는 수요에 따라 용량을 변경 하기 위해 엔진 클러스터 크기를 [확장 하거나 축소할](manage-cluster-horizontal-scaling.md) 수 있습니다.
 
 * [Azure Advisor 권장 사항을](azure-advisor.md) 사용 하 여 계산 SKU를 최적화 합니다.
-

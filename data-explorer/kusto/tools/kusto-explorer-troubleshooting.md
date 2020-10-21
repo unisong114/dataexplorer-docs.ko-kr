@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 9a697cfd37590f0368d5a8f0bacf91d02e1c8725
-ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
+ms.openlocfilehash: 365ce1e4c8e5dd2157a7975095b9e30dfd1e3722
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92003165"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342708"
 ---
 # <a name="troubleshooting"></a>문제 해결
 
@@ -148,7 +148,7 @@ Following errors were detected during this operation.
 이 증상은 다른 응용 프로그램에서 기본 ClickOnce 신뢰 프롬프트 동작을 재정의 하기 때문에 발생할 수 있습니다. 
 1. 기본 구성 설정을 확인 합니다.
 1. 구성 설정을 컴퓨터의 실제 구성과 비교 합니다.
-1. [이 방법 문서에서](https://docs.microsoft.com/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior)설명 하는 대로 필요에 따라 구성 설정을 다시 설정 합니다.
+1. [이 방법 문서에서](/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior)설명 하는 대로 필요에 따라 구성 설정을 다시 설정 합니다.
 
 ### <a name="cleanup-application-data"></a>응용 프로그램 데이터 정리
 
@@ -183,4 +183,4 @@ Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 
 
 * [Kusto 탐색기 사용자 인터페이스](kusto-explorer.md#overview-of-the-user-interface) 에 대 한 자세한 정보
 * [명령줄에서 .Kusto 탐색기를 실행 하는](kusto-explorer-using.md#kustoexplorer-command-line-arguments) 방법을 알아봅니다.
-* [Kusto 쿼리 언어에 대해 알아보기 (KQL)](https://docs.microsoft.com/azure/kusto/query/)
+* [Kusto 쿼리 언어에 대해 알아보기 (KQL)](../query/index.md)

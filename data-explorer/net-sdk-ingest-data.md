@@ -7,12 +7,12 @@ ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c6a544228d5527f1703567256bd3e824ddc0504a
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 56fd2d253cac80f097caa9206cd3b7c2a9d3c118
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872712"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343507"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-sdk"></a>Azure 데이터 탐색기 .NET SDK를 사용 하 여 데이터 수집 
 
@@ -22,10 +22,10 @@ ms.locfileid: "88872712"
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. .NET 용 클라이언트 라이브러리 두 개 ( [수집 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) 및 [데이터 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/))를 제공 합니다. .NET SDK에 대 한 자세한 내용은 [.NET sdk 정보](/azure/data-explorer/kusto/api/netfx/about-the-sdk)를 참조 하세요.
+Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. .NET 용 클라이언트 라이브러리 두 개 ( [수집 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) 및 [데이터 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/))를 제공 합니다. .NET SDK에 대 한 자세한 내용은 [.NET sdk 정보](./kusto/api/netfx/about-the-sdk.md)를 참조 하세요.
 이러한 라이브러리를 사용하여 데이터를 클러스터로 수집(로드)하고 코드에서 데이터를 쿼리할 수 있습니다. 이 문서에서는 먼저 테스트 클러스터에서 테이블 및 데이터 매핑을 만듭니다. 그런 다음, 클러스터 큐에 수집을 넣고 결과의 유효성을 검사합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/04/2020
-ms.openlocfilehash: 9b2d35c796cfd1f41dc2fd8e9385a4c446000b86
-ms.sourcegitcommit: ed902a5a781e24e081cd85910ed15cd468a0db1e
+ms.openlocfilehash: 28e88b71b5d7a2f8729e2f9eef416ee5804a2880
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88072449"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337638"
 ---
 # <a name="update-policy-overview"></a>정책 업데이트 개요
 
@@ -49,7 +49,7 @@ ms.locfileid: "88072449"
 테이블에는 0 개 이상의 업데이트 정책 개체가 연결 되어 있을 수 있습니다.
 이러한 각 개체는 다음과 같은 속성이 정의 된 JSON 속성 모음으로 표시 됩니다.
 
-|속성 |Type |Description  |
+|속성 |유형 |설명  |
 |---------|---------|----------------|
 |IsEnabled                     |`bool`  |업데이트 정책 사용 (true) 또는 사용 안 함 (false)에 대 한 상태                                                                                                                               |
 |원본                        |`string`|호출할 업데이트 정책을 트리거하는 테이블의 이름입니다.                                                                                                                                 |
@@ -78,9 +78,9 @@ ms.locfileid: "88072449"
 * [. 수집 (pull)](../management/data-ingestion/ingest-from-storage.md)
 * [. 수집 (인라인)](../management/data-ingestion/ingest-inline.md)
 * [. set |. append |. set 또는-append |. set 또는-replace](../management/data-ingestion/ingest-from-query.md)
-  * 업데이트 정책을 명령의 일부로 호출 하는 경우 `.set-or-replace` 기본 동작은 파생 테이블의 데이터가 원본 테이블에서와 동일한 방식으로 대체 된다는 것입니다.
-* [.move extents](../management/extents-commands.md#move-extents)
-* [.replace extents](../management/extents-commands.md#replace-extents)
+  * 업데이트 정책을 명령의 일부로 호출 하는 경우  `.set-or-replace` 기본 동작은 파생 테이블의 데이터가 원본 테이블에서와 동일한 방식으로 대체 된다는 것입니다.
+* [.move extents](./move-extents.md)
+* [.replace extents](./replace-extents.md)
   * 이 `PropagateIngestionProperties` 명령은 수집 작업에만 적용 됩니다. 업데이트 정책이 `.move extents` 또는 명령의 일부로 트리거되면 `.replace extents` 이 옵션은 영향을 주지 않습니다.
 
 ## <a name="regular-ingestion-using-update-policy"></a>업데이트 정책을 사용한 일반 수집

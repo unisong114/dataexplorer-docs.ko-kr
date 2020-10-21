@@ -7,12 +7,12 @@ ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/12/2020
-ms.openlocfilehash: 0d6695ddf6923dcbf44ac3466a2388edc7618551
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: d81ed37a7502e0795fc82f38a918719a5da8db8e
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874973"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342895"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>K2Bridge 오픈 소스 커넥터를 사용 하 여 Kibana의 Azure 데이터 탐색기에서 데이터 시각화
 
@@ -34,13 +34,13 @@ K2Bridge는 Kibana의 **검색** 탭을 지원 합니다.
 
    [![Kibana 페이지가 Azure 데이터 탐색기에 바인딩되어 있습니다.](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다음을 준비 해야 합니다.
 
 * Kubernetes 패키지 관리자 인 [투구 v3](https://github.com/helm/helm#install)
 
-* AKS (Azure Kubernetes Service) 클러스터 또는 기타 Kubernetes 클러스터. 1.14 ~ 1.16 버전을 테스트 하 고 확인 했습니다. AKS 클러스터가 필요한 경우 [Azure CLI를 사용 하 여](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) AKS 클러스터를 배포 하거나 [Azure Portal을 사용](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)하는 방법을 참조 하세요.
+* AKS (Azure Kubernetes Service) 클러스터 또는 기타 Kubernetes 클러스터. 1.14 ~ 1.16 버전을 테스트 하 고 확인 했습니다. AKS 클러스터가 필요한 경우 [Azure CLI를 사용 하 여](/azure/aks/kubernetes-walkthrough) AKS 클러스터를 배포 하거나 [Azure Portal을 사용](/azure/aks/kubernetes-walkthrough-portal)하는 방법을 참조 하세요.
 
 * 클러스터의 URL 및 데이터베이스 이름을 포함 하는 [Azure 데이터 탐색기 클러스터](create-cluster-database-portal.md)
 
@@ -48,7 +48,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
 
     뷰어 권한이 있는 서비스 주체를 사용 하 여 더 높은 수준의 사용 권한을 사용 하지 못하도록 하는 것이 좋습니다. [AZURE AD 서비스 주체에 대 한 클러스터의 보기 권한을 설정](manage-database-permissions.md#manage-permissions-in-the-azure-portal)합니다.
 
-    Azure AD 서비스 주체에 대 한 자세한 내용은 [AZURE ad 서비스 주체 만들기](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)를 참조 하세요.
+    Azure AD 서비스 주체에 대 한 자세한 내용은 [AZURE ad 서비스 주체 만들기](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)를 참조 하세요.
 
 ## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>AKS (Azure Kubernetes Service)에서 K2Bridge 실행
 
@@ -87,7 +87,7 @@ Kibana의 Azure 데이터 탐색기에서 데이터를 시각화 하려면 다�
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-    1. 필요에 따라 Application Insights 원격 분석을 사용 하도록 설정 합니다. Application Insights를 처음으로 사용 하는 경우 [Application Insights 리소스를 만듭니다](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource). [계측 키를 변수에 복사](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) 합니다.
+    1. 필요에 따라 Application Insights 원격 분석을 사용 하도록 설정 합니다. Application Insights를 처음으로 사용 하는 경우 [Application Insights 리소스를 만듭니다](/azure/azure-monitor/app/create-new-resource). [계측 키를 변수에 복사](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) 합니다.
 
         ```bash
         APPLICATION_INSIGHTS_KEY=[INSTRUMENTATION_KEY]
@@ -172,7 +172,7 @@ Azure 데이터 탐색기이 Kibana에 대 한 데이터 원본으로 구성 된
 1. 쿼리 표시줄에서 다음을 수행 하 여 데이터를 검색할 수 있습니다.
 
     * 검색 용어를 입력 합니다.
-    * Lucene 쿼리 구문을 사용 합니다. 예를 들면
+    * Lucene 쿼리 구문을 사용 합니다. 예를 들면 다음과 같습니다.
         * "오류"를 검색 하 여이 값을 포함 하는 모든 레코드를 찾습니다.
         * "상태: 200"을 검색 하 여 상태 값이 200 인 모든 레코드를 가져옵니다.
     * 논리 연산자 **and**, **OR**및 **NOT**을 사용 합니다.

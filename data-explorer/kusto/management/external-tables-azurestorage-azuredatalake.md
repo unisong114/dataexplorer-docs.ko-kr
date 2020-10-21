@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: c10e6502c4e18a5c30d971c4814c2270a0b27ff1
-ms.sourcegitcommit: 830837607f344f1ce1f146f946a41e45bfebcb22
+ms.openlocfilehash: 0532219b8efc1cab7508d1838882b6fa48f5048f
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91806685"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343269"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -321,7 +321,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 속성     | 종류 | 매핑                                                           |
+| Name     | 종류 | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -339,7 +339,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 속성     | 종류 | 매핑                                                                |
+| Name     | 종류 | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -361,7 +361,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| 속성     | 종류 | 매핑                                                                         |
+| Name     | 종류 | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -378,5 +378,5 @@ dataformat=parquet
 ```
 ## <a name="next-steps"></a>다음 단계
 
-* [외부 테이블 일반 제어 명령](externaltables.md)
+* [외부 테이블 일반 제어 명령](./external-table-commands.md)
 * [외부 SQL 테이블 만들기 및 변경](external-sql-tables.md)

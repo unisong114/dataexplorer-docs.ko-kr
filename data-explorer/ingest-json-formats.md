@@ -7,18 +7,18 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 711ea8d819fbf8fc66c792a51c0ddc3844647a5e
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: f599698f4b35075aaec4ff3789fa9036c40d8c17
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874752"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343235"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON 형식의 샘플 데이터를 Azure 데이터 탐색기 수집
 
-이 문서에서는 JSON 형식의 데이터를 Azure 데이터 탐색기 데이터베이스에 수집 하는 방법을 보여 줍니다. 원시 및 매핑된 JSON의 간단한 예제를 시작 하 고, 여러 줄로 된 JSON을 계속 진행 하 고, 배열 및 사전을 포함 하는 더 복잡 한 JSON 스키마를 다룰 수 있습니다.  이 예에서는 KQL (Kusto query language), c # 또는 Python을 사용 하 여 JSON 형식의 데이터를 수집 하는 프로세스를 자세히 설명 합니다. Kusto 쿼리 언어 `ingest` 제어 명령은 엔진 끝점에 직접 실행 됩니다. 프로덕션 시나리오에서 수집은 클라이언트 라이브러리 또는 데이터 연결을 사용 하 여 데이터 관리 서비스에 대해 실행 됩니다. Azure [데이터 탐색기 Python 라이브러리를 사용 하 여 데이터 수집](python-ingest-data.md) 을 읽고 [AZURE 데이터 탐색기 .NET Standard SDK를 사용 하 여 데이터를 수집 하 여](net-standard-ingest-data.md) 이러한 클라이언트 라이브러리와의 수집 데이터에 대 한 연습을 진행 합니다.
+이 문서에서는 JSON 형식의 데이터를 Azure 데이터 탐색기 데이터베이스에 수집 하는 방법을 보여 줍니다. 원시 및 매핑된 JSON의 간단한 예제를 시작 하 고, 여러 줄로 된 JSON을 계속 진행 하 고, 배열 및 사전을 포함 하는 더 복잡 한 JSON 스키마를 다룰 수 있습니다.  이 예에서는 KQL (Kusto query language), c # 또는 Python을 사용 하 여 JSON 형식의 데이터를 수집 하는 프로세스를 자세히 설명 합니다. Kusto 쿼리 언어 `ingest` 제어 명령은 엔진 끝점에 직접 실행 됩니다. 프로덕션 시나리오에서 수집은 클라이언트 라이브러리 또는 데이터 연결을 사용 하 여 데이터 관리 서비스에 대해 실행 됩니다. Azure [데이터 탐색기 Python 라이브러리를 사용 하 여 데이터 수집](python-ingest-data.md) 을 읽고 [AZURE 데이터 탐색기 .NET Standard SDK를 사용 하 여 데이터를 수집 하 여](./net-sdk-ingest-data.md) 이러한 클라이언트 라이브러리와의 수집 데이터에 대 한 연습을 진행 합니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 [테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)
 

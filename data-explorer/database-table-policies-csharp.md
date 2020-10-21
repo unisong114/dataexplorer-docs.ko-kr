@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: 9ebce32338bcf82ccea9df5cb23770839c0ee278
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: f5778f4e242361be6c0af7827611ac812137e9c4
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873035"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342878"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>C를 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 및 테이블 정책 만들기 #
 
@@ -28,16 +28,16 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 * Visual Studio 2019. Visual Studio 2019을 사용 하지 않는 경우 *무료* [visual studio Community 2019](https://www.visualstudio.com/downloads/)를 다운로드 하 여 사용할 수 있습니다. Visual Studio를 설치 하는 동안 **Azure 개발** 을 선택 해야 합니다.
 * Azure 구독 필요한 경우 시작 하기 전에 [무료 Azure 계정을](https://azure.microsoft.com/free/) 만들 수 있습니다.
 * [테스트 클러스터 및 데이터베이스](create-cluster-database-csharp.md)입니다.
-* [테스트 테이블](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)입니다.
+* [테스트 테이블](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster)입니다.
 
-## <a name="install-c-nuget"></a>C # NuGet 설치
+## <a name="install-c-nuget"></a>C# NuGet 설치
 
 * [Azure 데이터 탐색기 (Kusto) NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)를 설치 합니다.
 * [Microsoft.](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). n e t. n e t. n e t. n e t. (선택 사항, 테이블 정책을 변경 하는 경우)
 * 인증을 위해 [system.identitymodel. ActiveDirectory NuGet 패키지](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)를 설치 합니다.
 
 ## <a name="authentication"></a>인증
-이 문서의 예제를 실행 하려면 리소스에 액세스할 수 있는 Azure Active Directory (Azure AD) 응용 프로그램 및 서비스 주체가 필요 합니다. [테스트 클러스터와 데이터베이스](create-cluster-database-csharp.md#authentication)의 인증에 동일한 Azure AD 응용 프로그램을 사용할 수 있습니다. 다른 Azure AD 응용 프로그램을 사용 하려는 경우 [AZURE ad 응용 프로그램 만들기](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 를 참조 하 여 무료 azure ad 응용 프로그램을 만들고 구독 범위에서 역할 할당을 추가 합니다. 또한이 문서에서는, 및를 가져오는 방법을 보여 줍니다 `Directory (tenant) ID` `Application ID` `Client secret` . 새 Azure AD 응용 프로그램을 데이터베이스의 보안 주체로 추가 해야 할 수도 있습니다. 자세한 내용은 [Azure 데이터 탐색기 데이터베이스 사용 권한 관리](manage-database-permissions.md)를 참조 하세요.
+이 문서의 예제를 실행 하려면 리소스에 액세스할 수 있는 Azure Active Directory (Azure AD) 응용 프로그램 및 서비스 주체가 필요 합니다. [테스트 클러스터와 데이터베이스](create-cluster-database-csharp.md#authentication)의 인증에 동일한 Azure AD 응용 프로그램을 사용할 수 있습니다. 다른 Azure AD 응용 프로그램을 사용 하려는 경우 [AZURE ad 응용 프로그램 만들기](/azure/active-directory/develop/howto-create-service-principal-portal) 를 참조 하 여 무료 azure ad 응용 프로그램을 만들고 구독 범위에서 역할 할당을 추가 합니다. 또한이 문서에서는, 및를 가져오는 방법을 보여 줍니다 `Directory (tenant) ID` `Application ID` `Client secret` . 새 Azure AD 응용 프로그램을 데이터베이스의 보안 주체로 추가 해야 할 수도 있습니다. 자세한 내용은 [Azure 데이터 탐색기 데이터베이스 사용 권한 관리](manage-database-permissions.md)를 참조 하세요.
 
 ## <a name="alter-database-retention-policy"></a>Alter database 보존 정책
 10 일 일시 삭제 기간을 사용 하 여 보존 정책을 설정 합니다.

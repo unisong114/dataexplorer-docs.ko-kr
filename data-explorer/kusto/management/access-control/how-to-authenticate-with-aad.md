@@ -1,6 +1,6 @@
 ---
 title: 액세스를 위해 AAD를 사용 하 여 인증 하려면 kusto 인증-Azure 데이터 탐색기
-description: 이 문서에서는 azure 데이터 탐색기에서 Azure 데이터 탐색기 액세스에 대해 AAD를 사용 하 여 인증 하는 방법을 설명 합니다.
+description: 이 문서에서는 azure 데이터 탐색기에서 Azure 데이터 탐색기 액세스에 대해 AAD를 사용 하 여 인증 How-To 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,14 +9,14 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 09/13/2019
-ms.openlocfilehash: f74848ac3b634affbafde8d0441a4340aff230da
-ms.sourcegitcommit: dc42f4a7fa617a06b5566ce40b7cdc66cfd22185
+ms.openlocfilehash: e1c2a6f5cbec90d59ed54f15147b912ffbc8fdd3
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87557621"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343422"
 ---
-# <a name="how-to-authenticate-with-aad-for-azure-data-explorer-access"></a>Azure 데이터 탐색기 액세스를 위해 AAD를 사용 하 여 인증 하는 방법
+# <a name="how-to-authenticate-with-aad-for-azure-data-explorer-access"></a>Azure 데이터 탐색기 액세스를 위해 AAD를 사용 하 여 인증 How-To
 
 Azure 데이터 탐색기에 액세스 하는 데 권장 되는 방법은 **Azure Active Directory** 서비스 (때로는 **azure AD**또는 단순히 **AAD**)를 인증 하는 것입니다. 이렇게 하면 Azure 데이터 탐색기에서 2 단계 프로세스를 사용 하 여 액세스 하는 보안 주체의 디렉터리 자격 증명을 볼 필요가 없습니다.
 
@@ -87,7 +87,7 @@ Azure 데이터 탐색기 SDK를 사용 하는 경우 AAD 토큰은 사용자 �
 
 Azure 데이터 탐색기 SDK를 사용 하지 않는 응용 프로그램은 AAD 서비스 보안 프로토콜 클라이언트를 구현 하는 대신 AAD 클라이언트 라이브러리 (ADAL)를 계속 사용할 수 있습니다. https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet.Net 응용 프로그램에서 작업을 수행 하는 예제는 []를 참조 하세요.
 
-Azure 데이터 탐색기 액세스에 대 한 사용자를 인증 하려면 먼저 응용 프로그램에 위임 된 권한을 부여 해야 합니다 `Access Kusto` . 자세한 내용은 [Kusto의 AAD 응용 프로그램 프로 비전 가이드](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application) 를 참조 하세요.
+Azure 데이터 탐색기 액세스에 대 한 사용자를 인증 하려면 먼저 응용 프로그램에 위임 된 권한을 부여 해야 합니다 `Access Kusto` . 자세한 내용은 [Kusto의 AAD 응용 프로그램 프로 비전 가이드](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration) 를 참조 하세요.
 
 다음 간단한 코드 조각은 ADAL을 사용 하 여 Azure 데이터 탐색기에 액세스 하는 AAD 사용자 토큰을 획득 하는 방법을 보여 줍니다 (로그온 UI 시작).
 
@@ -185,7 +185,7 @@ var queryResult = client.ExecuteQuery(databaseName, query, null);
 **AAD 응용 프로그램 구성**
 
 > [!NOTE]
-> AAD 앱을 설정 하기 위해 수행 해야 하는 표준 [단계](./how-to-provision-aad-app.md) 외에도 aad 응용 프로그램에서 oauth 암시적 흐름을 사용 하도록 설정 해야 합니다. Azure portal의 응용 프로그램 페이지에서 매니페스트를 선택 하 고 oauth2AllowImplicitFlow를 true로 설정 하 여이를 달성할 수 있습니다.
+> AAD 앱을 설정 하기 위해 수행 해야 하는 표준 [단계](../../../provision-azure-ad-app.md) 외에도 aad 응용 프로그램에서 oauth 암시적 흐름을 사용 하도록 설정 해야 합니다. Azure portal의 응용 프로그램 페이지에서 매니페스트를 선택 하 고 oauth2AllowImplicitFlow를 true로 설정 하 여이를 달성할 수 있습니다.
 
 **세부 정보**
 
@@ -250,6 +250,6 @@ var settings = {
 $.ajax(settings).then(function(data) {/* do something wil the data */});
 ```
 
-> 경고-인증할 때 다음과 같은 예외가 발생 하거나 유사한 예외가 발생 합니다.`ReferenceError: AuthenticationContext is not defined`
+> 경고-인증할 때 다음과 같은 예외가 발생 하거나 유사한 예외가 발생 합니다. `ReferenceError: AuthenticationContext is not defined`
 전역 네임 스페이스에 AuthenticationContext이 없기 때문일 수 있습니다.
 불행 하 게 AdalJS는 현재 인증 컨텍스트가 전역 네임 스페이스에 정의 되어 있는 문서화 되지 않은 요구 사항이 있습니다.

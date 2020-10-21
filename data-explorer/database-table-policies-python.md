@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: 8febe9934234370b217ab4f5a2591fd0b5adb759
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: e970b469b1114252cab6e125ef247f048b4067bd
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873018"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342861"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 및 테이블 정책 만들기
 
@@ -23,7 +23,7 @@ ms.locfileid: "88873018"
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 데이터베이스 및 테이블 정책을 만듭니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [테스트 클러스터 및 데이터베이스](create-cluster-database-python.md)
@@ -38,7 +38,7 @@ pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
 ## <a name="authentication"></a>인증
-이 문서의 예제를 실행 하려면 리소스에 액세스할 수 있는 Azure AD 응용 프로그램 및 서비스 주체가 필요 합니다. [테스트 클러스터 및 데이터베이스](create-cluster-database-csharp.md#authentication)에서 인증에 동일한 Azure AD 응용 프로그램을 사용할 수 있습니다. 다른 Azure AD 응용 프로그램을 사용 하려는 경우 [AZURE ad 응용 프로그램 만들기](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 를 참조 하 여 무료 Azure Ad 응용 프로그램을 만들고 구독 범위에서 역할 할당을 추가 합니다. 또한, 및를 가져오는 방법을 보여 `Directory (tenant) ID` 줍니다 `Application ID` `Client Secret` . 새 Azure AD 응용 프로그램을 데이터베이스의 보안 주체로 추가 해야 할 수도 있습니다. [azure 데이터 탐색기 데이터베이스 사용 권한 관리](manage-database-permissions.md)를 참조 하세요.    
+이 문서의 예제를 실행 하려면 리소스에 액세스할 수 있는 Azure AD 응용 프로그램 및 서비스 주체가 필요 합니다. [테스트 클러스터 및 데이터베이스](create-cluster-database-csharp.md#authentication)에서 인증에 동일한 Azure AD 응용 프로그램을 사용할 수 있습니다. 다른 Azure AD 응용 프로그램을 사용 하려는 경우 [AZURE ad 응용 프로그램 만들기](/azure/active-directory/develop/howto-create-service-principal-portal) 를 참조 하 여 무료 Azure Ad 응용 프로그램을 만들고 구독 범위에서 역할 할당을 추가 합니다. 또한, 및를 가져오는 방법을 보여 `Directory (tenant) ID` 줍니다 `Application ID` `Client Secret` . 새 Azure AD 응용 프로그램을 데이터베이스의 보안 주체로 추가 해야 할 수도 있습니다. [azure 데이터 탐색기 데이터베이스 사용 권한 관리](manage-database-permissions.md)를 참조 하세요.    
 
 ## <a name="alter-database-retention-policy"></a>Alter database 보존 정책
 일시 삭제 기간이 10 일인 보존 정책을 설정 합니다.

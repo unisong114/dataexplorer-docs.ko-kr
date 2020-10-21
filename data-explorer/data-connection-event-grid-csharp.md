@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/07/2019
-ms.openlocfilehash: 5ba4f61d051a89d0fd3851f3e5be4f344ea79e0b
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 824556388c2f3f70f006ab372e06967c42117f06
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874140"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343065"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>C를 사용 하 여 Azure 데이터 탐색기에 대 한 Event Grid 데이터 연결 만들기 #
 
@@ -26,12 +26,12 @@ ms.locfileid: "88874140"
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
  이 문서에서는 c #을 사용 하 여 Azure 데이터 탐색기에 대 한 Event Grid 데이터 연결을 만듭니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발**을 사용하도록 설정합니다.
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-csharp.md) 만들기
-* [테이블 및 열 매핑](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) 만들기
+* [테이블 및 열 매핑](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster) 만들기
 * [데이터베이스 및 테이블 정책](database-table-policies-csharp.md) 설정 (선택 사항)
 * [Event Grid 구독을 사용 하 여 저장소 계정을](ingest-data-event-grid.md)만듭니다.
 
@@ -81,9 +81,9 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 |**설정** | **제안 값** | **필드 설명**|
 |---|---|---|
 | tenantId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테넌트 ID 디렉터리 ID 라고도 합니다.|
-| subscriptionId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 리소스를 만드는 데 사용 하는 구독 ID입니다.|
-| clientId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테 넌 트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 ID입니다.|
-| clientSecret | *xxxxxxxxxxxxxx* | 테 넌 트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 암호입니다. |
+| subscriptionId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 리소스를 만드는 데 사용하는 구독 ID입니다.|
+| clientId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테넌트의 리소스에 액세스할 수 있는 애플리케이션의 클라이언트 ID입니다.|
+| clientSecret | *xxxxxxxxxxxxxx* | 테넌트의 리소스에 액세스할 수 있는 애플리케이션의 클라이언트 암호입니다. |
 | resourceGroupName | *testrg* | 클러스터를 포함 하는 리소스 그룹의 이름입니다.|
 | clusterName | *mykustocluster* | 클러스터의 이름입니다.|
 | databaseName | *mykustodatabase* | 클러스터에 있는 대상 데이터베이스의 이름입니다.|

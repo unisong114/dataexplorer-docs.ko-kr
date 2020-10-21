@@ -7,20 +7,20 @@ ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.openlocfilehash: adbf974852f071dde54cc668b213e7b7d6d7cfea
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: b019f0f8cfefab2ed111b023993c929bd5f19e5f
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871947"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342521"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks"></a>Azure Databricks에서 Azure 데이터 탐색기에 연결
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)는 Microsoft Azure 플랫폼에 대해 최적화된 Apache Spark 기반 분석 플랫폼입니다. 이 문서에서는 Azure 데이터 탐색기에서 Azure Databricks를 사용 하 여 데이터에 액세스 하는 방법을 보여 줍니다. 디바이스 로그인 및 Azure AD(Azure Active Directory) 앱을 포함하여 Azure Data Explorer로 인증하는 방법에는 여러 가지가 있습니다.
+[Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)는 Microsoft Azure 플랫폼에 대해 최적화된 Apache Spark 기반 분석 플랫폼입니다. 이 문서에서는 Azure 데이터 탐색기에서 Azure Databricks를 사용 하 여 데이터에 액세스 하는 방법을 보여 줍니다. 디바이스 로그인 및 Azure AD(Azure Active Directory) 앱을 포함하여 Azure Data Explorer로 인증하는 방법에는 여러 가지가 있습니다.
  
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
-- [Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다](create-cluster-database-portal.md).
+- [Azure Data Explorer 클러스터 및 데이터베이스 만들기](create-cluster-database-portal.md).
 - [Azure Databricks 작업 영역을 만듭니다](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). **Azure Databricks 서비스** 아래 **가격 책정 계층** 드롭다운 목록에서 **프리미엄**을 선택합니다. 이를 선택하면 Azure Databricks 비밀을 사용하여 자격 증명을 저장하고 Notebook 및 작업에서 이를 참조할 수 있습니다.
 
 - 기본 설정을 사용 하 여 Azure Databricks에서 [클러스터를 만듭니다](https://docs.azuredatabricks.net/user-guide/clusters/create.html) .
@@ -38,7 +38,7 @@ Azure Databricks 클러스터에 [spark-kusto 커넥터](https://mvnrepository.c
 
 ## <a name="connect-to-azure-data-explorer-by-using-an-azure-ad-app"></a>Azure AD 앱을 사용 하 여 Azure 데이터 탐색기에 연결
 
-1. [Azure AD 애플리케이션을 프로비전](kusto/management/access-control/how-to-provision-aad-app.md)하여 Azure AD 앱을 만듭니다.
+1. [AZURE ad 응용 프로그램을 프로 비전](./provision-azure-ad-app.md)하 여 azure ad 앱을 만듭니다.
 1. Azure Data Explorer 데이터베이스에서 Azure AD 앱에 대한 액세스 권한을 다음과 같이 부여합니다.
 
     ```kusto

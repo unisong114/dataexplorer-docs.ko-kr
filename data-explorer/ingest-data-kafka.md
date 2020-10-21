@@ -7,12 +7,12 @@ ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 14f4ed38ecb2e5b4a94dad8a73fb43ea3ff1e5ee
-ms.sourcegitcommit: c8256390d745e345f44d401e33e775702d62721d
+ms.openlocfilehash: 8274cd04dc2ecf588bf4771c06e3f8a760cac74d
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91007807"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343167"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-data-explorer"></a>Apache Kafka에서 Azure 데이터 탐색기로 데이터 수집
  
@@ -24,8 +24,8 @@ Azure 데이터 탐색기는 [Apache Kafka](http://kafka.apache.org/documentatio
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
-* [Microsoft Azure 계정을](https://docs.microsoft.com/azure/)만듭니다.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)를 설치합니다.
+* [Microsoft Azure 계정을](/azure/)만듭니다.
+* [Azure CLI](/cli/azure/install-azure-cli)를 설치합니다.
 * [Docker](https://docs.docker.com/get-docker/) 를 설치 하 고 [Docker Compose](https://docs.docker.com/compose/install)합니다.
 * 기본 캐시 및 보존 정책을 사용 하 여 [Azure Portal에서 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다](create-cluster-database-portal.md) .
 
@@ -322,7 +322,7 @@ services:
     | project StartTime, EndTime, Source, EventId
     ```
     
-1. 연산자를 사용 합니다 [`summarize`](https://docs.microsoft.com/azure/data-explorer/write-queries#summarize) .
+1. 연산자를 사용 합니다 [`summarize`](./write-queries.md#summarize) .
 
     ```kusto
     Storms
@@ -332,9 +332,9 @@ services:
     | render columnchart
     ```
     
-    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Azure 데이터 탐색기의 kafka 쿼리 세로 막대형 차트 결과":::
+    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Azure 데이터 탐색기 포털에서 테이블 만들기 ":::
 
-더 많은 쿼리 예제 및 지침은 [Azure 데이터 탐색기에 대 한 쿼리 작성](write-queries.md) 및 [kusto 쿼리 언어 설명서](https://docs.microsoft.com/azure/data-explorer/kusto/query/)를 참조 하세요.
+더 많은 쿼리 예제 및 지침은 [Azure 데이터 탐색기에 대 한 쿼리 작성](write-queries.md) 및 [kusto 쿼리 언어 설명서](./kusto/query/index.md)를 참조 하세요.
 
 ## <a name="reset"></a>다시 설정
 
@@ -348,7 +348,7 @@ services:
 
 ## <a name="clean-up-resources"></a>리소스 정리
 
-Azure 데이터 탐색기 리소스를 삭제 하려면 [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) 또는 [Az kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete)를 사용 합니다.
+Azure 데이터 탐색기 리소스를 삭제 하려면 [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) 또는 [Az kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete)를 사용 합니다.
 
 ```azurecli-interactive
 az kusto cluster delete -n <cluster name> -g <resource group name>
@@ -358,7 +358,7 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 ## <a name="next-steps"></a>다음 단계
 
 * [빅 데이터 아키텍처](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)에 대해 자세히 알아보세요.
-* [JSON 형식의 샘플 데이터를 Azure 데이터 탐색기에 수집 하는 방법](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language)에 대해 알아봅니다.
+* [JSON 형식의 샘플 데이터를 Azure 데이터 탐색기에 수집 하는 방법](./ingest-json-formats.md?tabs=kusto-query-language)에 대해 알아봅니다.
 * 추가 Kafka labs의 경우:
    * [분산 모드의 Confluent 클라우드 Kafka에서 수집 하기 위한 실습](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
    * [분산 모드의 HDInsight Kafka에서 수집 하기 위한 실습](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)

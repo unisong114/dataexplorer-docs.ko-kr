@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/06/2020
-ms.openlocfilehash: d07dc282ba3996113903bd1b7c5ab08672d46543
-ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
+ms.openlocfilehash: 4d8574e0b68c234f1cef0ba49b37eb869e61c142
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92003051"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342606"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>종동체 데이터베이스를 사용 하 여 Azure 데이터 탐색기에 데이터베이스 연결
 
@@ -30,7 +30,7 @@ ms.locfileid: "92003051"
 
 1. Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.microsoft.com/free/) 계정을 만듭니다.
 1. 리더 및 종동체에 대 한 [클러스터 및 DB를 만듭니다](create-cluster-database-portal.md) .
-1. [수집](ingest-sample-data.md) [개요](/azure/data-explorer/ingest-data-overview)에 설명 된 다양 한 방법 중 하나를 사용 하 여 데이터를 리더 데이터베이스로 수집 합니다.
+1. [수집](ingest-sample-data.md) [개요](./ingest-data-overview.md)에 설명 된 다양 한 방법 중 하나를 사용 하 여 데이터를 리더 데이터베이스로 수집 합니다.
 
 ## <a name="attach-a-database"></a>데이터베이스 연결
 
@@ -476,4 +476,3 @@ C #, Python 또는 PowerShell을 사용 하 여 [종동체 데이터베이스를
 ## <a name="next-steps"></a>다음 단계
 
 * 종동체 클러스터 구성에 대 한 자세한 내용은 [종동체 클러스터를 관리 하는 명령 제어](kusto/management/cluster-follower.md)를 참조 하세요.
-

@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 8688c7d6f2a5d68e0e1ae4436e099b011fd5faa0
-ms.sourcegitcommit: 3dfaaa5567f8a5598702d52e4aa787d4249824d4
+ms.openlocfilehash: 17623f739c3bc3a8573d208434753b879931ac02
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87803236"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342776"
 ---
 # <a name="using-kustoexplorer"></a>Kusto.Explorer 사용
 
@@ -32,7 +32,7 @@ Kusto. 탐색기는 사용 하기 쉬운 사용자 인터페이스에서 Kusto �
 
 1. 표에서 셀을 선택 하 고 **자세히 보기** 를 선택 하 여 결과 창에 관련 항목을 표시 합니다.
 
-    :::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto 탐색기 검색 + + 결과":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="검색 + + Kusto Explorer":::
 
 ## <a name="query-mode"></a>쿼리 모드
 
@@ -71,9 +71,9 @@ StormEvents
 | limit 10
 ```
 
-:::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto 탐색기 기본 쿼리":::
+:::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="검색 + + Kusto Explorer":::
 
-[Kusto 쿼리 언어](https://docs.microsoft.com/azure/kusto/query/)에 대해 자세히 알아보세요.
+[Kusto 쿼리 언어](../query/index.md)에 대해 자세히 알아보세요.
 
 > [!NOTE]
 > 쿼리 식의 빈 줄은 실행되는 쿼리 부분에 영향을 줄 수 있습니다.
@@ -89,28 +89,28 @@ StormEvents
 >
 > * 아래에 설명 된 클라이언트 쪽 쿼리 parametrization는 Kusto 탐색기 응용 프로그램의 기능입니다. 서비스에서 실행 되도록 보내기 전에 쿼리에 대해 문자열 바꾸기 작업을 사용 하는 것과 같습니다. 아래에 설명 된 구문은 쿼리 언어 자체에 포함 되지 않으며, Kusto 탐색기를 사용 하 여 쿼리를 서비스로 보낼 때 사용할 수 없습니다.
 
-여러 쿼리 또는 여러 탭에서 동일한 값을 사용 하는 경우 사용 되는 모든 위치의 값을 변경 하는 것이 매우 불편할 수 있습니다. 그 이유는 Kusto 탐색기는 쿼리 매개 변수를 지원 하기 때문입니다. 쿼리 매개 변수는 쉽게 다시 사용할 수 있도록 탭 간에 공유 됩니다. 매개 변수는 대괄호로 표시 됩니다 {} . 예를 들면 다음과 같습니다. `{parameter1}`
+여러 쿼리 또는 여러 탭에서 동일한 값을 사용 하는 경우 사용 되는 모든 위치의 값을 변경 하는 것이 매우 불편할 수 있습니다. 그 이유는 Kusto 탐색기는 쿼리 매개 변수를 지원 하기 때문입니다. 쿼리 매개 변수는 쉽게 다시 사용할 수 있도록 탭 간에 공유 됩니다. 매개 변수는 대괄호로 표시 됩니다 {} . `{parameter1}`
 
 스크립트 편집기는 쿼리 매개 변수를 강조 표시 합니다.
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-1.png" alt-text="매개 변수가 있는 쿼리 1":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-1.png" alt-text="검색 + + Kusto Explorer":::
 
 기존 쿼리 매개 변수를 쉽게 정의 하 고 편집할 수 있습니다.
 
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="매개 변수가 있는 쿼리 2 편집":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="검색 + + Kusto Explorer":::
 
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="매개 변수가 있는 쿼리 편집 3":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="검색 + + Kusto Explorer":::
 
 스크립트 편집기에는 이미 정의 된 쿼리 매개 변수에 대 한 IntelliSense도 있습니다.
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="Paramaterized 쿼리 IntelliSense":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="검색 + + Kusto Explorer":::
 
 매개 변수 **집합** 콤보 상자에 나열 된 여러 매개 변수 집합을 사용할 수 있습니다.
 매개 변수 집합 목록을 조작 하려면 **새로 추가** 또는 **현재 삭제** 를 선택 합니다.
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-5.png" alt-text="매개 변수 집합 목록":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-5.png" alt-text="검색 + + Kusto Explorer":::
 
 ## <a name="share-queries-and-results"></a>쿼리 및 결과 공유
 
@@ -123,7 +123,7 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 1. Kusto 탐색기에서 [쿼리를 실행](#basic-queries) 합니다.
 1. 홈 탭의 공유 섹션에서 **클립보드로 내보내기** 를 선택 하거나 Ctrl + Shift + C를 누릅니다.
 
-    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="클립보드로 내보내기":::
+    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="검색 + + Kusto Explorer":::
 
     Kusto 탐색기는 다음 내용을 클립보드에 붙여 넣습니다.
      * 쿼리
@@ -133,7 +133,7 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 
 1. 클립보드의 내용을 새 전자 메일 메시지에 붙여넣습니다.
 
-    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="전자 메일로 결과 공유":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="검색 + + Kusto Explorer":::
 
 ### <a name="deep-linking-queries"></a>심층 연결 쿼리
 
@@ -146,9 +146,9 @@ Kusto 탐색기는 쿼리 및 쿼리 결과를 전자 메일로 공유 하는 �
 
 딥 링크를 만드는 가장 쉬운 방법은 Kusto. 탐색기에서 쿼리를 작성 한 다음 `Export to Clipboard` 를 사용 하 여 쿼리 (딥 링크 및 결과 포함)를 클립보드에 복사 하는 것입니다. 그런 다음 전자 메일을 통해 공유할 수 있습니다.
         
-전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예를 들어:
+전자 메일에 복사 된 경우 딥 링크는 작은 글꼴로 표시 됩니다. 예를 들면 다음과 같습니다.
 
-https://help.kusto.windows.net:443/Samples[[쿼리를 실행 하려면 클릭](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
+https://help.kusto.windows.net:443/Samples [[쿼리를 실행 하려면 클릭](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
 
 첫 번째 링크는 Kusto. 탐색기를 열고 클러스터 및 데이터베이스 컨텍스트를 적절 하 게 설정 합니다.
 두 번째 링크 ( `Click to run query` )는 딥 링크입니다. 링크를 전자 메일 메시지로 이동 하 고 CTRL + K를 누르면 실제 URL을 볼 수 있습니다.
@@ -165,7 +165,7 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
     `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
-    &lt;Your_cluster &gt; 를 Azure 데이터 탐색기 클러스터 이름으로 바꿉니다.
+    &lt;your_cluster&gt;를 Azure Data Explorer 클러스터 이름으로 바꿉니다.
 
 #### <a name="limitations"></a>제한 사항
 
@@ -173,9 +173,9 @@ web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
 문자 제한에 도달할 가능성을 줄이려면 [짧은 링크 가져오기](#getting-shorter-links)를 참조 하세요.
 
-URI의 형식은 다음과 같습니다.`https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
+URI의 형식은 다음과 같습니다. `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
 
-예를 들어:[https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
+예를 들어: [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
  
 이 URI는 Kusto 탐색기를 열고, `Help` kusto 클러스터에 연결 하 고, 데이터베이스에서 지정 된 쿼리를 실행 합니다. `Samples` Kusto. 탐색기 인스턴스가 이미 실행 중인 경우 실행 중인 인스턴스는 새 탭을 열고 쿼리를 실행 합니다.
 
@@ -233,29 +233,29 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 [연결 패널](kusto-explorer.md#connections-tab)에서 대상 엔터티를 마우스 오른쪽 단추로 클릭 하 고 **클러스터 권한 부여 된 보안 주체 관리**를 선택 합니다. (관리 메뉴에서이 옵션을 선택할 수도 있습니다.)
 
-:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="권한 있는 보안 주체 관리":::
+:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="검색 + + Kusto Explorer":::
 
-:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="권한 있는 사용자 관리 창":::
+:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="검색 + + Kusto Explorer":::
 
 * 새 인증 된 보안 주체를 추가 하려면 **보안 주체 추가**를 선택 하 고, 보안 주체 세부 정보를 제공 하 고, 작업을 확인 합니다.
     
-    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="인증 된 보안 주체 추가":::
+    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="검색 + + Kusto Explorer":::
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="인증 된 보안 주체 추가 확인":::
+    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="검색 + + Kusto Explorer":::
 
 * 권한 있는 기존 보안 주체를 삭제 하려면 **보안 주체 삭제** 를 선택 하 고 작업을 확인 합니다.
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="권한 있는 사용자 삭제 확인":::
+    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="검색 + + Kusto Explorer":::
 
 
 ## <a name="next-steps"></a>다음 단계
 
-* [Kusto 탐색기 바로 가기 키](kusto-explorer-shortcuts.md)
+* [Kusto.Explorer 바로 가기 키](kusto-explorer-shortcuts.md)
 * [Kusto.Explorer 옵션](kusto-explorer-options.md)
 * [Kusto.Explorer 문제 해결](kusto-explorer-troubleshooting.md)
 
-Kusto 탐색기 도구 및 유틸리티에 대해 자세히 알아보세요.
-* [Kusto 탐색기 코드 분석기](kusto-explorer-code-analyzer.md)
-* [Kusto 탐색기 코드 탐색](kusto-explorer-codenav.md)
-* [Kusto 탐색기 코드 리팩터링](kusto-explorer-refactor.md)
-* [Kusto Query Language(KQL)](https://docs.microsoft.com/azure/kusto/query/)
+Kusto.Explorer 도구 및 유틸리티에 대해 자세히 알아봅니다.
+* [Kusto.Explorer 코드 분석기](kusto-explorer-code-analyzer.md)
+* [Kusto.Explorer 코드 탐색](kusto-explorer-codenav.md)
+* [Kusto.Explorer 코드 리팩터링](kusto-explorer-refactor.md)
+* [Kusto Query Language(KQL)](../query/index.md)

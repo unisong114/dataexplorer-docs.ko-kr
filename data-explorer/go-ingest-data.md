@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/10/2020
-ms.openlocfilehash: 82302fc2071eca8bf2fb1e4c89b96de50b1a8806
-ms.sourcegitcommit: f689547c0f77b1b8bfa50a19a4518cbbc6d408e5
+ms.openlocfilehash: c133c3cf1185e7ffdb959ed6ea127af7502820c4
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89557346"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342572"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-go-sdk"></a>Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집 
 
@@ -151,7 +151,7 @@ func ingestFile(kc *kusto.Client, blobStoreAccountName, blobStoreContainer, blob
     1. **매핑 만들기**: `StormEvents_CSV_Mapping` 매핑이 만들어집니다.
     1. **파일**수집: CSV 파일 (Azure Blob Storage)은 수집을 위해 큐에 대기 됩니다.
 
-1. 인증을 위한 서비스 주체를 만들려면 [az ad sp create-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령과 함께 Azure CLI를 사용 합니다. 프로그램에서 사용 되는 환경 변수 형식으로 클러스터 엔드포인트와 데이터베이스 이름을 사용 하 여 서비스 주체 정보를 설정 합니다.
+1. 인증을 위한 서비스 주체를 만들려면 [az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령과 함께 Azure CLI를 사용 합니다. 프로그램에서 사용 되는 환경 변수 형식으로 클러스터 엔드포인트와 데이터베이스 이름을 사용 하 여 서비스 주체 정보를 설정 합니다.
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"

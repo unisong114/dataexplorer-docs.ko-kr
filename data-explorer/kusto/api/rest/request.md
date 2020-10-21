@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020
-ms.openlocfilehash: 2c6efc03ea252eba5ed63e99d9214e59113856e9
-ms.sourcegitcommit: bb8c61dea193fbbf9ffe37dd200fa36e428aff8c
+ms.openlocfilehash: cf9f9e5f6a9c5afca58e2637ed4e639882e3749d
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83373573"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337417"
 ---
 # <a name="querymanagement-http-request"></a>쿼리/관리 HTTP 요청
 
@@ -39,15 +39,15 @@ POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 
 다음 표에서는 쿼리 및 관리 작업에 사용 되는 공통 헤더를 포함 합니다.
 
-|표준 헤더  |설명                                                                                 |필수/선택 |
+|표준 헤더  |Description                                                                                 |필수/선택 |
 |-----------------|--------------------------------------------------------------------------------------------|------------------|
 |`Accept`         |`application/json`                                                                   |필수          |
-|`Accept-Encoding`|지원 되는 인코딩은 및입니다. `gzip``deflate`                                                |Optional          |
+|`Accept-Encoding`|지원 되는 인코딩은 및입니다. `gzip``deflate`                                                |선택 사항          |
 |`Authorization`  |[인증](./authentication.md) 참조                                                   |필수          |
-|`Connection`     |사용 하도록 설정 하는 것이 좋습니다.`Keep-Alive`                                                   |Optional          |
-|`Content-Length` |알려진 경우 요청 본문 길이를 지정 하는 것이 좋습니다.                            |Optional          |
+|`Connection`     |사용 하도록 설정 하는 것이 좋습니다. `Keep-Alive`                                                   |선택 사항          |
+|`Content-Length` |알려진 경우 요청 본문 길이를 지정 하는 것이 좋습니다.                            |선택 사항          |
 |`Content-Type`   |을 사용 하 여로 설정 `application/json``charset=utf-8`                                              |필수          |
-|`Expect`         |로 설정할 수 있습니다.`100-Continue`                                                                |Optional          |
+|`Expect`         |로 설정할 수 있습니다. `100-Continue`                                                                |선택 사항          |
 |`Host`           |요청을 보낸 정규화 된 도메인 이름 (예:)으로 설정 합니다. `help.kusto.windows.net` |필수|
 
 다음 표에서는 쿼리 및 관리 작업에 사용 되는 일반적인 사용자 지정 헤더를 포함 합니다. 별도로 지정 하지 않는 한 이러한 헤더는 원격 분석 용도로만 사용 되며 기능에는 영향을 주지 않습니다.
@@ -67,11 +67,11 @@ POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 
 요청에서 다음 매개 변수를 전달할 수 있습니다. GET 또는 POST를 사용 하는지에 따라 요청에서 쿼리 매개 변수로 또는 본문의 일부로 인코딩됩니다.
 
-|매개 변수   |설명                                                                                 |필수/선택 |
+|매개 변수   |Description                                                                                 |필수/선택 |
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |실행할 쿼리 또는 제어 명령의 텍스트입니다.                                             |필수          |
 |`db`        |쿼리 또는 제어 명령의 대상인 범위에 있는 데이터베이스의 이름입니다.            |일부 제어 명령의 경우 선택 사항입니다. <br>다른 명령 및 모든 쿼리에 필요 합니다. </br>                                                                   |
-|`properties`|요청이 처리 되는 방법과 그 결과를 수정 하는 클라이언트 요청 속성을 제공 합니다. 자세한 내용은 [클라이언트 요청 속성](../netfx/request-properties.md) 을 참조 하세요.                                               | Optional         |
+|`properties`|요청이 처리 되는 방법과 그 결과를 수정 하는 클라이언트 요청 속성을 제공 합니다. 자세한 내용은 [클라이언트 요청 속성](../netfx/request-properties.md) 을 참조 하세요.                                               | 선택 사항         |
 
 ## <a name="get-query-parameters"></a>쿼리 매개 변수 가져오기
 
@@ -116,7 +116,7 @@ x-ms-app: MyApp
 
 1. 인증을 위한 토큰을 가져옵니다.
 
-    `AAD_TENANT_NAME_OR_ID` `AAD_APPLICATION_ID` `AAD_APPLICATION_KEY` [AAD 응용 프로그램 인증](../../management/access-control/how-to-provision-aad-app.md) 을 설정한 후, 및를 관련 값으로 바꿉니다.
+    `AAD_TENANT_NAME_OR_ID` `AAD_APPLICATION_ID` `AAD_APPLICATION_KEY` [AAD 응용 프로그램 인증](../../../provision-azure-ad-app.md) 을 설정한 후, 및를 관련 값으로 바꿉니다.
 
     ```
     curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \

@@ -7,18 +7,18 @@ ms.reviewer: docohe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: ae79fd334b3ac2a59a99c5ad8d63fccf0ed6784c
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 4c918c43f748f97b3bb3f6d0342c660775c1e5c8
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875228"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342657"
 ---
 # <a name="microsoft-logic-app-and-azure-data-explorer"></a>Microsoft 논리 앱 및 Azure 데이터 탐색기
 
-Azure Kusto 논리 앱 커넥터를 사용 하면 [Microsoft 논리 앱](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) 커넥터를 사용 하 여 예약 되거나 트리거된 작업의 일부로 kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다.
+Azure Kusto 논리 앱 커넥터를 사용 하면 [Microsoft 논리 앱](/azure/logic-apps/logic-apps-what-are-logic-apps) 커넥터를 사용 하 여 예약 되거나 트리거된 작업의 일부로 kusto 쿼리 및 명령을 자동으로 실행할 수 있습니다.
 
-논리 앱과 흐름은 동일한 커넥터에서 빌드됩니다. 따라서 흐름 [설명서 페이지](flow.md)에 설명 된 대로 흐름에 적용 되는 [제한 사항](flow.md#limitations), [작업](flow.md#azure-kusto-flow-actions), [인증](flow.md#authentication) 및 [사용 예](flow.md#azure-kusto-flow-actions) 도 Logic Apps에 적용 됩니다.
+논리 앱과 전원 자동화는 동일한 커넥터에서 빌드됩니다. 따라서 전원 자동화에 적용 되는 [제한 사항](../../flow.md#limitations), [작업](../../flow.md#flow-actions), [인증](../../flow.md#authentication) 및 [사용 예제](../../flow-usage.md) 는 [전원 자동화 설명서 페이지](../../flow.md)에 설명 된 대로 Logic Apps에도 적용 됩니다.
 
 ## <a name="how-to-create-a-logic-app-with-azure-data-explorer"></a>Azure 데이터 탐색기을 사용 하 여 논리 앱을 만드는 방법
 
@@ -56,5 +56,5 @@ Azure Kusto 논리 앱 커넥터를 사용 하면 [Microsoft 논리 앱](https:/
 
 ## <a name="next-steps"></a>다음 단계
 
-* 되풀이 동작을 구성 하는 방법에 대 한 자세한 내용은 [Flow 설명서 페이지](flow.md) 를 참조 하세요.
-* 논리 앱 작업을 구성 하는 방법에 대 한 몇 가지 [사용 예](flow.md#azure-kusto-flow-actions) 를 살펴보세요.
+* 되풀이 작업을 구성 하는 방법에 대 한 자세한 내용은 [Power 자동화 설명서 페이지](../../flow.md) 를 참조 하세요.
+* 논리 앱 작업을 구성 하는 방법에 대 한 몇 가지 [사용 예](../../flow-usage.md) 를 살펴보세요.

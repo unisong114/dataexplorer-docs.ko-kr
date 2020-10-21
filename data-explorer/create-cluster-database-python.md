@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: 8dfb0fb6637214d77df5bed436649bb10f808a47
-ms.sourcegitcommit: 95527c793eb873f0135c4f0e9a2f661ca55305e3
+ms.openlocfilehash: a274577da1fb93b78b56250c1176fb0e9bda8eed
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533969"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343082"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python을 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -26,13 +26,13 @@ ms.locfileid: "90533969"
 
 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다. Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등으로부터 대량의 데이터 스트리밍에 대한 실시간 분석을 제공하는 빠른 속도의 완전 관리형 데이터 분석 서비스입니다. Azure 데이터 탐색기을 사용 하려면 먼저 클러스터를 만들고 해당 클러스터에 하나 이상의 데이터베이스를 만듭니다. 그런 다음 데이터를 데이터베이스에 수집 하거나 로드 하 여 쿼리를 실행할 수 있도록 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * 활성 구독이 있는 Azure 계정. [체험 계정 만들기](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
 * [Python 3.4 이상](https://www.python.org/downloads/).
 
-* [리소스에 액세스할 수 있는 AZURE AD 응용 프로그램 및 서비스 주체](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)입니다. , 및에 대 한 값을 가져옵니다 `Directory (tenant) ID` `Application ID` `Client Secret` .
+* [리소스에 액세스할 수 있는 AZURE AD 응용 프로그램 및 서비스 주체](/azure/active-directory/develop/howto-create-service-principal-portal)입니다. , 및에 대 한 값을 가져옵니다 `Directory (tenant) ID` `Application ID` `Client Secret` .
 
 ## <a name="install-python-package"></a>Python 패키지 설치
 
@@ -43,7 +43,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## <a name="authentication"></a>인증
-이 문서의 예제를 실행 하려면 리소스에 액세스할 수 있는 Azure AD 응용 프로그램 및 서비스 주체가 필요 합니다. [AZURE ad 응용 프로그램 만들기](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 를 선택 하 여 무료 Azure Ad 응용 프로그램을 만들고 구독 범위에서 역할 할당을 추가 합니다. 또한, 및를 가져오는 방법을 보여 `Directory (tenant) ID` 줍니다 `Application ID` `Client Secret` .
+이 문서의 예제를 실행 하려면 리소스에 액세스할 수 있는 Azure AD 응용 프로그램 및 서비스 주체가 필요 합니다. [AZURE ad 응용 프로그램 만들기](/azure/active-directory/develop/howto-create-service-principal-portal) 를 선택 하 여 무료 Azure Ad 응용 프로그램을 만들고 구독 범위에서 역할 할당을 추가 합니다. 또한, 및를 가져오는 방법을 보여 `Directory (tenant) ID` 줍니다 `Application ID` `Client Secret` .
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Azure Data Explorer 클러스터 만들기
 
@@ -87,7 +87,7 @@ pip install azure-mgmt-kusto
    |---|---|---|
    | cluster_name | *mykustocluster* | 원하는 클러스터 이름입니다.|
    | sku_name | *Standard_D13_v2* | 클러스터에 사용될 SKU입니다. |
-   | 계층 | *Standard* | SKU 계층입니다. |
+   | 계층 | *표준* | SKU 계층입니다. |
    | 용량 | *number* | 클러스터의 인스턴스 수입니다. |
    | resource_group_name | *testrg* | 클러스터가 만들어질 리소스 그룹 이름입니다. |
 

@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: d6c3e49aa2141e2428251f806b29b47a9c65c164
-ms.sourcegitcommit: 1618cbad18f92cf0cda85cb79a5cc1aa789a2db7
+ms.openlocfilehash: 47bb390e6211a0448e16b3fca16560176dcc8702
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91615056"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343541"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI용 Azure Data Explorer 커넥터를 사용하여 데이터 시각화
 
-Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Power BI는 데이터를 시각화하고 조직 전체에서 결과를 공유할 수 있는 비즈니스 분석 솔루션입니다. Azure Data Explorer는 Power BI에서 데이터에 연결하기 위한 세 가지 옵션, 즉 기본 제공 커넥터 사용, Azure Data Explorer에서 쿼리 가져오기 또는 SQL 쿼리 사용을 제공합니다. 이 문서에서는 기본 제공 커넥터를 사용 하 여 데이터를 가져오고 Power BI 보고서에서 시각화 하는 방법을 보여 줍니다. Power BI 대시보드를 만들기 위해 Azure 데이터 탐색기 native connector를 사용 하는 것은 간단 합니다. Power BI 커넥터는 [가져오기 및 직접 쿼리 연결 모드](https://docs.microsoft.com/power-bi/desktop-directquery-about)를 지원 합니다. 시나리오, 규모 및 성능 요구 사항에 따라 **가져오기** 또는 **DirectQuery** 모드를 사용 하 여 대시보드를 빌드할 수 있습니다. 
+Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Power BI는 데이터를 시각화하고 조직 전체에서 결과를 공유할 수 있는 비즈니스 분석 솔루션입니다. Azure Data Explorer는 Power BI에서 데이터에 연결하기 위한 세 가지 옵션, 즉 기본 제공 커넥터 사용, Azure Data Explorer에서 쿼리 가져오기 또는 SQL 쿼리 사용을 제공합니다. 이 문서에서는 기본 제공 커넥터를 사용 하 여 데이터를 가져오고 Power BI 보고서에서 시각화 하는 방법을 보여 줍니다. Power BI 대시보드를 만들기 위해 Azure 데이터 탐색기 native connector를 사용 하는 것은 간단 합니다. Power BI 커넥터는 [가져오기 및 직접 쿼리 연결 모드](/power-bi/desktop-directquery-about)를 지원 합니다. 시나리오, 규모 및 성능 요구 사항에 따라 **가져오기** 또는 **DirectQuery** 모드를 사용 하 여 대시보드를 빌드할 수 있습니다. 
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 이 문서를 완료 하려면 다음이 필요 합니다.
 

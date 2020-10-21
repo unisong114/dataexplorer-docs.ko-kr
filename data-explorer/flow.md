@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 7c40d6b1f62014e8ede6ed3328dd3a3974d41a88
-ms.sourcegitcommit: c2ab3176db4dd55ac9ca8eee52bbd24096d1277f
+ms.openlocfilehash: 72d092683b490c7b58335abc59fd5e3aea2f3e26
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90740306"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342946"
 ---
 # <a name="azure-data-explorer-connector-to-power-automate-preview"></a>파워 자동화를 위한 Azure 데이터 탐색기 커넥터 (미리 보기)
 
@@ -40,7 +40,7 @@ Azure 데이터 탐색기 파워 자동화 (이전에 Microsoft Flow) 커넥터�
 사용자 자격 증명을 사용 하거나 Azure Active Directory (Azure AD) 응용 프로그램을 사용 하 여 인증할 수 있습니다.
 
 > [!Note]
-> 응용 프로그램이 [AZURE AD 응용 프로그램](kusto/management/access-control/how-to-provision-aad-app.md)이며 클러스터에서 쿼리를 실행할 수 있는 권한이 있는지 확인 합니다.
+> 응용 프로그램이 [AZURE AD 응용 프로그램](./provision-azure-ad-app.md)이며 클러스터에서 쿼리를 실행할 수 있는 권한이 있는지 확인 합니다.
 
 1. **제어 실행 명령 및 결과 시각화**에서 흐름 커넥터의 오른쪽 위에 있는 세 개의 점을 선택 합니다.
 
@@ -95,7 +95,7 @@ Azure 데이터 탐색기 커넥터를 열면 흐름에 추가할 수 있는 세
 
 이 작업을 사용 하 여 [제어 명령을](kusto/management/index.md)실행 합니다.
 
-1. 클러스터 URL을 지정 합니다. 예들 들어 `https://clusterName.eastus.kusto.windows.net`입니다.
+1. 클러스터 URL을 지정 합니다. 예: `https://clusterName.eastus.kusto.windows.net`
 1. 데이터베이스의 이름을 입력합니다.
 1. 제어 명령을 지정 합니다.
    * 흐름에서 사용 되는 앱과 커넥터에서 동적 콘텐츠를 선택 합니다.

@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d56681eaee708fa66c2fc0ceedb08b003e259955
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 620755a179bfb434b1532d453c0ab5283ec0bfaa
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941964"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343490"
 ---
 # <a name="azure-security-baseline-for-data-explorer"></a>데이터 탐색기에 대 한 Azure 보안 기준
 
 데이터 탐색기에 대 한 Azure 보안 기준에는 배포의 보안 상태를 개선 하는 데 도움이 되는 권장 사항이 포함 되어 있습니다.
 
-이 서비스의 기준은 [Azure Security Benchmark 버전 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)에서 가져왔으며, 모범 사례 지침을 통해 Azure에서 클라우드 솔루션을 보호하는 방법에 대한 추천 사항을 제공합니다.
+이 서비스의 기준은 [Azure Security Benchmark 버전 1.0](/azure/security/benchmarks/overview)에서 가져왔으며, 모범 사례 지침을 통해 Azure에서 클라우드 솔루션을 보호하는 방법에 대한 추천 사항을 제공합니다.
 
-자세한 내용은 [Azure 보안 기준 개요](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)를 참조하세요.
+자세한 내용은 [Azure 보안 기준 개요](/azure/security/benchmarks/security-baselines-overview)를 참조하세요.
 
 ## <a name="network-security"></a>네트워크 보안
 
-*자세한 내용은 [보안 그룹: 네트워크 보안](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)을 참조하세요.*
+*자세한 내용은 [보안 그룹: 네트워크 보안](/azure/security/benchmarks/security-control-network-security)을 참조하세요.*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Virtual Network에서 네트워크 보안 그룹 또는 Azure Firewall을 사용하여 리소스 보호
 
@@ -151,7 +151,7 @@ Azure Policy를 구성하고 관리하는 방법: https://docs.microsoft.com/azu
 
 ## <a name="logging-and-monitoring"></a>로깅 및 모니터링
 
-*자세한 내용은 [보안 그룹: 로깅 및 모니터링](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)을 참조하세요.*
+*자세한 내용은 [보안 그룹: 로깅 및 모니터링](/azure/security/benchmarks/security-control-logging-monitoring)을 참조하세요.*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1: 승인 된 시간 동기화 원본을 사용 하십시오.
 
@@ -262,7 +262,7 @@ Azure Monitor에서 사용자 지정 쿼리를 수행 하는 방법:  https://do
 
 ## <a name="identity-and-access-control"></a>ID 및 Access Control
 
-*자세한 내용은 [보안 그룹: ID 및 액세스 제어](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)를 참조하세요.*
+*자세한 내용은 [보안 그룹: ID 및 액세스 제어](/azure/security/benchmarks/security-control-identity-access-control)를 참조하세요.*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1: 관리 계정 인벤토리 유지 관리
 
@@ -381,9 +381,9 @@ Azure에서 명명 된 위치를 구성 하는 방법: https://docs.microsoft.co
 
 [Azure 데이터 탐색기 액세스를 위해 Azure AD를 사용 하 여 인증 하는 방법](kusto/management/access-control/how-to-authenticate-with-aad.md)
 
-[Azure AD 보고](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+[Azure AD 보고](/azure/active-directory/reports-monitoring/)
 
-[Azure ID 액세스 검토를 사용하는 방법](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+[Azure ID 액세스 검토를 사용하는 방법](/azure/active-directory/governance/access-reviews-overview)
 
 
 **Azure Security Center 모니터링**: 현재 사용할 수 없음
@@ -430,7 +430,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 ## <a name="data-protection"></a>데이터 보호
 
-*자세한 내용은 [보안 그룹: 데이터 보호](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)를 참조하세요.*
+*자세한 내용은 [보안 그룹: 데이터 보호](/azure/security/benchmarks/security-control-data-protection)를 참조하세요.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 중요 한 정보 인벤토리 유지 관리
 
@@ -545,7 +545,7 @@ Azure 활동 로그 이벤트에 대 한 경고를 만드는 방법:  https://do
 
 ## <a name="vulnerability-management"></a>취약성 관리
 
-*자세한 내용은 [보안 그룹: 취약성 관리](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)를 참조하세요.*
+*자세한 내용은 [보안 그룹: 취약성 관리](/azure/security/benchmarks/security-control-vulnerability-management)를 참조하세요.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: 자동화 된 취약점 검사 도구 실행
 
@@ -595,7 +595,7 @@ Azure Security Center 권장 사항 이해: https://docs.microsoft.com/azure/sec
 
 ## <a name="inventory-and-asset-management"></a>인벤토리 및 자산 관리
 
-*자세한 내용은 [보안 그룹: 인벤토리 및 자산 관리](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)를 참조하세요.*
+*자세한 내용은 [보안 그룹: 인벤토리 및 자산 관리](/azure/security/benchmarks/security-control-inventory-asset-management)를 참조하세요.*
 
 ### <a name="61-utilize-azure-asset-discovery"></a>6.1: Azure Asset Discovery 활용
 
@@ -759,7 +759,7 @@ Azure Policy 샘플: https://docs.microsoft.com/azure/governance/policy/samples/
 
 ## <a name="secure-configuration"></a>보안 구성
 
-*자세한 내용은 [보안 그룹: 보안 구성](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)을 참조하세요.*
+*자세한 내용은 [보안 그룹: 보안 구성](/azure/security/benchmarks/security-control-secure-configuration)을 참조하세요.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: 모든 Azure 리소스에 대 한 보안 구성을 설정 합니다.
 
@@ -914,7 +914,7 @@ Azure 데이터 탐색기 클러스터에 대 한 관리 되는 id를 구성 합
 
 ## <a name="malware-defense"></a>맬웨어 방어
 
-*자세한 내용은 [보안 그룹: 맬웨어 방어](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)를 참조하세요.*
+*자세한 내용은 [보안 그룹: 맬웨어 방어](/azure/security/benchmarks/security-control-malware-defense)를 참조하세요.*
 
 ### <a name="81-utilize-centrally-managed-anti-malware-software"></a>8.1: 중앙에서 관리 하는 맬웨어 방지 소프트웨어 활용
 
@@ -950,7 +950,7 @@ Microsoft 맬웨어 방지는 Azure 서비스를 지 원하는 기본 호스트�
 
 ## <a name="data-recovery"></a>데이터 복구
 
-*자세한 내용은 [보안 그룹: 데이터 복구](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)를 참조하세요.*
+*자세한 내용은 [보안 그룹: 데이터 복구](/azure/security/benchmarks/security-control-data-recovery)를 참조하세요.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: 정기 자동 백업 확인
 
@@ -1017,7 +1017,7 @@ Azure Resource Manager 템플릿을 사용 하 여 고객 관리 키를 구성 �
 
 ## <a name="incident-response"></a>사고 대응
 
-*자세한 내용은 [보안 그룹: 인시던트 대응](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)을 참조하세요.*
+*자세한 내용은 [보안 그룹: 인시던트 대응](/azure/security/benchmarks/security-control-incident-response)을 참조하세요.*
 
 ### <a name="101-create-incident-response-guide"></a>10.1: 인시던트 응답 만들기 가이드
 
@@ -1092,7 +1092,7 @@ Azure Security Center 보안 연락처를 설정하는 방법: https://docs.micr
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>침투 테스트 및 레드 팀 연습
 
-*자세한 내용은 [보안 그룹: 침투 테스트 및 레드 팀 연습](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)을 참조하세요.*
+*자세한 내용은 [보안 그룹: 침투 테스트 및 레드 팀 연습](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)을 참조하세요.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1: Azure 리소스에 대한 침투 테스트를 정기적으로 수행하고, 모든 중요한 보안 결과를 60일 이내에 수정해야 합니다.
 
@@ -1106,5 +1106,5 @@ Microsoft에서 관리 하는 클라우드 인프라, 서비스 및 응용 프�
 
 ## <a name="next-steps"></a>다음 단계
 
-- [Azure 보안 벤치마크](https://docs.microsoft.com/azure/security/benchmarks/overview)를 참조하세요.
-- [Azure 보안 기준](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)에 대해 자세히 알아보세요.
+- [Azure 보안 벤치마크](/azure/security/benchmarks/overview)를 참조하세요.
+- [Azure 보안 기준](/azure/security/benchmarks/security-baselines-overview)에 대해 자세히 알아보세요.

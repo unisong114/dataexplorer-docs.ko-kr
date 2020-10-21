@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 09/13/2019
-ms.openlocfilehash: 85d01c9192c71b3274907e5f93e4155b4c98accf
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: a511f96df09fa9ce4089a0af77ebbe09269c9b44
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382219"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343439"
 ---
 # <a name="azure-active-directory-aad-authentication"></a>AAD (Azure Active Directory) 인증
 
@@ -79,5 +79,5 @@ ADAL에서 Kusto 클라이언트 라이브러리로 반환 되는 토큰은 Kust
 
 다음 문서에서는 AAD를 사용 하 여 Kusto에 프로그래밍 방식으로 인증 하는 방법을 설명 합니다.
 
-* [AAD 응용 프로그램을 프로 비전 하는 방법](./how-to-provision-aad-app.md)
+* [AAD 응용 프로그램을 프로 비전 하는 방법](../../../provision-azure-ad-app.md)
 * [AAD 인증을 수행 하는 방법](./how-to-authenticate-with-aad.md)

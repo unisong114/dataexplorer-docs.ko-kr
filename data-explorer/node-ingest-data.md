@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: c7c85440c1b2e3830805efdabc3c95ec7ed5797c
-ms.sourcegitcommit: 4b6488a40c35c541a16c65a237c201b7f7dc02e2
+ms.openlocfilehash: 7262b0391abf42dc71a04eec8be9958c46726edb
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89176293"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342555"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Azure Data Explorer Node 라이브러리를 사용하여 데이터 수집
 
@@ -56,7 +56,7 @@ const { DataFormat } = require("azure-kusto-ingest").IngestionPropertiesEnums;
 const { BlobDescriptor } = require("azure-kusto-ingest").IngestionDescriptors;
 
 ```
-애플리케이션을 인증하기 위해 Azure 데이터 탐색기는 Azure Active Directory 테넌트 ID를 사용합니다. 테 넌 트 ID를 찾으려면 [Microsoft 365 테 넌 트 Id 찾기](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)를 따르세요.
+애플리케이션을 인증하기 위해 Azure 데이터 탐색기는 Azure Active Directory 테넌트 ID를 사용합니다. 테 넌 트 ID를 찾으려면 [Microsoft 365 테 넌 트 Id 찾기](/onedrive/find-your-office-365-tenant-id)를 따르세요.
 
 이 코드를 실행하기 전에 `authorityId`, `kustoUri`, `kustoIngestUri` 및 `kustoDatabase`의 값을 설정합니다.
 

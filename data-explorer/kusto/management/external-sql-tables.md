@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 79816960b75735e226395f70286ea9d81829a173
-ms.sourcegitcommit: 08c54dabc1efe3d4e2d2581c4b668a6b73daf855
+ms.openlocfilehash: d6473fd0efd588bfc7a6990dd2f57d70960b40e2
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510698"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342759"
 ---
 # <a name="create-and-alter-external-sql-tables"></a>외부 SQL 테이블 만들기 및 변경
 
 명령이 실행 되는 데이터베이스에서 외부 SQL 테이블을 만들거나 변경 합니다.  
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 ( `.create`  |  `.alter`  |  `.create-or-alter` ) `external` `table` *TableName* ([columnName: columnType], ...)  
 `kind` `=` `sql`  
@@ -40,11 +40,11 @@ ms.locfileid: "89510698"
 
 ## <a name="optional-properties"></a>선택적 속성
 
-| 속성            | 형식            | Description                          |
+| 속성            | 유형            | 설명                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | 테이블의 폴더입니다.                  |
 | `docString`         | `string`        | 테이블을 문서화 하는 문자열입니다.      |
-| `firetriggers`      | `true`/`false`  | 인 경우 `true` 대상 시스템에서 SQL 테이블에 정의 된 삽입 트리거를 발생 시 정하도록 지시 합니다. 기본값은 `false`입니다. 자세한 내용은 [BULK INSERT](https://msdn.microsoft.com/library/ms188365.aspx) 및 [SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx)를 참조 하세요. |
+| `firetriggers`      | `true`/`false`  | 인 경우 `true` 대상 시스템에서 SQL 테이블에 정의 된 삽입 트리거를 발생 시 정하도록 지시 합니다. 기본값은 `false`입니다. 자세한 내용은 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) 및 [SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy)를 참조 하세요. |
 | `createifnotexists` | `true`/ `false` | 인 경우 `true` 대상 SQL 테이블이 아직 없으면 생성 됩니다. `primarykey` 이 경우 기본 키 인 결과 열을 표시 하려면 속성을 제공 해야 합니다. 기본값은 `false`입니다.  |
 | `primarykey`        | `string`        | `createifnotexists`이 이면 `true` 결과 열 이름이이 명령으로 생성 된 경우 SQL 테이블의 기본 키로 사용 됩니다.                  |
 
@@ -98,5 +98,5 @@ Kusto는 SQL database에 대 한 쿼리를 실행 한 `SELECT x, s FROM MySqlTab
 
 ## <a name="next-steps"></a>다음 단계
 
-* [외부 테이블 일반 제어 명령](externaltables.md)
+* [외부 테이블 일반 제어 명령](./external-table-commands.md)
 * [Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경](external-tables-azurestorage-azuredatalake.md)

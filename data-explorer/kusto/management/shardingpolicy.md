@@ -8,19 +8,19 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 74871c2c1a10c199c5eb5415fcdf21590e4cf648
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 70d4013c8524fa88249de14a0a67cc8a85e73b3f
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967454"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337570"
 ---
 # <a name="data-sharding-policy"></a>데이터 분할 정책
 
 분할 정책은 Azure 데이터 탐색기 클러스터의 [익스텐트 (데이터 분할)](../management/extents-overview.md) 가 봉인 되어야 하는 경우를 정의 합니다.
 
 > [!NOTE]
-> 이 정책은 [데이터](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands)수집 명령과 같이 새 익스텐트를 만드는 모든 작업에 적용 되며 [merge 및 rebuild 명령을](../management/extents-commands.md#merge-extents) 수행 합니다.
+> 이 정책은 [데이터](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands)수집 명령과 같이 새 익스텐트를 만드는 모든 작업에 적용 되며 [merge 및 rebuild 명령을](./merge-extents.md) 수행 합니다.
 
 데이터 분할 정책에는 다음 속성이 포함 되어 있습니다.
 
@@ -45,4 +45,3 @@ ms.locfileid: "85967454"
 데이터베이스를 만들 때 기본 데이터 분할 정책이 포함 됩니다. 이 정책은 해당 정책이 테이블 수준에서 명시적으로 재정의 되지 않는 한 데이터베이스에 생성 된 모든 테이블에 상속 됩니다.
 
 [분할 정책 제어 명령](../management/sharding-policy.md))을 사용 하 여 데이터베이스 및 테이블에 대 한 데이터 분할 정책을 관리 합니다.
- 

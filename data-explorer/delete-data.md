@@ -7,12 +7,12 @@ ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/12/2020
-ms.openlocfilehash: fb9cdfbef5b4d2aa7c7b98fdc58d2ec7fdccbd0c
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 962735c666fa94a0b86cfae8775f712ee42e6d33
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874242"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342844"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Azure 데이터 탐색기에서 데이터 삭제
 
@@ -32,7 +32,7 @@ Azure 데이터 탐색기는 [보존 정책](kusto/management/retentionpolicy.md
 
 ## <a name="delete-data-by-dropping-extents"></a>익스텐트를 삭제 하 여 데이터 삭제
 
-[익스텐트 (데이터 분할)](kusto/management/extents-overview.md) 는 데이터가 저장 되는 내부 구조입니다. 각 익스텐트는 수백만 개의 레코드를 보유할 수 있습니다. 익스텐트는 [drop 익스텐트의 명령을](kusto/management/extents-commands.md#drop-extents)사용 하 여 개별적으로 또는 그룹으로 삭제할 수 있습니다. 
+[익스텐트 (데이터 분할)](kusto/management/extents-overview.md) 는 데이터가 저장 되는 내부 구조입니다. 각 익스텐트는 수백만 개의 레코드를 보유할 수 있습니다. 익스텐트는 [drop 익스텐트의 명령을](./kusto/management/drop-extents.md)사용 하 여 개별적으로 또는 그룹으로 삭제할 수 있습니다.
 
 ### <a name="examples"></a>예
 
@@ -52,5 +52,4 @@ Azure 데이터 탐색기는 [보존 정책](kusto/management/retentionpolicy.md
 
 ## <a name="delete-individual-rows-using-purge"></a>제거를 사용 하 여 개별 행 삭제
 
-[데이터 제거](kusto/concepts/data-purge.md) 를 사용 하 여 개별 행을 삭제할 수 있습니다. 삭제는 즉각적이 아니며 상당한 시스템 리소스가 필요 합니다. 따라서 규정 준수 시나리오에만 권장 됩니다.  
-
+[데이터 제거](kusto/concepts/data-purge.md) 를 사용 하 여 개별 행을 삭제할 수 있습니다. 삭제는 즉각적이 아니며 상당한 시스템 리소스가 필요 합니다. 따라서 규정 준수 시나리오에만 권장 됩니다.

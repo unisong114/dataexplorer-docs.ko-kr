@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/23/2020
-ms.openlocfilehash: 0456ad7115c51bcdc51b0db82bc9f9b88953be32
-ms.sourcegitcommit: 39b04c97e9ff43052cdeb7be7422072d2b21725e
+ms.openlocfilehash: 4b212435eb506ce71b52e19d3304461e9be35b5e
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83226213"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342504"
 ---
 # <a name="storage-connection-strings"></a>스토리지 연결 문자열
 
@@ -68,7 +68,7 @@ URI의 형식은 다음과 같습니다.
 Gen 2 Azure Data Lake Store에 액세스할 때 호출자는 서비스에 액세스 하기 위한 유효한 자격 증명을 제공 해야 합니다. 자격 증명을 제공 하는 다음과 같은 방법이 지원 됩니다.
 
 * `;sharedkey=` _AccountKey_ 을 저장소 계정 키로 사용 하 여 *AccountKey* 를 URI에 추가 합니다.
-* `;impersonate`URI에를 추가 합니다. Kusto는 요청자의 보안 주체 id를 사용 하 고 가장 하 여 리소스에 액세스 합니다. 보안 주체는 [여기](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)에 설명 된 대로 읽기/쓰기 작업을 수행할 수 있도록 적절 한 RBAC 역할을 할당 해야 합니다. 예를 들어 읽기 작업의 최소 역할은 `Storage Blob Data Reader` 역할입니다.
+* `;impersonate`URI에를 추가 합니다. Kusto는 요청자의 보안 주체 id를 사용 하 고 가장 하 여 리소스에 액세스 합니다. 보안 주체는 [여기](/azure/storage/blobs/data-lake-storage-access-control)에 설명 된 대로 읽기/쓰기 작업을 수행할 수 있도록 적절 한 RBAC 역할을 할당 해야 합니다. 예를 들어 읽기 작업의 최소 역할은 `Storage Blob Data Reader` 역할입니다.
 * `;token=` _AadToken_ 를 base-64로 인코딩된 AAD 액세스 토큰으로 사용 하 여 *AadToken* 를 URI에 추가 합니다 (토큰은 리소스에 대 한 토큰 인지 확인 `https://storage.azure.com/` ).
 * `;prompt`URI에를 추가 합니다. Kusto는 리소스에 액세스 해야 하는 경우 사용자 자격 증명을 요청 합니다. (사용자에 게 클라우드 배포를 사용 하지 않도록 설정 되어 있으며 테스트 환경 에서만 사용 됨)
 * Azure Data Lake Storage Gen 2의 표준 쿼리 ()를 사용 하 여 공유 액세스 (SAS) 키를 제공 `?sig=...` 합니다. Kusto가 제한 된 시간 동안 리소스에 액세스 해야 하는 경우이 방법을 사용 합니다.
@@ -83,6 +83,3 @@ Gen 2 Azure Data Lake Store에 액세스할 때 호출자는 서비스에 액세
 * `;impersonate`URI에를 추가 합니다. Kusto는 요청자의 보안 주체 id를 사용 하 여 리소스에 액세스 하기 위해 가장 합니다.
 * `;token=` *AadToken* 를 base-64로 인코딩된 AAD 액세스 토큰으로 사용 하 여 *AadToken* 를 URI에 추가 합니다 (토큰은 리소스에 대 한 토큰 인지 확인 `https://management.azure.com/` ).
 * `;prompt`URI에를 추가 합니다. Kusto는 리소스에 액세스 해야 하는 경우 사용자 자격 증명을 요청 합니다. (사용자에 게 클라우드 배포를 사용 하지 않도록 설정 되어 있으며 테스트 환경 에서만 사용 됨)
-
-
-

@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 02/19/2020
-ms.openlocfilehash: 10f59a167de12e4b688f6d9b5f15d3f0f15d8291
-ms.sourcegitcommit: f689547c0f77b1b8bfa50a19a4518cbbc6d408e5
+ms.openlocfilehash: 694b229c36a8bbbe6c15531b555dc8467198cd65
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89557397"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337604"
 ---
 # <a name="ingestion-without-kustoingest-library"></a>Kusto 수집 라이브러리 없이 수집
 
@@ -22,7 +22,7 @@ Kusto. 수집 라이브러리는 데이터를 Azure 데이터 탐색기로 수�
 이 문서에서는 프로덕션 등급 파이프라인에 대 한 Azure 데이터 탐색기에 대 한 *큐* 에 수집을 사용 하 여 방법을 보여 줍니다.
 
 > [!NOTE]
-> 아래 코드는 c #으로 작성 되었으며 Azure Storage SDK, ADAL 인증 라이브러리 및 패키지의 NewtonSoft.JS를 사용 하 여 샘플 코드를 간소화 합니다. 필요한 경우 해당 코드를 적절 한 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 호출, [non-.NET ADAL 패키지](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)및 사용 가능한 모든 JSON 처리 패키지로 바꿀 수 있습니다.
+> 아래 코드는 c #으로 작성 되었으며 Azure Storage SDK, ADAL 인증 라이브러리 및 패키지의 NewtonSoft.JS를 사용 하 여 샘플 코드를 간소화 합니다. 필요한 경우 해당 코드를 적절 한 [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api) 호출, [non-.NET ADAL 패키지](/azure/active-directory/develop/active-directory-authentication-libraries)및 사용 가능한 모든 JSON 처리 패키지로 바꿀 수 있습니다.
 
 이 문서에서는 권장 되는 수집 모드를 다룹니다. Kusto. 수집 라이브러리의 경우 해당 엔터티는 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) 인터페이스입니다. 여기서 클라이언트 코드는 azure 큐에 수집 알림 메시지를 게시 하 여 Azure 데이터 탐색기 서비스와 상호 작용 합니다. 메시지에 대 한 참조는 Kusto 데이터 관리 (수집) 서비스에서 가져옵니다. 서비스와의 상호 작용은 Azure Active Directory (Azure AD)를 사용 하 여 인증 되어야 합니다.
 
@@ -104,7 +104,7 @@ public static void IngestSingleFile(string file, string db, string table, string
 ### <a name="obtain-authentication-evidence-from-azure-ad"></a>Azure AD에서 인증 증명 정보 가져오기
 
 여기서는 ADAL을 사용 하 여 Kusto 데이터 관리 서비스에 액세스 하 고 해당 입력 큐를 요청 하는 Azure AD 토큰을 가져옵니다.
-ADAL은 필요한 경우 [비 Windows 플랫폼](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) 에서 사용할 수 있습니다.
+ADAL은 필요한 경우 [비 Windows 플랫폼](/azure/active-directory/develop/active-directory-authentication-libraries) 에서 사용할 수 있습니다.
 
 ```csharp
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
@@ -218,7 +218,7 @@ internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, s
 
 ### <a name="upload-data-to-the-azure-blob-container"></a>Azure Blob 컨테이너에 데이터 업로드
 
-이 단계에서는 수집을 위해 전달 되는 Azure Blob에 로컬 파일을 업로드 하는 방법에 대해 알아봅니다. 이 코드는 Azure Storage SDK를 사용 합니다. 종속성을 사용할 수 없는 경우 [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-rest-api)를 사용 하 여 구현할 수 있습니다.
+이 단계에서는 수집을 위해 전달 되는 Azure Blob에 로컬 파일을 업로드 하는 방법에 대해 알아봅니다. 이 코드는 Azure Storage SDK를 사용 합니다. 종속성을 사용할 수 없는 경우 [Azure Blob Service REST API](/rest/api/storageservices/fileservices/blob-service-rest-api)를 사용 하 여 구현할 수 있습니다.
 
 ```csharp
 // Uploads a single local file to an Azure Blob container, returns blob URI and original data size
@@ -283,7 +283,7 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 마지막으로, 생성 한 메시지를 Azure 데이터 탐색기에서 가져온 선택 된 수집 큐에 게시 합니다.
 
 > [!NOTE]
-> V12 아래의 .net storage 클라이언트 버전은 기본적으로 메시지를 base64로 인코드 합니다. 자세한 내용은 [저장소 문서](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage)를 참조 하세요. V12 위의 .Net storage 클라이언트 버전을 사용 하는 경우 메시지 콘텐츠를 올바르게 인코딩해야 합니다.
+> V12 아래의 .net storage 클라이언트 버전은 기본적으로 메시지를 base64로 인코드 합니다. 자세한 내용은 [저장소 문서](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage)를 참조 하세요. V12 위의 .Net storage 클라이언트 버전을 사용 하는 경우 메시지 콘텐츠를 올바르게 인코딩해야 합니다.
 
 ```csharp
 internal static void PostMessageToQueue(string queueUriWithSas, string message)
@@ -336,7 +336,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 }
 ```
 
-|속성 | Description |
+|속성 | 설명 |
 |---------|-------------|
 |Id |메시지 식별자 (GUID) |
 |BlobPath |Blob에 대 한 경로 (URI)입니다. 여기에는 읽기/쓰기/삭제에 대 한 Azure 데이터 탐색기 권한을 부여 하는 SAS 키가 포함 됩니다. Azure 데이터 탐색기가 데이터 수집 완료 되 면 blob을 삭제할 수 있도록 사용 권한이 필요 합니다.|
@@ -353,7 +353,7 @@ Kusto 데이터 관리 서비스에서 입력 Azure 큐를 읽을 것으로 예�
 
 입력 Azure 큐에서 읽을 것으로 예상 되는 데이터 관리 메시지는 다음 형식의 JSON 문서입니다.
 
-|속성 | Description |
+|속성 | 설명 |
 |---------|-------------
 |OperationId |서비스 쪽에서 작업을 추적 하는 데 사용할 수 있는 작업 식별자 (GUID)입니다. |
 |데이터베이스 |대상 데이터베이스 이름 |

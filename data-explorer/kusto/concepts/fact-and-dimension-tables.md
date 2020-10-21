@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/23/2020
-ms.openlocfilehash: 6db37366ddd3d70aaa89c0d6eebd1ec8affbb76d
-ms.sourcegitcommit: e87b6cb2075d36dbb445b16c5b83eff7eaf3cdfa
+ms.openlocfilehash: 608d177d555419f8e2340ddacffd32382118eb7f
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85264446"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343303"
 ---
 # <a name="fact-and-dimension-tables"></a>팩트 및 차원 테이블
 
@@ -36,7 +36,7 @@ Kusto의 데이터는 변경할 수 없으므로 일반적으로 각 테이블�
 * 엔터티 식별자에서 해당 속성으로 조회 테이블과 같은 참조 데이터를 유지 합니다.
 * 단일 트랜잭션에서 전체 내용이 변경 되는 테이블의 스냅숏 유사 데이터를 유지 합니다.
 
-차원 테이블은 새 데이터로 정기적으로 수집 되지 않습니다. 대신 전체 데이터 콘텐츠는 같은 작업을 사용 하 여 한 번에 업데이트 됩니다. [set 또는-replace](../management/data-ingestion/ingest-from-query.md), [. 익스텐트 이동](../management/extents-commands.md#move-extents)또는 [. 테이블 이름 바꾸기](../management/rename-table-command.md)
+차원 테이블은 새 데이터로 정기적으로 수집 되지 않습니다. 대신 전체 데이터 콘텐츠는 같은 작업을 사용 하 여 한 번에 업데이트 됩니다. [set 또는-replace](../management/data-ingestion/ingest-from-query.md), [. 익스텐트 이동](../management/move-extents.md)또는 [. 테이블 이름 바꾸기](../management/rename-table-command.md)
 
 경우에 따라 팩트 테이블에서 차원 테이블이 파생 될 수도 있습니다. 각 엔터티에 대 한 마지막 레코드를 사용 하는 테이블에 대 한 쿼리를 사용 하 여 팩트 테이블의 [업데이트 정책을](../management/updatepolicy.md) 통해이 프로세스를 수행할 수 있습니다.
 

@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/03/2020
-ms.openlocfilehash: b75ac4fe4b03c85eec74ccc69c5c03ff59a4bcfe
-ms.sourcegitcommit: c7b16409995087a7ad7a92817516455455ccd2c5
+ms.openlocfilehash: 11822a58b2ced0b257ad649997bc154ab4be19d5
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88149481"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92337587"
 ---
 # <a name="create-or-alter-continuous-export"></a>연속 내보내기 만들기 또는 변경
 
@@ -28,10 +28,10 @@ ms.locfileid: "88149481"
 
 ## <a name="properties"></a>속성
 
-| 속성             | Type     | Description   |
+| 속성             | 유형     | 설명   |
 |----------------------|----------|---------------------------------------|
 | ContinuousExportName | String   | 연속 내보내기의 이름입니다. 이름은 데이터베이스 내에서 고유 해야 하며 주기적으로 연속 내보내기를 실행 하는 데 사용 됩니다.      |
-| ExternalTableName    | String   | 내보낼 [외부 테이블](../externaltables.md) 의 이름입니다.  |
+| ExternalTableName    | String   | 내보낼 [외부 테이블](../external-table-commands.md) 의 이름입니다.  |
 | 쿼리                | String   | 내보낼 쿼리입니다.  |
 | over (T1, T2)        | String   | 쿼리에서 팩트 테이블의 쉼표로 구분 된 목록 (옵션)입니다. 지정 하지 않으면 쿼리에서 참조 되는 모든 테이블이 팩트 테이블로 간주 됩니다. 지정 된 경우이 목록에 *없는* 테이블은 차원 테이블로 처리 되며 범위가 지정 되지 않습니다. 모든 레코드는 모든 내보내기에 참여 합니다. 자세한 내용은 [연속 데이터 내보내기 개요](continuous-data-export.md) 를 참조 하세요. |
 | 간격 끝점  | Timespan | 연속 내보내기 실행 사이의 시간 범위입니다. 1 분 보다 커야 합니다.   |
@@ -52,6 +52,6 @@ with
 <| T
 ```
 
-| 이름     | ExternalTableName | 쿼리 | ForcedLatency | 간격 끝점 | CursorScopedTables         | ExportProperties                   |
+| Name     | ExternalTableName | 쿼리 | ForcedLatency | 간격 끝점 | CursorScopedTables         | ExportProperties                   |
 |----------|-------------------|-------|---------------|---------------------|----------------------------|------------------------------------|
 | MyExport | ExternalBlob      | S     | 00:10:00      | 01:00:00            | [<br>  "[' DB ']. ['S '] "<br>] | {<br>  "SizeLimit": 104857600<br>} |

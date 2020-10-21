@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
-ms.openlocfilehash: a7a964f8bb022885c6ac3bc4828469031987b162
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: f6d993383ecf6c25bf144228e77f02f944bc02d8
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88872627"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343337"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 데이터 탐색기용 쿼리 작성
 
@@ -55,7 +55,7 @@ StormEvents
 |   23|
 | |
 
-자세한 내용은 [쿼리 언어 참조](https://aka.ms/kustolangref)를 참조하세요.
+자세한 내용은 [쿼리 언어 참조](./kusto/query/index.md)를 참조하세요.
 
 ## <a name="most-common-operators"></a>가장 흔히 사용되는 연산자
 
@@ -948,4 +948,4 @@ MyFunction ("Texas")
 
 ## <a name="next-steps"></a>다음 단계
 
-[Kusto 쿼리 언어 참조](https://aka.ms/kustolangref)
+[Kusto 쿼리 언어 참조](./kusto/query/index.md)

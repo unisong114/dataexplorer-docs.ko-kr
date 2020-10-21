@@ -8,32 +8,32 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 663d80f470e17a277fffa89569aeb977c8d713df
-ms.sourcegitcommit: c7b16409995087a7ad7a92817516455455ccd2c5
+ms.openlocfilehash: ddce8e9a61fac4c089574f1e9f30d310304a3618
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88148169"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342827"
 ---
 # <a name="export-data-to-an-external-table"></a>외부 테이블로 데이터 내보내기
 
-[외부 테이블](../externaltables.md) 을 정의 하 고 데이터를 내보내 데이터를 내보낼 수 있습니다.
+[외부 테이블](../external-table-commands.md) 을 정의 하 고 데이터를 내보내 데이터를 내보낼 수 있습니다.
 테이블 속성은 [외부 테이블을 만들](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table)때 지정 됩니다. 내보내기 명령에 테이블의 속성을 포함할 필요가 없습니다. 내보내기 명령은 이름별로 외부 테이블을 참조 합니다. 데이터 내보내기에는 [데이터베이스 관리자 권한이](../access-control/role-based-authorization.md)필요 합니다.
 
 ## <a name="syntax"></a>구문
 
-`.export`[ `async` ] `to` `table` *Externaltablename* <br>
+`.export` [ `async` ] `to` `table` *Externaltablename* <br>
 [ `with` `(` *PropertyName* `=` *PropertyValue* `,` ... `)` ] <| *쿼리*
 
 ## <a name="output"></a>출력
 
-|출력 매개 변수 |Type |Description
+|출력 매개 변수 |유형 |설명
 |---|---|---
 |ExternalTableName  |String |외부 테이블의 이름입니다.
 |경로|String|출력 경로입니다.
 |NumRecords|String| 경로로 내보낸 레코드 수입니다.
 
-## <a name="notes"></a>메모
+## <a name="notes"></a>참고
 
 * 내보내기 쿼리 출력 스키마는 파티션에서 정의한 모든 열을 포함 하 여 외부 테이블의 스키마와 일치 해야 합니다. 예를 들어 테이블을 *DateTime*으로 분할 하는 경우 쿼리 출력 스키마에는 *TimestampColumnName*와 일치 하는 타임 스탬프 열이 있어야 합니다. 이 열 이름은 외부 테이블 분할 정의에 정의 되어 있습니다.
 

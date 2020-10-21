@@ -7,19 +7,19 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/28/2020
-ms.openlocfilehash: f3925ed2b3012dffbd7e96ca6dd6a795b0499071
-ms.sourcegitcommit: 88923cfb2495dbf10b62774ab2370b59681578b9
+ms.openlocfilehash: 5e15983039209e2e0c62ebd761e416ebb3bd1076
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92175696"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342623"
 ---
 # <a name="use-lightingest-to-ingest-data-to-azure-data-explorer"></a>LightIngest를 사용 하 여 Azure 데이터 탐색기에 데이터 수집
  
 LightIngest는 Azure 데이터 탐색기에 대 한 임시 데이터 수집을 위한 명령줄 유틸리티입니다. 유틸리티는 로컬 폴더 또는 Azure blob 저장소 컨테이너에서 원본 데이터를 끌어올 수 있습니다.
 LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 데이터를 수집 하려는 경우에 가장 유용 합니다. 이는 나중에 생성 된 시간에 따라 레코드를 쿼리 하 고 수집 시간이 아닌 경우에도 유용 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * LightIngest- [Microsoft Azure .Kusto. Tools NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 의 일부로 다운로드 합니다.
 
@@ -68,15 +68,15 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 
 ## <a name="command-line-arguments"></a>명령줄 인수
 
-|인수 이름            |Type     |Description       |필수/선택 사항
+|인수 이름            |유형     |설명       |필수/선택 사항
 |------------------------------|--------|----------|-----------------------------|
 |                               |문자열   |수집을 처리 하는 Kusto 끝점을 지정 하는 [Azure 데이터 탐색기 연결 문자열](kusto/api/connection-strings/kusto.md) 입니다. 큰따옴표로 묶어야 합니다. | 필수
 |-database,-db          |문자열  |대상 Azure 데이터 탐색기 데이터베이스 이름 | 선택 사항  |
 |-테이블                  |문자열  |대상 Azure 데이터 탐색기 테이블 이름 | 필수 |
 |-sourcePath,-source      |문자열  |Blob 컨테이너의 원본 파일 또는 루트 URI에 대 한 경로입니다. 데이터가 blob에 있는 경우에는 저장소 계정 키 또는 SAS를 포함 해야 합니다. 큰따옴표로 묶는 것이 좋습니다. |필수 |
 |-접두사                  |문자열  |수집할 원본 데이터가 blob 저장소에 있는 경우이 URL 접두사는 컨테이너 이름을 제외 하 고 모든 blob에서 공유 됩니다. <br>예를 들어 데이터가에 있으면 `MyContainer/Dir1/Dir2` 접두사는 여야 합니다 `Dir1/Dir2` . 큰따옴표로 묶기를 권장 합니다. | 선택 사항  |
-|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 정의합니다(예: `"*.csv"`). 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
-|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 정의합니다(예: `"*.csv"`). 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 예: `"*.csv"` 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 예: `"*.csv"` 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
 |-format,-f           |문자열  | 원본 데이터 형식입니다. [지원 되는 형식](ingestion-supported-formats.md) 중 하나 여야 합니다. | 선택 사항  |
 |-ingestionMappingPath, -mappingPath |문자열  |수집 열 매핑의 로컬 파일 경로입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
 |-ingestionMappingRef, -mappingRef  |문자열  |테이블에 대해 이전에 만든 수집 열 매핑의 이름입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
@@ -144,7 +144,7 @@ To use the LightIngest command below:
 
 인수 값은 다음을 포함 해야 합니다.
 * 작은따옴표 (접두사)로 묶인 타임 스탬프 형식 바로 앞에 있는 상수 텍스트
-* 표준 [.Net DateTime 표기법](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) 의 타임 스탬프 형식
+* 표준 [.Net DateTime 표기법](/dotnet/standard/base-types/custom-date-and-time-format-strings) 의 타임 스탬프 형식
 * 타임 스탬프 (접미사) 바로 다음에 오는 상수 텍스트입니다.
 
 **예** 

@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/07/2019
-ms.openlocfilehash: 4c54ae4aeded5579a4c7e5e016d60c8b46ba0908
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: afef1433c8928e0b1b33ca521aeffe881aedf61a
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873290"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342963"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Python (미리 보기)을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결 만들기
 
@@ -25,12 +25,12 @@ ms.locfileid: "88873290"
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 이 문서에서는 Python을 사용 하 여 Azure 데이터 탐색기에 대 한 IoT Hub 데이터 연결을 만듭니다. 
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * 활성 구독이 있는 Azure 계정. [체험 계정을 만듭니다](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Python 3.4 이상](https://www.python.org/downloads/).
 * [클러스터 및 데이터베이스](create-cluster-database-python.md)
-* [테이블 및 열 매핑](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* [테이블 및 열 매핑](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [데이터베이스 및 테이블 정책](database-table-policies-python.md) (옵션).
 * [공유 액세스 정책이 구성 된 IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub)
 
@@ -85,9 +85,9 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 |**설정** | **제안 값** | **필드 설명**|
 |---|---|---|
 | tenant_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테넌트 ID 디렉터리 ID 라고도 합니다.|
-| subscriptionId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 리소스를 만드는 데 사용 하는 구독 ID입니다.|
-| client_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테 넌 트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 ID입니다.|
-| client_secret | *xxxxxxxxxxxxxx* | 테 넌 트의 리소스에 액세스할 수 있는 응용 프로그램의 클라이언트 암호입니다. |
+| subscriptionId | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 리소스를 만드는 데 사용하는 구독 ID입니다.|
+| client_id | *xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx-xxxxxxxxx* | 테넌트의 리소스에 액세스할 수 있는 애플리케이션의 클라이언트 ID입니다.|
+| client_secret | *xxxxxxxxxxxxxx* | 테넌트의 리소스에 액세스할 수 있는 애플리케이션의 클라이언트 암호입니다. |
 | resource_group_name | *testrg* | 클러스터를 포함 하는 리소스 그룹의 이름입니다.|
 | cluster_name | *mykustocluster* | 클러스터의 이름입니다.|
 | database_name | *mykustodatabase* | 클러스터에 있는 대상 데이터베이스의 이름입니다.|

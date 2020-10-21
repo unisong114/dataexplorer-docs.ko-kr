@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: d0f815cd523e0e53111e791d8faaaf6c37c7bb7b
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: ee36823bb3f730a12f7ad2d1febe91439d4a2aad
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92252836"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343286"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -27,7 +27,7 @@ Kusto는 큰 데이터 집합을 호스트 하 고 모든 관련 데이터를 �
 * 쿼리 동시성 제한의 기본값은 실행 중인 SKU 클러스터에 따라 다르며로 계산 `Cores-Per-Node x 10` 됩니다.
   * 예를 들어 각 컴퓨터에 16 개 vCores가 있는 D14v2 SKU에서 설정 된 클러스터의 경우 기본 쿼리 동시성 제한은 `16 cores x10 = 160` 입니다.
 * [쿼리 제한 정책을](../management/query-throttling-policy.md)구성 하 여 기본값을 변경할 수 있습니다. 
-  * 클러스터에서 동시에 실행할 수 있는 실제 쿼리 수는 다양 한 요인에 따라 다릅니다. 가장 중요 한 요소는 클러스터 SKU, 클러스터 사용 가능 리소스 및 쿼리 패턴입니다. 쿼리 제한 정책은 프로덕션과 유사한 쿼리 패턴에서 수행 되는 부하 테스트에 따라 구성할 수 있습니다.
+  * 클러스터에서 동시에 실행할 수 있는 실제 쿼리 수는 다양 한 요인에 따라 다릅니다. 가장 중요 한 요소는 클러스터 SKU, 클러스터의 사용 가능한 리소스 및 쿼리 패턴입니다. 쿼리 제한 정책은 프로덕션과 유사한 쿼리 패턴에서 수행 되는 부하 테스트에 따라 구성할 수 있습니다.
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>결과 집합 크기 제한 (결과 잘림)
 
@@ -154,7 +154,7 @@ Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too
 
 기본적으로 쿼리는 시간 제한으로 4 분으로 설정 되 고 제어 명령의 경우 10 분으로 설정 됩니다. 필요한 경우이 값을 늘릴 수 있습니다 (1 시간 동안).
 
-* Kusto. 탐색기를 사용 하 여 쿼리 하는 경우 **도구** &gt; **옵션** *  &gt; **연결** &gt; **쿼리 서버 제한 시간**을 사용 합니다.
+* Kusto. 탐색기를 사용 하 여 쿼리 하는 경우 **도구** &gt; **옵션**_ &gt; _*연결* *  &gt; **쿼리 서버 제한 시간**을 사용 합니다.
 * 프로그래밍 방식으로 `servertimeout` 클라이언트 요청 속성, 형식 값 (최대 1 시간)을 설정 합니다 `System.TimeSpan` .
 
 **시간 제한에 대 한 참고 사항**

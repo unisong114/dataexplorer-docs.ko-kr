@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: 3a17d9e63f0e6803b6950d39ccd58183d44bb51e
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 988ace99e8671de229f9bdf796260e64f9d36932
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88873579"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342997"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결 만들기
 
@@ -25,12 +25,12 @@ ms.locfileid: "88873579"
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)] 
 이 문서에서는 Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결을 만듭니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-portal.md) 만들기
 * [테이블 및 열 매핑](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer) 만들기
-* [이벤트 허브](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) 만들기
+* [이벤트 허브](/azure/event-hubs/event-hubs-create) 만들기
 
 ## <a name="azure-resource-manager-template-for-adding-an-event-hub-data-connection"></a>이벤트 허브 데이터 연결을 추가 하기 위한 Azure Resource Manager 템플릿
 

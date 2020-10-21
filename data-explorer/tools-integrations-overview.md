@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: c1be494fd290b051455010d6e6e082d01650107c
-ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
+ms.openlocfilehash: 19aff5ad76544573daca380c1555c072fb29eaa2
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92003144"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343354"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -64,7 +64,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 * [Azure Synapse Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
-* Azure Data Studio: [kusto 확장 개요](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context), [Kusto 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context)및 [Kqlmagic 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?context=/azure/data-explorer/context/context)
+* Azure Data Studio: [kusto 확장 개요](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [Kusto 사용](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)및 [Kqlmagic 사용](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ## <a name="visualizations-dashboards-and-reporting"></a>시각화, 대시보드 및 보고
 
@@ -74,7 +74,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 
 * [Azure 노트](azure-notebooks.md)
 * [Jupyter Notebook](kqlmagic.md)
-* Azure Data Studio: [kusto 확장 개요](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context), [Kusto 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context)및 [Kqlmagic 사용](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?context=/azure/data-explorer/context/context)
+* Azure Data Studio: [kusto 확장 개요](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [Kusto 사용](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)및 [Kqlmagic 사용](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ## <a name="orchestration"></a>오케스트레이션
 

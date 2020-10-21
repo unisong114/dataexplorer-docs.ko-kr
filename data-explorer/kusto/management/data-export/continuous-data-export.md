@@ -8,16 +8,16 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/03/2020
-ms.openlocfilehash: fab1f41fc4b72b497900276d33beb1b89820c02c
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: 7f9465df4847a24a4877c8b1cb637ba1d7542db3
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201636"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342538"
 ---
 # <a name="continuous-data-export-overview"></a>연속 데이터 내보내기 개요
 
-이 문서에서는 정기적으로 쿼리를 실행 하 여 Kusto에서 [외부 테이블로](../externaltables.md) 데이터를 연속으로 내보내는 방법을 설명 합니다. 결과는 Azure Blob Storage와 같은 대상 및 내보낸 데이터의 스키마를 정의 하는 외부 테이블에 저장 됩니다. 이 프로세스는 일부 [예외를 제외](#exactly-once-export)하 고 모든 레코드를 "정확히 한 번" 내보낼 수 있도록 보장 합니다. 
+이 문서에서는 정기적으로 쿼리를 실행 하 여 Kusto에서 [외부 테이블로](../external-table-commands.md) 데이터를 연속으로 내보내는 방법을 설명 합니다. 결과는 Azure Blob Storage와 같은 대상 및 내보낸 데이터의 스키마를 정의 하는 외부 테이블에 저장 됩니다. 이 프로세스는 일부 [예외를 제외](#exactly-once-export)하 고 모든 레코드를 "정확히 한 번" 내보낼 수 있도록 보장 합니다. 
 
 연속 데이터 내보내기를 사용 하도록 설정 하려면 [외부 테이블을 만든](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) 다음 외부 테이블을 가리키는 [연속 내보내기 정의를 만듭니다](create-alter-continuous.md) . 
 
@@ -63,7 +63,7 @@ ms.locfileid: "88201636"
 
 기록 데이터가 너무 커서 단일 내보내기 명령으로 내보낼 수 없습니다. 필요한 경우 쿼리를 몇 개의 작은 일괄 처리로 분할 합니다. 
 
-연속 내보내기로 내보낸 데이터에 중복 되지 않도록 하려면 `StartCursor` [연속 내보내기 표시 명령](show-continuous-export.md) 에 의해 반환 된를 사용 하 고 내보내기는 `where cursor_before_or_at` 커서 값을 기록 합니다. 예를 들어:
+연속 내보내기로 내보낸 데이터에 중복 되지 않도록 하려면 `StartCursor` [연속 내보내기 표시 명령](show-continuous-export.md) 에 의해 반환 된를 사용 하 고 내보내기는 `where cursor_before_or_at` 커서 값을 기록 합니다. 예를 들면 다음과 같습니다.
 
 ```kusto
 .show continuous-export MyExport | project StartCursor
@@ -95,4 +95,3 @@ ms.locfileid: "88201636"
 * 연속 내보내기는 데이터베이스 간 및 클러스터 간 호출을 지원 하지 않습니다.
 * 연속 내보내기는 Azure 데이터 탐색기에서 지속적으로 데이터를 스트리밍하는 데 적합 하지 않습니다. 연속 내보내기는 모든 노드가 동시에 내보내는 분산 모드에서 실행 됩니다. 각 실행에서 쿼리 하는 데이터 범위가 작은 경우 연속 내보내기의 출력은 많은 작은 아티팩트가 됩니다. 아티팩트의 수는 클러스터의 노드 수에 따라 달라 집니다.
 * 연속 내보내기에 사용 되는 아티팩트가 Event Grid 알림을 트리거하기 위한 것 이라면 [Event Grid 설명서의 알려진 문제 섹션](../../../ingest-data-event-grid-overview.md#known-event-grid-issues)을 참조 하세요.
- 

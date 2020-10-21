@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/05/2019
-ms.openlocfilehash: b45e6d0be5a61e4eff8f1c70d3df2fe7ee6901ea
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: a92e657bfc2f440deb20fd4b812169b1c2e32112
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874718"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342912"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 azure DevOps 작업
 
@@ -22,12 +22,12 @@ ms.locfileid: "88874718"
 
 이 문서에서는 **Azure 데이터 탐색기 – Admin Commands** 작업을 사용 하 여 스키마 변경 내용을 데이터베이스에 배포 하는 방법에 대 한 간단한 예를 설명 합니다. 전체 CI/CD 파이프라인은 [Azure DevOps 설명서](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)를 참조 하세요.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * Azure 데이터 탐색기 클러스터 설정:
     * [Azure 데이터 탐색기 클러스터 및 데이터베이스](create-cluster-database-portal.md)
-    * [AZURE ad 응용 프로그램을 프로 비전](kusto/management/access-control/how-to-provision-aad-app.md)하 여 azure ad (Azure Active Directory) 앱을 만듭니다.
+    * [AZURE ad 응용 프로그램을 프로 비전](./provision-azure-ad-app.md)하 여 azure ad (Azure Active Directory) 앱을 만듭니다.
     * Azure [데이터 탐색기 데이터베이스 사용 권한을 관리](manage-database-permissions.md)하 여 azure 데이터 탐색기 데이터베이스에서 Azure AD 앱에 대 한 액세스 권한을 부여 합니다.
 * Azure DevOps 설치:
     * [무료 조직 등록](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)

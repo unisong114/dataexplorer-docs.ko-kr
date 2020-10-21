@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/07/2019
-ms.openlocfilehash: c2cfe861898c2fa68960636b3c4bb4a2dc9b3075
-ms.sourcegitcommit: f2f9cc0477938da87e0c2771c99d983ba8158789
+ms.openlocfilehash: b4098fe52eb4632ba8145d2d5491f21c5af805d8
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89502452"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92343031"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>C를 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결 만들기 #
 
@@ -30,7 +30,7 @@ ms.locfileid: "89502452"
 * Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발**을 사용하도록 설정합니다.
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-csharp.md) 만들기
-* [테이블 및 열 매핑](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) 만들기
+* [테이블 및 열 매핑](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster) 만들기
 * [데이터베이스 및 테이블 정책](database-table-policies-csharp.md) 설정 (선택 사항)
 * 수집할 [데이터를 사용 하 여 이벤트 허브](ingest-data-event-hub.md#create-an-event-hub)를 만듭니다. 
 
