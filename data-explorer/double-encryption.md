@@ -7,12 +7,12 @@ ms.reviewer: toleibov
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/11/2020
-ms.openlocfilehash: e89ce6f77545b4f0b42cbb3d792edd5ceeb0ed34
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: 4949190befdc8adcec9f8115305a2a403994395f
+ms.sourcegitcommit: 88291fd9cebc26e5210463cb95be5540bf84eef8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874677"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92437396"
 ---
 # <a name="enable-infrastructure-encryption-double-encryption-during-cluster-creation-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 클러스터를 만드는 동안 인프라 암호화 (이중 암호화)를 사용 하도록 설정
   
@@ -21,7 +21,6 @@ ms.locfileid: "88874677"
 > [!IMPORTANT]
 > * 이중 암호화를 사용 하도록 설정 하는 작업은 클러스터를 만드는 동안에만 가능 합니다.
 > * 클러스터에서 인프라 암호화를 사용 하도록 설정한 후에는 사용 하지 않도록 설정할 **수 없습니다** .
-> * 이중 암호화는 인프라 암호화가 지원 되는 지역 에서만 사용할 수 있습니다. 자세한 내용은 [저장소 인프라 암호화](/azure/storage/common/infrastructure-encryption-enable)를 참조 하세요.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -36,7 +35,7 @@ ms.locfileid: "88874677"
 
 C #을 사용 하 여 클러스터를 만드는 동안 인프라 암호화를 사용 하도록 설정할 수 있습니다.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
 Azure 데이터 탐색기 c # 클라이언트를 사용 하 여 관리 id를 설정 합니다.
 
