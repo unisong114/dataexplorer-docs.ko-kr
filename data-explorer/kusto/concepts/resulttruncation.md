@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 9706cce08a99989441aa657c5d85465294be837e
-ms.sourcegitcommit: 188f89553b9d0230a8e7152fa1fce56c09ebb6d6
+ms.openlocfilehash: 448da9db3e515385ca44cec94d9dd8604a8c1125
+ms.sourcegitcommit: ee904f45e3eb3feab046263aa9956cb7780a056d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84512421"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92356574"
 ---
 # <a name="query-result-set-has-exceeded-the-internal--limit"></a>쿼리 결과 집합이 내부 ... 제한
 
@@ -26,7 +26,7 @@ ms.locfileid: "84512421"
 * 리소스를 적게 사용 하도록 쿼리를 변경 합니다. 
   예를 들어, 다음을 수행할 수 있습니다.
   * [Take 연산자](../query/takeoperator.md) 또는 [where 절](../query/whereoperator.md) 추가를 사용 하 여 쿼리에서 반환 되는 레코드 수를 제한 합니다.
-  * 쿼리에서 반환 되는 열 수를 줄여 보십시오. [프로젝트 연산자](../query/projectoperator.md)또는 [프로젝트 자리](../query/projectawayoperator.md)를 사용 합니다.
+  * 쿼리에서 반환 되는 열 수를 줄여 보십시오. 프로젝트 [연산자](../query/projectoperator.md), [프로젝트 자리 비움 연산자](../query/projectawayoperator.md)또는 [프로젝트-유지 연산자](../query/project-keep-operator.md) 를 사용 합니다.
   * [요약 연산자](../query/summarizeoperator.md) 를 사용 하 여 집계 된 데이터 가져오기
 * 해당 쿼리에 대해 일시적으로 관련 쿼리 제한을 늘립니다. 자세한 내용은 [쿼리 제한](querylimits.md)에서 **결과 잘림** 참조를 참조 하세요.
 

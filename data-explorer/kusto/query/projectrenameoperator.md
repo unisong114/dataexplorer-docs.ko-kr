@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 83a4dba3f426189de615640ab48e1fa60f9e5537
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 9c46c8d0271516c56c3549212ad7b74f721ce81b
+ms.sourcegitcommit: ee904f45e3eb3feab046263aa9956cb7780a056d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92242202"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92356506"
 ---
 # <a name="project-rename-operator"></a>project-rename 연산자
 
@@ -36,7 +36,6 @@ T | project-rename new_column_name = column_name
 ## <a name="returns"></a>반환
 
 열 이름이 인 기존 테이블과 동일한 순서로 열이 있는 테이블입니다.
-
 
 ## <a name="examples"></a>예
 

@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7bcb33d30bdfdbd22b28dbb7364427cfa3a81a5b
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: de8ff4b9256c8f964350bafd64eac15b028f53d4
+ms.sourcegitcommit: ee904f45e3eb3feab046263aa9956cb7780a056d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92242137"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92356489"
 ---
 # <a name="project-reorder-operator"></a>project-reorder 연산자
 
@@ -36,9 +36,9 @@ T | project-reorder Col2, Col1, Col* asc
 > [!NOTE]
 > * 모호한 *Columnnameorpattern* 일치에서 열이 패턴과 일치 하는 첫 번째 위치에 표시 됩니다.
 > * 에 대 한 열 지정 `project-reorder` 은 선택 사항입니다. 명시적으로 지정 되지 않은 열은 출력 테이블의 마지막 열로 표시 됩니다.
-> * [`project-away`](projectawayoperator.md)를 사용 하 여 열을 제거 합니다.
-> * [`project-rename`](projectrenameoperator.md)열 이름을 바꾸려면를 사용 합니다.
-
+> * 열을 제거 하려면를 사용 [`project-away`](projectawayoperator.md) 합니다.
+> * 유지할 열을 선택 하려면를 사용 [`project-keep`](project-keep-operator.md) 합니다.
+> * 열 이름을 바꾸려면를 사용 [`project-rename`](projectrenameoperator.md) 합니다.
 
 ## <a name="returns"></a>반환
 
