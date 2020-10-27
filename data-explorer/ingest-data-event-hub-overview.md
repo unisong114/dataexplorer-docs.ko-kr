@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: f14601f1893542bac22612b383b558df3b2999bb
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 05848ff0a76ed7a102e54ec08412c4bf16e77891
+ms.sourcegitcommit: 4f24d68f1ae4903a2885985aa45fd15948867175
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343218"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558209"
 ---
-# <a name="create-a-connection-to-event-hub"></a>Event Hub에 대한 연결 만들기
+# <a name="event-hub-data-connection"></a>이벤트 허브 데이터 연결
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) 는 빅 데이터 스트리밍 플랫폼 및 이벤트 수집 서비스입니다. Azure 데이터 탐색기는 고객이 관리 하는 Event Hubs에서 지속적인 수집을 제공 합니다.
 
-이벤트 허브 수집 파이프라인은 여러 단계로 이벤트를 Azure 데이터 탐색기 전송 합니다. 먼저 Azure Portal에서 이벤트 허브를 만듭니다. 그런 다음 지정 된 수집 [속성](#set-ingestion-properties)을 사용 하 여 [특정 형식의 데이터가](#data-format)수집 되는 Azure 데이터 탐색기에 대상 테이블을 만듭니다. 이벤트 허브 연결에서 [이벤트 라우팅을](#set-events-routing)알아야 합니다. [이벤트 시스템 속성 매핑에](#set-event-system-properties-mapping)따라 선택한 속성에 데이터를 포함 합니다. 이벤트 허브에 대 한 [연결을 만들어](#create-event-hub-connection) 이벤트 [허브](#create-an-event-hub) 를 만들고 [이벤트를 전송](#send-events)합니다. 이 프로세스는 [c #](data-connection-event-hub-csharp.md) 또는 [Python](data-connection-event-hub-python.md)을 사용 하 여 프로그래밍 방식으로 또는 [Azure Resource Manager 템플릿을](data-connection-event-hub-resource-manager.md)사용 하 여 [Azure Portal](ingest-data-event-hub.md)를 통해 관리할 수 있습니다.
+이벤트 허브 수집 파이프라인은 여러 단계로 이벤트를 Azure 데이터 탐색기 전송 합니다. 먼저 Azure Portal에서 이벤트 허브를 만듭니다. 그런 다음 지정 된 수집 [속성](#ingestion-properties)을 사용 하 여 [특정 형식의 데이터가](#data-format)수집 되는 Azure 데이터 탐색기에 대상 테이블을 만듭니다. 이벤트 허브 연결에서 [이벤트 라우팅을](#events-routing)알아야 합니다. [이벤트 시스템 속성 매핑에](#event-system-properties-mapping)따라 선택한 속성에 데이터를 포함 합니다. 이벤트 허브에 대 한 [연결을 만들어](#event-hub-connection) 이벤트 [허브](#create-an-event-hub) 를 만들고 [이벤트를 전송](#send-events)합니다. 이 프로세스는 [c #](data-connection-event-hub-csharp.md) 또는 [Python](data-connection-event-hub-python.md)을 사용 하 여 프로그래밍 방식으로 또는 [Azure Resource Manager 템플릿을](data-connection-event-hub-resource-manager.md)사용 하 여 [Azure Portal](ingest-data-event-hub.md)를 통해 관리할 수 있습니다.
 
 Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일반적인 내용은 [azure 데이터 탐색기 데이터 수집 개요](ingest-data-overview.md)를 참조 하세요.
 
@@ -30,18 +30,18 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
     > [!NOTE]
     > 이벤트 허브는. raw 형식을 지원 하지 않습니다.
 
-* 압축 알고리즘을 사용 하 여 데이터를 압축할 수 있습니다 `GZip` . 수집 `Compression` [속성](#set-ingestion-properties)에서를 지정 합니다.
+* 압축 알고리즘을 사용 하 여 데이터를 압축할 수 있습니다 `GZip` . 수집 `Compression` [속성](#ingestion-properties)에서를 지정 합니다.
    * 압축 형식 (Avro, Parquet, ORC)에 대해서는 데이터 압축이 지원 되지 않습니다.
-   * 사용자 지정 인코딩 및 포함 된 [시스템 속성](#set-event-system-properties-mapping) 은 압축 된 데이터에서 지원 되지 않습니다.
+   * 사용자 지정 인코딩 및 포함 된 [시스템 속성](#event-system-properties-mapping) 은 압축 된 데이터에서 지원 되지 않습니다.
   
-## <a name="set-ingestion-properties"></a>수집 속성 설정
+## <a name="ingestion-properties"></a>수집 속성
 
 수집 속성은 수집 프로세스, 데이터를 라우팅하는 위치 및이를 처리 하는 방법을 지시 합니다. [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트 수집의 수집 [속성](ingestion-properties.md) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
 
 |속성 |설명|
 |---|---|
 | 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Table`창에서 집합을 재정의 합니다 `Data Connection` . |
-| 형식 | 데이터 형식입니다. `Data format`창에서 집합을 재정의 합니다 `Data Connection` . |
+| 서식 | 데이터 형식입니다. `Data format`창에서 집합을 재정의 합니다 `Data Connection` . |
 | IngestionMappingReference | 사용할 기존 수집 [매핑의](kusto/management/create-ingestion-mapping-command.md) 이름입니다. `Column mapping`창에서 집합을 재정의 합니다 `Data Connection` .|
 | 압축 | 데이터 압축 `None` (기본값) 또는 `GZip` 압축|
 | Encoding | 데이터 인코딩입니다. 기본값은 UTF8입니다. 은 [.net에서 지원 되는 인코딩을](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks)사용할 수 있습니다. |
@@ -50,7 +50,10 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
 <!--| Database | Name of the existing target database.|-->
 <!--| Tags | String representing [tags](/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
 
-## <a name="set-events-routing"></a>이벤트 라우팅 설정
+> [!NOTE]
+> 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집 됩니다.
+
+## <a name="events-routing"></a>이벤트 라우팅
 
 Azure 데이터 탐색기 클러스터에 대 한 이벤트 허브 연결을 설정 하는 경우 대상 테이블 속성 (테이블 이름, 데이터 형식, 압축 및 매핑)을 지정 합니다. 데이터의 기본 라우팅은 라고도 `static routing` 합니다.
 이벤트 속성을 사용 하 여 각 이벤트에 대 한 대상 테이블 속성을 지정할 수도 있습니다. 연결은 [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)에 지정 된 대로 데이터를 동적으로 라우팅하고이 이벤트에 대 한 정적 속성을 재정의 합니다.
@@ -79,7 +82,7 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## <a name="set-event-system-properties-mapping"></a>이벤트 시스템 속성 매핑 설정
+## <a name="event-system-properties-mapping"></a>이벤트 시스템 속성 매핑
 
 시스템 속성은 이벤트를 큐에 넣을 때 Event Hubs 서비스에서 설정 하는 속성을 저장 합니다. Azure 데이터 탐색기 이벤트 허브 연결에서는 선택한 속성을 테이블의 데이터에 포함 합니다.
 
@@ -104,7 +107,7 @@ eventHubClient.Close();
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
-## <a name="create-event-hub-connection"></a>Event Hub 연결 만들기
+## <a name="event-hub-connection"></a>이벤트 허브 연결
 
 > [!Note]
 > 최상의 성능을 위해 Azure 데이터 탐색기 클러스터와 동일한 지역에 모든 리소스를 만듭니다.

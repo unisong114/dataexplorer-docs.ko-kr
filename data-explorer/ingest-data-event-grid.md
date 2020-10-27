@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 3452ca547778869ae08e7aef92c1a3a7a4754446
-ms.sourcegitcommit: 58588ba8d1fc5a6adebdce2b556db5bc542e38d8
+ms.openlocfilehash: 209a58dd53dd773567aeb527fa45499ddd397c20
+ms.sourcegitcommit: 4f24d68f1ae4903a2885985aa45fd15948867175
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098441"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558226"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid 알림을 구독하여 Azure Data Explorer에 Blob 수집
 
@@ -28,7 +28,7 @@ ms.locfileid: "92098441"
 
 Event Grid에서 Azure 데이터 탐색기에 수집에 대 한 일반 정보는 [Event Grid에 연결](ingest-data-event-grid-overview.md)을 참조 하세요. Azure Portal에서 리소스를 수동으로 만들려면 [Event Grid 수집에 대 한 리소스 수동 만들기](ingest-data-event-grid-manual.md)를 참조 하세요.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독 [무료 Azure 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-portal.md)
@@ -38,11 +38,11 @@ Event Grid에서 Azure 데이터 탐색기에 수집에 대 한 일반 정보는
 
 Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭니다. 필수 구성 요소에서 준비한 클러스터와 데이터베이스에서 테이블을 만듭니다.
 
-1. Azure Portal의 클러스터 아래에서 **쿼리**를 선택합니다.
+1. Azure Portal의 클러스터 아래에서 **쿼리** 를 선택합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/query-explorer-link.png" alt-text="쿼리 탐색기 링크"::: 
 
-1. 다음 명령을 창에 복사하고, **실행**을 선택하여 수집된 데이터를 받을 테이블(TestTable)을 만듭니다.
+1. 다음 명령을 창에 복사하고, **실행** 을 선택하여 수집된 데이터를 받을 테이블(TestTable)을 만듭니다.
 
     ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
@@ -50,7 +50,7 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
 
     :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="쿼리 탐색기 링크":::
 
-1. 다음 명령을 창에 복사하고, **실행**을 선택하여 들어오는 JSON 데이터를 테이블(TestTable)의 열 이름과 데이터 형식에 매핑합니다.
+1. 다음 명령을 창에 복사하고, **실행** 을 선택하여 들어오는 JSON 데이터를 테이블(TestTable)의 열 이름과 데이터 형식에 매핑합니다.
 
     ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
@@ -60,17 +60,17 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
 
 이제 저장소 계정을 Azure 데이터 탐색기에 연결 하 여 저장소로 흐르는 데이터가 테스트 테이블로 스트리밍됩니다. 
 
-1. 만든 클러스터에서 **데이터베이스**  >  **testdatabase**를 선택 합니다.
+1. 만든 클러스터에서 **데이터베이스**  >  **testdatabase** 를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/select-test-database.png" alt-text="쿼리 탐색기 링크":::
 
-1. **데이터**수집  >  **데이터 연결 추가**를 선택 합니다.
+1. **데이터** 수집  >  **데이터 연결 추가** 를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="쿼리 탐색기 링크":::
 
 ### <a name="data-connection---basics-tab"></a>데이터 연결-기본 사항 탭
 
-1. 연결 유형: **Blob storage**를 선택 합니다.
+1. 연결 유형: **Blob storage** 를 선택 합니다.
 
 1. 다음 정보로 양식을 작성합니다.
 
@@ -85,7 +85,7 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
     | 리소스 만들기 | *자동* | Azure 데이터 탐색기에서 Event Grid 구독, 이벤트 허브 네임 스페이스 및 이벤트 허브를 만들지 여부를 정의 합니다. 리소스를 수동으로 만들려면 Event Grid 수집을 [위한 리소스 수동 만들기](ingest-data-event-grid-manual.md) 를 참조 하세요.|
 
 1. 특정 주제를 추적 하려면 **필터 설정** 을 선택 합니다. 알림에 대한 필터를 다음과 같이 설정합니다.
-    * **접두사** 필드는 주체의 *리터럴* 접두사입니다. 적용 되는 패턴은 *startswith*여러 컨테이너, 폴더 또는 blob에 걸쳐 있을 수 있습니다. 와일드카드는 허용되지 않습니다.
+    * **접두사** 필드는 주체의 *리터럴* 접두사입니다. 적용 되는 패턴은 *startswith* 여러 컨테이너, 폴더 또는 blob에 걸쳐 있을 수 있습니다. 와일드카드는 허용되지 않습니다.
         * Blob 컨테이너에 대 한 필터를 정의 하려면 필드를 다음과 같이 설정 *해야* 합니다 *`/blobServices/default/containers/[container prefix]`* .
         * Blob 접두사 (또는 Azure Data Lake Gen2의 폴더)에 대 한 필터를 정의 하려면 필드를 다음과 같이 설정 *해야* 합니다 *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`* .
     * **접미사** 필드는 blob의 *리터럴* 접미사입니다. 와일드카드는 허용되지 않습니다.
@@ -94,7 +94,7 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
     
     :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="쿼리 탐색기 링크":::    
 
-1. **다음: 수집 속성**을 선택 합니다.
+1. **다음: 수집 속성** 을 선택 합니다.
 
 ### <a name="data-connection---ingest-properties-tab"></a>데이터 연결-수집 속성 탭
 
@@ -106,18 +106,18 @@ Azure Data Explorer에서 Event Hubs가 데이터를 보낼 테이블을 만듭�
 
      **설정** | **제안 값** | **필드 설명**
     |---|---|---|
-    | 테이블 이름 | *TestTable* | **TestDatabase**에 만든 테이블입니다. |
+    | 테이블 이름 | *TestTable* | **TestDatabase** 에 만든 테이블입니다. |
     | 데이터 형식 | *JSON* | 지원 되는 형식은 Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW 및 W3CLOG입니다. 지원 되는 압축 옵션은 Zip 및 GZip입니다. |
-    | 매핑 | *TestMapping* | **TestDatabase**에서 생성된 것으로, 들어오는 JSON 데이터를 **TestTable**의 열 이름 및 데이터 형식에 매핑.|
+    | 매핑 | *TestMapping* | **TestDatabase** 에서 생성된 것으로, 들어오는 JSON 데이터를 **TestTable** 의 열 이름 및 데이터 형식에 매핑.|
     | 고급 설정 | *내 데이터에 머리글 있음* | 헤더를 무시 합니다. * SV 형식 파일에 대해 지원 됩니다.|
 
    > [!NOTE]
-   > 모든 **기본 라우팅 설정을**지정할 필요는 없습니다. 부분 설정도 허용 됩니다.
+   > 모든 **기본 라우팅 설정을** 지정할 필요는 없습니다. 부분 설정도 허용 됩니다.
 1. 다음을 선택 합니다 **. 검토 + 만들기**
 
 ### <a name="data-connection---review--create-tab"></a>데이터 연결-검토 + 만들기 탭
 
-1. 자동으로 생성 된 리소스를 검토 하 고 **만들기**를 선택 합니다.
+1. 자동으로 생성 된 리소스를 검토 하 고 **만들기** 를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="쿼리 탐색기 링크":::
 
@@ -173,7 +173,7 @@ Azure Storage 리소스와 상호 작용하는 몇 가지 기본 Azure CLI 명�
 
 ### <a name="ingestion-properties"></a>수집 속성
 
-Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingest-data-event-grid-overview.md#set-ingestion-properties) 을 지정할 수 있습니다. 
+Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingest-data-event-grid-overview.md#ingestion-properties) 을 지정할 수 있습니다. 
 
 > [!NOTE]
 > Azure 데이터 탐색기는 blob 사후 수집을 삭제 하지 않습니다.
@@ -184,8 +184,8 @@ Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingest-data-event
 
 > [!NOTE]
 > Azure Data Explorer에는 데이터 수집을 위한 집계(일괄 처리) 정책이 있으며, 이는 수집 프로세스를 최적화하도록 설계되었습니다.
-기본적으로 정책은 5 분으로 구성됩니다.
-필요한 경우 나중에 정책을 변경할 수 있습니다. 이 문서에서는 몇 분의 대기 시간을 예측할 수 있습니다.
+> 기본적으로 정책은 5 분으로 구성됩니다.
+> 필요한 경우 나중에 정책을 변경할 수 있습니다. 이 문서에서는 몇 분의 대기 시간을 예측할 수 있습니다.
 
 1. Azure Portal의 Event Grid에서 앱이 실행되는 동안 작업이 급증하는 것을 볼 수 있습니다.
 
@@ -212,7 +212,7 @@ Blob 메타 데이터를 통해 blob 수집의 수집 [속성](ingest-data-event
 
 Event grid를 다시 사용 하지 않으려는 경우에는 자동으로 생성 된 Event Grid 구독, 이벤트 허브 네임 스페이스 및 이벤트 허브를 정리 하 여 비용을 발생 시 키 지 않도록 합니다.
 
-1. Azure Portal에서 왼쪽 메뉴로 이동 하 여 **모든 리소스**를 선택 합니다.
+1. Azure Portal에서 왼쪽 메뉴로 이동 하 여 **모든 리소스** 를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="쿼리 탐색기 링크":::    
 
@@ -222,7 +222,7 @@ Event grid를 다시 사용 하지 않으려는 경우에는 자동으로 생성
 
 1. 리소스 삭제 양식에서 삭제를 확인 하 여 이벤트 허브 네임 스페이스 및 이벤트 허브 리소스를 삭제 합니다.
 
-1. 스토리지 계정으로 이동합니다. 왼쪽 메뉴에서 **이벤트**를 선택 합니다.
+1. 스토리지 계정으로 이동합니다. 왼쪽 메뉴에서 **이벤트** 를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-events.png" alt-text="쿼리 탐색기 링크":::
 
@@ -230,13 +230,13 @@ Event grid를 다시 사용 하지 않으려는 경우에는 자동으로 생성
 
     :::image type="content" source="media/ingest-data-event-grid/delete-event-grid-subscription.png" alt-text="쿼리 탐색기 링크":::
 
-1. Event Grid 데이터 연결을 삭제 하려면 Azure 데이터 탐색기 클러스터로 이동 합니다. 왼쪽 메뉴에서 **데이터베이스**를 선택 합니다.
+1. Event Grid 데이터 연결을 삭제 하려면 Azure 데이터 탐색기 클러스터로 이동 합니다. 왼쪽 메뉴에서 **데이터베이스** 를 선택 합니다.
 
-1. 데이터베이스 **Testdatabase**를 선택 합니다.
+1. 데이터베이스 **Testdatabase** 를 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="쿼리 탐색기 링크":::
 
-1. 왼쪽 메뉴에서 **데이터**수집을 선택 합니다.
+1. 왼쪽 메뉴에서 **데이터** 수집을 선택 합니다.
 
     :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png" alt-text="쿼리 탐색기 링크":::
 
