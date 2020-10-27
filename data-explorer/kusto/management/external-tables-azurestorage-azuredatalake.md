@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 0532219b8efc1cab7508d1838882b6fa48f5048f
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 1d0625c949fe563084caeec936e3433c9ee70f5e
+ms.sourcegitcommit: ef3d919dee27c030842abf7c45c9e82e6e8350ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343269"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92630112"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -28,7 +28,7 @@ ms.locfileid: "92343269"
 ( `.create`  |  `.alter`  |  `.create-or-alter` ) `external` `table` *[TableName](#table-name)* `(` *[스키마](#schema)*`)`  
 `kind` `=` (`blob` | `adl`)  
 [ `partition` `by` `(` *[파티션](#partitions)* `)` [ `pathformat` `=` `(` *[pathformat](#path-format)* `)` ]]  
-`dataformat``=` * [형식](#format)*  
+`dataformat``=` *[형식](#format)*  
 `(`*[StorageConnectionString](#connection-string)* [ `,` ...]`)`   
 [ `with` `(` *[PropertyName](#properties)* `=` *[값](#properties)* `,` ... `)` ]  
 
@@ -74,7 +74,7 @@ ms.locfileid: "92343269"
 
   *PartitionName* `:` `string` `=` *ColumnName*
 
-* 파티션, 문자열 열 값 [해시](../query/hashfunction.md), 나머지 *숫자*를 기반으로 합니다.
+* 파티션, 문자열 열 값 [해시](../query/hashfunction.md), 나머지 *숫자* 를 기반으로 합니다.
 
   *PartitionName* `:` `long` `=` `hash` `(` *ColumnName* `,` *번호*`)`
 
@@ -90,9 +90,9 @@ ms.locfileid: "92343269"
 
 분할 외에도 지정할 수 있는 외부 데이터 URI 파일 경로 형식입니다. 경로 형식은 파티션 요소 및 텍스트 구분 기호의 시퀀스입니다.
 
-&nbsp;&nbsp;[*Stringseparator*] *파티션* [*stringseparator*] [*파티션* [*stringseparator*] ...]  
+&nbsp;&nbsp;[ *Stringseparator* ] *파티션* [ *stringseparator* ] [ *파티션* [ *stringseparator* ] ...]  
 
-여기서 *partition* 은 절에 선언 된 파티션을 참조 하 `partition` `by` 고 *stringseparator* 는 따옴표로 묶인 텍스트입니다. 연속 된 파티션 요소는 *Stringseparator*를 사용 하 여 별도로 설정 해야 합니다.
+여기서 *partition* 은 절에 선언 된 파티션을 참조 하 `partition` `by` 고 *stringseparator* 는 따옴표로 묶인 텍스트입니다. 연속 된 파티션 요소는 *Stringseparator* 를 사용 하 여 별도로 설정 해야 합니다.
 
 원래 파일 경로 접두사는 문자열로 렌더링 되 고 해당 텍스트 구분 기호로 구분 된 파티션 요소를 사용 하 여 생성할 수 있습니다. Datetime 파티션 값을 렌더링 하는 데 사용 되는 형식을 지정 하려면 다음 매크로를 사용할 수 있습니다.
 
@@ -138,7 +138,7 @@ ms.locfileid: "92343269"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | 유형     | 설명       |
+| 속성         | Type     | Description       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -270,13 +270,13 @@ dataformat=parquet
 
 **구문:** 
 
-`.show``external` `table` *TableName* `artifacts` [ `limit` *MaxResults*]
+`.show``external` `table` *TableName* `artifacts` [ `limit` *MaxResults* ]
 
 여기서 *MaxResults* 은 선택적 매개 변수 이며 결과 수를 제한 하도록 설정할 수 있습니다.
 
 **출력**
 
-| 출력 매개 변수 | 유형   | 설명                       |
+| 출력 매개 변수 | Type   | 설명                       |
 |------------------|--------|-----------------------------------|
 | URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
 | 크기             | long   | 파일 길이 (바이트)              |
@@ -321,7 +321,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                           |
+| Name     | Kind | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -339,7 +339,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                                |
+| Name     | Kind | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -361,7 +361,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | 종류 | 매핑                                                                         |
+| Name     | Kind | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -378,5 +378,6 @@ dataformat=parquet
 ```
 ## <a name="next-steps"></a>다음 단계
 
-* [외부 테이블 일반 제어 명령](./external-table-commands.md)
-* [외부 SQL 테이블 만들기 및 변경](external-sql-tables.md)
+* [외부 테이블을 쿼리](../../data-lake-query-data.md)합니다.
+* [외부 테이블로 데이터를 내보냅니다](data-export/export-data-to-an-external-table.md).
+* [외부 테이블로 데이터를 지속적으로 내보냅니다](data-export/continuous-data-export.md).

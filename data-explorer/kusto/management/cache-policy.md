@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 9b080badd2dc1015319e9b6d44c4c477061f92f9
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: 31d051bf104778ecc4c2a743db6bda5ccf8ed89f
+ms.sourcegitcommit: ef3d919dee27c030842abf7c45c9e82e6e8350ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452717"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92630129"
 ---
 # <a name="cache-policy-command"></a>캐시 정책 명령
 
@@ -24,7 +24,7 @@ ms.locfileid: "91452717"
 이 정책은 데이터베이스, 테이블 또는 [구체화 된 뷰에서](materialized-views/materialized-view-overview.md)설정할 수 있으며 다음 명령 중 하나를 사용 하 여 표시 됩니다.
 
 * `.show``database` *DatabaseName* DatabaseName `policy``caching`
-* `.show``table` *TableName* TableName `policy``caching`
+* `.show` `table` *TableName* `policy` `caching`
 * `.show``materialized-view` *MaterializedViewName* MaterializedViewName `policy``caching`
 
 ## <a name="altering-the-cache-policy"></a>캐시 정책 변경
@@ -52,7 +52,7 @@ ms.locfileid: "91452717"
 }
 ```
 
-* `entity_type` : 테이블, 데이터베이스 또는 클러스터
+* `entity_type` : 테이블, 구체화 된 뷰, 데이터베이스 또는 클러스터
 * `database_or_table_or_materialized-view`: 엔터티가 테이블 또는 데이터베이스인 경우 다음과 같이 명령에 이름을 지정 해야 합니다. 
   - `database_name` 또는 
   - `database_name.table_name` 또는 

@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 43b8e3f4d1adee7cf96cc7933aab8d8ef18d7638
-ms.sourcegitcommit: bc09599c282b20b5be8f056c85188c35b66a52e5
+ms.openlocfilehash: fa4c47994ac96486fe6889e162fe917a5cef3f3e
+ms.sourcegitcommit: 88291fd9cebc26e5210463cb95be5540bf84eef8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88610596"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92437478"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>자습서: Azure Data Explorer에서 모니터링 데이터 수집 및 쿼리 
 
@@ -33,7 +33,7 @@ ms.locfileid: "88610596"
 ## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
-* [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md). 이 자습서에서 데이터베이스 이름은 *TestDatabase*입니다.
+* [Azure Data Explorer 클러스터 및 데이터베이스](create-cluster-database-portal.md). 이 자습서에서 데이터베이스 이름은 *TestDatabase* 입니다.
 
 ## <a name="azure-monitor-data-provider-diagnostic-metrics-and-logs-and-activity-logs"></a>Azure Monitor 데이터 공급자: 진단 메트릭 및 로그와 활동 로그
 
@@ -200,30 +200,30 @@ Azure Data Explorer 파이프라인을 설정하려면 [테이블 생성 및 데
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Azure Data Explorer 웹 UI에 연결
 
-Azure Data Explorer *TestDatabase* 데이터베이스에서 **쿼리**를 선택하여 Azure Data Explorer 웹 UI를 엽니다.
+Azure Data Explorer *TestDatabase* 데이터베이스에서 **쿼리** 를 선택하여 Azure Data Explorer 웹 UI를 엽니다.
 
 ![쿼리 페이지](media/ingest-data-no-code/query-database.png)
 
 ### <a name="create-the-target-tables"></a>대상 테이블 만들기
 
-Azure Monitor 로그의 구조는 테이블 형식이 아닙니다. 데이터를 조작하고 각 이벤트를 하나 이상의 레코드로 확장합니다. 원시 데이터는 활동 로그의 경우 *ActivityLogsRawRecords*, 진단 메트릭 및 로그의 경우 *DiagnosticRawRecords*라는 중간 테이블로 수집됩니다. 이 때 데이터가 조작되고 확장됩니다. 그런 다음, 업데이트 정책을 사용하면 확장된 데이터가 활동 로그의 경우 *ActivityLogs* 테이블, 진단 메트릭의 경우 *DiagnosticMetrics* 및 진단 로그의 경우 *DiagnosticLogs*로 수집됩니다. 즉, 활동 로그를 수집하기 위해 별도의 세 개 테이블을 만들고, 진단 메트릭 및 로그 수집을 수집하기 위해 별도의 두 개 테이블을 만들어야 합니다.
+Azure Monitor 로그의 구조는 테이블 형식이 아닙니다. 데이터를 조작하고 각 이벤트를 하나 이상의 레코드로 확장합니다. 원시 데이터는 활동 로그의 경우 *ActivityLogsRawRecords* , 진단 메트릭 및 로그의 경우 *DiagnosticRawRecords* 라는 중간 테이블로 수집됩니다. 이 때 데이터가 조작되고 확장됩니다. 그런 다음, 업데이트 정책을 사용하면 확장된 데이터가 활동 로그의 경우 *ActivityLogs* 테이블, 진단 메트릭의 경우 *DiagnosticMetrics* 및 진단 로그의 경우 *DiagnosticLogs* 로 수집됩니다. 즉, 활동 로그를 수집하기 위해 별도의 세 개 테이블을 만들고, 진단 메트릭 및 로그 수집을 수집하기 위해 별도의 두 개 테이블을 만들어야 합니다.
 
 Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이스에 대상 테이블을 만듭니다.
 
 # <a name="diagnostic-metrics"></a>[진단 메트릭](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>진단 메트릭용 테이블 만들기
 
-1. *TestDatabase* 데이터베이스에서 진단 메트릭 레코드를 저장하기 위한 *DiagnosticMetrics*라는 테이블을 만듭니다. 다음과 같은 `.create table` 제어 명령을 사용합니다.
+1. *TestDatabase* 데이터베이스에서 진단 메트릭 레코드를 저장하기 위한 *DiagnosticMetrics* 라는 테이블을 만듭니다. 다음과 같은 `.create table` 제어 명령을 사용합니다.
 
     ```kusto
     .create table DiagnosticMetrics (Timestamp:datetime, ResourceId:string, MetricName:string, Count:int, Total:double, Minimum:double, Maximum:double, Average:double, TimeGrain:string)
     ```
 
-1. **실행**을 선택하여 테이블을 만듭니다.
+1. **실행** 을 선택하여 테이블을 만듭니다.
 
     ![쿼리 실행](media/ingest-data-no-code/run-query.png)
 
-1. *TestDatabase* 데이터베이스에서 다음 쿼리를 사용하여 데이터를 조작하기 위한 *DiagnosticRawRecords*라는 중간 데이터 테이블을 만듭니다. **실행**을 선택하여 테이블을 만듭니다.
+1. *TestDatabase* 데이터베이스에서 다음 쿼리를 사용하여 데이터를 조작하기 위한 *DiagnosticRawRecords* 라는 중간 데이터 테이블을 만듭니다. **실행** 을 선택하여 테이블을 만듭니다.
 
     ```kusto
     .create table DiagnosticRawRecords (Records:dynamic)
@@ -238,15 +238,15 @@ Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이�
 # <a name="diagnostic-logs"></a>[진단 로그](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>진단 로그용 테이블 만들기 
 
-1. *TestDatabase* 데이터베이스에서 진단 로그 레코드를 저장하기 위한 *DiagnosticLogs*라는 테이블을 만듭니다. 다음과 같은 `.create table` 제어 명령을 사용합니다.
+1. *TestDatabase* 데이터베이스에서 진단 로그 레코드를 저장하기 위한 *DiagnosticLogs* 라는 테이블을 만듭니다. 다음과 같은 `.create table` 제어 명령을 사용합니다.
 
     ```kusto
     .create table DiagnosticLogs (Timestamp:datetime, ResourceId:string, OperationName:string, Result:string, OperationId:string, Database:string, Table:string, IngestionSourceId:string, IngestionSourcePath:string, RootActivityId:string, ErrorCode:string, FailureStatus:string, Details:string)
     ```
 
-1. **실행**을 선택하여 테이블을 만듭니다.
+1. **실행** 을 선택하여 테이블을 만듭니다.
 
-1. *TestDatabase* 데이터베이스에서 다음 쿼리를 사용하여 데이터를 조작하기 위한 *DiagnosticRawRecords*라는 중간 데이터 테이블을 만듭니다. **실행**을 선택하여 테이블을 만듭니다.
+1. *TestDatabase* 데이터베이스에서 다음 쿼리를 사용하여 데이터를 조작하기 위한 *DiagnosticRawRecords* 라는 중간 데이터 테이블을 만듭니다. **실행** 을 선택하여 테이블을 만듭니다.
 
     ```kusto
     .create table DiagnosticRawRecords (Records:dynamic)
@@ -261,13 +261,13 @@ Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이�
 # <a name="activity-logs"></a>[활동 로그](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>활동 로그용 테이블 만들기 
 
-1. *TestDatabase* 데이터베이스에서 활동 로그 레코드를 받기 위한 *ActivityLogs*라는 테이블을 만듭니다. 테이블을 만들려면 다음 Azure Data Explorer 쿼리를 실행합니다.
+1. *TestDatabase* 데이터베이스에서 활동 로그 레코드를 받기 위한 *ActivityLogs* 라는 테이블을 만듭니다. 테이블을 만들려면 다음 Azure Data Explorer 쿼리를 실행합니다.
 
     ```kusto
     .create table ActivityLogs (Timestamp:datetime, ResourceId:string, OperationName:string, Category:string, ResultType:string, ResultSignature:string, DurationMs:int, IdentityAuthorization:dynamic, IdentityClaims:dynamic, Location:string, Level:string)
     ```
 
-1. 데이터 조작을 위해 *TestDatabase* 데이터베이스에 *ActivityLogsRawRecords*라는 중간 데이터 테이블을 만듭니다.
+1. 데이터 조작을 위해 *TestDatabase* 데이터베이스에 *ActivityLogsRawRecords* 라는 중간 데이터 테이블을 만듭니다.
 
     ```kusto
     .create table ActivityLogsRawRecords (Records:dynamic)
@@ -399,9 +399,9 @@ Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이�
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Azure Event Hubs 네임스페이스 만들기
 
-Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 또는 이벤트 허브에 내보낼 수 있습니다. 이 자습서에서는 이벤트 허브를 통해 메트릭 및 로그를 라우팅합니다. 다음 단계에서는 진단 메트릭 및 로그에 대한 Event Hubs 네임스페이스 및 이벤트 허브를 만듭니다. Azure Monitor는 활동 로그에 대해 이벤트 허브 *insights-operational-logs*를 만듭니다.
+Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 또는 이벤트 허브에 내보낼 수 있습니다. 이 자습서에서는 이벤트 허브를 통해 메트릭 및 로그를 라우팅합니다. 다음 단계에서는 진단 메트릭 및 로그에 대한 Event Hubs 네임스페이스 및 이벤트 허브를 만듭니다. Azure Monitor는 활동 로그에 대해 이벤트 허브 *insights-operational-logs* 를 만듭니다.
 
-1. Azure Portal에서 Azure Resource Manager 템플릿을 사용하여 이벤트 허브를 만듭니다. 이 문서의 나머지 단계를 수행하려면, **Azure에 배포** 단추를 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기**를 선택합니다. **Azure에 배포** 단추를 선택하면 Azure Portal로 이동합니다.
+1. Azure Portal에서 Azure Resource Manager 템플릿을 사용하여 이벤트 허브를 만듭니다. 이 문서의 나머지 단계를 수행하려면, **Azure에 배포** 단추를 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기** 를 선택합니다. **Azure에 배포** 단추를 선택하면 Azure Portal로 이동합니다.
 
     [![Azure에 배포 단추](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -431,50 +431,55 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
 메트릭을 내보낼 리소스를 선택합니다. Event Hubs 네임스페이스, Azure Key Vault, Azure IoT Hub 및 Azure Data Explorer 클러스터를 포함한 여러 가지 리소스 종류에서 진단 데이터 내보내기를 지원합니다. 이 자습서에서는 Azure Data Explorer 클러스터를 리소스로 사용하고, 쿼리 성능 메트릭과 수집 결과 로그를 검토합니다.
 
 1. Azure Portal에서 Kusto 클러스터를 선택합니다.
-1. **진단 설정**을 선택한 다음, **진단 켜기** 링크를 선택합니다. 
+1. **진단 설정** 을 선택한 다음, **진단 켜기** 링크를 선택합니다. 
 
     ![진단 설정](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. **진단 설정** 창이 열립니다. 다음과 같은 단계를 수행합니다.
-   1. 진단 로그 데이터 이름을 *ADXExportedData*라고 지정합니다.
+   1. 진단 로그 데이터 이름을 *ADXExportedData* 라고 지정합니다.
    1. **로그** 아래에서 **SucceededIngestion** 및 **FailedIngestion** 확인란을 모두 선택합니다.
    1. **메트릭** 아래에서 **쿼리 성능** 확인란을 선택합니다.
    1. **이벤트 허브로의 스트림** 확인란을 선택합니다.
-   1. **구성**을 선택합니다.
+   1. **구성** 을 선택합니다.
 
       ![진단 설정 창](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. **이벤트 허브 선택** 창에서 직접 만든 이벤트 허브로 진단 로그의 데이터를 내보내는 방법을 구성합니다.
-    1. **이벤트 허브 네임스페이스 선택** 목록에서 *AzureMonitoringData*를 선택합니다.
-    1. **이벤트 허브 이름 선택** 목록에서 *DiagnosticData*를 선택합니다.
-    1. **이벤트 허브 정책 이름** 목록에서 **RootManagerSharedAccessKey**를 선택합니다.
-    1. **확인**을 선택합니다.
+    1. **이벤트 허브 네임스페이스 선택** 목록에서 *AzureMonitoringData* 를 선택합니다.
+    1. **이벤트 허브 이름 선택** 목록에서 *DiagnosticData* 를 선택합니다.
+    1. **이벤트 허브 정책 이름** 목록에서 **RootManagerSharedAccessKey** 를 선택합니다.
+    1. **확인** 을 선택합니다.
 
-1. **저장**을 선택합니다.
+1. **저장** 을 선택합니다.
 
 # <a name="activity-logs"></a>[활동 로그](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>이벤트 허브에 활동 로그 연결
 
-1. Azure Portal 왼쪽 메뉴에서 **활동 로그**를 선택합니다.
-1. **활동 로그** 창이 열립니다. **이벤트 허브로 내보내기**를 선택합니다.
+1. Azure Portal 왼쪽 메뉴에서 **활동 로그** 를 선택합니다.
+1. **활동 로그** 창이 열립니다. **진단 설정** 을 선택합니다.
 
     ![활동 로그 창](media/ingest-data-no-code/activity-log.png)
 
-1. **활동 로그 내보내기** 창이 열립니다.
- 
-    ![활동 로그 내보내기 창](media/ingest-data-no-code/export-activity-log.png)
+1. **진단 설정** 창이 열립니다. **+ 진단 설정 추가** 를 선택합니다.
 
-1. **활동 로그 내보내기** 창에서 다음 단계를 수행합니다.
-      1. 구독을 선택합니다.
-      1. **지역** 목록에서 **모두 선택**을 선택합니다.
-      1. **이벤트 허브로 내보내기** 확인란을 선택합니다.
-      1. **Service Bus 네임스페이스를 선택합니다.** 를 선택하여 **이벤트 허브 선택** 창을 엽니다.
-      1. **이벤트 허브 선택** 창에서 구독을 선택합니다.
-      1. **이벤트 허브 네임스페이스 선택** 목록에서 *AzureMonitoringData*를 선택합니다.
-      1. **이벤트 허브 정책 이름 선택** 목록에서 기본 이벤트 허브 정책 이름을 선택합니다.
-      1. **확인**을 선택합니다.
-      1. 창의 왼쪽 위 모서리에서 **저장**을 선택합니다.
-   이름이 *insights-operational-logs*인 이벤트 허브가 만들어집니다.
+    :::image type="content" source="media/ingest-data-no-code/add-diagnosting-setting.png" alt-text="Azure Data Explorer 포털, 진단 설정 창의 진단 설정 추가":::
+
+1. 새 **진단 설정** 창이 열립니다. 
+
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Azure Data Explorer 포털, 진단 설정 창의 진단 설정 추가":::
+
+    다음 단계를 수행합니다.
+    1. **진단 설정 이름** 필드에 이름을 입력합니다.  
+    1. 확인란 왼쪽에서 구독에서 수집하려는 플랫폼 로그를 선택합니다.
+    1. **이벤트 허브로의 스트림** 확인란을 선택합니다.
+    1. 구독을 선택합니다.
+    1. **이벤트 허브 네임스페이스** 목록에서 *AzureMonitoringData* 를 선택합니다.
+    1. 필요에 따라 **이벤트 허브 이름** 을 선택합니다.
+    1. **이벤트 허브 정책 이름** 목록에서 기본 이벤트 허브 정책 이름을 선택합니다.
+    1. 창의 왼쪽 위 모서리에서 **저장** 을 선택합니다. 위의 이벤트 허브 이름을 선택하지 않으면 *insights-operational-logs* 라는 이름이 지정된 이벤트 허브가 생성됩니다.
+      
+    
+
 ---
 
 ### <a name="see-data-flowing-to-your-event-hubs"></a>이벤트 허브로 흐르는 데이터 보기
@@ -493,10 +498,10 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
 
 ### <a name="create-the-data-connection-for-diagnostic-metrics-and-logs-and-activity-logs"></a>진단 메트릭 및 로그와 활동 로그에 대한 데이터 연결 만들기
 
-1. *kustodocs*라는 Azure Data Explorer 클러스터의 왼쪽 메뉴에서 **Databases**를 선택합니다.
-1. **데이터베이스** 창에서 *TestDatabase*를 선택합니다.
-1. 왼쪽 메뉴에서 **데이터 수집**을 선택합니다.
-1. **데이터 수집** 창에서 **+ 데이터 연결 추가**를 클릭합니다.
+1. *kustodocs* 라는 Azure Data Explorer 클러스터의 왼쪽 메뉴에서 **Databases** 를 선택합니다.
+1. **데이터베이스** 창에서 *TestDatabase* 를 선택합니다.
+1. 왼쪽 메뉴에서 **데이터 수집** 을 선택합니다.
+1. **데이터 수집** 창에서 **+ 데이터 연결 추가** 를 클릭합니다.
 1. **데이터 연결** 창에서 다음 정보를 입력합니다.
 
     ![이벤트 허브 데이터 연결](media/ingest-data-no-code/event-hub-data-connection.png)
@@ -517,7 +522,7 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
 
     대상 테이블:
 
-    라우팅 옵션으로는 *고정* 라우팅과 *동적* 라우팅이라는 두 가지 옵션이 있습니다. 이 자습서에서는 고정 라우팅(기본값)을 사용합니다. 이 경우 테이블 이름, 데이터 형식 및 매핑을 직접 지정합니다. **내 데이터에 라우팅 정보 포함**을 선택 취소합니다.
+    라우팅 옵션으로는 *고정* 라우팅과 *동적* 라우팅이라는 두 가지 옵션이 있습니다. 이 자습서에서는 고정 라우팅(기본값)을 사용합니다. 이 경우 테이블 이름, 데이터 형식 및 매핑을 직접 지정합니다. **내 데이터에 라우팅 정보 포함** 을 선택 취소합니다.
 
      **설정** | **제안 값** | **필드 설명**
     |---|---|---|
@@ -526,7 +531,7 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
     | **열 매핑** | *DiagnosticRawRecordsMapping* | *TestDatabase* 데이터베이스에 만든 매핑이며, 들어오는 JSON 데이터를 *DiagnosticRawRecords* 테이블의 열 이름과 데이터 형식에 매핑합니다.|
     | | |
 
-1. **만들기**를 선택합니다.  
+1. **만들기** 를 선택합니다.  
 
 # <a name="activity-logs"></a>[활동 로그](#tab/activity-logs)
 
@@ -544,7 +549,7 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
 
     대상 테이블:
 
-    라우팅 옵션으로는 *고정* 라우팅과 *동적* 라우팅이라는 두 가지 옵션이 있습니다. 이 자습서에서는 고정 라우팅(기본값)을 사용합니다. 이 경우 테이블 이름, 데이터 형식 및 매핑을 직접 지정합니다. **내 데이터에 라우팅 정보 포함**을 선택 취소합니다.
+    라우팅 옵션으로는 *고정* 라우팅과 *동적* 라우팅이라는 두 가지 옵션이 있습니다. 이 자습서에서는 고정 라우팅(기본값)을 사용합니다. 이 경우 테이블 이름, 데이터 형식 및 매핑을 직접 지정합니다. **내 데이터에 라우팅 정보 포함** 을 선택 취소합니다.
 
      **설정** | **제안 값** | **필드 설명**
     |---|---|---|
@@ -553,7 +558,7 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
     | **열 매핑** | *ActivityLogsRawRecordsMapping* | *TestDatabase* 데이터베이스에 만든 매핑이며, 들어오는 JSON 데이터를 *ActivityLogsRawRecords* 테이블의 열 이름 및 데이터 형식에 매핑합니다.|
     | | |
 
-1. **만들기**를 선택합니다.  
+1. **만들기** 를 선택합니다.  
 ---
 
 ## <a name="query-the-new-tables"></a>새 테이블 쿼리

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: ebbd9aa5544d97ef1e980bcb3a53f74dbde66547
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 79cac49a553a2b906947b4c85948b67718641587
+ms.sourcegitcommit: ef3d919dee27c030842abf7c45c9e82e6e8350ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967539"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92630078"
 ---
 # <a name="retention-policy-command"></a>보존 정책 명령
 
@@ -22,13 +22,13 @@ ms.locfileid: "85967539"
 ## <a name="show-retention-policy"></a>보존 정책 표시
 
 ```kusto
-.show <entity_type> <database_or_table> policy retention
+.show <entity_type> <database_or_table_or_materialized_view> policy retention
 
 .show <entity_type> *  policy retention
 ```
 
-* `entity_type`: 테이블 또는 데이터베이스
-* `database_or_table`: `database_name` 또는 `database_name.table_name` 또는 `table_name` (데이터베이스 컨텍스트)
+* `entity_type` : 테이블, 구체화 된 뷰 또는 데이터베이스
+* `database_or_table_or_materialized_view`: `database_name` 또는 `database_name.table_name` 또는 `table_name` (데이터베이스 컨텍스트) 또는 `materialized_view_name`
 
 **예제**
 
@@ -45,11 +45,11 @@ ms.locfileid: "85967539"
 테이블의 데이터 보존 정책을 삭제 하면 테이블이 데이터베이스 수준에서 보존 정책을 파생 시킵니다.
 
 ```kusto
-.delete <entity_type> <database_or_table> policy retention
+.delete <entity_type> <database_or_table_or_materialized_view> policy retention
 ```
 
-* `entity_type`: 테이블 또는 데이터베이스
-* `database_or_table`: `database_name` 또는 `database_name.table_name` 또는 `table_name` (데이터베이스 컨텍스트)
+* `entity_type` : 테이블, 구체화 된 뷰 또는 데이터베이스
+* `database_or_table_or_materialized_view`: `database_name` 또는 `database_name.table_name` 또는 `table_name` (데이터베이스 컨텍스트) 또는 `materialized_view_name`
 
 **예제**
 
@@ -63,18 +63,18 @@ ms.locfileid: "85967539"
 ## <a name="alter-retention-policy"></a>보존 정책 변경
 
 ```kusto
-.alter <entity_type> <database_or_table> policy retention <retention_policy>
+.alter <entity_type> <database_or_table_or_materialized_view> policy retention <retention_policy>
 
 .alter tables (<table_name> [, ...]) policy retention <retention_policy>
 
-.alter-merge <entity_type> <database_or_table> policy retention <retention_policy>
+.alter-merge <entity_type> <database_or_table_or_materialized_view> policy retention <retention_policy>
 
-.alter-merge <entity_type> <database_or_table_name> policy retention [softdelete = <timespan>] [recoverability = disabled|enabled]
+.alter-merge <entity_type> <database_or_table_or_materialized_view> policy retention [softdelete = <timespan>] [recoverability = disabled|enabled]
 ```
 
-* `entity_type`: 테이블 또는 데이터베이스
-* `database_or_table`: `database_name` 또는 `database_name.table_name` 또는 `table_name` (데이터베이스 컨텍스트)
-* `table_name`: 데이터베이스 컨텍스트에 있는 테이블의 이름입니다.  와일드 카드 ( `*` 여기서는 사용할 수 있음).
+* `entity_type` : 테이블 또는 데이터베이스 또는 구체화 된 뷰
+* `database_or_table_or_materialized_view`: `database_name` 또는 `database_name.table_name` 또는 `table_name` (데이터베이스 컨텍스트) 또는 `materialized_view_name`
+* `table_name` : 데이터베이스 컨텍스트에 있는 테이블의 이름입니다.  와일드 카드 ( `*` 여기서는 사용할 수 있음).
 * `retention_policy` :
 
 ```kusto
@@ -95,12 +95,16 @@ ms.locfileid: "85967539"
 
 ```kusto
 .alter-merge table Table1 policy retention softdelete = 10d recoverability = disabled
+
+.alter-merge materialized-view View1 policy retention softdelete = 10d recoverability = disabled
 ```
 
 일시 삭제 기간이 10 일인 보존 정책을 설정 하 고 데이터 복구 기능을 사용 하도록 설정 합니다.
 
 ```kusto
 .alter table Table1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
+
+.alter materialized-view View1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
 ```
 
 위와 동일한 보존 정책을 설정 하지만 이번에는 여러 테이블 (Table1, Table2 및 Table3)에 대해 다음을 수행 합니다.
