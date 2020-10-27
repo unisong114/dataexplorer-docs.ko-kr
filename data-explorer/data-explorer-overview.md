@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 764dea2e3fe82bf795db81a4e8d3f89e256d3517
-ms.sourcegitcommit: 58588ba8d1fc5a6adebdce2b556db5bc542e38d8
+ms.openlocfilehash: 10192cca4e03aa92ec018f7875e457d4cf109f72
+ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098458"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342929"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure 데이터 탐색기란?
 
@@ -64,7 +64,7 @@ Azure 데이터 탐색기 및 해당 쿼리 언어에 대한 사용자 의견을
 
 * 질문하기
   * [스택 오버플로](https://stackoverflow.com/questions/tagged/azure-data-explorer)
-  * [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-data-explorer.html)
+  * [Microsoft Q&A](/answers/topics/azure-data-explorer.html)
   * [Microsoft 기술 커뮤니티](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
 * [사용자 의견을 통해 제품 제안하기](https://aka.ms/AzureDataExplorer.UserVoice)
 
