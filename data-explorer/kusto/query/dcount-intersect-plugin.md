@@ -8,19 +8,20 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
-ms.openlocfilehash: 4fad66141a31ac7ba72ab79dc0092b963417ae72
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 7c66647dcdebfc86990c9a63f7404681b000b915
+ms.sourcegitcommit: 8a7165b28ac6b40722186300c26002fb132e6e4a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92247569"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92749507"
 ---
 # <a name="dcount_intersect-plugin"></a>dcount_intersect 플러그 인
 
 값을 기준으로 N 집합 `hll` 의 교집합을 계산 하 고 ([2.16] 범위의 n) n 값을 반환 `dcount` 합니다.
 
 지정 된 집합 S<sub>1</sub>, s<sub>2</sub>,.. S<sub>n</sub> 반환 값은의 고유 개수를 나타냅니다.  
-S<sub>1,</sub>s<sub>1</sub> ∩ s<sub>2</sub>,  
+S<sub>1</sub>,  
+S<sub>1</sub> ∩ s<sub>2</sub>,  
 S<sub>1</sub> ∩ s<sub>2</sub> ∩ s<sub>3</sub>,  
 ... ,  
 S<sub>1</sub> ∩ s<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
@@ -31,12 +32,12 @@ T | evaluate dcount_intersect(hll_1, hll_2, hll_3)
 
 ## <a name="syntax"></a>구문
 
-*T* `| evaluate` `dcount_intersect(` *hll_1*, *hll_2*, [ `,` *hll_3* ... `,` ]`)`
+*T* `| evaluate` `dcount_intersect(` *hll_1* , *hll_2* , [ `,` *hll_3* ... `,` ]`)`
 
 ## <a name="arguments"></a>인수
 
-* *T*: 입력 테이블 형식 식입니다.
-* *hll_i*: 함수를 사용 하 여<sub>계산 된</sub> set S의 값입니다 [`hll()`](./hll-aggfunction.md) .
+* *T* : 입력 테이블 형식 식입니다.
+* *hll_i* : 함수를 사용 하 여 <sub>계산 된</sub> set S의 값입니다 [`hll()`](./hll-aggfunction.md) .
 
 ## <a name="returns"></a>반환
 

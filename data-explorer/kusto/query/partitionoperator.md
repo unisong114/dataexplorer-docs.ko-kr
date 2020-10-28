@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 8587995a6836a1f8a180eada19d450277709a6e7
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 31e4f1fc32f758164c3f232e758080213e6f428d
+ms.sourcegitcommit: 8a7165b28ac6b40722186300c26002fb132e6e4a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92248598"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92749529"
 ---
 # <a name="partition-operator"></a>partition 연산자
 
@@ -27,27 +27,27 @@ T | partition by Col1 { U | where Col2=toscalar(Col1) }
 
 ## <a name="syntax"></a>구문
 
-*T* `|` `partition` [*파티션 매개 변수*] `by` *열* `(` *ContextualSubquery*`)`
+*T* `|` `partition` [ *파티션 매개 변수* ] `by` *열* `(` *ContextualSubquery*`)`
 
-*T* `|` `partition` [*파티션 매개 변수*] `by` *열* `{` *하위 쿼리*`}`
+*T* `|` `partition` [ *파티션 매개 변수* ] `by` *열* `{` *하위 쿼리*`}`
 
 ## <a name="arguments"></a>인수
 
-* *T*: 연산자에서 처리할 데이터를 포함 하는 테이블 형식 원본입니다.
+* *T* : 연산자에서 처리할 데이터를 포함 하는 테이블 형식 원본입니다.
 
-* *열*: 값이 입력 테이블을 분할 하는 방법을 결정 하는 *T* 의 열 이름입니다. 아래 **참고** 를 참조 하세요.
+* *열* : 값이 입력 테이블을 분할 하는 방법을 결정 하는 *T* 의 열 이름입니다. 아래 **참고** 를 참조 하세요.
 
-* *ContextualSubquery*: 테이블 형식 식이 며,이는 `partition` 단일 *키* 값에 대해 범위가 지정 된 연산자의 원본입니다.
+* *ContextualSubquery* : 테이블 형식 식이 며,이는 `partition` 단일 *키* 값에 대해 범위가 지정 된 연산자의 원본입니다.
 
-* *하위 쿼리*: 원본이 없는 테이블 형식 식입니다. 호출을 통해 *키* 값을 가져올 수 있습니다 `toscalar()` .
+* *하위 쿼리* : 원본이 없는 테이블 형식 식입니다. 호출을 통해 *키* 값을 가져올 수 있습니다 `toscalar()` .
 
-* *파티션 매개 변수*: *Name* `=` 연산자의 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다.
+* *파티션 매개 변수* : *Name* `=` 연산자의 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다.
 
-  |Name               |값         |설명|
+  |Name               |값         |Description|
   |-------------------|---------------|-----------|
   |`hint.materialized`|`true`,`false` |로 설정 하면 `true` 연산자의 소스가 구체화 됩니다 `partition` (기본값:). `false`|
-  |`hint.concurrency`|*Number*|시스템 힌트 병렬로 실행 해야 하는 연산자의 동시 하위 쿼리 수 `partition` 입니다. *기본값*: 클러스터의 단일 노드 (2-16)에 있는 CPU 코어의 양입니다.|
-  |`hint.spread`|*Number*|동시 하위 쿼리 실행에서 사용 해야 하는 노드 수를 시스템에 설명 합니다 `partition` . *기본값*: 1.|
+  |`hint.concurrency`|*Number*|시스템 힌트 병렬로 실행 해야 하는 연산자의 동시 하위 쿼리 수 `partition` 입니다. *기본값* : 클러스터의 단일 노드 (2-16)에 있는 CPU 코어의 양입니다.|
+  |`hint.spread`|*Number*|동시 하위 쿼리 실행에서 사용 해야 하는 노드 수를 시스템에 설명 합니다 `partition` . *기본값* : 1.|
 
 ## <a name="returns"></a>반환
 
@@ -57,7 +57,7 @@ T | partition by Col1 { U | where Col2=toscalar(Col1) }
 
 * 파티션 연산자는 현재 파티션 수에 의해 제한 됩니다.
   최대 64 개의 고유 파티션을 만들 수 있습니다.
-  파티션 열 (*열*)에 64 개 이상의 고유 값이 있는 경우 연산자는 오류를 생성 합니다.
+  파티션 열 ( *열* )에 64 개 이상의 고유 값이 있는 경우 연산자는 오류를 생성 합니다.
 
 * 하위 쿼리는 입력 파티션을 암시적으로 참조 합니다. 하위 쿼리의 파티션에는 "name"이 없습니다. 하위 쿼리 내에서 입력 파티션을 여러 번 참조 하려면 아래 **예제** 와 같이 [as 연산자](asoperator.md)를 사용 합니다.
 
@@ -111,7 +111,7 @@ StormEvents
 |---|---|
 |숙련된 관찰자|12770|
 |사법 기관|8570|
-|공용|6157|
+|Public|6157|
 |긴급 상황 관리자|4900|
 |COOP 관찰자|3039|
 
@@ -175,6 +175,6 @@ StormEvents
 |---|---|
 |숙련된 관찰자|12770|
 |사법 기관|8570|
-|공용|6157|
+|Public|6157|
 |긴급 상황 관리자|4900|
 |COOP 관찰자|3039|

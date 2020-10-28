@@ -7,18 +7,18 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref
+ms.custom: has-adal-ref, devx-track-js
 ms.date: 09/13/2019
-ms.openlocfilehash: e1c2a6f5cbec90d59ed54f15147b912ffbc8fdd3
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 65e15fca7c7a69e1c9ba2d79f7dca531304ea91b
+ms.sourcegitcommit: 8a7165b28ac6b40722186300c26002fb132e6e4a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343422"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92749479"
 ---
 # <a name="how-to-authenticate-with-aad-for-azure-data-explorer-access"></a>Azure 데이터 탐색기 액세스를 위해 AAD를 사용 하 여 인증 How-To
 
-Azure 데이터 탐색기에 액세스 하는 데 권장 되는 방법은 **Azure Active Directory** 서비스 (때로는 **azure AD**또는 단순히 **AAD**)를 인증 하는 것입니다. 이렇게 하면 Azure 데이터 탐색기에서 2 단계 프로세스를 사용 하 여 액세스 하는 보안 주체의 디렉터리 자격 증명을 볼 필요가 없습니다.
+Azure 데이터 탐색기에 액세스 하는 데 권장 되는 방법은 **Azure Active Directory** 서비스 (때로는 **azure AD** 또는 단순히 **AAD** )를 인증 하는 것입니다. 이렇게 하면 Azure 데이터 탐색기에서 2 단계 프로세스를 사용 하 여 액세스 하는 보안 주체의 디렉터리 자격 증명을 볼 필요가 없습니다.
 
 1. 첫 번째 단계에서 클라이언트는 AAD 서비스와 통신 하 고, 인증 하 고, 클라이언트에서 액세스 하려는 특정 Azure 데이터 탐색기 끝점에 대해 특별히 발급 된 액세스 토큰을 요청 합니다.
 2. 두 번째 단계에서는 클라이언트가 Azure 데이터 탐색기에 대 한 요청을 발급 하 여 Azure 데이터 탐색기에 대 한 id 증명으로 첫 번째 단계에서 획득 한 액세스 토큰을 제공 합니다.
@@ -31,15 +31,15 @@ Azure 데이터 탐색기에 액세스 하는 데 권장 되는 방법은 **Azur
 
 주요 인증 시나리오는 다음과 같습니다.
 
-* **로그인 한 사용자를 인증 하는 클라이언트 응용 프로그램**입니다.
+* **로그인 한 사용자를 인증 하는 클라이언트 응용 프로그램** 입니다.
   이 시나리오에서 대화형 (클라이언트) 응용 프로그램은 사용자에 게 자격 증명 (예: 사용자 이름 및 암호)에 대 한 AAD 프롬프트를 트리거합니다.
   [사용자 인증](#user-authentication)을 참조 하세요.
 
-* **"헤드리스" 응용 프로그램**입니다.
+* **"헤드리스" 응용 프로그램** 입니다.
   이 시나리오에서 응용 프로그램은 자격 증명을 제공 하는 사용자가 없는 상태로 실행 되며, 대신 응용 프로그램이로 구성 된 일부 자격 증명을 사용 하 여 AAD에 "자체"로 인증 됩니다.
   [응용 프로그램 인증](#application-authentication)을 참조 하세요.
 
-* **인증을 대신**합니다.
+* **인증을 대신** 합니다.
   "웹 서비스" 또는 "웹 앱" 시나리오 라고도 하는이 시나리오에서 응용 프로그램은 다른 응용 프로그램에서 AAD 액세스 토큰을 가져온 다음 Azure 데이터 탐색기와 함께 사용할 수 있는 다른 AAD 액세스 토큰으로 변환 합니다.
   즉, 응용 프로그램은 자격 증명과 Azure 데이터 탐색기 서비스를 제공 하는 사용자 또는 응용 프로그램 간의 mediator 역할을 합니다.
   [인증에 대](#on-behalf-of-authentication)한 자세한 내용은을 참조 하세요.
@@ -56,7 +56,7 @@ https://help.kusto.windows.net
 
 ## <a name="specifying-the-aad-tenant-id"></a>AAD 테 넌 트 ID 지정
 
-AAD는 다중 테 넌 트 서비스 이며, 모든 조직은 AAD에서 **디렉터리** 라는 개체를 만들 수 있습니다. 디렉터리 개체는 사용자 계정, 응용 프로그램 및 그룹과 같은 보안 관련 개체를 포함 합니다. AAD는 종종 디렉터리를 **테 넌 트**로 참조 합니다. AAD 테 넌 트가 GUID (**테 넌 트 ID**)로 식별 됩니다. 대부분의 경우에는 AAD 테 넌 트가 조직의 도메인 이름으로 식별 될 수도 있습니다.
+AAD는 다중 테 넌 트 서비스 이며, 모든 조직은 AAD에서 **디렉터리** 라는 개체를 만들 수 있습니다. 디렉터리 개체는 사용자 계정, 응용 프로그램 및 그룹과 같은 보안 관련 개체를 포함 합니다. AAD는 종종 디렉터리를 **테 넌 트** 로 참조 합니다. AAD 테 넌 트가 GUID ( **테 넌 트 ID** )로 식별 됩니다. 대부분의 경우에는 AAD 테 넌 트가 조직의 도메인 이름으로 식별 될 수도 있습니다.
 
 예를 들어 "Contoso" 라는 조직에는 테 넌 트 ID `4da81d62-e0a8-4899-adad-4349ca6bfe24` 및 도메인 이름이 있을 수 있습니다 `contoso.com` .
 
@@ -70,7 +70,7 @@ AAD에는 인증을 위한 여러 끝점이 있습니다.
 * 인증 되는 보안 주체를 호스트 하는 테 넌 트를 알 수 없는 경우 "common" 끝점은 위의 값을 값으로 바꿔 사용할 수 있습니다 `{tenantId}` `common` .
 
 > [!NOTE]
-> 인증에 사용 되는 AAD 끝점은 **aad AUTHORITY URL** 또는 단순히 **aad authority**라고도 합니다.
+> 인증에 사용 되는 AAD 끝점은 **aad AUTHORITY URL** 또는 단순히 **aad authority** 라고도 합니다.
 
 ## <a name="aad-token-cache"></a>AAD 토큰 캐시
 
@@ -141,17 +141,17 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 1. [Azure Portal](https://portal.azure.com/) 를 열고 올바른 테 넌 트에 로그인 했는지 확인 합니다 (포털에 로그인 하는 데 사용 되는 id의 상단/오른쪽 모서리 참조).
 
-2. 리소스 창에서 **Azure Active Directory**을 클릭 한 다음 **앱 등록**합니다.
+2. 리소스 창에서 **Azure Active Directory** 을 클릭 한 다음 **앱 등록** 합니다.
 
 3. 흐름을 대신해 서를 사용 하는 응용 프로그램을 찾아 엽니다.
 
-4. **API 권한**을 클릭 한 다음 **사용 권한 추가**를 클릭 합니다.
+4. **API 권한** 을 클릭 한 다음 **사용 권한 추가** 를 클릭 합니다.
 
 5. **Azure 데이터 탐색기** 라는 응용 프로그램을 검색 하 고 선택 합니다.
 
-6. **User_impersonation/액세스 Kusto를**선택 합니다.
+6. **User_impersonation/액세스 Kusto를** 선택 합니다.
 
-7. **권한 추가**를 클릭 합니다.
+7. **권한 추가** 를 클릭 합니다.
 
 **2 단계: 서버 코드에서 토큰 교환 수행**
 
