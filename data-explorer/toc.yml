@@ -206,7 +206,7 @@
               href: dashboard-customize-visuals.md
         - name: Power BI
           items:
-            - name: 모범 사례
+            - name: Power BI 모범 사례
               href: power-bi-best-practices.md
             - name: 커넥터
               href: power-bi-connector.md
@@ -395,7 +395,7 @@
           href: ./kusto/query/tutorial.md
         - name: 샘플
           href: ./kusto/query/samples.md
-        - name: 모범 사례
+        - name: 쿼리 모범 사례
           href: ./kusto/query/best-practices.md
         - name: 데이터베이스 간/클러스터 간 쿼리
           href: ./kusto/query/cross-cluster-or-database-queries.md
@@ -1323,8 +1323,8 @@
           href: ./kusto/management/index.md
         - name: 스키마
           items:
-            - name: 스키마 디자인 모범 사례
-              href: ./kusto/management/best-practices.md
+            - name: 스키마 디자인에 대한 관리 모범 사례
+              href: ./kusto/management/management-best-practices.md
             - name: 데이터베이스 관리
               href: ./kusto/management/databases.md
               items:
@@ -1730,7 +1730,7 @@
                   href: ./kusto/api/netfx/kusto-ingest-client-errors.md
                 - name: 작업 상태
                   href: ./kusto/api/netfx/kusto-ingest-client-status.md
-                - name: 모범 사례
+                - name: Kusto.Ingest 모범 사례
                   href: ./kusto/api/netfx/kusto-ingest-best-practices.md
                 - name: 코드 샘플
                   href: ./kusto/api/netfx/kusto-ingest-client-examples.md
