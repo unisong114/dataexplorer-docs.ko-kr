@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 46ccf006c6f2cf167953c64bcaa2f3de0fbaf4b6
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 40cd53d1bff6b33b81878c85c6c22c3fb85655ee
+ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91942219"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92902576"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기
 
@@ -22,6 +22,7 @@ ms.locfileid: "91942219"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [Go](create-cluster-database-go.md)
 > * [Azure Resource Manager 템플릿](create-cluster-database-resource-manager.md)
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure Data Explorer를 사용하려면 먼저 클러스터를 만들고 이 클러스터에 데이터베이스를 하나 이상 만듭니다. 그런 다음, 데이터베이스에 대해 쿼리를 실행할 수 있도록 데이터베이스에 데이터를 수집(로드)합니다. 
@@ -102,7 +103,7 @@ Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.
 
 ### <a name="use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment"></a>Azure Portal를 사용 하 여 템플릿을 배포 하 고 템플릿 배포 확인
 
-1. 클러스터 및 데이터베이스를 만들려면 다음 단추를 사용 하 여 배포를 시작 합니다. 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기**를 선택하면 이 문서의 나머지 단계를 수행할 수 있습니다.
+1. 클러스터 및 데이터베이스를 만들려면 다음 단추를 사용 하 여 배포를 시작 합니다. 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기** 를 선택하면 이 문서의 나머지 단계를 수행할 수 있습니다.
 
     [![클라우드를 그림으로 만들고 Azure에 배포 라는 레이블이 지정 된 파랑 단추의 스크린샷](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
@@ -136,8 +137,8 @@ Azure 데이터 탐색기 클러스터와 데이터베이스를 만드는 데 �
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. **복사**를 선택하여 PowerShell 스크립트를 복사합니다.
-1. 셸 콘솔 창을 마우스 오른쪽 단추로 클릭하고 **붙여넣기**를 선택합니다.
+1. **복사** 를 선택하여 PowerShell 스크립트를 복사합니다.
+1. 셸 콘솔 창을 마우스 오른쪽 단추로 클릭하고 **붙여넣기** 를 선택합니다.
 Azure 데이터 탐색기 클러스터와 데이터베이스를 만드는 데 몇 분이 걸립니다.
 
 #### <a name="verify-the-deployment-using-powershell"></a>PowerShell을 사용 하 여 배포 확인

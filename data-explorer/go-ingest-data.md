@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/10/2020
-ms.openlocfilehash: c133c3cf1185e7ffdb959ed6ea127af7502820c4
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 5fc25c64eabfb9fa27b66b47d0443178e19b4e57
+ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342572"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92902491"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-go-sdk"></a>Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집 
 
@@ -21,6 +21,7 @@ ms.locfileid: "92342572"
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기 서비스와 상호 작용 하기 위한 [GO SDK 클라이언트 라이브러리](kusto/api/golang/kusto-golang-client-library.md) 를 제공 합니다. [GO SDK](https://github.com/Azure/azure-kusto-go) 를 사용 하 여 Azure 데이터 탐색기 클러스터에서 데이터를 수집, 제어 및 쿼리할 수 있습니다. 
 
@@ -146,10 +147,10 @@ func ingestFile(kc *kusto.Client, blobStoreAccountName, blobStoreContainer, blob
 
     예제 코드를 실행 하면 다음 작업이 수행 됩니다.
     
-    1. **Drop table**: `StormEvents` 테이블이 있는 경우 삭제 됩니다.
-    1. **테이블 만들기**: `StormEvents` 테이블이 생성 됩니다.
-    1. **매핑 만들기**: `StormEvents_CSV_Mapping` 매핑이 만들어집니다.
-    1. **파일**수집: CSV 파일 (Azure Blob Storage)은 수집을 위해 큐에 대기 됩니다.
+    1. **Drop table** : `StormEvents` 테이블이 있는 경우 삭제 됩니다.
+    1. **테이블 만들기** : `StormEvents` 테이블이 생성 됩니다.
+    1. **매핑 만들기** : `StormEvents_CSV_Mapping` 매핑이 만들어집니다.
+    1. **파일** 수집: CSV 파일 (Azure Blob Storage)은 수집을 위해 큐에 대기 됩니다.
 
 1. 인증을 위한 서비스 주체를 만들려면 [az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령과 함께 Azure CLI를 사용 합니다. 프로그램에서 사용 되는 환경 변수 형식으로 클러스터 엔드포인트와 데이터베이스 이름을 사용 하 여 서비스 주체 정보를 설정 합니다.
 

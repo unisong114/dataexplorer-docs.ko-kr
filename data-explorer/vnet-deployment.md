@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.openlocfilehash: 5a7f680dc2ab76a9f952efa52d60b59c7b1d1c93
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: ac73abcf1355531a3b8d9917a6f5d9a0d3965c01
+ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452853"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92902348"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Virtual Network에 Azure 데이터 탐색기 클러스터 배포
 
@@ -30,8 +30,8 @@ Azure 데이터 탐색기는 VNet (Virtual Network)의 서브넷에 클러스터
 
 각 서비스에 대 한 다음 IP 주소 (엔진 및 데이터 관리 서비스)를 사용 하 여 Azure 데이터 탐색기 클러스터에 액세스할 수 있습니다.
 
-* **개인 IP**: VNet 내의 클러스터에 액세스 하는 데 사용 됩니다.
-* **공용 IP**: 관리 및 모니터링을 위해 VNet 외부에서 클러스터에 액세스 하는 데 사용 되며, 클러스터에서 시작 된 아웃 바운드 연결의 원본 주소로 사용 됩니다.
+* **개인 IP** : VNet 내의 클러스터에 액세스 하는 데 사용 됩니다.
+* **공용 IP** : 관리 및 모니터링을 위해 VNet 외부에서 클러스터에 액세스 하는 데 사용 되며, 클러스터에서 시작 된 아웃 바운드 연결의 원본 주소로 사용 됩니다.
 
 서비스에 액세스 하기 위해 생성 되는 DNS 레코드는 다음과 같습니다. 
 
@@ -45,7 +45,7 @@ Azure 데이터 탐색기 클러스터를 호스트 하는 데 사용 되는 서
 
 총 IP 주소 수:
 
-| 기능 | 주소 수 |
+| Windows Server Update Services와 함께 | 주소 수 |
 | --- | --- |
 | 엔진 서비스 | 인스턴스당 1 개 |
 | 데이터 관리 서비스 | 2 |
@@ -136,7 +136,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 남아프리카 북부 | 102.133.129.138 |
 | 남아프리카 공화국 서부 | 102.133.0.97 |
 | 미국 중남부 | 20.45.3.60 |
-| 동남 아시아 | 40.119.203.252 |
+| 동남아시아 | 40.119.203.252 |
 | 인도 남부 | 40.81.72.110, 104.211.224.189 |
 | 영국 남부 | 40.81.154.254 |
 | 영국 서부 | 40.81.122.39 |
@@ -183,7 +183,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 | 남아프리카 공화국 서부 | 104.211.224.189 |
 | 미국 중남부 | 23.98.145.105, 104.215.116.88 |
 | 인도 남부 | 23.99.5.162 |
-| 동남 아시아 | 168.63.173.234 |
+| 동남아시아 | 168.63.173.234 |
 | 영국 남부 | 23.97.212.5 |
 | 영국 서부 | 23.97.212.5 |
 | 미국 국방부 중부 | 52.238.116.34 |
@@ -211,7 +211,7 @@ Azure 데이터 탐색기 클러스터를 서브넷에 배포 하면 Azure 데�
 
 ## <a name="expressroute-setup"></a>Express 경로 설정
 
-Express 경로를 사용 하 여 온-프레미스 네트워크를 Azure Virtual Network에 연결 합니다. 일반적인 설정은 BGP (Border Gateway Protocol) 세션을 통해 기본 경로 (0.0.0.0/0)를 보급 하는 것입니다. 이렇게 하면 트래픽을 삭제 하 여 아웃 바운드 흐름이 중단 될 수 있는 고객의 온-프레미스 네트워크에 전달 될 Virtual Network에서 들어오는 트래픽이 발생 합니다. 이 기본값을 극복 하기 위해 [UDR (사용자 정의 경로](/azure/virtual-network/virtual-networks-udr-overview#user-defined) ) (0.0.0.0/0)을 구성할 수 있으며 다음 홉이 *인터넷*입니다. UDR이 BGP 보다 우선적으로 적용 되므로 트래픽은 인터넷으로 전송 됩니다.
+Express 경로를 사용 하 여 온-프레미스 네트워크를 Azure Virtual Network에 연결 합니다. 일반적인 설정은 BGP (Border Gateway Protocol) 세션을 통해 기본 경로 (0.0.0.0/0)를 보급 하는 것입니다. 이렇게 하면 트래픽을 삭제 하 여 아웃 바운드 흐름이 중단 될 수 있는 고객의 온-프레미스 네트워크에 전달 될 Virtual Network에서 들어오는 트래픽이 발생 합니다. 이 기본값을 극복 하기 위해 [UDR (사용자 정의 경로](/azure/virtual-network/virtual-networks-udr-overview#user-defined) ) (0.0.0.0/0)을 구성할 수 있으며 다음 홉이 *인터넷* 입니다. UDR이 BGP 보다 우선적으로 적용 되므로 트래픽은 인터넷으로 전송 됩니다.
 
 ## <a name="securing-outbound-traffic-with-firewall"></a>방화벽을 사용 하 여 아웃 바운드 트래픽 보안
 
@@ -246,13 +246,13 @@ crl3.digicert.com:80
 
 > [!NOTE]
 > [Azure 방화벽](/azure/firewall/overview)을 사용 하는 경우 다음 속성을 사용 하 여 **네트워크 규칙** 을 추가 합니다. <br>
-> **프로토콜**: TCP <br> **원본 유형**: IP 주소 <br> **원본**: * <br> **서비스 태그**: azuremonitor <br> **대상 포트**: 443
+> **프로토콜** : TCP <br> **원본 유형** : IP 주소 <br> **원본** : * <br> **서비스 태그** : azuremonitor <br> **대상 포트** : 443
 
 또한 비대칭 경로 문제를 방지 하기 위해 다음 홉 *인터넷* 을 사용 하는 [관리 주소](#azure-data-explorer-management-ip-addresses) 및 [상태 모니터링 주소](#health-monitoring-addresses) 를 사용 하 여 서브넷에서 [경로 테이블](/azure/virtual-network/virtual-networks-udr-overview) 을 정의 해야 합니다.
 
 예를 들어 **미국 서 부** 지역의 경우 다음 udrs를 정의 해야 합니다.
 
-| 속성 | 주소 접두사 | 다음 홉 |
+| 이름 | 주소 접두사 | 다음 홉 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | 인터넷 |
 | ADX_Monitoring | 23.99.5.162/32 | 인터넷 |

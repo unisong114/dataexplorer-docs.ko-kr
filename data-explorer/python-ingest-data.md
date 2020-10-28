@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: c20897b0bf3d02e1dfac7e791b4c15189090703c
-ms.sourcegitcommit: 97404e9ed4a28cd497d2acbde07d00149836d026
+ms.openlocfilehash: 4d47dfb17935cbb6c26e1da4c690d24801066015
+ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/21/2020
-ms.locfileid: "90832589"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92902643"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer Python 라이브러리를 사용하여 데이터 수집
 
@@ -21,6 +21,7 @@ ms.locfileid: "90832589"
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 이 문서에서는 Azure 데이터 탐색기 Python 라이브러리를 사용 하 여 데이터를 수집 합니다. Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. Azure 데이터 탐색기는 2개의 Python용 클라이언트 라이브러리, [수집 라이브러리](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) 및 [데이터 라이브러리](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)를 제공합니다. 이러한 라이브러리를 사용 하면 데이터를 클러스터로 수집 또는 로드 하 고 코드에서 데이터를 쿼리할 수 있습니다.
 
@@ -28,7 +29,7 @@ ms.locfileid: "90832589"
 
 이 문서는 [Azure 노트북](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)으로도 사용할 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * 활성 구독이 있는 Azure 계정. [체험 계정을 만듭니다](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -38,7 +39,7 @@ ms.locfileid: "90832589"
 
 ## <a name="install-the-data-and-ingest-libraries"></a>데이터 및 수집 라이브러리 설치
 
-*azure-kusto-data* 및 *azure-kusto-ingest*를 설치합니다.
+*azure-kusto-data* 및 *azure-kusto-ingest* 를 설치합니다.
 
 ```python
 pip install azure-kusto-data
@@ -55,13 +56,13 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-애플리케이션을 인증하기 위해 Azure 데이터 탐색기는 AAD 테넌트 ID를 사용합니다. 테넌트 ID를 찾으려면 다음 URL을 사용하여 *YourDomain*을 사용자 도메인으로 대체합니다.
+애플리케이션을 인증하기 위해 Azure 데이터 탐색기는 Azure Active Directory 테넌트 ID를 사용합니다. 테 넌 트 ID를 찾으려면 다음 URL을 사용 하 여 *YourDomain* 에 대 한 도메인을 바꿉니다.
 
 ```http
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-예를 들어 도메인이 *contoso.com*인 경우 URL은 [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)입니다. 결과를 보려면 이 URL을 클릭합니다. 첫 번째 줄은 다음과 같습니다. 
+예를 들어 도메인이 *contoso.com* 인 경우 URL은 [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)입니다. 결과를 보려면 이 URL을 클릭합니다. 첫 번째 줄은 다음과 같습니다. 
 
 ```console
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -76,7 +77,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-이제 연결 문자열을 구성합니다. 이 예제에서는 디바이스 인증을 사용하여 클러스터에 액세스합니다. [Aad 응용 프로그램 인증서](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [aad 응용 프로그램 키](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), [aad 사용자 및 암호](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)를 사용할 수도 있습니다.
+이제 연결 문자열을 구성합니다. 이 예제에서는 디바이스 인증을 사용하여 클러스터에 액세스합니다. [Azure Active Directory 응용 프로그램 인증서](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Azure Active Directory 응용 프로그램 키](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)및 [Azure Active Directory 사용자 및 암호](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)를 사용할 수도 있습니다.
 
 이후 단계에서 대상 테이블 및 매핑을 만듭니다.
 
@@ -110,7 +111,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>클러스터에 테이블 만들기
 
-StormEvents.csv 파일에 있는 데이터 스키마와 일치하는 테이블을 만듭니다. 이 코드가 실행되면 다음과 같은 메시지가 반환됩니다. *로그인하려면 웹 브라우저를 사용하여 https://microsoft.com/devicelogin 페이지를 열고 코드 F3W4VWZDM을 입력하여 인증하세요.* 단계에 따라 로그인한 후 돌아가서 다음 코드 블록을 실행합니다. 연결을 만드는 후속 코드 블록을 위해 다시 로그인해야 합니다.
+StormEvents.csv 파일에 있는 데이터 스키마와 일치하는 테이블을 만듭니다. 이 코드가 실행 되 면 다음과 같은 메시지를 반환 합니다. *로그인 하려면 웹 브라우저를 사용 하 여 페이지를 열고 https://microsoft.com/devicelogin 인증을 위해 F3W4VWZDM 코드를 입력* 합니다. 단계에 따라 로그인한 후 돌아가서 다음 코드 블록을 실행합니다. 연결을 만드는 후속 코드 블록을 위해 다시 로그인해야 합니다.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -153,7 +154,7 @@ print('Done queuing up ingestion with Azure Data Explorer')
 
 ## <a name="query-data-that-was-ingested-into-the-table"></a>테이블에 수집된 데이터 쿼리
 
-큐에 넣은 수집이 예약되고 데이터가 Azure 데이터 탐색기에 로드될 때까지 5~10분 정도 기다립니다. 그런 후, 다음 코드를 실행하여 StormEvents 테이블의 레코드 수를 가져옵니다.
+수집을 예약 하 고 데이터를 Azure 데이터 탐색기에 로드 하려면 대기 중인 수집에 대해 5 ~ 10 분 동안 기다립니다. 그런 후, 다음 코드를 실행하여 StormEvents 테이블의 레코드 수를 가져옵니다.
 
 ```python
 QUERY = "StormEvents | count"

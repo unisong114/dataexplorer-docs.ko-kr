@@ -7,12 +7,12 @@ ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 56fd2d253cac80f097caa9206cd3b7c2a9d3c118
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 4ab82b593367a3b9fe466c2ddbd6fbee70ad628f
+ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343507"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92902615"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-sdk"></a>Azure 데이터 탐색기 .NET SDK를 사용 하 여 데이터 수집 
 
@@ -21,6 +21,7 @@ ms.locfileid: "92343507"
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능한 빠르고 확장성이 우수한 데이터 탐색 서비스입니다. .NET 용 클라이언트 라이브러리 두 개 ( [수집 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) 및 [데이터 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/))를 제공 합니다. .NET SDK에 대 한 자세한 내용은 [.NET sdk 정보](./kusto/api/netfx/about-the-sdk.md)를 참조 하세요.
 이러한 라이브러리를 사용하여 데이터를 클러스터로 수집(로드)하고 코드에서 데이터를 쿼리할 수 있습니다. 이 문서에서는 먼저 테스트 클러스터에서 테이블 및 데이터 매핑을 만듭니다. 그런 다음, 클러스터 큐에 수집을 넣고 결과의 유효성을 검사합니다.
@@ -41,13 +42,13 @@ Install-Package Microsoft.Azure.Kusto.Ingest
 
 ### <a name="authentication"></a>인증
 
-응용 프로그램을 인증 하기 위해 Azure 데이터 탐색기 SDK는 AAD 테 넌 트 ID를 사용 합니다. 테넌트 ID를 찾으려면 다음 URL을 사용하여 *YourDomain*을 사용자 도메인으로 대체합니다.
+응용 프로그램을 인증 하기 위해 Azure 데이터 탐색기 SDK는 AAD 테 넌 트 ID를 사용 합니다. 테넌트 ID를 찾으려면 다음 URL을 사용하여 *YourDomain* 을 사용자 도메인으로 대체합니다.
 
 ```http
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-예를 들어 도메인이 *contoso.com*인 경우 URL은 [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)입니다. 결과를 보려면 이 URL을 클릭합니다. 첫 번째 줄은 다음과 같습니다. 
+예를 들어 도메인이 *contoso.com* 인 경우 URL은 [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)입니다. 결과를 보려면 이 URL을 클릭합니다. 첫 번째 줄은 다음과 같습니다. 
 
 ```console
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
