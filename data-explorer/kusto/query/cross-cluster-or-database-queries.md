@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 57b7b6b4c67e0e8903903cef670a561b30b3904e
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: e341a6b9b51b082b16036e368c61fa4c903750da
+ms.sourcegitcommit: 64fdef912cc925c4bdcae98183eb8d7c7a6392d7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92252572"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027808"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>데이터베이스 간/클러스터 간 쿼리
 
@@ -84,7 +84,7 @@ restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").databas
 
 * 기본 데이터베이스에서 *my ...* 로 시작 하는 모든 엔터티 이름입니다. 
 * 현재 클러스터의 *Myother ...* 라는 모든 데이터베이스의 모든 테이블
-* 클러스터 *OtherCluster.kusto.windows.net*의 *my2* 이라는 모든 데이터베이스에 있는 모든 테이블
+* 클러스터 *OtherCluster.kusto.windows.net* 의 *my2* 이라는 모든 데이터베이스에 있는 모든 테이블
 
 ## <a name="functions-and-views"></a>함수 및 뷰
 
@@ -121,7 +121,7 @@ database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCa
 
 * 원격 함수는 테이블 형식 스키마를 반환 해야 합니다. 스칼라 함수는 동일한 클러스터 에서만 액세스할 수 있습니다.
 * 원격 함수는 스칼라 매개 변수만 사용할 수 있습니다. 하나 이상의 테이블 인수를 가져오는 함수는 동일한 클러스터 에서만 액세스할 수 있습니다.
-* 원격 함수의 스키마는 해당 매개 변수의 알려진 및 고정 이어야 합니다. 자세한 내용은 [클러스터 간 쿼리 및 스키마 변경](../concepts/crossclusterandschemachanges.md)을 참조 하세요.
+* 성능상의 이유로, 원격 엔터티의 스키마는 초기 호출 이후에 호출 하는 클러스터에 의해 캐시 됩니다. 따라서 원격 엔터티에 대 한 변경으로 인해 캐시 된 스키마 정보와 일치 하지 않아 쿼리 오류가 발생할 수 있습니다. 자세한 내용은 [클러스터 간 쿼리 및 스키마 변경](../concepts/crossclusterandschemachanges.md)을 참조 하세요.
 
 다음 클러스터 간 호출이 유효 합니다.
 

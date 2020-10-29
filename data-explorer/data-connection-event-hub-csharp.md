@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/07/2019
-ms.openlocfilehash: b4098fe52eb4632ba8145d2d5491f21c5af805d8
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: c98c2a9781f167848989d1b55c70d1d9bda8e239
+ms.sourcegitcommit: 64fdef912cc925c4bdcae98183eb8d7c7a6392d7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343031"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027791"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>C를 사용 하 여 Azure 데이터 탐색기에 대 한 이벤트 허브 데이터 연결 만들기 #
 
@@ -27,7 +27,7 @@ ms.locfileid: "92343031"
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
-* Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발**을 사용하도록 설정합니다.
+* Visual Studio 2019가 설치되지 않은 경우 **체험판** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)을 다운로드하고 사용할 수 있습니다. Visual Studio를 설치하는 동안 **Azure 개발** 을 사용하도록 설정합니다.
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [클러스터 및 데이터베이스](create-cluster-database-csharp.md) 만들기
 * [테이블 및 열 매핑](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster) 만들기
@@ -71,8 +71,9 @@ var location = "Central US";
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = DataFormat.CSV;
+var compression = "None";
 await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName, 
-    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
+    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression));
 ```
 
 |**설정** | **제안 값** | **필드 설명**|
@@ -91,6 +92,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | eventHubResourceId | *리소스 ID* | 수집에 대 한 데이터를 보유 하는 이벤트 허브의 리소스 ID입니다. |
 | consumerGroup | *$Default* | 이벤트 허브의 소비자 그룹입니다.|
 | 위치 | *미국 중부* | 데이터 연결 리소스의 위치입니다.|
+| 압축 | *Gzip* 또는 *없음* | 데이터 압축의 유형입니다. |
 
 ## <a name="generate-data"></a>데이터 생성
 
