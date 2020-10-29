@@ -72,6 +72,8 @@
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
+        - name: Go
+          href: create-cluster-database-go.md
         - name: Azure Resource Manager 템플릿
           href: create-cluster-database-resource-manager.md
     - name: 테이블 만들기
@@ -168,6 +170,8 @@
               href: node-ingest-data.md
             - name: Go SDK
               href: go-ingest-data.md
+            - name: Java SDK
+              href: java-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
         - name: Logstash
@@ -246,6 +250,8 @@
               href: vnet-deploy-troubleshoot.md
             - name: VNet 클러스터용 프라이빗 엔드포인트 만들기 - 포털
               href: vnet-create-private-endpoint.md
+            - name: 데이터 연결에서 사용되는 리소스에 프라이빗 또는 서비스 엔드포인트 만들기
+              href: vnet-endpoint-storage-event-hub.md
         - name: 암호화
           items:
             - name: 클러스터 디스크 암호화 - 포털
