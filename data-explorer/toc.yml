@@ -85,21 +85,26 @@
             - name: 한 번 클릭으로 수집 개요
               href: ingest-data-one-click.md
             - name: 컨테이너의 CSV 데이터를 새 테이블로
+              displayName: 'ingest data, ingestion, one click'
               href: one-click-ingestion-new-table.md
             - name: 로컬 파일의 JSON 데이터를 기존 테이블로
+              displayName: 'ingest data, ingestion, one click'
               href: one-click-ingestion-existing-table.md
         - name: 스트리밍 수집
           items:
             - name: Azure portal
+              displayName: 'ingest data, ingestion'
               href: ingest-data-streaming.md
             - name: C#
+              displayName: 'ingest data, ingestion'
               href: ingest-data-streaming-csharp.md
         - name: LightIngest 사용
+          displayName: 'ingest data, ingestion'
           href: lightingest.md
         - name: 이벤트 허브
           items:
             - name: 이벤트 허브 데이터 연결
-              displayName: ingest
+              displayName: 'ingest, ingestion'
               href: ingest-data-event-hub-overview.md
             - name: Azure portal
               displayName: 'Event Hub, ingest, data connection'
@@ -136,7 +141,7 @@
         - name: IoT Hub
           items:
             - name: IoT Hub 데이터 연결
-              displayName: ingest
+              displayName: 'ingest data, ingestion'
               href: ingest-data-iot-hub-overview.md
             - name: Azure portal
               displayName: 'IoT Hub, ingest, data connection'
@@ -163,20 +168,28 @@
         - name: SDK 사용
           items:
             - name: .NET SDK
+              displayName: 'ingest data, ingestion'
               href: net-sdk-ingest-data.md
             - name: Python
+              displayName: 'ingest data, ingestion'
               href: python-ingest-data.md
             - name: Node SDK
+              displayName: 'ingest data, ingestion'
               href: node-ingest-data.md
             - name: Go SDK
+              displayName: 'ingest data, ingestion'
               href: go-ingest-data.md
             - name: Java SDK
+              displayName: 'ingest data, ingestion'
               href: java-ingest-data.md
         - name: Kafka
+          displayName: 'ingest data, ingestion'
           href: ingest-data-kafka.md
         - name: Logstash
+          displayName: 'ingest data, ingestion'
           href: ingest-data-logstash.md
         - name: JSON 형식 데이터
+          displayName: 'ingest data, ingestion'
           href: ingest-json-formats.md
     - name: 쿼리 데이터
       items:
@@ -213,16 +226,21 @@
             - name: Power BI 모범 사례
               href: power-bi-best-practices.md
             - name: 커넥터
+              displayName: PowerBI
               href: power-bi-connector.md
             - name: 가져온 쿼리
+              displayName: PowerBI
               href: power-bi-imported-query.md
             - name: SQL 쿼리(SQL query)
+              displayName: PowerBI
               href: power-bi-sql-query.md
         - name: Excel
           items:
             - name: 커넥터
+              displayName: Excel
               href: excel-connector.md
             - name: 빈 쿼리
+              displayName: Excel
               href: excel-blank-query.md
         - name: Grafana
           href: grafana.md
@@ -251,6 +269,7 @@
             - name: VNet 클러스터용 프라이빗 엔드포인트 만들기 - 포털
               href: vnet-create-private-endpoint.md
             - name: 데이터 연결에서 사용되는 리소스에 프라이빗 또는 서비스 엔드포인트 만들기
+              displayName: 'VNet, private endpoint, Azure Storage, Event Hub'
               href: vnet-endpoint-storage-event-hub.md
         - name: 암호화
           items:
@@ -263,14 +282,19 @@
         - name: 고객 관리 키 구성
           items:
             - name: 포털
+              displayName: Configure customer-managed-keys
               href: customer-managed-keys-portal.md
             - name: C#
+              displayName: Configure customer-managed-keys
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager 템플릿
+              displayName: Configure customer-managed-keys
               href: customer-managed-keys-resource-manager.md
             - name: Azure CLI
+              displayName: Configure customer-managed-keys
               href: customer-managed-keys-cli.md
             - name: PowerShell
+              displayName: Configure customer-managed-keys
               href: customer-managed-keys-powershell.md
         - name: Azure AD 앱 만들기
           href: provision-azure-ad-app.md
@@ -291,10 +315,13 @@
             - name: 클러스터 보안 주체 추가
               items:
                 - name: C#
+                  displayName: cluster principal
                   href: cluster-principal-csharp.md
                 - name: Python
+                  displayName: cluster principal
                   href: cluster-principal-python.md
                 - name: Azure Resource Manager 템플릿
+                  displayName: cluster principal
                   href: cluster-principal-resource-manager.md
             - name: 클러스터 언어 확장 관리
               displayName: 'Python, R'
@@ -306,10 +333,13 @@
             - name: 데이터베이스 보안 주체 추가
               items:
                 - name: C#
+                  displayName: database principal
                   href: database-principal-csharp.md
                 - name: Python
+                  displayName: database principal
                   href: database-principal-python.md
                 - name: Azure Resource Manager 템플릿
+                  displayName: database principal
                   href: database-principal-resource-manager.md
             - name: 정책
               items:
@@ -386,10 +416,13 @@
     - name: 문제 해결
       items:
         - name: 클러스터 만들기
+          displayName: troubleshoot
           href: troubleshoot-create-cluster.md
         - name: 클러스터에 연결
+          displayName: troubleshoot
           href: troubleshoot-connect-cluster.md
         - name: 데이터베이스 및 테이블 작업
+          displayName: troubleshoot
           href: troubleshoot-database-table.md
 - name: 참조
   items:
@@ -545,7 +578,7 @@
               href: ./kusto/query/getschemaoperator.md
             - name: invoke 연산자
               href: ./kusto/query/invokeoperator.md
-            - name: join 연산자
+            - name: 조인 연산자
               items:
                 - name: join 연산자
                   href: ./kusto/query/joinoperator.md
@@ -837,6 +870,10 @@
               href: ./kusto/query/gettypefunction.md
             - name: getyear()
               href: ./kusto/query/getyearfunction.md
+            - name: gzip_compress_to_base64_string()
+              href: ./kusto/query/gzip-base64-compress.md
+            - name: gzip_decompress_from_base64_string()
+              href: ./kusto/query/gzip-base64-decompress.md
             - name: hash()
               href: ./kusto/query/hashfunction.md
             - name: hash_combine()
@@ -1329,7 +1366,8 @@
           href: ./kusto/management/index.md
         - name: 스키마
           items:
-            - name: 스키마 디자인에 대한 관리 모범 사례
+            - name: 스키마 디자인 모범 사례
+              displayName: management
               href: ./kusto/management/management-best-practices.md
             - name: 데이터베이스 관리
               href: ./kusto/management/databases.md
@@ -1563,7 +1601,7 @@
               href: ./kusto/management/data-export/export-data-to-an-external-table.md
             - name: 연속 데이터 내보내기
               items:
-                - name: 개요
+                - name: 연속 데이터 내보내기 개요
                   href: ./kusto/management/data-export/continuous-data-export.md
                 - name: 연속 내보내기 만들기 또는 변경
                   href: ./kusto/management/data-export/create-alter-continuous.md
@@ -1671,19 +1709,20 @@
       items:
         - name: API 개요
           href: ./kusto/api/index.md
+        - name: 클라이언트 라이브러리
+          href: ./kusto/api/client-libraries.md
+        - name: 연결 문자열
           items:
-            - name: 클라이언트 라이브러리
-              href: ./kusto/api/client-libraries.md
-            - name: 연결 문자열
+            - name: 연결 문자열 개요
               href: ./kusto/api/connection-strings/index.md
-              items:
-                - name: Kusto 연결 문자열
-                  href: ./kusto/api/connection-strings/kusto.md
-                - name: 스토리지 연결 문자열
-                  href: ./kusto/api/connection-strings/storage.md
+            - name: Kusto 연결 문자열
+              href: ./kusto/api/connection-strings/kusto.md
+            - name: 스토리지 연결 문자열
+              href: ./kusto/api/connection-strings/storage.md
         - name: REST API
-          href: ./kusto/api/rest/index.md
           items:
+            - name: REST API 개요
+              href: ./kusto/api/rest/index.md
             - name: 인증
               href: ./kusto/api/rest/authentication.md
             - name: 쿼리/관리 HTTP 요청
@@ -1696,9 +1735,12 @@
               href: ./kusto/api/rest/deeplink.md
             - name: 스트리밍 수집
               href: ./kusto/api/rest/streaming-ingest.md
-        - name: 'MS-TDS(SQL, ADO.NET, JDBC, ODBC)'
-          href: ./kusto/api/tds/index.md
+        - name: MS-TDS
+          displayName: 'SQL, ADO.NET, JDBC, ODBC'
           items:
+            - name: MS-TDS 개요
+              displayName: 'SQL, ADO.NET, JDBC, ODBC'
+              href: ./kusto/api/tds/index.md
             - name: T-SQL
               href: ./kusto/api/tds/t-sql.md
             - name: TDS를 통한 KQL
@@ -1721,13 +1763,15 @@
                 - name: 추적 제어
                   href: ./kusto/api/netfx/controlling-tracing.md
             - name: Kusto.Data
-              href: ./kusto/api/netfx/about-kusto-data.md
               items:
+                - name: Kusto.Data 개요
+                  href: ./kusto/api/netfx/about-kusto-data.md
                 - name: '요청 속성, ClientRequestProperties'
                   href: ./kusto/api/netfx/request-properties.md
             - name: Kusto.Ingest
-              href: ./kusto/api/netfx/about-kusto-ingest.md
               items:
+                - name: Kusto.Ingest 개요
+                  href: ./kusto/api/netfx/about-kusto-ingest.md
                 - name: 사용 권한
                   href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
                 - name: 클라이언트 참조
