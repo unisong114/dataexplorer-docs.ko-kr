@@ -226,13 +226,13 @@
             - name: Power BI 모범 사례
               href: power-bi-best-practices.md
             - name: 커넥터
-              displayName: PowerBI
+              displayName: Power BI
               href: power-bi-connector.md
             - name: 가져온 쿼리
-              displayName: PowerBI
+              displayName: Power BI
               href: power-bi-imported-query.md
             - name: SQL 쿼리(SQL query)
-              displayName: PowerBI
+              displayName: Power BI
               href: power-bi-sql-query.md
         - name: Excel
           items:
