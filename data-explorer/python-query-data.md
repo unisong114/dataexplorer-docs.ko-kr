@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/05/2019
-ms.openlocfilehash: 50e949d7ef15948dd46f5553fad8d10dad5faa96
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: fcb1cf067263b5e6a0aaf7b45605d4e93be1d8cc
+ms.sourcegitcommit: 46ae22f0f1eda2a21ac01de8d0c2fa2f57de0ad3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875058"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93238270"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer Python 라이브러리를 사용하여 데이터 쿼리
 
@@ -20,9 +20,7 @@ ms.locfileid: "88875058"
 
 Azure 데이터 탐색기는 [Python에 대한 데이터 클라이언트 라이브러리](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)를 제공합니다. 이 라이브러리를 사용하여 코드에서 데이터를 쿼리할 수 있습니다. 학습을 지원 하기 위해 설정한 *도움말 클러스터* 의 테이블에 연결 합니다. 해당 클러스터의 테이블을 쿼리하고 결과를 반환할 수 있습니다.
 
-이 문서는 [Azure 노트북](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)으로도 사용할 수 있습니다.
-
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
 * [Python 3.4 이상](https://www.python.org/downloads/)
 
@@ -30,7 +28,7 @@ Azure 데이터 탐색기는 [Python에 대한 데이터 클라이언트 라이�
 
 ## <a name="install-the-data-library"></a>데이터 라이브러리 설치
 
-*azure-kusto-data*를 설치합니다.
+*azure-kusto-data* 를 설치합니다.
 
 ```
 pip install azure-kusto-data
@@ -38,7 +36,7 @@ pip install azure-kusto-data
 
 ## <a name="add-import-statements-and-constants"></a>import 문 및 상수 추가
 
-라이브러리의 클래스 및 데이터 분석 라이브러리인 *pandas*를 가져옵니다.
+라이브러리의 클래스 및 데이터 분석 라이브러리인 *pandas* 를 가져옵니다.
 
 ```python
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
@@ -47,13 +45,13 @@ from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
-애플리케이션을 인증하기 위해 Azure 데이터 탐색기는 AAD 테넌트 ID를 사용합니다. 테넌트 ID를 찾으려면 다음 URL을 사용하여 *YourDomain*을 사용자 도메인으로 대체합니다.
+애플리케이션을 인증하기 위해 Azure 데이터 탐색기는 AAD 테넌트 ID를 사용합니다. 테넌트 ID를 찾으려면 다음 URL을 사용하여 *YourDomain* 을 사용자 도메인으로 대체합니다.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-예를 들어 도메인이 *contoso.com*인 경우 URL은 [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)입니다. 결과를 보려면 이 URL을 클릭합니다. 첫 번째 줄은 다음과 같습니다.
+예를 들어 도메인이 *contoso.com* 인 경우 URL은 [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)입니다. 결과를 보려면 이 URL을 클릭합니다. 첫 번째 줄은 다음과 같습니다.
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
