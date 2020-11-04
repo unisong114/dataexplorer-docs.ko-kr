@@ -39,6 +39,7 @@
         - name: 데이터 수집 속성
           href: ingestion-properties.md
         - name: 데이터 수집 형식
+          displayName: supported data formats
           href: ingestion-supported-formats.md
     - name: Kusto 쿼리 언어
       items:
