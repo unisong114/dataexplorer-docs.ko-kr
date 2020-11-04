@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 2d2caef1f406b63bcfd22e8bc565efce8c1f9d39
-ms.sourcegitcommit: 0e2fbc26738371489491a96924f25553a8050d51
+ms.openlocfilehash: 442185ed0afd977c103d0b571472c0f5e742908c
+ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148510"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349480"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하는 방법에 대 한 모범 사례
 
@@ -176,7 +176,7 @@ in
 
 ### <a name="use-valuenativequery-for-azure-data-explorer-features"></a>Azure 데이터 탐색기 기능에 NativeQuery 사용
 
-Power BI에서 지원 되지 않는 Azure 데이터 탐색기 기능을 사용 하려면 M에서 [NativeQuery ()](https://docs.microsoft.com/powerquery-m/value-nativequery) 메서드를 사용 합니다. 이 메서드는 생성 된 쿼리 내에 Kusto 쿼리 언어 조각을 삽입 하 고 실행 된 쿼리를 보다 세밀 하 게 제어 하는 데 사용할 수도 있습니다.
+Power BI에서 지원 되지 않는 Azure 데이터 탐색기 기능을 사용 하려면 M에서 [NativeQuery ()](/powerquery-m/value-nativequery) 메서드를 사용 합니다. 이 메서드는 생성 된 쿼리 내에 Kusto 쿼리 언어 조각을 삽입 하 고 실행 된 쿼리를 보다 세밀 하 게 제어 하는 데 사용할 수도 있습니다.
 
 다음 예제에서는 `percentiles()` Azure 데이터 탐색기에서 함수를 사용 하는 방법을 보여 줍니다.
 

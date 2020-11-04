@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: fd596d840dcbaab1843833b4164901423a2ebef8
-ms.sourcegitcommit: 88291fd9cebc26e5210463cb95be5540bf84eef8
+ms.openlocfilehash: 71f00cf921609432860a94061be7411e484fd0c9
+ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92437390"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349327"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -39,7 +39,7 @@ Azure 데이터 탐색기는 데이터 수집, 쿼리, 시각화, 오케스트�
 * IoT Hub: [IoT Hub 개요에서 수집](ingest-data-iot-hub-overview.md) 하 고 [Azure Portal](ingest-data-iot-hub.md), [c #](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) 또는 [Azure Resource Manager 템플릿](data-connection-iot-hub-resource-manager.md) 사용
 * [Logstash](ingest-data-logstash.md)
 * Azure Data Factory: [통합 개요](data-factory-integration.md), [데이터 복사](data-factory-load-data.md), [Azure Data Factory 템플릿을 사용 하 여 대량 복사](data-factory-template.md)및 [Azure Data Factory 명령 작업을 사용 하 여 Azure 데이터 탐색기 제어 명령 실행](data-factory-command-activity.md)
-* [Azure Synapse Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context)
+* [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 * [Apache Spark](spark-connector.md)
 * [Apache Kafka](ingest-data-kafka.md)
 * [Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
@@ -61,7 +61,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 
 * [Azure Monitor](query-monitor-data.md)
 * [Azure Data Lake](data-lake-query-data.md)
-* [Azure Synapse Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context)
+* [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 * [Apache Spark](spark-connector.md)
 * [Microsoft Power Apps](power-apps-connector.md)
 * Azure Data Studio: [kusto 확장 개요](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [Kusto 사용](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)및 [Kqlmagic 사용](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
@@ -72,7 +72,7 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 
 ## <a name="notebook-connectivity"></a>노트북 연결
 
-* [Azure 노트](azure-notebooks.md)
+* [Azure 노트](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
 * [Jupyter Notebook](kqlmagic.md)
 * Azure Data Studio: [kusto 확장 개요](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [Kusto 사용](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)및 [Kqlmagic 사용](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 

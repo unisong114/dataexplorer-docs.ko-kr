@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 95f8ce19c6edb419de4fb5053a79c243e3e332c4
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 383d1ab5d948a5fbcfb3ab2aad0ff8e5ed675075
+ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92252843"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349446"
 ---
 # <a name="create-materialized-view"></a>.create materialized-view
 
@@ -45,7 +45,7 @@ ms.locfileid: "92252843"
 
 ## <a name="arguments"></a>인수
 
-|인수|Type|설명
+|인수|유형|Description
 |----------------|-------|---|
 |ViewName|String|구체화 된 뷰 이름입니다. 뷰 이름은 같은 데이터베이스에 있는 테이블 또는 함수 이름과 충돌 하지 않으며 [식별자 명명 규칙](../../query/schema-entities/entity-names.md#identifier-naming-rules)을 따라야 합니다. |
 |(|String|뷰가 정의 된 원본 테이블의 이름입니다.|
@@ -72,7 +72,7 @@ ms.locfileid: "92252843"
 
     * 뷰의 원본 테이블 (팩트 테이블)의 레코드는 한 번만 구체화 됩니다. 팩트 테이블과 차원 테이블 사이에 다른 수집 대기 시간이 있으면 뷰 결과에 영향을 줄 수 있습니다.
 
-    * **예**: 뷰 정의에는 차원 테이블과의 내부 조인이 포함 됩니다. 구체화 시 차원 레코드는 완전히 수집 않지만 이미 팩트 테이블에 수집 되었습니다. 이 레코드는 뷰에서 삭제 되 고 다시 처리 되지 않습니다. 
+    * **예** : 뷰 정의에는 차원 테이블과의 내부 조인이 포함 됩니다. 구체화 시 차원 레코드는 완전히 수집 않지만 이미 팩트 테이블에 수집 되었습니다. 이 레코드는 뷰에서 삭제 되 고 다시 처리 되지 않습니다. 
 
         마찬가지로 조인이 외부 조인 인 경우 팩트 테이블의 레코드가 처리 되 고 차원 테이블 열에 대해 null 값이 포함 된 보기에 추가 됩니다. 뷰에 이미 추가 된 (null 값 포함) 레코드는 다시 처리 되지 않습니다. 차원 테이블의 열에서 해당 값은 null로 유지 됩니다.
 
@@ -80,14 +80,14 @@ ms.locfileid: "92252843"
 
 다음은 절에서 지원 됩니다 `with(propertyName=propertyValue)` . 모든 속성은 선택 사항입니다.
 
-|속성|Type|설명 |
+|속성|유형|Description |
 |----------------|-------|---|
 |가득|bool|현재 *SourceTable* ()에 있는 모든 레코드를 기반으로 뷰를 만들지 아니면 `true` "온-" ()로 만들지 여부를 지정 `false` 합니다. 기본값은 `false`입니다.| 
 |effectiveDateTime|Datetime| 와 함께 지정 하 `backfill=true` 는 경우 datetime 이후의 레코드를 수집 하는 backfills 생성 됩니다. 또한 백필을 true로 설정 해야 합니다. 에는 datetime 리터럴이 필요 합니다 (예:). `effectiveDateTime=datetime(2019-05-01)`|
 |dimensionTables|배열|뷰의 차원 테이블을 쉼표로 구분한 목록입니다. [쿼리 인수](#query-argument) 참조
 |autoUpdateSchema|bool|원본 테이블 변경 내용에 대 한 뷰를 자동으로 업데이트할지 여부를 지정 합니다. 기본값은 `false`입니다. 이 옵션은 유형 보기에 대해서만 유효 `arg_max(Timestamp, *)`  /  `arg_min(Timestamp, *)`  /  `any(*)` 합니다 (열 인수가 인 경우에만 `*` ). 이 옵션을 true로 설정 하면 원본 테이블에 대 한 변경 내용이 구체화 된 뷰에 자동으로 반영 됩니다.
-|폴더|문자열|구체화 된 뷰의 폴더입니다.|
-|docString|문자열|구체화 된 뷰를 문서화 하는 문자열|
+|폴더|string|구체화 된 뷰의 폴더입니다.|
+|docString|string|구체화 된 뷰를 문서화 하는 문자열|
 
 > [!WARNING]
 > * `autoUpdateSchema`원본 테이블의 열을 삭제 하면를 사용 하면 데이터가 영구적으로 손실 될 수 있습니다. 
@@ -202,7 +202,7 @@ ms.locfileid: "92252843"
 
 * 구체화 된 뷰 쿼리 필터는 구체화 된 뷰 차원 (집계 기준-절) 중 하나를 기준으로 필터링 할 때 최적화 됩니다. 쿼리 패턴은 구체화 된 뷰의 차원이 될 수 있는 일부 열을 기준으로 필터링 하는 경우가 많습니다. 예를 들어에 의해 필터링 되는을 통해를 노출 하는 구체화 된 뷰의 경우 `arg_max` `ResourceId` `SubscriptionId` 권장 사항은 다음과 같습니다.
 
-    **Do**:
+    **Do** :
     
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
@@ -211,7 +211,7 @@ ms.locfileid: "92252843"
     }
     ``` 
     
-    **수행 하지 않음**:
+    **수행 하지 않음** :
     
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
@@ -222,7 +222,7 @@ ms.locfileid: "92252843"
 
 * 구체화 된 뷰 정의의 일부로 [업데이트 정책](../updatepolicy.md) 으로 이동할 수 있는 변환, normalizations 및 기타 많은 계산을 포함 하지 않습니다. 대신이 모든 프로세스를 업데이트 정책에서 수행 하 고 구체화 된 뷰에서만 집계를 수행 합니다. 해당 하는 경우 차원 테이블에서 조회에이 프로세스를 사용 합니다.
 
-    **Do**:
+    **Do** :
     
     * 업데이트 정책:
     
@@ -241,19 +241,19 @@ ms.locfileid: "92252843"
     ```kusto
     .create materialized-view Usage on table Events
     {
-    &nbsp;     Target 
-    &nbsp;     | summarize count() by ResourceId 
+        Target 
+        | summarize count() by ResourceId 
     }
     ```
     
-    **수행 하지 않음**:
+    **수행 하지 않음** :
     
     ```kusto
     .create materialized-view Usage on table SourceTable
     {
-    &nbsp;     SourceTable 
-    &nbsp;     | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
-    &nbsp;     | summarize count() by ResourceId
+        SourceTable 
+        | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
+        | summarize count() by ResourceId
     }
     ```
 
@@ -285,23 +285,23 @@ ms.locfileid: "92252843"
 
 ### <a name="syntax"></a>구문
 
-`.cancel``operation` *operationId*
+`.cancel` `operation` *operationId*
 
 ### <a name="properties"></a>속성
 
-|속성|Type|설명
+|속성|유형|Description
 |----------------|-------|---|
-|operationId|Guid|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
+|operationId|GUID|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
 
 ### <a name="output"></a>출력
 
-|출력 매개 변수 |Type |설명
+|출력 매개 변수 |유형 |Description
 |---|---|---
-|OperationId|Guid|구체화 된 뷰 만들기 명령의 작업 ID입니다.
+|OperationId|GUID|구체화 된 뷰 만들기 명령의 작업 ID입니다.
 |작업(Operation)|String|작업 종류입니다.
 |StartedOn|Datetime|만들기 작업의 시작 시간입니다.
-|CancellationState|문자열|- `Cancelled successfully` (생성이 취소 된 경우), ( `Cancellation failed` 취소 시간이 초과 될 때까지 대기), ( `Unknown` 뷰 생성이 더 이상 실행 되지 않고이 작업으로 인해 취소 되지 않음)
-|ReasonPhrase|문자열|취소가 실패 한 이유입니다.
+|CancellationState|string|- `Cancelled successfully` (생성이 취소 된 경우), ( `Cancellation failed` 취소 시간이 초과 될 때까지 대기), ( `Unknown` 뷰 생성이 더 이상 실행 되지 않고이 작업으로 인해 취소 되지 않음)
+|ReasonPhrase|string|취소가 실패 한 이유입니다.
 
 ### <a name="example"></a>예제
 

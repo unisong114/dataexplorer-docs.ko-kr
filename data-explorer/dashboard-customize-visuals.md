@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/25/2020
-ms.openlocfilehash: 22463307df0358228469fe480f5578222bed52bf
-ms.sourcegitcommit: a4779e31a52d058b07b472870ecd2b8b8ae16e95
+ms.openlocfilehash: 630b57dc12b3ed0fac797dcc57f3b38c13a0e476
+ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379871"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349522"
 ---
 # <a name="customize-azure-data-explorer-dashboard-visuals"></a>Azure 데이터 탐색기 대시보드 시각적 개체 사용자 지정
 
@@ -66,6 +66,12 @@ Azure 데이터 탐색기는 여러 가지 유형의 시각적 개체를 지원 
 
 Stat 시각적 개체에는 하나의 요소만 표시 됩니다. 출력에 열과 행이 여러 개 있는 경우 stat는 첫 번째 열의 첫 번째 요소를 표시 합니다. Stat 카드는 대시보드에서 Kpi를 강조 표시 하는 데 유용 합니다.
 
+### <a name="multi-stat"></a>다중 stat
+
+:::image type="content" source="media/dashboard-customize-visuals/multistat.png" alt-text="다중 stat 시각적 개체 형식":::
+
+다중 stat 시각적 개체는 단일 쿼리 결과를 사용 하 여 그룹에 여러 개의 stat 카드를 표시 합니다. 이를 위해서는 두 개의 열, 즉 레이블에 대 한 열과 값에 대 한 열이 필요 합니다. 사용자는 시각적 서식 옵션을 사용 하 여 행 및 열 수를 선택 하 여 표시할 출력 레이아웃을 사용자 지정할 수 있습니다. 이 서식 옵션은 더 편리할 뿐만 아니라 고객이 유사한 쿼리를 사용 하 여 여러 통계를 작성 하는 클러스터 부하를 줄입니다.
+
 ### <a name="pie-chart"></a>원형 차트
 
 :::image type="content" source="media/dashboard-customize-visuals/pie-chart.png" alt-text="원형 차트 시각적 개체 형식":::
@@ -90,7 +96,7 @@ Stat 시각적 개체에는 하나의 요소만 표시 됩니다. 출력에 열�
 
 이상 차트 시각적 개체는 [시간 차트](#time-chart)와 비슷하지만 함수를 사용 하 여 변칙을 강조 표시 `series_decompose_anomalies` 합니다.
 
-### <a name="map"></a>맵
+### <a name="map"></a>지도
 
 :::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="지도 표시 유형":::
 
@@ -105,7 +111,7 @@ Stat 시각적 개체에는 하나의 요소만 표시 됩니다. 출력에 열�
 ## <a name="customize-visuals"></a>시각적 개체 사용자 지정
 
 1. 대시보드 메뉴에서 **편집** 을 선택 하 여 편집 모드로 전환 합니다.
-1. 카드의 시각적 사용자 지정 대화 상자에 액세스 하려면 드롭다운 메뉴 > **카드 편집**을 클릭 합니다. 또는 **쿼리 추가**를 사용 하 여 새 카드를 만들 때 **카드 편집**을 선택 합니다.
+1. 카드의 시각적 사용자 지정 대화 상자에 액세스 하려면 드롭다운 메뉴 > **카드 편집** 을 클릭 합니다. 또는 **쿼리 추가** 를 사용 하 여 새 카드를 만들 때 **카드 편집** 을 선택 합니다.
 
 :::image type="content" source="media/dashboard-customize-visuals/edit-card.png" alt-text="시각적 사용자 지정을 위한 카드 편집":::
 
@@ -120,8 +126,10 @@ Stat 시각적 개체에는 하나의 요소만 표시 됩니다. 출력에 열�
 |**일반**    |    **누적** 또는 **누적 되지 않은** 차트 형식 선택  | 가로 막대형, 세로 막대형 및 영역형 차트 |
 |**Data**    |   시각적 개체에 대 한 **Y 및 X 열** 을 선택 합니다. 플랫폼에서 쿼리 결과를 기반으로 열을 자동으로 선택 하 게 하려면 선택 항목을 **유추** 로 유지 합니다.    |가로 막대형, 세로 막대형, 분산형 및 변칙 차트|
 |**범례**    |   시각적 개체에 대 한 범례의 표시를 표시 하거나 숨기려면 토글   |가로 막대형, 세로 막대형, 영역형, 꺾은선형, 분산형, 비정상 및 시간 차트 |
-|**Y 축**     |   Y 축 속성을 사용자 지정할 수 있습니다. <ul><li>**레이블**: 사용자 지정 레이블의 텍스트입니다. </li><li>**Maximum value**: Y 축의 최 댓 값을 변경 합니다.  </li><li>**최 솟 값**: Y 축의 최 솟 값을 변경 합니다.  </li></ul>      |가로 막대형, 세로 막대형, 영역형, 꺾은선형, 분산형, 비정상 및 시간 차트 |
-|**X축**     |    X 축 속성을 사용자 지정할 수 있습니다. <ul><li>**레이블**: 사용자 지정 레이블의 텍스트입니다. </li>     | 가로 막대형, 세로 막대형, 영역형, 꺾은선형, 분산형, 비정상 및 시간 차트|
+|**Y 축**     |   Y 축 속성을 사용자 지정할 수 있습니다. <ul><li>**레이블** : 사용자 지정 레이블의 텍스트입니다. </li><li>**Maximum value** : Y 축의 최 댓 값을 변경 합니다.  </li><li>**최 솟 값** : Y 축의 최 솟 값을 변경 합니다.  </li></ul>      |가로 막대형, 세로 막대형, 영역형, 꺾은선형, 분산형, 비정상 및 시간 차트 |
+|**X축**     |    X 축 속성을 사용자 지정할 수 있습니다. <li>**레이블** : 사용자 지정 레이블의 텍스트입니다. </li>     | 가로 막대형, 세로 막대형, 영역형, 꺾은선형, 분산형, 비정상 및 시간 차트|
+|**링크 렌더링**     |    테이블에서 "https://"로 시작 하는 링크를 클릭할 수 있도록 설정 합니다. <li>**열에 적용** : URL을 포함 하는 열을 선택 합니다. </li>     | 테이블|
+|**레이아웃**     |    다중 stat 시각적 개체에 대 한 레이아웃 구성을 선택 합니다. <li>**열에 적용** : URL을 포함 하는 열을 선택 합니다. </li>     | 다중 stat|
 
 ## <a name="next-steps"></a>다음 단계
 

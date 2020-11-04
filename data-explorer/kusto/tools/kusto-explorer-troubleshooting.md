@@ -7,12 +7,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 365ce1e4c8e5dd2157a7975095b9e30dfd1e3722
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 6e460ddaab7d58e4dac104db511119933c531506
+ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342708"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349429"
 ---
 # <a name="troubleshooting"></a>문제 해결
 
@@ -127,7 +127,7 @@ Following errors were detected during this operation.
 #### <a name="enabling-clickonce-verbose-logging"></a>ClickOnce 자세한 정보 로깅 사용
 
 1. 응용 프로그램이 여전히 시작 되지 않는 경우:
-    1. 아래에서 LogVerbosityLevel 문자열 값 1을 만들어 [자세한 ClickOnce 로깅을 사용 하도록 설정](https://docs.microsoft.com/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) 합니다.
+    1. 아래에서 LogVerbosityLevel 문자열 값 1을 만들어 [자세한 ClickOnce 로깅을 사용 하도록 설정](/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) 합니다.
 
         ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
@@ -163,9 +163,9 @@ Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 
 
 필요한 경우 Kusto. 탐색기를 완전히 다시 설정할 수 있습니다. 다음 절차에서는 컴퓨터에서 제거 될 때까지 Kusto 탐색기를 점진적으로 다시 설정 하는 방법에 대해 설명 하며, 처음부터 설치 해야 합니다.
 
-1. Windows에서 **프로그램 변경 또는 제거** ( **프로그램 및 기능이**라고도 함)를 엽니다.
+1. Windows에서 **프로그램 변경 또는 제거** ( **프로그램 및 기능이** 라고도 함)를 엽니다.
 1. 로 시작 하는 모든 항목을 선택 `Kusto.Explorer` 합니다.
-1. **제거**를 선택합니다.
+1. **제거** 를 선택합니다.
 
    이 절차에서 응용 프로그램을 제거 하지 못한 경우 (ClickOnce 응용 프로그램의 알려진 문제) 자세한 내용은 [이 문서](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer)를 참조 하세요.
 
@@ -176,8 +176,8 @@ Kusto. 탐색기 응용 프로그램에서 저장 한 데이터는에서 찾을 
 또한 특정 버전의 Kusto. 탐색기로 되돌릴 수 있습니다.
 
 1. `appwiz.cpl`을 실행합니다.
-1. **Kusto 탐색기** 를 선택 하 고 **제거/변경**을 선택 합니다.
-1. **응용 프로그램을 이전 상태로 복원을**선택 합니다.
+1. **Kusto 탐색기** 를 선택 하 고 **제거/변경** 을 선택 합니다.
+1. **응용 프로그램을 이전 상태로 복원을** 선택 합니다.
 
 ## <a name="next-steps"></a>다음 단계
 

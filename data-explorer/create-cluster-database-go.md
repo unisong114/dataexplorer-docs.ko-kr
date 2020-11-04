@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 4eedb1a7f9204ff211d258938666cc6ce3b3391a
-ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
+ms.openlocfilehash: 51f44d1a3cd29121a99e442f4033176b00b9e09f
+ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92906304"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349395"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-using-go"></a>Go를 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기
 
@@ -41,7 +41,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 ### <a name="authentication"></a>인증
 
-프로그램은 작업을 실행 하기 전에 Azure 데이터 탐색기에 인증 해야 합니다. [클라이언트 자격 증명 인증 유형은](https://docs.microsoft.com/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) 인증에 사용 됩니다 [. ](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment)미리 정의 된 환경 변수 `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` , `AZURE_TENANT_ID` 를 검색 하는 NewAuthorizerFromEnvironment입니다.
+프로그램은 작업을 실행 하기 전에 Azure 데이터 탐색기에 인증 해야 합니다. [클라이언트 자격 증명 인증 유형은](/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) 인증에 사용 됩니다 [. ](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment)미리 정의 된 환경 변수 `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` , `AZURE_TENANT_ID` 를 검색 하는 NewAuthorizerFromEnvironment입니다.
 
 다음 예에서는 [kusto를 보여 줍니다. ](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient) 이 기술을 사용 하 여 ClustersClient를 만듭니다.
 
@@ -195,7 +195,7 @@ func deleteCluster(sub, clusterName, rgName string) {
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. 프로그램은 클라이언트 자격 증명을 사용 하 여 인증 합니다. Azure CLI [az ad sp create-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령을 사용 하 여 서비스 주체를 만듭니다. 다음 단계에서 사용할 클라이언트 ID, 클라이언트 암호 및 테 넌 트 ID 정보를 저장 합니다.
+1. 프로그램은 클라이언트 자격 증명을 사용 하 여 인증 합니다. Azure CLI [az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령을 사용 하 여 서비스 주체를 만듭니다. 다음 단계에서 사용할 클라이언트 ID, 클라이언트 암호 및 테 넌 트 ID 정보를 저장 합니다.
 
 1. 서비스 사용자 정보를 포함 하 여 필요한 환경 변수를 내보냅니다. 구독 ID, 리소스 그룹 및 클러스터를 만들려는 지역을 입력 합니다.
 
