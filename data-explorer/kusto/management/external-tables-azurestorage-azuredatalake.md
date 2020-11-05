@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 1d0625c949fe563084caeec936e3433c9ee70f5e
-ms.sourcegitcommit: ef3d919dee27c030842abf7c45c9e82e6e8350ee
+ms.openlocfilehash: df38761d7ffebdf5e36c14ea25b0d02377bfa128
+ms.sourcegitcommit: fdc1f917621e9b7286bba23903101298cccc4c95
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92630112"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93364125"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -138,7 +138,7 @@ ms.locfileid: "92630112"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | Type     | Description       |
+| 속성         | 유형     | Description       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -219,6 +219,14 @@ dataformat=csv
 with (fileExtension = ".txt")
 ```
 
+쿼리에서 파티션 열을 기준으로 필터링 하려면 쿼리 조건자에 원래 열 이름을 지정 합니다.
+
+```kusto
+external_table("ExternalTable")
+ | where Timestamp between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
+```
+
 **샘플 출력**
 
 |TableName|TableType|폴더|DocString|속성|ConnectionStrings|파티션|PathFormat|
@@ -241,6 +249,14 @@ dataformat=parquet
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
+```
+
+쿼리에서 가상 열을 기준으로 필터링 하려면 쿼리 조건자에서 파티션 이름을 지정 합니다.
+
+```kusto
+external_table("ExternalTable")
+ | where Date between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
 ```
 
 <a name="file-filtering"></a>
@@ -276,9 +292,9 @@ dataformat=parquet
 
 **출력**
 
-| 출력 매개 변수 | Type   | 설명                       |
+| 출력 매개 변수 | 유형   | 설명                       |
 |------------------|--------|-----------------------------------|
-| URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
+| URI              | string | 외부 저장소 데이터 파일의 URI |
 | 크기             | long   | 파일 길이 (바이트)              |
 | 파티션        | 동적 | 분할 된 외부 테이블에 대 한 파일 파티션을 설명 하는 동적 개체 |
 
@@ -321,7 +337,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | Kind | 매핑                                                           |
+| 이름     | Kind | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -339,7 +355,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | Kind | 매핑                                                                |
+| 이름     | Kind | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
@@ -361,7 +377,7 @@ dataformat=parquet
 
 **예제 출력**
 
-| Name     | Kind | 매핑                                                                         |
+| 이름     | Kind | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
