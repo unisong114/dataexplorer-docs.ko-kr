@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: 9427692d0533550967bfe84a35fd833a4c03b39e
-ms.sourcegitcommit: 811cf98edefd919b412d80201400919eedcab5cd
+ms.openlocfilehash: 9c066b47e69fd36052ae6e6e8d7599ebc17b3ff7
+ms.sourcegitcommit: f71801764fdccb061f3cf1e3cfe43ec1557e4e0f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89274810"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93293235"
 ---
 # <a name="use-one-click-ingestion-to-ingest-csv-data-from-a-container-to-a-new-table-in-azure-data-explorer"></a>Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집
 
@@ -22,20 +22,20 @@ ms.locfileid: "89274810"
 
 [원클릭 수집](ingest-data-one-click.md)을 사용하면 JSON, CSV 및 기타 형식의 데이터를 신속하게 테이블로 수집하고 간단하게 매핑 구조를 만들 수 있습니다. 스토리지, 로컬 파일 또는 컨테이너의 데이터를 일회성 또는 지속적인 수집 프로세스로 수집할 수 있습니다.  
 
-이 문서에서는 직관적인 원클릭 마법사를 특정 사례에 사용하여 **컨테이너**의 **CSV** 데이터를 **새 테이블**에 수집하는 방법을 설명합니다. 동일한 프로세스를 살짝 변형하여 다양한 사용 사례를 처리할 수 있습니다.
+이 문서에서는 직관적인 원클릭 마법사를 특정 사례에 사용하여 **컨테이너** 의 **CSV** 데이터를 **새 테이블** 에 수집하는 방법을 설명합니다. 동일한 프로세스를 살짝 변형하여 다양한 사용 사례를 처리할 수 있습니다.
 
 원클릭 수집의 개요와 필수 조건 목록은 [원클릭 수집](ingest-data-one-click.md)을 참조하세요.
 Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 대한 자세한 내용은 [기존 테이블로 원클릭 수집](one-click-ingestion-existing-table.md)을 참조하세요.
 
 ## <a name="ingest-new-data"></a>새 데이터 수집
 
-1. 웹 UI의 왼쪽 메뉴에서 *데이터베이스*를 마우스 오른쪽 단추로 클릭하고 **새 데이터 수집(미리 보기)** 을 선택합니다.
+1. 웹 UI의 왼쪽 메뉴에서 *데이터베이스* 를 마우스 오른쪽 단추로 클릭하고 **새 데이터 수집** 을 선택합니다.
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="새 데이터 수집":::
 
-1. **새 데이터 수집(미리 보기)** 창에서 **원본** 탭이 선택됩니다. 
+1. **새 데이터 수집** 창에서 **원본** 탭이 선택됩니다. 
 
-1. **새 테이블 만들기**를 선택하고 새 테이블의 이름을 입력합니다. 영숫자, 하이픈 및 밑줄을 사용할 수 있습니다. 특수 문자는 지원되지 않습니다.
+1. **새 테이블 만들기** 를 선택하고 새 테이블의 이름을 입력합니다. 영숫자, 하이픈 및 밑줄을 사용할 수 있습니다. 특수 문자는 지원되지 않습니다.
 
     > [!NOTE]
     > 테이블은 1~1024자여야 합니다.
@@ -44,9 +44,9 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 ## <a name="select-an-ingestion-type"></a>수집 유형 선택
 
-**수집 형식**에서 다음 단계를 수행합니다.
+**수집 형식** 에서 다음 단계를 수행합니다.
    
-  1. **컨테이너에서**를 선택합니다. 
+  1. **컨테이너에서** 를 선택합니다. 
   1. **스토리지에 연결** 필드에서 컨테이너의 [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)을 추가하고 필요한 대로 샘플 크기를 입력합니다.
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="컨테이너에서 원클릭 수집":::
@@ -62,13 +62,13 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
   
 ## <a name="edit-the-schema"></a>스키마 편집
 
-**스키마 편집**을 선택하여 테이블 열 구성을 살펴보고 편집합니다. 시스템에서 BLOB 중 하나를 임의로 선택합니다. 그러면 해당 BLOB에 따라 스키마가 생성됩니다. 원본 이름을 살펴보면 원본의 압축 여부를 서비스가 자동으로 식별합니다.
+**스키마 편집** 을 선택하여 테이블 열 구성을 살펴보고 편집합니다. 시스템에서 BLOB 중 하나를 임의로 선택합니다. 그러면 해당 BLOB에 따라 스키마가 생성됩니다. 원본 이름을 살펴보면 원본의 압축 여부를 서비스가 자동으로 식별합니다.
 
 **스키마** 탭에서 다음을 수행합니다.
 
-   1. **데이터 형식**을 선택합니다.
+   1. **데이터 형식** 을 선택합니다.
 
-        이 예제의 데이터 형식은 **CSV**입니다.
+        이 예제의 데이터 형식은 **CSV** 입니다.
 
         > [!TIP]
         > **JSON** 파일을 사용하려면 [Azure Data Explorer에서 원클릭 수집을 사용하여 로컬 파일의 JSON 데이터를 기존 테이블에 수집](one-click-ingestion-existing-table.md#edit-the-schema)을 참조하세요.
@@ -98,7 +98,7 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 ## <a name="start-ingestion"></a>수집 시작
 
-**수집 시작**을 선택하여 테이블 및 매핑을 만들고 데이터 수집을 시작합니다.
+**수집 시작** 을 선택하여 테이블 및 매핑을 만들고 데이터 수집을 시작합니다.
 
 :::image type="content" source="media/one-click-ingestion-new-table/start-ingestion.png" alt-text="수집 시작 원클릭 수집":::
 
@@ -114,11 +114,11 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 지속적인 수집을 사용하면 원본 컨테이너의 새 파일을 수신 대기하는 이벤트 그리드를 만들 수 있습니다. 미리 정의된 매개 변수 조건(접두사, 접미사 등)을 충족하는 새 파일이 자동으로 대상 테이블에 수집됩니다. 
 
-1. **연속 수집** 타일에서 **Event Grid**를 선택하여 Azure Portal을 엽니다. 데이터 연결 페이지가 열립니다. 이벤트 그리드 데이터 커넥터가 열리고 원본 및 대상 매개 변수(원본 컨테이너, 테이블 및 매핑)가 이미 입력되어 있습니다.
+1. **연속 수집** 타일에서 **Event Grid** 를 선택하여 Azure Portal을 엽니다. 데이터 연결 페이지가 열립니다. 이벤트 그리드 데이터 커넥터가 열리고 원본 및 대상 매개 변수(원본 컨테이너, 테이블 및 매핑)가 이미 입력되어 있습니다.
     
     :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="지속적인 수집 단추":::
 
-1. **만들기**를 선택하여 해당 컨테이너의 변경 내용, 업데이트 또는 새 데이터를 수신 대기하는 데이터 연결을 만듭니다. 
+1. **만들기** 를 선택하여 해당 컨테이너의 변경 내용, 업데이트 또는 새 데이터를 수신 대기하는 데이터 연결을 만듭니다. 
 
     :::image type="content" source="media/one-click-ingestion-new-table/event-hub-create.png" alt-text="Event Hub 연결 만들기":::
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: fa18a89e44a09a877cedb41c6d6e77384c965801
-ms.sourcegitcommit: 811cf98edefd919b412d80201400919eedcab5cd
+ms.openlocfilehash: 4ef7e15e3009b3ccd098136d9c5013dbe31813b7
+ms.sourcegitcommit: f71801764fdccb061f3cf1e3cfe43ec1557e4e0f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89274605"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93293138"
 ---
 # <a name="what-is-one-click-ingestion"></a>원클릭 수집이란?
 
@@ -40,15 +40,15 @@ ms.locfileid: "89274605"
 
 원클릭 수집 마법사는 원클릭 수집 프로세스를 안내합니다.
 
-* 클러스터의 **Azure Data Explorer 시작** 홈 화면에서 원클릭 수집 마법사에 액세스하려면 처음 두 단계([클러스터 만들기 및 데이터베이스 만들기](#prerequisites))를 완료한 다음, **새 데이터 수집**을 선택합니다.
+* 클러스터의 **Azure Data Explorer 시작** 홈 화면에서 원클릭 수집 마법사에 액세스하려면 처음 두 단계( [클러스터 만들기 및 데이터베이스 만들기](#prerequisites))를 완료한 다음, **새 데이터 수집** 을 선택합니다.
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Azure Data Explorer 시작에서 새 데이터 수집":::
 
-* [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com/)에서 마법사에 액세스하려면 Azure Data Explorer 웹 UI의 왼쪽 메뉴에서 **데이터베이스** 또는 **테이블**을 마우스 오른쪽 단추로 클릭하고 **새 데이터 수집(미리 보기)** 을 선택합니다.
+* [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com/)에서 마법사에 액세스하려면 Azure Data Explorer 웹 UI의 왼쪽 메뉴에서 **데이터베이스** 또는 **테이블** 을 마우스 오른쪽 단추로 클릭하고 **새 데이터 수집** 을 선택합니다.
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="웹 UI에서 원클릭 수집 선택":::
 
-* Azure Portal에서 마법사에 액세스하려면 왼쪽 메뉴에서 **쿼리**를 선택하고 **데이터베이스** 또는 **테이블**을 마우스 오른쪽 단추로 클릭한 다음, **새 데이터(미리 보기) 수집**을 선택합니다.
+* Azure Portal에서 마법사에 액세스하려면 왼쪽 메뉴에서 **쿼리** 를 선택하고 **데이터베이스** 또는 **테이블** 을 마우스 오른쪽 단추로 클릭한 다음, **새 데이터 수집** 을 선택합니다.
 
     :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Azure Portal에서 원클릭 수집 마법사에 액세스":::
 
@@ -80,14 +80,7 @@ ms.locfileid: "89274605"
 
 #### <a name="file-formats"></a>파일 형식
 
-원클릭 수집은 다음 형식의 원본 데이터에서 새 테이블을 수집할 수 있습니다.
-* JSON
-* CSV
-* TSV
-* SCSV
-* SOHSV
-* TSVE
-* PSV
+원클릭 수집은 [수집을 위해 Azure Data Explorer에서 지원하는 모든 데이터 형식](ingestion-supported-formats.md)의 소스 데이터에서 수집을 지원합니다.
 
 ### <a name="editor-window"></a>편집기 창
 
@@ -95,11 +88,23 @@ ms.locfileid: "89274605"
 
 |테이블 유형입니다.  |사용 가능한 열 조정  |
 |---------|---------|
-|새로 만들기     | 새 열, 열 삭제, 오름차순 정렬, 내림차순 정렬  |
-|Existing     | 새 열, 오름차순 정렬, 내림차순 정렬  |
+|새로 만들기     | 새 열, 열 삭제, 열 업데이트, 오름차순 정렬, 내림차순 정렬  |
+|Existing     | 새 열, 열 업데이트, 오름차순 정렬, 내림차순 정렬  |
 
 >[!NOTE]
 > 언제든지 **편집기** 창 위에 있는 [명령 편집기](one-click-ingestion-new-table.md#command-editor)를 열 수 있습니다. 명령 편집기에서는 사용자 입력으로부터 생성된 자동 명령을 살펴보고 복사할 수 있습니다.
+
+#### <a name="mapping-transformations"></a>매핑 변환
+
+일부 데이터 형식 매핑(Parquet, JSON 및 Avro)은 간단한 수집 시간 변환을 지원합니다. 매핑 변환을 적용하려면 [편집기 창](#editor-window)에서 열을 만들거나 업데이트합니다.
+
+매핑 변환은 **형식** 문자열 또는 날짜/시간의 열에서 수행할 수 있으며 **원본** 의 데이터 형식이 int 또는 long입니다. 지원되는 매핑 변환은 다음과 같습니다.
+* DateTimeFromUnixSeconds
+* DateTimeFromUnixMilliseconds
+* DateTimeFromUnixMicroseconds
+* DateTimeFromUnixNanoseconds
+
+자세한 내용은 [매핑 변환](kusto/management/mappings.md#mapping-transformations)을 참조하세요.
 
 ### <a name="data-ingestion"></a>데이터 수집
 
@@ -107,10 +112,10 @@ ms.locfileid: "89274605"
 
 * **컨테이너가 이닌** 원본에서 데이터를 수집하는 경우 수집이 즉시 적용됩니다.
 
-* 데이터 원본이 **컨테이너**인 경우:
+* 데이터 원본이 **컨테이너** 인 경우:
     * Azure Data Explorer의 [일괄 처리 정책](kusto/management/batchingpolicy.md)은 데이터를 집계합니다. 
     * 수집 후에는 수집 보고서를 다운로드하여 해결된 각 BLOB의 성능을 검토할 수 있습니다. 
-    * **지속적인 수집 만들기**를 선택하고 [Event Grid를 사용하여 지속적인 수집](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container)을 설정할 수 있습니다.
+    * **지속적인 수집 만들기** 를 선택하고 [Event Grid를 사용하여 지속적인 수집](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container)을 설정할 수 있습니다.
  
 ### <a name="initial-data-exploration"></a>초기 데이터 탐색
    
