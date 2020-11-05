@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: cb8e9d5afea956ee42fe3b444c564059e34b9a24
-ms.sourcegitcommit: d9569989283f4e98846725e2bc4c96149bd01281
+ms.openlocfilehash: 5732d0fa9773d0c8fe5420026cb855d1040b8706
+ms.sourcegitcommit: 42cc7d11f41a5bfa9e021764b044dcd68d99a258
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155410"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93403768"
 ---
 # <a name="sandboxes"></a>샌드박스
 
@@ -24,7 +24,7 @@ Kusto의 데이터 엔진 서비스는 보안 격리가 필요한 특정 흐름�
 
 샌드박스에서 실행 되는 흐름은 격리 되지 않습니다. 또한 로컬 (데이터에 근접)입니다. 이는 원격 호출에 추가 대기 시간이 추가 되지 않았음을 의미 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * 데이터 엔진 되어서는 안됩니다에서 [디스크 암호화](../../security.md#data-encryption) 를 사용 하도록 설정 했습니다.
   * 나중에 side-by-side로 실행 되는 두 기능에 대 한 지원이 필요 합니다.
@@ -69,4 +69,4 @@ Kusto의 데이터 엔진 서비스는 보안 격리가 필요한 특정 흐름�
 |--------------------------|---------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |제한으로 인해 샌드 박싱된 쿼리가 중단 되었습니다. 일부 백오프 성공 후 다시 시도 하 고 있습니다.   |대상 노드에 사용 가능한 샌드박스에서 없습니다. 몇 초 후에 새 샌드박스를 사용할 수 있게 됩니다.         |
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |' {Kind} ' 종류의 샌드박스는 아직 초기화 되지 않았습니다.                                            |샌드박스 정책이 최근에 변경 되었습니다. 새 샌드박스에 엑세스 새 정책을 몇 초 안에 사용할 수 있게 됩니다.|
-|                          |InternalServiceError (520) |샌드박스를 초기화 하는 동안 오류가 발생 하 여 샌드박스 쿼리가 중단 되었습니다.                         |예기치 않은 인프라 오류입니다. 문제가 지속 되 면 지원 요청을 여세요.                         |
+|                          |InternalServiceError (520) |샌드박스를 초기화 하는 동안 오류가 발생 하 여 샌드박스 쿼리가 중단 되었습니다.                         |예기치 않은 인프라 오류입니다.                         |

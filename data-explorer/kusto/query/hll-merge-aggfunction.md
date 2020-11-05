@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
-ms.openlocfilehash: a6aa19e3a88e7338494d6f6fad0e23a5ab4a03e4
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 59813656fce6afea3ecba62b13c971e74b095fe1
+ms.sourcegitcommit: 42cc7d11f41a5bfa9e021764b044dcd68d99a258
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92252299"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93403717"
 ---
 # <a name="hll_merge-aggregation-function"></a>hll_merge () (집계 함수)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92252299"
 
 * [요약](summarizeoperator.md)내의 집계 컨텍스트에서만 사용할 수 있습니다.
 
-자세한 내용은 [기본 알고리즘 (*H*yper*L*og*l*og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)를 참조 하세요.
+자세한 내용은 [기본 알고리즘 ( *H* yper *L* og *l* og) 및 예측 정확도](dcount-aggfunction.md#estimation-accuracy)를 참조 하세요.
 
 ## <a name="syntax"></a>구문
 
@@ -37,4 +37,4 @@ ms.locfileid: "92252299"
  
 **팁**
 
-1) 함수 [dcount_hll] (dcount-hllfunction.md)를 사용 하 여 `dcount` from `hll`  /  `hll-merge` 집계 함수를 계산 합니다.
+1) 함수 [dcount_hll](dcount-hllfunction.md) 를 사용 하 여 `dcount` 집계 함수에서를 계산 `hll`  /  `hll-merge` 합니다.
