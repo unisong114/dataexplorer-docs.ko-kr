@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 12/19/2018
-ms.openlocfilehash: ef71c978681c9e355e82791d4df3ad7da8db66f7
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.openlocfilehash: fd277cd46a183606e35219f733dbf86b094d62f8
+ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88874701"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94373802"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 중복 데이터 처리
 
@@ -70,7 +70,7 @@ DeviceEventsAll
 
 ### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>솔루션 #3: 수집 프로세스 중 중복 항목 필터링
 
-또 다른 해결 방법으로는 수집 프로세스 중에 중복 항목을 필터링하는 방법이 있습니다. 시스템은 Kusto 테이블에 데이터가 수집되는 동안 중복 데이터를 무시합니다. 데이터는 준비 테이블에 수집되고 중복 행 제거 과정을 거친 후 다른 테이블에 복사됩니다. 이 해결 방법은 쿼리 성능이 이전 해결 방법보다 크게 향상된다는 장점이 있습니다. 단점으로는 수집 시간 증가 및 데이터 스토리지 비용 추가 등이 있습니다. Additionaly이 솔루션은 중복가 동시에 수집 않는 경우에만 작동 합니다. 중복 레코드를 포함 하는 동시 ingestions이 여러 개 있는 경우 중복 제거 프로세스에서 테이블에 있는 기존의 일치 하는 레코드를 찾지 못하므로 모든가 수집 수 있습니다.    
+또 다른 해결 방법으로는 수집 프로세스 중에 중복 항목을 필터링하는 방법이 있습니다. 시스템은 Kusto 테이블에 데이터가 수집되는 동안 중복 데이터를 무시합니다. 데이터는 준비 테이블에 수집되고 중복 행 제거 과정을 거친 후 다른 테이블에 복사됩니다. 이 해결 방법은 쿼리 성능이 이전 해결 방법보다 크게 향상된다는 장점이 있습니다. 단점으로는 수집 시간 증가 및 데이터 스토리지 비용 추가 등이 있습니다. 또한이 솔루션은 중복가 동시에 수집 되지 않은 경우에만 작동 합니다. 중복 레코드를 포함 하는 동시 ingestions이 여러 개 있는 경우 중복 제거 프로세스에서 테이블에 있는 기존의 일치 하는 레코드를 찾지 못하므로 모든가 수집 수 있습니다.    
 
 다음 예에서는 이 방법을 보여줍니다.
 
@@ -109,7 +109,7 @@ DeviceEventsAll
     > [!NOTE]
     > 업데이트 정책은 수집 기간을 늘립니다. 수집 중에 데이터가 필터링된 후 두 번 수집되기 때문입니다(`DeviceEventsAll` 테이블에 한 번, `DeviceEventsUnique` 테이블에 한 번).
 
-1. (선택 사항) 데이터 복사본을 저장하지 않도록 하려면 `DeviceEventsAll` 테이블에서 데이터 보존 기간을 짧게 설정합니다. 문제 해결을 위해 데이터를 보존할 기간과 데이터 양에 따라 일수를 선택합니다. 보존 기간을 `0d`일로 설정하면 데이터가 스토리지에 업로드되지 않으므로 COGS를 절약하고 성능을 개선할 수 있습니다.
+1. (선택 사항) 데이터 복사본을 저장하지 않도록 하려면 `DeviceEventsAll` 테이블에서 데이터 보존 기간을 짧게 설정합니다. 문제 해결을 위해 데이터를 보존할 기간과 데이터 양에 따라 일수를 선택합니다. `0d`데이터가 저장소에 업로드 되지 않으므로 COGS (판매 상품 비용)을 절약 하 고 성능을 향상 시킬 수 있습니다.
 
     ```kusto
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d

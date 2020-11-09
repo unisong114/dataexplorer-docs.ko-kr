@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 03/18/2020
-ms.openlocfilehash: a79c815202e65fa32f62a76c700d808d0fda86ea
-ms.sourcegitcommit: 7fa9d0eb3556c55475c95da1f96801e8a0aa6b0f
+ms.openlocfilehash: 33d3515a8465a1e9c3397e675a51c95aa3f00d42
+ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941998"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94373836"
 ---
 # <a name="kusto-ingest-client-library"></a>Kusto 수집 클라이언트 라이브러리 
 
@@ -53,7 +53,7 @@ IKustoDirectIngestClient에 의해 정의 되는 직접 수집 모드는 Kusto E
 
 다음 다이어그램은 Kusto와의 직접 수집 클라이언트 상호 작용을 간략하게 설명 합니다.
 
-:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="쿼리 된 수집 모드에서 kusto. 수집 라이브러리가 쿼리를 Kusto 서비스로 보내는 방법을 보여 주는 다이어그램입니다.":::
+:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="Kusto. 수집 라이브러리가 직접 수집 모드에서 Kusto 서비스로 쿼리를 전송 하는 방법을 보여 주는 다이어그램입니다.":::
 
 > [!NOTE]
 > 프로덕션 등급 수집 솔루션에는 직접 모드를 권장 하지 않습니다.
@@ -71,7 +71,7 @@ IKustoDirectIngestClient에 의해 정의 되는 직접 수집 모드는 Kusto E
 
 ## <a name="ingestion-best-practices"></a>수집 모범 사례
 
-수집 [모범 사례](kusto-ingest-best-practices.md) 는 수집에 COGs 및 처리량 POV를 제공 합니다.
+수집 [모범 사례](kusto-ingest-best-practices.md) 는 수집에 대 한 COGS (판매 상품 비용) 및 처리량 POV를 제공 합니다.
 
 * **스레드 보안-** Kusto 수집 클라이언트 구현은 스레드로부터 안전 하 고 다시 사용 하기 위한 것입니다. `KustoQueuedIngestClient`각 또는 여러 수집 작업에 대해 클래스의 인스턴스를 만들 필요가 없습니다. `KustoQueuedIngestClient`사용자 프로세스별 클러스터에서 대상 Kusto 클러스터에는 단일 인스턴스가 필요 합니다. 여러 인스턴스를 실행 하는 것은 생산성이 높으며 데이터 관리 클러스터에서 DoS를 발생 시킬 수 있습니다.
 
@@ -83,7 +83,7 @@ IKustoDirectIngestClient에 의해 정의 되는 직접 수집 모드는 Kusto E
 * 수집 **권한-** 
  [Kusto 수집 권한은](kusto-ingest-client-permissions.md) 패키지를 사용 하 여 성공적으로 수집 하는 데 필요한 권한 설정에 대해 설명 `Kusto.Ingest` 합니다.
 
-* **사용량-** 앞에서 설명한 것 처럼 Kusto에 대 한 유지 가능 하 고 확장성이 뛰어난 수집 솔루션에 대 한 권장 되는 기준은 **KustoQueuedIngestClient**여야 합니다.
+* **사용량-** 앞에서 설명한 것 처럼 Kusto에 대 한 유지 가능 하 고 확장성이 뛰어난 수집 솔루션에 대 한 권장 되는 기준은 **KustoQueuedIngestClient** 여야 합니다.
 Kusto 서비스에 대 한 불필요 한 로드를 최소화 하려면 단일 kusto를 사용 하 여 Kusto 클러스터 별로 클라이언트 (큐에 대기 또는 직접)를 수집 하는 것이 좋습니다. Kusto 수집 클라이언트 구현은 스레드로부터 안전 하 고 완전히 재진입입니다.
 
 ## <a name="next-steps"></a>다음 단계

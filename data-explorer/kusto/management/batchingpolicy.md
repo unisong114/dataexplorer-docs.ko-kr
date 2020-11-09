@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 27c92b9081844df0e8f8d4dc207ba5d2a8a2e2f3
-ms.sourcegitcommit: a10e7c6ba96bdb94d95ef23f5d1506eb8fda0041
+ms.openlocfilehash: 0a493c4e808a43d04714487ada17964ab048de6f
+ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058668"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94373768"
 ---
 # <a name="ingestionbatching-policy"></a>IngestionBatching 정책
 
@@ -38,7 +38,7 @@ ms.locfileid: "92058668"
 `IngestionBatching`데이터베이스 또는 테이블에서 정책을 설정할 수 있습니다. 기본적으로 정책이 정의 되지 않은 경우 Kusto는 최대 지연 시간, **1000** 항목, 일괄 처리에 대 한 총 **1g** 크기의 기본값을 **5 분** 으로 사용 합니다.
 
 > [!WARNING]
-> 이 정책을 매우 작은 값으로 설정 하면 클러스터의 COGS 증가 하 고 성능이 저하 됩니다. 또한이 값을 줄이면 여러 수집 프로세스를 병렬로 관리 하는 오버 헤드로 인해 실제 종단 간 수집 대기 시간이 **늘어날** 수 있습니다.
+> 이 정책을 매우 작은 값으로 설정 하면 클러스터의 COGS (판매 상품 비용)이 증가 하 고 성능이 저하 됩니다. 또한이 값을 줄이면 여러 수집 프로세스를 병렬로 관리 하는 오버 헤드로 인해 실제 종단 간 수집 대기 시간이 **늘어날** 수 있습니다.
 
 ## <a name="additional-resources"></a>추가 리소스
 

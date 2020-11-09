@@ -8,14 +8,14 @@ ms.reviewer: elgevork
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/01/2020
-ms.openlocfilehash: 2d5d19a1a0d90a6bcff42247b85d01497afd0fac
-ms.sourcegitcommit: 0e2fbc26738371489491a96924f25553a8050d51
+ms.openlocfilehash: b2bed8fab33de57da6286a7ea49b9378669a9d5a
+ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148561"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94373853"
 ---
-# <a name="gzip_compress_to_base64_string"></a>gzip_compress_to_base64_string ()
+# <a name="gzip_compress_to_base64_string"></a>gzip_compress_to_base64_string()
 
 Gzip 압축을 수행 하 고 결과를 b a s e 64로 인코딩합니다.
 
@@ -33,13 +33,14 @@ Gzip 압축을 수행 하 고 결과를 b a s e 64로 인코딩합니다.
 * Gzip 압축 및 b a s e `string` 64로 인코딩된 원래 문자열을 나타내는을 반환 합니다. 
 * 압축 또는 인코딩이 실패 한 경우 빈 결과를 반환 합니다.
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
 ```kusto
 print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 ```
 
 **출력:** 
-> |" eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGd0xvZwAzAG5JZA = = "|
+
+| eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGd0xvZwAzAG5JZA = = |
 
 ## <a name="next-steps"></a>다음 단계
 
