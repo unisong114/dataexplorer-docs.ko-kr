@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/11/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 035705e0a15ab686af16b9e8b2a00268db21d6a2
-ms.sourcegitcommit: c140bc3bc984f861df0b85e672d2e685e6659a54
+ms.openlocfilehash: 7c95f7676ecdc88deefeae5db3f904dd5048a5ba
+ms.sourcegitcommit: 25c0440cb0390b9629b819611844f1375de00a66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90109990"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94417594"
 ---
-# <a name="cosmosdb_sql_request-plugin"></a>cosmosdb_sql_request 플러그 인
+# <a name="cosmosdb_sql_request-plugin"></a>cosmosdb_sql_request 플러그인
 
 ::: zone pivot="azuredataexplorer"
 
@@ -25,16 +25,16 @@ ms.locfileid: "90109990"
 
 ## <a name="syntax"></a>구문
 
-`evaluate``cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* [ `,` *Options*]]`)`
+`evaluate``cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* [ `,` *Options* ]]`)`
 
 ## <a name="arguments"></a>인수
 
-|인수 이름 | 설명 | 필수/선택 | 
+|인수 이름 | Description | 필수/선택 | 
 |---|---|---|
-| *ConnectionString* | `string`쿼리할 Cosmos DB 컬렉션을 가리키는 연결 문자열을 나타내는 리터럴입니다. *Accountendpoint*, *데이터베이스*및 *컬렉션*을 포함 해야 합니다. 인증에 마스터 키를 사용 하는 경우 *AccountKey* 이 포함 될 수 있습니다. <br> **예제:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'`| 필수 |
+| *ConnectionString* | `string`쿼리할 Cosmos DB 컬렉션을 가리키는 연결 문자열을 나타내는 리터럴입니다. *Accountendpoint* , *데이터베이스* 및 *컬렉션* 을 포함 해야 합니다. 인증에 마스터 키를 사용 하는 경우 *AccountKey* 이 포함 될 수 있습니다. <br> **예제:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'`| 필수 |
 | *SqlQuery*| `string`실행할 쿼리를 나타내는 리터럴입니다. | 필수 |
-| *Sqlparameter* | `dynamic`쿼리와 함께 매개 변수로 전달할 키-값 쌍을 보유 하는 형식의 상수 값입니다. 매개 변수 이름은로 시작 해야 합니다 `@` . | Optional |
-| *옵션* | `dynamic`키-값 쌍으로 고급 설정을 포함 하는 형식의 상수 값입니다. | Optional |
+| *Sqlparameter* | `dynamic`쿼리와 함께 매개 변수로 전달할 키-값 쌍을 보유 하는 형식의 상수 값입니다. 매개 변수 이름은로 시작 해야 합니다 `@` . | 선택 사항 |
+| *Options* | `dynamic`키-값 쌍으로 고급 설정을 포함 하는 형식의 상수 값입니다. | 선택 사항 |
 || ----*지원 되는 옵션 설정은 다음과 같습니다.*-----
 |      `armResourceId` | Azure Resource Manager에서 API 키를 검색 합니다. <br> **예제:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`| 
 |  `token` | Azure Resource Manager를 사용 하 여 인증 하는 데 사용 되는 Azure AD 액세스 토큰을 제공 합니다.
@@ -50,12 +50,12 @@ ms.locfileid: "90109990"
 [
   {
     "CalloutType": "CosmosDB",
-    "CalloutUriRegex": "my_endpoint1.documents.azure.com",
+    "CalloutUriRegex": "my_endpoint1\\.documents\\.azure\\.com",
     "CanCall": true
   },
   {
     "CalloutType": "CosmosDB",
-    "CalloutUriRegex": "my_endpoint2.documents.azure.com",
+    "CalloutUriRegex": "my_endpoint2\\.documents\\.azure\\.com",
     "CanCall": true
   }
 ]
@@ -81,7 +81,7 @@ evaluate cosmosdb_sql_request(
 
 ### <a name="query-cosmos-db-with-parameters"></a>매개 변수를 사용 하 여 쿼리 Cosmos DB
 
-다음 예에서는 SQL 쿼리 매개 변수를 사용 하 고 대체 지역에서 데이터를 쿼리 합니다. 자세한 내용은 [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations)를 참조하세요.
+다음 예에서는 SQL 쿼리 매개 변수를 사용 하 고 대체 지역에서 데이터를 쿼리 합니다. 자세한 내용은 [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations)을(를) 참조하세요.
 
 ```kusto
 evaluate cosmosdb_sql_request(

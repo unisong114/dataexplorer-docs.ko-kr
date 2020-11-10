@@ -10,34 +10,35 @@ ms.topic: reference
 ms.date: 02/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 1a6349547d5cf1eb3af5a21f6e8c504573f15e52
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: a8a0aae8732104ee64630c1fddb4d563cb542351
+ms.sourcegitcommit: 25c0440cb0390b9629b819611844f1375de00a66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92241769"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94417560"
 ---
 # <a name="sql_request-plugin"></a>sql_request 플러그 인
 
 ::: zone pivot="azuredataexplorer"
 
 `sql_request`플러그 인은 SQL Server 네트워크 끝점으로 SQL 쿼리를 보내고 결과에서 첫 번째 행 집합을 반환 합니다.
+이 쿼리는 행 집합을 두 개 이상 반환할 수 있지만, 첫 번째 행 집합만 Kusto 쿼리의 나머지 부분에 사용할 수 있습니다.
 
 ## <a name="syntax"></a>구문
 
-  `evaluate``sql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* [ `,` *Options*]]`)`
+  `evaluate``sql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* [ `,` *Options* ]]`)`
 
 ## <a name="arguments"></a>인수
 
-* *ConnectionString*: `string` SQL Server 네트워크 끝점을 가리키는 연결 문자열을 나타내는 리터럴입니다. [유효한 인증 방법](#authentication) 및 [네트워크 끝점](#specify-the-network-endpoint)을 지정 하는 방법을 참조 하세요.
+* *ConnectionString* : `string` SQL Server 네트워크 끝점을 가리키는 연결 문자열을 나타내는 리터럴입니다. [유효한 인증 방법](#authentication) 및 [네트워크 끝점](#specify-the-network-endpoint)을 지정 하는 방법을 참조 하세요.
 
-* *SqlQuery*: `string` SQL 끝점에 대해 실행할 쿼리를 나타내는 리터럴입니다. 는 하나 이상의 행 집합을 반환 해야 하지만, 첫 번째 행 집합은 Kusto 쿼리의 나머지 부분에서 사용할 수 있습니다.
+* *SqlQuery* : `string` SQL 끝점에 대해 실행할 쿼리를 나타내는 리터럴입니다. 는 하나 이상의 행 집합을 반환 해야 하지만, 첫 번째 행 집합은 Kusto 쿼리의 나머지 부분에서 사용할 수 있습니다.
 
-* *Sqlparameters*: `dynamic` 쿼리와 함께 매개 변수로 전달할 키-값 쌍을 보유 하는 형식의 상수 값입니다. 선택 사항입니다.
+* *Sqlparameters* : `dynamic` 쿼리와 함께 매개 변수로 전달할 키-값 쌍을 보유 하는 형식의 상수 값입니다. (선택 사항)
   
-* *Options*: `dynamic` 고급 설정을 키-값 쌍으로 포함 하는 형식의 상수 값입니다. 현재는 `token` 인증을 위해 SQL 끝점에 전달 되는 호출자 제공 AZURE AD 액세스 토큰을 전달 하기 위해만 설정할 수 있습니다. 선택 사항입니다.
+* *Options* : `dynamic` 고급 설정을 키-값 쌍으로 포함 하는 형식의 상수 값입니다. 현재는 `token` 인증을 위해 SQL 끝점에 전달 되는 호출자 제공 AZURE AD 액세스 토큰을 전달 하기 위해만 설정할 수 있습니다. (선택 사항)
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 다음 예에서는 SQL 쿼리를 Azure SQL DB 데이터베이스로 보냅니다. 에서 모든 레코드를 검색 한 `[dbo].[Table]` 다음, Kusto 쪽에서 결과를 처리 합니다. 인증은 호출 하는 사용자의 Azure AD 토큰을 다시 사용 합니다. 
 
@@ -121,7 +122,7 @@ Sql_request 플러그 인은 SQL Server 끝점에 대 한 세 가지 인증 방�
 연결 문자열의 일부로 SQL 네트워크 끝점을 지정 하는 것은 필수입니다.
 적합한 구문은 다음과 같습니다.
 
-`Server``=` `tcp:` *FQDN* [ `,` *포트*]
+`Server``=` `tcp:` *FQDN* [ `,` *포트* ]
 
 위치:
 

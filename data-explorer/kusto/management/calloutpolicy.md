@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-ms.openlocfilehash: 6e3bb943347e4ea794733451fcf65674e5e23ca7
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: da1cca764563b4ad2ce96ceaeb117e33d059303d
+ms.sourcegitcommit: 25c0440cb0390b9629b819611844f1375de00a66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452666"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94417611"
 ---
 # <a name="callout-policy"></a>설명선 정책
 
@@ -22,7 +22,7 @@ Azure 데이터 탐색기 클러스터는 다양 한 시나리오에서 외부 �
 
 콜아웃 정책은 클러스터 수준에서 관리 되며 다음 유형으로 분류 됩니다.
 * `kusto` -Azure 데이터 탐색기 클러스터 간 쿼리를 제어 합니다.
-* `sql` - [SQL 플러그 인](../query/sqlrequestplugin.md)을 제어 합니다.
+* `sql` - [SQL 플러그 인](../query/sqlrequestplugin.md) 및 [mysql_request 플러그 인](../query/mysqlrequest-plugin.md)을 제어 합니다.
 * `cosmosdb` - [CosmosDB 플러그 인](../query/cosmosdb-plugin.md)을 제어 합니다.
 * `sandbox_artifacts`-샌드박스 플러그 인 ([python](../query/pythonplugin.md)  |  [R](../query/rplugin.md))을 제어 합니다.
 * `external_data` - [외부 테이블](../query/schema-entities/externaltables.md) 또는 [externaldata](../query/externaldata-operator.md) 연산자를 통해 외부 데이터에 대 한 액세스를 제어 합니다.

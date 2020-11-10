@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/20/2020
-ms.openlocfilehash: aa6b65ea2704476d72da8d58b401bfba45aaecb6
-ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
+ms.openlocfilehash: 18fd9aa351bf1fb3528c48f4125c6fae6a9ccba1
+ms.sourcegitcommit: 25c0440cb0390b9629b819611844f1375de00a66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94373785"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94417577"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Factory와 Azure 데이터 탐색기 통합
 
@@ -34,6 +34,7 @@ Azure 데이터 탐색기는 azure 내에서 데이터를 복사할 때 사용 �
 ### <a name="lookup-activity"></a>조회 작업
  
 조회 작업은 Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용 됩니다. 쿼리 결과는 조회 활동의 출력으로 반환 되며 [ADF 조회 설명서](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity)에 설명 된 대로 파이프라인의 다음 활동에서 사용할 수 있습니다.  
+
 5000 행 및 2mb의 응답 크기 제한 외에도 작업의 쿼리 제한 시간 제한은 1 시간입니다.
 
 ### <a name="command-activity"></a>명령 작업
@@ -86,7 +87,7 @@ Azure 데이터 탐색기로 데이터를 복사 하기 위한 수집 명령과 
 | | 복사 활동 | 쿼리에서 수집<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | 스토리지에서 수집 <br> `.ingest` |
 |---|---|---|---|
 | **흐름 설명** | ADF는 원본 데이터 저장소에서 데이터를 가져와 테이블 형식으로 변환 하 고 필요한 스키마 매핑을 변경 합니다. 그런 다음 ADF는 데이터를 Azure blob에 업로드 하 고 청크로 분할 한 다음 blob을 다운로드 하 여 ADX 테이블로 수집 합니다. <br> ( **원본 데이터 저장소 > ADF > Azure blob > ADX** ) | 이러한 명령은 쿼리 또는 `.show` 명령을 실행 하 고 쿼리 결과를 테이블에 수집할 수 있습니다 ( **adx > adx** ). | 이 명령은 하나 이상의 클라우드 저장소 아티팩트에서 데이터를 "풀링" 하 여 테이블에 데이터를 수집 합니다. |
-| **지원 되는 원본 데이터 저장소** |  [다양 한 옵션](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (sql_request 플러그 인 사용), Cosmos (cosmosdb_sql_request 플러그 인 사용) 및 HTTP 또는 Python Api를 제공 하는 기타 데이터 저장소를 제공 합니다. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
+| **지원 되는 원본 데이터 저장소** |  [다양 한 옵션](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL ( [sql_request () 플러그 인](kusto/query/sqlrequestplugin.md)사용), Cosmos ( [cosmosdb_sql_request 플러그 인](kusto\query\mysqlrequest-plugin.md)사용) 및 HTTP 또는 Python api를 제공 하는 기타 데이터 저장소를 제공 합니다. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
 | **성능** | Ingestions는 큐에 대기 되 고 관리 되므로, 작은 크기의 Ingestions를 보장 하 고 부하 분산, 다시 시도 및 오류 처리를 제공 하 여 고가용성을 보장 합니다. | <ul><li>이러한 명령은 대량 데이터 가져오기를 위해 설계 되지 않았습니다.</li><li>예상 및 저렴 하 게 작동 합니다. 그러나 프로덕션 시나리오의 경우와 트래픽 속도와 데이터 크기가 크면 복사 작업을 사용 합니다.</li></ul> |
 | **서버 제한** | <ul><li>크기 제한이 없습니다.</li><li>최대 시간 제한: 수집 blob 당 1 시간입니다. |<ul><li>쿼리 파트에는 크기 제한이 있습니다 .이는를 지정 하 여 건너뛸 수 있습니다 `noTruncation=true` .</li><li>최대 제한 시간 제한: 1 시간</li></ul> | <ul><li>크기 제한이 없습니다.</li><li>최대 제한 시간 제한: 1 시간</li></ul>|
 
@@ -102,7 +103,7 @@ Azure 데이터 탐색기로 데이터를 복사 하기 위한 수집 명령과 
 |---|---|---|---|
 | **연결 된 서비스 만들기** | 데이터베이스 탐색 | *데이터베이스 뷰어* <br>ADF를 사용 하는 로그인 한 사용자에 게는 데이터베이스 메타 데이터를 읽을 수 있는 권한이 있어야 합니다. | 사용자는 데이터베이스 이름을 수동으로 입력할 수 있습니다. |
 | | 연결을 테스트 | *데이터베이스 모니터* 또는 *테이블 수집기* <br>서비스 주체에는 데이터베이스 수준 `.show` 명령이 나 테이블 수준 수집을 실행할 수 있는 권한이 있어야 합니다. | <ul><li>TestConnection은 데이터베이스가 아니라 클러스터에 대 한 연결을 확인 합니다. 데이터베이스가 존재 하지 않더라도 성공할 수 있습니다.</li><li>테이블 관리자 권한이 충분 하지 않습니다.</li></ul>|
-| **데이터 세트 만들기** | 테이블 탐색 | *데이터베이스 모니터* <br>ADF를 사용 하 여 로그인 한 사용자는 데이터베이스 수준 명령을 실행할 수 있는 권한이 있어야 합니다 `.show` . | 사용자는 테이블 이름을 수동으로 입력할 수 있습니다.|
+| **데이터 집합 만들기** | 테이블 탐색 | *데이터베이스 모니터* <br>ADF를 사용 하 여 로그인 한 사용자는 데이터베이스 수준 명령을 실행할 수 있는 권한이 있어야 합니다 `.show` . | 사용자는 테이블 이름을 수동으로 입력할 수 있습니다.|
 | **데이터 집합** 또는 **복사 작업** 만들기 | 데이터 미리 보기 | *데이터베이스 뷰어* <br>서비스 주체는 데이터베이스 메타 데이터를 읽을 수 있는 권한이 있어야 합니다. | | 
 |   | 스키마 가져오기 | *데이터베이스 뷰어* <br>서비스 주체는 데이터베이스 메타 데이터를 읽을 수 있는 권한이 있어야 합니다. | ADX가 테이블 형식에서 테이블 형식 복사의 원본인 경우에는 사용자가 명시적으로 스키마를 가져오지 않더라도 ADF가 자동으로 스키마를 가져옵니다. |
 | **ADX를 싱크로** | 이름으로 열 매핑 만들기 | *데이터베이스 모니터* <br>서비스 사용자에 게 데이터베이스 수준 명령을 실행할 수 있는 권한이 있어야 합니다 `.show` . | <ul><li>모든 필수 작업은 *table 수집기* 와 함께 작동 합니다.</li><li> 일부 선택적 작업은 실패할 수 있습니다.</li></ul> |
