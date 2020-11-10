@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 3c3aa61bdb804d2a1bd6735ea4a22e06e1f1878e
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 895f12799f4c44346af2b6b9be43bf98b7cf870e
+ms.sourcegitcommit: e820a59191d2ca4394e233d51df7a0584fa4494d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92249003"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94446211"
 ---
 # <a name="infer_storage_schema-plugin"></a>infer_storage_schema 플러그 인
 
@@ -51,7 +51,7 @@ evaluate infer_storage_schema(options)
 `infer_storage_schema`플러그 인은 CSL 스키마 문자열을 포함 하는 단일 행/열을 포함 하는 단일 결과 테이블을 반환 합니다.
 
 > [!NOTE]
-> * 저장소 컨테이너 URI 비밀 키에는 *읽기*외에 *목록* 에 대 한 사용 권한이 있어야 합니다.
+> * 저장소 컨테이너 URI 비밀 키에는 *읽기* 외에 *목록* 에 대 한 사용 권한이 있어야 합니다.
 > * 스키마 유추 전략 ' 모두 '는 검색 된 *모든* 아티팩트를 읽고 해당 스키마를 병합 하는 것을 암시 하므로 매우 "비용이 많이 드는" 작업입니다.
 > * 반환 된 형식이 잘못 된 형식 추측 (또는 스키마 병합 프로세스의 결과로)의 결과로 실제 형식이 아닐 수 있습니다. 이 때문에 외부 테이블을 만들기 전에 결과를 신중 하 게 검토 해야 합니다.
 
@@ -60,7 +60,7 @@ evaluate infer_storage_schema(options)
 ```kusto
 let options = dynamic({
   'StorageContainers': [
-    h@'https://storageaccount.blob.core.windows.net/MovileEvents/2015;secretKey'
+    h@'https://storageaccount.blob.core.windows.net/MovileEvents;secretKey'
   ],
   'FileExtension': '.parquet',
   'FileNamePrefix': 'part-',
@@ -74,3 +74,18 @@ evaluate infer_storage_schema(options)
 |CslSchema|
 |---|
 |app_id: string, user_id: long, event_time: datetime, country: string, city: string, device_type: string, device_vendor: string, ad_network: string, 캠페인: string, site_id: string, event_type: string, event_name: string, 유기적: string, days_from_install: int, 수익: real|
+
+외부 테이블 정의에서 반환 된 스키마를 사용 합니다.
+
+```kusto
+.create external table MobileEvents(
+    app_id:string, user_id:long, event_time:datetime, country:string, city:string, device_type:string, device_vendor:string, ad_network:string, campaign:string, site_id:string, event_type:string, event_name:string, organic:string, days_from_install:int, revenue:real
+)
+kind=blob
+partition by (dt:datetime = bin(event_time, 1d), app:string = app_id)
+pathformat = ('app=' app '/dt=' datetime_pattern('yyyyMMdd', dt))
+dataformat = parquet
+(
+    h@'https://storageaccount.blob.core.windows.net/MovileEvents;secretKey'
+)
+```

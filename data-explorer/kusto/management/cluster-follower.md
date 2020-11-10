@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
-ms.openlocfilehash: 73b65cc59ff98bc658c542d690812ccf5ad3895a
-ms.sourcegitcommit: e1e35431374f2e8b515bbe2a50cd916462741f49
+ms.openlocfilehash: 26412683be35825a38f959de62292f3735e7a894
+ms.sourcegitcommit: e820a59191d2ca4394e233d51df7a0584fa4494d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82108459"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94446228"
 ---
 # <a name="cluster-follower-commands"></a>클러스터 종동체 명령
 
@@ -27,12 +27,11 @@ ms.locfileid: "82108459"
 
 하나 이상의 데이터베이스 수준 재정의가 구성 된 다른 리더 클러스터에서 데이터베이스 (또는 데이터베이스)를 표시 합니다.
 
-
 **구문**
 
-`.show``follower` *DatabaseName* DatabaseName `database`
+`.show``follower` `database` *DatabaseName*
 
-`.show``follower` *DatabaseName1*DatabaseName1 ... `databases` `(``,` `,` *DatabaseNameN*`)`
+`.show``follower` `databases` `(` *DatabaseName1* `,` ...`,` *DatabaseNameN*`)`
 
 **출력** 
 
@@ -42,8 +41,8 @@ ms.locfileid: "82108459"
 | LeaderClusterMetadataPath            | String  | 리더 클러스터의 메타 데이터 컨테이너에 대 한 경로입니다.                                                               |
 | CachingPolicyOverride                | String  | JSON 또는 null로 serialize 된 데이터베이스에 대 한 재정의 캐싱 정책입니다.                                         |
 | AuthorizedPrincipalsOverride         | String  | JSON 또는 null로 serialize 된 데이터베이스에 대 한 권한이 있는 사용자의 재정의 컬렉션입니다.                    |
-| AuthorizedPrincipalsModificationKind | String  | AuthorizedPrincipalsOverride (`none` `union` 또는 `replace`)를 사용 하 여 적용할 수정 종류입니다.                  |
-| CachingPoliciesModificationKind      | String  | 데이터베이스 또는 테이블 수준 캐싱 정책 재정의 (`none` `union` 또는 `replace`)를 사용 하 여 적용할 수정 종류입니다. |
+| AuthorizedPrincipalsModificationKind | String  | AuthorizedPrincipalsOverride (또는)를 사용 하 여 적용할 수정 종류 `none` `union` `replace` 입니다.                  |
+| CachingPoliciesModificationKind      | String  | 데이터베이스 또는 테이블 수준 캐싱 정책 재정의 (또는)를 사용 하 여 적용할 수정 종류 `none` `union` `replace` 입니다. |
 | IsAutoPrefetchEnabled                | 부울 | 각 스키마를 새로 고칠 때 새 데이터를 미리 페치할 지 여부를 지정 합니다.        |
 | TableMetadataOverrides               | String  | 테이블 수준 속성을 재정의 하는 JSON serialization (정의 된 경우)                                      |
 
@@ -51,12 +50,10 @@ ms.locfileid: "82108459"
 
 는 리더 클러스터의 원본 데이터베이스에 설정 된 항목을 재정의 하도록 종동체 데이터베이스 캐싱 정책을 변경 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
+**참고**
 
-
-**참고 사항**
-
-* 캐싱 정책 `modification kind` 에 대 한 기본값 `union`은입니다. 을 변경 하려면 `modification kind` [. alter 종동체 데이터베이스 캐싱-정책-수정-kind](#alter-follower-database-caching-policies-modification-kind) 명령을 사용 합니다.
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다.
+* `modification kind`캐싱 정책에 대 한 기본값은 `union` 입니다. 을 변경 하려면 `modification kind` [. alter 종동체 데이터베이스 캐싱-정책-수정-kind](#alter-follower-database-caching-policies-modification-kind) 명령을 사용 합니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
     * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
@@ -64,13 +61,9 @@ ms.locfileid: "82108459"
 
 **구문**
 
-`.alter``follower` `=` *HotDataSpan* *DatabaseName* DatabaseName HotDataSpan `policy` `caching` `database` `hot`
-
-
+`.alter``follower` `database` *DatabaseName* `policy` `caching` `hot` `=` *HotDataSpan*
 
 **예제**
-
-
 
 ```kusto
 .alter follower database MyDb policy caching hot = 7d
@@ -81,9 +74,9 @@ ms.locfileid: "82108459"
 종동체 데이터베이스 재정의 캐싱 정책을 삭제 합니다. 이렇게 하면 리더 클러스터의 원본 데이터베이스에 설정 된 정책이 적용 됩니다.
 [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다. 
 
-**참고 사항**
+**참고**
 
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
     * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
@@ -91,7 +84,7 @@ ms.locfileid: "82108459"
 
 **구문**
 
-`.delete``follower` `policy` *DatabaseName* DatabaseName `database``caching`
+`.delete``follower` `database` *DatabaseName* DatabaseName `policy``caching`
 
 **예제**
 
@@ -103,22 +96,17 @@ ms.locfileid: "82108459"
 
 승인 된 보안 주체의 종동체 데이터베이스 컬렉션에 인증 된 보안 주체를 추가 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
+**참고**
 
-
-**참고 사항**
-
-* 이러한 권한이 `modification kind` 부여 된 보안 주체에 `none`대 한 기본값은입니다. 을 변경 하려면 `modification kind` [alter 종동체 데이터베이스 보안 주체-수정 유형](#alter-follower-database-principals-modification-kind)을 사용 합니다.
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다.
+* `modification kind`이러한 권한이 부여 된 보안 주체에 대 한 기본값은 `none` 입니다. 을 변경 하려면 `modification kind`  [alter 종동체 데이터베이스 보안 주체-수정 유형](#alter-follower-database-principals-modification-kind)을 사용 합니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다 `.show` .
     * [. 데이터베이스 보안 주체 표시](../management/security-roles.md#managing-database-security-roles)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
 * 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
 
 **구문**
 
-`.add``follower` `users` *DatabaseName* `(` *principal1*DatabaseName (`admins``,`) Role | principal1 ...`viewers` |  `database`  | `monitors` `,` *principaln* `)` [`'`*notes*참고`'`]
-
-
-
+`.add``follower` `database` *DatabaseName* ( `admins`  |  `users`  |  `viewers`  |  `monitors` ) Role `(` *principal1* `,` principal1 `,` ... *Principaln* `)` [ `'` *참고* `'` ]
 
 **예제**
 
@@ -126,25 +114,21 @@ ms.locfileid: "82108459"
 .add follower database MyDB viewers ('aadgroup=mygroup@microsoft.com') 'My Group'
 ```
 
-```kusto
-
-```
-
 ### <a name="drop-follower-database-principals"></a>. 삭제 팔로 워 데이터베이스 보안 주체
 
 권한 부여 된 보안 주체의 종동체 데이터베이스 컬렉션에서 인증 된 보안 주체를 삭제 합니다.
 [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
-**참고 사항**
+**참고**
 
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다 `.show` .
     * [. 데이터베이스 보안 주체 표시](../management/security-roles.md#managing-database-security-roles)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
 * 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
 
 **구문**
 
-`.drop``follower` `monitors` *DatabaseName* `(` *principal1*DatabaseName (`admins` | `,`) principal1 | ...`users` |  `database` `viewers` `,` *principaln*`)`
+`.drop``follower` `database` *DatabaseName* ( `admins`  |  `users`  |  `viewers`  |  `monitors` ) `(` *principal1* `,` principal1 `,` ... *Principaln*`)`
 
 **예제**
 
@@ -156,19 +140,17 @@ ms.locfileid: "82108459"
 
 종동체 데이터베이스 권한 부여 된 보안 주체 수정 종류를 변경 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
-**참고 사항**
+**참고**
 
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다 `.show` .
     * [. 데이터베이스 보안 주체 표시](../management/security-roles.md#managing-database-security-roles)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
 * 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
 
 **구문**
 
-`.alter``follower`  |  *DatabaseName*  | DatabaseName`replace`= (`none`) `database` 
- `principals-modification-kind` `union`
-
-
+`.alter``follower` `database` *DatabaseName* 
+ `principals-modification-kind` = ( `none`  |  `union`  |  `replace` )
 
 **예제**
 
@@ -180,18 +162,16 @@ ms.locfileid: "82108459"
 
 종동체 데이터베이스 및 테이블 캐싱 정책 수정 종류를 변경 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
-**참고 사항**
+**참고**
 
-* 변경 후 표준 `.show` 명령을 사용 하 여 데이터베이스/테이블 수준 캐싱 정책의 효과적인 컬렉션을 볼 수 있습니다.
+* 변경 후 표준 명령을 사용 하 여 데이터베이스/테이블 수준 캐싱 정책의 효과적인 컬렉션을 볼 수 있습니다 `.show` .
     * [. 테이블 세부 정보 표시](show-tables-command.md)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
 * 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
 
 **구문**
 
-`.alter``follower` `union` *DatabaseName* `replace`DatabaseName = ()`none` |  `database` `caching-policies-modification-kind`  | 
-
-
+`.alter``follower` `database` *DatabaseName* `caching-policies-modification-kind` = ( `none`  |  `union`  |  `replace` )
 
 **예제**
 
@@ -199,7 +179,29 @@ ms.locfileid: "82108459"
 .alter follower database MyDB caching-policies-modification-kind = union
 ```
 
+### <a name="alter-follower-database-prefetch-extents"></a>. 변경 종동체 데이터베이스 프리페치-익스텐트
 
+종동체 클러스터는 기본 저장소에서 노드 SSD (캐시)로 인출 되기 전에 새 데이터를 쿼리할 수 없습니다.
+
+다음 명령은 각 스키마를 새로 고칠 때 새 익스텐트를 미리 페치하는 종동체 데이터베이스 구성을 변경 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
+
+> [!WARNING]
+> * 이 설정을 사용 하도록 설정 하면 종동체 데이터베이스의 데이터에 대 한 최신 유효성을 저하 시킬 수 있습니다.
+> * 기본 구성은 이며 기본값을 유지 하는 것이 `false` 좋습니다.
+> * 설정을로 변경 하도록 선택 하는 경우 `true` 구성이 변경 된 후 일정 기간 동안 유효성 검사에 미치는 영향을 면밀 하 게 평가 하는 것이 좋습니다.
+
+**구문**
+
+`.alter``follower` `database` *DatabaseName* `prefetch-extents` = ( `true`  |  `false` )
+
+`.alter``follower` `database` *DatabaseName* [ `from` `h@'` *리더 클러스터의 메타 데이터 컨테이너에 대 한 경로* `'` ] `prefetch-extents` = ( `true`  |  `false` )
+
+**예제**
+
+<!-- csl -->
+```
+.alter follower database MyDB prefetch-extents = false
+```
 
 ## <a name="table-level-commands"></a>테이블 수준 명령
 
@@ -208,11 +210,9 @@ ms.locfileid: "82108459"
 는 종동체 데이터베이스에서 테이블 수준 캐싱 정책을 변경 하 여 리더 클러스터의 원본 데이터베이스에 설정 된 정책을 재정의 합니다.
 [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다. 
 
+**참고**
 
-
-**참고 사항**
-
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
     * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
@@ -220,17 +220,11 @@ ms.locfileid: "82108459"
 
 **구문**
 
+`.alter``follower` `database` *DatabaseName* 테이블 *TableName* `policy` `caching` `hot` `=` *HotDataSpan*
 
-
-
-
-`.alter``follower` `=` *HotDataSpan* *DatabaseName* `caching` *TableName* DatabaseName 테이블 TableName `policy` HotDataSpan `database` `hot`
-
-`.alter``follower` `(` *DatabaseName* `,`DatabaseName tables *TableName1*... `database` `,` *TableNameN* TableNameN`)` *HotDataSpan* HotDataSpan `policy` `caching` `hot` `=`
+`.alter``follower` `database` *DatabaseName* tables `(` *TableName1* `,` TableName1 `,` ... *TableNameN* `)` `policy` `caching` `hot` `=` *HotDataSpan*
 
 **예제**
-
-
 
 ```kusto
 .alter follower database MyDb tables (Table1, Table2) policy caching hot = 7d
@@ -240,9 +234,9 @@ ms.locfileid: "82108459"
 
 종동체 데이터베이스에서 재정의 테이블 수준 캐싱 정책을 삭제 하 여 리더 클러스터의 원본 데이터베이스에 설정 된 정책이 적용 되도록 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다. 
 
-**참고 사항**
+**참고**
 
-* 다음 `.show` 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다.
+* 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
     * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
     * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
@@ -250,9 +244,9 @@ ms.locfileid: "82108459"
 
 **구문**
 
-`.delete``follower` `table` *TableName* *DatabaseName* DatabaseName TableName `database` `policy``caching`
+`.delete``follower` `database` *DatabaseName* `table` *TableName* TableName `policy``caching`
 
-`.delete``follower` `(` *TableName1* *DatabaseName* DatabaseName `tables` ... `database` `,` `,``)` *TableNameN* TableNameN `policy``caching`
+`.delete``follower` `database` *DatabaseName* `tables` `(` *TableName1* `,` TableName1 `,` ... *TableNameN* `)` `policy``caching`
 
 **예제**
 
@@ -266,53 +260,53 @@ ms.locfileid: "82108459"
 
 이 예제에 대한 설명:
 
-* Microsoft의 팔로 `MyFollowerCluster` 워 클러스터는 리더 `MyDatabase` 클러스터에서 다음 데이터베이스 `MyLeaderCluster`입니다.
-    * `MyDatabase``N` 테이블 `MyTable1`:, `MyTable2`, `MyTable3`, ... `MyTableN` (`N` > 3).
+* Microsoft의 팔로 워 클러스터는 `MyFollowerCluster` `MyDatabase` 리더 클러스터에서 다음 데이터베이스 `MyLeaderCluster` 입니다.
+    * `MyDatabase` 에는 `N` `MyTable1` ,, `MyTable2` `MyTable3` , ... `MyTableN` ( `N` > 3) 등의 테이블이 있습니다.
     * `MyLeaderCluster`에서:
     
-    | `MyTable1`캐싱 정책 | `MyTable2`캐싱 정책 | `MyTable3`... `MyTableN` 캐싱 정책   | `MyDatabase`권한 있는 보안 주체                                                    |
+    | `MyTable1` 캐싱 정책 | `MyTable2` 캐싱 정책 | `MyTable3`...`MyTableN` 캐싱 정책   | `MyDatabase` 권한 있는 보안 주체                                                    |
     |---------------------------|---------------------------|------------------------------------------|---------------------------------------------------------------------------------------|
-    | 핫 데이터 범위 =`7d`      | 핫 데이터 범위 =`30d`     | 핫 데이터 범위 =`365d`                   | *Viewers* = 뷰어`aadgroup=scubadivers@contoso.com`; *관리자* = `aaduser=jack@contoso.com` |
+    | 핫 데이터 범위 = `7d`      | 핫 데이터 범위 = `30d`     | 핫 데이터 범위 = `365d`                   | *뷰어*  =  `aadgroup=scubadivers@contoso.com` ; *관리자* = `aaduser=jack@contoso.com` |
      
-    * `MyFollowerCluster` 원하는 작업:
+    * `MyFollowerCluster`원하는 작업:
     
-    | `MyTable1`캐싱 정책 | `MyTable2`캐싱 정책 | `MyTable3`... `MyTableN` 캐싱 정책   | `MyDatabase`권한 있는 보안 주체                                                    |
+    | `MyTable1` 캐싱 정책 | `MyTable2` 캐싱 정책 | `MyTable3`...`MyTableN` 캐싱 정책   | `MyDatabase` 권한 있는 보안 주체                                                    |
     |---------------------------|---------------------------|------------------------------------------|---------------------------------------------------------------------------------------|
-    | 핫 데이터 범위 =`1d`      | 핫 데이터 범위 =`3d`      | 핫 데이터 범위 = `0d` (아무 것도 캐시 되지 않음) | *Admins* = 관리자`aaduser=jack@contoso.com`, *뷰어* = `aaduser=jill@contoso.com`         |
+    | 핫 데이터 범위 = `1d`      | 핫 데이터 범위 = `3d`      | 핫 데이터 범위 = `0d` (아무 것도 캐시 되지 않음) | *관리자*  =  `aaduser=jack@contoso.com` , *뷰어* = `aaduser=jill@contoso.com`         |
 
 > [!IMPORTANT] 
-> 와 `MyFollowerCluster` `MyLeaderCluster` 는 모두 동일한 영역에 있어야 합니다.
+> `MyFollowerCluster`와 `MyLeaderCluster` 는 모두 동일한 영역에 있어야 합니다.
 
 ### <a name="steps-to-execute"></a>실행 단계
 
-*필수 구성 요소:* 클러스터의 `MyFollowerCluster` 데이터베이스 `MyDatabase` 를 따르도록 클러스터를 `MyLeaderCluster`설정 합니다.
+*필수 구성 요소:* 클러스터 `MyFollowerCluster` 의 데이터베이스를 따르도록 클러스터를 설정 `MyDatabase` `MyLeaderCluster` 합니다.
 
 > [!NOTE]
-> 제어 명령을 실행 하는 보안 주체는 데이터베이스 `DatabaseAdmin` `MyDatabase`에 있어야 합니다.
+> 제어 명령을 실행 하는 보안 주체는 `DatabaseAdmin` 데이터베이스에 있어야 합니다 `MyDatabase` .
 
 #### <a name="show-the-current-configuration"></a>현재 구성 표시
 
-다음에 나오는에 따라 `MyDatabase` 현재 구성을 확인 합니다. `MyFollowerCluster`
+다음에 나오는에 따라 현재 구성을 확인 합니다 `MyDatabase` `MyFollowerCluster` .
 
 ```kusto
 .show follower database MyDatabase
 | evaluate narrow() // just for presentation purposes
 ```
 
-| 열                              | Value                                                    |
+| 열                              | 값                                                    |
 |-------------------------------------|----------------------------------------------------------|
 |DatabaseName                         | MyDatabase                                               |
 |LeaderClusterMetadataPath            | `https://storageaccountname.blob.core.windows.net/cluster` |
-|CachingPolicyOverride                | Null                                                     |
+|CachingPolicyOverride                | null                                                     |
 |AuthorizedPrincipalsOverride         | []                                                       |
-|AuthorizedPrincipalsModificationKind | 없음                                                     |
-|IsAutoPrefetchEnabled                | False                                                    |
+|AuthorizedPrincipalsModificationKind | None                                                     |
+|IsAutoPrefetchEnabled                | 거짓                                                    |
 |TableMetadataOverrides               |                                                          |
 |CachingPoliciesModificationKind      | Union                                                    |                                                                                                                      |
 
 #### <a name="override-authorized-principals"></a>권한 있는 보안 주체 재정의
 
-에 대 한 `MyDatabase` 권한이 있는 사용자의 컬렉션 `MyFollowerCluster` 을 하나의 aad 사용자를 데이터베이스 관리자로 포함 하 고 하나의 aad 사용자를 데이터베이스 뷰어로 포함 하는 컬렉션으로 바꿉니다.
+에 대 한 권한이 있는 사용자의 컬렉션을 `MyDatabase` `MyFollowerCluster` 하나의 aad 사용자를 데이터베이스 관리자로 포함 하 고 하나의 aad 사용자를 데이터베이스 뷰어로 포함 하는 컬렉션으로 바꿉니다.
 
 ```kusto
 .add follower database MyDatabase admins ('aaduser=jack@contoso.com')
@@ -322,7 +316,7 @@ ms.locfileid: "82108459"
 .alter follower database MyDatabase principals-modification-kind = replace
 ```
 
-이러한 두 개의 특정 보안 주체에만 액세스할 `MyDatabase` 수 있는 권한이 부여 됩니다.`MyFollowerCluster`
+이러한 두 개의 특정 보안 주체에만 액세스할 수 있는 권한이 부여 됩니다. `MyDatabase``MyFollowerCluster`
 
 ```kusto
 .show database MyDatabase principals
@@ -330,8 +324,8 @@ ms.locfileid: "82108459"
 
 | 역할                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 메모 |
 |----------------------------|---------------|---------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------|-------|
-| 데이터베이스 MyDatabase 관리자  | AAD 사용자      | 잭 Kusto (upn: jack@contoso.com)       | 12345678-abcd-efef-1234-350bf486087b | aaduser = 87654321-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
-| 데이터베이스 MyDatabase 뷰어 | AAD 사용자      | Jill Kusto (upn: jack@contoso.com)       | abcdefab-abcd-efef-1234-350bf486087b | aaduser = 54321789-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
+| 데이터베이스 MyDatabase 관리자  | AAD 사용자      | 잭 Kusto (upn: jack@contoso.com )       | 12345678-abcd-efef-1234-350bf486087b | aaduser = 87654321-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
+| 데이터베이스 MyDatabase 뷰어 | AAD 사용자      | Jill Kusto (upn: jack@contoso.com )       | abcdefab-abcd-efef-1234-350bf486087b | aaduser = 54321789-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
 
 ```kusto
 .show follower database MyDatabase
@@ -346,7 +340,7 @@ ms.locfileid: "82108459"
 
 #### <a name="override-caching-policies"></a>캐싱 정책 재정의
 
-각 테이블에 데이터를 캐시 *하지 않도록* 설정 `MyTable1`하 여에 `MyDatabase` `MyFollowerCluster` 대 한 데이터베이스 및 테이블 수준 캐싱 정책의 컬렉션을 대체 합니다. 즉, 두 개의 특정 `MyTable2` 테이블을 제외 하 고 각각 및 `1d` `3d`의 기간에 대해 데이터를 캐시 합니다.
+각 테이블에 데이터를 캐시 하지 않도록 설정 하 여에 대 한 데이터베이스 및 테이블 수준 캐싱 정책의 컬렉션을 대체 합니다 `MyDatabase` `MyFollowerCluster` . 즉, 두 개의 특정 테이블을 제외 하 *not* `MyTable1` `MyTable2` `1d` 고 각각 및의 기간에 대해 데이터를 캐시 합니다 `3d` .
 
 ```kusto
 .alter follower database MyDatabase policy caching hot = 0d
@@ -358,7 +352,7 @@ ms.locfileid: "82108459"
 .alter follower database MyDatabase caching-policies-modification-kind = replace
 ```
 
-이러한 두 개의 특정 테이블에만 데이터가 캐시 되 고 나머지 테이블에는 다음의 `0d`핫 데이터 기간이 있습니다.
+이러한 두 개의 특정 테이블에만 데이터가 캐시 되 고 나머지 테이블에는 다음의 핫 데이터 기간이 있습니다 `0d` .
 
 ```kusto
 .show tables details
@@ -383,20 +377,20 @@ ms.locfileid: "82108459"
 
 #### <a name="summary"></a>요약
 
-`MyDatabase` 가 뒤에 `MyFollowerCluster`나오는 현재 구성을 참조 하십시오.
+`MyDatabase`가 뒤에 나오는 현재 구성을 참조 하십시오 `MyFollowerCluster` .
 
 ```kusto
 .show follower database MyDatabase
 | evaluate narrow() // just for presentation purposes
 ```
 
-| 열                              | Value                                                                                                                                                                           |
+| 열                              | 값                                                                                                                                                                           |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |DatabaseName                         | MyDatabase                                                                                                                                                                      |
 |LeaderClusterMetadataPath            | `https://storageaccountname.blob.core.windows.net/cluster`                                                                                                                        |
 |CachingPolicyOverride                | {"DataHotSpan": {"Value": "00:00:00"}, "IndexHotSpan": {"Value": "00:00:00"}}                                                                                                        |
 |AuthorizedPrincipalsOverride         | [{"Principal": {"FullyQualifiedName": "aaduser = 87654321-abcd-efef-1234-350bf486087b",...}, {"Principal": {"FullyQualifiedName": "aaduser = 54321789-abcd-efef-1234-350bf486087b",...}] |
-|AuthorizedPrincipalsModificationKind | Replace                                                                                                                                                                         |
-|IsAutoPrefetchEnabled                | False                                                                                                                                                                           |
+|AuthorizedPrincipalsModificationKind | 바꾸기                                                                                                                                                                         |
+|IsAutoPrefetchEnabled                | 거짓                                                                                                                                                                           |
 |TableMetadataOverrides               | {"MyTargetTable": {"CachingPolicyOverride": {"DataHotSpan": {"Value": "3.00:00:00"} ...}, "MySourceTable": {"CachingPolicyOverride": {"DataHotSpan": {"Value": "1.00:00:00"},...}}}       |
-|CachingPoliciesModificationKind      | Replace                                                                                                                                                                         |
+|CachingPoliciesModificationKind      | 바꾸기                                                                                                                                                                         |
