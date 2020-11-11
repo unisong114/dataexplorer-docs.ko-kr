@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: e341a6b9b51b082b16036e368c61fa4c903750da
-ms.sourcegitcommit: 64fdef912cc925c4bdcae98183eb8d7c7a6392d7
+ms.openlocfilehash: dbab2bda9ee24c79e4b62427a7da5bd7db3f0077
+ms.sourcegitcommit: b6f0f112b6ddf402e97c011a902bd70ba408e897
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027808"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94497448"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>데이터베이스 간/클러스터 간 쿼리
 
@@ -183,6 +183,6 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 
 ::: zone pivot="azuremonitor"
 
-데이터베이스 간 및 클러스터 간 쿼리는 Azure Monitor에서 지원 되지 않습니다.
+데이터베이스 간 및 클러스터 간 쿼리는 Azure Monitor에서 지원 되지 않습니다. 여러 작업 영역 및 앱의 쿼리에 대 한 [Azure Monitor의 상호 작업 영역 쿼리](/azure/azure-monitor/log-query/cross-workspace-query) 를 참조 하세요.
 
 ::: zone-end
