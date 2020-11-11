@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
-ms.openlocfilehash: 26412683be35825a38f959de62292f3735e7a894
-ms.sourcegitcommit: e820a59191d2ca4394e233d51df7a0584fa4494d
+ms.openlocfilehash: 2ca15e1970ab785bfd5da8623f3dcc569576f1d9
+ms.sourcegitcommit: 2ee2901cb82e1655b7f0d960d3427da084230731
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94446228"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94520567"
 ---
 # <a name="cluster-follower-commands"></a>클러스터 종동체 명령
 
@@ -35,7 +35,7 @@ ms.locfileid: "94446228"
 
 **출력** 
 
-| 출력 매개 변수                     | Type    | Description                                                                                                        |
+| 출력 매개 변수                     | 유형    | Description                                                                                                        |
 |--------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------|
 | DatabaseName                         | String  | 뒤에 오는 데이터베이스의 이름입니다.                                                                           |
 | LeaderClusterMetadataPath            | String  | 리더 클러스터의 메타 데이터 컨테이너에 대 한 경로입니다.                                                               |
@@ -181,14 +181,14 @@ ms.locfileid: "94446228"
 
 ### <a name="alter-follower-database-prefetch-extents"></a>. 변경 종동체 데이터베이스 프리페치-익스텐트
 
-종동체 클러스터는 기본 저장소에서 노드 SSD (캐시)로 인출 되기 전에 새 데이터를 쿼리할 수 없습니다.
+종동체 클러스터는이 데이터를 쿼리할 수 있도록 하기 전에 기본 저장소에서 노드 SSD (캐시)로 새 데이터를 가져올 때까지 기다릴 수 있습니다.
 
-다음 명령은 각 스키마를 새로 고칠 때 새 익스텐트를 미리 페치하는 종동체 데이터베이스 구성을 변경 합니다. [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
+다음 명령은 각 스키마를 새로 고칠 때 새 익스텐트를 미리 페치하는 종동체 데이터베이스 구성을 변경 합니다. 이 명령에는 [Databaseadmin 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
 > [!WARNING]
-> * 이 설정을 사용 하도록 설정 하면 종동체 데이터베이스의 데이터에 대 한 최신 유효성을 저하 시킬 수 있습니다.
-> * 기본 구성은 이며 기본값을 유지 하는 것이 `false` 좋습니다.
-> * 설정을로 변경 하도록 선택 하는 경우 `true` 구성이 변경 된 후 일정 기간 동안 유효성 검사에 미치는 영향을 면밀 하 게 평가 하는 것이 좋습니다.
+> * 이 설정은 종동체 데이터베이스의 데이터에 대 한 새로 고침을 저하 시킬 수 있습니다.
+> * 기본 구성은 이며 기본값을 사용 하는 것이 `false` 좋습니다.
+> * 설정을로 변경 하도록 선택 하는 경우 `true` 구성이 변경 된 후 일정 기간 동안 유효성 검사에 미치는 영향을 면밀 하 게 평가 합니다.
 
 **구문**
 
@@ -299,7 +299,7 @@ ms.locfileid: "94446228"
 |LeaderClusterMetadataPath            | `https://storageaccountname.blob.core.windows.net/cluster` |
 |CachingPolicyOverride                | null                                                     |
 |AuthorizedPrincipalsOverride         | []                                                       |
-|AuthorizedPrincipalsModificationKind | None                                                     |
+|AuthorizedPrincipalsModificationKind | 없음                                                     |
 |IsAutoPrefetchEnabled                | 거짓                                                    |
 |TableMetadataOverrides               |                                                          |
 |CachingPoliciesModificationKind      | Union                                                    |                                                                                                                      |
@@ -322,7 +322,7 @@ ms.locfileid: "94446228"
 .show database MyDatabase principals
 ```
 
-| 역할                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 메모 |
+| 역할                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 참고 |
 |----------------------------|---------------|---------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------|-------|
 | 데이터베이스 MyDatabase 관리자  | AAD 사용자      | 잭 Kusto (upn: jack@contoso.com )       | 12345678-abcd-efef-1234-350bf486087b | aaduser = 87654321-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
 | 데이터베이스 MyDatabase 뷰어 | AAD 사용자      | Jill Kusto (upn: jack@contoso.com )       | abcdefab-abcd-efef-1234-350bf486087b | aaduser = 54321789-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
