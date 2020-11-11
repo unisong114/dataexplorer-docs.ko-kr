@@ -555,6 +555,8 @@
               href: ./kusto/query/diffpatterns-textplugin.md
             - name: infer_storage_schema 플러그 인
               href: ./kusto/query/inferstorageschemaplugin.md
+            - name: mysql_request plugin
+              href: ./kusto/query/mysqlrequest-plugin.md
             - name: narrow 플러그 인
               href: ./kusto/query/narrowplugin.md
             - name: pivot 플러그 인
@@ -719,6 +721,8 @@
           href: ./kusto/query/arrayindexoffunction.md
         - name: array_length()
           href: ./kusto/query/arraylengthfunction.md
+        - name: array_reverse()
+          href: ./kusto/query/array-reverse-function.md
         - name: array_rotate_left()
           href: ./kusto/query/array_rotate_leftfunction.md
         - name: array_rotate_right()
@@ -1644,6 +1648,14 @@
                   href: ./kusto/management/data-export/show-continuous-failures.md
         - name: 데이터베이스 커서
           href: ./kusto/management/databasecursor.md
+        - name: 플러그 인 명령
+          items:
+            - name: .show 플러그 인
+              href: ./kusto/management/show-plugins.md
+            - name: .enable 플러그 인
+              href: ./kusto/management/enable-plugin.md
+            - name: .disable 플러그 인
+              href: ./kusto/management/disable-plugin.md
         - name: 쿼리 결과 캐시
           href: ./kusto/management/query-results-cache-commands.md
           items:
