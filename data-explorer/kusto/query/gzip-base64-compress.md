@@ -8,12 +8,12 @@ ms.reviewer: elgevork
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/01/2020
-ms.openlocfilehash: b2bed8fab33de57da6286a7ea49b9378669a9d5a
-ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
+ms.openlocfilehash: fffa39ca5fa41c065971b4feebfe60752b84ed59
+ms.sourcegitcommit: 3eabd78305d32cd9b8a6bd1d76877ddc19d8ac63
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94373853"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94548872"
 ---
 # <a name="gzip_compress_to_base64_string"></a>gzip_compress_to_base64_string()
 
@@ -33,15 +33,16 @@ Gzip 압축을 수행 하 고 결과를 b a s e 64로 인코딩합니다.
 * Gzip 압축 및 b a s e `string` 64로 인코딩된 원래 문자열을 나타내는을 반환 합니다. 
 * 압축 또는 인코딩이 실패 한 경우 빈 결과를 반환 합니다.
 
-## <a name="example"></a>예제
+## <a name="example"></a>예
 ```kusto
 print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 ```
 
 **출력:** 
 
-| eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGd0xvZwAzAG5JZA = = |
+| H4sIAAAAAAAA/wEUAOv/MTIzNDU2Nzg5MHF3ZXJ0eXVpb3A6m7f2FAAAAA = = |
 
 ## <a name="next-steps"></a>다음 단계
 
-[Gzip_decompress_from_base64_string ()](gzip-base64-decompress.md) 를 사용 하 여 원래 압축 되지 않은 문자열을 검색 합니다.
+* [Gzip_decompress_from_base64_string ()](gzip-base64-decompress.md) 를 사용 하 여 원래 압축 되지 않은 문자열을 검색 합니다.
+* 참고 항목 [zlib_compress_to_base64_string ()](zlib-base64-compress.md)
