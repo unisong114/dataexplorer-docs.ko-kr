@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 442185ed0afd977c103d0b571472c0f5e742908c
-ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
+ms.openlocfilehash: 47a18e8b8a2ec34207acacfd508114955f28953f
+ms.sourcegitcommit: 88f8ad67711a4f614d65d745af699d013d01af32
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349480"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94639008"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하는 방법에 대 한 모범 사례
 
@@ -91,6 +91,7 @@ M 쿼리에서 다음 옵션 중 하나를 사용할 수 있습니다.
 | NoTruncate | `[NoTruncate=true]` | `notruncation`쿼리에 set 문을 추가 합니다. 호출자에 게 반환 되는 쿼리 결과를 무시 하도록 설정 합니다.
 | AdditionalSetStatements | `[AdditionalSetStatements="set query_datascope=hotcache"]` | 제공 된 set 문을 쿼리에 추가 합니다. 이러한 문은 쿼리 기간에 대 한 쿼리 옵션을 설정 하는 데 사용 됩니다. 쿼리 옵션은 쿼리가 실행되고 결과가 반환되는 방법을 제어합니다.
 | 구분 | `[CaseInsensitive=true]` | 커넥터에서 대/소문자를 구분 하지 않는 쿼리를 생성 하도록 합니다 `=~` . 쿼리는 값을 비교할 때 연산자 대신 연산자를 사용 `==` 합니다.
+| ForceUseContains | `[ForceUseContains=true]` | `contains`텍스트 필드를 사용할 때 기본 대신를 사용 하는 쿼리를 커넥터에서 생성 하도록 합니다 `has` . 는 `has` 훨씬 더 유용 하지만 부분 문자열은 처리 하지 않습니다. 두 연산자의 차이에 대 한 자세한 내용은 [문자열 연산자](./kusto/query/datatypes-string-operators.md)를 참조 하세요.
 | 제한 시간 | `[Timeout=#duration(0,10,0,0)]` | 쿼리의 클라이언트 및 서버 시간 제한을 모두 제공 된 기간으로 구성 합니다.
 
 > [!NOTE]
