@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: 4ef7e15e3009b3ccd098136d9c5013dbe31813b7
-ms.sourcegitcommit: f71801764fdccb061f3cf1e3cfe43ec1557e4e0f
+ms.openlocfilehash: bf6dced9b0df0b90b0b1ff87389c9dab31ebe7c0
+ms.sourcegitcommit: f7bebd245081a5cdc08e88fa4f9a769c18e13e5d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93293138"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94644640"
 ---
 # <a name="what-is-one-click-ingestion"></a>원클릭 수집이란?
 
@@ -40,7 +40,7 @@ ms.locfileid: "93293138"
 
 원클릭 수집 마법사는 원클릭 수집 프로세스를 안내합니다.
 
-* 클러스터의 **Azure Data Explorer 시작** 홈 화면에서 원클릭 수집 마법사에 액세스하려면 처음 두 단계( [클러스터 만들기 및 데이터베이스 만들기](#prerequisites))를 완료한 다음, **새 데이터 수집** 을 선택합니다.
+* 클러스터의 **Azure Data Explorer 시작** 홈 화면에서 원클릭 수집 마법사에 액세스하려면 처음 두 단계([클러스터 만들기 및 데이터베이스 만들기](#prerequisites))를 완료한 다음, **새 데이터 수집** 을 선택합니다.
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Azure Data Explorer 시작에서 새 데이터 수집":::
 
@@ -120,6 +120,7 @@ ms.locfileid: "93293138"
 ### <a name="initial-data-exploration"></a>초기 데이터 탐색
    
 수집 후에는 마법사에서 데이터의 초기 탐색을 위한 **[빠른 명령](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** 옵션을 제공합니다.
+
 
 ## <a name="next-steps"></a>다음 단계
 

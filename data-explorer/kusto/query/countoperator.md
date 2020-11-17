@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/16/2020
-ms.openlocfilehash: bf595e27d7b4881dca7b5e2a370c90a8407a8c78
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 14895e17d77e3bbf1d98d2d68221930d3f291774
+ms.sourcegitcommit: f7bebd245081a5cdc08e88fa4f9a769c18e13e5d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92252586"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94644623"
 ---
 # <a name="count-operator"></a>count 연산자
 
@@ -29,7 +29,7 @@ ms.locfileid: "92252586"
 
 ## <a name="returns"></a>반환
 
-이 함수는 형식 `long`의 단일 레코드 및 열을 가진 테이블을 반환합니다. 유일한 셀의 값은 *T*의 레코드 수입니다. 
+이 함수는 형식 `long`의 단일 레코드 및 열을 가진 테이블을 반환합니다. 유일한 셀의 값은 *T* 의 레코드 수입니다. 
 
 ## <a name="example"></a>예제
 
@@ -37,3 +37,7 @@ ms.locfileid: "92252586"
 ```kusto
 StormEvents | count
 ```
+
+## <a name="see-also"></a>참고 항목
+
+Count () 집계 함수에 대 한 자세한 내용은 [count () (집계 함수)](count-aggfunction.md)를 참조 하세요.

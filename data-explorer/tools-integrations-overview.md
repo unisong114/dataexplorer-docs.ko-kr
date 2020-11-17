@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 71f00cf921609432860a94061be7411e484fd0c9
-ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
+ms.openlocfilehash: 2bce9020161e6b26a0df07b306259589c43b62f3
+ms.sourcegitcommit: f7bebd245081a5cdc08e88fa4f9a769c18e13e5d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349327"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94644657"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -56,6 +56,13 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
     * 추가 항목으로는 [옵션](kusto/tools/kusto-explorer-options.md), [문제 해결](kusto/tools/kusto-explorer-troubleshooting.md), [바로 가기 키](kusto/tools/kusto-explorer-shortcuts.md), [코드 리팩터링](kusto/tools/kusto-explorer-refactor.md), [코드 탐색](kusto/tools/kusto-explorer-codenav.md), 코드 [분석](kusto/tools/kusto-explorer-code-analyzer.md) 등이 있습니다.
 * [웹 UI](web-query-data.md)
 * [Kusto.Cli](kusto/tools/kusto-cli.md)
+
+### <a name="query-open-source-repositories"></a>오픈 소스 리포지토리 쿼리
+
+다음 오픈 소스 리포지토리에는 Kusto Query Lanuguage (KQL) 파서 및 편집기에 대 한 소스 코드가 포함 되어 있습니다.
+
+* [Kusto 쿼리 언어 파서](https://github.com/microsoft/Kusto-Query-Language) -Kusto 쿼리 언어 파서 및 의미 체계 트리에 대 한 .net core 리포지토리입니다.
+* [모나코 편집기 용 Kusto 쿼리 언어 플러그 인](https://github.com/Azure/monaco-kusto) -웹 및 전자 기반 응용 프로그램에 포함 될 수 있는 Kusto 쿼리 언어 편집기입니다. 
 
 ### <a name="query-integrations"></a>통합 쿼리
 
