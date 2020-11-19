@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: 9c066b47e69fd36052ae6e6e8d7599ebc17b3ff7
-ms.sourcegitcommit: f71801764fdccb061f3cf1e3cfe43ec1557e4e0f
+ms.openlocfilehash: 25c0bb4071c74c299ab69432ffc18ad50408be46
+ms.sourcegitcommit: f7bebd245081a5cdc08e88fa4f9a769c18e13e5d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93293235"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94644724"
 ---
 # <a name="use-one-click-ingestion-to-ingest-csv-data-from-a-container-to-a-new-table-in-azure-data-explorer"></a>Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집
 
@@ -47,19 +47,55 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 **수집 형식** 에서 다음 단계를 수행합니다.
    
   1. **컨테이너에서** 를 선택합니다. 
-  1. **스토리지에 연결** 필드에서 컨테이너의 [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)을 추가하고 필요한 대로 샘플 크기를 입력합니다.
+  1. **스토리지에 연결** 필드에서 컨테이너의 [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)을 추가하고 필요한 대로 샘플 크기를 입력합니다. 이 컨테이너 내의 폴더에서 수집하려면 [컨테이너의 폴더에서 수집](#ingest-from-folder-in-a-container)을 참조하세요.
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="컨테이너에서 원클릭 수집":::
 
      > [!TIP] 
      > **파일에서** 수집하려면 [Azure Data Explorer에서 원클릭 수집을 사용하여 로컬 파일의 JSON 데이터를 기존 테이블에 수집](one-click-ingestion-existing-table.md#select-an-ingestion-type)을 참조하세요.
 
+### <a name="ingest-from-folder-in-a-container"></a>컨테이너의 폴더에서 수집
+
+컨테이너 내의 특정 폴더에서 수집하려면 다음 형식의 문자열을 생성합니다.
+
+*container_path*`/`*folder_path*`;`*access_key_1*
+
+[수집 유형 선택](#select-an-ingestion-type)에서 SAS URL 대신 이 문자열을 사용합니다.
+
+1. 스토리지 계정으로 이동하여 **Storage Explorer > Blob 컨테이너 선택** 을 선택합니다.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/blob-containers.png" alt-text="Azure Storage 계정의 액세스 Blob 컨테이너 스크린샷":::
+
+1. 선택한 폴더로 이동하여 **URL 복사** 를 선택합니다. 이 값을 임시 파일에 붙여넣고 이 문자열의 끝에 `;`을 추가합니다.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/copy-url.png" alt-text="Blob 컨테이너의 폴더에 있는 URL 복사의 스크린샷 - Azure Storage 계정":::
+
+1. **설정** 의 왼쪽 메뉴에서 **액세스 키** 를 선택합니다.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/copy-key-1.png" alt-text="액세스 키 스토리지 계정 복사 키 문자열의 스크린샷":::
+
+1. **키 1** 에서 **키** 문자열을 복사합니다. 2단계에서 문자열의 끝에 이 값을 붙여넣습니다. 
+
+### <a name="storage-subscription-error"></a>스토리지 구독 오류
+
+스토리지 계정에서 수집할 때 다음과 같은 오류 메시지가 표시되는 경우:
+
+> 선택한 구독에서 스토리지를 찾을 수 없습니다. 포털에서 선택한 구독에 스토리지 계정 *`storage_account_name`* 구독을 추가하세요.
+
+1. 오른쪽 메뉴 트레이에서 :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false"::: 아이콘을 선택합니다. **디렉터리 + 구독** 창이 열립니다.
+
+1. **모든 구독** 드롭다운에서 스토리지 계정의 구독을 선택한 목록에 추가합니다. 
+
+    :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="구독 드롭다운이 빨간색 상자로 강조 표시된 디렉터리 + 구독 창의 스크린샷":::
+
+## <a name="sample-data"></a>예제 데이터
+
 데이터 샘플이 표시됩니다. 원하는 경우 특정 문자로 시작하거나 끝나는 파일만 수집하도록 데이터를 필터링합니다. 필터를 조정하면 미리 보기가 자동으로 업데이트됩니다.
 
 예를 들어 *.csv* 확장자로 시작하는 모든 파일을 필터링합니다.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="원클릭 수집 필터":::
-  
+
 ## <a name="edit-the-schema"></a>스키마 편집
 
 **스키마 편집** 을 선택하여 테이블 열 구성을 살펴보고 편집합니다. 시스템에서 BLOB 중 하나를 임의로 선택합니다. 그러면 해당 BLOB에 따라 스키마가 생성됩니다. 원본 이름을 살펴보면 원본의 압축 여부를 서비스가 자동으로 식별합니다.
