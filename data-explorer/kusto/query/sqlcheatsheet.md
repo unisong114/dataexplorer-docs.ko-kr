@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
-ms.openlocfilehash: 216d8c0eeacf6733eb1f7d4b4880bbad1d408e02
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: af8991e20988dd63a6aac37efe92ca13c7996c84
+ms.sourcegitcommit: 0820454feb02ae489f3a86b688690422ae29d788
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92247092"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94932687"
 ---
 # <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
@@ -37,7 +37,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 다음 표에서는 SQL의 예제 쿼리와 그에 해당 하는 KQL를 보여 줍니다.
 
-|범주 |SQL 쿼리 |Kusto 쿼리
+|Category |SQL 쿼리 |Kusto 쿼리
 |---|---|---
 테이블에서 데이터 선택 |<code>SELECT * FROM dependencies</code> | <code>dependencies</code>
 --|<code>SELECT name, resultCode FROM dependencies</code> |<code>dependencies &#124; project name, resultCode</code>
@@ -51,7 +51,7 @@ Null 평가 |<code>SELECT * FROM dependencies<br>WHERE resultCode IS NOT NULL</c
 비교 (부울) |<code>SELECT * FROM dependencies<br>WHERE !(success)</code> |<code>dependencies<br>&#124; where success == "False"</code>
 Distinct |<code>SELECT DISTINCT name, type  FROM dependencies</code> |<code>dependencies<br>&#124; summarize by name, type</code>
 그룹화, 집계 |<code>SELECT name, AVG(duration) FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize avg(duration) by name</code>
-열 별칭, 확장 |<code>SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize AvgD = avg(duration) by operationName<br>&#124; project Name = operationName, AvgD</code>
+열 별칭, 확장 |<code>SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize AvgD = avg(duration) by Name=operationName</code>
 순서 지정 |<code>SELECT name, timestamp FROM dependencies<br>ORDER BY timestamp ASC</code> |<code>dependencies<br>&#124; project name, timestamp<br>&#124; order by timestamp asc nulls last</code>
 측정값 별 상위 n |<code>SELECT TOP 100 name, COUNT(*) as Count FROM dependencies<br>GROUP BY name<br>ORDER BY Count DESC</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; top 100 by Count desc</code>
 Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</code> |<code>union dependencies, exceptions</code>

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/08/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: c3a099dbe431087fd6b79d78ad2b8ec10d5a5a37
-ms.sourcegitcommit: b6f0f112b6ddf402e97c011a902bd70ba408e897
+ms.openlocfilehash: c87979b788c83a819f9e65658b5e44e40e53ad1d
+ms.sourcegitcommit: 0820454feb02ae489f3a86b688690422ae29d788
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497787"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94932738"
 ---
 # <a name="tutorial"></a>자습서
 
@@ -499,7 +499,7 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 
 Kusto 쿼리 언어를 배우는 가장 좋은 방법은 몇 가지 간단한 쿼리를 확인 하 여 언어에 대 한 "느낌"을 얻는 것입니다. 이러한 쿼리는 Azure 데이터 탐색기 자습서에서 사용 되는 쿼리와 비슷하지만 Log Analytics 작업 영역에서 공통 테이블의 데이터를 사용 합니다. 
 
-Azure Monitor의 로그 데이터를 사용 하 여 로그 쿼리를 작성 하 고 결과를 평가 하는 Azure Portal 도구인 Log Analytics를 사용 하 여 이러한 쿼리를 실행 합니다. Log Analytics에 익숙하지 않은 경우 [Log Analytics 자습서](/azure/azure-monitor/log-query/log-analytics-tutorial.md)에서 자습서를 진행할 수 있습니다.
+Azure Monitor의 로그 데이터를 사용 하 여 로그 쿼리를 작성 하 고 결과를 평가 하는 Azure Portal 도구인 Log Analytics를 사용 하 여 이러한 쿼리를 실행 합니다. Log Analytics에 익숙하지 않은 경우 [Log Analytics 자습서](/azure/azure-monitor/log-query/log-analytics-tutorial)에서 자습서를 진행할 수 있습니다.
 
 모든 쿼리는 [Log Analytics 데모 환경을](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)사용 합니다. 사용자 고유의 환경을 사용할 수 있지만 여기에 사용 된 테이블이 없을 수 있습니다. 데모 환경의 데이터가 정적이 아니기 때문에 쿼리 결과는 여기에 표시 된 결과와 약간 다를 수 있습니다.
 
