@@ -1851,6 +1851,9 @@
           href: kusto/functions-library/series-moving-avg-fl.md
         - name: series_rolling_fl()
           href: kusto/functions-library/series-rolling-fl.md
+    - name: Azure Policy 기본 제공 기능
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 리소스
   items:
     - name: 블로그
