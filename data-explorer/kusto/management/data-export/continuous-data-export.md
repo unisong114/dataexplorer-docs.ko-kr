@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/03/2020
-ms.openlocfilehash: 7f9465df4847a24a4877c8b1cb637ba1d7542db3
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: be16f33c649640ef92ed971665d4c7610c5501bf
+ms.sourcegitcommit: c815c6ccf33864e21e1d3daff26a4f077dff88f7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342538"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012192"
 ---
 # <a name="continuous-data-export-overview"></a>연속 데이터 내보내기 개요
 
@@ -38,9 +38,9 @@ ms.locfileid: "92342538"
   * `single`(또는 `distributed` = `false` )를 사용 하 여 배포를 모두 사용 하지 않도록 설정 합니다. 이렇게 설정 하면 연속 내보내기 프로세스가 느려지고 각 연속 내보내기 반복에서 생성 되는 파일의 수에 영향을 줄 수 있습니다. 
 * **파일 수**:
   * 각 연속 내보내기 반복에서 내보낸 파일 수는 외부 테이블이 분할 되는 방식에 따라 달라 집니다. 자세한 내용은 [외부 테이블로 내보내기 명령을](export-data-to-an-external-table.md#number-of-files)참조 하세요. 각 연속 내보내기 반복은 항상 새 파일에 쓰고 기존 파일에 추가 하지 않습니다. 결과적으로, 내보낸 파일의 수도 연속 내보내기가 실행 되는 빈도에 따라 달라 집니다. Frequency 매개 변수는 `intervalBetweenRuns` 입니다.
-* **위치**:
+* **외부 테이블 저장소 계정**:
   * 최상의 성능을 위해 Azure 데이터 탐색기 클러스터와 저장소 계정은 동일한 Azure 지역에서 공동 배치 되어야 합니다.
-  * 내보낸 데이터 볼륨이 크면 저장소 제한을 방지 하기 위해 외부 테이블에 대해 여러 저장소 계정을 구성 하는 것이 좋습니다. [저장소로 데이터 내보내기를](export-data-to-storage.md#known-issues)참조 하세요.
+  * 내보낸 데이터 볼륨이 크면 저장소 제한을 방지 하기 위해 외부 테이블에 대해 여러 저장소 계정을 구성 하는 것이 좋습니다. 자세한 내용은 [내보내기 명령 중 저장소 오류](export-data-to-storage.md#failures-during-export-commands) 를 참조 하세요.
 
 ## <a name="exactly-once-export"></a>정확히 한 번 내보내기
 
@@ -48,7 +48,7 @@ ms.locfileid: "92342538"
 
 "정확히 한 번" 내보내기는 [내보낸 아티팩트 표시 명령](show-continuous-artifacts.md)에 보고 된 파일에 대해서만 보장 됩니다. 연속 내보내기는 각 레코드가 외부 테이블에 한 번만 기록 되는 것을 보장 하지 않습니다. 내보내기가 시작 되 고 일부 아티팩트가 이미 외부 테이블에 기록 된 후에 오류가 발생 하면 외부 테이블에 중복 항목이 포함 될 수 있습니다. 쓰기 작업이 완료 되기 전에 중단 된 경우에는 외부 테이블에 손상 된 파일이 있을 수 있습니다. 이러한 경우 아티팩트는 외부 테이블에서 삭제 되지 않지만 [내보낸 아티팩트 표시 명령](show-continuous-artifacts.md)에는 보고 되지 않습니다. 을 사용 하 여 내보낸 파일을 사용 하면 `show exported artifacts command` 중복이 보장 되지 않으며 손상 되지 않습니다.
 
-## <a name="export-to-fact-and-dimension-tables"></a>팩트 및 차원 테이블로 내보내기
+## <a name="export-from-fact-and-dimension-tables"></a>팩트 및 차원 테이블에서 내보내기
 
 기본적으로 내보내기 쿼리에서 참조 되는 모든 테이블은 [팩트 테이블로](../../concepts/fact-and-dimension-tables.md)간주 됩니다. 따라서 데이터베이스 커서로 범위가 한정 됩니다. 구문은 범위가 지정 된 테이블 (팩트) 및 범위가 지정 되지 않은 테이블 (차원)을 명시적으로 선언 합니다. 자세한 내용은 `over` [create 명령의](create-alter-continuous.md) 매개 변수를 참조 하세요.
 

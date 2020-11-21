@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: b470d017937ed6f2687016ab8a7cf53fed7b51ab
-ms.sourcegitcommit: 993bc7b69096ab5516d3c650b9df97a1f419457b
+ms.openlocfilehash: bd7482abb9c13130d863e9abb73819d9409109ea
+ms.sourcegitcommit: c815c6ccf33864e21e1d3daff26a4f077dff88f7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614480"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012172"
 ---
 # <a name="export-data-to-storage"></a>저장소로 데이터 내보내기
 
@@ -41,7 +41,7 @@ ms.locfileid: "89614480"
 
 * *PropertyName* / *PropertyValue*: 0 개 이상의 선택적 내보내기 속성:
 
-|속성        |Type    |Description                                                                                                                |
+|속성        |형식    |Description                                                                                                                |
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
 |`sizeLimit`     |`long`  |기록 되는 단일 저장소 아티팩트의 크기 제한 (바이트)입니다 (압축 이전). 허용 되는 범위는 100MB (기본값)에서 1GB 까지입니다.|
 |`includeHeaders`|`string`|`csv` / `tsv` 출력의 경우는 열 머리글의 생성을 제어 합니다. 는 `none` (기본값, 내보낼 헤더 없음) 중 하나 ( `all` 모든 저장소 아티팩트에 헤더 줄 내보내기) 또는 `firstFile` (헤더 줄을 첫 번째 저장소 아티팩트로만 내보내기) 중 하나를 사용할 수 있습니다.|
@@ -98,10 +98,36 @@ ms.locfileid: "89614480"
   <| myLogs | where id == "moshe" | limit 10000
 ```
 
-#### <a name="known-issues"></a>알려진 문제
+## <a name="failures-during-export-commands"></a>내보내기 명령 중에 발생 하는 오류
 
-**내보내기 명령 중에 발생 한 오류**
+내보내기 명령은 실행 중에 transiently 실패할 수 있습니다. [연속 내보내기](continuous-data-export.md) 에서 자동으로 명령을 다시 시도 합니다. 일반 내보내기 명령 ([저장소로 내보내기](export-data-to-storage.md), [외부 테이블로 내보내기](export-data-to-an-external-table.md))은 재시도를 수행 하지 않습니다.
 
-* Export 명령은 실행 중에 transiently 실패할 수 있습니다. 내보내기 명령이 실패 하면 이미 저장소에 기록 된 아티팩트가 삭제 되지 않습니다. 이러한 아티팩트는 저장소에 유지 됩니다. 명령이 실패 하면 일부 아티팩트가 작성 된 경우에도 내보내기가 불완전 한 것으로 가정 합니다. 성공적으로 완료 될 때 내보낸 아티팩트와 명령의 완료를 모두 추적 하는 가장 좋은 방법은 [. show operations](../operations.md#show-operations) 및 [. show operation details](../operations.md#show-operation-details) 명령을 사용 하는 것입니다.
+*  내보내기 명령이 실패 하면 이미 저장소에 기록 된 아티팩트가 삭제 되지 않습니다. 이러한 아티팩트는 저장소에 유지 됩니다. 명령이 실패 하면 일부 아티팩트가 작성 된 경우에도 내보내기가 불완전 한 것으로 가정 합니다. 
+* 성공적으로 완료 될 때 내보낸 아티팩트와 명령의 완료를 모두 추적 하는 가장 좋은 방법은 [. show operations](../operations.md#show-operations) 및 [. show operation details](../operations.md#show-operation-details) 명령을 사용 하는 것입니다.
 
-* 기본적으로 내보내기 명령은 데이터를 포함 하는 모든 [익스텐트가](../extents-overview.md) 저장소에 동시에 쓰기를 내보내는 것으로 배포 됩니다. 대규모 내보내기에서 이러한 익스텐트 수가 높으면 저장소 제한 또는 일시적인 저장소 오류를 초래 하는 저장소의 부하가 높을 수 있습니다. 이러한 경우 내보내기 명령에 제공 된 저장소 계정의 수를 늘리거나 (부하를 계정 간에 분산 함) 배포 힌트를로 설정 하 여 동시성을 줄이려는 것이 좋습니다 `per_node` (명령 속성 참조). 배포를 완전히 사용 하지 않도록 설정 하는 것도 가능 하지만이는 명령 성능에 크게 영향을 줄 수 있습니다.
+### <a name="storage-failures"></a>저장소 오류
+
+기본적으로 내보내기 명령은 저장소에 대 한 동시 쓰기를 많이 가질 수 있도록 분산 됩니다. 배포 수준은 내보내기 명령 유형에 따라 달라 집니다.
+* 일반 명령의 기본 분포는 이며 `.export` `per_shard` 저장소에 동시에 쓰기를 내보내는 데이터를 포함 하는 모든 [익스텐트](../extents-overview.md) 를 의미 합니다. 
+* [외부 테이블 명령으로 내보내기](export-data-to-an-external-table.md) 의 기본 분포는 이며 `per_node` , 동시성은 클러스터의 노드 수를 의미 합니다.
+
+익스텐트/노드의 수가 클 경우 저장소 제한을 유발 하는 저장소 또는 일시적인 저장소 오류가 발생할 수 있습니다. 다음 제안에서는 이러한 오류를 우선 순위에 따라 해결할 수 있습니다.
+
+* 내보내기 명령 또는 [외부 테이블 정의](../external-tables-azurestorage-azuredatalake.md) 에 제공 된 저장소 계정의 수를 늘립니다 (부하가 계정 간에 균등 하 게 분산 됨).
+* 배포 힌트를로 설정 하 여 동시성을 줄입니다 `per_node` (명령 속성 참조).
+* [클라이언트 요청 속성](../../api/netfx/request-properties.md) 을 `query_fanout_nodes_percent` 원하는 concurrency (노드의 백분율)로 설정 하 여 내보내는 노드 수의 동시성을 줄입니다. 속성은 내보내기 쿼리의 일부로 설정할 수 있습니다. 예를 들어 다음 명령은 저장소에 기록 되는 노드 수를 클러스터 노드의 50%에 동시에 제한 합니다.
+
+    ```kusto
+    .export async  to csv
+        ( h@"https://storage1.blob.core.windows.net/containerName;secretKey" ) 
+        with
+        (
+            distribuion="per_node"
+        ) 
+        <| 
+        set query_fanout_nodes_percent = 50;
+        ExportQuery
+    ```
+
+* 분할 된 외부 테이블로 내보내는 경우 속성을 설정 하면 `spread` / `concurrency` 동시성이 줄어들 수 있습니다 ( [명령 속성](export-data-to-an-external-table.md#syntax)의 세부 정보 참조).
+* 위의 작업을 수행 하는 경우에도 속성을 false로 설정 하 여 배포를 완전히 해제할 수 `distributed` 있지만 명령 성능에 상당한 영향을 줄 수 있으므로이 방법은 사용 하지 않는 것이 좋습니다.
