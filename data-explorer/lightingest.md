@@ -7,19 +7,19 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/28/2020
-ms.openlocfilehash: f72d2b7f2036c7c63bfc5a37e2ab944acc60bbf8
-ms.sourcegitcommit: 2ee2901cb82e1655b7f0d960d3427da084230731
+ms.openlocfilehash: 7f218abffbdbe9cfc4949a87b61f08e92d915bde
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94520584"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324604"
 ---
 # <a name="use-lightingest-to-ingest-data-to-azure-data-explorer"></a>LightIngest를 사용 하 여 Azure 데이터 탐색기에 데이터 수집
  
 LightIngest는 Azure 데이터 탐색기에 대 한 임시 데이터 수집을 위한 명령줄 유틸리티입니다. 유틸리티는 로컬 폴더 또는 Azure blob 저장소 컨테이너에서 원본 데이터를 끌어올 수 있습니다.
 LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 데이터를 수집 하려는 경우에 가장 유용 합니다. 이는 나중에 생성 된 시간에 따라 레코드를 쿼리 하 고 수집 시간이 아닌 경우에도 유용 합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * LightIngest- [Microsoft Azure .Kusto. Tools NuGet 패키지](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 의 일부로 다운로드 합니다.
 
@@ -75,8 +75,8 @@ LightIngest는 수집 기간에 시간 제한이 없기 때문에 많은 양의 
 |-테이블                  |문자열  |대상 Azure 데이터 탐색기 테이블 이름 | 필수 |
 |-sourcePath,-source      |문자열  |Blob 컨테이너의 원본 파일 또는 루트 URI에 대 한 경로입니다. 데이터가 blob에 있는 경우에는 저장소 계정 키 또는 SAS를 포함 해야 합니다. 큰따옴표로 묶는 것이 좋습니다. |필수 |
 |-접두사                  |문자열  |수집할 원본 데이터가 blob 저장소에 있는 경우이 URL 접두사는 컨테이너 이름을 제외 하 고 모든 blob에서 공유 됩니다. <br>예를 들어 데이터가에 있으면 `MyContainer/Dir1/Dir2` 접두사는 여야 합니다 `Dir1/Dir2` . 큰따옴표로 묶기를 권장 합니다. | 선택 사항  |
-|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 예들 들어 `"*.csv"`입니다. 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
-|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 예들 들어 `"*.csv"`입니다. 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-패턴        |문자열  |원본 파일/b s i d를 선택 하는 패턴입니다. 와일드 카드를 지원 합니다. 예: `"*.csv"`. 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
+|-zipPattern     |문자열  |수집할 ZIP 보관 파일에서 파일을 선택할 때 사용할 정규식입니다.<br>보관 파일의 다른 모든 파일은 무시됩니다. 예: `"*.csv"`. 큰따옴표로 묶는 것이 좋습니다. | 선택 사항  |
 |-format,-f           |문자열  | 원본 데이터 형식입니다. [지원 되는 형식](ingestion-supported-formats.md) 중 하나 여야 합니다. | 선택 사항  |
 |-ingestionMappingPath, -mappingPath |문자열  |수집 열 매핑의 로컬 파일 경로입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
 |-ingestionMappingRef, -mappingRef  |문자열  |테이블에 대해 이전에 만든 수집 열 매핑의 이름입니다. Json 및 Avro 형식의 필수 항목입니다. [데이터 매핑](kusto/management/mappings.md) 참조 | 선택 사항  |
@@ -103,40 +103,6 @@ Azure blob과 함께 사용 하는 경우 LightIngest는 특정 blob 메타 데�
 |`kustoCreationTime`, `kustoCreationTimeUtc`  | UTC 타임 스탬프로 해석 됩니다. 설정 하는 경우 Kusto에서 만든 시간을 재정의 하는 데 사용 됩니다. 백필 시나리오에 유용 |
 
 ## <a name="usage-examples"></a>사용 예
-
-<!-- Waiting for Tzvia or Vladik to rewrite the instructions for this example before publishing it
-
-### Ingesting a specific number of blobs in JSON format
-
-* Ingest two blobs under a specified storage account {Account}, in `JSON` format matching the pattern `.json`
-* Destination is the database {Database}, the table `SampleData`
-* Indicate that your data is compressed with the approximate ratio of 10.0
-* LightIngest won't wait for the ingestion to be completed
-
-To use the LightIngest command below:
-1. Create a table command and enter the table name into the LightIngest command, replacing `SampleData`.
-1. Create a mapping command and enter the IngestionMappingRef command, replacing `SampleData_mapping`.
-1. Copy your cluster name and enter it into the LightIngest command, replacing `{ClusterandRegion}`.
-1. Enter the database name into the LightIngest command, replacing `{Database name}`.
-1. Replace `{Account}` with your account name and replace `{ROOT_CONTAINER}?{SAS token}` with the appropriate information.
-
-    ```
-    LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"  
-        -db:{Database name} 
-        -table:SampleData 
-        -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}" 
-        -IngestionMappingRef:SampleData_mapping 
-        -pattern:"*.json" 
-        -format:JSON 
-        -limit:2 
-        -cr:10.0 
-        -dontWait:true
-    ```
-     
-1. In Azure Data Explorer, open query count.
-
-    ![Ingestion result in Azure Data Explorer](media/lightingest/lightingest-show-failure-count.png)
--->
 
 ### <a name="how-to-ingest-data-using-creationtime"></a>CreationTime를 사용 하 여 데이터를 수집 하는 방법
 

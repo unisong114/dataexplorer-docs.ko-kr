@@ -10,17 +10,17 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: c493431fcfa22ad0419659a5b6e036205f3bf299
-ms.sourcegitcommit: 194453a8eb11c3ccb54c473e887c84cb8e91b939
+ms.openlocfilehash: ac8852adb5138bffe10a4726470b1c53d74cec1b
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87473975"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324383"
 ---
 # <a name="null-values"></a>Null 값
 
 Kusto의 모든 스칼라 데이터 형식은 누락 된 값을 나타내는 특수 한 값을 가집니다.
-이 값을 **null 값**또는 단순히 **null**값 이라고 합니다.
+이 값을 **null 값** 또는 단순히 **null** 값 이라고 합니다.
 
 ## <a name="null-literals"></a>Null 리터럴
 
@@ -68,6 +68,12 @@ Null 값은 자신을 포함 하 여 데이터 형식의 다른 값과 같지 �
 
 * 위의 쿼리를 Kusto. 탐색기에서 실행 하면 모든 값이 `true` 로 표시 되 `1` 고 모든 `false` 값이로 표시 됩니다 `0` .
 
+* Kusto는 테이블의 열에 null 값이 포함 되지 않도록 제한 하는 방법을 제공 하지 않습니다. 즉, SQL의 제약 조건에 해당 하는 것은 없습니다 `NOT NULL` .
+
 ::: zone-end
 
+::: zone pivot="azuremonitor"
+
 * Kusto는 테이블의 열에 null 값이 포함 되지 않도록 제한 하는 방법을 제공 하지 않습니다. 즉, SQL의 제약 조건에 해당 하는 것은 없습니다 `NOT NULL` .
+
+::: zone-end

@@ -8,12 +8,12 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2bce9020161e6b26a0df07b306259589c43b62f3
-ms.sourcegitcommit: f7bebd245081a5cdc08e88fa4f9a769c18e13e5d
+ms.openlocfilehash: f996c3e6abbd145e963765f8aa1457f7ddddeb7e
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94644657"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324774"
 ---
 # <a name="azure-data-explorer-tools-and-integrations-overview"></a>Azure 데이터 탐색기 도구 및 통합 개요
 
@@ -100,4 +100,3 @@ Azure 데이터 탐색기에서 쿼리를 실행 하는 데 사용할 수 있는
 * [Azure Pipelines](devops.md) 
 * [Kusto 동기화](kusto/tools/synckusto.md) 
 
-<!--Open Source Tools-->

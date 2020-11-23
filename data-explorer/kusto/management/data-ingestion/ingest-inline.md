@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 35098d2605a637832fd513da62a956382183a47c
-ms.sourcegitcommit: 41cd88acc1fd79f320a8fe8012583d4c8522db78
+ms.openlocfilehash: 27b3052bf86d20b31b86f4f8540b5aa37a415fa0
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84294545"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324587"
 ---
 # <a name="ingest-inline-command-push"></a>. 인라인 명령 수집 (push)
 
@@ -45,7 +45,7 @@ ms.locfileid: "84294545"
 결과는 생성 된 데이터 분할 ("익스텐트") 수 만큼의 레코드를 포함 하는 테이블입니다.
 데이터 분할 생성 되지 않으면 빈 (0 값) 익스텐트 ID를 사용 하 여 단일 레코드가 반환 됩니다.
 
-|이름       |유형      |Description                                                               |
+|Name       |유형      |Description                                                               |
 |-----------|----------|--------------------------------------------------------------------------|
 |ExtentId   |`guid`    |명령으로 생성 된 데이터 분할의 고유 식별자입니다.|
 
@@ -64,7 +64,5 @@ Wide Shoes,50
 <!--
 You can generate inline ingests commands using the Kusto.Data client library. 
 Compression lets you embed new lines in quoted fields.
-
     Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
-
 -->

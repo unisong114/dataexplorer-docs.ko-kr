@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/23/2018
-ms.openlocfilehash: 8ef966cb2be70ddca6fb5ab10813abe12cb5bce1
-ms.sourcegitcommit: fd3bf300811243fc6ae47a309e24027d50f67d7e
+ms.openlocfilehash: 2224fe28c7f0088ac1a16cdee4d452e354ff0800
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382355"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324757"
 ---
 # <a name="controlling-and-suppressing-kusto-sdk-client-side-tracing"></a>Kusto SDK 클라이언트 쪽 추적 제어 및 억제
 
@@ -39,12 +39,12 @@ Kusto.Cloud.Platform.Utils.TraceSourceManager.SetTraceVerbosityForAll(
 구성 파일을 통해 Kusto client 라이브러리에서 추적을 표시 하지 않으려면 파일 `Kusto.Cloud.Platform.dll.tweaks` (라이브러리에 포함 됨)을 수정 `Kusto.Data` 합니다.
 
 ```xml
-    <!-- Overrides the default trace verbosity level -->
+    //Overrides the default trace verbosity level
     <add key="Kusto.Cloud.Platform.Utils.Tracing.OverrideTraceVerbosityLevel" value="0" />
 ```
 
 > [!NOTE]
-> 조정에 적용 하려면 값에 빼기 기호를 사용 해야 합니다.`key`
+> 조정에 적용 하려면 값에 빼기 기호를 사용 해야 합니다. `key`
 
 또 다른 방법은 다음과 같습니다.
 
@@ -57,7 +57,7 @@ Kusto.Cloud.Platform.Utils.Anchor.Tweaks.SetProgrammaticAppSwitch(
 
 ## <a name="enable-the-kusto-client-libraries-tracing"></a>Kusto 클라이언트 라이브러리 추적 사용
 
-Kusto 클라이언트 라이브러리에서 추적을 사용 하도록 설정 하려면 응용 프로그램의 *app.config 파일*에서 .net 추적을 사용 하도록 설정 합니다. 예를 들어 응용 프로그램에서 `MyApp.exe` Kusto. Data 클라이언트 라이브러리를 사용 한다고 가정 합니다. 다음을 포함 하도록 *myapp.exe* 파일을 변경 하면 다음에 응용 프로그램을 시작할 때 추적을 사용할 수 있습니다 `Kusto.Data` .
+Kusto 클라이언트 라이브러리에서 추적을 사용 하도록 설정 하려면 응용 프로그램의 *app.config 파일* 에서 .net 추적을 사용 하도록 설정 합니다. 예를 들어 응용 프로그램에서 `MyApp.exe` Kusto. Data 클라이언트 라이브러리를 사용 한다고 가정 합니다. 다음을 포함 하도록 파일 *MyApp.exe.config* 를 변경 하면 다음에 응용 프로그램을 시작할 때 추적을 사용할 수 `Kusto.Data` 있습니다.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -73,7 +73,7 @@ Kusto 클라이언트 라이브러리에서 추적을 사용 하도록 설정 �
 </configuration>
 ```
 
-이 코드는 *RollingLogs*라는 하위 디렉터리의 CSV 파일에 쓰는 추적 수신기를 구성 합니다. 하위 디렉터리는 프로세스의 디렉터리에 있습니다.
+이 코드는 *RollingLogs* 라는 하위 디렉터리의 CSV 파일에 쓰는 추적 수신기를 구성 합니다. 하위 디렉터리는 프로세스의 디렉터리에 있습니다.
 
 > [!NOTE]
 > 일부. NET 호환 추적 수신기 클래스도 사용할 수 있습니다.

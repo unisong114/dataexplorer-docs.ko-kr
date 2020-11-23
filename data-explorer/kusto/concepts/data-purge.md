@@ -8,12 +8,12 @@ ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/12/2020
-ms.openlocfilehash: 0da372ff40975e5536883236453d1fadc52673da
-ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
+ms.openlocfilehash: b4e65fd2ca01f5a2de0a8f703e1b91f0d3722f92
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94373819"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324722"
 ---
 # <a name="data-purge"></a>데이터 제거
 
@@ -42,7 +42,9 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      * 클러스터의 데이터 익스텐트 간 배포 기록 
      * 클러스터의 노드 수  
      * 제거 작업에 대해 보유 한 예비 용량
-     * 2 단계 기간이 몇 초에서 몇 시간 사이에 다를 수 있는 몇 가지 다른 요인이 있습니다.
+     * 몇 가지 다른 요소
+     
+    2 단계의 기간은 몇 초에서 몇 시간 사이에 다를 수 있습니다.
 1. 3 단계: (하드 삭제) "포이즌" 데이터를 포함할 수 있는 모든 저장소 아티팩트를 다시 사용 하 고 저장소에서 삭제 합니다. 이 단계는 이전 단계를 완료 한 후 최소 5 일이 지난 후 30 일이 지난 후에 수행 됩니다. 이러한 타임 라인은 데이터 개인 정보 요구 사항에 따라 설정 됩니다.
 
 명령을 실행 하면 `.purge` 이 프로세스가 트리거되고 완료 하는 데 몇 일이 걸립니다. 조건자가 적용 되는 레코드의 밀도가 충분히 크면 프로세스에서 테이블의 모든 데이터를 효과적으로 다시 수집 합니다. 이러한 재 수집은 성능 및 COGS (판매 상품 비용)에 상당한 영향을 미칩니다.
@@ -113,7 +115,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
   ```
     
-| 매개 변수  | 설명  |
+| 매개 변수  | Description  |
 |---------|---------|
 | `DatabaseName`   |   데이터베이스 이름      |
 | `TableName`     |     테이블 이름입니다.    |
@@ -125,7 +127,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 * 조건자는 *where [ColumnName] == 'X'*  /  *(' x ', ' Y ', ' Z ') 및 [othercolumn] = = ' a '와* 같이 간단한 선택 항목 이어야 합니다 (예: where [columnname] = = ' X ' where [columnname]).
 * 여러 필터를 별도 절이 아닌 ' and '와 결합 해야 `where` 합니다 (예: `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` 및 not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'` ).
-* 조건자는 제거 중인 테이블 ( *TableName* ) 이외의 다른 테이블을 참조할 수 없습니다. 조건자에는 선택 문 ()만 포함 될 수 있습니다 `where` . 테이블에서 특정 열을 프로젝션 할 수 없습니다 (출력 스키마를 실행 하는 *경우). `table` ' Predicate* '는 테이블 스키마와 일치 해야 합니다.
+* 조건자는 제거 중인 테이블 (*TableName*) 이외의 다른 테이블을 참조할 수 없습니다. 조건자에는 선택 문 ()만 포함 될 수 있습니다 `where` . 테이블에서 특정 열을 프로젝션 할 수 없습니다 (출력 스키마를 실행 하는 *경우). `table` ' Predicate*'는 테이블 스키마와 일치 해야 합니다.
 * 시스템 함수 (예:, `ingestion_time()` , `extent_id()` )는 지원 되지 않습니다.
 
 #### <a name="example-two-step-purge"></a>예: 2 단계 제거
@@ -199,7 +201,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 
 **출력**
 
-이 명령의 출력은 취소 중인 제거 작업의 업데이트 된 상태를 보여 주는 ' 제거 *OperationId OperationId* ' 명령 출력과 동일 합니다. 시도에 성공 하면 작업 상태가로 업데이트 됩니다 `Abandoned` . 그렇지 않으면 작업 상태가 변경 되지 않습니다. 
+이 명령의 출력은 취소 중인 제거 작업의 업데이트 된 상태를 보여 주는 ' 제거 *OperationId OperationId*' 명령 출력과 동일 합니다. 시도에 성공 하면 작업 상태가로 업데이트 됩니다 `Abandoned` . 그렇지 않으면 작업 상태가 변경 되지 않습니다. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -223,12 +225,12 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
 .show purges from '<StartDate>' to '<EndDate>' [in database <DatabaseName>]
 ```
 
-| 속성  |설명  |필수/선택 사항|
+| 속성  |Description  |필수/선택 사항|
 |---------|------------|-------|
 |`OperationId `   |      단일 단계 또는 두 번째 단계를 실행 한 후 데이터 관리 작업 ID가 출력 됩니다.   |필수
-|`StartDate`    |   필터링 작업의 시간 제한이 더 낮습니다. 생략 하는 경우 기본값은 현재 시간 보다 24 시간입니다.      |옵션
-|`EndDate`    |  필터링 작업의 상한 시간 제한입니다. 생략 하는 경우 기본값은 현재 시간입니다.       |옵션
-|`DatabaseName`    |     결과를 필터링 할 데이터베이스 이름입니다.    |옵션
+|`StartDate`    |   필터링 작업의 시간 제한이 더 낮습니다. 생략 하는 경우 기본값은 현재 시간 보다 24 시간입니다.      |선택 사항
+|`EndDate`    |  필터링 작업의 상한 시간 제한입니다. 생략 하는 경우 기본값은 현재 시간입니다.       |선택 사항
+|`DatabaseName`    |     결과를 필터링 할 데이터베이스 이름입니다.    |선택 사항
 
 > [!NOTE]
 > 상태는 클라이언트에 [데이터베이스 관리자](../management/access-control/role-based-authorization.md) 권한이 있는 데이터베이스에만 제공 됩니다.
@@ -307,7 +309,7 @@ Azure 데이터 탐색기에서 데이터를 선택적으로 제거 하는 프�
      .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
      ```
 
-    | 매개 변수  |설명  |
+    | 매개 변수  |Description  |
     |---------|---------|
     | `DatabaseName`   |   데이터베이스의 이름입니다.      |
     | `TableName`    |     테이블 이름입니다.    |

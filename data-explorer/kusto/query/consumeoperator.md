@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 1e4b2ff4ee45fd92e7e16f9468c18e1d0a70ca82
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 4b2a9d100cdb7125ebed21be69433fa3cee3a929
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92245165"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324536"
 ---
 # <a name="consume-operator"></a>consume 연산자
 
@@ -35,10 +35,3 @@ T | consume
 
 연산자를 사용 하 여 `consume` 실제로 결과를 클라이언트에 배달 하지 않고도 쿼리 비용을 추정할 수 있습니다.
 예측은 다양 한 이유로 정확 하지 않습니다. 예를 들어 `consume` 는 distributively 계산 되므로는 `T | consume` 클러스터의 노드 간에 테이블의 데이터를 전송 하지 않습니다.
-
-<!--
-* *WithStats*: A constant Boolean value. If set to `true` (or if the global
-  property `perftrace` is set), the operator will return a single
-  row with a single column called `Stats` of type `dynamic` holding the statistics
-  of the data source fed to the `consume` operator.
--->

@@ -10,27 +10,18 @@ ms.topic: reference
 ms.date: 10/08/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: c87979b788c83a819f9e65658b5e44e40e53ad1d
-ms.sourcegitcommit: 0820454feb02ae489f3a86b688690422ae29d788
+ms.openlocfilehash: 8a3c0b058b2c1cf5023ce0069a7dd938fce5caec
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932738"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324740"
 ---
 # <a name="tutorial"></a>자습서
 
 ::: zone pivot="azuredataexplorer"
 
 Kusto 쿼리 언어를 배우는 가장 좋은 방법은 몇 가지 [샘플 데이터를 포함](https://help.kusto.windows.net/Samples)하는 데이터베이스를 사용 하 여 언어에 대 한 "느낌"을 얻는 간단한 쿼리를 살펴보는 것입니다. 이 문서에서 설명 하는 쿼리는 해당 데이터베이스에서 실행 되어야 합니다. `StormEvents`이 샘플 데이터베이스의 테이블은 미국에서 발생 하는 폭풍에 대 한 일부 정보를 제공 합니다.
-
-<!--
-  TODO: Provide link to reference data we used originally in StormEvents
--->
-
-<!--
-  TODO: A few samples below reference non-existent tables, such as Events and Logs.
-        We need to add these tables.
--->
 
 ## <a name="count-rows"></a>행 수 계산
 
@@ -147,7 +138,7 @@ StormEvents
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|뇌우를 동반한 바람|그루지야|
 
 열 이름을 다시 사용 하 고 계산 결과를 동일한 열에 할당할 수 있습니다.
-예를 들면 다음과 같습니다.
+다음은 그 예입니다. 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: ee36823bb3f730a12f7ad2d1febe91439d4a2aad
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 3b857e0e16c212c2f12d43f9709a9278526a7344
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343286"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324689"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -31,7 +31,7 @@ Kusto는 큰 데이터 집합을 호스트 하 고 모든 관련 데이터를 �
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>결과 집합 크기 제한 (결과 잘림)
 
-**결과 잘림** 은 쿼리에서 반환 하는 결과 집합에 대해 기본적으로 설정 되는 제한입니다. Kusto는 클라이언트에 반환 되는 레코드 수를 **50만**으로 제한 하 고 해당 레코드의 전체 데이터 크기를 **64 MB**로 제한 합니다. 이러한 제한 중 하나를 초과 하면 쿼리가 실패 하 고 "부분 쿼리 오류"가 발생 합니다. 전체 데이터 크기를 초과 하면 다음과 같은 메시지가 포함 된 예외가 생성 됩니다.
+**결과 잘림** 은 쿼리에서 반환 하는 결과 집합에 대해 기본적으로 설정 되는 제한입니다. Kusto는 클라이언트에 반환 되는 레코드 수를 **50만** 으로 제한 하 고 해당 레코드의 전체 데이터 크기를 **64 MB** 로 제한 합니다. 이러한 제한 중 하나를 초과 하면 쿼리가 실패 하 고 "부분 쿼리 오류"가 발생 합니다. 전체 데이터 크기를 초과 하면 다음과 같은 메시지가 포함 된 예외가 생성 됩니다.
 
 ```
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal data size limit 67108864 (E_QUERY_RESULT_SET_TOO_LARGE).'
@@ -60,7 +60,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 요청 옵션을 사용 하 여 결과 잘림을 사용 하지 않도록 설정할 수 있습니다 `notruncation` .
 몇 가지 형태의 제한이 여전히 적용 되는 것이 좋습니다.
 
-예를 들면 다음과 같습니다.
+다음은 그 예입니다. 
 
 ```kusto
 set notruncation;
@@ -79,7 +79,7 @@ MyTable | where User=="UserId1"
 
 `.export`명령을 사용 하거나 이후 집계를 위해 내보내기 목적으로 결과 잘림 제한을 제거할 수 있습니다. 나중에 집계를 선택 하는 경우 Kusto를 사용 하 여 집계 하는 것이 좋습니다.
 
-Kusto는 호출자에 게 스트리밍하 여 "무한히 크게" 결과를 처리할 수 있는 여러 클라이언트 라이브러리를 제공 합니다. 이러한 라이브러리 중 하나를 사용 하 여 스트리밍 모드로 구성 합니다. 예를 들어 .NET Framework 클라이언트 (ExecuteQueryV2Async)를 사용 하 고 연결 문자열의 streaming 속성을 *true*로 설정 하거나 항상 결과를 스트리밍하는 *()* 호출을 사용 합니다.
+Kusto는 호출자에 게 스트리밍하 여 "무한히 크게" 결과를 처리할 수 있는 여러 클라이언트 라이브러리를 제공 합니다. 이러한 라이브러리 중 하나를 사용 하 여 스트리밍 모드로 구성 합니다. 예를 들어 .NET Framework 클라이언트 (ExecuteQueryV2Async)를 사용 하 고 연결 문자열의 streaming 속성을 *true* 로 설정 하거나 항상 결과를 스트리밍하는 *()* 호출을 사용 합니다.
 
 결과 잘림는 클라이언트에 반환 되는 결과 스트림과 마찬가지로 기본적으로 적용 됩니다. 또한 동일한 영향을 주는 클러스터 간 쿼리에서 다른 클러스터에 대해 발생 하는 모든 하위 쿼리에 기본적으로 적용 됩니다.
 
@@ -154,7 +154,7 @@ Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too
 
 기본적으로 쿼리는 시간 제한으로 4 분으로 설정 되 고 제어 명령의 경우 10 분으로 설정 됩니다. 필요한 경우이 값을 늘릴 수 있습니다 (1 시간 동안).
 
-* Kusto. 탐색기를 사용 하 여 쿼리 하는 경우 **도구** &gt; **옵션**_ &gt; _*연결* *  &gt; **쿼리 서버 제한 시간**을 사용 합니다.
+* Kusto. 탐색기를 사용 하 여 쿼리 하는 경우 **도구** &gt; **옵션** _ &gt; _ *연결* *  &gt; **쿼리 서버 제한 시간** 을 사용 합니다.
 * 프로그래밍 방식으로 `servertimeout` 클라이언트 요청 속성, 형식 값 (최대 1 시간)을 설정 합니다 `System.TimeSpan` .
 
 **시간 제한에 대 한 참고 사항**
@@ -163,26 +163,21 @@ Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too
 * 또한 클라이언트 쪽에서 사용 되는 실제 제한 시간 값은 사용자가 요청한 서버 제한 시간 값 보다 약간 더 높습니다. 이러한 차이는 네트워크 대기 시간을 허용 하는 것입니다.
 * 허용 되는 최대 요청 제한 시간을 자동으로 사용 하려면 클라이언트 요청 속성을 `norequesttimeout` 로 설정 `true` 합니다.
 
-<!--
-  Request timeout can also be set using a set statement, but we don't mention
-  it here since it shouldn't be used in production scenarios.
--->
-
 ## <a name="limit-on-query-cpu-resource-usage"></a>쿼리 CPU 리소스 사용량에 대 한 제한
 
 Kusto를 사용 하면 쿼리를 실행 하 고 클러스터의 CPU 리소스를 많이 사용할 수 있습니다. 둘 이상의를 실행 하는 경우 쿼리 간에 공평 하 게 라운드 로빈 하려고 시도 합니다. 이 메서드는 임시 쿼리에 대해 최상의 성능을 생성 합니다.
 다른 경우에는 특정 쿼리에 사용 되는 CPU 리소스를 제한 하는 것이 좋습니다. 예를 들어 "백그라운드 작업"을 실행 하는 경우 시스템은 대기 시간이 높아서 동시 임시 쿼리를 높은 우선 순위로 지정할 수 있습니다.
 
-Kusto에서는 쿼리를 실행할 때 두 개의 [클라이언트 요청 속성](../api/netfx/request-properties.md) 을 지정할 수 있습니다. 속성은  *query_fanout_threads_percent* *query_fanout_nodes_percent*됩니다.
+Kusto에서는 쿼리를 실행할 때 두 개의 [클라이언트 요청 속성](../api/netfx/request-properties.md) 을 지정할 수 있습니다. 속성은  *query_fanout_threads_percent* *query_fanout_nodes_percent* 됩니다.
 두 속성은 기본적으로 최대값 (100)으로 지정 되는 정수 이지만 특정 쿼리의 경우 다른 값으로 줄어들 수 있습니다. 
 
-첫 번째 *query_fanout_threads_percent*는 스레드 사용에 대 한 fanout 요소를 제어 합니다. 100% 이면 클러스터는 각 노드에 모든 Cpu를 할당 합니다. 예: Azure D14 노드에 배포 된 클러스터의 Cpu 16 개. 50% 인 경우 Cpu의 절반이 사용 됩니다. 숫자는 전체 CPU로 반올림 되므로 0으로 설정 하는 것이 안전 합니다. 두 번째 *query_fanout_nodes_percent*는 하위 쿼리 배포 작업당 사용할 클러스터 노드 수를 제어 합니다. 비슷한 방식으로 작동 합니다.
+첫 번째 *query_fanout_threads_percent* 는 스레드 사용에 대 한 fanout 요소를 제어 합니다. 100% 이면 클러스터는 각 노드에 모든 Cpu를 할당 합니다. 예: Azure D14 노드에 배포 된 클러스터의 Cpu 16 개. 50% 인 경우 Cpu의 절반이 사용 됩니다. 숫자는 전체 CPU로 반올림 되므로 0으로 설정 하는 것이 안전 합니다. 두 번째 *query_fanout_nodes_percent* 는 하위 쿼리 배포 작업당 사용할 클러스터 노드 수를 제어 합니다. 비슷한 방식으로 작동 합니다.
 
 ## <a name="limit-on-query-complexity"></a>쿼리 복잡성에 대 한 제한
 
 쿼리를 실행 하는 동안 쿼리 텍스트는 쿼리를 나타내는 관계형 연산자 트리로 변환 됩니다.
 트리 깊이가 여러 천 수준의 내부 임계값을 초과 하는 경우 쿼리는 처리 하기에는 너무 복잡 한 것으로 간주 되며 오류 코드와 함께 실패 합니다. 이 오류는 관계형 연산자 트리가 제한을 초과 했음을 나타냅니다.
-함께 연결 된 이항 연산자의 긴 목록이 포함 된 쿼리로 인해 한도가 초과 되었습니다. 예를 들면 다음과 같습니다.
+함께 연결 된 이항 연산자의 긴 목록이 포함 된 쿼리로 인해 한도가 초과 되었습니다. 다음은 그 예입니다. 
 
 ```kusto
 T 

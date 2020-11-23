@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 4bda122b589e3ba297b3e7c350d15687da6ee123
-ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
+ms.openlocfilehash: 3b30a3e578b6bb1f21dedfcfec7629b60bb255f3
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91057005"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324502"
 ---
 # <a name="security-roles-management"></a>보안 역할 관리
 
@@ -24,7 +24,7 @@ ms.locfileid: "91057005"
 이 문서에서는 보안 역할을 관리 하는 데 사용 되는 제어 명령을 설명 합니다.
 보안 역할은 데이터베이스 또는 테이블과 같은 보안 리소스에 대해 작업을 수행할 권한이 있는 보안 주체 (사용자 및 응용 프로그램) 및 허용 되는 작업을 정의 합니다. 예를 들어 `database viewer` 특정 데이터베이스에 대 한 보안 역할이 있는 보안 주체는 제한 된 테이블을 제외 하 고 해당 데이터베이스의 모든 엔터티를 쿼리하고 볼 수 있습니다.
 
-보안 주체 또는 보안 그룹 (다른 보안 주체 또는 다른 보안 그룹을 가질 수 있음)에 보안 역할을 연결할 수 있습니다. 보안 주체가 보안 리소스에 대 한 작업을 수행 하려고 하면 시스템은 보안 주체가 리소스에 대해이 작업을 수행할 수 있는 권한을 부여 하는 하나 이상의 보안 역할에 연결 되어 있는지 확인 합니다. 이를 **권한 부여 확인**이라고 합니다. 권한 부여 확인이 실패 하면 작업이 중단 됩니다.
+보안 주체 또는 보안 그룹 (다른 보안 주체 또는 다른 보안 그룹을 가질 수 있음)에 보안 역할을 연결할 수 있습니다. 보안 주체가 보안 리소스에 대 한 작업을 수행 하려고 하면 시스템은 보안 주체가 리소스에 대해이 작업을 수행할 수 있는 권한을 부여 하는 하나 이상의 보안 역할에 연결 되어 있는지 확인 합니다. 이를 **권한 부여 확인** 이라고 합니다. 권한 부여 확인이 실패 하면 작업이 중단 됩니다.
 
 **구문**
 
@@ -34,7 +34,7 @@ ms.locfileid: "91057005"
 
 * *동사* 는 수행할 작업의 종류를 나타냅니다.,, `.show` `.add` `.drop` 및 `.set`
 
-    |*동사* |설명                                  |
+    |*동사* |Description                                  |
     |-------|---------------------------------------------|
     |`.show`|현재 값을 반환 합니다.         |
     |`.add` |역할에 하나 이상의 보안 주체를 추가 합니다.     |
@@ -43,7 +43,7 @@ ms.locfileid: "91057005"
 
 * *SecurableObjectType* 는 역할이 지정 된 개체의 종류입니다.
 
-    |*SecurableObjectType*|설명|
+    |*SecurableObjectType*|Description|
     |---------------------|-----------|
     |`database`|지정 된 데이터베이스|
     |`table`|지정 된 테이블|
@@ -53,7 +53,7 @@ ms.locfileid: "91057005"
 
 * *Role* 은 관련 역할의 이름입니다.
 
-    |*역할*      |설명|
+    |*역할*      |Description|
     |------------|-----------|
     |`principals`|는 동사의 일부로만 나타날 수 있으며 `.show` 보안 가능한 개체에 영향을 줄 수 있는 보안 주체의 목록을 반환 합니다.|
     |`admins`    |개체 및 모든 하위 개체를 보고 수정 하 고 제거 하는 기능을 포함 하 여 보안 개체에 대 한 제어 권한을 가집니다.|
@@ -108,9 +108,6 @@ ms.locfileid: "91057005"
 * `skip-results`(제공 된 경우)는 명령이 업데이트 된 데이터베이스 보안 주체 목록을 반환 하지 않도록 요청 합니다.
 
 * *설명*(제공 된 경우)은 변경 내용과 연결 되며 해당 명령에 의해 검색 되는 텍스트입니다 `.show` .
-
-<!-- TODO: Need more examples for the public syntax. Until then we're keeping this internal -->
-
 
 ## <a name="managing-table-security-roles"></a>테이블 보안 역할 관리
 

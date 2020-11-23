@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 05848ff0a76ed7a102e54ec08412c4bf16e77891
-ms.sourcegitcommit: 4f24d68f1ae4903a2885985aa45fd15948867175
+ms.openlocfilehash: ea3521dec63798a9382bcfca98827288c9b735d3
+ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558209"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95324808"
 ---
 # <a name="event-hub-data-connection"></a>이벤트 허브 데이터 연결
 
@@ -38,17 +38,14 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
 
 수집 속성은 수집 프로세스, 데이터를 라우팅하는 위치 및이를 처리 하는 방법을 지시 합니다. [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트 수집의 수집 [속성](ingestion-properties.md) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
 
-|속성 |설명|
+|속성 |Description|
 |---|---|
 | 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Table`창에서 집합을 재정의 합니다 `Data Connection` . |
 | 서식 | 데이터 형식입니다. `Data format`창에서 집합을 재정의 합니다 `Data Connection` . |
 | IngestionMappingReference | 사용할 기존 수집 [매핑의](kusto/management/create-ingestion-mapping-command.md) 이름입니다. `Column mapping`창에서 집합을 재정의 합니다 `Data Connection` .|
 | 압축 | 데이터 압축 `None` (기본값) 또는 `GZip` 압축|
 | Encoding | 데이터 인코딩입니다. 기본값은 UTF8입니다. 은 [.net에서 지원 되는 인코딩을](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks)사용할 수 있습니다. |
-| 태그 (미리 보기) | JSON 배열 문자열로 형식이 지정 된 수집 데이터와 연결할 [태그](kusto/management/extents-overview.md#extent-tagging) 의 목록입니다. 태그를 사용 하는 경우 [성능에 영향을 미칩니다](kusto/management/extents-overview.md#performance-notes-1) . |
-
-<!--| Database | Name of the existing target database.|-->
-<!--| Tags | String representing [tags](/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
+| 태그 | JSON 배열 문자열로 형식이 지정 된 수집 데이터와 연결할 [태그](kusto/management/extents-overview.md#extent-tagging) 의 목록입니다. 태그를 사용 하는 경우 [성능에 영향을 미칩니다](kusto/management/extents-overview.md#performance-notes-1) . |
 
 > [!NOTE]
 > 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집 됩니다.
@@ -95,7 +92,7 @@ eventHubClient.Close();
 
 이벤트 허브는 다음 시스템 속성을 노출 합니다.
 
-|속성 |데이터 형식 |설명|
+|속성 |데이터 형식 |Description|
 |---|---|---|
 | x-opt-enqueued-time |Datetime | 이벤트를 큐에 넣은 UTC 시간 |
 | x-opt-sequence-number |long | 이벤트 허브의 파티션 스트림 내에 있는 이벤트의 논리적 시퀀스 번호입니다.
