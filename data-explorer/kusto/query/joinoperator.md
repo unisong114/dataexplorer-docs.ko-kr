@@ -8,14 +8,15 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 8324d0c6537d6d22a2814a7aa80625278dc36aec
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: b90e5f1c95ec75a946490cd75b5dd89ad2cb1aba
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92241502"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513338"
 ---
 # <a name="join-operator"></a>join 연산자
 
@@ -35,7 +36,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
 * *Righttable*: 행을 병합 하는 데 사용할 수 있는 **오른쪽** 테이블 또는 테이블 형식 식 ( **내부** 테이블)입니다. 로 표시 `$right` 됩니다.
 
-* *특성*: *왼쪽 테이블* 의 행이 *righttable*의 행과 일치 하는 방식을 설명 하는 쉼표로 구분 된 하나 이상의 **규칙** 입니다. 논리 연산자를 사용 하 여 여러 규칙을 평가 `and` 합니다.
+* *특성*: *왼쪽 테이블* 의 행이 *righttable* 의 행과 일치 하는 방식을 설명 하는 쉼표로 구분 된 하나 이상의 **규칙** 입니다. 논리 연산자를 사용 하 여 여러 규칙을 평가 `and` 합니다.
 
   **규칙** 은 다음 중 하나일 수 있습니다.
 
@@ -61,7 +62,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
     ::: zone pivot="azuremonitor"
 
-    |Name           |값                                        |설명                                  |
+    |속성           |값                                        |설명                                  |
     |---------------|----------------------------------------------|---------------------------------------------|
     |`kind`         |조인의 다양한 특징|[조인 특색](#join-flavors) 참조|                                             |
     |`hint.remote`  |`auto`, `left`, `local`, `right`              |                                             |
@@ -140,8 +141,8 @@ Join 연산자의 정확한 버전은 *kind* 키워드를 사용 하 여 지정 
 |[`leftouter`](#left-outer-join-flavor)|왼쪽 우선 외부 조인|
 |[`rightouter`](#right-outer-join-flavor)|오른쪽 우선 외부 조인|
 |[`fullouter`](#full-outer-join-flavor)|완전 외부 조인|
-|[`leftanti`](#left-anti-join-flavor), [`anti`](#left-anti-join-flavor) 또는 [`leftantisemi`](#left-anti-join-flavor)|왼쪽 앤티 조인|
-|[`rightanti`](#right-anti-join-flavor) 또는 [`rightantisemi`](#right-anti-join-flavor)|오른쪽 앤티 조인|
+|[`leftanti`](#left-anti-join-flavor), [`anti`](#left-anti-join-flavor) 또는 [`leftantisemi`](#left-anti-join-flavor)|왼쪽 우선 안티 조인|
+|[`rightanti`](#right-anti-join-flavor) 또는 [`rightantisemi`](#right-anti-join-flavor)|오른쪽 우선 안티 조인|
 |[`leftsemi`](#left-semi-join-flavor)|왼쪽 세미 조인|
 |[`rightsemi`](#right-semi-join-flavor)|오른쪽 세미 조인|
 

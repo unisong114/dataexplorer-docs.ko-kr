@@ -7,12 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: bf5cd6d76878630549537845679d0bdb5d6d3797
-ms.sourcegitcommit: 574296b9a84084de031684a65f32b6c1bd1a4858
+ms.localizationpriority: high
+ms.openlocfilehash: 798a8b201ee87d5c43aeb31d6af515d41c516bef
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94714128"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512216"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Event Hub에서 Azure Data Explorer로 데이터 수집
 
@@ -65,7 +66,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
     **설정** | **제안 값** | **필드 설명**
     |---|---|---|
     | Subscription | 사용자의 구독 | 이벤트 허브에 사용할 Azure 구독을 선택합니다.|
-    | 리소스 그룹 | *test-hub-rg* | 새 리소스 그룹을 만듭니다. |
+    | Resource group | *test-hub-rg* | 새 리소스 그룹을 만듭니다. |
     | 위치 | *미국 서부* | 이 문서에 대 한 *미국 서 부* 를 선택 합니다. 프로덕션 시스템의 경우 요구에 가장 적합한 지역을 선택합니다. 최상의 성능을 위해 Kusto 클러스터와 동일한 위치에 Event Hub 네임스페이스를 만듭니다(처리량이 높은 Event Hub 네임스페이스에 가장 중요).
     | 네임스페이스 이름 | 고유한 네임스페이스 이름 | 네임스페이스를 식별하는 고유한 이름을 선택합니다. 예를 들어 *mytestnamespace* 를 선택합니다. 입력한 이름에 도메인 이름 *servicebus.windows.net* 이 추가됩니다. 이 이름에는 문자, 숫자 및 하이픈만 포함할 수 있습니다. 이름은 문자로 시작하고 문자나 숫자로 끝나야 합니다. 값의 길이는 6자에서 50자 사이여야 합니다.
     | 이벤트 허브 이름 | *test-hub* | 이벤트 허브는 고유한 범위 지정 컨테이너 역할을 하는 네임스페이스 아래에 배치됩니다. 이벤트 허브 이름은 네임스페이스 내에서 고유해야 합니다. |

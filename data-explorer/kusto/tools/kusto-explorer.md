@@ -7,12 +7,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a424e34561792287d6e761f8d5b0747fbf8c7100
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.localizationpriority: high
+ms.openlocfilehash: 0086fb9f649d7bb3b7031521812c1dff0ca532f7
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342793"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513066"
 ---
 # <a name="kustoexplorer-installation-and-user-interface"></a>Kusto.Explorer 설치 및 사용자 인터페이스
 
@@ -65,7 +66,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="home-tab"></a>홈 탭
 
-:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Kusto Explorer 홈 탭":::
 
 [홈] 탭에는 가장 최근에 사용한 함수가 섹션으로 구분되어 표시됩니다.
 
@@ -77,7 +78,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="query-section"></a>쿼리 섹션
 
-:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Kusto Explorer 쿼리 메뉴":::
 
 |메뉴|    동작|
 |----|----------|
@@ -86,7 +87,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="share-section"></a>공유 섹션
 
-:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Kusto Explorer 공유 메뉴":::
 
 |메뉴|    동작|
 |----|----------|
@@ -96,7 +97,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="visualizations-section"></a>시각화 섹션
 
-:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Kusto Explorer 시각화 메뉴":::
 
 |메뉴         | 동작|
 |-------------|---------|
@@ -120,11 +121,11 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ### <a name="view-section"></a>보기 섹션
 
-:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Kusto Explorer 보기 메뉴":::
 
 |메뉴           | 동작|
 |---------------|---------|
-|전체 보기 모드 | 리본 메뉴와 연결 패널을 숨겨 작업 공간을 최대화합니다. **홈** > **전체 보기 모드**를 차례로 선택하거나 **F11** 키를 눌러 전체 보기 모드를 종료합니다.|
+|전체 보기 모드 | 리본 메뉴와 연결 패널을 숨겨 작업 공간을 최대화합니다. **홈** > **전체 보기 모드** 를 차례로 선택하거나 **F11** 키를 눌러 전체 보기 모드를 종료합니다.|
 |빈 열 숨기기| 데이터 그리드에서 빈 열을 제거합니다.|
 |단수형 열 축소| 단수형 값을 사용하여 열을 축소합니다.|
 |열 값 검색| 열 값 분포를 표시합니다.|
@@ -134,11 +135,11 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 >[!NOTE]
 > 데이터 보기 설정:
 >
-> Kusto.Explorer는 고유한 열 세트별로 사용되는 설정을 추적합니다. 열을 다시 정렬하거나 제거하면 데이터 보기가 저장되고 동일한 열의 데이터를 검색할 때마다 다시 사용됩니다. 보기를 해당 기본값으로 다시 설정하려면 **보기** 탭에서 **보기 다시 설정**을 선택합니다. 
+> Kusto.Explorer는 고유한 열 세트별로 사용되는 설정을 추적합니다. 열을 다시 정렬하거나 제거하면 데이터 보기가 저장되고 동일한 열의 데이터를 검색할 때마다 다시 사용됩니다. 보기를 해당 기본값으로 다시 설정하려면 **보기** 탭에서 **보기 다시 설정** 을 선택합니다. 
 
 ## <a name="file-tab"></a>파일 탭
 
-:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Kusto Explorer 파일 탭":::
 
 |메뉴| 동작|
 |---------------|---------|
@@ -166,7 +167,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="connections-tab"></a>연결 탭
 
-:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer 연결 탭":::
 
 |메뉴|동작|
 |----|----------|
@@ -191,7 +192,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="view-tab"></a>보기 탭
 
-:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer 보기 탭":::
 
 |메뉴|동작|
 |----|----------|
@@ -216,11 +217,11 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 > [!NOTE]
 > <a id="dvs">데이터 보기 설정:</a> 
 >
-> Kusto.Explorer는 고유한 열 세트별로 사용되는 설정을 추적합니다. 열을 다시 정렬하거나 제거하면 데이터 보기가 저장되고 동일한 열의 데이터를 검색할 때마다 다시 사용됩니다. 보기를 해당 기본값으로 다시 설정하려면 **보기** 탭에서 **보기 다시 설정**을 선택합니다. 
+> Kusto.Explorer는 고유한 열 세트별로 사용되는 설정을 추적합니다. 열을 다시 정렬하거나 제거하면 데이터 보기가 저장되고 동일한 열의 데이터를 검색할 때마다 다시 사용됩니다. 보기를 해당 기본값으로 다시 설정하려면 **보기** 탭에서 **보기 다시 설정** 을 선택합니다. 
 
 ## <a name="tools-tab"></a>도구 탭
 
-:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer 도구 탭":::
 
 |메뉴|동작|
 |----|----------|
@@ -240,7 +241,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="monitoring-tab"></a>모니터링 탭
 
-:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer 모니터링 탭":::
 
 |메뉴             | 동작|
 |-----------------|---------| 
@@ -251,7 +252,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="management-tab"></a>관리 탭
 
-:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer 관리 탭":::
 
 |메뉴             | 동작|
 |-----------------|---------|
@@ -263,7 +264,7 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="help-tab"></a>도움말 탭
 
-:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer 도움말 탭":::
 
 |메뉴             | 동작|
 |-----------------|---------|
@@ -276,11 +277,11 @@ Kusto.Explorer 메뉴 패널에 있는 탭은 다음과 같습니다.
 
 ## <a name="connections-panel"></a>연결 패널
 
-:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Kusto Explorer 연결 패널":::
 
 [연결] 창에는 구성된 클러스터 연결이 모두 표시됩니다. 각 클러스터에 대해 저장한 데이터베이스, 테이블 및 특성(열)이 표시됩니다. 기본 패널에서 검색/쿼리에 대한 암시적 컨텍스트를 설정하는 항목을 선택하거나 항목을 두 번 클릭하여 이름을 검색/쿼리 패널에 복사합니다.
 
-실제 스키마가 큰 경우(예: 수백 개의 테이블이 있는 데이터베이스) **CTRL+F**를 누르고 찾고 있는 엔터티 이름의 하위 문자열(대/소문자 구분 안 함)을 입력하여 검색할 수 있습니다.
+실제 스키마가 큰 경우(예: 수백 개의 테이블이 있는 데이터베이스) **CTRL+F** 를 누르고 찾고 있는 엔터티 이름의 하위 문자열(대/소문자 구분 안 함)을 입력하여 검색할 수 있습니다.
 
 Kusto.Explorer는 쿼리 창에서 연결 패널을 제어할 수 있도록 지원하므로 스크립트에 유용합니다. 예를 들어 다음 구문을 사용하여 스크립트에서 쿼리하는 데이터가 있는 클러스터/데이터베이스에 연결하도록 Kusto.Explorer에 지시하는 명령을 사용하여 스크립트 파일을 시작할 수 있습니다.
 
@@ -311,7 +312,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 >[!NOTE]
 > 사용자의 도메인 이름은 클러스터를 호스팅하는 테넌트의 도메인 이름과 반드시 같을 필요는 없습니다.
 
-:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer 고급 연결 문자열":::
 
 ## <a name="keyboard-shortcuts"></a>바로 가기 키
 
@@ -321,9 +322,9 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 
 Kusto.Explorer는 결과 패널에서 각 행의 심각도 또는 세부 정보 표시 수준을 해석하고 이에 따라 색을 지정합니다. 이렇게 하려면 각 열의 고유 값을 알려진 패턴 세트("경고", "오류" 등)와 일치시킵니다.
 
-출력 색 구성표를 수정하거나 이 동작을 해제하려면 **도구** 메뉴에서 **옵션** > **결과 뷰어** > **색 구성표 세부 정보 표시**를 차례로 선택합니다.
+출력 색 구성표를 수정하거나 이 동작을 해제하려면 **도구** 메뉴에서 **옵션** > **결과 뷰어** > **색 구성표 세부 정보 표시** 를 차례로 선택합니다.
 
-:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer 시작":::
+:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer 색 구성표 수정":::
 
 ## <a name="next-steps"></a>다음 단계
 

@@ -8,18 +8,19 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
-ms.openlocfilehash: b5d5ef5ba3b29bf1bc468a64baa159106b164604
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 762c3075c162ba35bdba539d0e86460c78f3297e
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92249374"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95511791"
 ---
 # <a name="query-best-practices"></a>쿼리 모범 사례
 
 다음은 쿼리를 더 빠르게 실행 하기 위해 수행할 수 있는 몇 가지 모범 사례입니다.
 
-|작업  |기능  |사용 안 함  |메모  |
+|작업  |용도  |사용 안 함  |참고  |
 |---------|---------|---------|---------|
 | **시간 필터** | 먼저 시간 필터를 사용합니다. ||Kusto는 시간 필터를 사용 하도록 최적화 되어 있습니다.| 
 |**문자열 연산자**      | 연산자 사용 `has`     | 사용 안 함 `contains`     | 전체 토큰을 찾을 때는 `has` 부분 문자열을 찾을 수 없기 때문에 더 효율적으로 작동 합니다.   |

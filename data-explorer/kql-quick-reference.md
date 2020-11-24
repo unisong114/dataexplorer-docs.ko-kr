@@ -7,12 +7,13 @@ ms.reviewer: ''
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 2fa4cbd0b1cf7b034bc7ae3202afcde3866ca347
-ms.sourcegitcommit: ee904f45e3eb3feab046263aa9956cb7780a056d
+ms.localizationpriority: high
+ms.openlocfilehash: 3b007d1688130449c597ef99281ed89b55d880eb
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92356591"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95511927"
 ---
 # <a name="kql-quick-reference"></a>KQL 빠른 참조
 
@@ -44,7 +45,7 @@ ms.locfileid: "92356591"
 | [top](kusto/query/topoperator.md)                          | 를 사용 하 여 데이터 집합을 정렬할 때 데이터 집합의 처음 N 개 행을 반환 합니다. `by` | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |
 | [summarize](kusto/query/summarizeoperator.md)              | 그룹 열에 따라 행을 그룹화 `by` 하 고 각 그룹에 대 한 집계를 계산 합니다. | `T | summarize [[Column =] Aggregation [, ...]] [by [Column =] GroupExpression [, ...]]` |
 | [count](kusto/query/countoperator.md)                       | 입력 테이블의 레코드 수를 계산 합니다 (예: T).<br>이 연산자는의 축약형입니다. `summarize count() `| `T | count` |
-| [조인](kusto/query/joinoperator.md)                        | 각 테이블의 지정 된 열 값을 일치 시켜 새 테이블을 만드는 두 테이블의 행을 병합 합니다. 는,,,,,,,,, `flouter` `inner` `innerunique` `leftanti` `leftantisemi` `leftouter` `leftsemi` `rightanti` `rightantisemi` `rightouter` , 등의 모든 범위의 조인 형식을 지원 합니다. `rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |
+| [join](kusto/query/joinoperator.md)                        | 각 테이블의 지정 된 열 값을 일치 시켜 새 테이블을 만드는 두 테이블의 행을 병합 합니다. 는,,,,,,,,, `flouter` `inner` `innerunique` `leftanti` `leftantisemi` `leftouter` `leftsemi` `rightanti` `rightantisemi` `rightouter` , 등의 모든 범위의 조인 형식을 지원 합니다. `rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |
 | [union](kusto/query/unionoperator.md)                      | 두 개 이상의 테이블을 사용 하 고 모든 행을 반환 합니다. | `[T1] | union [T2], [T3], …` |
 | [range](kusto/query/rangeoperator.md)                      | 산술 계열의 값이 있는 테이블을 생성 합니다. | `range columnName from start to stop step step` |
 | **데이터 서식 지정**                                 | **_유용한 방식으로 데이터를 출력으로 재구성_** | |
@@ -57,4 +58,4 @@ ms.locfileid: "92356591"
 | [invoke](kusto/query/invokeoperator.md)                    | 입력으로 수신 되는 테이블에서 함수를 실행 합니다. | `T | invoke function([param1, param2])` |
 | [pluginName 평가](kusto/query/evaluateoperator.md)     | 쿼리 언어 확장 (플러그 인)을 평가 합니다. | `[T |] evaluate [ evaluateParameters ] PluginName ( [PluginArg1 [, PluginArg2]... )` |
 | **시각화**                               | **_데이터를 그래픽 형식으로 표시 하는 작업_** | |
-| [렌더](kusto/query/renderoperator.md) | 결과를 그래픽 출력으로 렌더링 합니다. | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |
+| [못하게](kusto/query/renderoperator.md) | 결과를 그래픽 출력으로 렌더링 합니다. | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |

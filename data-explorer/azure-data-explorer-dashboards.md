@@ -7,12 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: 114e3b00b35ff6dd30241cd6afc4666fdedf6f62
-ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
+ms.localizationpriority: high
+ms.openlocfilehash: 23bd17b54a1910633baabf2b78a1015f31eead5a
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349497"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512777"
 ---
 # <a name="visualize-data-with-azure-data-explorer-dashboardspreview"></a>Azure 데이터 탐색기 대시보드를 사용 하 여 데이터 시각화 (미리 보기)
 
@@ -69,14 +70,14 @@ Azure 데이터 탐색기 대시보드는 세 가지 주요 이점을 제공 합
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="매개 변수 창":::
 
-|필드  |Description |
+|필드  |설명 |
 |---------|---------|
 |**매개 변수 표시 이름**    |   대시보드 또는 편집 카드에 표시 되는 매개 변수의 이름입니다.      |
-|**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택** : 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택** : 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위** : 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
+|**매개 변수 형식**    |다음 중 하나<ul><li>**단일 선택**: 필터에서 매개 변수에 대 한 입력으로 하나의 값만 선택할 수 있습니다.</li><li>**여러 선택**: 매개 변수에 대 한 입력으로 필터에서 하나 이상의 값을 선택할 수 있습니다.</li><li>**시간 범위**: 시간을 기준으로 쿼리 및 대시보드를 필터링 하는 추가 매개 변수를 만들 수 있습니다. 모든 대시보드는 기본적으로 시간 범위를 선택 합니다.</li></ul>    |
 |**변수 이름**     |   쿼리에서 사용 되는 매개 변수의 이름입니다.      |
 |**데이터 형식**    |    매개 변수 값의 데이터 형식입니다.     |
 |**대시보드 필터로 고정**   |   매개 변수 기반 필터를 대시보드에 고정 하거나 대시보드에서 고정 해제 합니다.       |
-|**원본**     |    매개 변수 값의 소스입니다. <ul><li>**고정 값** : 정적 필터 값을 수동으로 도입 했습니다. </li><li>**쿼리** : KQL 쿼리를 사용 하 여 동적으로 값을 도입 했습니다.  </li></ul>    |
+|**원본**     |    매개 변수 값의 소스입니다. <ul><li>**고정 값**: 정적 필터 값을 수동으로 도입 했습니다. </li><li>**쿼리**: KQL 쿼리를 사용 하 여 동적으로 값을 도입 했습니다.  </li></ul>    |
 |**"모두 선택" 값 추가**    |   단일 선택 및 다중 선택 매개 변수 형식에만 적용할 수 있습니다. 모든 매개 변수 값에 대 한 데이터를 검색 하는 데 사용 됩니다.      |
 
 ## <a name="add-query"></a>쿼리 추가

@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
-ms.openlocfilehash: af8991e20988dd63a6aac37efe92ca13c7996c84
-ms.sourcegitcommit: 0820454feb02ae489f3a86b688690422ae29d788
+ms.localizationpriority: high
+ms.openlocfilehash: 16a0c6ef7064ae5e16fb649f3cd089196533ec45
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932687"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513372"
 ---
 # <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
@@ -21,7 +22,7 @@ Kusto는 SQL 언어의 하위 집합을 지원 합니다. 지원 되지 않는 �
 
 Kusto와 상호 작용 하는 주 언어는 KQL (Kusto 쿼리 언어)입니다. 전환 및 학습 환경을 보다 쉽게 만들기 위해 Kusto를 사용 하 여 SQL 쿼리를 KQL로 변환할 수 있습니다. ' 설명 ' 동사를 접두사로 사용 하 여 Kusto에 SQL 쿼리를 보냅니다.
 
-예를 들면 다음과 같습니다.
+예:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -37,7 +38,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 다음 표에서는 SQL의 예제 쿼리와 그에 해당 하는 KQL를 보여 줍니다.
 
-|Category |SQL 쿼리 |Kusto 쿼리
+|범주 |SQL 쿼리 |Kusto 쿼리
 |---|---|---
 테이블에서 데이터 선택 |<code>SELECT * FROM dependencies</code> | <code>dependencies</code>
 --|<code>SELECT name, resultCode FROM dependencies</code> |<code>dependencies &#124; project name, resultCode</code>

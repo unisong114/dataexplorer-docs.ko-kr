@@ -8,16 +8,17 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: e611bfb1d5dbf0122553b223a200400c526c975f
-ms.sourcegitcommit: 42cc7d11f41a5bfa9e021764b044dcd68d99a258
+ms.localizationpriority: high
+ms.openlocfilehash: 92627b3325a7a2ba8e2e4d58a82ebf6db3977221
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93403751"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512879"
 ---
 # <a name="user-defined-functions"></a>사용자 정의 함수
 
-**사용자 정의 함수** 는 쿼리 자체의 일부로 정의 되거나 (임시 **함수** ) 데이터베이스 메타 데이터 ( **저장 된 함수** )의 일부로 지속 될 수 있는 재사용 가능한 하위 쿼리입니다. 사용자 정의 함수는 **이름을** 통해 호출 되 고 0 개 이상의 **입력 인수** (스칼라 또는 테이블 형식)와 함께 제공 되며 함수 **본문** 을 기반으로 하 여 단일 값 (스칼라 또는 테이블 형식)을 생성할 수 있습니다.
+**사용자 정의 함수** 는 쿼리 자체의 일부로 정의 되거나 (임시 **함수**) 데이터베이스 메타 데이터 (**저장 된 함수**)의 일부로 지속 될 수 있는 재사용 가능한 하위 쿼리입니다. 사용자 정의 함수는 **이름을** 통해 호출 되 고 0 개 이상의 **입력 인수** (스칼라 또는 테이블 형식)와 함께 제공 되며 함수 **본문** 을 기반으로 하 여 단일 값 (스칼라 또는 테이블 형식)을 생성할 수 있습니다.
 
 사용자 정의 함수는 다음 두 가지 범주 중 하나에 속합니다.
 
@@ -64,7 +65,7 @@ ArgName:ArgType [= ArgDefaultValue]
 ```
  테이블 형식 인수의 경우 *Argtype* 은 테이블 정의 (괄호 및 열 이름/형식 쌍의 목록)와 동일한 구문을 사용 하며, `(*)` "모든 테이블 형식 스키마"를 나타내는 독립를 추가로 지원 합니다.
 
-예를 들면 다음과 같습니다.
+예:
 
 |구문                        |입력 인수 목록 설명                                 |
 |------------------------------|-----------------------------------------------------------------|
@@ -76,7 +77,7 @@ ArgName:ArgType [= ArgDefaultValue]
 > [!NOTE]
 > 테이블 형식 입력 인수와 스칼라 입력 인수를 모두 사용 하는 경우 모든 테이블 형식 입력 인수 앞에 스칼라 입력 인수를 추가 합니다.
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 스칼라 함수:
 
@@ -189,7 +190,7 @@ print f(12, c=7) // Returns "12-b.default-7"
 
 인수를 사용 하지 않는 사용자 정의 함수는 이름 또는 이름으로 호출 하거나 괄호 안에 빈 인수 목록을 사용 하 여 호출할 수 있습니다.
 
-예제:
+예:
 
 ```kusto
 // Bind the identifier a to a user-defined function (lambda) that takes

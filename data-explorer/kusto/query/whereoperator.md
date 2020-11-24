@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 738683b3042295678f7d507425443b47c9dec79e
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 6ac800cd4b38396e0f32f44976c4594c093747bb
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92251793"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512012"
 ---
 # <a name="where-operator"></a>where 연산자
 
@@ -32,11 +33,11 @@ T | where fruit=="apple"
 ## <a name="arguments"></a>인수
 
 * *T*: 레코드를 필터링 할 테이블 형식 입력입니다.
-* *Predicate*: `boolean` *T*의 열에 대 한 [식](./scalar-data-types/bool.md) 입니다. *T*의 각 행에 대해 평가 됩니다.
+* *Predicate*: `boolean` *T* 의 열에 대 한 [식](./scalar-data-types/bool.md) 입니다. *T* 의 각 행에 대해 평가 됩니다.
 
 ## <a name="returns"></a>반환
 
-*Predicate*가 `true`인 *T*의 행입니다.
+*Predicate* 가 `true`인 *T* 의 행입니다.
 
 **참고** Null 값: 모든 필터링 함수는 null 값과 비교 했을 때 false를 반환 합니다. 특수 null 인식 함수를 사용 하 여 null 값을 처리 하는 쿼리를 작성할 수 있습니다.
 
@@ -50,7 +51,7 @@ T | where fruit=="apple"
 
     예를 들어 `where floor(Timestamp, 1d) == ago(1d)`보다 `where Timestamp >= ago(1d)`을(를) 선호합니다.
 
-* **가장 단순한 용어를 먼저 사용**합니다. `and`을(를) 사용하여 여러 절을 결합하는 경우에는 열이 하나만 포함된 절을 앞쪽에 배치합니다. 따라서 `Timestamp > ago(1d) and OpId == EventId` 이 다른 방법보다 낫습니다.
+* **가장 단순한 용어를 먼저 사용** 합니다. `and`을(를) 사용하여 여러 절을 결합하는 경우에는 열이 하나만 포함된 절을 앞쪽에 배치합니다. 따라서 `Timestamp > ago(1d) and OpId == EventId` 이 다른 방법보다 낫습니다.
 
 자세한 내용은 [사용 가능한 문자열 연산자](./datatypes-string-operators.md) 의 요약 및 [사용 가능한 숫자 연산자](./numoperators.md)의 요약을 참조 하세요.
 

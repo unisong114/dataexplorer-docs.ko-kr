@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
-ms.openlocfilehash: e909754a040308d752b19155e1e69a10097ab219
-ms.sourcegitcommit: 2126c5176df272d149896ac5ef7a7136f12dc3f3
+ms.localizationpriority: high
+ms.openlocfilehash: 582683a9261d84fa24d819b5234e58effaf90a97
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86280510"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512029"
 ---
 # <a name="the-dynamic-data-type"></a>동적 데이터 형식
 
@@ -37,7 +38,7 @@ ms.locfileid: "86280510"
 
 형식의 리터럴은 다음과 같습니다 `dynamic` .
 
-`dynamic(` *값* `)`
+`dynamic(`*값*`)`
 
 *값* 은 다음과 같을 수 있습니다.
 
@@ -58,13 +59,13 @@ JSON을 통한이 확장은 문자열 (예: 함수를 사용 하는 경우 `pars
 print d=dynamic({"a": datetime(1970-05-11)})
 ```
 
-`string`JSON 인코딩 규칙을 따르는 값을 값으로 구문 분석 하려면 `dynamic` 함수를 사용 `parse_json` 합니다. 예를 들어:
+`string`JSON 인코딩 규칙을 따르는 값을 값으로 구문 분석 하려면 `dynamic` 함수를 사용 `parse_json` 합니다. 예:
 
 * `parse_json('[43, 21, 65]')` - 숫자의 배열
-* `parse_json('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`-사전
+* `parse_json('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` -사전
 * `parse_json('21')` - 숫자를 포함하는 동적 형식의 단일 값
 * `parse_json('"21"')` - 문자열을 포함하는 동적 형식의 단일 값
-* `parse_json('{"a":123, "b":"hello", "c":[1,2,3], "d":{}}')`-위의 예제와 같은 값을 제공 합니다 `o` .
+* `parse_json('{"a":123, "b":"hello", "c":[1,2,3], "d":{}}')` -위의 예제와 같은 값을 제공 합니다 `o` .
 
 > [!NOTE]
 > JavaScript와 달리 JSON은 `"` 문자열과 속성 모음 속성 이름 앞뒤에 큰따옴표 () 문자를 사용 합니다.
@@ -88,7 +89,7 @@ print d=dynamic({"a": datetime(1970-05-11)})
   [2015-01-01,"{""EventType"":""Demo"", ""EventValue"":""Double-quote love!""}"]
 ```
 
-|Timestamp                   | 추적                                                 |
+|타임스탬프                   | 추적                                                 |
 |----------------------------|-------------------------------------------------------|
 |2015-01-01 00:00:00.0000000 | {"EventType": "Demo", "EventValue": "큰따옴표 선호!"}|
 
@@ -102,7 +103,7 @@ print d=dynamic({"a": datetime(1970-05-11)})
 
 아래 예제에서 `dict` 및 `arr` 는 동적 형식의 열입니다.
 
-|식                        | 접근자 식 형식 | 의미                                                                              | 의견                                      |
+|식                        | 접근자 식 형식 | 의미                                                                              | 주석                                      |
 |----------------------------------|--------------------------|--------------------------------------------------------------------------------------|-----------------------------------------------|
 |dict [col]                         | 엔터티 이름 (열)     | 열의 값을 키로 사용 하 여 사전 첨자를 사용 합니다. `col`              | 열은 문자열 형식 이어야 합니다.                 | 
 |arr [인덱스]                        | 엔터티 인덱스 (열)    | 열의 값을 인덱스로 사용 하 여 배열의 아래 첨자 `index`              | 열은 정수 또는 부울 형식 이어야 합니다.     | 
@@ -165,15 +166,15 @@ Cast 함수는 다음과 같습니다.
 
 |연산자 또는 함수|동적 데이터 형식 사용|
 |---|---|
-| *value* `in` *array*| == *value*인 *array*의 요소가 있으면 True<br/>`where City in ('London', 'Paris', 'Rome')`
-| *value* `!in` *array*| == *value*인 *array*의 요소가 없으면 True
+| *value* `in` *array*| == *value* 인 *array* 의 요소가 있으면 True<br/>`where City in ('London', 'Paris', 'Rome')`
+| *value* `!in` *array*| == *value* 인 *array* 의 요소가 없으면 True
 |[`array_length(`배열과`)`](../arraylengthfunction.md)| 배열이 아니면 Null
 |[`bag_keys(`백`)`](../bagkeysfunction.md)| 동적 속성 모음 개체의 모든 루트 키를 열거 합니다.
 |[`bag_merge(`bag1,..., bagN`)`](../bag-merge-function.md)| 모든 속성을 병합 하 여 동적 속성 모음에 동적 속성 모음을 병합 합니다.
 |[`extractjson(`경로, 개체`)`](../extractjsonfunction.md)|path를 사용하여 object를 탐색합니다.
 |[`parse_json(`원본`)`](../parsejsonfunction.md)| JSON 개체를 동적 개체로 변환합니다.
 |[`range(`부터,까지 단계`)`](../rangefunction.md)| 값의 배열
-|[`mv-expand`listColumn](../mvexpandoperator.md) | 각 값에 대한 행을 지정된 셀의 목록에 복제합니다.
+|[`mv-expand` listColumn](../mvexpandoperator.md) | 각 값에 대한 행을 지정된 셀의 목록에 복제합니다.
 |[`summarize buildschema(`열의`)`](../buildschema-aggfunction.md) |열 내용에서 형식 스키마를 유추
 |[`summarize make_bag(`열의`)`](../make-bag-aggfunction.md) | 키 중복 없이 열의 속성 모음 (사전) 값을 하나의 속성 모음으로 병합 합니다.
 |[`summarize make_bag_if(`열, 조건자`)`](../make-bag-if-aggfunction.md) | 키 중복 (조건자 사용) 없이 열의 속성 모음 (사전) 값을 하나의 속성 모음으로 병합 합니다.

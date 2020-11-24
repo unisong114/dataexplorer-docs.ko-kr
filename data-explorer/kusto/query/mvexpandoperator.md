@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
-ms.openlocfilehash: a9f5517baf0963b4857759fc18158cfa0eee0bb1
-ms.sourcegitcommit: 05489ce5257c0052aee214a31562578b0ff403e7
+ms.localizationpriority: high
+ms.openlocfilehash: 3324cfe658b2eb29c54ff8a3d44ed660ec13ead5
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88793892"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512726"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
@@ -51,7 +52,7 @@ ms.locfileid: "88793892"
 * `bagexpansion=bag`: 속성 모음이 단일 항목 속성 모음으로 확장됩니다. 이 모드는 기본 확장입니다.
 * `bagexpansion=array`: 속성 모음은 두 요소 `[` *키* `,` *값* `]` 배열 구조로 확장 되어 키와 값에 대 한 균일 한 액세스를 허용 합니다 (예: 속성 이름에 대 한 고유 카운트 집계 실행). 
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="single-column"></a>단일 열
 
@@ -144,7 +145,7 @@ range x from 1 to 4 step 1
 |3|2|
 |4|3|
  
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>참조
 
 * 더 많은 예제는 [시간별 라이브 활동의 차트 수](./samples.md#chart-concurrent-sessions-over-time) 를 참조 하세요.
 * [mv-](./mv-applyoperator.md) 연산자를 적용 합니다.

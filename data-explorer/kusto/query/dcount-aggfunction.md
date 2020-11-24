@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b35bb7944e894256056e03eb756ac85cf1354ba8
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 947ab0af6a5aaa98bb07b08005b940fdf2ce6ae5
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92247692"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513185"
 ---
 # <a name="dcount-aggregation-function"></a>dcount () (집계 함수)
 
@@ -80,4 +81,4 @@ T | summarize dcount(B) by G | count
 
 다음 이미지는 지원 되는 모든 정확도 설정에 대해 상대적 예측 오류의 확률 분포 함수를 백분율로 보여 줍니다.
 
-:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="D 개수":::
+:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll 오류 배포":::

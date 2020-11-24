@@ -8,14 +8,15 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: b3b7d571662d8a9ed0fd592547f32a131d26e277
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: b8ad39e8c1233acc2df6c30059a6926cea85f37a
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92245739"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512811"
 ---
 # <a name="union-operator"></a>union 연산자
 
@@ -51,7 +52,7 @@ Table1 | union Table2, Table3
 기본값은 `isfuzzy=` `false`입니다.
 * *UnionParameters*: *Name* `=` 행 일치 작업 및 실행 계획의 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다. 
 
-  |Name           |값                                        |설명                                  |
+  |속성           |값                                        |설명                                  |
   |---------------|----------------------------------------------|---------------------------------------------|
   |`hint.concurrency`|*Number*|시스템 힌트 병렬로 실행 해야 하는 연산자의 동시 하위 쿼리 수 `union` 입니다. *기본값*: 클러스터의 단일 노드 (2-16)에 있는 CPU 코어의 양입니다.|
   |`hint.spread`|*Number*|동시 하위 쿼리 실행에서 사용 해야 하는 노드 수를 시스템에 설명 합니다 `union` . *기본값*: 1.|

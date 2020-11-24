@@ -7,26 +7,27 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/07/2019
-ms.openlocfilehash: 8c1ad74af063fe0380fec24b2717d4fdafe319df
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.localizationpriority: high
+ms.openlocfilehash: d7046b8767413889bc77240032a2292deb7c89a3
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875313"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512998"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 시계열 분석
 
 ADX(Azure Data Explorer)는 클라우드 서비스 또는 IoT 디바이스에서 원격 분석 데이터의 수집을 지속적으로 수행합니다. 서비스 상태 모니터링, 실제 프로덕션 프로세스 및 사용량 추세와 같은 다양한 인사이트를 위해 이 데이터를 분석할 수 있습니다. 일반적인 기준 패턴과 비교해 패턴의 편차를 발견하려면 선택한 메트릭의 시계열에서 분석을 수행합니다.
-ADX에는 여러 시계열의 생성, 조작 및 분석에 대한 기본 지원이 포함됩니다. 이 항목에서는 거의 실시간 모니터링 솔루션 및 워크플로를 사용하도록 설정함으로써 ADX를 사용하여 **몇 초만에 수천 개의 시계열**을 만들고 분석하는 방법을 알아봅니다.
+ADX에는 여러 시계열의 생성, 조작 및 분석에 대한 기본 지원이 포함됩니다. 이 항목에서는 거의 실시간 모니터링 솔루션 및 워크플로를 사용하도록 설정함으로써 ADX를 사용하여 **몇 초만에 수천 개의 시계열** 을 만들고 분석하는 방법을 알아봅니다.
 
 ## <a name="time-series-creation"></a>시계열 만들기
 
 이 섹션에서는 `make-series` 연산자를 사용하여 기본 시계열의 대규모 집합을 간단하고 직관적으로 만들고, 필요할 경우 누락된 값을 입력합니다.
 시계열 분석의 첫 번째 단계는 원본 원격 분석 테이블을 시계열 집합으로 분할 및 변환하는 것입니다. 테이블에는 일반적으로 타임 스탬프 열, 상황에 맞는 차원 및 선택적 메트릭이 포함됩니다. 차원을 사용하여 데이터를 분할합니다. 기본 시간 간격에 파티션당 수천 개의 시계열을 만드는 것이 목표입니다.
 
-입력 테이블 *demo_make_series1*에는 임의 웹 서비스 트래픽의 60만 개 레코드가 포함됩니다. 다음 명령을 사용하여 10개의 레코드를 샘플링합니다.
+입력 테이블 *demo_make_series1* 에는 임의 웹 서비스 트래픽의 60만 개 레코드가 포함됩니다. 다음 명령을 사용하여 10개의 레코드를 샘플링합니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
 
 ```kusto
 demo_make_series1 | take 10 
@@ -49,7 +50,7 @@ demo_make_series1 | take 10
 
 메트릭이 없으므로 다음과 같은 쿼리를 사용하여 OS로 분할된 트래픽 개수 자체를 나타내는 시계열 집합만 빌드할 수 있습니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -75,15 +76,15 @@ demo_make_series1
 이 섹션에서는 일반적인 시계열 처리 함수를 수행합니다.
 시계열 집합을 만든 후 ADX는 증가하는 함수 목록을 지원하여 [시계열 설명서](kusto/query/machine-learning-and-tsa.md)에 있을 수 있는 함수를 처리하고 분석합니다. 시계열의 처리 및 분석을 위한 몇 가지 대표적인 함수에 대해 설명하겠습니다.
 
-### <a name="filtering"></a>Filtering
+### <a name="filtering"></a>필터링
 
 필터링은 신호 처리의 일반적인 사례로서 시계열 처리 작업(예: 노이즈가 있는 신호 및 변경 내용 검색 평활화)에 유용합니다.
 - 일반 필터링 함수에는 다음과 같은 두 가지가 있습니다.
     - [`series_fir()`](kusto/query/series-firfunction.md): 전나무 필터를 적용 합니다. 이동 평균의 간단한 계산 및 변경 내용 검색에 대한 시계열 차별화에 사용합니다.
     - [`series_iir()`](kusto/query/series-iirfunction.md): IIR 필터를 적용 합니다. 지수 평활법 및 누적 합계에 사용합니다.
-- `Extend` 5개 bin 크기의 새 이동 평균 계열(*ma_num*이라고 함)을 쿼리에 추가하여 설정한 시계열.
+- `Extend` 5개 bin 크기의 새 이동 평균 계열(*ma_num* 이라고 함)을 쿼리에 추가하여 설정한 시계열.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -104,7 +105,7 @@ ADX는 분할된 선형 회귀 분석을 지원하여 시계열 추세를 예측
 
 `series_fit_line()`의 예제 및 시계열 쿼리의 `series_fit_2lines()` 함수.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
 
 ```kusto
 demo_series2
@@ -127,7 +128,7 @@ demo_series2
 
 다음 예제는 웹 서비스의 1개월 트래픽(2시간 bin 단위)에 계절성 검색을 적용합니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
 
 ```kusto
 demo_series3
@@ -142,7 +143,7 @@ demo_series3
 > [!NOTE]
 > 특정 고유 마침표가 없으면 비정상임
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
 
 ```kusto
 demo_series3
@@ -162,7 +163,7 @@ demo_series3
 
 시계열에서 산술 및 논리 작업을 수행할 수 있습니다. [series_subtract()](kusto/query/series-subtractfunction.md)를 사용하여 잔여 시계열 즉, 원본 원시 메트릭과 평활된 메트릭 간의 차이를 계산하고, 잔여 신호의 변칙을 검색할 수 있습니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -185,7 +186,7 @@ demo_make_series1
 
 아래 예제에서는 이러한 함수가 변칙 검색을 위해 몇 초만에 수천 개의 시계열에서 대규모로 실행되는 방법을 보여줍니다. 4일 동안 DB 서비스의 읽기 개수 메트릭의 몇 가지 샘플 원격 분석 레코드를 확인하려면 다음 쿼리를 실행합니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
 
 ```kusto
 demo_many_series1
@@ -201,7 +202,7 @@ demo_many_series1
 
 간단한 통계:
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
 
 ```kusto
 demo_many_series1
@@ -214,7 +215,7 @@ demo_many_series1
 
 읽기 메트릭의 1시간 bin 단위로 시계열(총 4 일 * 24시간 = 96포인트)을 빌드하면 일반 패턴 변동이 발생합니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -230,7 +231,7 @@ demo_many_series1
 
 만들 수 있는 시계열 수는 어떻게 되나요?
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
 
 ```kusto
 demo_many_series1
@@ -244,7 +245,7 @@ demo_many_series1
 
 이제 읽기 개수 메트릭의 18339 시계열 세트를 만들려고 합니다. `by` 절을 make-series 문에 추가하고, 선형 회귀를 적용하고, 가장 중요한 감소 추세를 포함한 상위 두 개의 시계열을 선택합니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -260,7 +261,7 @@ demo_many_series1
 
 인스턴스를 표시합니다.
 
-**\[**[**쿼리를 실행 하려면 클릭 하십시오.**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA)**\]**
+**\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  

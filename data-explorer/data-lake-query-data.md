@@ -7,12 +7,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 058a42cc21c6af9642d91231e6b1620315f94f55
-ms.sourcegitcommit: 313a91d2a34383b5a6e39add6c8b7fabb4f8d39a
+ms.localizationpriority: high
+ms.openlocfilehash: ec62c1d0dfe439ac77d7fce9e69af8e5c8a7a8a0
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90680699"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512794"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure 데이터 탐색기를 사용 하 여 Azure Data Lake에서 데이터 쿼리
 
@@ -267,7 +268,7 @@ external_table("TaxiRides")
  
 ### <a name="compression"></a>압축
  
-원격 저장소에서 인출 되는 데이터의 양을 줄이려면 압축을 사용 합니다. Parquet format의 경우 열 그룹을 별도로 압축 하는 내부 Parquet 압축 메커니즘을 사용 하 여 별도로 읽을 수 있습니다. 압축 메커니즘 사용의 유효성을 검사 하려면 파일 이름이 * &lt; &gt; release.tar.gz. parquet* 또는 * &lt; &gt; snappy. parquet* 이 아닌 파일 이름으로 지정 되었는지 확인 * &lt; &gt; 합니다.* 
+원격 저장소에서 인출 되는 데이터의 양을 줄이려면 압축을 사용 합니다. Parquet format의 경우 열 그룹을 별도로 압축 하는 내부 Parquet 압축 메커니즘을 사용 하 여 별도로 읽을 수 있습니다. 압축 메커니즘 사용의 유효성을 검사 하려면 파일 이름이 *&lt; &gt; release.tar.gz. parquet* 또는 *&lt; &gt; snappy. parquet* 이 아닌 파일 이름으로 지정 되었는지 확인 *&lt; &gt; 합니다.* 
  
 ### <a name="partitioning"></a>분할
  

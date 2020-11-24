@@ -8,14 +8,15 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/08/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: b2b304d012ea541f6855091874be8ea5483fae63
-ms.sourcegitcommit: b6f0f112b6ddf402e97c011a902bd70ba408e897
+ms.openlocfilehash: b448f4249c777d9b9d61e58dad993f3da1817fda
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497636"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512471"
 ---
 # <a name="samples"></a>샘플
 
@@ -498,7 +499,7 @@ Devices
 
 ## <a name="create-and-use-query-time-dimension-tables"></a>쿼리 시간 차원 테이블 만들기 및 사용
 
-쿼리 결과를 데이터베이스에 저장 되지 않은 임시 차원 테이블과 조인 하는 경우가 종종 있습니다. 결과가 단일 쿼리로 범위가 지정 된 테이블 인 식을 정의할 수 있습니다. 예를 들면 다음과 같습니다.
+쿼리 결과를 데이터베이스에 저장 되지 않은 임시 차원 테이블과 조인 하는 경우가 종종 있습니다. 결과가 단일 쿼리로 범위가 지정 된 테이블 인 식을 정의할 수 있습니다. 예:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -544,7 +545,7 @@ JobHistory
 
 열의 각 값에 대 한 최신 두 레코드를 반환 하는 쿼리입니다 `ID` . 여기에서 "최신"은 `timestamp` [상위 중첩 연산자](topnestedoperator.md)를 사용 하 여 "가장 높은 값을 갖는"로 정의 됩니다.
 
-예를 들면 다음과 같습니다.
+예:
 
 ```kusto
 datatable(id:string, timestamp:datetime, bla:string)           // #1
@@ -685,7 +686,7 @@ Fruits
 ## <a name="find-preceding-event"></a>이전 이벤트 찾기
 다음 예에서는 두 데이터 집합 간의 이전 이벤트를 찾는 방법을 보여 줍니다.  
 
-*목적:* : A와 B 라는 두 개의 데이터 집합이 있습니다. B의 각 레코드에 대해에서 위의 이벤트를 찾습니다 (즉,의 arg_max 레코드는 B 보다 "이전"). 다음은 다음 예제 데이터 집합에 대 한 예상 출력입니다. 
+*목적:*: A와 B 라는 두 개의 데이터 집합이 있습니다. B의 각 레코드에 대해에서 위의 이벤트를 찾습니다 (즉,의 arg_max 레코드는 B 보다 "이전"). 다음은 다음 예제 데이터 집합에 대 한 예상 출력입니다. 
 
 ```kusto
 let A = datatable(Timestamp:datetime, ID:string, EventA:string)
@@ -931,8 +932,8 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 
 ### <a name="isempty-isnotempty-notempty"></a>isempty, isnotempty, notempty
 
-- *isempty* 는 인수가 빈 문자열이거나 null인 경우 true를 반환합니다( *isnull* 참조).
-- *isnotempty* 는 인수가 빈 문자열이거나 null이 아닌 경우 true를 반환합니다( *isnotnull* 참조). 별칭: *notempty*
+- *isempty* 는 인수가 빈 문자열이거나 null인 경우 true를 반환합니다(*isnull* 참조).
+- *isnotempty* 는 인수가 빈 문자열이거나 null이 아닌 경우 true를 반환합니다(*isnotnull* 참조). 별칭: *notempty*
 
 
 ```Kusto
@@ -1228,7 +1229,7 @@ Event
 ## <a name="aggregations"></a>집계
 다음 섹션에서는 Kusto 쿼리 언어에서 쿼리 결과를 집계 하는 예를 보여 줍니다.
 
-### <a name="count"></a>개수
+### <a name="count"></a>count
 필터가 적용된 후, 결과 집합의 행 수를 계산합니다. 다음 예제에서는 지난 30분 동안 _Perf_ 테이블의 총 행 수를 반환합니다. 이 결과는 특정 이름을 지정하지 않는 한, *count_* 열에 반환됩니다.
 
 
@@ -1515,7 +1516,7 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-이 예제에서는 모든 로그인 이벤트에 대해 첫 번째 데이터 세트가 필터링됩니다. 그런 후 모든 로그아웃 이벤트를 필터링하는 두 번째 데이터 세트와 조인됩니다. 에상되는 열은 _Computer_ , _Account_ , _TargetLogonId_ 및 _TimeGenerated_ 입니다. 데이터 세트는 공유 열 _TargetLogonId_ 를 통해 상호 연관됩니다. 출력은 상관 관계마다 하나의 레코드로 표시되며, 로그인 및 로그아웃 시간이 모두 포함됩니다.
+이 예제에서는 모든 로그인 이벤트에 대해 첫 번째 데이터 세트가 필터링됩니다. 그런 후 모든 로그아웃 이벤트를 필터링하는 두 번째 데이터 세트와 조인됩니다. 에상되는 열은 _Computer_, _Account_, _TargetLogonId_ 및 _TimeGenerated_ 입니다. 데이터 세트는 공유 열 _TargetLogonId_ 를 통해 상호 연관됩니다. 출력은 상관 관계마다 하나의 레코드로 표시되며, 로그인 및 로그아웃 시간이 모두 포함됩니다.
 
 두 데이터 세트에 동일한 이름의 열이 있는 경우 오른쪽 데이터 세트의 열에 인덱스 번호가 지정됩니다. 따라서 이 예제의 결과는 왼쪽 테이블의 값을 포함하는 _TargetLogonId_ 와 오른쪽 테이블의 값을 포함하는 _TargetLogonId1_ 으로 표시됩니다. 이 경우 두 번째 _TargetLogonId1_ 열은 `project-away` 연산자를 사용하여 제거되었습니다.
 
@@ -1800,7 +1801,7 @@ week
 :::image type="content" source="images/samples/cohorts.png" alt-text="코호트 분석 출력":::
 
 ### <a name="rolling-monthly-active-users-and-user-stickiness"></a>롤링 월간 활성 사용자 및 사용자 연결 유지
-다음 예제에서는 슬라이딩 윈도우 계산을 수행할 수 있는 [series_fir](/azure/kusto/query/series-firfunction) 함수와 함께 시계열 분석을 사용합니다. 모니터링되는 샘플 애플리케이션은 사용자 지정 이벤트를 통해 사용자 활동을 추적하는 온라인 상점입니다. 쿼리는 두 가지 유형의 사용자 활동( _AddToCart_ 및 _Checkout_ )을 추적하고 _활성 사용자_ 를 지정된 날에 체크 아웃을 한 번 이상 수행한 사용자로 정의합니다.
+다음 예제에서는 슬라이딩 윈도우 계산을 수행할 수 있는 [series_fir](/azure/kusto/query/series-firfunction) 함수와 함께 시계열 분석을 사용합니다. 모니터링되는 샘플 애플리케이션은 사용자 지정 이벤트를 통해 사용자 활동을 추적하는 온라인 상점입니다. 쿼리는 두 가지 유형의 사용자 활동(_AddToCart_ 및 _Checkout_)을 추적하고 _활성 사용자_ 를 지정된 날에 체크 아웃을 한 번 이상 수행한 사용자로 정의합니다.
 
 
 

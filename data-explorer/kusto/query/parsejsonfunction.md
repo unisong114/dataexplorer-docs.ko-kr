@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0f49ee6763d4afadf12e9e008bd7ea8e61c49acc
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 3125a51733f6672d041e6c1522ea755e5677cb0c
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92246097"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512862"
 ---
 # <a name="parse_json"></a>parse_json()
 
@@ -35,7 +36,7 @@ JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우이 함수
 
 ## <a name="returns"></a>반환
 
-`dynamic` *Json*값에 의해 결정 되는 형식의 개체입니다.
+`dynamic` *Json* 값에 의해 결정 되는 형식의 개체입니다.
 * *Json* 형식이 인 경우 `dynamic` 해당 값이 있는 그대로 사용 됩니다.
 * *Json* 이 형식이 `string` 고가 적절 한 형식의 [json 문자열이](https://json.org/)면 문자열이 구문 분석 되 고 생성 된 값이 반환 됩니다.
 * *Json* 이 형식이 `string` 고 [올바른 형식의 json 문자열이](https://json.org/)아닌 경우 반환 되는 값은 `dynamic` 원래 값을 보유 하는 형식의 개체입니다 `string` .
@@ -60,7 +61,7 @@ T
 
 일반적으로 "슬롯" 중 하나가 다른 JSON 문자열인 속성 모음을 설명 하는 JSON 문자열이 있습니다. 
 
-예를 들면 다음과 같습니다.
+예:
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';

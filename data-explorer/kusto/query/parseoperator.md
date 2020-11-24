@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: a942015908c9608a76d3c49c411de9d17d6e70f5
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 2b034719fa7c2f3714020c722b5717f5cf8590ff
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92248618"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512964"
 ---
 # <a name="parse-operator"></a>parse 연산자
 
@@ -60,14 +61,14 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
     > [!NOTE] 
     > 은 `*` 유형 열 뒤에 사용할 수 없습니다 `string` .
 
-* Parse 패턴은 *Stringconstant*를 사용 하는 것이 아니라 *ColumnName* 으로 시작 될 수 있습니다.
+* Parse 패턴은 *Stringconstant* 를 사용 하는 것이 아니라 *ColumnName* 으로 시작 될 수 있습니다.
 
 * 구문 분석 된 *식이* 형식이 아니면 `string` 형식으로 변환 됩니다 `string` .
 
 * Regex 모드를 사용 하는 경우 구문 분석에 사용 되는 전체 regex를 제어 하는 regex 플래그를 추가 하는 옵션이 있습니다.
 
 * Regex 모드에서 parse는 패턴을 regex로 변환 합니다. [RE2 구문을](re2.md) 사용 하 여 일치를 수행 하 고 내부적으로 처리 되는 번호가 매겨진 캡처된 그룹을 사용 합니다.
-    예를 들면 다음과 같습니다.
+    예:
 
     ```kusto
     parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
@@ -218,8 +219,8 @@ Traces
 
 **완화 모드**
 
-완화 된 모드에 대 한이 예제에서 *totalslices* 확장 열은 형식 이어야 합니다 `long` . 그러나 구문 분석 된 문자열에는 *nonValidLongValue*값이 있습니다.
-*Releasetime* 확장 열에서 *비 유효 날짜/* 시간 값은 *datetime*으로 구문 분석할 수 없습니다.
+완화 된 모드에 대 한이 예제에서 *totalslices* 확장 열은 형식 이어야 합니다 `long` . 그러나 구문 분석 된 문자열에는 *nonValidLongValue* 값이 있습니다.
+*Releasetime* 확장 열에서 *비 유효 날짜/* 시간 값은 *datetime* 으로 구문 분석할 수 없습니다.
 이러한 두 개의 확장 된 열은 null 값을 얻게 되 고 다른 값 (예: *sliceNumber*)은 여전히 올바른 값을 가져옵니다.
 
 아래와 동일한 쿼리에 옵션 *kind = simple* 을 사용 하는 경우 모든 확장 열에 대해 null을 얻게 됩니다. 이 옵션은 확장 열에 대해 엄격 하며 완화 모드와 단순 모드의 차이입니다.

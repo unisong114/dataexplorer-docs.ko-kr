@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 9bafeee9cec5ac81034b879f054e445d8b118dcf
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 6fc2e55b43e7c7c2dc2bb537730f8f627e3e4a66
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92243405"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513117"
 ---
 # <a name="bin"></a>bin()
 
@@ -33,11 +34,11 @@ Null 값, null bin 크기 또는 음수 bin 크기를 반환 하면 null이 반�
 ## <a name="arguments"></a>인수
 
 * *value*: 숫자, 날짜 또는 timespan입니다. 
-* *roundTo*: "bin size" *값*을 나누는 숫자 또는 timespan입니다. 
+* *roundTo*: "bin size" *값* 을 나누는 숫자 또는 timespan입니다. 
 
 ## <a name="returns"></a>반환
 
-*값*보다 작은 *roundTo*의 가장 가까운 배수입니다.  
+*값* 보다 작은 *roundTo* 의 가장 가까운 배수입니다.  
  
 ```kusto
 (toint((value/roundTo))) * roundTo`

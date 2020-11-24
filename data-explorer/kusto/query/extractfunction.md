@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 63b6e966724efc92431b5a7017144a188c81f8d3
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 483c926d60abef120de2a355a6fa040b9608cd7a
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92252997"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513049"
 ---
 # <a name="extract"></a>extract()
 
@@ -38,7 +39,7 @@ extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
 
 ## <a name="returns"></a>반환
 
-*regex*가 *text*에서 일치 항목을 찾은 경우: 지시된 캡처 그룹 *captureGroup*에 대해 일치된 부분 문자열, 선택적으로 *typeLiteral*로 변환됩니다.
+*regex* 가 *text* 에서 일치 항목을 찾은 경우: 지시된 캡처 그룹 *captureGroup* 에 대해 일치된 부분 문자열, 선택적으로 *typeLiteral* 로 변환됩니다.
 
 일치 항목이 없거나 형식 변환에 실패한 경우 `null`입니다. 
 

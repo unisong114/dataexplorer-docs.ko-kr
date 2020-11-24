@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 3b857e0e16c212c2f12d43f9709a9278526a7344
-ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
+ms.localizationpriority: high
+ms.openlocfilehash: cbdebe75713bb7cd786941e7546ab477df497c20
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324689"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512913"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -60,7 +61,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 요청 옵션을 사용 하 여 결과 잘림을 사용 하지 않도록 설정할 수 있습니다 `notruncation` .
 몇 가지 형태의 제한이 여전히 적용 되는 것이 좋습니다.
 
-다음은 그 예입니다. 
+예:
 
 ```kusto
 set notruncation;
@@ -177,7 +178,7 @@ Kusto에서는 쿼리를 실행할 때 두 개의 [클라이언트 요청 속성
 
 쿼리를 실행 하는 동안 쿼리 텍스트는 쿼리를 나타내는 관계형 연산자 트리로 변환 됩니다.
 트리 깊이가 여러 천 수준의 내부 임계값을 초과 하는 경우 쿼리는 처리 하기에는 너무 복잡 한 것으로 간주 되며 오류 코드와 함께 실패 합니다. 이 오류는 관계형 연산자 트리가 제한을 초과 했음을 나타냅니다.
-함께 연결 된 이항 연산자의 긴 목록이 포함 된 쿼리로 인해 한도가 초과 되었습니다. 다음은 그 예입니다. 
+함께 연결 된 이항 연산자의 긴 목록이 포함 된 쿼리로 인해 한도가 초과 되었습니다. 예:
 
 ```kusto
 T 

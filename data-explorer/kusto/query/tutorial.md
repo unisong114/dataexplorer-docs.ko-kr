@@ -8,14 +8,15 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/08/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 8a3c0b058b2c1cf5023ce0069a7dd938fce5caec
-ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
+ms.openlocfilehash: cae5a3abd7a633bf143d1233db459a98ca53daaf
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324740"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513015"
 ---
 # <a name="tutorial"></a>자습서
 
@@ -59,7 +60,7 @@ StormEvents
 | project StartTime, EndTime , State , EventType , EpisodeNarrative
 ```
 
-|StartTime|EndTime|시스템 상태|EventType|EpisodeNarrative|
+|StartTime|EndTime|주|EventType|EpisodeNarrative|
 |---|---|---|---|---|
 |2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|캘리포니아|홍수|남부 San Joaquin 계곡을 통해 전면 시스템을 이동 하는 경우 19 일의 초기 아침 시간에 매우 복잡 한 서유럽 관할지의 짧은 기간이 소요 됩니다. 166 고속도로 Taft near 상태에서 사소한 초과가 보고 되었습니다.|
 
@@ -74,7 +75,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
-|StartTime|EndTime|EventType|시스템 상태|EventNarrative|
+|StartTime|EndTime|EventType|주|EventNarrative|
 |---|---|---|---|---|
 |2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|과도 한 비|플로리다|Coastal Volusia 군의 일부에 걸쳐 24 시간 동안 9 인치의 과도 한가 있습니다.|
 |2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|토네이도|플로리다|토네이도는 서쪽 Crooked Lake의 북쪽 끝에 있는 Eustis 마을에서 종료 되었습니다. 토네이도는 북쪽 북서쪽에서 Eustis로 이동함에 따라 EF1 강도로 빠르게 intensified. 트랙은 길이가 2 마일 미만 이며 최대 너비가 300 야드입니다.  토네이도는 7 개의 홈을 제거 했습니다. 25 개의 집에서 주요 데미지와 81 홈이 손상 된 부분을 수신 했습니다. $620만에는 심각한 부상 및 속성 손상이 설정 되지 않았습니다.|
@@ -99,7 +100,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
-|StartTime|EndTime|EventType|시스템 상태|EventNarrative|
+|StartTime|EndTime|EventType|주|EventNarrative|
 |---|---|---|---|---|
 |2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|겨울 스톰|미시간|이 매우 심각한 이벤트는 새 해의 일에 대 한 초기 아침 시간으로 계속 됩니다.|
 |2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|겨울 스톰|미시간|이 매우 심각한 이벤트는 새 해의 일에 대 한 초기 아침 시간으로 계속 됩니다.|
@@ -129,7 +130,7 @@ StormEvents
 | project StartTime, EndTime, Duration, EventType, State
 ```
 
-|StartTime|EndTime|기간|EventType|시스템 상태|
+|StartTime|EndTime|기간|EventType|주|
 |---|---|---|---|---|
 |2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|22:00:00|과도 한 비|플로리다|
 |2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|00:08:00|토네이도|플로리다|
@@ -138,7 +139,7 @@ StormEvents
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|뇌우를 동반한 바람|그루지야|
 
 열 이름을 다시 사용 하 고 계산 결과를 동일한 열에 할당할 수 있습니다.
-다음은 그 예입니다. 
+예:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -175,7 +176,7 @@ StormEvents
 | top 5 by StormCount desc
 ```
 
-|시스템 상태|StormCount|TypeOfStorms|
+|주|StormCount|TypeOfStorms|
 |---|---|---|
 |텍사스|4701|27|
 |캔자스|3166|21|

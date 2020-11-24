@@ -8,12 +8,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 2a0dfeb769e4dc40cb988bab3cb4650ebcfcc9e4
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.localizationpriority: high
+ms.openlocfilehash: cd0bc28a2d2b282c50a85c87dbf8f4989c7b4057
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342640"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513219"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure 데이터 탐색기 (미리 보기)를 사용 하 여 Azure Monitor에서 데이터 쿼리
 
@@ -34,14 +35,14 @@ Azure 데이터 탐색기 프록시 흐름:
 
     ![ADX native cluster](media/adx-proxy/web-ui-help-cluster.png)
 
-1. Azure 데이터 탐색기 UI (에서 https://dataexplorer.azure.com/clusters) **클러스터 추가**를 선택 합니다.
+1. Azure 데이터 탐색기 UI (에서 https://dataexplorer.azure.com/clusters) **클러스터 추가** 를 선택 합니다.
 
 1. **클러스터 추가** 창에서 LA 또는 AI 클러스터의 URL을 추가 합니다. 
     
     * LA의 경우: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * AI의 경우: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
-    * **추가**를 선택합니다.
+    * **추가** 를 선택합니다.
 
     ![클러스터 추가](media/adx-proxy/add-cluster.png)
 

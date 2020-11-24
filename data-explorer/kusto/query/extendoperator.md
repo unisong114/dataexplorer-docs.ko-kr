@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 0398efc3f97e9af1f994b16b91a9888fb4fcfa0b
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 7ead6313128b99357dd61f18f55c5d5543943a05
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92243324"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513355"
 ---
 # <a name="extend-operator"></a>extend 연산자
 
@@ -30,7 +31,7 @@ T | extend duration = endTime - startTime
 ## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블 형식 결과 집합입니다.
-* *ColumnName:* 필드. 추가 하거나 업데이트할 열의 이름입니다. 생략 하면 이름이 생성 됩니다. *식이* 둘 이상의 열을 반환 하는 경우 열 이름 목록을 괄호로 지정할 수 있습니다. 이 경우 *식*의 출력 열에는 지정 된 이름이 지정 되며 나머지 출력 열은 삭제 됩니다 (있는 경우). 열 이름 목록을 지정 하지 않으면 생성 된 이름이 있는 모든 *식*의 출력 열이 출력에 추가 됩니다.
+* *ColumnName:* 필드. 추가 하거나 업데이트할 열의 이름입니다. 생략 하면 이름이 생성 됩니다. *식이* 둘 이상의 열을 반환 하는 경우 열 이름 목록을 괄호로 지정할 수 있습니다. 이 경우 *식* 의 출력 열에는 지정 된 이름이 지정 되며 나머지 출력 열은 삭제 됩니다 (있는 경우). 열 이름 목록을 지정 하지 않으면 생성 된 이름이 있는 모든 *식* 의 출력 열이 출력에 추가 됩니다.
 * *식:* 입력 열에 대 한 계산입니다.
 
 ## <a name="returns"></a>반환

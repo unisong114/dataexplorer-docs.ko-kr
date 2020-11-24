@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 7529fb02c85d10ac451e78b878a21040e966ee34
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: f94003573cab076d8fa83537cb7868e21b9b084c
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92242272"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513270"
 ---
 # <a name="project-operator"></a>project 연산자
 
@@ -36,7 +37,7 @@ T | project cost=price*quantity, price
 ## <a name="arguments"></a>인수
 
 * *T*: 입력 테이블입니다.
-* *ColumnName:* 출력에 표시할 열의 선택적 이름입니다. *식이*없는 경우 *ColumnName* 은 필수 이며 해당 이름의 열이 입력에 표시 되어야 합니다. 생략 하면 이름이 자동으로 생성 됩니다. *식이* 둘 이상의 열을 반환 하는 경우 열 이름 목록을 괄호로 지정할 수 있습니다. 이 경우 *식*의 출력 열에는 지정 된 이름이 지정 됩니다 .이 경우 모든 나머지 출력 열은 삭제 됩니다. 열 이름 목록을 지정 하지 않으면 생성 된 이름이 있는 모든 *식*의 출력 열이 출력에 추가 됩니다.
+* *ColumnName:* 출력에 표시할 열의 선택적 이름입니다. *식이* 없는 경우 *ColumnName* 은 필수 이며 해당 이름의 열이 입력에 표시 되어야 합니다. 생략 하면 이름이 자동으로 생성 됩니다. *식이* 둘 이상의 열을 반환 하는 경우 열 이름 목록을 괄호로 지정할 수 있습니다. 이 경우 *식* 의 출력 열에는 지정 된 이름이 지정 됩니다 .이 경우 모든 나머지 출력 열은 삭제 됩니다. 열 이름 목록을 지정 하지 않으면 생성 된 이름이 있는 모든 *식* 의 출력 열이 출력에 추가 됩니다.
 * *Expression:* 입력 열을 참조하는 선택적 스칼라 식입니다. *ColumnName* 을 생략 하지 않으면 필수 *식* 입니다.
 
     입력의 기존 열과 같은 이름을 가진 새 계산된 열을 반환하는 것이 올바릅니다.

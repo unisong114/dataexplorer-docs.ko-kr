@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: 1e39e71aa9406815338974b2da03d05315054b65
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.localizationpriority: high
+ms.openlocfilehash: 6357afeb0a5673584e27b84a231e3c65f897b8fc
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92247362"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512369"
 ---
 # <a name="make-series-operator"></a>make-series 연산자
 
@@ -30,16 +31,16 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 ## <a name="arguments"></a>인수
 
 * *Column:* 결과 열에 대한 선택적 이름입니다. 기본적으로 식에서 파생된 이름입니다.
-* *DefaultValue:* 값이 없는 대신 사용 되는 기본값입니다. *AxisColumn* 및 *groupexpression*의 특정 값이 있는 행이 없는 경우 결과에서 배열의 해당 요소에 *DefaultValue*가 할당 됩니다. *DefaultValue* 를 생략 하면 0이 가정 됩니다. 
+* *DefaultValue:* 값이 없는 대신 사용 되는 기본값입니다. *AxisColumn* 및 *groupexpression* 의 특정 값이 있는 행이 없는 경우 결과에서 배열의 해당 요소에 *DefaultValue* 가 할당 됩니다. *DefaultValue* 를 생략 하면 0이 가정 됩니다. 
 * *집계:* 열 이름을 인수로 사용 하는 또는와 같은 [집계 함수](make-seriesoperator.md#list-of-aggregation-functions) 에 대 한 호출 `count()` `avg()` 입니다. [집계 함수의 목록](make-seriesoperator.md#list-of-aggregation-functions)을 참조하세요. 숫자 결과를 반환 하는 집계 함수만 연산자와 함께 사용할 수 있습니다 `make-series` .
 * *AxisColumn:* 계열이 정렬 될 열입니다. 타임 라인으로 간주할 수 있지만 `datetime` 모든 숫자 형식이 허용 됩니다.
-* *start*: (선택 사항) 작성할 각 계열에 대 한 *AxisColumn* 의 하위 값입니다. *start*, *end*및 *step* 은 지정 된 범위 내에서 지정 된 *단계*를 사용 하 여 *AxisColumn* 값의 배열을 만드는 데 사용 됩니다. 모든 *집계* 값은이 배열로 각각 정렬 됩니다. 이 *AxisColumn* 배열은 *AxisColumn*과 이름이 같은 출력의 마지막 출력 열 이기도 합니다. *시작* 값을 지정 하지 않으면 각 계열의 데이터가 있는 첫 번째 bin (단계)이 시작 됩니다.
-* *end*: (선택 사항) *AxisColumn*의 상한 (포함 안) 값입니다. 시계열의 마지막 인덱스는이 값 보다 작습니다. 즉, *시작* 하 고 *끝*보다 작은 *단계의* 정수 배수를 추가 합니다. *종료* 값을 제공 하지 않으면 각 계열에 대 한 데이터가 있는 마지막 bin (단계)의 상한이 됩니다.
+* *start*: (선택 사항) 작성할 각 계열에 대 한 *AxisColumn* 의 하위 값입니다. *start*, *end* 및 *step* 은 지정 된 범위 내에서 지정 된 *단계* 를 사용 하 여 *AxisColumn* 값의 배열을 만드는 데 사용 됩니다. 모든 *집계* 값은이 배열로 각각 정렬 됩니다. 이 *AxisColumn* 배열은 *AxisColumn* 과 이름이 같은 출력의 마지막 출력 열 이기도 합니다. *시작* 값을 지정 하지 않으면 각 계열의 데이터가 있는 첫 번째 bin (단계)이 시작 됩니다.
+* *end*: (선택 사항) *AxisColumn* 의 상한 (포함 안) 값입니다. 시계열의 마지막 인덱스는이 값 보다 작습니다. 즉, *시작* 하 고 *끝* 보다 작은 *단계의* 정수 배수를 추가 합니다. *종료* 값을 제공 하지 않으면 각 계열에 대 한 데이터가 있는 마지막 bin (단계)의 상한이 됩니다.
 * *단계*: *AxisColumn* 배열의 두 연속 요소 (즉, bin 크기) 간의 차이입니다.
 * *Groupexpression:* 고유 값 집합을 제공 하는 열에 대 한 식입니다. 일반적으로 이미 제한된 값 집합을 제공하는 열 이름입니다. 
 * *MakeSeriesParameters*: *Name* `=` 동작을 제어 하는 이름 *값* 형식의 0 개 이상의 (공백으로 구분 된) 매개 변수입니다. 지원 되는 매개 변수는 다음과 같습니다. 
   
-  |Name           |값                                        |설명                                                                                        |
+  |속성           |값                                        |설명                                                                                        |
   |---------------|-------------------------------------|------------------------------------------------------------------------------|
   |`kind`          |`nonempty`                               |시리즈 시리즈 연산자의 입력이 비어 있는 경우 기본 결과를 생성 합니다.|                                
 
@@ -73,12 +74,12 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 ## <a name="list-of-aggregation-functions"></a>집계 함수 목록
 
-|함수|설명|
+|기능|설명|
 |--------|-----------|
-|[any()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
-|[avg()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
+|[any ()](any-aggfunction.md)|그룹에 대 한 비어 있지 않은 임의의 값을 반환 합니다.|
+|[avg ()](avg-aggfunction.md)|그룹 전체에서 평균 값을 반환 합니다.|
 |[avgif()](avgif-aggfunction.md)|그룹의 조건자를 사용 하 여 평균을 반환 합니다.|
-|[count()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
+|[count ()](count-aggfunction.md)|그룹의 수를 반환 합니다.|
 |[countif()](countif-aggfunction.md)|그룹의 조건자를 포함 하는 개수를 반환 합니다.|
 |[dcount()](dcount-aggfunction.md)|그룹 요소의 대략적인 고유 개수를 반환 합니다.|
 |[dcountif()](dcountif-aggfunction.md)|그룹의 조건자를 사용 하 여 대략적인 고유 카운트를 반환 합니다.|
@@ -86,14 +87,14 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[maxif()](maxif-aggfunction.md)|그룹의 조건자를 사용 하 여 최 댓 값을 반환 합니다.|
 |[min()](min-aggfunction.md)|그룹의 최솟값을 반환합니다.|
 |[minif()](minif-aggfunction.md)|그룹의 조건자와 함께 최소값을 반환 합니다.|
-|[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
-|[sum()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
+|[stdev ()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환 합니다.|
+|[sum ()](sum-aggfunction.md)|그룹 내에 있는 요소의 합을 반환 합니다.|
 |[sumif()](sumif-aggfunction.md)|그룹의 조건자를 사용 하 여 요소의 합계를 반환 합니다.|
 |[variance()](variance-aggfunction.md)|그룹 간의 분산을 반환 합니다.|
 
 ## <a name="list-of-series-analysis-functions"></a>계열 분석 함수 목록
 
-|함수|설명|
+|기능|설명|
 |--------|-----------|
 |[series_fir()](series-firfunction.md)|[유한 임펄스 응답](https://en.wikipedia.org/wiki/Finite_impulse_response) 필터 적용|
 |[series_iir()](series-iirfunction.md)|[무한 임펄스 응답](https://en.wikipedia.org/wiki/Infinite_impulse_response) 필터 적용|
@@ -109,7 +110,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   
 ## <a name="list-of-series-interpolation-functions"></a>계열 보간 함수 목록
 
-|함수|설명|
+|기능|설명|
 |--------|-----------|
 |[series_fill_backward()](series-fill-backwardfunction.md)|계열의 누락 값에 대 한 역방향 채우기 보간을 수행 합니다.|
 |[series_fill_const()](series-fill-constfunction.md)|계열의 누락 값을 지정 된 상수 값으로 대체 합니다.|

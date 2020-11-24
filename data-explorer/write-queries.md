@@ -7,12 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
-ms.openlocfilehash: f6d993383ecf6c25bf144228e77f02f944bc02d8
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.localizationpriority: high
+ms.openlocfilehash: 22a22f1050a366a79017904550854365dc2ef43c
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343337"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513287"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 데이터 탐색기용 쿼리 작성
 
@@ -22,7 +23,7 @@ ms.locfileid: "92343337"
 
 다음의 두 가지 방식 중 하나로 이 문서의 쿼리를 실행할 수 있습니다.
 
-- 학습 지원을 위해 설정된 Azure 데이터 탐색기 *help 클러스터*에서 쿼리 실행.
+- 학습 지원을 위해 설정된 Azure 데이터 탐색기 *help 클러스터* 에서 쿼리 실행.
     이렇게 하려면 Azure Active Directory 구성원인 조직 전자 메일 계정을 사용하여 [클러스터에 로그인](https://dataexplorer.azure.com/clusters/help/databases/samples)합니다.
 
 - StormEvents 샘플 데이터가 포함된 자체 클러스터에서 쿼리 실행. 자세한 내용은 [빠른 시작: Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기](create-cluster-database-portal.md) 및 [Azure 데이터 탐색기로 샘플 데이터 수집](ingest-sample-data.md)을 참조하세요.
@@ -61,13 +62,13 @@ StormEvents
 
 이 섹션에서 설명하는 연산자는 Azure 데이터 탐색기의 쿼리를 이해하려면 파악해야 하는 구성 요소라 할 수 있습니다. 사용자가 작성하는 대부분의 쿼리에는 이러한 연산자가 여러 개 포함될 것입니다.
 
-help 클러스터에서 쿼리를 실행하려면 각 쿼리 위의 **쿼리를 실행하려면 클릭**을 선택합니다.
+help 클러스터에서 쿼리를 실행하려면 각 쿼리 위의 **쿼리를 실행하려면 클릭** 을 선택합니다.
 
 자체 클러스터에서 쿼리를 실행하려면 다음 단계를 수행합니다.
 
 1. 웹 기본 쿼리 애플리케이션에 각 쿼리를 복사한 다음, 쿼리를 선택하거나 쿼리에 커서를 놓습니다.
 
-1. 애플리케이션 위쪽에서 **실행**을 선택합니다.
+1. 애플리케이션 위쪽에서 **실행** 을 선택합니다.
 
 ### <a name="count"></a>count
 
@@ -85,7 +86,7 @@ StormEvents | count
 
 [**take**](kusto/query/takeoperator.md): 데이터 행을 지정된 수까지 반환합니다.
 
-다음 쿼리는 StormEvents 테이블의 행 5개를 반환합니다. *limit* 키워드는 *take*의 별칭입니다.
+다음 쿼리는 StormEvents 테이블의 행 5개를 반환합니다. *limit* 키워드는 *take* 의 별칭입니다.
 
 **\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d) **\]**
 
@@ -146,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[**top**](kusto/query/topoperator.md): 지정한 열을 기준으로 정렬된 처음 *N*개 레코드를 반환합니다.
+[**top**](kusto/query/topoperator.md): 지정한 열을 기준으로 정렬된 처음 *N* 개 레코드를 반환합니다.
 
 다음 쿼리는 연산자 수는 하나 더 적지만 위의 쿼리와 같은 결과를 반환합니다.
 
@@ -192,7 +193,7 @@ StormEvents
 
 **summarize** 연산자는 **by** 절의 값이 같은 행을 그룹화한 다음 **count** 등의 집계 함수를 사용하여 각 그룹을 단일 행으로 결합합니다. 따라서 이 예제의 경우 각 주에 해당하는 행이 있고 그 주의 행 개수에 해당하는 열이 있습니다.
 
-다양한 집계 함수가 있으며 이 중 여러 개를 하나의 **summarize** 연산자에 사용하여 여러 계산 열을 생성할 수 있습니다. 예를 들어 각 주의 태풍 횟수와 주당 고유한 태풍 수를 가져온 다음 **top**을 사용하여 태풍의 영향을 가장 많이 받은 주를 가져올 수 있습니다.
+다양한 집계 함수가 있으며 이 중 여러 개를 하나의 **summarize** 연산자에 사용하여 여러 계산 열을 생성할 수 있습니다. 예를 들어 각 주의 태풍 횟수와 주당 고유한 태풍 수를 가져온 다음 **top** 을 사용하여 태풍의 영향을 가장 많이 받은 주를 가져올 수 있습니다.
 
 **\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NHYWQyoJU%2fzSwXDFQPAUiAdYPktJUSKoE6kwsSQUZVpJfoGAKEYGblZJanAwAgbFb73QAAAA%3d) **\]**
 
@@ -204,7 +205,7 @@ StormEvents
 
 **summarize** 연산의 결과에는 다음 항목이 포함됩니다.
 
-- **by**에 이름이 포함되어 있는 각 열
+- **by** 에 이름이 포함되어 있는 각 열
 
 - 각 계산 식에 해당하는 열
 
@@ -270,7 +271,7 @@ StormEvents
 
 ### <a name="bin"></a>bin()
 
-[**bin()** ](kusto/query/binfunction.md): 값을 지정된 bin 크기의 아래쪽 정수 배로 반올림합니다.
+[**bin()**](kusto/query/binfunction.md): 값을 지정된 bin 크기의 아래쪽 정수 배로 반올림합니다.
 
 다음 쿼리는 버킷 크기로 1일을 사용하여 개수를 계산합니다.
 
@@ -357,7 +358,7 @@ MyData
 
 ### <a name="ago"></a>ago()
 
-[**ago()** ](kusto/query/agofunction.md): 현재 UTC 시계 시간에서 지정된 시간 범위를 뺍니다.
+[**ago()**](kusto/query/agofunction.md): 현재 UTC 시계 시간에서 지정된 시간 범위를 뺍니다.
 
 다음 쿼리는 지난 12시간 동안의 데이터를 반환합니다.
 
@@ -412,7 +413,7 @@ StormEvents
 
 ## <a name="tabular-operators"></a>테이블 형식 연산자
 
-Kusto에는 여러 가지 테이블 형식 연산자가 있습니다. 이 문서의 다른 섹션에도 그 중 몇 가지가 나와 있습니다. 여기서는 **parse**를 중점적으로 설명하겠습니다. 
+Kusto에는 여러 가지 테이블 형식 연산자가 있습니다. 이 문서의 다른 섹션에도 그 중 몇 가지가 나와 있습니다. 여기서는 **parse** 를 중점적으로 설명하겠습니다. 
 
 ### <a name="parse"></a>parse
 
@@ -569,7 +570,7 @@ StormEvents
 
 ### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()**](kusto/query/dcount-hllfunction.md): [**hll**](kusto/query/hll-aggfunction.md) 또는 [**hll_merge**](kusto/query/hll-merge-aggfunction.md)에 의해 생성된 HyperLogLog 결과에서 **dcount**를 계산합니다.
+[**dcount_hll()**](kusto/query/dcount-hllfunction.md): [**hll**](kusto/query/hll-aggfunction.md) 또는 [**hll_merge**](kusto/query/hll-merge-aggfunction.md)에 의해 생성된 HyperLogLog 결과에서 **dcount** 를 계산합니다.
 
 다음 쿼리는 HLL 알고리즘을 사용하여 개수를 생성합니다.
 
@@ -790,7 +791,7 @@ window)
 
 ### <a name="activity_engagement-plugin"></a>activity_engagement 플러그 인
 
-[**activity_engagement 플러그 인**](kusto/query/activity-engagement-plugin.md): 슬라이딩 타임라인 윈도우에서 ID 열을 기준으로 하여 활동 참여 비율을 계산합니다. **activity_engagement 플러그 인**을 사용하면 DAU, WAU 및 MAU(매일/매주/매월 활성 사용자)를 계산할 수 있습니다.
+[**activity_engagement 플러그 인**](kusto/query/activity-engagement-plugin.md): 슬라이딩 타임라인 윈도우에서 ID 열을 기준으로 하여 활동 참여 비율을 계산합니다. **activity_engagement 플러그 인** 을 사용하면 DAU, WAU 및 MAU(매일/매주/매월 활성 사용자)를 계산할 수 있습니다.
 
 다음 쿼리는 이동하는 7일 윈도우에서 매주 애플리케이션을 사용하는 총 고유 사용자 수와 비교한 매일 애플리케이션을 사용하는 총 고유 사용자 비율을 반환합니다.
 
@@ -841,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="new_activity_metrics-plugin"></a>new_activity_metrics 플러그 인
 
-[** 플러그 인**](kusto/query/new-activity-metrics-plugin.md): 새 사용자 코호트에 대해 유용한 활동 메트릭(고유 개수 값, 새 값의 고유 개수, 보유율, 변동률)을 계산합니다. 이 플러그 인은 개념상으로는 [**activity_metrics 플러그 인**](kusto/query/activity-metrics-plugin.md)과 비슷하지만 새 사용자만을 대상으로 합니다.
+[**플러그 인**](kusto/query/new-activity-metrics-plugin.md): 새 사용자 코호트에 대해 유용한 활동 메트릭(고유 개수 값, 새 값의 고유 개수, 보유율, 변동률)을 계산합니다. 이 플러그 인은 개념상으로는 [**activity_metrics 플러그 인**](kusto/query/activity-metrics-plugin.md)과 비슷하지만 새 사용자만을 대상으로 합니다.
 
 다음 쿼리는 새 사용자 코호트(첫 주에 도착한 사용자)에 대해 1주 동안의 보유율과 변동률을 계산합니다.
 

@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/21/2020
-ms.openlocfilehash: a5f5f554373331d66a08e7166249e8e24c4fbd7c
-ms.sourcegitcommit: 09da3f26b4235368297b8b9b604d4282228a443c
+ms.localizationpriority: high
+ms.openlocfilehash: e45510b893d6e84f029764aa9fdac0d326a96f94
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87348788"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513100"
 ---
 # <a name="count-aggregation-function"></a>count () (집계 함수)
 
@@ -24,7 +25,7 @@ ms.locfileid: "87348788"
 
 ## <a name="syntax"></a>구문
 
-함수`count()`
+함수 `count()`
 
 ## <a name="returns"></a>반환
 
@@ -41,7 +42,7 @@ StormEvents
 | summarize Count=count() by State
 ```
 
-|상태|개수|
+|시스템 상태|개수|
 |---|---|
 |웨스트버지니아|757|
 |와이오밍|396|

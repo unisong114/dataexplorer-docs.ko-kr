@@ -8,12 +8,13 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/09/2020
-ms.openlocfilehash: 879b858904ac9f024f70dfef6096141a9ff81bd7
-ms.sourcegitcommit: b8415e01464ca2ac9cd9939dc47e4c97b86bd07a
+ms.localizationpriority: high
+ms.openlocfilehash: c102637adfa1fd0340d28a67b52354956b511ada
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88028479"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95513316"
 ---
 # <a name="let-statement"></a>Let 문
 
@@ -31,7 +32,7 @@ Let 문에 의해 바인딩된 식은 다음과 같을 수 있습니다.
 * 테이블 형식
 * 사용자 정의 함수 (람다)
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `let`*이름* `=` *ScalarExpression*  |  *TabularExpression*  |  *Functiondefinitionexpression*
 
@@ -47,31 +48,31 @@ Let 문에 의해 바인딩된 식은 다음과 같을 수 있습니다.
 
 [ `view` ] `(` [*TabularArguments*] [ `,` ] [*ScalarArguments*] `)` `{` *functionbody*`}`
 
-`TabularArguments`-[*TabularArgName* `:` `(` [*AtrName* `:` *atrtype*] [ `,` ...] `)` ] [`,` ... ] [`,`]
+`TabularArguments` -[*TabularArgName* `:` `(` [*AtrName* `:` *atrtype*] [ `,` ...] `)` ] [`,` ... ] [`,`]
 
- 또는:
+ 또는
 
  [*TabularArgName* `:` `(` `*` `)`]
 
-`ScalarArguments`-[*ArgName* `:` *argtype*] [ `,` ...]
+`ScalarArguments` -[*ArgName* `:` *argtype*] [ `,` ...]
 
 
 |필드  |정의  |예제  |
 |---------|---------|---------|
 | **봅니다** | 인수를 포함 하지 않는 매개 변수가 없는 람다에만 나타날 수 있습니다. "모든 테이블"이 쿼리인 경우 바인딩된 이름이 포함 됨을 나타냅니다. | 예를 들어를 사용 하는 경우 `union *` 입니다.|
-| ***TabularArguments*** | 공식 테이블 형식 식 인수의 목록입니다. 
+| ***TabularArguments** _ | 공식 테이블 형식 식 인수의 목록입니다. 
 | 각 테이블 형식 인수에는 다음이 포함 됩니다.||
-|<ul><li> *TabularArgName*</li></ul> | 정식 테이블 형식 인수의 이름입니다. 이 이름은 *Functionbody* 에 표시 될 수 있으며 람다를 호출할 때 특정 값에 바인딩됩니다. ||
+|<ul><li> _TabularArgName *</li></ul> | 정식 테이블 형식 인수의 이름입니다. 이 이름은 *Functionbody* 에 표시 될 수 있으며 람다를 호출할 때 특정 값에 바인딩됩니다. ||
 |<ul><li>테이블 스키마 정의 </li></ul> | 해당 형식이 포함 된 특성 목록| AtrName: AtrType|
-| ***ScalarArguments*** | 정식 스칼라 인수의 목록입니다. 
+| ***ScalarArguments** _ | 정식 스칼라 인수의 목록입니다. 
 |각 스칼라 인수에는 다음이 포함 됩니다.||
-|<ul><li>*ArgName*</li></ul> | 공식 스칼라 인수의 이름입니다. 이 이름은 *Functionbody* 에 표시 될 수 있으며 람다를 호출할 때 특정 값에 바인딩됩니다.  |
+|<ul><li>_ArgName *</li></ul> | 공식 스칼라 인수의 이름입니다. 이 이름은 *Functionbody* 에 표시 될 수 있으며 람다를 호출할 때 특정 값에 바인딩됩니다.  |
 | <ul><li>*ArgType* </li></ul>| 공식 스칼라 인수의 형식입니다. | 현재,,,,, `bool` `string` `long` `datetime` `timespan` `real` , 및 형식 `dynamic` 에 대 한 별칭은 람다 인수 형식으로 지원 됩니다.
 
 > [!NOTE]
 >람다 호출에 사용 되는 테이블 형식 식은 일치 하는 형식을 가진 모든 특성을 포함 해야 합니다 (이에 국한 되지 않음).
 >
->`(*)`테이블 형식 식으로 사용할 수 있습니다. 
+>`(*)` 테이블 형식 식으로 사용할 수 있습니다. 
 >
 > 모든 테이블 형식 식은 람다 호출에서 사용할 수 있으며 람다 식에서 해당 열에 액세스할 수 없습니다. 
 >
