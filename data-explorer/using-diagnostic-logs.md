@@ -7,12 +7,12 @@ ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
-ms.openlocfilehash: 606ae915e822cf4f2c02ac590a5bb05bdb17f28a
-ms.sourcegitcommit: 4b061374c5b175262d256e82e3ff4c0cbb779a7b
+ms.openlocfilehash: fed4027d946792448f2c564d8daa019c991b50d2
+ms.sourcegitcommit: 3af95ea6a6746441ac71b1a217bbb02ee23d5f28
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94373904"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95473586"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-commands-and-queries-using-diagnostic-logs"></a>진단 로그를 사용 하 여 Azure 데이터 탐색기 수집, 명령 및 쿼리 모니터링
 
@@ -38,13 +38,14 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 >
 > 수집 로그는 스트리밍 수집, 엔진으로 직접 수집, 쿼리에서 수집 또는 설정 또는-추가 명령에 대해 지원 되지 않습니다.
 
-* 수집 **작업 성공** : 이러한 로그에 수집 작업을 성공적으로 완료 하는 방법에 대 한 정보가 있습니다.
+* 수집 **작업 성공**: 이러한 로그에 수집 작업을 성공적으로 완료 하는 방법에 대 한 정보가 있습니다.
 * **실패** 한 수집 작업: 이러한 로그는 오류 정보를 포함 하 여 실패 한 수집 작업에 대 한 자세한 정보를 포함 합니다. 
+* 수집 **일괄 처리 작업**: 이러한 로그에는 수집할 준비가 된 일괄 처리에 대 한 자세한 통계 (기간, 일괄 처리 크기 및 blob 수)가 있습니다.
 
 # <a name="commands-and-queries"></a>[명령 및 쿼리](#tab/commands-and-queries)
 
-* **명령** : 이러한 로그는 최종 상태에 도달한 관리자 명령에 대 한 정보를 포함 합니다.
-* **쿼리** : 이러한 로그는 최종 상태에 도달한 쿼리에 대 한 자세한 정보를 포함 합니다. 
+* **명령**: 이러한 로그는 최종 상태에 도달한 관리자 명령에 대 한 정보를 포함 합니다.
+* **쿼리**: 이러한 로그는 최종 상태에 도달한 쿼리에 대 한 자세한 정보를 포함 합니다. 
 
     > [!NOTE]
     > 쿼리 로그 데이터에는 쿼리 텍스트가 포함 되지 않습니다.
@@ -62,21 +63,21 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
   
     ![진단 로그 추가](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
-1. **진단 설정 추가** 를 선택 합니다.
+1. **진단 설정 추가** 를 선택합니다.
 1. **진단 설정** 창에서 다음을 수행 합니다.
 
     :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="진단 설정 구성":::
 
-    1. 진단 설정의 **이름을** 선택 합니다.
-    1. 하나 이상의 대상 (저장소 계정, 이벤트 허브 또는 Log Analytics)을 선택 합니다.
-    1. 수집할 로그 (,, 또는)를 선택 `SucceededIngestion` `FailedIngestion` `Command` `Query` 합니다.
+    1. **진단 설정 이름을** 입력 합니다.
+    1. 하나 이상의 대상 (Log Analytics 작업 영역, 저장소 계정 또는 이벤트 허브)을 선택 합니다.
+    1. 수집할 로그를 선택 합니다.,, `SucceededIngestion` `FailedIngestion` `Command` , 또는 `Query` , `TableUsageStatistics` 또는 `TableDetails` 입니다.
     1. 수집할 [메트릭](using-metrics.md#supported-azure-data-explorer-metrics) (선택 사항)을 선택 합니다.  
     1. **저장** 을 선택 하 여 새 진단 로그 설정 및 메트릭을 저장 합니다.
 
 몇 분 안에 새 설정이 설정 됩니다. 그러면 로그는 구성 된 보관 대상 (저장소 계정, 이벤트 허브 또는 Log Analytics)에 표시 됩니다. 
 
 > [!NOTE]
-> Log Analytics로 로그를 전송 하는 경우,, `SucceededIngestion` `FailedIngestion` `Command` 및 `Query` 로그는 `SucceededIngestion` 각각,,, `FailedIngestion` `ADXCommand` `ADXQuery` 등의 Log Analytics 테이블에 저장 됩니다.
+> Log Analytics로 로그를 전송 하는 경우,, `SucceededIngestion` `FailedIngestion` `Command` 및 `Query` 로그는 각각,,, `SucceededIngestion` `FailedIngestion` `ADXIngestionBatching` `ADXCommand` , `ADXQuery` , 이라는 Log Analytics 테이블에 저장 됩니다.
 
 ## <a name="diagnostic-logs-schema"></a>진단 로그 스키마
 
@@ -88,13 +89,13 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 로그 JSON 문자열에는 다음 표에 나열 된 요소가 포함 됩니다.
 
-|Name               |설명
+|속성               |설명
 |---                |---
 |time               |보고서의 시간
 |resourceId         |Azure Resource Manager 리소스 ID
 |operationName      |작업 이름: ' MICROSOFT. KUSTO/클러스터/수집/작업 '
 |operationVersion   |스키마 버전: ' 1.0 ' 
-|category           |작업의 범주입니다. `SucceededIngestion` 또는 `FailedIngestion` [작업 성공](#successful-ingestion-operation-log) 또는 [실패 한 작업](#failed-ingestion-operation-log)에 대 한 속성이 다릅니다.
+|category           |작업의 범주입니다. `SucceededIngestion`, `FailedIngestion` 또는 `IngestionBatching`. [작업 성공](#successful-ingestion-operation-log), [실패 한 작업](#failed-ingestion-operation-log) 또는 [일괄 처리 작업](#ingestion-batching-operation-log)에 대 한 속성이 다릅니다.
 |properties         |작업에 대 한 자세한 정보입니다.
 
 #### <a name="successful-ingestion-operation-log"></a>수집 작업 로그가 성공 했습니다.
@@ -110,27 +111,27 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
     "category": "SucceededIngestion",
     "properties":
     {
-        "succeededOn": "2019-05-27 07:55:05.3693628",
-        "operationId": "b446c48f-6e2f-4884-b723-92eb6dc99cc9",
-        "database": "Samples",
-        "table": "StormEvents",
-        "ingestionSourceId": "66a2959e-80de-4952-975d-b65072fc571d",
-        "ingestionSourcePath": "https://kustoingestionlogs.blob.core.windows.net/sampledata/events8347293.json",
-        "rootActivityId": "d0bd5dd3-c564-4647-953e-05670e22a81d"
+        "SucceededOn": "2019-05-27 07:55:05.3693628",
+        "OperationId": "b446c48f-6e2f-4884-b723-92eb6dc99cc9",
+        "Database": "Samples",
+        "Table": "StormEvents",
+        "IngestionSourceId": "66a2959e-80de-4952-975d-b65072fc571d",
+        "IngestionSourcePath": "https://kustoingestionlogs.blob.core.windows.net/sampledata/events8347293.json",
+        "RootActivityId": "d0bd5dd3-c564-4647-953e-05670e22a81d"
     }
 }
 ```
 **성공한 작업 진단 로그의 속성**
 
-|Name               |설명
+|속성               |설명
 |---                |---
-|succeededOn        |수집 완료 시간
-|operationId        |Azure 데이터 탐색기 수집 작업 ID
+|SucceededOn        |수집 완료 시간
+|OperationId        |Azure 데이터 탐색기 수집 작업 ID
 |데이터베이스           |대상 데이터베이스의 이름입니다.
 |테이블              |대상 테이블의 이름입니다.
-|ingestionSourceId  |수집 데이터 원본의 ID
-|ingestionSourcePath|수집 데이터 원본 또는 blob URI의 경로입니다.
-|rootActivityId     |활동 ID
+|IngestionSourceId  |수집 데이터 원본의 ID
+|IngestionSourcePath|수집 데이터 원본 또는 blob URI의 경로입니다.
+|RootActivityId     |활동 ID
 
 #### <a name="failed-ingestion-operation-log"></a>수집 작업 로그가 실패 했습니다.
 
@@ -163,20 +164,60 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 **실패 한 작업 진단 로그의 속성**
 
-|Name               |설명
+|속성               |설명
 |---                |---
-|failedOn           |수집 완료 시간
-|operationId        |Azure 데이터 탐색기 수집 작업 ID
+|FailedOn           |수집 완료 시간
+|OperationId        |Azure 데이터 탐색기 수집 작업 ID
 |데이터베이스           |대상 데이터베이스의 이름입니다.
 |테이블              |대상 테이블의 이름입니다.
-|ingestionSourceId  |수집 데이터 원본의 ID
-|ingestionSourcePath|수집 데이터 원본 또는 blob URI의 경로입니다.
-|rootActivityId     |활동 ID
-|자세히            |오류 및 오류 메시지에 대 한 자세한 설명
-|errorCode          |오류 코드 
-|failureStatus      |`Permanent` 또는 `Transient` 일시적인 오류를 다시 시도 하면 성공할 수 있습니다.
-|originatesFromUpdatePolicy|업데이트가 업데이트 정책에서 발생 하는 경우 True입니다.
-|shouldRetry        |다시 시도 하는 경우 True
+|IngestionSourceId  |수집 데이터 원본의 ID
+|IngestionSourcePath|수집 데이터 원본 또는 blob URI의 경로입니다.
+|RootActivityId     |활동 ID
+|세부 정보            |오류 및 오류 메시지에 대 한 자세한 설명
+|오류 코드          |오류 코드 
+|FailureStatus      |`Permanent` 또는 `Transient` 일시적인 오류를 다시 시도 하면 성공할 수 있습니다.
+|OriginatesFromUpdatePolicy|업데이트가 업데이트 정책에서 발생 하는 경우 True입니다.
+|ShouldRetry        |다시 시도 하는 경우 True
+
+#### <a name="ingestion-batching-operation-log"></a>수집 일괄 처리 작업 로그
+
+**예:**
+
+```json
+{
+  "resourceId": "/SUBSCRIPTIONS/12534EB3-8109-4D84-83AD-576C0D5E1D06/RESOURCEGROUPS/KEREN/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KERENEUS",
+  "time": "2020-05-27T07:55:05.3693628Z",
+  "operationVersion": "1.0",
+  "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGESTIONBATCHING/ACTION",
+  "category": "IngestionBatching",
+  "correlationId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735",
+  "properties": {
+    "Database": "Samples",
+    "Table": "StormEvents",
+    "BatchingType": "Size",
+    "SourceCreationTime": "2020-05-27 07:52:04.9623640",
+    "BatchTimeSeconds": 215.5,
+    "BatchSizeBytes": 2356425,
+    "DataSourcesInBatch": 4,
+    "RootActivityId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735"
+  }
+}
+
+```
+**수집 일괄 처리 작업 진단 로그의 속성**
+
+|속성               |Description
+|---                   |---
+| TimeGenerated        | 이 이벤트가 생성 된 시간 (UTC)입니다. |
+| 데이터베이스             | 대상 테이블을 보유 하는 데이터베이스의 이름입니다. |
+| 테이블                | 데이터가 수집 대상 테이블의 이름입니다. |
+| BatchingType         | 일괄 처리 유형: 일괄 처리에서 일괄 처리 시간, 데이터 크기 또는 일괄 처리 정책에 의해 설정 된 파일 수 제한에 도달 했는지 여부 |
+| SourceCreationTime   | 이 일괄 처리의 blob이 생성 된 최소 시간 (UTC) |
+| BatchTimeSeconds     | 이 일괄 처리의 총 일괄 처리 시간 (초) |
+| BatchSizeBytes       | 이 일괄 처리에서 데이터의 압축 되지 않은 총 크기 (바이트) |
+| DataSourcesInBatch   | 이 일괄 처리의 데이터 원본 수 |
+| RootActivityId       | 작업의 작업 ID |
+
 
 # <a name="commands-and-queries"></a>[명령 및 쿼리](#tab/commands-and-queries)
 
@@ -184,7 +225,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 로그 JSON 문자열에는 다음 표에 나열 된 요소가 포함 됩니다.
 
-|Name               |설명
+|속성               |설명
 |---                |---
 |time               |보고서의 시간
 |resourceId         |Azure Resource Manager 리소스 ID
@@ -224,19 +265,19 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 ```
 **명령 진단 로그의 속성**
 
-|Name               |설명
+|속성               |설명
 |---                |---
 |RootActivityId |루트 작업 ID
 |StartedOn        |이 명령이 시작 된 시간 (UTC)
 |LastUpdatedOn        |이 명령이 종료 된 시간 (UTC)
 |데이터베이스          |명령이 실행 된 데이터베이스의 이름입니다.
-|시스템 상태              |명령이 종료 된 상태입니다.
+|주              |명령이 종료 된 상태입니다.
 |FailureReason  |실패 이유
 |TotalCpu |총 CPU 기간
 |CommandType     |명령 유형
 |애플리케이션     |명령을 호출한 응용 프로그램 이름
 |ResourceUtilization     |명령 리소스 사용률
-|Duration     |명령 기간
+|기간     |명령 기간
 |사용자     |쿼리를 호출한 사용자입니다.
 |주 서버     |쿼리를 호출한 보안 주체입니다.
 
@@ -310,18 +351,18 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 **쿼리 진단 로그의 속성**
 
-|Name               |설명
+|속성               |설명
 |---                |---
 |RootActivityId |루트 작업 ID
 |StartedOn        |이 명령이 시작 된 시간 (UTC)
 |LastUpdatedOn           |이 명령이 종료 된 시간 (UTC)
 |데이터베이스              |명령이 실행 된 데이터베이스의 이름입니다.
-|시스템 상태  |명령이 종료 된 상태입니다.
+|주  |명령이 종료 된 상태입니다.
 |FailureReason|실패 이유
 |TotalCpu     |총 CPU 기간
 |ApplicationName            |쿼리를 호출한 응용 프로그램 이름
 |MemoryPeak          |최대 메모리
-|Duration      |명령 기간
+|기간      |명령 기간
 |사용자|쿼리를 호출한 사용자입니다.
 |주 서버        |쿼리를 호출한 보안 주체입니다.
 |ScannedExtentsStatistics        | 검색 된 익스텐트 통계 포함

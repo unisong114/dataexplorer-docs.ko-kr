@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: ea3521dec63798a9382bcfca98827288c9b735d3
-ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
+ms.openlocfilehash: b8ba6199d5353ffd34081483c2ffbbd73e88a60c
+ms.sourcegitcommit: 3af95ea6a6746441ac71b1a217bbb02ee23d5f28
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324808"
+ms.locfileid: "95473525"
 ---
 # <a name="event-hub-data-connection"></a>이벤트 허브 데이터 연결
 
@@ -38,7 +38,7 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
 
 수집 속성은 수집 프로세스, 데이터를 라우팅하는 위치 및이를 처리 하는 방법을 지시 합니다. [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트 수집의 수집 [속성](ingestion-properties.md) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
 
-|속성 |Description|
+|속성 |설명|
 |---|---|
 | 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Table`창에서 집합을 재정의 합니다 `Data Connection` . |
 | 서식 | 데이터 형식입니다. `Data format`창에서 집합을 재정의 합니다 `Data Connection` . |
@@ -92,7 +92,7 @@ eventHubClient.Close();
 
 이벤트 허브는 다음 시스템 속성을 노출 합니다.
 
-|속성 |데이터 형식 |Description|
+|속성 |데이터 형식 |설명|
 |---|---|---|
 | x-opt-enqueued-time |Datetime | 이벤트를 큐에 넣은 UTC 시간 |
 | x-opt-sequence-number |long | 이벤트 허브의 파티션 스트림 내에 있는 이벤트의 논리적 시퀀스 번호입니다.
@@ -123,6 +123,13 @@ eventHubClient.Close();
 데이터를 생성 하 고 이벤트 허브로 전송 하는 [샘플 앱](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 을 참조 하세요.
 
 샘플 데이터를 생성 하는 방법에 대 한 예제는 [이벤트 허브에서 Azure로 데이터 수집](ingest-data-event-hub.md#generate-sample-data) 을 참조 하세요 데이터 탐색기
+
+## <a name="set-up-geo-disaster-recovery-solution"></a>지역 재해 복구 솔루션 설정
+
+이벤트 허브는 [지역 재해 복구](/azure/event-hubs/event-hubs-geo-dr) 솔루션을 제공 합니다. Azure 데이터 탐색기는 `Alias` Event Hub 네임 스페이스를 지원 하지 않습니다. 솔루션에서 지역 재해 복구를 구현 하려면 두 개의 Event Hub 데이터 연결을 만듭니다. 하나는 기본 네임 스페이스이 고 다른 하나는 보조 네임 스페이스에 대 한 연결입니다. Azure 데이터 탐색기는 두 이벤트 허브 연결을 모두 수신 대기 합니다.
+
+> [!NOTE]
+> 기본 네임 스페이스에서 보조 네임 스페이스로 장애 조치 (failover)를 구현 하는 것은 사용자의 책임입니다.
 
 ## <a name="next-steps"></a>다음 단계
 
