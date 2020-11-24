@@ -11,12 +11,12 @@ ms.date: 03/29/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: bc083cadbae44723c85c0a119b90ab5b43aba388
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
+ms.openlocfilehash: 5670f3f9c7aa8b3d6b10f88433d19246e2daf6d6
+ms.sourcegitcommit: faa747df81c49b96d173dbd5a28d2ca4f3a2db5f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95512845"
+ms.locfileid: "95783338"
 ---
 # <a name="render-operator"></a>render 연산자
 
@@ -31,7 +31,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * Render 연산자는 데이터를 수정 하지 않습니다. 결과의 확장 속성에 주석 ("시각화")을 삽입 합니다. 주석에는 쿼리에 연산자가 제공 하는 정보가 포함 되어 있습니다.
 > * 시각화 정보의 해석은 사용자 에이전트에 의해 수행 됩니다. 다른 에이전트 (예: Kusto. 탐색기, Kusto. WebExplorer)는 다른 시각화를 지원할 수 있습니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 *T* `|` `render` *시각화* [ `with` `(` *PropertyName* `=` *PropertyValue* [ `,` ...] `)` ]
 
@@ -41,9 +41,9 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 
 ::: zone pivot="azuredataexplorer"
 
-|*시각화*     |설명|
+|*시각화*     |Description|
 |--------------------|-|
-| `anomalychart`     | 시간 차트와 비슷하지만 [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) 함수를 사용 하 여 [변칙을 강조 표시](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning) 합니다. |
+| `anomalychart`     | 시간 차트와 비슷하지만 [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) 함수를 사용 하 여 [변칙을 강조 표시](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) 합니다. |
 | `areachart`        | 영역 그래프입니다. 첫 번째 열은 x 축 이며 숫자 열 이어야 합니다. 다른 숫자 열은 y 축입니다. |
 | `barchart`         | 첫 번째 열은 x 축 이며 텍스트, 날짜/시간 또는 숫자일 수 있습니다. 다른 열은 숫자 이며 가로 줄무늬로 표시 됩니다.|
 | `card`             | 첫 번째 결과 레코드는 스칼라 값 집합으로 처리 되 고 카드로 표시 됩니다. |
@@ -62,7 +62,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 
 ::: zone pivot="azuremonitor"
 
-|*시각화*     |설명|
+|*시각화*     |Description|
 |--------------------|-|
 | `areachart`        | 영역 그래프입니다. 첫 번째 열은 x 축 이며 숫자 열 이어야 합니다. 다른 숫자 열은 y 축입니다. |
 | `barchart`         | 첫 번째 열은 x 축 이며 텍스트, 날짜/시간 또는 숫자일 수 있습니다. 다른 열은 숫자 이며 가로 줄무늬로 표시 됩니다.|
@@ -113,7 +113,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 일부 시각화는 속성을 제공 하 여 보다 구체화 될 수 있습니다 `kind` .
 이러한 항목은 다음과 같습니다.
 
-|*시각화*|`kind`             |설명                        |
+|*시각화*|`kind`             |Description                        |
 |---------------|-------------------|-----------------------------------|
 |`areachart`    |`default`          |각 "영역"은 자체를 나타냅니다.     |
 |               |`unstacked`        |`default`와 동일합니다.                 |
@@ -134,7 +134,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 
 일부 시각화는 여러 y 축 값으로 분할을 지원 합니다.
 
-|`ysplit`  |설명                                                       |
+|`ysplit`  |Description                                                       |
 |----------|------------------------------------------------------------------|
 |`none`    |모든 계열 데이터에 대해 단일 y 축이 표시 됩니다. (기본값)       |
 |`axes`    |단일 차트가 여러 y 축과 함께 표시 됩니다 (계열 마다 하나씩).|
@@ -169,8 +169,8 @@ range x from -2 to 2 step 0.1
 
 ::: zone pivot="azuredataexplorer"
 
-[자습서의 렌더링 예제](./tutorial.md#render-display-a-chart-or-table)
+[자습서의 렌더링 예제](./tutorial.md#displaychartortable)
 
-[이상 감지](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
+[이상 감지](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end
