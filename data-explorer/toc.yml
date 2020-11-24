@@ -201,6 +201,8 @@
           href: data-lake-query-data.md
         - name: Azure Monitor에서 데이터 쿼리
           href: query-monitor-data.md
+        - name: Power Apps 애플리케이션에서 데이터 쿼리
+          href: power-apps-connector.md
         - name: KQL 인라인 Python 디버그
           href: debug-inline-python.md
         - name: SDK 사용
@@ -370,8 +372,6 @@
           href: using-metrics.md
         - name: 리소스 상태를 사용하여 클러스터 상태 모니터링
           href: monitor-with-resource-health.md
-        - name: Azure Data Explorer에서 데이터를 쿼리하는 Power Apps 애플리케이션 만들기
-          href: power-apps-connector.md
     - name: 데이터 공유
       items:
         - name: Azure Data Share 사용
@@ -912,6 +912,8 @@
           href: ./kusto/query/ipv4-comparefunction.md
         - name: ipv4_is_match()
           href: ./kusto/query/ipv4-is-matchfunction.md
+        - name: ipv4_is_private()
+          href: ./kusto/query/ipv4-is-privatefunction.md
         - name: ipv6_compare()
           href: ./kusto/query/ipv6-comparefunction.md
         - name: ipv6_is_match()
@@ -1845,6 +1847,8 @@
           href: kusto/functions-library/quantize-fl.md
         - name: series_dot_product_fl()
           href: kusto/functions-library/series-dot-product-fl.md
+        - name: series_exp_smoothing_fl()
+          href: kusto/functions-library/series-exp-smoothing-fl.md
         - name: series_fit_poly_fl()
           href: kusto/functions-library/series-fit-poly-fl.md
         - name: series_moving_avg_fl()
