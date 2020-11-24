@@ -7,12 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cf2673d92cb5a543baed01b91bdd828cc5862aee
-ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
+ms.localizationpriority: high
+ms.openlocfilehash: 44c2a5adf46d8c136675aa70a45dc89ed60c4cc8
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92902554"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512743"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>빠른 시작: Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -56,7 +57,7 @@ Azure 리소스 그룹에 컴퓨팅 및 스토리지 리소스 집합이 정의�
     | Resource group | 리소스 그룹 | 기존 리소스 그룹을 사용하거나 새 리소스 그룹을 만듭니다. |
     | 클러스터 이름 | 고유한 클러스터 이름 | 클러스터를 식별하는 고유한 이름을 선택합니다. 입력한 클러스터 이름에 도메인 이름 *[region].kusto.windows.net* 이 추가됩니다. 이름에는 소문자와 숫자만 포함할 수 있습니다. 4-22자를 포함해야 합니다.
     | 지역 | *미국 서부* 또는 *미국 서부 2* | 이 빠른 시작에서는 *미국 서부* 또는 *미국 서부 2* 를 선택합니다(가용성 영역을 사용하는 경우). 프로덕션 시스템의 경우 요구에 가장 적합한 지역을 선택합니다.
-    | 가용성 영역 | *1* , *2* 및/또는 *3* | 클러스터 인스턴스를 동일한 지역의 다양한 가용성 영역에 배치합니다(선택 사항). [Azure 가용성 영역](/azure/availability-zones/az-overview)은 동일한 Azure 지역 내에서 고유한 물리적 위치로, Azure Data Explorer 클러스터 및 데이터를 부분 지역 오류로부터 보호합니다. 클러스터 노드는 기본적으로 동일한 데이터 센터에 생성됩니다. 여러 가용성 영역을 선택하면 단일 실패 지점을 제거하여 고가용성을 보장할 수 있습니다. 클러스터를 만드는 동안에만 가용성 영역에 배포할 수 있으며, 나중에 수정할 수 없습니다.
+    | 가용성 영역 | *1*, *2* 및/또는 *3* | 클러스터 인스턴스를 동일한 지역의 다양한 가용성 영역에 배치합니다(선택 사항). [Azure 가용성 영역](/azure/availability-zones/az-overview)은 동일한 Azure 지역 내에서 고유한 물리적 위치로, Azure Data Explorer 클러스터 및 데이터를 부분 지역 오류로부터 보호합니다. 클러스터 노드는 기본적으로 동일한 데이터 센터에 생성됩니다. 여러 가용성 영역을 선택하면 단일 실패 지점을 제거하여 고가용성을 보장할 수 있습니다. 클러스터를 만드는 동안에만 가용성 영역에 배포할 수 있으며, 나중에 수정할 수 없습니다.
     | 컴퓨팅 사양 | *D13_v2* | 이 빠른 시작에 가장 낮은 가격 사양을 선택합니다. 프로덕션 시스템의 경우 요구에 가장 적합한 사양을 선택합니다.
     | | | |
 

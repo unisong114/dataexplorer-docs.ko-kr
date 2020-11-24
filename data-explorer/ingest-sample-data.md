@@ -7,12 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
-ms.openlocfilehash: 3b5958740460bf1c6439544ac095849064216fbb
-ms.sourcegitcommit: 626a0e8695d2655e724283cfc4bdbe8e1d371de4
+ms.localizationpriority: high
+ms.openlocfilehash: d5cff511a67e122af6b71740bbeaec6b7a3048e4
+ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2020
-ms.locfileid: "89493626"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95512760"
 ---
 # <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>빠른 시작: Azure 데이터 탐색기로 샘플 데이터 수집
 
@@ -31,22 +32,22 @@ ms.locfileid: "89493626"
 
 1. [https://dataexplorer.azure.com](https://dataexplorer.azure.com)에 로그인합니다.
 
-1. 애플리케이션의 왼쪽 위에서 **클러스터 추가**를 선택합니다.
+1. 애플리케이션의 왼쪽 위에서 **클러스터 추가** 를 선택합니다.
 
-1. **클러스터 추가** 대화 상자에 `https://<ClusterName>.<Region>.kusto.windows.net/` 형식으로 클러스터 URL을 입력하고 **추가**를 선택합니다.
+1. **클러스터 추가** 대화 상자에 `https://<ClusterName>.<Region>.kusto.windows.net/` 형식으로 클러스터 URL을 입력하고 **추가** 를 선택합니다.
 
-1. 다음 명령을 붙여넣고 **실행**을 선택하여 StormEvents 테이블을 만듭니다.
+1. 다음 명령을 붙여넣고 **실행** 을 선택하여 StormEvents 테이블을 만듭니다.
 
     ```Kusto
     .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
     ```
-1. 다음 명령을 붙여넣고 **실행**을 선택하여 StormEvents 테이블에 데이터를 수집합니다.
+1. 다음 명령을 붙여넣고 **실행** 을 선택하여 StormEvents 테이블에 데이터를 수집합니다.
 
     ```Kusto
     .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
     ```
 
-1. 수집이 완료되면 다음 쿼리를 붙여넣고 창에서 쿼리를 선택한 다음 **실행**을 선택합니다.
+1. 수집이 완료되면 다음 쿼리를 붙여넣고 창에서 쿼리를 선택한 다음 **실행** 을 선택합니다.
 
     ```Kusto
     StormEvents
