@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 05f0055e5faf99d14864338db7f6ad6a4c99946e
-ms.sourcegitcommit: 0820454feb02ae489f3a86b688690422ae29d788
+ms.openlocfilehash: fd0bdc07c2a51d76257800e55921a82cd7fdbbda
+ms.sourcegitcommit: cffc81de2b5c75a0ef5a3c71ff58d1ef52d4eb5c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932704"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95872280"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-using-go"></a>Go를 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기
 
@@ -29,7 +29,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 이 문서에서는 [Go](https://golang.org/)를 사용 하 여 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다. 그런 다음 새 클러스터와 데이터베이스를 나열 하 고 삭제 하 고 리소스에 대 한 작업을 실행할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.
@@ -63,7 +63,7 @@ func getClustersClient(subscription string) kusto.ClustersClient {
 
 ### <a name="create-cluster"></a>클러스터 만들기
 
-에서 [Createorupdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.CreateOrUpdate) 함수를 사용 `kusto.ClustersClient` 하 여 새 Azure 데이터 탐색기 클러스터를 만듭니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
+에서 [Createorupdate](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto) 함수를 사용 `kusto.ClustersClient` 하 여 새 Azure 데이터 탐색기 클러스터를 만듭니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
 
 ```go
 func createCluster(sub, name, location, rgName string) {
