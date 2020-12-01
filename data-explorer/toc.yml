@@ -699,15 +699,18 @@
         - name: 숫자 연산자
           href: ./kusto/query/numoperators.md
         - name: 문자열 연산자
-          href: ./kusto/query/datatypes-string-operators.md
+          items:
+            - name: 문자열 연산자 개요
+              displayName: 'has, contains'
+              href: ./kusto/query/datatypes-string-operators.md
+            - name: in 및 !in 연산자
+              href: ./kusto/query/inoperator.md
+            - name: has_any 연산자
+              href: ./kusto/query/has-anyoperator.md
         - name: between 연산자
           href: ./kusto/query/betweenoperator.md
         - name: not-between 연산자(!between)
           href: ./kusto/query/notbetweenoperator.md
-        - name: in 및 !in 연산자
-          href: ./kusto/query/inoperator.md
-        - name: has_any 연산자
-          href: ./kusto/query/has-anyoperator.md
     - name: 스칼라 함수
       items:
         - name: 스칼라 함수 유형
