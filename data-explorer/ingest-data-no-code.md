@@ -206,7 +206,7 @@ Azure Data Explorer *TestDatabase* 데이터베이스에서 **쿼리** 를 선�
 
 ### <a name="create-the-target-tables"></a>대상 테이블 만들기
 
-Azure Monitor 로그의 구조는 테이블 형식이 아닙니다. 데이터를 조작하고 각 이벤트를 하나 이상의 레코드로 확장합니다. 원시 데이터는 활동 로그의 경우 *ActivityLogsRawRecords* , 진단 메트릭 및 로그의 경우 *DiagnosticRawRecords* 라는 중간 테이블로 수집됩니다. 이 때 데이터가 조작되고 확장됩니다. 그런 다음, 업데이트 정책을 사용하면 확장된 데이터가 활동 로그의 경우 *ActivityLogs* 테이블, 진단 메트릭의 경우 *DiagnosticMetrics* 및 진단 로그의 경우 *DiagnosticLogs* 로 수집됩니다. 즉, 활동 로그를 수집하기 위해 별도의 세 개 테이블을 만들고, 진단 메트릭 및 로그 수집을 수집하기 위해 별도의 두 개 테이블을 만들어야 합니다.
+Azure Monitor 로그의 구조는 테이블 형식이 아닙니다. 데이터를 조작하고 각 이벤트를 하나 이상의 레코드로 확장합니다. 원시 데이터는 활동 로그의 경우 *ActivityLogsRawRecords*, 진단 메트릭 및 로그의 경우 *DiagnosticRawRecords* 라는 중간 테이블로 수집됩니다. 이 때 데이터가 조작되고 확장됩니다. 그런 다음, 업데이트 정책을 사용하면 확장된 데이터가 활동 로그의 경우 *ActivityLogs* 테이블, 진단 메트릭의 경우 *DiagnosticMetrics* 및 진단 로그의 경우 *DiagnosticLogs* 로 수집됩니다. 즉, 활동 로그를 수집하기 위해 별도의 세 개 테이블을 만들고, 진단 메트릭 및 로그 수집을 수집하기 위해 별도의 두 개 테이블을 만들어야 합니다.
 
 Azure Data Explorer 웹 UI를 사용하여 Azure Data Explorer 데이터베이스에 대상 테이블을 만듭니다.
 
@@ -466,7 +466,7 @@ Azure 진단 설정을 사용하면 메트릭 및 로그를 스토리지 계정 
 
 1. 새 **진단 설정** 창이 열립니다. 
 
-    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Azure Data Explorer 포털, 진단 설정 창의 진단 설정 추가":::
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="작성할 필드가 있는 진단 설정 창 - Azure Data Explorer 포털":::
 
     다음 단계를 수행합니다.
     1. **진단 설정 이름** 필드에 이름을 입력합니다.  
