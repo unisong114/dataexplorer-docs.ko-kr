@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 08/12/2019
 ms.localizationpriority: high
 ms.openlocfilehash: d5cff511a67e122af6b71740bbeaec6b7a3048e4
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95512760"
 ---
 # <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>빠른 시작: Azure 데이터 탐색기로 샘플 데이터 수집
