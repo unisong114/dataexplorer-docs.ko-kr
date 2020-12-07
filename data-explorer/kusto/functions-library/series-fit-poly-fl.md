@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: eff9a5cd8ed2d9ed7e518be9aade9ecf2aded7bf
-ms.sourcegitcommit: d0f8d71261f8f01e7676abc77283f87fc450c7b1
+ms.openlocfilehash: 454aa19c5b38eabce49fd319891772746335ceab
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91765479"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321831"
 ---
 # <a name="series_fit_poly_fl"></a>series_fit_poly_fl()
 
@@ -27,7 +27,7 @@ ms.locfileid: "91765479"
 > * 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 > * [시리즈 연산자](../query/make-seriesoperator.md)를 사용 하 여 만든 것과 같이 균일 하 게 배치 된 계열의 선형 회귀의 경우 native 함수 [series_fit_line ()](../query/series-fit-linefunction.md)를 사용 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `T | invoke series_fit_poly_fl(`*y_series* `,` *y_fit_series* `,` *fit_coeff* `,` *수준* `, [` *x_series* `,` *x_istime*]`)`
   
@@ -99,7 +99,7 @@ demo_make_series1
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-영구적으로 사용 하려면 [. create 함수](../management/create-function.md)를 사용 합니다.  함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
+영구적으로 사용 하려면을 사용 [`.create function`](../management/create-function.md) 합니다.  함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
 ### <a name="one-time-installation"></a>일회성 설치
 
@@ -183,7 +183,7 @@ demo_make_series1
     | render timechart with(ycolumns=num, fnum)
     ```
     
-    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="여덟 번째 order 다항식을 불규칙 한 시계열에 맞추기를 보여 주는 그래프" border="false":::
 
 1. X & y 축에 노이즈를 사용 하는 다섯 번째 순서 다항식
 
@@ -200,6 +200,6 @@ demo_make_series1
     | render linechart
     ```
         
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="X & y 축에 노이즈가 있는 다섯 번째 순서 다항식의 맞춤 그래프":::
        
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="일반 시계열에 맞는 다섯 번째 순서 다항식을 보여 주는 그래프" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="노이즈가 있는 다섯 번째 순서 다항식의 계수" border="false":::

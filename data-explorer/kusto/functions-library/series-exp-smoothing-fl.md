@@ -7,14 +7,14 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/22/2020
-ms.openlocfilehash: 373dd34145a644fe14ea4c077a8c55ddf428ba6d
-ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
+ms.openlocfilehash: eabdb80852d2a81f996d3e722dda7df969a914be
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324931"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321814"
 ---
-# <a name="series_exp_smoothing_fl"></a>series_exp_smoothing_fl ()
+# <a name="series_exp_smoothing_fl"></a>series_exp_smoothing_fl()
 
 계열에 기본 지 수 다듬기 필터를 적용 합니다.
 
@@ -23,7 +23,7 @@ ms.locfileid: "95324931"
 > [!NOTE]
 > 이 함수는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `series_exp_smoothing_fl(`*y_series* `, [` *알파*`])`
   
@@ -56,7 +56,7 @@ range x from 1 to 50 step 1
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-영구적으로 사용 하려면 [. create 함수](../management/create-function.md)를 사용 합니다. 함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
+영구적으로 사용 하려면을 사용 [`.create function`](../management/create-function.md) 합니다. 함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
 ### <a name="one-time-installation"></a>일회성 설치
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
-ms.openlocfilehash: 9a670e2dead3e3cd5a2d881974678fcb44eaff29
-ms.sourcegitcommit: 3eabd78305d32cd9b8a6bd1d76877ddc19d8ac63
+ms.openlocfilehash: e05f8204ba1e81b9391b6b63f190b81e1db73338
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94548906"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321049"
 ---
 # <a name="cluster-follower-commands"></a>클러스터 종동체 명령
 
@@ -35,7 +35,7 @@ ms.locfileid: "94548906"
 
 **출력** 
 
-| 출력 매개 변수                     | 유형    | Description                                                                                                        |
+| 출력 매개 변수                     | 형식    | 설명                                                                                                        |
 |--------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------|
 | DatabaseName                         | String  | 뒤에 오는 데이터베이스의 이름입니다.                                                                           |
 | LeaderClusterMetadataPath            | String  | 리더 클러스터의 메타 데이터 컨테이너에 대 한 경로입니다.                                                               |
@@ -52,12 +52,12 @@ ms.locfileid: "94548906"
 
 **참고**
 
-* `modification kind`캐싱 정책에 대 한 기본값은 `union` 입니다. 을 변경 하려면 `modification kind` [. alter 종동체 데이터베이스 캐싱-정책-수정-kind](#alter-follower-database-caching-policies-modification-kind) 명령을 사용 합니다.
+* `modification kind`캐싱 정책에 대 한 기본값은 `union` 입니다. 을 변경 하려면 `modification kind` 명령을 사용 [`.alter follower database caching-policies-modification-kind`](#alter-follower-database-caching-policies-modification-kind) 합니다.
 * 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
-    * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* 을 (를) 사용 하 여 변경 작업을 수행한 후에는 종동체 데이터베이스의 재정의 설정을 볼 수 있습니다 [. 종동체 데이터베이스 표시](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* 변경을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기를 사용 하 여 다음을 수행할 수 있습니다. [`.show follower database`](#show-follower-database)
 
 **구문**
 
@@ -77,10 +77,10 @@ ms.locfileid: "94548906"
 **참고**
 
 * 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
-    * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* 다음을 사용 하 여 변경 작업을 수행할 수 있는 경우 종동체 데이터베이스의 재정의 설정 보기 [`.show follower database`](#show-follower-database)
 
 **구문**
 
@@ -100,8 +100,8 @@ ms.locfileid: "94548906"
 
 * `modification kind`이러한 권한이 부여 된 보안 주체에 대 한 기본값은 `none` 입니다. 을 변경 하려면 `modification kind`  [alter 종동체 데이터베이스 보안 주체-수정 유형](#alter-follower-database-principals-modification-kind)을 사용 합니다.
 * 다음 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다 `.show` .
-    * [. 데이터베이스 보안 주체 표시](../management/security-roles.md#managing-database-security-roles)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
+    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+    * [`.show database details`](../management/show-databases.md)
 * 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
 
 **구문**
@@ -122,9 +122,9 @@ ms.locfileid: "94548906"
 **참고**
 
 * 다음 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다 `.show` .
-    * [. 데이터베이스 보안 주체 표시](../management/security-roles.md#managing-database-security-roles)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
-* 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
+    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+    * [`.show database details`](../management/show-databases.md)
+* 다음을 사용 하 여 변경 작업을 수행할 수 있는 경우 종동체 데이터베이스의 재정의 설정 보기 [`.show follower database`](#show-follower-database)
 
 **구문**
 
@@ -143,8 +143,8 @@ ms.locfileid: "94548906"
 **참고**
 
 * 다음 명령을 사용 하 여 변경 작업을 수행할 수 있는 경우 유효한 보안 주체 컬렉션을 봅니다 `.show` .
-    * [. 데이터베이스 보안 주체 표시](../management/security-roles.md#managing-database-security-roles)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
+    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+    * [`.show database details`](../management/show-databases.md)
 * 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
 
 **구문**
@@ -165,9 +165,9 @@ ms.locfileid: "94548906"
 **참고**
 
 * 변경 후 표준 명령을 사용 하 여 데이터베이스/테이블 수준 캐싱 정책의 효과적인 컬렉션을 볼 수 있습니다 `.show` .
-    * [. 테이블 세부 정보 표시](show-tables-command.md)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
-* 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
+    * [`.show tables details`](show-tables-command.md)
+    * [`.show database details`](../management/show-databases.md)
+* 다음을 사용 하 여 변경 작업을 수행할 수 있는 경우 종동체 데이터베이스의 재정의 설정 보기 [`.show follower database`](#show-follower-database)
 
 **구문**
 
@@ -211,10 +211,10 @@ ms.locfileid: "94548906"
 **참고**
 
 * 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
-    * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* 다음을 사용 하 여 변경 작업을 수행할 수 있는 경우 종동체 데이터베이스의 재정의 설정 보기 [`.show follower database`](#show-follower-database)
 
 **구문**
 
@@ -235,10 +235,10 @@ ms.locfileid: "94548906"
 **참고**
 
 * 다음 명령을 사용 하 여 변경 작업을 수행한 후 정책 또는 유효 정책을 볼 수 있습니다 `.show` .
-    * [. 데이터베이스 정책 보존 표시](../management/retention-policy.md#show-retention-policy)
-    * [. 데이터베이스 세부 정보 표시](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* 를 사용 하 여 변경 작업을 수행한 후에 종동체 데이터베이스의 재정의 설정 보기 [. 종동체 데이터베이스 표시](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* 다음을 사용 하 여 변경 작업을 수행할 수 있는 경우 종동체 데이터베이스의 재정의 설정 보기 [`.show follower database`](#show-follower-database)
 
 **구문**
 
@@ -298,7 +298,7 @@ ms.locfileid: "94548906"
 |CachingPolicyOverride                | null                                                     |
 |AuthorizedPrincipalsOverride         | []                                                       |
 |AuthorizedPrincipalsModificationKind | 없음                                                     |
-|IsAutoPrefetchEnabled                | 거짓                                                    |
+|IsAutoPrefetchEnabled                | False                                                    |
 |TableMetadataOverrides               |                                                          |
 |CachingPoliciesModificationKind      | Union                                                    |                                                                                                                      |
 
@@ -320,7 +320,7 @@ ms.locfileid: "94548906"
 .show database MyDatabase principals
 ```
 
-| 역할                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 참고 |
+| Role                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 참고 |
 |----------------------------|---------------|---------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------|-------|
 | 데이터베이스 MyDatabase 관리자  | AAD 사용자      | 잭 Kusto (upn: jack@contoso.com )       | 12345678-abcd-efef-1234-350bf486087b | aaduser = 87654321-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
 | 데이터베이스 MyDatabase 뷰어 | AAD 사용자      | Jill Kusto (upn: jack@contoso.com )       | abcdefab-abcd-efef-1234-350bf486087b | aaduser = 54321789-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
@@ -389,6 +389,6 @@ ms.locfileid: "94548906"
 |CachingPolicyOverride                | {"DataHotSpan": {"Value": "00:00:00"}, "IndexHotSpan": {"Value": "00:00:00"}}                                                                                                        |
 |AuthorizedPrincipalsOverride         | [{"Principal": {"FullyQualifiedName": "aaduser = 87654321-abcd-efef-1234-350bf486087b",...}, {"Principal": {"FullyQualifiedName": "aaduser = 54321789-abcd-efef-1234-350bf486087b",...}] |
 |AuthorizedPrincipalsModificationKind | 바꾸기                                                                                                                                                                         |
-|IsAutoPrefetchEnabled                | 거짓                                                                                                                                                                           |
+|IsAutoPrefetchEnabled                | False                                                                                                                                                                           |
 |TableMetadataOverrides               | {"MyTargetTable": {"CachingPolicyOverride": {"DataHotSpan": {"Value": "3.00:00:00"} ...}, "MySourceTable": {"CachingPolicyOverride": {"DataHotSpan": {"Value": "1.00:00:00"},...}}}       |
 |CachingPoliciesModificationKind      | 바꾸기                                                                                                                                                                         |

@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: eaa4e759f0987940a86c509788f5e8a58b2f9e75
-ms.sourcegitcommit: 041272af91ebe53a5d573e9902594b09991aedf0
+ms.openlocfilehash: 03d047d89abc3de3c80414564ec101f309bf69b0
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91452734"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320573"
 ---
 # <a name="alter-materialized-view"></a>.alter materialized-view
 
@@ -24,7 +24,7 @@ ms.locfileid: "91452734"
 > [!WARNING]
 > 구체화 된 뷰를 변경 하는 경우 각별히 주의 해야 합니다. 잘못 된 사용으로 인해 데이터가 손실 될 수 있습니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `.alter` `materialized-view`  
 [ `with` `(` *PropertyName* `=` *PropertyValue* `,` ... `)` ]  
@@ -35,7 +35,7 @@ ms.locfileid: "91452734"
 
 ## <a name="arguments"></a>인수
 
-|인수|유형|설명
+|인수|형식|설명
 |----------------|-------|---|
 |ViewName|String|구체화 된 뷰 이름입니다.|
 |(|String|뷰가 정의 된 원본 테이블의 이름입니다.|
@@ -43,13 +43,13 @@ ms.locfileid: "91452734"
 
 ## <a name="properties"></a>속성
 
-는 `dimensionTables` 구체화 된 alter view 명령에서 유일 하 게 지원 되는 속성입니다. 이 속성은 쿼리에서 차원 테이블을 참조 하는 경우에 사용 해야 합니다. 자세한 내용은 [구체화 된 뷰 만들기](materialized-view-create.md) 명령을 참조 하세요.
+는 `dimensionTables` 구체화 된 alter view 명령에서 유일 하 게 지원 되는 속성입니다. 이 속성은 쿼리에서 차원 테이블을 참조 하는 경우에 사용 해야 합니다. 자세한 내용은 명령을 참조 하세요 [`.create materialized-view`](materialized-view-create.md) .
 
 ## <a name="use-cases"></a>사용 사례
 
 * 뷰에 집계를 추가 합니다. 예를 들어 `avg` 뷰 쿼리를로 변경 하 여 집계를에 추가 `T | summarize count(), min(Value) by Id` `T | summarize count(), min(Value), avg(Value) by Id` 합니다.
 * 요약 연산자 이외의 연산자를 변경 합니다. 예를 들어를로 변경 하 여 일부 레코드를 필터링  `T | summarize arg_max(Timestamp, *) by User` `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User` 합니다.
-* 원본 테이블의 변경으로 인해 쿼리를 변경 하지 않고 변경 합니다. 예를 들어 `T | summarize arg_max(Timestamp, *) by Id` ,로 설정 되지 않은 뷰가 있다고 가정 `autoUpdateSchema` [합니다 (구체화 된 뷰 명령 만들기](materialized-view-create.md) 참조). 뷰의 원본 테이블에서 열을 추가 하거나 제거 하면 뷰가 자동으로 사용 하지 않도록 설정 됩니다. 정확히 동일한 쿼리로 alter 명령을 실행 하 여 구체화 된 뷰의 스키마를 새 테이블 스키마에 맞게 변경 합니다. 뷰는 [구체화 된 뷰 사용](materialized-view-enable-disable.md) 명령을 사용 하 여 변경 후에도 명시적으로 사용 하도록 설정 해야 합니다.
+* 원본 테이블의 변경으로 인해 쿼리를 변경 하지 않고 변경 합니다. 예를 들어 `T | summarize arg_max(Timestamp, *) by Id` , `autoUpdateSchema` (명령 참조)로 설정 되지 않은 뷰가 있다고 가정 [`.create materialized-view`](materialized-view-create.md) 합니다. 뷰의 원본 테이블에서 열을 추가 하거나 제거 하면 뷰가 자동으로 사용 하지 않도록 설정 됩니다. 정확히 동일한 쿼리로 alter 명령을 실행 하 여 구체화 된 뷰의 스키마를 새 테이블 스키마에 맞게 변경 합니다. 뷰는 [구체화 된 뷰 사용](materialized-view-enable-disable.md) 명령을 사용 하 여 변경 후에도 명시적으로 사용 하도록 설정 해야 합니다.
 
 ## <a name="alter-materialized-view-limitations"></a>구체화 된 뷰 제한 변경
 

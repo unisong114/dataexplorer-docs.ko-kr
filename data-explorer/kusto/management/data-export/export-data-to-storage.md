@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: bd7482abb9c13130d863e9abb73819d9409109ea
-ms.sourcegitcommit: c815c6ccf33864e21e1d3daff26a4f077dff88f7
+ms.openlocfilehash: fd0ac46aa0e2cf73cf0ee5a51359cd346bf1beda
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012172"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321559"
 ---
 # <a name="export-data-to-storage"></a>저장소로 데이터 내보내기
 
@@ -41,7 +41,7 @@ ms.locfileid: "95012172"
 
 * *PropertyName* / *PropertyValue*: 0 개 이상의 선택적 내보내기 속성:
 
-|속성        |형식    |Description                                                                                                                |
+|속성        |형식    |설명                                                                                                                |
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
 |`sizeLimit`     |`long`  |기록 되는 단일 저장소 아티팩트의 크기 제한 (바이트)입니다 (압축 이전). 허용 되는 범위는 100MB (기본값)에서 1GB 까지입니다.|
 |`includeHeaders`|`string`|`csv` / `tsv` 출력의 경우는 열 머리글의 생성을 제어 합니다. 는 `none` (기본값, 내보낼 헤더 없음) 중 하나 ( `all` 모든 저장소 아티팩트에 헤더 줄 내보내기) 또는 `firstFile` (헤더 줄을 첫 번째 저장소 아티팩트로만 내보내기) 중 하나를 사용할 수 있습니다.|
@@ -69,8 +69,8 @@ ms.locfileid: "95012172"
 `async`플래그가 지정 된 경우 명령은 비동기 모드로 실행 됩니다.
 이 모드에서 명령은 작업 ID를 사용 하 여 즉시 반환 하 고, 데이터 내보내기는 완료 될 때까지 백그라운드에서 계속 됩니다. 명령에서 반환 된 작업 ID를 사용 하 여 다음 명령을 통해 진행 상황과 궁극적으로 결과를 추적할 수 있습니다.
 
-* [. 작업 표시](../operations.md#show-operations): 진행률을 추적 합니다.
-* [. 작업 세부 정보 표시](../operations.md#show-operation-details): 완료 결과를 가져옵니다.
+* [`.show operations`](../operations.md#show-operations): 진행률을 추적 합니다.
+* [`.show operation details`](../operations.md#show-operation-details): 완료 결과를 가져옵니다.
 
 예를 들어 성공적으로 완료 되 면 다음을 사용 하 여 결과를 검색할 수 있습니다.
 
@@ -78,7 +78,7 @@ ms.locfileid: "95012172"
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details
 ```
 
-**예** 
+**예제** 
 
 이 예에서 Kusto는 쿼리를 실행 한 다음 쿼리에서 생성 된 첫 번째 레코드 집합을 하나 이상의 압축 된 CSV blob으로 내보냅니다.
 열 이름 레이블은 각 blob에 대 한 첫 번째 행으로 추가 됩니다.
@@ -103,7 +103,7 @@ ms.locfileid: "95012172"
 내보내기 명령은 실행 중에 transiently 실패할 수 있습니다. [연속 내보내기](continuous-data-export.md) 에서 자동으로 명령을 다시 시도 합니다. 일반 내보내기 명령 ([저장소로 내보내기](export-data-to-storage.md), [외부 테이블로 내보내기](export-data-to-an-external-table.md))은 재시도를 수행 하지 않습니다.
 
 *  내보내기 명령이 실패 하면 이미 저장소에 기록 된 아티팩트가 삭제 되지 않습니다. 이러한 아티팩트는 저장소에 유지 됩니다. 명령이 실패 하면 일부 아티팩트가 작성 된 경우에도 내보내기가 불완전 한 것으로 가정 합니다. 
-* 성공적으로 완료 될 때 내보낸 아티팩트와 명령의 완료를 모두 추적 하는 가장 좋은 방법은 [. show operations](../operations.md#show-operations) 및 [. show operation details](../operations.md#show-operation-details) 명령을 사용 하는 것입니다.
+* 성공적으로 완료 될 때 내보낸 아티팩트와 명령의 완료를 모두 추적 하는 가장 좋은 방법은 및 명령을 사용 하는 것입니다 [`.show operations`](../operations.md#show-operations) [`.show operation details`](../operations.md#show-operation-details) .
 
 ### <a name="storage-failures"></a>저장소 오류
 

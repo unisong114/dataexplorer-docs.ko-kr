@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 4a9b42410c7a64a54ced0dc326b33242b4b11870
-ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
+ms.openlocfilehash: 0ee41d8aba05eb9b5bf3bc6db3206524fdb5ec0d
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91057206"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321304"
 ---
 # <a name="show-materialized-views-commands"></a>. 구체화 된 뷰 표시 명령
 
@@ -23,7 +23,7 @@ ms.locfileid: "91057206"
 
 구체화 된 뷰의 정의 및 현재 상태에 대 한 정보를 표시 합니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
 `.show``materialized-view` *MaterializedViewName*
 
@@ -56,13 +56,13 @@ ms.locfileid: "91057206"
 |폴더|문자열|구체화 된 뷰 폴더입니다.
 |DocString|문자열|구체화 된 뷰 doc 문자열입니다.
 |AutoUpdateSchema|bool|자동 업데이트에 대해 보기를 사용할지 여부를 지정 합니다.
-|EffectiveDateTime|Datetime|만든 시간 동안 확인 된 뷰의 개시 날짜 시간입니다 ( [구체화 된 뷰 만들기](materialized-view-create.md#create-materialized-view)참조).
+|EffectiveDateTime|Datetime|만든 시간 동안 확인 된 뷰의 개시 날짜 시간입니다 (참조 [`.create materialized-view`](materialized-view-create.md#create-materialized-view) ).
 
 ## <a name="show-materialized-view-schema"></a>. 구체화 된 뷰 스키마 표시
 
 CSL/JSON에서 구체화 된 뷰의 스키마를 반환 합니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
 `.show``materialized-view` *MaterializedViewName*`cslschema`
 
@@ -86,7 +86,7 @@ CSL/JSON에서 구체화 된 뷰의 스키마를 반환 합니다.
 
 이 명령은 [테이블 범위 표시](../show-extents.md#table-level) 명령과 동일한 세부 정보를 제공 합니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
 `.show``materialized-view` *MaterializedViewName* `extents` [ `hot` ]
  
@@ -94,7 +94,7 @@ CSL/JSON에서 구체화 된 뷰의 스키마를 반환 합니다.
 
 구체화 된 뷰의 구체화 프로세스의 일부로 발생 한 오류를 반환 합니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
 `.show``materialized-view` *MaterializedViewName*`failures`
 

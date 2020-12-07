@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/19/2019
-ms.openlocfilehash: c7f692739071496ce492d168c6036a2c2adac8fd
-ms.sourcegitcommit: f7101c6b41ec250d05f4cb6092e2939958b37b40
+ms.openlocfilehash: 222d04939560342bd849c15f249b1a8a582316a2
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84329048"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321032"
 ---
 # <a name="commands-and-queries-management"></a>명령 및 쿼리 관리
 
@@ -21,7 +21,7 @@ ms.locfileid: "84329048"
 
 `.show``commands-and-queries`최종 상태에 도달한 관리자 명령 및 쿼리를 포함 하는 테이블을 반환 합니다. 이러한 명령 및 쿼리는 30 일 동안 사용할 수 있습니다.
 
-명령의 출력에 표시 되는 정보는 [. show commands](commands.md) 및 [. show queries](queries.md)와 유사 하지만 기본적으로 두 결과 집합을 간단한 방법으로 조인할 수 있습니다.
+명령 출력에 표시 되는 정보는 [ `.show` 명령과](commands.md) [ `.show` 쿼리와](queries.md)유사 하지만 기본적으로 두 결과 집합을 간단한 방법으로 조인할 수 있습니다.
 
 **구문**
 
@@ -40,7 +40,7 @@ ms.locfileid: "84329048"
 | StartedOn                | Datetime   |
 | LastUpdatedOn            | Datetime   |
 | 기간                 | timespan   |
-| 주                    | 문자열     |
+| 시스템 상태                    | 문자열     |
 | FailureReason            | 문자열     |
 | RootActivityId           | guid       |
 | 사용자                     | 문자열     |

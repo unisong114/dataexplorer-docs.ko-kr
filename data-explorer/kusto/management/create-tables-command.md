@@ -1,5 +1,5 @@
 ---
-title: . 테이블 만들기-Azure 데이터 탐색기 | Microsoft Docs
+title: . 테이블 만들기-Azure 데이터 탐색기
 description: 이 문서에서는 Azure 데이터 탐색기에서 테이블 만들기에 대해 설명 합니다.
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/05/2020
-ms.openlocfilehash: ff8b3cfae6d3364b4d094f588c8130761fa5cb31
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: 28ee7e462245497dd14d3a14a1c0703cc71a8933
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85966995"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321593"
 ---
 # <a name="create-tables"></a>.create tables
 

@@ -8,13 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/02/2020
-ms.openlocfilehash: 23784a1e3e00c242665a43dffcc528bfeff68896
-ms.sourcegitcommit: d6f35df833d5b4f2829a8924fffac1d0b49ce1c2
+ms.openlocfilehash: 45e7d0abf42e613a9d197371dcc374fe4ac11fed
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060696"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321015"
 ---
-# <a name="drop-extent-tags"></a>. 익스텐트 태그를 삭제 합니다.
+# <a name="drop-extent-tags"></a>.drop extent tags
 
 명령은 특정 데이터베이스의 컨텍스트에서 실행 됩니다. 데이터베이스 및 테이블의 모든 또는 특정 익스텐트의 특정 [익스텐트 태그](extents-overview.md#extent-tagging) 를 삭제 합니다.  
 
@@ -29,16 +30,16 @@ ms.locfileid: "86060696"
 
 ## <a name="syntax"></a>Syntax
 
-`.drop`[ `async` ] `extent` `tags` `from` `table` *TableName* `(` '*Tag1*' [ `,` '*Tag2*' `,` ... `,` ' *TagN*']`)`
+`.drop` [ `async` ] `extent` `tags` `from` `table` *TableName* `(` '*Tag1*' [ `,` '*Tag2*' `,` ... `,` ' *TagN*']`)`
 
 `.drop`[ `async` ] `extent` `tags`  <|  *쿼리*
 
-`async`(선택 사항): 비동기적으로 명령을 실행 합니다.
+`async` (선택 사항): 비동기적으로 명령을 실행 합니다.
    * 작업 ID (Guid)가 반환 됩니다.
-   * 작업 상태를 모니터링할 수 있습니다. [. Show operations](operations.md#show-operations) 명령을 사용 합니다.
-   * [. 작업 세부 정보 표시](operations.md#show-operation-details) 명령을 사용 하 여 성공적으로 실행 한 결과를 검색 합니다.
+   * 작업 상태를 모니터링할 수 있습니다. 명령을 사용 [`.show operations`](operations.md#show-operations) 합니다.
+   * 명령을 사용 [`.show operation details`](operations.md#show-operation-details) 하 여 성공적으로 실행 한 결과를 검색 합니다.
 
-## <a name="restrictions"></a>제한 사항
+## <a name="restrictions"></a>제한
 
 모든 익스텐트는 컨텍스트 데이터베이스에 있어야 하며 동일한 테이블에 속해야 합니다.
 
@@ -63,12 +64,12 @@ ms.locfileid: "86060696"
 
 출력 매개 변수 |형식 |설명 
 ---|---|---
-OriginalExtentId |string |태그가 수정 된 원래 익스텐트의 고유 식별자 (GUID)입니다. 익스텐트는 작업의 일부로 삭제 됩니다.
-ResultExtentId |string |수정 된 태그를 포함 하는 결과 범위에 대 한 고유 식별자 (GUID)입니다. 익스텐트를 만들어 작업의 일부로 추가 합니다. 오류가 발생 한 경우-"Failed".
-ResultExtentTags |string |결과 범위에 태그가 지정 된 태그의 컬렉션 (있는 경우) 이거나, 작업이 실패 하는 경우에는 "null"입니다.
-설명 |string |작업이 실패 하는 경우 오류 세부 정보를 포함 합니다.
+OriginalExtentId |문자열 |태그가 수정 된 원래 익스텐트의 고유 식별자 (GUID)입니다. 익스텐트는 작업의 일부로 삭제 됩니다.
+ResultExtentId |문자열 |수정 된 태그를 포함 하는 결과 범위에 대 한 고유 식별자 (GUID)입니다. 익스텐트를 만들어 작업의 일부로 추가 합니다. 오류가 발생 한 경우-"Failed".
+ResultExtentTags |문자열 |결과 범위에 태그가 지정 된 태그의 컬렉션 (있는 경우) 이거나, 작업이 실패 하는 경우에는 "null"입니다.
+세부 정보 |문자열 |작업이 실패 하는 경우 오류 세부 정보를 포함 합니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 ### <a name="drop-one-tag"></a>태그 하나를 삭제 합니다.
 
@@ -114,7 +115,7 @@ ResultExtentTags |string |결과 범위에 태그가 지정 된 태그의 컬렉
 
 ## <a name="sample-output"></a>샘플 출력
 
-|OriginalExtentId |ResultExtentId | ResultExtentTags | 설명
+|OriginalExtentId |ResultExtentId | ResultExtentTags | 세부 정보
 |---|---|---|---
 |e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 | Partition001 |
 |cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be | |

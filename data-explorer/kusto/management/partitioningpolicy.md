@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 1d2960e4fa8274d9e39aba935a49fd8d14d166e9
-ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
+ms.openlocfilehash: 30929e63c39be10d066815333ba6b277c0aeb5c9
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92902673"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321287"
 ---
 # <a name="partitioning-policy"></a>분할 정책
 
@@ -28,10 +28,10 @@ ms.locfileid: "92902673"
 
 지원 되는 파티션 키 종류는 다음과 같습니다.
 
-|Kind                                                   |열 유형 |파티션 속성                    |파티션 값                                        |
-|-------------------------------------------------------|------------|----------------------------------------|----------------------|
-|[해시](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
-|[균일 범위](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`                | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
+|Kind                                                   |열 유형 |파티션 속성                                               |파티션 값                                        |
+|-------------------------------------------------------|------------|-------------------------------------------------------------------|-------------------------------------------------------|
+|[해시](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed`, `PartitionAssignmentMode` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
+|[균일 범위](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`, `OverrideCreationTime`                   | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
 
 ### <a name="hash-partition-key"></a>해시 파티션 키
 
@@ -47,7 +47,7 @@ ms.locfileid: "92902673"
 
 #### <a name="partition-properties"></a>파티션 속성
 
-|속성 | Description | 지원 되는 값| 권장되는 값 |
+|속성 | 설명 | 지원 되는 값| 권장되는 값 |
 |---|---|---|---|
 | `Function` | 사용할 hash 모듈로 함수의 이름입니다.| `XxHash64` | |
 | `MaxPartitionCount` | 기간을 만들 최대 파티션 수 (해시 모듈로 함수에 대 한 모듈로 인수)입니다. | 범위에 `(1,2048]` 있습니다. <br>  클러스터에 있는 노드 수의 5 배 보다 크고 열의 카디널리티 보다 작습니다. |  값이 높을수록 클러스터의 노드에서 데이터 분할 프로세스의 오버 헤드가 증가 하 고, 각 기간에 대 한 익스텐트 수가 커집니다. 50 노드 미만의 클러스터의 경우부터 시작 `256` 합니다. 이러한 고려 사항에 따라 또는 쿼리 성능 및 데이터 사후 수집을 분할 하는 오버 헤드의 장점에 따라 값을 조정 합니다.
@@ -83,15 +83,16 @@ ms.locfileid: "92902673"
 
 #### <a name="partition-properties"></a>파티션 속성
 
-|속성 | Description | 권장되는 값 |
-|---|---|---|---|
-| `RangeSize` | `timespan`각 datetime 파티션의 크기를 나타내는 스칼라 상수입니다. | 값으로 시작 `1.00:00:00` 합니다 (1 일). 더 짧은 값을 설정 하지 마세요 .이로 인해 병합할 수 없는 작은 익스텐트가 여러 개 있을 수 있습니다.
-| `Reference` | `datetime`정렬 된 datetime 파티션에 따라 고정 된 특정 시점을 나타내는 스칼라 상수입니다. | `1970-01-01 00:00:00`를 시작합니다. Datetime 파티션 키에 값이 있는 레코드가 있는 경우 `null` 해당 파티션 값은의 값으로 설정 됩니다 `Reference` . |
+|속성                | 설명                                                                                                                                                     | 권장되는 값                                                                                                                                                                                                                                                            |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `RangeSize`            | `timespan`각 datetime 파티션의 크기를 나타내는 스칼라 상수입니다.                                                                                | 값으로 시작 `1.00:00:00` 합니다 (1 일). 더 짧은 값을 설정 하지 마세요 .이로 인해 병합할 수 없는 작은 익스텐트가 여러 개 있을 수 있습니다.                                                                                                      |
+| `Reference`            | `datetime`정렬 된 datetime 파티션에 따라 고정 된 특정 시점을 나타내는 스칼라 상수입니다.                                          | `1970-01-01 00:00:00`를 시작합니다. Datetime 파티션 키에 값이 있는 레코드가 있는 경우 `null` 해당 파티션 값은의 값으로 설정 됩니다 `Reference` .                                                                                                      |
+| `OverrideCreationTime` | `bool`결과 익스텐트의 최소 및 최대 생성 시간이 파티션 키의 값 범위에 의해 재정의 되어야 하는지 여부를 나타내는입니다. | 기본값은 `false`입니다. `true`데이터가 도착 시 수집 되지 않은 경우 (예: 단일 소스 파일에 매우 멀리 있는 datetime 값이 포함 될 수 있는 경우)로 설정 하 고, 수집 시간이 아닌 날짜/시간 값을 기반으로 보존/캐싱을 강제 적용 하려는 경우로 설정 합니다. |
 
 #### <a name="uniform-range-datetime-partition-example"></a>단일 범위 datetime 파티션 예
 
-코드 조각은 이라는 형식화 된 열에 대해 균일 한 datetime 범위 파티션 키를 보여 줍니다 `datetime` `timestamp` .
-`datetime(1970-01-01)`각 파티션에 대해 크기를 사용 하 여를 참조 지점으로 사용 `1d` 합니다.
+이 코드 조각은 이라는 형식화 된 열에 대해 균일 한 datetime 범위 파티션 키를 보여 줍니다 `datetime` `timestamp` .
+이 클래스는를 `datetime(1970-01-01)` 참조 지점으로 사용 하 고 각 파티션에는 크기를 지정 `1d` 하며 익스텐트의 생성 시간은 재정의 하지 않습니다.
 
 ```json
 {
@@ -99,7 +100,8 @@ ms.locfileid: "92902673"
   "Kind": "UniformRange",
   "Properties": {
     "Reference": "1970-01-01T00:00:00",
-    "RangeSize": "1.00:00:00"
+    "RangeSize": "1.00:00:00",
+    "OverrideCreationTime": false
   }
 }
 ```
@@ -110,7 +112,7 @@ ms.locfileid: "92902673"
 
 데이터 분할 정책에는 다음과 같은 주요 속성이 있습니다.
 
-* **파티션 키** :
+* **파티션 키**:
   * 테이블의 데이터를 분할 하는 방법을 정의 하는 [파티션 키](#partition-keys) 의 컬렉션입니다.
   * 테이블에는 다음 옵션 중 하나를 사용 하 여 최대 파티션 키를 사용할 수 있습니다 `2` .
     * [해시 파티션 키](#hash-partition-key)1 개
@@ -121,7 +123,7 @@ ms.locfileid: "92902673"
     * `Kind`: `string` 적용할 데이터 분할 종류 ( `Hash` 또는 `UniformRange` )입니다.
     * `Properties`: `property bag` -분할에 따라 수행 되는 매개 변수를 정의 합니다.
 
-* **EffectiveDateTime** :
+* **EffectiveDateTime**:
   * 정책이 적용 되는 UTC 날짜/시간입니다.
   * 이 속성은 선택 사항입니다. 지정 하지 않으면 정책이 적용 된 후에 정책이 데이터 수집 적용 됩니다.
   * 보존으로 인해 삭제 될 수 있는 유형이 아닌 (분할 되지 않은) 익스텐트는 모두 분할 프로세스에서 무시 됩니다. 범위는 생성 시간이 테이블의 효과적인 일시 삭제 기간의 90% 보다 이전 이므로 무시 됩니다.
@@ -154,7 +156,8 @@ ms.locfileid: "92902673"
       "Kind": "UniformRange",
       "Properties": {
         "Reference": "1970-01-01T00:00:00",
-        "RangeSize": "1.00:00:00"
+        "RangeSize": "1.00:00:00",
+        "OverrideCreationTime": false
       }
     }
   ]
@@ -165,7 +168,7 @@ ms.locfileid: "92902673"
 
 다음 속성은 정책의 일부로 정의 될 수 있습니다. 이러한 속성은 선택 사항이 며 변경 하지 않는 것이 좋습니다.
 
-|속성 | Description | 권장되는 값 | 기본값 |
+|속성 | 설명 | 권장되는 값 | 기본값 |
 |---|---|---|---|
 | **MinRowCountPerOperation** |  단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최소 대상입니다. | | `0` |
 | **MaxRowCountPerOperation** |  단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다. | 분할 작업에서 작업 당 많은 양의 메모리 또는 CPU를 사용 하는 경우 5M 보다 작은 값을 설정 합니다. 자세한 내용은 [monitoring](#monitor-partitioning)을 참조 하세요. | `0`이며 기본 대상은 500만 레코드입니다. |
@@ -179,7 +182,7 @@ ms.locfileid: "92902673"
 
 ## <a name="monitor-partitioning"></a>분할 모니터링
 
-[. 진단 표시](../management/diagnostics.md#show-diagnostics) 명령을 사용 하 여 클러스터에서의 분할 상태를 모니터링할 수 있습니다.
+명령을 사용 [`.show diagnostics`](../management/diagnostics.md#show-diagnostics) 하 여 클러스터에서의 분할 상태를 모니터링 합니다.
 
 ```kusto
 .show diagnostics
@@ -192,7 +195,7 @@ ms.locfileid: "92902673"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#partition-capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[. Show 명령을](commands.md) 사용 하 여 분할 명령 및 해당 리소스 사용을 모니터링할 수 있습니다. 예를 들면 다음과 같습니다.
+[`.show commands`](commands.md)분할 명령 및 해당 리소스 사용을 모니터링 하는 데 사용 합니다. 예:
 
 ```kusto
 .show commands 

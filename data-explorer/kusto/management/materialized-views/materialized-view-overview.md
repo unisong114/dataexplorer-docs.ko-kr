@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: f19104111d8db615c82eff2e399fb4857f27c841
-ms.sourcegitcommit: 463ee13337ed6d6b4f21eaf93cf58885d04bccaa
+ms.openlocfilehash: 407db347d4d21450d5648fe8716e2d82553a9669
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91572162"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320658"
 ---
 # <a name="materialized-views-preview"></a>구체화 된 뷰 (미리 보기)
 
@@ -23,11 +23,11 @@ ms.locfileid: "91572162"
 > 구체화 된 뷰에는 몇 가지 [제한 사항이](materialized-view-create.md#limitations-on-creating-materialized-views)있으며 모든 시나리오에서 제대로 작동 하지 않을 수 있습니다. 기능을 사용 하기 전에 [성능 고려 사항을](#performance-considerations) 검토 합니다.
 
 다음 명령을 사용 하 여 구체화 된 뷰를 관리 합니다.
-* [.create materialized-view](materialized-view-create.md)
-* [.alter materialized-view](materialized-view-alter.md)
-* [.drop materialized-view](materialized-view-drop.md)
-* [.disable | .enable materialized-view](materialized-view-enable-disable.md)
-* [. 구체화 된 뷰 표시 명령](materialized-view-show-commands.md)
+* [`.create materialized-view`](materialized-view-create.md)
+* [`.alter materialized-view`](materialized-view-alter.md)
+* [`.drop materialized-view`](materialized-view-drop.md)
+* [`.disable | .enable materialized-view`](materialized-view-enable-disable.md)
+* [`.show materialized-views commands`](materialized-view-show-commands.md)
 
 ## <a name="why-use-materialized-views"></a>구체화 된 뷰를 사용 하는 이유
 
@@ -43,8 +43,8 @@ ms.locfileid: "91572162"
 
 구체화 된 뷰를 사용 하 여 해결할 수 있는 일반적인 시나리오는 다음과 같습니다.
 
-* [Arg_max () (집계 함수)](../../query/arg-max-aggfunction.md)를 사용 하 여 엔터티 당 마지막 레코드를 쿼리 합니다.
-* [Any () (집계 함수)](../../query/any-aggfunction.md)를 사용 하 여 테이블에서 중복 레코드를 제거 합니다.
+* [ `arg_max()` (집계 함수)를](../../query/arg-max-aggfunction.md)사용 하 여 엔터티 별 마지막 레코드를 쿼리 합니다.
+* [ `any()` (집계 함수)](../../query/any-aggfunction.md)를 사용 하 여 테이블에서 중복 레코드를 제거 합니다.
 * 원시 데이터에 대 한 주기적인 통계를 계산 하 여 데이터의 해상도를 줄입니다. 기간별로 다양 한 [집계 함수](materialized-view-create.md#supported-aggregation-functions) 를 사용 합니다.
     * 예를 들어를 사용 `T | summarize dcount(User) by bin(Timestamp, 1d)` 하 여 하루에 고유한 사용자의 최신 스냅숏을 유지 합니다.
 
@@ -64,7 +64,7 @@ ms.locfileid: "91572162"
 
 구체화 된 뷰를 쿼리 하는 기본 방법은 테이블 참조 쿼리와 같이 이름을 기준으로 하는 것입니다. 구체화 된 뷰를 쿼리하면 뷰의 구체화 된 부분이 아직 구체화 되지 않은 원본 테이블의 레코드와 결합 됩니다. 구체화 된 뷰를 쿼리하면 원본 테이블에 수집 모든 레코드를 기반으로 하 여 항상 최신 결과가 반환 됩니다. 구체화 된 뷰 파트의 분석에 대 한 자세한 내용은 구체화 된 [뷰 작동 방식](#how-materialized-views-work)을 참조 하세요. 
 
-뷰를 쿼리 하는 또 다른 방법은 [materialized_view () 함수](../../query/materialized-view-function.md)를 사용 하는 것입니다. 이 옵션은 사용자가 허용할 최대 대기 시간을 지정 하는 동시에 뷰의 구체화 된 부분만 쿼리 하는 것을 지원 합니다. 이 옵션은 최신 레코드를 반환 하는 것을 보장 하지는 않지만 항상 전체 뷰를 쿼리 하는 것 보다 성능이 더 우수 합니다. 이 함수는 원격 분석 대시보드의 경우와 같이 성능에 대 한 몇 가지 최신 유효성을 희생 하려는 시나리오에 유용 합니다.
+뷰를 쿼리 하는 또 다른 방법은 [ `materialized_view()` 함수](../../query/materialized-view-function.md)를 사용 하는 것입니다. 이 옵션은 사용자가 허용할 최대 대기 시간을 지정 하는 동시에 뷰의 구체화 된 부분만 쿼리 하는 것을 지원 합니다. 이 옵션은 최신 레코드를 반환 하는 것을 보장 하지는 않지만 항상 전체 뷰를 쿼리 하는 것 보다 성능이 더 우수 합니다. 이 함수는 원격 분석 대시보드의 경우와 같이 성능에 대 한 몇 가지 최신 유효성을 희생 하려는 시나리오에 유용 합니다.
 
 뷰는 클러스터 간 또는 데이터베이스 간 쿼리에 참여할 수 있지만 와일드 카드 공용 구조체 또는 검색에는 포함 되지 않습니다.
 
@@ -116,15 +116,15 @@ Azure 데이터 탐색기 테이블과 같이 구체화 된 뷰의 [보존 정�
 다음과 같은 방법으로 구체화 된 뷰의 상태를 모니터링 합니다.
 
 * Azure Portal에서 [구체화 된 뷰 메트릭을](../../../using-metrics.md#materialized-view-metrics) 모니터링 합니다.
-* 구체화 된 `IsHealthy` [뷰 표시](materialized-view-show-commands.md#show-materialized-view)에서 반환 된 속성을 모니터링 합니다.
-* [구체화 된 뷰 오류 표시](materialized-view-show-commands.md#show-materialized-view-failures)를 사용 하 여 오류를 확인 합니다.
+* `IsHealthy`에서 반환 된 속성을 모니터링 [`.show materialized-view`](materialized-view-show-commands.md#show-materialized-view) 합니다.
+* 을 사용 하 여 오류를 확인 [`.show materialized-view failures`](materialized-view-show-commands.md#show-materialized-view-failures) 합니다.
 
 > [!NOTE]
 > 구체화는 일정 한 오류가 있는 경우에도 데이터를 건너뛰고 있지 않습니다. 뷰는 항상 원본 테이블의 모든 레코드를 기반으로 쿼리의 최신 스냅숏을 반환 하도록 보장 됩니다. 상수 오류가 발생 하면 쿼리 성능이 크게 저하 되지만 뷰 쿼리에서 잘못 된 결과가 발생 하지는 않습니다.
 
 ### <a name="track-resource-consumption"></a>리소스 소비 추적
 
-**구체화 된 뷰 리소스 사용:** 구체화 된 뷰 구체화 프로세스에서 사용 하는 리소스는 [. 명령 표시 및 쿼리](../commands-and-queries.md#show-commands-and-queries) 명령을 사용 하 여 추적할 수 있습니다. 다음을 사용 하 여 특정 뷰의 레코드를 필터링 합니다 (replace `DatabaseName` 및 `ViewName` ).
+**구체화 된 뷰 리소스 사용:** 구체화 된 뷰 구체화 프로세스에서 사용 하는 리소스는 명령을 사용 하 여 추적할 수 있습니다 [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) . 다음을 사용 하 여 특정 뷰의 레코드를 필터링 합니다 (replace `DatabaseName` 및 `ViewName` ).
 
 <!-- csl -->
 ```
@@ -160,6 +160,6 @@ Azure 데이터 탐색기 테이블과 같이 구체화 된 뷰의 [보존 정�
 
 ## <a name="next-steps"></a>다음 단계
 
-* [. 구체화 된 뷰 만들기](materialized-view-create.md)
-* [.alter materialized-view](materialized-view-alter.md)
+* [`.create materialized view`](materialized-view-create.md)
+* [`.alter materialized-view`](materialized-view-alter.md)
 * [구체화 된 뷰 명령 표시](materialized-view-show-commands.md)

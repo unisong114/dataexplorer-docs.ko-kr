@@ -7,12 +7,12 @@ ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 39bddff724d30e19f240a25fe3a277fd2151d81e
-ms.sourcegitcommit: f7f3ecef858c1e8d132fc10d1e240dcd209163bd
+ms.openlocfilehash: 2dcb1fb83d592ff7fd81fcfc5f51cf6fc95254b7
+ms.sourcegitcommit: a36981785765b85a961f275be24d297d38e498fd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88201346"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310037"
 ---
 # <a name="business-continuity-and-disaster-recovery-overview"></a>비즈니스 연속성 및 재해 복구 개요
 
@@ -84,14 +84,14 @@ RTO (복구 시간 목표)는 중단에서 복구 하는 시간을 나타냅니�
 수집, 처리 및 큐 레이 션 프로세스에는 재해 복구를 계획할 때 철저 디자인이 필요 합니다. 수집은 다양 한 원본에서 Azure 데이터 탐색기에 통합 되는 데이터를 나타냅니다. 처리는 변형 및 유사한 활동을 의미 합니다. 큐 레이 션은 구체화 된 뷰, data lake로 내보내기 등을 나타냅니다.
 
 다음은 널리 사용 되는 재해 복구 구성입니다. 각 구성에 대해서는 아래에서 자세히 설명 합니다.
-* [Always on 구성](#always-on-configuration)
+* [활성-활성-활성 (always on) 구성](#active-active-active-configuration)
 * [활성-활성 구성](#active-active-configuration)
 * [활성-상시 대기 구성](#active-hot-standby-configuration)
 * [주문형 데이터 복구 클러스터 구성](#on-demand-data-recovery-configuration)
 
-### <a name="always-on-configuration"></a>Always on 구성
+### <a name="active-active-active-configuration"></a>활성-활성-활성 구성
 
-작동 중단에 대 한 허용 범위가 없는 중요 응용 프로그램 배포의 경우 Azure 쌍을 이루는 지역에서 여러 Azure 데이터 탐색기 클러스터를 사용 해야 합니다. 모든 클러스터에 대 한 수집, 처리 및 작업을 병렬로 설정 합니다. 클러스터 SKU는 지역에서 동일 해야 합니다. Azure는 Azure 쌍을 이루는 지역에서 업데이트가 롤아웃 되 고 지연 되도록 합니다. Azure 지역 가동 중단으로 인해 응용 프로그램이 중단 되지 않습니다. 약간의 대기 시간 또는 성능 저하가 발생할 수 있습니다.
+이 구성을 "always on"이 라고도 합니다. 작동 중단에 대 한 허용 범위가 없는 중요 응용 프로그램 배포의 경우 Azure 쌍을 이루는 지역에서 여러 Azure 데이터 탐색기 클러스터를 사용 해야 합니다. 모든 클러스터에 대 한 수집, 처리 및 작업을 병렬로 설정 합니다. 클러스터 SKU는 지역에서 동일 해야 합니다. Azure는 Azure 쌍을 이루는 지역에서 업데이트가 롤아웃 되 고 지연 되도록 합니다. Azure 지역 가동 중단으로 인해 응용 프로그램이 중단 되지 않습니다. 약간의 대기 시간 또는 성능 저하가 발생할 수 있습니다.
 
 :::image type="content" source="media/business-continuity-overview/active-active-active-n.png" alt-text="활성-활성-활성-n 구성":::
 
@@ -99,19 +99,19 @@ RTO (복구 시간 목표)는 중단에서 복구 하는 시간을 나타냅니�
 | --- | --- | --- | --- | --- |
 | **활성-활성-활성-n** | 0 시간 | 0 시간 | 더 낮음 | 가장 높음 |
 
-### <a name="active-active-configuration"></a>활성-활성 구성
+### <a name="active-active-configuration"></a>Active-Active 구성
 
-이 구성은 [Always on 구성과](#always-on-configuration)동일 하지만 두 개의 Azure 쌍의 지역만 포함 합니다. 이중 수집, 처리 및 curation를 구성 합니다. 사용자는 가장 가까운 지역으로 라우팅됩니다. 클러스터 SKU는 지역에서 동일 해야 합니다.
+이 구성은 활성-활성 [-활성 구성과](#active-active-active-configuration)동일 하지만 두 개의 Azure 쌍 지역이 포함 됩니다. 이중 수집, 처리 및 curation를 구성 합니다. 사용자는 가장 가까운 지역으로 라우팅됩니다. 클러스터 SKU는 지역에서 동일 해야 합니다.
 
 :::image type="content" source="media/business-continuity-overview/active-active.png" alt-text="활성-활성 구성":::
 
 | **Configuration** | **RPO** | **RTO** | **드는** | **비용** |
 | --- | --- | --- | --- | --- |
-| **활성-활성** | None | None | 더 낮음 | 높음 |
+| **활성-활성** | 없음 | 없음 | 더 낮음 | 높은 |
 
-### <a name="active-hot-standby-configuration"></a>활성-상시 대기 구성
+### <a name="active-hot-standby-configuration"></a>Active-Hot 대기 구성
 
-활성-활성 구성은 이중 수집, 처리 및 curation의 [활성-활성 구성과](#active-active-configuration) 유사 합니다. 그러나 대기 클러스터는 최종 사용자에 게 오프 라인 상태 이며 주 복제본과 동일한 SKU에 있을 필요는 없습니다. 또한 상시 대기 클러스터는 더 작은 SKU 및 규모를 사용할 수 있으므로 성능이 떨어집니다. 재해 시나리오에서는 대기 클러스터가 온라인 상태가 되 고 확장 됩니다.
+Active-Hot 구성은 이중 수집, 처리 및 curation의 [활성-활성 구성과](#active-active-configuration) 비슷합니다. 그러나 대기 클러스터는 최종 사용자에 게 오프 라인 상태 이며 주 복제본과 동일한 SKU에 있을 필요는 없습니다. 또한 상시 대기 클러스터는 더 작은 SKU 및 규모를 사용할 수 있으므로 성능이 떨어집니다. 재해 시나리오에서는 대기 클러스터가 온라인 상태가 되 고 확장 됩니다.
 
 :::image type="content" source="media/business-continuity-overview/active-hot-standby.png" alt-text="활성-상시 대기 구성":::
 
@@ -134,8 +134,8 @@ RTO (복구 시간 목표)는 중단에서 복구 하는 시간을 나타냅니�
 | **Configuration** | **복원력** | **RPO** | **RTO** | **드는** | **비용** |
 | --- | --- | --- | --- | --- | --- |
 | **활성-활성-활성-n** | 가장 높음 | 0 시간 | 0 시간 | 더 낮음 | 가장 높음 |
-| **활성-활성** | 높음 | None | None | 더 낮음 | 높음 |
-| **활성-상시 대기** | 보통 | 낮음 | 낮음 | 중간 | 중간 |
+| **활성-활성** | 높은 | 없음 | 없음 | 더 낮음 | 높은 |
+| **활성-상시 대기** | 중간 | 낮음 | 낮음 | 중간 | 중간 |
 | **주문형 데이터 복구 클러스터** | 가장 낮음 | 가장 높음 | 가장 높음 | 가장 높음 | 가장 낮음 |
 
 ## <a name="best-practices"></a>모범 사례

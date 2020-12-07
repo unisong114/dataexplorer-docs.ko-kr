@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/04/2020
-ms.openlocfilehash: 4f5abfd5c7fffd126033baeb2bbb9243b4400f58
-ms.sourcegitcommit: b08b1546122b64fb8e465073c93c78c7943824d9
+ms.openlocfilehash: f34042af4578643f8b1b4120345cb37f66b71830
+ms.sourcegitcommit: a36981785765b85a961f275be24d297d38e498fd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85967403"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310020"
 ---
 # <a name="partitioning-policy-command"></a>분할 정책 명령
 
@@ -47,7 +47,7 @@ ms.locfileid: "85967403"
 
 정책에 대 한 변경 내용을 적용 하는 데 최대 1 시간이 걸릴 수 있습니다.
 
-### <a name="examples"></a>예
+### <a name="examples"></a>예제
 
 #### <a name="setting-a-policy-with-a-hash-partition-key"></a>해시 파티션 키를 사용 하 여 정책 설정
 
@@ -77,6 +77,7 @@ ms.locfileid: "85967403"
       '"Properties": {'
         '"Reference": "1970-01-01T00:00:00",'
         '"RangeSize": "1.00:00:00"'
+        '"OverrideCreationTime": false'
       '}'
     '}'
   ']'
@@ -102,6 +103,7 @@ ms.locfileid: "85967403"
       '"Properties": {'
         '"Reference": "1970-01-01T00:00:00",'
         '"RangeSize": "1.00:00:00"'
+        '"OverrideCreationTime": false'
       '}'
     '}'
   ']'

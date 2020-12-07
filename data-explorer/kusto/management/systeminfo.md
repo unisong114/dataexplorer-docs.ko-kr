@@ -1,6 +1,6 @@
 ---
-title: 시스템 정보 - Azure 데이터 탐색기 | 마이크로 소프트 문서
-description: 이 문서에서는 Azure 데이터 탐색기의 시스템 정보를 설명합니다.
+title: 시스템 정보-Azure 데이터 탐색기 | Microsoft Docs
+description: 이 문서에서는 Azure 데이터 탐색기의 시스템 정보에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,20 +8,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/07/2019
-ms.openlocfilehash: fbef39dde5c7bb85c11f26812eec1496ba3f5001
-ms.sourcegitcommit: 47a002b7032a05ef67c4e5e12de7720062645e9e
+ms.openlocfilehash: 22ad4956d94f445b26e49e1e73ed54e86568d1ad
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81519587"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321219"
 ---
 # <a name="system-information"></a>시스템 정보
 
-이 섹션에서는 사용 현황을 `Database Admins` 탐색하고 `Database Monitors` 작업을 추적하며 인레이션 오류를 조사하는 데 사용할 수 있는 명령과 역할을 요약합니다.
+이 섹션 `Database Admins` `Database Monitors` 에서는 사용을 탐색 하 고, 작업을 추적 하 고, 수집 실패를 조사 하는 및 역할에 사용할 수 있는 명령을 요약 합니다.
 
-* [.show 쿼리](queries.md) - 완료및 실행 중인 쿼리에 대한 정보를 표시합니다.
-* [.show 명령](commands.md) - 완료된 명령 및 해당 리소스 사용률에 대한 정보를 표시합니다.
-* [.show 명령 및 쿼리](commands-and-queries.md) - 완료된 명령 및 쿼리에 대한 정보와 해당 리소스 사용률을 표시합니다.
-* [.show 저널](journal.md) - 메타데이터 작업의 기록을 표시합니다.
-* [.show 작업](operations.md) - Admin 노드가 마지막으로 선출된 이후 실행 중인 작업과 완료된 관리 작업을 모두 표시합니다.
-* [.show 실패한 수집](ingestionfailures.md) - 클러스터에 데이터를 수집하는 동안 발생한 오류에 대한 정보를 표시합니다.
+* [`.show queries`](queries.md) -완료 되 고 쿼리를 실행 하는에 대 한 정보를 표시 합니다.
+* [`.show commands`](commands.md) -완료 된 명령 및 해당 리소스 사용률에 대 한 정보를 표시 합니다.
+* [`.show commands-and-queries`](commands-and-queries.md) -완료 된 명령 및 쿼리와 해당 리소스 사용률에 대 한 정보를 표시 합니다.
+* [`.show journal`](journal.md) -메타 데이터 작업의 기록을 표시 합니다.
+* [`.show operations`](operations.md) -관리 노드를 마지막으로 선택한 후 실행 중이 고 완료 된 관리 작업을 표시 합니다.
+* [`.show failed ingestions`](ingestionfailures.md) -클러스터에 데이터를 수집 하는 동안 발생 한 오류에 대 한 정보를 표시 합니다.

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/05/2020
-ms.openlocfilehash: 19dc7db9e344a516b5c92917dccbf8362b1ca858
-ms.sourcegitcommit: 4e95f5beb060b5d29c1d7bb8683695fe73c9f7ea
+ms.openlocfilehash: 554f6ed623b5a3be12a360fab0b1d5aa6eb4c084
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91102873"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320964"
 ---
 # <a name="create-merge-table"></a>.create-merge table
 
@@ -23,13 +23,13 @@ ms.locfileid: "91102873"
 
 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `.create-merge``table` *TableName* ([columnName: columnType], ...)  [ `with` `(` [ `docstring` `=` *설명서*] [ `,` `folder` `=` *FolderName*] `)` ]
 
-테이블이 없는 경우는 "create table" 명령으로 정확 하 게 작동 합니다.
+테이블이 없는 경우는 명령으로 정확 하 게 작동 `.create table` 합니다.
 
-테이블이 T가 있는 경우 ". create-merge table T ( <columns specification> )" 명령을 보내려면 다음을 수행 합니다.
+테이블 T가 있는 경우 `.create-merge table T (<columns specification>)` 명령을 보내려면 다음을 수행 합니다.
 
 * <columns specification>이전에 t에 존재 하지 않은의 모든 열이 t의 스키마 끝에 추가 됩니다.
 * 에 없는 T의 모든 열은 <columns specification> t에서 제거 되지 않습니다.
@@ -37,5 +37,5 @@ ms.locfileid: "91102873"
 
 ## <a name="see-also"></a>참고 항목
 
-* [.create-merge tables](create-merge-tables-command.md)
-* [. create table](create-table-command.md)
+* [`.create-merge tables`](create-merge-tables-command.md)
+* [`.create table`](create-table-command.md)

@@ -8,20 +8,20 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 6b06d1807fdfc2ed3edaa06e57436979afce423d
-ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
+ms.openlocfilehash: 312b8dbd15f9ee570d1693f7bdbb77b9988d8207
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91057251"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320617"
 ---
-# <a name="drop-materialized-view"></a>. 삭제 구체화-뷰 
+# <a name="drop-materialized-view"></a>.drop materialized-view 
 
 구체화 된 뷰를 삭제 합니다.
 
 [데이터베이스 관리자](../access-control/role-based-authorization.md) 또는 구체화 된 뷰 관리자 권한이 필요 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `.drop``materialized-view` *MaterializedViewName*
 
@@ -56,4 +56,4 @@ ms.locfileid: "91057251"
 |폴더|문자열|구체화 된 뷰 폴더입니다.
 |DocString|문자열|구체화 된 뷰 doc 문자열입니다.
 |AutoUpdateSchema|bool|자동 업데이트에 대해 보기를 사용할지 여부를 지정 합니다.
-|EffectiveDateTime|Datetime|만든 시간 동안 확인 된 뷰의 개시 날짜 시간입니다 ( [구체화 된 뷰 만들기](materialized-view-create.md#create-materialized-view)참조).
+|EffectiveDateTime|Datetime|만든 시간 동안 확인 된 뷰의 개시 날짜 시간입니다 (참조). [`.create materialized-view`](materialized-view-create.md#create-materialized-view)

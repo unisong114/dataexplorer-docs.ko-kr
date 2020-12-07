@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 871ad751105ba6a3f6ce5dcba55b3a0fd1c17789
-ms.sourcegitcommit: 21dee76964bf284ad7c2505a7b0b6896bca182cc
+ms.openlocfilehash: 37d82807751a604d88eda7de75fb4978efc0ce1b
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91056988"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321270"
 ---
 # <a name="retention-policy"></a>보존 정책
 
@@ -49,13 +49,13 @@ ms.locfileid: "91056988"
 
 ## <a name="control-commands"></a>제어 명령
 
-* 를 사용 [합니다. 정책 보존 표시](../management/retention-policy.md) 를 사용 하 여 데이터베이스, 테이블 또는 [구체화 된 뷰에](materialized-views/materialized-view-overview.md)대 한 현재 보존 정책을 표시 합니다.
-* 을 사용 하 여 데이터베이스, 테이블 또는 [구체화 된 뷰의](materialized-views/materialized-view-overview.md)현재 보존 정책을 변경 [합니다.](../management/retention-policy.md)
+* [`.show policy retention`](../management/retention-policy.md)데이터베이스, 테이블 또는 [구체화 된 뷰에](materialized-views/materialized-view-overview.md)대 한 현재 보존 정책을 표시 하는 데 사용 합니다.
+* 를 사용 [`.alter policy retention`](../management/retention-policy.md) 하 여 데이터베이스, 테이블 또는 [구체화 된 뷰의](materialized-views/materialized-view-overview.md)현재 보존 정책을 변경할 수 있습니다.
 
 ## <a name="defaults"></a>기본값
 
 기본적으로 데이터베이스 또는 테이블을 만들 때 보존 정책이 정의 되어 있지 않습니다. 일반적으로 데이터베이스는 생성 된 다음 알려진 요구 사항에 따라 작성자에 의해 즉시 설정 된 보존 정책이 있습니다.
-정책이 설정 되지 않은 데이터베이스 또는 테이블의 보존 정책에 대해 [show 명령을](../management/retention-policy.md) 실행 하는 경우는 `Policy` 로 표시 됩니다 `null` .
+정책을 설정 하지 않은 데이터베이스 또는 테이블의 보존 정책에 대 한 [ `.show` 명령을](../management/retention-policy.md) 실행 하는 경우는 `Policy` 로 표시 됩니다 `null` .
 
 다음 명령을 사용 하 여 위에서 언급 한 기본값을 사용 하 여 기본 보존 정책을 적용할 수 있습니다.
 
@@ -80,7 +80,7 @@ ms.locfileid: "91056988"
 .delete table TableName policy retention
 ```
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 `MyDatabase`테이블이, `MyTable1` `MyTable2` 및 인 라는 데이터베이스가 있는 클러스터의 경우 `MySpecialTable`
 

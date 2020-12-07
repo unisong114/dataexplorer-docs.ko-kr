@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
-ms.openlocfilehash: f51a68fc90237c4213c0135ade4724446800dea9
-ms.sourcegitcommit: ec191391f5ea6df8c591e6d747c67b2c46f98ac4
+ms.openlocfilehash: ff13ec8fcce49f4d92212e6a38797a97f9ea9dd6
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88259889"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321253"
 ---
 # <a name="streaming-ingestion-policy-command"></a>스트리밍 수집 정책 명령
 
@@ -33,13 +33,13 @@ ms.locfileid: "88259889"
 
 이 명령은 다음 열이 있는 테이블을 반환 합니다.
 
-|Column    |형식    |Description
+|Column    |형식    |설명
 |---|---|---
 |PolicyName|`string`|정책 이름-StreamingIngestionPolicy
 |EntityName|`string`|데이터베이스 또는 테이블 이름
 |정책    |`string`|[스트리밍 수집 정책 개체](#streaming-ingestion-policy-object)
 
-**예**
+**예제**
 
 ```kusto
 .show database DB1 policy streamingingestion
@@ -75,7 +75,7 @@ ms.locfileid: "88259889"
 
 이 명령은 테이블이 나 데이터베이스 `streamingingestion` 정책 개체를 수정한 [ `.show policy` `streamingingestion` ](#display-the-policy) 다음 해당 명령의 출력을 반환 합니다.
 
-**예**
+**예제**
 
 ```kusto
 .alter database DB1 policy streamingingestion enable
@@ -101,9 +101,9 @@ ms.locfileid: "88259889"
 
 **반환**
 
-이 명령은 테이블이 나 데이터베이스 streamingingestion 정책 개체를 삭제 한 다음 해당 하는 [. show policy streamingingestion](#display-the-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블이 나 데이터베이스 streamingingestion 정책 개체를 삭제 한 다음 해당 명령의 출력을 반환 합니다 [`.show policy streamingingestion`](#display-the-policy) .
 
-**예**
+**예제**
 
 ```kusto
 .delete database DB1 policy streamingingestion
@@ -115,7 +115,7 @@ ms.locfileid: "88259889"
 
 관리 명령의 입력 및 출력에서 스트리밍 수집 정책 개체는 다음 속성을 포함 하는 JSON 형식 문자열입니다.
 
-|속성|Type|Description|필수/선택
+|속성|형식|Description|필수/선택
 |---|---|---|---
 |IsEnabled|`bool`|엔터티에 대해 스트리밍 수집을 사용 하도록 설정 되어 있습니다.| 필수
-|HintAllocatedRate|`double`|데이터 조절기의 예상 률 (Gb/시간)|Optional
+|HintAllocatedRate|`double`|데이터 조절기의 예상 률 (Gb/시간)|선택 사항

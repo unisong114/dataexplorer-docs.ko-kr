@@ -8,12 +8,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/08/2020
-ms.openlocfilehash: 29f0c65a635b6e4fe6ffe3288cc1dcdde702fc8a
-ms.sourcegitcommit: be1bbd62040ef83c08e800215443ffee21cb4219
+ms.openlocfilehash: ccefca3d3cbf1f97661fead54bbc3cfaf207ca1a
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84665030"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321678"
 ---
 # <a name="alter-table"></a>.alter table
  
@@ -28,7 +28,7 @@ ms.locfileid: "84665030"
 > `.alter`명령을 잘못 사용 하면 데이터가 손실 될 수 있습니다.
 
 > [!TIP]
-> 에는 `.alter` `.alter-merge` 유사한 기능을 포함 하는 테이블 명령의 대응 항목이 있습니다. 자세한 내용은를 참조 하십시오 [. alter-merge table](../management/alter-merge-table-command.md)
+> 에는 `.alter` `.alter-merge` 유사한 기능을 포함 하는 테이블 명령의 대응 항목이 있습니다. 자세한 내용은 [`.alter-merge table`](../management/alter-merge-table-command.md)를 참조하세요.
 
 **구문**
 
@@ -38,7 +38,7 @@ ms.locfileid: "84665030"
  * 테이블에는 지정 된 것과 동일한 순서로 동일한 열이 있습니다.
  테이블 열을 지정 합니다.
  * 명령에 기존 열이 지정 되지 않은 경우에는 해당 열이 삭제 되 고 명령 에서처럼 데이터의 데이터가 손실 됩니다 `.drop column` .
- * 테이블을 변경 하는 경우 열 유형 변경은 지원 되지 않습니다. 대신 [. 열 변경](alter-column.md) 명령을 사용 합니다.
+ * 테이블을 변경 하는 경우 열 유형 변경은 지원 되지 않습니다. [`.alter column`](alter-column.md)대신 명령을 사용 합니다.
 
 > [!TIP]
 > `.show table [TableName] cslschema`을 사용 하 여 기존 열 스키마를 변경 하기 전에 가져올 수 있습니다.

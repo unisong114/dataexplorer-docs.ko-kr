@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: c44935a98110cd47f2a40bb261659e12627860c0
-ms.sourcegitcommit: 25c0440cb0390b9629b819611844f1375de00a66
+ms.openlocfilehash: e20e266e6fbae55c308cf13b7601277b8b0f30b2
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422130"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320743"
 ---
 # <a name="mysql_request-plugin-preview"></a>mysql_request 플러그 인 (미리 보기)
 
@@ -25,11 +25,11 @@ ms.locfileid: "94422130"
 
 > [!IMPORTANT]
 > `mysql_request`플러그 인은 미리 보기 모드 이며 기본적으로 사용 하지 않도록 설정 되어 있습니다.
-> 플러그 인을 사용 하도록 설정 하려면 [ `.enable plugin mysql_request` 명령을](../management/enable-plugin.md)실행 합니다. 활성화 된 플러그 인을 확인 하려면를 사용 [합니다. 플러그 인 관리 명령 표시](../management/show-plugins.md)
+> 플러그 인을 사용 하도록 설정 하려면 [ `.enable plugin mysql_request` 명령을](../management/enable-plugin.md)실행 합니다. 활성화 된 플러그 인을 확인 하려면 [ `.show plugin` 관리 명령을](../management/show-plugins.md)사용 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
-`evaluate``mysql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters* ]`)`
+`evaluate``mysql_request` `(` *ConnectionString* `,` *SqlQuery* [ `,` *sqlparameters*]`)`
 
 ## <a name="arguments"></a>인수
 
@@ -85,9 +85,9 @@ Mysql_request 플러그 인은 MySQL 서버 끝점에 대 한 사용자 이름 �
 
 SQL 네트워크 끝점을 연결 문자열의 일부로 지정 합니다.
 
-**구문** :
+**구문**:
 
-`Server``=` *FQDN* [ `Port` `=` *포트* ]
+`Server``=` *FQDN* [ `Port` `=` *포트*]
 
 위치:
 

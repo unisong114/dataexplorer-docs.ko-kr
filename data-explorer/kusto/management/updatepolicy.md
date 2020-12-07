@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/04/2020
-ms.openlocfilehash: 28e88b71b5d7a2f8729e2f9eef416ee5804a2880
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 8f19606a75c388917a5195d0ac5cbb0ecf4335f9
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92337638"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321134"
 ---
 # <a name="update-policy-overview"></a>정책 업데이트 개요
 
@@ -49,7 +49,7 @@ ms.locfileid: "92337638"
 테이블에는 0 개 이상의 업데이트 정책 개체가 연결 되어 있을 수 있습니다.
 이러한 각 개체는 다음과 같은 속성이 정의 된 JSON 속성 모음으로 표시 됩니다.
 
-|속성 |유형 |설명  |
+|속성 |형식 |설명  |
 |---------|---------|----------------|
 |IsEnabled                     |`bool`  |업데이트 정책 사용 (true) 또는 사용 안 함 (false)에 대 한 상태                                                                                                                               |
 |원본                        |`string`|호출할 업데이트 정책을 트리거하는 테이블의 이름입니다.                                                                                                                                 |
@@ -66,10 +66,10 @@ ms.locfileid: "92337638"
 
 업데이트 정책을 제어 하는 명령은 다음과 같습니다.
 
-* [. show Table *TableName* 정책 업데이트](update-policy.md#show-update-policy) 는 테이블의 현재 업데이트 정책을 표시 합니다.
-* [. alter Table *TableName* 정책 업데이트](update-policy.md#alter-update-policy) 는 테이블의 현재 업데이트 정책을 설정 합니다.
-* [. alter-merge Table *TableName* 정책 업데이트](update-policy.md#alter-merge-table-tablename-policy-update) 는 테이블의 현재 업데이트 정책에 추가 됩니다.
-* [. 테이블 삭제 *TableName* 정책 업데이트](update-policy.md#delete-table-tablename-policy-update) 는 테이블의 현재 업데이트 정책에 추가 됩니다.
+* [`.show table *TableName* policy update`](update-policy.md#show-update-policy) 테이블의 현재 업데이트 정책을 표시 합니다.
+* [`.alter table *TableName* policy update`](update-policy.md#alter-update-policy) 테이블의 현재 업데이트 정책을 설정 합니다.
+* [`.alter-merge table *TableName* policy update`](update-policy.md#alter-merge-table-tablename-policy-update) 테이블의 현재 업데이트 정책에 추가 합니다.
+* [`.delete table *TableName* policy update`](update-policy.md#delete-table-tablename-policy-update) 테이블의 현재 업데이트 정책에 추가 합니다.
 
 ## <a name="update-policy-is-initiated-following-ingestion"></a>수집 후 업데이트 정책을 시작 합니다.
 
@@ -106,7 +106,7 @@ ms.locfileid: "92337638"
 
 ### <a name="evaluate-resource-usage"></a>리소스 사용 평가
 
-다음 시나리오에서 [. show 쿼리](../management/queries.md)를 사용 하 여 리소스 사용 (CPU, 메모리 등)을 평가 합니다.
+[`.show queries`](../management/queries.md)다음 시나리오에서를 사용 하 여 리소스 사용 (CPU, 메모리 등)을 평가 합니다.
 * 원본 테이블 이름 ( `Source` 업데이트 정책의 속성)은 `MySourceTable` 입니다.
 * `Query`업데이트 정책의 속성은 라는 함수를 호출 합니다 `MyFunction()` .
 
@@ -122,7 +122,7 @@ MyFunction()
 
 기본적으로 업데이트 정책 실행 실패는 원본 테이블에 대 한 데이터 수집에 영향을 주지 않습니다. 그러나 업데이트 정책이 다음과 같이 정의 된 경우 `IsTransactional` 정책 실행에 실패 하면 원본 테이블에 대 한 데이터 수집이 실패 합니다. 원본 테이블에 대 한 데이터 수집이 성공 하지만 대상 테이블로 수집 하는 동안 업데이트 정책이 실패 하는 경우도 있습니다.
 
-정책을 업데이트 하는 동안 발생 하는 오류는 수집 [실패 표시 명령을](../management/ingestionfailures.md)사용 하 여 검색할 수 있습니다.
+정책을 업데이트 하는 동안 발생 하는 오류는 [ `.show ingestion failures` 명령을](../management/ingestionfailures.md)사용 하 여 검색할 수 있습니다.
  
 ```kusto
 .show ingestion failures 

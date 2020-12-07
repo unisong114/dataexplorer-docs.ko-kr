@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: 75dc0aa0ff23bfb4f08be9fac84fa34cf9526508
-ms.sourcegitcommit: 8e097319ea989661e1958efaa1586459d2b69292
+ms.openlocfilehash: 3a3deb388c5a57f3400eb5fbe24f77a31e48b69c
+ms.sourcegitcommit: 1bdbfdc04c4eac405f3931059bbeee2dedd87004
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780629"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303332"
 ---
 # <a name="database-cursors"></a>데이터베이스 커서
 
@@ -38,11 +38,11 @@ Kusto는 위의 두 가지 시나리오를 구현 하는 데 도움이 되는 �
 
 * [cursor_after (rhs: string)](../query/cursorafterfunction.md): [IngestionTime 정책이](ingestiontime-policy.md) 설정 된 테이블 레코드에서이 특수 함수를 사용할 수 있습니다. 이 메서드는 `bool` 레코드의 `ingestion_time()` 데이터베이스 커서 값이 데이터베이스 커서 값 뒤에 있는지 여부를 나타내는 형식의 스칼라 값을 반환 `rhs` 합니다.
 
-* [cursor_before_or_at (rhs: string)](../query/cursorbeforeoratfunction.md): [IngestionTime 정책이](ingestiontime-policy.md) 설정 된 테이블 레코드에서이 특수 함수를 사용할 수 있습니다. 이 메서드는 `bool` 레코드의 `ingestion_time()` 데이터베이스 커서 값이 데이터베이스 커서 값 뒤에 있는지 여부를 나타내는 형식의 스칼라 값을 반환 `rhs` 합니다.
+* [cursor_before_or_at (rhs: string)](../query/cursorbeforeoratfunction.md): [IngestionTime 정책이](ingestiontime-policy.md) 설정 된 테이블 레코드에서이 특수 함수를 사용할 수 있습니다. 이 메서드는 `bool` 레코드의 `ingestion_time()` 데이터베이스 커서 값이 데이터베이스 커서 값 앞에 있는지 또는 앞에 있는지를 나타내는 형식의 스칼라 값을 반환 `rhs` 합니다.
 
 두 가지 특수 함수 ( `cursor_after` 및 `cursor_before_or_at` )에도 부작용이 있습니다. 사용 되는 경우 Kusto는 **데이터베이스 커서의 현재 값** 을 `@ExtendedProperties` 쿼리의 결과 집합으로 내보냅니다. 커서의 속성 이름은이 `Cursor` 고 해당 값은 단일 `string` 입니다. 
 
-다음은 그 예입니다.
+예:
 
 ```json
 {"Cursor" : "636040929866477946"}

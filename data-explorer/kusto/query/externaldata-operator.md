@@ -8,18 +8,18 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: 5b17b69fd49e937b672da07dd0b5c8abae9100fb
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: 4b54b7e1c16bce07c5ae97b57f0ebdb6c96a7ad7
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92253059"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320618"
 ---
 # <a name="externaldata-operator"></a>externaldata 연산자
 
 `externaldata`연산자는 스키마가 쿼리 자체에 정의 되어 있고 외부 저장소 아티팩트 (예: Azure Blob Storage의 blob 또는 Azure Data Lake Storage 파일)에서 데이터를 읽을 수 있는 테이블을 반환 합니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `externaldata``(` *ColumnName* `:` *ColumnType* [ `,` ...]`)`   
 `[`*StorageConnectionString* [ `,` ...]`]`   
@@ -28,7 +28,7 @@ ms.locfileid: "92253059"
 ## <a name="arguments"></a>인수
 
 * *ColumnName*, *ColumnType*: 인수는 테이블의 스키마를 정의 합니다.
-  구문은 [create table](../management/create-table-command.md)에서 테이블을 정의할 때 사용 되는 구문과 같습니다.
+  구문은에서 테이블을 정의할 때 사용 되는 구문과 같습니다 [`.create table`](../management/create-table-command.md) .
 
 * *StorageConnectionString*: 반환할 데이터를 보유 하는 저장소 아티팩트를 설명 하는 [저장소 연결 문자열](../api/connection-strings/storage.md) 입니다.
 
@@ -36,7 +36,7 @@ ms.locfileid: "92253059"
 
 현재 지원 되는 속성은 다음과 같습니다.
 
-| 속성         | Type     | 설명       |
+| 속성         | 형식     | 설명       |
 |------------------|----------|-------------------|
 | `format`         | `string` | 데이터 형식입니다. 지정 하지 않으면 파일 확장명 (기본값)에서 데이터 형식을 검색 하려고 시도 `CSV` 합니다. 수집 [데이터 형식이](../../ingestion-supported-formats.md) 지원 됩니다. |
 | `ignoreFirstRecord` | `bool` | True로 설정 하면 모든 파일의 첫 번째 레코드가 무시 됨을 나타냅니다. 이 속성은 헤더를 사용 하 여 CSV 파일을 쿼리할 때 유용 합니다. |
@@ -51,7 +51,7 @@ ms.locfileid: "92253059"
 
 `externaldata`연산자는 저장소 연결 문자열에 표시 된 지정 된 저장소 아티팩트에서 데이터를 구문 분석 한 지정 된 스키마의 데이터 테이블을 반환 합니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 **Azure Blob Storage에 저장 된 사용자 Id 목록 가져오기**
 
@@ -120,4 +120,4 @@ with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{
 
 `MultiJSON`이 형식은 단일 JSON 레코드가 여러 줄로 확장 되기 때문에 사용 됩니다.
 
-매핑 구문에 대 한 자세한 내용은 [데이터 매핑](../management/mappings.md)을 참조 하세요.
+매핑 구문에 대한 자세한 내용은 [데이터 매핑](../management/mappings.md)을 참조하세요.

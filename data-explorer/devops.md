@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/05/2019
-ms.openlocfilehash: a92e657bfc2f440deb20fd4b812169b1c2e32112
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: 14ba0226efc5f38ef3d549f38b2a6224da7c201e
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342912"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320726"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure 데이터 탐색기에 대 한 azure DevOps 작업
 
@@ -42,24 +42,24 @@ Git 리포지토리에서 다음 샘플 폴더 (*함수*, *정책*, *테이블*)
 ![폴더 만들기](media/devops/create-folders.png)
 
 > [!TIP]
-> 사용자 고유의 워크플로를 만들 때 코드를 idempotent 하는 것이 좋습니다. 예를 들어 create [table](kusto/management/create-table-command.md)대신 [. create-merge 테이블](kusto/management/create-merge-table-command.md) 을 사용 하 [고. create 함수 대신](kusto/management/create-function.md) [create-또는-alter](kusto/management/create-alter-function.md) 함수를 사용 합니다.
+> 사용자 고유의 워크플로를 만들 때 코드를 idempotent 하는 것이 좋습니다. 예를 들어 [`.create-merge table`](kusto/management/create-merge-table-command.md) 대신를 사용 [`.create table`](kusto/management/create-table-command.md) 하 고 함수 [`.create-or-alter`](kusto/management/create-alter-function.md) 대신 함수를 사용 [`.create`](kusto/management/create-function.md) 합니다.
 
 ## <a name="create-a-release-pipeline"></a>릴리스 파이프라인 만들기
 
 1. [Azure DevOps 조직](https://dev.azure.com/)에 로그인 합니다.
-1. **Pipelines**  >  왼쪽 메뉴에서 파이프라인**릴리스** 를 선택 하 고 **새 파이프라인**을 선택 합니다.
+1. **Pipelines**  >  왼쪽 메뉴에서 파이프라인 **릴리스** 를 선택 하 고 **새 파이프라인** 을 선택 합니다.
 
     ![새 파이프라인](media/devops/new-pipeline.png)
 
-1. **새 릴리스 파이프라인** 창이 열립니다. **파이프라인** 탭의 **템플릿 선택** 창에서 **빈 작업**을 선택 합니다.
+1. **새 릴리스 파이프라인** 창이 열립니다. **파이프라인** 탭의 **템플릿 선택** 창에서 **빈 작업** 을 선택 합니다.
 
      ![템플릿 선택](media/devops/select-template.png)
 
-1. **스테이지** 단추를 선택 합니다. **스테이지** 창에서 **스테이지 이름을**추가 합니다. **저장** 을 선택 하 여 파이프라인을 저장 합니다.
+1. **스테이지** 단추를 선택 합니다. **스테이지** 창에서 **스테이지 이름을** 추가 합니다. **저장** 을 선택 하 여 파이프라인을 저장 합니다.
 
     ![단계 이름](media/devops/stage-name.png)
 
-1. **아티팩트 추가** 단추를 선택 합니다. **아티팩트 추가** 창에서 코드가 있는 리포지토리를 선택 하 고 관련 정보를 입력 한 다음 **추가**를 클릭 합니다. **저장** 을 선택 하 여 파이프라인을 저장 합니다.
+1. **아티팩트 추가** 단추를 선택 합니다. **아티팩트 추가** 창에서 코드가 있는 리포지토리를 선택 하 고 관련 정보를 입력 한 다음 **추가** 를 클릭 합니다. **저장** 을 선택 하 여 파이프라인을 저장 합니다.
 
     ![아티팩트 추가](media/devops/add-artifact.png)
 
@@ -77,9 +77,9 @@ Git 리포지토리에서 다음 샘플 폴더 (*함수*, *정책*, *테이블*)
 
     ![작업 추가](media/devops/add-task.png)
 
-1. **테이블**, **함수**및 **정책을**이 순서로 배포 하는 세 가지 작업을 만듭니다. 
+1. **테이블**, **함수** 및 **정책을** 이 순서로 배포 하는 세 가지 작업을 만듭니다. 
 
-1. **작업** 탭에서 **+** **에이전트 작업**을 선택 합니다. **Azure 데이터 탐색기**를 검색합니다. **Marketplace**에서 **Azure 데이터 탐색기 – Admin 명령** 확장을 설치 합니다. 그런 다음 **Azure 데이터 탐색기 실행 명령**에서 **추가** 를 선택 합니다.
+1. **작업** 탭에서 **+** **에이전트 작업** 을 선택 합니다. **Azure 데이터 탐색기** 를 검색합니다. **Marketplace** 에서 **Azure 데이터 탐색기 – Admin 명령** 확장을 설치 합니다. 그런 다음 **Azure 데이터 탐색기 실행 명령** 에서 **추가** 를 선택 합니다.
 
      ![관리자 명령 추가](media/devops/add-admin-commands.png)
 
@@ -87,7 +87,7 @@ Git 리포지토리에서 다음 샘플 폴더 (*함수*, *정책*, *테이블*)
     * **표시 이름**: 작업의 이름입니다.
     * **파일 경로**: 테이블 태스크에서 테이블 생성 파일이 *테이블* 폴더에 있기 때문 **에 테이블 태스크** 에서 */proable/*. csl을 지정 합니다.
     * **끝점 URL**: `EndPoint URL` 이전 단계에서 만든 변수를 입력 합니다.
-    * **서비스 끝점 사용** 을 선택 하 고 **+ 새로 만들기**를 선택 합니다.
+    * **서비스 끝점 사용** 을 선택 하 고 **+ 새로 만들기** 를 선택 합니다.
 
     ![Kusto 명령 작업 업데이트](media/devops/kusto-command-task.png)
 
@@ -101,11 +101,11 @@ Git 리포지토리에서 다음 샘플 폴더 (*함수*, *정책*, *테이블*)
     |**서비스 사용자 앱 키**     |    AAD 앱 키 (필수 구성 요소로 만들어짐)를 입력 합니다.    |
     |**AAD 테 넌 트 Id**    |      AAD 테 넌 트 (예: microsoft.com, contoso.com)를 입력 합니다.    |
 
-    **모든 파이프라인에서이 연결을 사용 하도록 허용 확인란을** 선택 합니다. **확인**을 선택합니다.
+    **모든 파이프라인에서이 연결을 사용 하도록 허용 확인란을** 선택 합니다. **확인** 을 선택합니다.
 
     ![서비스 연결 추가](media/devops/add-service-connection.png)
 
-1. 1-5 단계를 두 번 반복 하 여 *함수* 및 *정책* 폴더에서 파일을 배포 합니다. **저장**을 선택합니다. **작업** 탭에서 만든 세 가지 태스크 인 **테이블 배포**, **함수 배포**및 **정책 배포**를 참조 하세요.
+1. 1-5 단계를 두 번 반복 하 여 *함수* 및 *정책* 폴더에서 파일을 배포 합니다. **저장** 을 선택합니다. **작업** 탭에서 만든 세 가지 태스크 인 **테이블 배포**, **함수 배포** 및 **정책 배포** 를 참조 하세요.
 
     ![모든 폴더 배포](media/devops/deploy-all-folders.png)
 

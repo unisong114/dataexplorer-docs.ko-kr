@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/26/2020
-ms.openlocfilehash: 8e419d471419a291b3680c4b91d3e6908b2e7f2e
-ms.sourcegitcommit: 83202ec6fec0ce98fdf993bbb72adc985d6d9c78
+ms.openlocfilehash: 7646f86c9a521ab45cf83d7704084f3a5df6b256
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87877340"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321389"
 ---
 # <a name="external-table-general-control-commands"></a>외부 테이블 일반 제어 명령
 
@@ -28,17 +28,17 @@ ms.locfileid: "87877340"
 
 `.show` `external` `tables`
 
-`.show``external` `table` *TableName*
+`.show` `external` `table` *TableName*
 
 **출력**
 
-| 출력 매개 변수 | Type   | 설명                                                         |
+| 출력 매개 변수 | 형식   | Description                                                         |
 |------------------|--------|---------------------------------------------------------------------|
-| TableName        | string | 외부 테이블의 이름                                             |
-| TableType        | string | 외부 테이블의 유형입니다.                                              |
-| 폴더           | string | 테이블의 폴더                                                     |
-| DocString        | string | 테이블을 문서화 하는 문자열                                       |
-| 속성       | string | 테이블의 JSON 직렬화 된 속성 (테이블 형식에만 해당) |
+| TableName        | 문자열 | 외부 테이블의 이름                                             |
+| TableType        | 문자열 | 외부 테이블의 유형입니다.                                              |
+| 폴더           | 문자열 | 테이블의 폴더                                                     |
+| DocString        | 문자열 | 테이블을 문서화 하는 문자열                                       |
+| 속성       | 문자열 | 테이블의 JSON 직렬화 된 속성 (테이블 형식에만 해당) |
 
 
 **예:**
@@ -62,17 +62,17 @@ ms.locfileid: "87877340"
 
 `.show``external` `table` *TableName* `schema` `as` ( `json`  |  `csl` )
 
-`.show``external` `table` *TableName*`cslschema`
+`.show` `external` `table` *TableName* `cslschema`
 
 **출력**
 
-| 출력 매개 변수 | Type   | 설명                        |
+| 출력 매개 변수 | 형식   | Description                        |
 |------------------|--------|------------------------------------|
-| TableName        | string | 외부 테이블의 이름            |
-| 스키마           | string | JSON 형식의 테이블 스키마 |
-| DatabaseName     | string | 테이블의 데이터베이스 이름             |
-| 폴더           | string | 테이블의 폴더                    |
-| DocString        | string | 테이블을 문서화 하는 문자열      |
+| TableName        | 문자열 | 외부 테이블의 이름            |
+| 스키마           | 문자열 | JSON 형식의 테이블 스키마 |
+| DatabaseName     | 문자열 | 테이블의 데이터베이스 이름             |
+| 폴더           | 문자열 | 테이블의 폴더                    |
+| DocString        | 문자열 | 테이블을 문서화 하는 문자열      |
 
 **예:**
 
@@ -112,7 +112,7 @@ ms.locfileid: "87877340"
 
 **출력**
 
-삭제 된 테이블의 속성을 반환 합니다. 자세한 내용은를 참조 하십시오 [. 외부 테이블을 표시](#show-external-tables)합니다.
+삭제 된 테이블의 속성을 반환 합니다. 자세한 내용은 [`.show external tables`](#show-external-tables)을(를) 참조하세요.
 
 **예:**
 

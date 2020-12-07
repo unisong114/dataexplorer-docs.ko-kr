@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/04/2020
-ms.openlocfilehash: c9ef5b2a205665c692c383654f3d050c4658c0f1
-ms.sourcegitcommit: 3d9b4c3c0a2d44834ce4de3c2ae8eb5aa929c40f
+ms.openlocfilehash: 5d346e5b7932437322cb8a41210a6f375cd6d6f0
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002986"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321117"
 ---
 # <a name="update-policy-commands"></a>업데이트 정책 명령
 
@@ -23,9 +23,9 @@ ms.locfileid: "92002986"
 
 이 명령은 지정 된 테이블의 업데이트 정책 또는 `*` 를 테이블 이름으로 사용 하는 경우 기본 데이터베이스의 모든 테이블을 반환 합니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
-* `.show``table` *TableName* TableName `policy``update`
+* `.show` `table` *TableName* `policy` `update`
 * `.show``table` *DatabaseName* `.` *TableName* TableName `policy``update`
 * `.show` `table` `*` `policy` `update`
 
@@ -52,7 +52,7 @@ ms.locfileid: "92002986"
 
 이 명령은 지정 된 테이블의 업데이트 정책을 설정 합니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
 * `.alter``table` *TableName* `policy` TableName `update` *ArrayOfUpdatePolicyObjects*
 * `.alter``table` *DatabaseName* `.` *TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
@@ -74,7 +74,7 @@ ms.locfileid: "92002986"
 
 ### <a name="returns"></a>반환
 
-이 명령은 테이블의 업데이트 정책 개체를 설정 하 고 현재 정책을 재정의 한 다음 해당 [. 테이블 업데이트 정책 표시](#show-update-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블의 업데이트 정책 개체를 설정 하 여 현재 정책을 재정의 하 고 해당 명령의 출력을 반환 합니다 [`.show table update policy`](#show-update-policy) .
 
 ### <a name="example"></a>예제
 
@@ -133,7 +133,7 @@ MyUpdateFunction()
 
 **반환**
 
-이 명령은 테이블의 업데이트 정책 개체에 추가 하 고 현재 정책을 무시 한 다음 해당 [. show Table *TableName* update policy](#show-update-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블의 업데이트 정책 개체에 추가 하 여 현재 정책을 재정의 하 고 해당 명령의 출력을 반환 합니다 [`.show table *TableName* update policy`](#show-update-policy) .
 
 **예제**
 
@@ -148,12 +148,12 @@ MyUpdateFunction()
 
 **구문**
 
-* `.delete``table` *TableName* TableName `policy``update`
+* `.delete` `table` *TableName* `policy` `update`
 * `.delete``table` *DatabaseName* `.` *TableName* TableName `policy``update`
 
 **반환**
 
-이 명령은 테이블의 업데이트 정책 개체를 삭제 한 다음 해당 [. show Table *TableName* update policy](#show-update-policy) 명령의 출력을 반환 합니다.
+이 명령은 테이블의 업데이트 정책 개체를 삭제 한 다음 해당 명령의 출력을 반환 합니다 [`.show table *TableName* update policy`](#show-update-policy) .
 
 **예제**
 

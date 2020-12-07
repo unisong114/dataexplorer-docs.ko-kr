@@ -1,6 +1,6 @@
 ---
 title: . alter function docstring-Azure 데이터 탐색기
-description: 이 문서에서는 `.alter function docstring` Azure 데이터 탐색기에 대해 설명 합니다.
+description: 이 문서에서는 Azure 데이터 탐색기의 alter function docstring에 대해 설명 합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: cad374c767b126d60b7c701f596bddf3c20c4345
-ms.sourcegitcommit: e093e4fdc7dafff6997ee5541e79fa9db446ecaa
+ms.openlocfilehash: e364a3cc5607b1a4b629954c93bf90e9173c00f1
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85763877"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321763"
 ---
-# <a name="alter-function-docstring"></a>. alter 함수 docstring
+# <a name="alter-function-docstring"></a>.alter function docstring
 
 `DocString`기존 함수의 값을 변경 합니다.
 
@@ -24,7 +24,7 @@ ms.locfileid: "85763877"
 > [!NOTE]
 > * [데이터베이스 관리자 권한이](../management/access-control/role-based-authorization.md) 필요 합니다.
 > * 처음에 함수를 만든 [데이터베이스 사용자](../management/access-control/role-based-authorization.md) 가 함수를 수정할 수 있습니다.
-> * 함수가 없는 경우 오류가 반환 됩니다. 새 함수를 만드는 방법에 대 한 자세한 내용은 [create function](create-function.md)을 참조 하세요.
+> * 함수가 없는 경우 오류가 반환 됩니다. 새 함수를 만드는 방법에 대 한 자세한 내용은을 참조 하십시오 [`.create function`](create-function.md) .
 
 |출력 매개 변수 |형식 |설명
 |---|---|--- 
