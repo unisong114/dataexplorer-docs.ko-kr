@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: e96bdb0e3b00152f287b705317f37bf984b95f26
-ms.sourcegitcommit: 4f24d68f1ae4903a2885985aa45fd15948867175
+ms.openlocfilehash: 99a35b03a171147d5bb511a9eab657903e917d01
+ms.sourcegitcommit: 4d5628b52b84f7564ea893f621bdf1a45113c137
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558141"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444131"
 ---
 # <a name="event-grid-data-connection"></a>Event Grid 데이터 연결
 
@@ -28,6 +28,9 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
 * [지원 되는 형식](ingestion-supported-formats.md)을 참조 하세요.
 * [지원 되는 압축](ingestion-supported-formats.md#supported-data-compression-formats)을 참조 하세요.
     * 원래 압축 되지 않은 데이터 크기는 blob 메타 데이터의 일부 여야 합니다. 그렇지 않으면 Azure 데이터 탐색기에서 예측 합니다. 파일당 압축 되지 않은 파일 크기 제한이 4gb입니다.
+
+> [!NOTE]
+> `BlobStorage`, `StorageV2` 또는 [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction)에 대 한 Azure Storage 계정에 Event Grid 알림 구독을 설정할 수 있습니다.
 
 ## <a name="ingestion-properties"></a>수집 속성
 

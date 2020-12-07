@@ -7,14 +7,14 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/18/2020
-ms.openlocfilehash: b56aefd94ed58b8731ea6237f131b4da74d4f7be
-ms.sourcegitcommit: 88923cfb2495dbf10b62774ab2370b59681578b9
+ms.openlocfilehash: 7d2482c36c0c55c34adbc664a6c24f64bdadf7a1
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92184164"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321950"
 ---
-# <a name="kmeans_fl"></a>kmeans_fl ()
+# <a name="kmeans_fl"></a>kmeans_fl()
 
 함수는 `kmeans_fl()` clusterizes [알고리즘](https://en.wikipedia.org/wiki/K-means_clustering)을 사용 하 여 데이터 집합을 만듭니다.
 
@@ -22,7 +22,7 @@ ms.locfileid: "92184164"
 > * `kmeans_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다.
 > * 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `T | invoke kmeans_fl(`*k* `,` *features_cols* `,` *cluster_col*`)`
 
@@ -32,7 +32,7 @@ ms.locfileid: "92184164"
 * *features_cols*: 클러스터링에 사용 되는 기능 열의 이름을 포함 하는 동적 배열입니다.
 * *cluster_col*: 각 레코드의 출력 클러스터 ID를 저장 하는 열의 이름입니다.
 
-## <a name="usage"></a>사용
+## <a name="usage"></a>사용량
 
 `kmeans_fl()`[invoke 연산자](../query/invokeoperator.md)를 사용 하 여 적용 되는 사용자 정의 [테이블 형식 함수](../query/functions/user-defined-functions.md#tabular-function) 입니다. 쿼리에 해당 코드를 포함 하거나 데이터베이스에 설치할 수 있습니다. Ad hoc 및 영구 사용의 두 가지 사용 옵션이 있습니다. 예제는 아래 탭을 참조 하세요.
 
@@ -76,7 +76,7 @@ OccupancyDetection
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-영구적으로 사용 하려면 [. create 함수](../management/create-function.md)를 사용 합니다. 함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
+영구적으로 사용 하려면을 사용 [`.create function`](../management/create-function.md) 합니다. 함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
 ### <a name="one-time-installation"></a>일회성 설치
 
@@ -105,7 +105,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 }
 ```
 
-### <a name="usage"></a>사용
+### <a name="usage"></a>사용량
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

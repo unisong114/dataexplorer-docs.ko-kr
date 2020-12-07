@@ -8,43 +8,38 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/23/2019
-ms.openlocfilehash: 7dfb0da5d6a2e0d9349f68ea97fb371641e0d506
-ms.sourcegitcommit: 4c7f20dfd59fb5b5b1adfbbcbc9b7da07df5e479
+ms.openlocfilehash: a7474dc04e85f439fc611c44213694041fedc1a4
+ms.sourcegitcommit: f134d51e52504d3ca722bdf6d33baee05118173a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324709"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96563294"
 ---
 # <a name="request-properties-and-clientrequestproperties"></a>요청 속성 및 ClientRequestProperties
 
 .NET SDK를 통해 Kusto에서 요청을 수행 하는 경우 다음을 제공 합니다.
 
 * 연결할 서비스 끝점, 인증 매개 변수 및 이와 유사한 연결 관련 정보를 나타내는 연결 문자열입니다. 프로그래밍 방식으로 연결 문자열은 클래스를 통해 표현 됩니다 `KustoConnectionStringBuilder` .
-
 * 요청의 "범위"를 설명 하는 데 사용 되는 데이터베이스의 이름입니다.
-
 * 요청 (쿼리 또는 명령)의 텍스트입니다.
+* 클라이언트에서 서비스에 제공 하 고 요청에 적용 되는 추가 속성입니다. 프로그래밍 방식으로 이러한 속성은 라는 클래스에 의해 보유 됩니다 [`ClientRequestProperties`](#clientrequestproperties) .
 
-* 클라이언트에서 서비스에 제공 하 고 요청에 적용 되는 추가 속성입니다. 프로그래밍 방식으로 이러한 속성은 라는 클래스에 의해 보유 됩니다 `ClientRequestProperties` .
+## <a name="clientrequestproperties"></a>ClientRequestProperties
 
-##   <a name="clientrequestproperties"></a>ClientRequestProperties
-
-클라이언트 요청 속성은 여러 가지 용도로 사용 됩니다. 
-* 디버깅을 용이 하 게 합니다. 예를 들어 속성은 클라이언트/서비스 상호 작용을 추적 하는 데 사용 되는 상관 관계 문자열을 제공할 수 있습니다. 
-* 요청에 적용 되는 제한 및 정책에 영향을 줍니다. 
-* [쿼리 매개 변수](../../query/queryparametersstatement.md) 를 사용 하면 클라이언트 응용 프로그램에서 사용자 입력을 기반으로 Kusto 쿼리를 쿼리할 수 있습니다.
-[지원 되는 속성의 목록](#list-of-clientrequestproperties)입니다.
+클라이언트 요청 속성은 요청에 적용 되는 제한 및 정책에 영향을 줄 수 있습니다.
 
 `Kusto.Data.Common.ClientRequestProperties`클래스는 세 가지 종류의 데이터를 포함 합니다.
 
-* 명명 된 속성.
-* Options-옵션 값에 대 한 옵션 이름 매핑입니다.
-* Parameters-쿼리 매개 변수 이름을 쿼리 매개 변수 값으로 매핑하는 것입니다.
+* [명명 된 속성](#named-properties) -이러한 속성을 사용 하면 디버깅을 쉽게 수행할 수 있습니다. 예를 들어 속성은 클라이언트/서비스 상호 작용을 추적 하는 데 사용 되는 상관 관계 문자열을 제공할 수 있습니다. 
+* [Clientrequestproperties 옵션](#clientrequestproperties-options) -옵션 값에 대 한 옵션 이름을 매핑한 값입니다.
+* 쿼리 [매개](../../query/queryparametersstatement.md) 변수-쿼리 매개 변수 이름을 쿼리 매개 변수 값으로 매핑하는 것입니다. 이러한 매개 변수를 사용 하면 클라이언트 응용 프로그램에서 사용자 입력을 기반으로 Kusto 쿼리를 쿼리할 수 있습니다.
+
+## <a name="named-properties"></a>명명 된 속성
 
 > [!NOTE]
 > 일부 명명 된 속성은 "사용 안 함"으로 표시 됩니다. 이러한 속성은 클라이언트에서 지정 하면 안 되며 서비스에는 영향을 주지 않습니다.
 
-## <a name="the-clientrequestid-x-ms-client-request-id-named-property"></a>ClientRequestId (x-y-요청 id) 명명 된 속성
+### <a name="clientrequestid-x-ms-client-request-id"></a>ClientRequestId (x-y-요청 id)
 
 이 명명 된 속성에는 클라이언트에서 지정한 요청 id가 있습니다. 클라이언트는 보내는 각 요청 마다 고유한 요청당 값을 지정 해야 합니다. 이 값을 사용 하면 디버깅 오류를 보다 쉽게 수행할 수 있으며 쿼리 취소 등의 일부 시나리오에서 필요 합니다.
 
@@ -59,7 +54,7 @@ ms.locfileid: "95324709"
 * *ActivityName* 는 클라이언트 응용 프로그램에서 클라이언트 요청을 발급 하는 작업의 종류를 식별 합니다.
 * *UniqueId* 는 특정 요청을 식별 합니다.
 
-## <a name="the-application-x-ms-app-named-property"></a>응용 프로그램 (x-y) 명명 된 속성
+### <a name="application-x-ms-app"></a>응용 프로그램 (x-y)
 
 응용 프로그램 (x-y) 명명 된 속성은 요청을 만드는 클라이언트 응용 프로그램의 이름을 가지 며 추적에 사용 됩니다.
 
@@ -67,13 +62,17 @@ ms.locfileid: "95324709"
 
 클라이언트에서 고유한 값을 지정 하지 않는 경우이 속성은 SDK를 호스트 하는 프로세스의 이름으로 설정 됩니다.
 
-## <a name="the-user-x-ms-user-named-property"></a>사용자 (x-y 사용자) 명명 된 속성
+### <a name="user-x-ms-user"></a>사용자 (x-y)
 
 사용자 (x-y) 명명 된 속성은 요청을 만드는 사용자의 id를 가지 며 추적에 사용 됩니다.
 
 이 속성의 프로그래밍 이름은 이며 `User` HTTP 헤더로 변환 됩니다 `x-ms-user` . Kusto 연결 문자열에으로 지정할 수 있습니다 `User Name for Tracing` .
 
-## <a name="controlling-request-properties-using-the-rest-api"></a>REST API를 사용 하 여 요청 속성 제어
+## <a name="use-request-properties"></a>요청 속성 사용
+
+다음 지침을 사용 하 여 요청 속성을 제어 하 고 쿼리 매개 변수화에 대 한 값을 제공 합니다. 
+
+### <a name="control-request-properties-using-the-rest-api"></a>REST API를 사용 하 여 요청 속성 제어
 
 Kusto 서비스에 대 한 HTTP 요청을 실행 하는 경우 `properties` 요청 속성을 제공 하는 POST 요청 본문 인 JSON 문서에서 슬롯을 사용 합니다. 
 
@@ -81,7 +80,7 @@ Kusto 서비스에 대 한 HTTP 요청을 실행 하는 경우 `properties` 요�
 > 클라이언트에서 요청을 식별 하기 위해 제공 하는 상관 관계 ID 인 "클라이언트 요청 ID"와 같은 일부 속성은 HTTP 헤더에 제공 될 수 있으며, HTTP GET을 사용 하는 경우에도 설정할 수 있습니다.
 자세한 내용은 [Kusto REST API request 개체](../rest/request.md)를 참조 하세요.
 
-## <a name="providing-values-for-query-parameterization-as-request-properties"></a>쿼리 매개 변수화에 대 한 값을 요청 속성으로 제공
+### <a name="provide-values-for-query-parameterization-as-request-properties"></a>쿼리 매개 변수화에 대 한 값을 요청 속성으로 제공
 
 Kusto 쿼리는 쿼리 텍스트에서 특수 한 [declare 쿼리 매개 변수](../../query/queryparametersstatement.md) 문을 사용 하 여 쿼리 매개 변수를 참조할 수 있습니다. 이 문을 사용 하면 클라이언트 응용 프로그램에서 사용자 입력을 기반으로 하는 쿼리를 안전 하 게, 그리고 삽입 공격을 걱정 하지 않고 쿼리를 매개 변수화 할 수 있습니다.
 
@@ -89,7 +88,9 @@ Kusto 쿼리는 쿼리 텍스트에서 특수 한 [declare 쿼리 매개 변수]
 
 REST API에서 쿼리 매개 변수는 다른 요청 속성과 동일한 JSON 인코딩 문자열에 표시 됩니다.
 
-## <a name="sample-client-code-for-using-request-properties"></a>요청 속성을 사용 하기 위한 샘플 클라이언트 코드
+## <a name="example"></a>예제
+
+다음 예제에서는 요청 속성을 사용 하기 위한 샘플 클라이언트 코드를 보여 줍니다.
 
 ```csharp
 public static System.Data.IDataReader QueryKusto(
@@ -144,9 +145,10 @@ public static System.Data.IDataReader QueryKusto(
 }
 ```
 
-## <a name="list-of-clientrequestproperties"></a>ClientRequestProperties 목록
+## <a name="clientrequestproperties-options"></a>ClientRequestProperties 옵션
 
-<!-- The following text can be re-produced by running: Kusto.Cli.exe -focus "#crp -doc" -->
+<!-- The following is auto-generated by running  Kusto.Cli.exe -execute:"#crp -doc"           -->
+<!-- The following text can be re-produced by running the Kusto.Cli.exe directive '#crp -doc' -->
 
 * `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*): true 이면 결과 집합의 일부로 부분 쿼리 오류 보고를 사용 하지 않도록 설정 합니다. 부울
 * `materialized_view_shuffle` (*OptionMaterializedViewShuffleQuery*): 쿼리에서 참조 되는 구체화 된 뷰에 대해 순서 섞기 전략을 사용 하는 힌트입니다.
@@ -169,9 +171,9 @@ public static System.Data.IDataReader QueryKusto(
 * `query_datetimescope_column` (*OptionQueryDateTimeScopeColumn*): 쿼리의 날짜/시간 범위 (query_datetimescope_to/query_datetimescope_from)에 대 한 열 이름을 제어 합니다. 문자열
 * `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): 쿼리의 datetime 범위 (가장 이른)를 제어 합니다. (정의 된 경우) query_datetimescope_column에만 자동 적용 된 필터로 사용 됩니다 (정의 된 경우). [DateTime]
 * `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): 쿼리의 datetime 범위 (최신)를 제어 합니다. (정의 된 경우) query_datetimescope_column에만 자동 적용 된 필터로 사용 됩니다 (정의 된 경우). [DateTime]
-* `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): 설정 된 경우 하위 쿼리 병합이 동작 하는 방식을 제어 합니다. 실행 노드는 노드의 각 하위 그룹에 대 한 쿼리 계층 구조에 추가 수준을 제공 합니다. 하위 그룹의 크기는이 옵션으로 설정 됩니다. Int
-* `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): 실행을 fanout 노드의 백분율입니다. Int
-* `query_fanout_threads_percent` (*OptionQueryFanoutThreadsPercent*): 실행을 fanout 스레드 비율입니다. Int
+* `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): 설정 된 경우 하위 쿼리 병합 동작을 제어 합니다. 실행 중인 노드는 노드의 각 하위 그룹에 대 한 쿼리 계층 구조에 추가 수준을 제공 합니다. 하위 그룹의 크기는이 옵션으로 설정 됩니다. Int
+* `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): 실행을 팬 아웃 하는 노드의 백분율입니다. Int
+* `query_fanout_threads_percent` (*OptionQueryFanoutThreadsPercent*): 실행을 팬 아웃 하는 스레드에 대 한 백분율입니다. Int
 * `query_force_row_level_security` (*OptionQueryForceRowLevelSecurity*): 지정 된 경우 row_level_security 정책이 비활성화 된 경우에도 행 수준 보안 규칙을 강제 적용 합니다. [Boolean]
 * `query_language` (*OptionQueryLanguage*): 쿼리 텍스트를 해석 하는 방법을 제어 합니다. [' csl ', ' kql ' 또는 ' sql ']
 * `query_max_entities_in_union` (*)*: 쿼리에서 생성할 수 있는 기본 최대 열 수를 재정의 합니다. 시간과
@@ -188,7 +190,7 @@ public static System.Data.IDataReader QueryKusto(
 * `request_description` (추가 요청 *설명*): 요청 작성자가 요청 설명으로 포함 하려는 임의의 텍스트입니다. 문자열
 * `request_external_table_disabled` (*;):* 지정 된 경우 요청이 externaltable의 코드를 호출할 수 없음을 나타냅니다. 부울
 * `request_impersonation_disabled` (*OptionDoNotImpersonate*): 지정 된 경우 서비스가 호출자의 id를 가장 하지 않아야 함을 나타냅니다. 부울
-* `request_readonly` (*;):* 지정 된 경우 요청에서 아무것도 쓸 수 없어야 함을 나타냅니다. 부울
+* `request_readonly` (*;):* 지정 된 경우 요청에서 아무것도 쓸 수 없음을 나타냅니다. 부울
 * `request_remote_entities_disabled` (*지정* 된 경우): 지정 된 경우 요청이 원격 데이터베이스 및 클러스터에 액세스할 수 없음을 나타냅니다. 부울
 * `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): 지정 된 경우 요청에서 샌드박스에서 코드를 호출할 수 없음을 나타냅니다. 부울
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): 설정 된 경우 프로그레시브 쿼리 스트림을 사용 하도록 설정 합니다.

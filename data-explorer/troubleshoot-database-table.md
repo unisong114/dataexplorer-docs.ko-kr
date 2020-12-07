@@ -6,17 +6,17 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/24/2018
-ms.openlocfilehash: fdcc048c9abdbbc7b99ba938dd5f4ce3792fce41
-ms.sourcegitcommit: f354accde64317b731f21e558c52427ba1dd4830
+ms.date: 12/01/2020
+ms.openlocfilehash: 8b94a36bc2e5190770db424126a3461330c4245d
+ms.sourcegitcommit: 4d5628b52b84f7564ea893f621bdf1a45113c137
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875364"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444187"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>문제 해결: Azure 데이터 탐색기에서 데이터베이스 또는 테이블을 만들거나 삭제하지 못함
 
-Azure 데이터 탐색기에서는 정기적으로 데이터베이스와 테이블을 사용합니다. 이 문서에서는 발생할 수 있는 문제를 해결하는 단계를 제공합니다.
+Azure 데이터 탐색기에서는 정기적으로 데이터베이스와 테이블을 사용합니다. 이 문서에서는 발생할 수 있는 문제를 해결하는 단계를 제공합니다. 
 
 ## <a name="creating-a-database"></a>데이터베이스 만들기
 
@@ -28,7 +28,7 @@ Azure 데이터 탐색기에서는 정기적으로 데이터베이스와 테이�
 
 ## <a name="deleting-or-renaming-a-database"></a>데이터베이스 삭제 또는 이름 바꾸기
 
-적절한 권한이 있는지 확인합니다. 데이터베이스를 삭제하거나 이름을 바꾸려면 Azure 구독에 대한 *기여자* 또는 *소유자* 역할의 멤버여야 합니다. 필요한 경우 사용자는 구독 관리자와 협력하여 해당 역할에 추가될 수 있습니다.
+적절한 권한이 있는지 확인합니다. 데이터베이스를 삭제하거나 이름을 바꾸려면 Azure 구독에 대한 *기여자* 또는 *소유자* 역할의 멤버여야 합니다. 필요한 경우 사용자는 구독 관리자와 협력하여 해당 역할에 추가될 수 있습니다. *데이터베이스 관리자* 역할이 있는 경우 데이터베이스를 삭제 하거나 이름을 바꿀 수도 있습니다.
 
 ## <a name="creating-a-table"></a>테이블 만들기
 
@@ -60,4 +60,5 @@ Azure 데이터 탐색기에서는 정기적으로 데이터베이스와 테이�
 
 ## <a name="next-steps"></a>다음 단계
 
-[클러스터 상태 확인](check-cluster-health.md)
+* [클러스터 상태 확인](check-cluster-health.md)
+* [데이터베이스 권한 관리](manage-database-permissions.md)

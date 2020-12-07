@@ -7,14 +7,14 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/18/2020
-ms.openlocfilehash: 9b1c6db6af651ae3665c07bda8598212883a8f6c
-ms.sourcegitcommit: 88923cfb2495dbf10b62774ab2370b59681578b9
+ms.openlocfilehash: 9065c6b86807ad27c588ebffe3334c450a1addcb
+ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92184147"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96321848"
 ---
-# <a name="series_dot_product_fl"></a>series_dot_product_fl ()
+# <a name="series_dot_product_fl"></a>series_dot_product_fl()
 
 두 숫자 벡터의 내적을 계산 합니다.
 
@@ -23,16 +23,16 @@ ms.locfileid: "92184147"
 > [!NOTE]
 > 이 함수는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `series_dot_product_fl(`*vec1* `,` *vec2*`)`
   
 ## <a name="arguments"></a>인수
 
 * *vec1*: 숫자 값의 동적 배열 셀입니다.
-* *vec2*: 숫자 값의 동적 배열 셀 이며 길이는 *vec1*와 동일 합니다.
+* *vec2*: 숫자 값의 동적 배열 셀 이며 길이는 *vec1* 와 동일 합니다.
 
-## <a name="usage"></a>사용
+## <a name="usage"></a>사용량
 
 `series_dot_product_fl()` 는 사용자 정의 함수입니다. 쿼리에 해당 코드를 포함 하거나 데이터베이스에 설치할 수 있습니다. Ad hoc 및 영구 사용의 두 가지 사용 옵션이 있습니다. 예제는 아래 탭을 참조 하세요.
 
@@ -57,7 +57,7 @@ union
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-영구적으로 사용 하려면 [. create 함수](../management/create-function.md)를 사용 합니다. 함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
+영구적으로 사용 하려면을 사용 [`.create function`](../management/create-function.md) 합니다. 함수를 만들려면 [데이터베이스 사용자 권한이](../management/access-control/role-based-authorization.md)필요 합니다.
 
 ### <a name="one-time-installation"></a>일회성 설치
 
@@ -72,7 +72,7 @@ series_dot_product_fl(vec1:dynamic, vec2:dynamic)
 }
 ```
 
-### <a name="usage"></a>사용
+### <a name="usage"></a>사용량
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

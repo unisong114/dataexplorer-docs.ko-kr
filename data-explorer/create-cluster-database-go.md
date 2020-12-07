@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: fd0bdc07c2a51d76257800e55921a82cd7fdbbda
-ms.sourcegitcommit: cffc81de2b5c75a0ef5a3c71ff58d1ef52d4eb5c
+ms.openlocfilehash: 833a801e6455fd4d88fbbbab83010aea1d406f02
+ms.sourcegitcommit: 7edce9d9d20f9c0505abda67bb8cc3d2ecd60d15
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95872280"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96524252"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-using-go"></a>Go를 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기
 
@@ -29,7 +29,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 이 문서에서는 [Go](https://golang.org/)를 사용 하 여 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다. 그런 다음 새 클러스터와 데이터베이스를 나열 하 고 삭제 하 고 리소스에 대 한 작업을 실행할 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.
@@ -78,7 +78,7 @@ func createCluster(sub, name, location, rgName string) {
 
 ### <a name="list-clusters"></a>클러스터 나열
 
-에서 [Listbyresourcegroup](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.ListByResourceGroup) 함수를 사용 `kusto.ClustersClient` 하 여 [kusto를 가져옵니다. ](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClusterListResult) 그런 다음 출력을 테이블 형식으로 표시 하기 위해 반복 되는 ClusterListResult입니다.
+에서 [Listbyresourcegroup](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#ClustersClient.ListByResourceGroup) 함수를 사용 `kusto.ClustersClient` 하 여 [kusto를 가져옵니다. ](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#ClusterListResult) 그런 다음 출력을 테이블 형식으로 표시 하기 위해 반복 되는 ClusterListResult입니다.
 
 
 ```go
@@ -95,7 +95,7 @@ func listClusters(sub, rgName string) {
 
 ### <a name="create-database"></a>데이터베이스 만들기
 
-Kusto에서 [Createorupdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.CreateOrUpdate) 함수를 사용 [합니다. DatabasesClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient) 를 통해 기존 클러스터에 새 Azure 데이터 탐색기 데이터베이스를 만들 수 있습니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
+Kusto에서 [Createorupdate](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient.CreateOrUpdate) 함수를 사용 [합니다. DatabasesClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient) 를 통해 기존 클러스터에 새 Azure 데이터 탐색기 데이터베이스를 만들 수 있습니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
 
 
 ```go
@@ -111,7 +111,7 @@ func createDatabase(sub, rgName, clusterName, location, dbName string) {
 
 ### <a name="list-databases"></a>데이터베이스 나열
 
-에서 [Listbycluster](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.ListByCluster) 함수를 사용 `kusto.DatabasesClient` 하 여 [kusto를 가져옵니다. ](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabaseListResult) 테이블 형식으로 출력을 표시 하기 위해 반복 되는 DatabaseListResult입니다.
+에서 [Listbycluster](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient.ListByCluster) 함수를 사용 `kusto.DatabasesClient` 하 여 [kusto를 가져옵니다. ](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabaseListResult) 테이블 형식으로 출력을 표시 하기 위해 반복 되는 DatabaseListResult입니다.
 
 
 ```go
@@ -127,7 +127,7 @@ func listDatabases(sub, rgName, clusterName string) {
 
 ### <a name="delete-database"></a>데이터베이스 삭제
 
-에서 [delete](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.Delete) 함수를 사용 `kusto.DatabasesClient` 하 여 클러스터에서 기존 데이터베이스를 삭제 합니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
+에서 [delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient.Delete) 함수를 사용 `kusto.DatabasesClient` 하 여 클러스터에서 기존 데이터베이스를 삭제 합니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
 
 ```go
 func deleteDatabase(sub, rgName, clusterName, dbName string) {
@@ -146,7 +146,7 @@ func deleteDatabase(sub, rgName, clusterName, dbName string) {
 
 ### <a name="delete-cluster"></a>클러스터 삭제
 
-에서 [delete](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.Delete) 함수를 사용 `kusto.ClustersClient` 하 여 클러스터를 삭제 합니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
+에서 [delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#ClustersClient.Delete) 함수를 사용 `kusto.ClustersClient` 하 여 클러스터를 삭제 합니다. 결과를 검사 하기 전에 프로세스가 완료 될 때까지 기다립니다.
 
 ```go
 func deleteCluster(sub, clusterName, rgName string) {

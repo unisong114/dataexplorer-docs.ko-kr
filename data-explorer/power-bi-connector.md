@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: 47bb390e6211a0448e16b3fca16560176dcc8702
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.date: 12/03/2020
+ms.openlocfilehash: d02f9732791bf66a488779e2bc413fa441664ef7
+ms.sourcegitcommit: f134d51e52504d3ca722bdf6d33baee05118173a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343541"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96563338"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI용 Azure Data Explorer 커넥터를 사용하여 데이터 시각화
 
@@ -30,11 +30,11 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
 먼저 Azure Data Explorer 도움말 클러스터에 연결한 후, *StormEvents* 테이블에서 데이터의 하위 세트를 불러옵니다. [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
-1. Power BI Desktop의 **홈** 탭에서 **데이터 가져오기** , **자세히**를 차례로 선택 합니다.
+1. Power BI Desktop의 **홈** 탭에서 **데이터 가져오기** , **자세히** 를 차례로 선택 합니다.
 
     ![데이터 가져오기](media/power-bi-connector/get-data-more.png)
 
-1. *Azure 데이터 탐색기*을 검색 하 고 **azure 데이터 탐색기** 을 선택한 다음 **연결**을 선택 합니다.
+1. *Azure 데이터 탐색기* 을 검색 하 고 **azure 데이터 탐색기** 을 선택한 다음 **연결** 을 선택 합니다.
 
     ![데이터 검색 및 가져오기](media/power-bi-connector/search-get-data.png)
 
@@ -72,25 +72,25 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
     | 결과 집합 잘림을 사용 하지 않도록 설정 | `true` | Notruncation 요청 옵션을 사용 하 여 결과 잘림 사용/사용 안 함 |
     | 추가 set 문 | `set query_datascope=hotcache` | 쿼리 기간에 대 한 쿼리 옵션을 설정 합니다. 쿼리 옵션은 쿼리가 실행되고 결과가 반환되는 방법을 제어합니다. |
 
-1. 도움말 클러스터에 아직 연결되지 않은 경우 로그인합니다. 조직 계정을 사용하여 로그인한 다음 **연결**을 선택합니다.
+1. 도움말 클러스터에 아직 연결되지 않은 경우 로그인합니다. 조직 계정을 사용하여 로그인한 다음 **연결** 을 선택합니다.
 
     ![로그인](media/power-bi-connector/sign-in.png)
 
-1. **탐색기** 화면에서 **샘플** 데이터베이스를 확장한 후 **StormEvents**, **편집**을 차례로 선택합니다.
+1. **탐색기** 화면에서 **예제** 데이터베이스를 확장 하 고 **stormevents** 를 선택한 다음 **데이터를 변환** 합니다.
 
     ![테이블 선택](media/power-bi-connector/select-table.png)
 
     테이블이 파워 쿼리 편집기에서 열리고, 여기서 데이터를 가져오기 전에 행과 열을 편집할 수 있습니다.
 
-1. Power 쿼리 편집기에서 **DamageCrops** 열 옆에 있는 화살표를 선택하고 **내림차순 정렬**을 선택합니다.
+1. Power 쿼리 편집기에서 **DamageCrops** 열 옆에 있는 화살표를 선택하고 **내림차순 정렬** 을 선택합니다.
 
     ![DamageCrops를 내림차순으로 정렬](media/power-bi-connector/sort-descending.png)
 
-1. **홈** 탭에서 **행 유지**를 선택한 후 **상위 행 유지**를 선택합니다. 값 *1000*을 입력하여 정렬된 테이블의 상위 1000개 행을 표시합니다.
+1. **홈** 탭에서 **행 유지** 를 선택한 후 **상위 행 유지** 를 선택합니다. 값 *1000* 을 입력하여 정렬된 테이블의 상위 1000개 행을 표시합니다.
 
     ![상위 행 유지](media/power-bi-connector/keep-top-rows.png)
 
-1. **홈** 에서 **닫기 및 적용**을 선택합니다.
+1. **홈** 에서 **닫기 및 적용** 을 선택합니다.
 
     ![닫기 및 적용](media/power-bi-connector/close-apply.png)
 

@@ -8,12 +8,12 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
-ms.openlocfilehash: 383d1ab5d948a5fbcfb3ab2aad0ff8e5ed675075
-ms.sourcegitcommit: 455d902bad0aae3e3d72269798c754f51442270e
+ms.openlocfilehash: 3cc5efa2d8b738c58d94d0db397218663fd76740
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349446"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96470216"
 ---
 # <a name="create-materialized-view"></a>.create materialized-view
 
@@ -22,21 +22,20 @@ ms.locfileid: "93349446"
 다음 두 가지 방법으로 명령에서 *백필* 옵션으로 표시 되는 구체화 된 뷰를 만들 수 있습니다.
 
  * **원본 테이블의 기존 레코드를 기반으로 하 여 만들기:** 
-      * 생성은 원본 테이블의 레코드 수에 따라 완료 하는 데 시간이 오래 걸릴 수 있습니다. 뷰는 완료 될 때까지 쿼리에 사용할 수 없습니다.
+      * 생성은 원본 테이블의 레코드 수에 따라 완료 하는 데 시간이 오래 걸릴 수 있습니다. 백필이 완료 될 때까지 쿼리에 대해 뷰를 사용할 수 없습니다.
       * 이 옵션을 사용 하는 경우 create 명령은 이어야 `async` 하며, 실행은 [. 작업 표시](../operations.md#show-operations) 명령을 사용 하 여 모니터링할 수 있습니다.
 
     * [. 작업 취소](#cancel-materialized-view-creation) 명령을 사용 하 여 백필 프로세스를 취소할 수 있습니다.
 
       > [!IMPORTANT]
-      > * 콜드 캐시의 데이터에는 백필 옵션을 사용할 수 없습니다. 필요한 경우 뷰를 만들기 위해 핫 캐시 기간을 늘립니다. 이 경우 확장 해야 할 수 있습니다.    
-      > * 대량 원본 테이블의 경우 백필 옵션을 사용 하면 완료 하는 데 시간이 오래 걸릴 수 있습니다. 이 프로세스가 실행 되는 동안 실패 하면 transiently가 자동으로 다시 시도 되지 않고 create 명령을 다시 실행 해야 합니다.
+      > 대량 원본 테이블의 경우 백필 옵션을 사용 하면 완료 하는 데 시간이 오래 걸릴 수 있습니다. 이 프로세스가 실행 되는 동안 실패 하면 transiently가 자동으로 다시 시도 되지 않고 create 명령을 다시 실행 해야 합니다. 자세한 내용은 [구체화 된 뷰 백필](#backfill-a-materialized-view) 섹션을 참조 하세요.
     
-* **이제 다음에서 구체화 된 뷰를 만듭니다.** 
+* **이제 다음에서 구체화 된 뷰를 만듭니다.**
     * 구체화 된 뷰는 빈 상태로 생성 되며 뷰를 만든 후에만 수집 레코드를 포함 합니다. 이러한 종류의 생성은 즉시 반환 되 고, 필요 하지 않으며 `async` , 뷰를 쿼리에 즉시 사용할 수 있습니다.
 
 만들기 작업을 수행 하려면 [데이터베이스 관리자](../access-control/role-based-authorization.md) 권한이 필요 합니다. 구체화 된 뷰의 작성자가 관리자가 됩니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `.create` [`async`] `materialized-view` <br>
 [ `with` `(` *PropertyName* `=` *PropertyValue* `,` ... `)` ] <br>
@@ -45,7 +44,7 @@ ms.locfileid: "93349446"
 
 ## <a name="arguments"></a>인수
 
-|인수|유형|Description
+|인수|형식|설명
 |----------------|-------|---|
 |ViewName|String|구체화 된 뷰 이름입니다. 뷰 이름은 같은 데이터베이스에 있는 테이블 또는 함수 이름과 충돌 하지 않으며 [식별자 명명 규칙](../../query/schema-entities/entity-names.md#identifier-naming-rules)을 따라야 합니다. |
 |(|String|뷰가 정의 된 원본 테이블의 이름입니다.|
@@ -72,7 +71,7 @@ ms.locfileid: "93349446"
 
     * 뷰의 원본 테이블 (팩트 테이블)의 레코드는 한 번만 구체화 됩니다. 팩트 테이블과 차원 테이블 사이에 다른 수집 대기 시간이 있으면 뷰 결과에 영향을 줄 수 있습니다.
 
-    * **예** : 뷰 정의에는 차원 테이블과의 내부 조인이 포함 됩니다. 구체화 시 차원 레코드는 완전히 수집 않지만 이미 팩트 테이블에 수집 되었습니다. 이 레코드는 뷰에서 삭제 되 고 다시 처리 되지 않습니다. 
+    * **예**: 뷰 정의에는 차원 테이블과의 내부 조인이 포함 됩니다. 구체화 시 차원 레코드는 완전히 수집 않지만 이미 팩트 테이블에 수집 되었습니다. 이 레코드는 뷰에서 삭제 되 고 다시 처리 되지 않습니다. 
 
         마찬가지로 조인이 외부 조인 인 경우 팩트 테이블의 레코드가 처리 되 고 차원 테이블 열에 대해 null 값이 포함 된 보기에 추가 됩니다. 뷰에 이미 추가 된 (null 값 포함) 레코드는 다시 처리 되지 않습니다. 차원 테이블의 열에서 해당 값은 null로 유지 됩니다.
 
@@ -80,14 +79,14 @@ ms.locfileid: "93349446"
 
 다음은 절에서 지원 됩니다 `with(propertyName=propertyValue)` . 모든 속성은 선택 사항입니다.
 
-|속성|유형|Description |
+|속성|형식|설명 |
 |----------------|-------|---|
 |가득|bool|현재 *SourceTable* ()에 있는 모든 레코드를 기반으로 뷰를 만들지 아니면 `true` "온-" ()로 만들지 여부를 지정 `false` 합니다. 기본값은 `false`입니다.| 
 |effectiveDateTime|Datetime| 와 함께 지정 하 `backfill=true` 는 경우 datetime 이후의 레코드를 수집 하는 backfills 생성 됩니다. 또한 백필을 true로 설정 해야 합니다. 에는 datetime 리터럴이 필요 합니다 (예:). `effectiveDateTime=datetime(2019-05-01)`|
 |dimensionTables|배열|뷰의 차원 테이블을 쉼표로 구분한 목록입니다. [쿼리 인수](#query-argument) 참조
 |autoUpdateSchema|bool|원본 테이블 변경 내용에 대 한 뷰를 자동으로 업데이트할지 여부를 지정 합니다. 기본값은 `false`입니다. 이 옵션은 유형 보기에 대해서만 유효 `arg_max(Timestamp, *)`  /  `arg_min(Timestamp, *)`  /  `any(*)` 합니다 (열 인수가 인 경우에만 `*` ). 이 옵션을 true로 설정 하면 원본 테이블에 대 한 변경 내용이 구체화 된 뷰에 자동으로 반영 됩니다.
-|폴더|string|구체화 된 뷰의 폴더입니다.|
-|docString|string|구체화 된 뷰를 문서화 하는 문자열|
+|폴더|문자열|구체화 된 뷰의 폴더입니다.|
+|docString|문자열|구체화 된 뷰를 문서화 하는 문자열|
 
 > [!WARNING]
 > * `autoUpdateSchema`원본 테이블의 열을 삭제 하면를 사용 하면 데이터가 영구적으로 손실 될 수 있습니다. 
@@ -97,7 +96,7 @@ ms.locfileid: "93349446"
 > * 이러한 이유로 보기를 사용 하지 않도록 설정 하면 [구체화 된 뷰 사용](materialized-view-enable-disable.md) 명령을 사용 하 여 문제를 해결 한 후 다시 사용 하도록 설정할 수 있습니다.
 >
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 1. 현재 수집 레코드를 구체화 하는 빈 arg_max 보기를 만듭니다.
 
@@ -132,6 +131,7 @@ ms.locfileid: "93349446"
         | summarize count(), dcount(User), max(Duration) by Customer, Day
     } 
     ```
+
 1. EventId 열을 기반으로 하 여 원본 테이블의 복제를 취소 하는 구체화 된 뷰입니다.
 
     <!-- csl -->
@@ -202,7 +202,7 @@ ms.locfileid: "93349446"
 
 * 구체화 된 뷰 쿼리 필터는 구체화 된 뷰 차원 (집계 기준-절) 중 하나를 기준으로 필터링 할 때 최적화 됩니다. 쿼리 패턴은 구체화 된 뷰의 차원이 될 수 있는 일부 열을 기준으로 필터링 하는 경우가 많습니다. 예를 들어에 의해 필터링 되는을 통해를 노출 하는 구체화 된 뷰의 경우 `arg_max` `ResourceId` `SubscriptionId` 권장 사항은 다음과 같습니다.
 
-    **Do** :
+    **Do**:
     
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
@@ -211,7 +211,7 @@ ms.locfileid: "93349446"
     }
     ``` 
     
-    **수행 하지 않음** :
+    **수행 하지 않음**:
     
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
@@ -220,9 +220,9 @@ ms.locfileid: "93349446"
     }
     ```
 
-* 구체화 된 뷰 정의의 일부로 [업데이트 정책](../updatepolicy.md) 으로 이동할 수 있는 변환, normalizations 및 기타 많은 계산을 포함 하지 않습니다. 대신이 모든 프로세스를 업데이트 정책에서 수행 하 고 구체화 된 뷰에서만 집계를 수행 합니다. 해당 하는 경우 차원 테이블에서 조회에이 프로세스를 사용 합니다.
+* 구체화 된 뷰 정의의 일부로 [업데이트 정책](../updatepolicy.md) 으로 이동할 수 있는 변환, normalizations, 차원 테이블의 조회 및 기타 많은 계산을 포함 하지 않습니다. 대신이 모든 프로세스를 업데이트 정책에서 수행 하 고 구체화 된 뷰에서만 집계를 수행 합니다.
 
-    **Do** :
+    **Do**:
     
     * 업데이트 정책:
     
@@ -233,6 +233,7 @@ ms.locfileid: "93349446"
         "Query": 
             "SourceTable 
             | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
+            | lookup DimResources on ResourceId
         "IsTransactional": false}]'  
     ```
         
@@ -246,19 +247,51 @@ ms.locfileid: "93349446"
     }
     ```
     
-    **수행 하지 않음** :
+    **수행 하지 않음**:
     
     ```kusto
     .create materialized-view Usage on table SourceTable
     {
-        SourceTable 
+        SourceTable
         | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
+        | lookup DimResources on ResourceId
         | summarize count() by ResourceId
     }
     ```
 
-> [!NOTE]
-> 최상의 쿼리 시간 성능이 필요 하지만 일부 데이터의 유효성을 저하 시킬 수 있는 경우 [materialized_view () 함수](../../query/materialized-view-function.md)를 사용 합니다.
+> [!TIP]
+> 최상의 쿼리 시간 성능이 필요 하지만 일부 데이터 대기 시간을 허용할 수 있는 경우 [materialized_view () 함수](../../query/materialized-view-function.md)를 사용 합니다.
+
+## <a name="backfill-a-materialized-view"></a>구체화 된 뷰 백필
+
+속성을 사용 하 여 구체화 된 뷰를 만들 때 `backfill` 구체화 된 뷰는 원본 테이블에서 사용할 수 있는 레코드 (또는이 사용 되는 경우 해당 레코드의 하위 집합)를 기반으로 생성 됩니다 `effectiveDateTime` . 대량 원본 테이블의 경우 백필을 완료 하는 데 시간이 오래 걸릴 수 있습니다.
+
+* 콜드 캐시의 데이터에는 백필 옵션을 사용할 수 없습니다. 필요한 경우 보기를 만드는 동안 핫 캐시 기간을 늘립니다. 이 경우 확장 해야 할 수 있습니다.
+
+* 백그라운드에서 백필 프로세스는 데이터를 여러 일괄 처리로 분할 하 고를 사용 하 여 여러 수집 작업을 실행 하 여 뷰를 백필 합니다. 백필 프로세스의 일부로 발생 하는 일시적인 오류는 다시 시도 하지만 모든 재시도를 모두 사용 하는 경우 create 명령을 수동으로 다시 실행 해야 할 수 있습니다.
+
+* 보기를 만들 때 오류가 발생 하는 경우 다음과 같은 몇 가지 속성을 변경할 수 있습니다.
+
+    * `MaxSourceRecordsForSingleIngest` -기본적으로 백필 하는 동안 각 수집 작업의 원본 레코드 수는 노드당 200만 레코드입니다. 이 속성을 원하는 레코드 수로 설정 하 여이 기본값을 변경할 수 있습니다. 값은 각 수집 작업의 _총_ 레코드 수입니다. 이 값을 줄이면 메모리 제한/쿼리 제한 시간에 대해 만들기가 실패 하는 경우에 유용할 수 있습니다. 이 값을 늘려도 클러스터가 기본 보다 많은 레코드에서 집계 함수를 실행할 수 있다고 가정 하 여 보기 생성 속도를 높일 수 있습니다.
+
+    * `Concurrency` -백필 프로세스의 일부로 실행 되는 수집 작업이 동시에 실행 됩니다. 기본적으로 동시성은 `min(number_of_nodes * 2, 5)` 입니다. 이 속성을 설정 하 여 동시성을 늘리거나 줄일 수 있습니다. 클러스터의 cpu 사용량에 상당한 영향을 줄 수 있으므로이 값을 증가 시키는 것은 클러스터의 CPU가 낮은 경우에만 사용 하는 것이 좋습니다.
+
+  예를 들어 다음 명령은 `2020-01-01` 레코드의 각 수집 작업에서 레코드의 최대 수를 사용 하 여 구체화 된 뷰를 백필 하 `3 million` 고 동시성을 사용 하 여 수집 작업을 실행 합니다 `2` . 
+    
+    <!-- csl -->
+    ```
+    .create async materialized-view with (
+            backfill=true,
+            effectiveDateTime=datetime(2019-01-01),
+            MaxSourceRecordsForSingleIngest=3000000,
+            Concurrency=2
+        )
+        CustomerUsage on table T
+    {
+        T
+        | summarize count(), dcount(User), max(Duration) by Customer, bin(Timestamp, 1d)
+    } 
+    ```
 
 ## <a name="limitations-on-creating-materialized-views"></a>구체화 된 뷰를 만들 때의 제한 사항
 
@@ -281,27 +314,27 @@ ms.locfileid: "93349446"
 > [!WARNING]
 > 이 명령을 실행 한 후에는 구체화 된 뷰를 복원할 수 없습니다.
 
-만들기 프로세스를 즉시 중단할 수 없습니다. Cancel 명령은 구체화를 중지 하도록 신호를 보내고 취소가 요청 되었는지 주기적으로 확인 합니다. 취소 명령은 구체화 된 뷰 만들기 프로세스가 취소 될 때까지 최대 10 분 동안 기다린 후 취소가 성공 하면 다시 보고 합니다. 취소가 10 분 이내에 성공 하지 않은 경우에도 취소 명령이 실패를 보고 하는 경우에도 구체화 된 뷰는 나중에 생성 프로세스에서 자체적으로 중단 될 수 있습니다. [. 작업 표시](../operations.md#show-operations) 명령은 작업이 취소 되었는지 여부를 나타냅니다. `cancel operation`명령은 구체화 된 뷰 생성 취소에 대해서만 지원 되며 다른 작업을 취소 하는 데에는 지원 되지 않습니다.
+만들기 프로세스를 즉시 중단할 수 없습니다. Cancel 명령은 구체화를 중지 하도록 신호를 보내고 취소가 요청 되었는지 주기적으로 확인 합니다. 취소 명령은 구체화 된 뷰 만들기 프로세스가 취소 될 때까지 최대 10 분 동안 기다린 후 취소가 성공 하면 다시 보고 합니다. 취소가 10 분 이내에 성공 하지 않은 경우에도 취소 명령이 실패를 보고 하는 경우에도 구체화 된 뷰는 나중에 생성 프로세스에서 자체적으로 중단 될 수 있습니다. [`.show operations`](../operations.md#show-operations)명령은 작업이 취소 되었는지 여부를 표시 합니다. `cancel operation`명령은 구체화 된 뷰 생성 취소에 대해서만 지원 되며 다른 작업을 취소 하는 데에는 지원 되지 않습니다.
 
-### <a name="syntax"></a>구문
+### <a name="syntax"></a>Syntax
 
 `.cancel` `operation` *operationId*
 
 ### <a name="properties"></a>속성
 
-|속성|유형|Description
+|속성|형식|설명
 |----------------|-------|---|
-|operationId|GUID|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
+|operationId|Guid|구체화 된 뷰 만들기 명령에서 반환 된 작업 ID입니다.|
 
 ### <a name="output"></a>출력
 
-|출력 매개 변수 |유형 |Description
+|출력 매개 변수 |형식 |설명
 |---|---|---
-|OperationId|GUID|구체화 된 뷰 만들기 명령의 작업 ID입니다.
-|작업(Operation)|String|작업 종류입니다.
+|OperationId|Guid|구체화 된 뷰 만들기 명령의 작업 ID입니다.
+|연산|String|작업 종류입니다.
 |StartedOn|Datetime|만들기 작업의 시작 시간입니다.
-|CancellationState|string|- `Cancelled successfully` (생성이 취소 된 경우), ( `Cancellation failed` 취소 시간이 초과 될 때까지 대기), ( `Unknown` 뷰 생성이 더 이상 실행 되지 않고이 작업으로 인해 취소 되지 않음)
-|ReasonPhrase|string|취소가 실패 한 이유입니다.
+|CancellationState|문자열|- `Cancelled successfully` (생성이 취소 된 경우), ( `Cancellation failed` 취소 시간이 초과 될 때까지 대기), ( `Unknown` 뷰 생성이 더 이상 실행 되지 않고이 작업으로 인해 취소 되지 않음)
+|ReasonPhrase|문자열|취소가 실패 한 이유입니다.
 
 ### <a name="example"></a>예제
 
@@ -310,7 +343,7 @@ ms.locfileid: "93349446"
 .cancel operation c4b29441-4873-4e36-8310-c631c35c916e
 ```
 
-|OperationId|작업(Operation)|StartedOn|CancellationState|ReasonPhrase|
+|OperationId|연산|StartedOn|CancellationState|ReasonPhrase|
 |---|---|---|---|---|
 |c4b29441-4873-4e36-8310-c631c35c916e|MaterializedViewCreateOrAlter|2020-05-08 19:45:03.9184142|취소 됨||
 
