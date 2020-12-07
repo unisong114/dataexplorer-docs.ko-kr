@@ -1,6 +1,6 @@
 ---
-title: split ()-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Azure 데이터 탐색기의 분할 ()에 대해 설명 합니다.
+title: split() - Azure Data Explorer | Microsoft Docs
+description: 이 문서에서는 Azure Data Explorer의 split()에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,15 +10,15 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.localizationpriority: high
 ms.openlocfilehash: 4baae5bee8dd1e85a304be7fb4eae988acc404d8
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95512947"
 ---
 # <a name="split"></a>split()
 
-지정 된 구분 기호에 따라 지정 된 문자열을 분할 하 고 포함 된 부분 문자열을 포함 하는 문자열 배열을 반환 합니다.
+지정된 구분 기호에 따라 지정된 문자열을 분할하고 포함된 부분 문자열이 있는 문자열 배열을 반환합니다.
 
 선택적으로 특정 부분 문자열(있는 경우)을 반환할 수 있습니다.
 
@@ -26,13 +26,13 @@ ms.locfileid: "95512947"
 split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
-`split(`*원본* `,` *구분 기호* [ `,` *requestedIndex*]`)`
+`split(`*원본*`,` *구분 기호* [`,` *requestedIndex*]`)`
 
 ## <a name="arguments"></a>인수
 
-* *source*: 지정 된 구분 기호에 따라 분할 될 소스 문자열입니다.
+* *원본*: 지정된 구분 기호에 따라 분할될 원본 문자열입니다.
 * *delimiter*: 소스 문자열을 분할하기 위해 사용될 구분 기호입니다.
 * *requestedIndex*: 선택적 0부터 시작하는 인덱스 `int`입니다. 제공된 경우, 반환되는 문자열 배열은 요청된 부분 문자열(있는 경우)을 포함합니다. 
 

@@ -1,6 +1,6 @@
 ---
-title: parse_json ()-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기에서 parse_json ()에 대해 설명 합니다.
+title: parse_json() - Azure Data Explorer
+description: 이 문서에서는 Azure Data Explorer의 parse_json()에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,36 +10,36 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.localizationpriority: high
 ms.openlocfilehash: 3125a51733f6672d041e6c1522ea755e5677cb0c
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95512862"
 ---
 # <a name="parse_json"></a>parse_json()
 
-는를 `string` JSON 값으로 해석 하 고 값을로 반환 합니다 `dynamic` .
+`string`을 JSON 값으로 해석하고 값을 `dynamic`으로 반환합니다.
 
-JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우이 함수는 [extractjson () 함수](./extractjsonfunction.md) 보다 낫습니다.
+이 함수는 복합 JSON 개체의 요소를 둘 이상 추출해야 할 때 [extractjson()](./extractjsonfunction.md) 함수보다 더 효율적입니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 `parse_json(`*json*`)`
 
-별칭
+별칭:
 - [todynamic()](./todynamicfunction.md)
-- [toobject ()](./todynamicfunction.md)
+- [toobject()](./todynamicfunction.md)
 
 ## <a name="arguments"></a>인수
 
-* *json*: 형식의 식 `string` 입니다. [JSON 형식 값](https://json.org/)또는 실제 값을 나타내는 [dynamic](./scalar-data-types/dynamic.md)형식의 식을 나타냅니다 `dynamic` .
+* *json*: `string` 형식의 식입니다. [JSON 형식 값](https://json.org/) 또는 실제 `dynamic` 값을 나타내는 [동적](./scalar-data-types/dynamic.md) 형식의 식을 나타냅니다.
 
 ## <a name="returns"></a>반환
 
-`dynamic` *Json* 값에 의해 결정 되는 형식의 개체입니다.
-* *Json* 형식이 인 경우 `dynamic` 해당 값이 있는 그대로 사용 됩니다.
-* *Json* 이 형식이 `string` 고가 적절 한 형식의 [json 문자열이](https://json.org/)면 문자열이 구문 분석 되 고 생성 된 값이 반환 됩니다.
-* *Json* 이 형식이 `string` 고 [올바른 형식의 json 문자열이](https://json.org/)아닌 경우 반환 되는 값은 `dynamic` 원래 값을 보유 하는 형식의 개체입니다 `string` .
+*json* 값에 의해 결정되는 `dynamic` 형식의 개체입니다.
+* *json* 이 `dynamic` 형식인 경우 해당 값이 그대로 사용됩니다.
+* *json* 이 `string` 형식이고 [올바른 형식의 JSON 문자열](https://json.org/)이면 문자열이 구문 분석되고 생성된 값이 반환됩니다.
+* *json* 이 `string` 형식이지만 [올바른 형식의 JSON 문자열](https://json.org/)이 아닌 경우 반환되는 값은 원래 `string` 값을 보유하는 `dynamic` 형식의 개체입니다.
 
 ## <a name="example"></a>예제
 
@@ -49,7 +49,7 @@ JSON 복합 개체의 요소를 둘 이상 추출 해야 하는 경우이 함수
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-그런 다음, 다음 CSL 조각은 개체에서 슬롯의 값을 검색 하 `duration` 고, 여기서는 두 슬롯과 `duration.value` `duration.min` ( `118.0` 각각 및)를 검색 `110.0` 합니다.
+그러면 다음 CSL 조각은 개체에 있는 `duration` 슬롯의 값을 검색하며 거기서부터 `duration.value` 및 `duration.min`의 두 슬롯을 검색합니다(각각 `118.0` 및 `110.0`).
 
 ```kusto
 T
@@ -59,16 +59,16 @@ T
 
 **참고**
 
-일반적으로 "슬롯" 중 하나가 다른 JSON 문자열인 속성 모음을 설명 하는 JSON 문자열이 있습니다. 
+일반적으로 "슬롯" 중 하나가 다른 JSON 문자열인 속성 모음을 설명하는 JSON 문자열이 있습니다. 
 
-예:
+다음은 그 예입니다. 
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d
 ```
 
-이 경우 두 번 호출 하는 것은 물론 `parse_json` 두 번째 호출에서가 사용 되는지 확인 하는 데에도 필요 `tostring` 합니다. 그렇지 않으면에 대 한 두 번째 호출은 `parse_json` 선언 된 형식이 이기 때문에 입력을 그대로 출력에 전달 합니다 `dynamic` .
+이 경우 `parse_json`을 두 번 호출할 뿐만 아니라 두 번째 호출에서 `tostring`이 사용되는지 확인해야 합니다. 그렇지 않으면 선언된 형식이 `dynamic`이기 때문에 `parse_json`에 대한 두 번째 호출은 입력을 그대로 출력에 전달합니다.
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';

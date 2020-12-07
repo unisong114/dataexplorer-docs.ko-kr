@@ -1,6 +1,6 @@
 ---
-title: Azure 데이터 탐색기를 사용 하 여 시계열 데이터 분석
-description: Azure 데이터 탐색기을 사용 하 여 클라우드에서 시계열 데이터를 분석 하는 방법을 알아봅니다.
+title: Azure Data Explorer를 사용하여 시계열 데이터 분석
+description: Azure Data Explorer를 사용하여 클라우드에서 시계열 데이터를 분석하는 방법을 알아봅니다.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/07/2019
 ms.localizationpriority: high
 ms.openlocfilehash: d7046b8767413889bc77240032a2292deb7c89a3
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95512998"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 데이터 탐색기에서 시계열 분석
@@ -60,10 +60,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- 연산자를 사용 [`make-series`](kusto/query/make-seriesoperator.md) 하 여 3 개의 시계열 집합을 만듭니다.
+- 다음과 같은 경우 [`make-series`](kusto/query/make-seriesoperator.md) 연산자를 사용하여 세 개의 시계열 집합을 만듭니다.
     - `num=count()`: 트래픽의 시계열
     - `range(min_t, max_t, 1h)`: 시계열은 시간 범위에서 1시간 bin 단위로 만들어짐(가장 오래되고 최신의 테이블 레코드의 타임 스탬프)
-    - `default=0`: 기본 시계열을 만들려면 누락된 bin에 대한 채우기 메서드를 지정합니다. 또는 [`series_fill_const()`](kusto/query/series-fill-constfunction.md) [`series_fill_forward()`](kusto/query/series-fill-forwardfunction.md) [`series_fill_backward()`](kusto/query/series-fill-backwardfunction.md) 변경에, 및 [`series_fill_linear()`](kusto/query/series-fill-linearfunction.md) 를 사용 합니다.
+    - `default=0`: 기본 시계열을 만들려면 누락된 bin에 대한 채우기 메서드를 지정합니다. 또는 변경을 위해 [`series_fill_const()`](kusto/query/series-fill-constfunction.md), [`series_fill_forward()`](kusto/query/series-fill-forwardfunction.md), [`series_fill_backward()`](kusto/query/series-fill-backwardfunction.md) 및 [`series_fill_linear()`](kusto/query/series-fill-linearfunction.md) 사용
     - `byOsVer`: OS별 파티션
 - 실제 시계열 데이터 구조는 각 시간 bin 단위당 집계된 값의 숫자형 배열입니다. 시각화를 위해 `render timechart`를 사용합니다.
 
@@ -80,8 +80,8 @@ demo_make_series1
 
 필터링은 신호 처리의 일반적인 사례로서 시계열 처리 작업(예: 노이즈가 있는 신호 및 변경 내용 검색 평활화)에 유용합니다.
 - 일반 필터링 함수에는 다음과 같은 두 가지가 있습니다.
-    - [`series_fir()`](kusto/query/series-firfunction.md): 전나무 필터를 적용 합니다. 이동 평균의 간단한 계산 및 변경 내용 검색에 대한 시계열 차별화에 사용합니다.
-    - [`series_iir()`](kusto/query/series-iirfunction.md): IIR 필터를 적용 합니다. 지수 평활법 및 누적 합계에 사용합니다.
+    - [`series_fir()`](kusto/query/series-firfunction.md): FIR 필터를 적용합니다. 이동 평균의 간단한 계산 및 변경 내용 검색에 대한 시계열 차별화에 사용합니다.
+    - [`series_iir()`](kusto/query/series-iirfunction.md): IIR 필터를 적용합니다. 지수 평활법 및 누적 합계에 사용합니다.
 - `Extend` 5개 bin 크기의 새 이동 평균 계열(*ma_num* 이라고 함)을 쿼리에 추가하여 설정한 시계열.
 
 **\[** [**쿼리를 실행하려면 클릭**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
@@ -284,5 +284,5 @@ ADX 빠른 성능과 결합된 이러한 고급 기능은 시계열 분석을 �
 
 ## <a name="next-steps"></a>다음 단계
 
-* Azure 데이터 탐색기에서 시계열 [변칙 검색 및 예측](anomaly-detection.md) 에 대해 알아봅니다.
-* Azure 데이터 탐색기의 [기계 학습 기능](machine-learning-clustering.md) 에 대해 알아봅니다.
+* Azure Data Explorer에서 [시계열 변칙 검색 및 예측](anomaly-detection.md)에 대해 알아봅니다.
+* Azure Data Explorer의 [기계 학습 기능](machine-learning-clustering.md)에 대해 알아봅니다.

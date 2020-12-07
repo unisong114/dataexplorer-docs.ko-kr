@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.localizationpriority: high
-ms.openlocfilehash: 44c2a5adf46d8c136675aa70a45dc89ed60c4cc8
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
+ms.openlocfilehash: 02e746a3ce929bab9883f1b4faafe7a6fb1ce953
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95512743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "95783270"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>빠른 시작: Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -66,6 +66,11 @@ Azure 리소스 그룹에 컴퓨팅 및 스토리지 리소스 집합이 정의�
 1. 배포가 완료되면 **리소스로 이동** 을 선택합니다.
 
     ![리소스로 이동](media/create-cluster-database-portal/notification-resource.png)
+
+> [!NOTE]
+> "SubscriptionNotRegistered" 오류가 발생하여 배포에 실패하면 작업을 다시 시도합니다. 
+> 
+> [Azure 리소스 공급자 및 형식](/azure/azure-resource-manager/management/resource-providers-and-types)에 설명된 구독에 Kusto 리소스 공급자가 등록되지 않은 경우 배포가 실패합니다. 배포가 실패하면 Kusto 리소스 공급자가 구독에 자신을 등록하고 다시 시도하면 성공할 수 있습니다.
 
 ## <a name="create-a-database"></a>데이터베이스 만들기
 

@@ -1,6 +1,6 @@
 ---
-title: substring ()-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Azure 데이터 탐색기의 부분 문자열 ()에 대해 설명 합니다.
+title: substring() - Azure Data Explorer | Microsoft Docs
+description: 이 문서에서는 Azure Data Explorer의 substring()에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,15 +10,15 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.localizationpriority: high
 ms.openlocfilehash: 7b2f2dc18fe12f4bd07b638b6c3ca32d95a10618
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95512046"
 ---
 # <a name="substring"></a>substring()
 
-일부 인덱스부터 문자열 끝 까지의 소스 문자열에서 부분 문자열을 추출 합니다.
+일부 인덱스부터 문자열 끝까지의 원본 문자열에서 부분 문자열을 추출합니다.
 
 선택적으로 요청된 부분 문자열의 길이를 지정할 수 있습니다.
 
@@ -26,19 +26,19 @@ ms.locfileid: "95512046"
 substring("abcdefg", 1, 2) == "bc"
 ```
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
-`substring(`*원본* `,` *startingIndex* [ `,` *길이*]`)`
+`substring(`*원본*`,` *startingIndex* [`,` *length*]`)`
 
 ## <a name="arguments"></a>인수
 
-* *source*: 부분 문자열을 가져올 원본 문자열입니다.
-* *startingIndex*: 요청 된 부분 문자열의 0부터 시작 하는 문자 위치입니다.
-* *length*: 부분 문자열에서 요청 된 문자 수를 지정 하는 데 사용할 수 있는 선택적 매개 변수입니다. 
+* *원본*: 부분 문자열을 가져올 원본 문자열입니다.
+* *startingIndex*: 요청된 부분 문자열의 0부터 시작하는 시작 문자 위치입니다.
+* *length*: 부분 문자열에서 요청된 문자 수를 지정하는 데 사용할 수 있는 선택적 매개 변수입니다. 
 
 **참고**
 
-*startingIndex* 는 음수가 될 수 있으며,이 경우에는 소스 문자열의 끝에서 부분 문자열이 검색 됩니다.
+*startingIndex* 는 음수가 될 수 있으며, 이 경우 원본 문자열의 끝에서 부분 문자열이 검색됩니다.
 
 ## <a name="returns"></a>반환
 

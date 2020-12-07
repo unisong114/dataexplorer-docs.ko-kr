@@ -1,6 +1,6 @@
 ---
-title: bin ()-Azure 데이터 탐색기 | Microsoft Docs
-description: 이 문서에서는 Azure 데이터 탐색기의 bin ()에 대해 설명 합니다.
+title: bin() - Azure Data Explorer | Microsoft Docs
+description: 이 문서에서는 Azure Data Explorer의 bin()에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,31 +10,31 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.localizationpriority: high
 ms.openlocfilehash: 6fc2e55b43e7c7c2dc2bb537730f8f627e3e4a66
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95513117"
 ---
 # <a name="bin"></a>bin()
 
 값을 지정된 bin 크기의 아래쪽 정수 배로 반올림합니다. 
 
-와 함께 자주 사용 [`summarize by ...`](./summarizeoperator.md) 됩니다.
+[`summarize by ...`](./summarizeoperator.md)와 함께 자주 사용됩니다.
 분산된 값 집합이 있는 경우 특정 값의 더 작은 집합으로 그룹화됩니다.
 
-Null 값, null bin 크기 또는 음수 bin 크기를 반환 하면 null이 반환 됩니다. 
+Null 값, null bin 크기 또는 음수 bin 크기는 null이 됩니다. 
 
-함수에 대 한 별칭 `floor()` 입니다.
+`floor()` 함수에 대한 별칭입니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
-`bin(`*값* `,` *roundTo*`)`
+`bin(`*value*`,`*roundTo*`)`
 
 ## <a name="arguments"></a>인수
 
-* *value*: 숫자, 날짜 또는 timespan입니다. 
-* *roundTo*: "bin size" *값* 을 나누는 숫자 또는 timespan입니다. 
+* *value*: 숫자, 날짜 또는 시간 범위입니다. 
+* *roundTo*: "bin 크기"입니다. *값* 을 나누는 숫자 또는 시간 범위입니다. 
 
 ## <a name="returns"></a>반환
 
@@ -44,7 +44,7 @@ Null 값, null bin 크기 또는 음수 bin 크기를 반환 하면 null이 반�
 (toint((value/roundTo))) * roundTo`
 ```
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 식 | 결과
 ---|---

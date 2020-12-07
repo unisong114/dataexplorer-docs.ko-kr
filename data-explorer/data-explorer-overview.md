@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.localizationpriority: high
-ms.openlocfilehash: 2af4aff9667ecc53794c63010a723494e85126fa
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
+ms.openlocfilehash: cd2ad1bebf91cacc80e3cb92fd06bc991c05cc7c
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95512828"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96354057"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure 데이터 탐색기란?
 
@@ -57,7 +57,7 @@ Azure 데이터 탐색기의 쿼리는 데이터나 메타데이터를 수정하
 
 Azure 데이터 탐색기는 대용량의 구조적, 반구조적(JSON 같은 중첩 형식) 및 비구조적(자유 텍스트) 데이터를 동일하게 처리합니다. 이를 통해 특정 텍스트 용어를 검색하고, 특정 이벤트를 찾고, 구조적 데이터에서 메트릭 스타일 계산을 수행할 수 있습니다. Azure 데이터 탐색기는 런타임에 자유 형식 텍스트 필드에서 값을 추출하여 비구조적 텍스트 로그 및 구조적 숫자와 차원으로 이루어진 환경을 연결합니다. 빠른 텍스트 인덱싱, 열 저장소 및 시계열 작업을 결합하여 데이터 탐색을 단순화합니다.
 
-Azure Data Explorer 기능은 [Azure Monitor 로그](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/) 및 [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/)을 비롯한 강력한 쿼리 언어를 기반으로 빌드된 다른 서비스에 의해 확장됩니다.
+Azure Data Explorer 기능은 [Azure Monitor 로그](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/) 및 [Microsoft Defender for Endpoint](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/)를 비롯한 강력한 쿼리 언어를 기반으로 빌드된 다른 서비스에 의해 확장됩니다.
 
 ## <a name="how-to-provide-feedback"></a>피드백을 제공하는 방법
 

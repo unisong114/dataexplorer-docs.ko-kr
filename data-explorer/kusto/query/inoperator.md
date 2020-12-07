@@ -1,6 +1,6 @@
 ---
-title: in 및 notin 연산자-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기의 및 notin 연산자에 대해 설명 합니다.
+title: in 및 notin 연산자 - Azure Data Explorer
+description: 이 문서에서는 Azure Data Explorer의 in 및 notin 연산자에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,58 +10,58 @@ ms.topic: reference
 ms.date: 03/18/2019
 ms.localizationpriority: high
 ms.openlocfilehash: ffb24abe744bfbe3f7f95336edf0263becfa7ec9
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95513253"
 ---
 # <a name="in-and-in-operators"></a>in 및 !in 연산자
 
-제공 된 값 집합을 기반으로 레코드 집합을 필터링 합니다.
+제공된 값 세트를 기반으로 레코드 집합을 필터링합니다.
 
 ```kusto
 Table1 | where col in ('value1', 'value2')
 ```
 
 > [!NOTE]
-> * 연산자에 ' ~ '를 추가 하면 값에서 대/소문자를 구분 하지 않고 검색 `x in~ (expression)` `x !in~ (expression)` 합니다.
-> * 테이블 형식 식에서 결과 집합의 첫 번째 열이 선택 됩니다.
-> * 식 목록에는 최대 값이 생성 될 수 있습니다 `1,000,000` .
-> * 중첩 된 배열은 값의 단일 목록으로 결합 됩니다. 예를 들어 `x in (dynamic([1,[2,3]]))`는 `x in (1,2,3)`가 됩니다.
+> * 연산자에 '~'를 추가하면 값 검색에서 대/소문자를 구분하지 않습니다(`x in~ (expression)` 또는 `x !in~ (expression)`).
+> * 테이블 형식 식에서 결과 집합의 첫 번째 열이 선택됩니다.
+> * 식 목록에서 최대 `1,000,000` 값을 생성할 수 있습니다.
+> * 중첩된 배열은 값의 단일 목록으로 병합됩니다. 예를 들어 `x in (dynamic([1,[2,3]]))`는 `x in (1,2,3)`가 됩니다.
  
-## <a name="syntax"></a>구문
+## <a name="syntax"></a>Syntax
 
 ### <a name="case-sensitive-syntax"></a>대/소문자 구분 구문
 
-*T* `|` `where` *col* `in` `(` *스칼라 식의* T 열 목록`)`   
-*T* `|` `where` *col* `in` `(` *테이블 형식 식*`)`   
+*T* `|` `where` *col* `in` `(`*스칼라 식의 목록*`)`   
+*T* `|` `where` *col* `in` `(`*테이블 형식 식*`)`   
  
-*T* `|` `where` *col* `!in` `(` *스칼라 식의* T 열 목록`)`  
-*T* `|` `where` *col* `!in` `(` *테이블 형식 식*`)`   
+*T* `|` `where` *col* `!in` `(`*스칼라 식의 목록*`)`  
+*T* `|` `where` *col* `!in` `(`*테이블 형식 식*`)`   
 
-### <a name="case-insensitive-syntax"></a>대/소문자를 구분 하지 않는 구문
+### <a name="case-insensitive-syntax"></a>대/소문자를 구분하지 않는 구문
 
-*T* `|` `where` *col* `in~` `(` *스칼라 식의* T 열 목록`)`   
-*T* `|` `where` *col* `in~` `(` *테이블 형식 식*`)`   
+*T* `|` `where` *col* `in~` `(`*스칼라 식의 목록*`)`   
+*T* `|` `where` *col* `in~` `(`*테이블 형식 식*`)`   
  
-*T* `|` `where` *col* `!in~` `(` *스칼라 식의* T 열 목록`)`  
-*T* `|` `where` *col* `!in~` `(` *테이블 형식 식*`)`   
+*T* `|` `where` *col* `!in~` `(`*스칼라 식의 목록*`)`  
+*T* `|` `where` *col* `!in~` `(`*테이블 형식 식*`)`   
 
 ## <a name="arguments"></a>인수
 
-* *T* -레코드를 필터링 할 테이블 형식 입력입니다.
-* *col* -필터링 할 열입니다.
-* *식 목록* -테이블 형식, 스칼라 또는 리터럴 식의 쉼표로 구분 된 목록입니다.
-* *테이블 형식 식* -값 집합이 있는 테이블 형식 식입니다. 식에 여러 열이 있는 경우 첫 번째 열이 사용 됩니다.
+* *T* - 레코드를 필터링할 테이블 형식 입력입니다.
+* *col* - 필터링할 열입니다.
+* *식 목록* - 테이블 형식, 스칼라 또는 리터럴 식의 쉼표로 구분된 목록입니다.
+* *테이블 형식 식* - 값 세트가 있는 테이블 형식 식입니다. 식에 여러 열이 있는 경우 첫 번째 열이 사용됩니다.
 
 ## <a name="returns"></a>반환
 
-조건자가 인 *T* 의 행 `true` 입니다.
+조건자가 `true`인 *T* 의 행입니다.
 
-## <a name="examples"></a>예  
+## <a name="examples"></a>예제  
 
-### <a name="use-in-operator"></a>' In ' 연산자 사용
+### <a name="use-in-operator"></a>'in' 연산자 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -74,7 +74,7 @@ StormEvents
 |---|
 |4775|  
 
-### <a name="use-in-operator"></a>' In ~ ' 연산자 사용  
+### <a name="use-in-operator"></a>'in~' 연산자 사용  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -87,7 +87,7 @@ StormEvents
 |---|
 |4775|  
 
-### <a name="use-in-operator"></a>'! In ' 연산자 사용
+### <a name="use-in-operator"></a>'!in' 연산자 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -147,7 +147,7 @@ StormEvents
 |---|
 |14242|  
 
-### <a name="top-with-other-example"></a>Top (기타 예제 포함)
+### <a name="top-with-other-example"></a>Top(기타 예제 포함)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -161,13 +161,13 @@ Lightning_By_State
 | 주     | sum_lightning_events |
 |-----------|----------------------|
 | ALABAMA   | 29                   |
-| 위스콘신 | 31                   |
+| WISCONSIN | 31                   |
 | 텍사스     | 55                   |
-| 플로리다   | 85                   |
-| 그루지야   | 106                  |
+| FLORIDA   | 85                   |
+| GEORGIA   | 106                  |
 | 기타     | 415                  |
 
-### <a name="use-a-static-list-returned-by-a-function"></a>함수에서 반환 된 정적 목록 사용
+### <a name="use-a-static-list-returned-by-a-function"></a>함수에서 반환된 정적 목록 사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -179,13 +179,13 @@ StormEvents | where State in (InterestingStates()) | count
 |---|
 |4775|  
 
-함수 정의입니다.
+함수 정의.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .show function InterestingStates
 ```
 
-|속성|매개 변수|본문|폴더|DocString|
+|Name|매개 변수|본문|폴더|DocString|
 |---|---|---|---|---|
-|InterestingStates|()|{dynamic (["워싱턴", "플로리다", "그루지야", "뉴욕"])}}
+|InterestingStates|()|{ dynamic(["WASHINGTON", "FLORIDA", "GEORGIA", "NEW YORK"]) }

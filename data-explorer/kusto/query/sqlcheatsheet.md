@@ -1,6 +1,6 @@
 ---
-title: SQL to Kusto 쿼리 변환-Azure 데이터 탐색기
-description: 이 문서에서는 Azure 데이터 탐색기에서 Kusto 쿼리 변환에 대 한 SQL을 설명 합니다.
+title: SQL to Kusto 쿼리 변환 - Azure Data Explorer
+description: 이 문서에서는 Azure Data Explorer의 SQL to Kusto 쿼리 변환에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 01/22/2020
 ms.localizationpriority: high
 ms.openlocfilehash: 16a0c6ef7064ae5e16fb649f3cd089196533ec45
-ms.sourcegitcommit: 4e811d2f50d41c6e220b4ab1009bb81be08e7d84
-ms.translationtype: MT
+ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 12/01/2020
 ms.locfileid: "95513372"
 ---
 # <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
-Kusto는 SQL 언어의 하위 집합을 지원 합니다. 지원 되지 않는 기능의 전체 목록은 [SQL의 알려진 문제](../api/tds/sqlknownissues.md) 목록을 참조 하세요.
+Kusto는 SQL 언어의 하위 집합을 지원합니다. 지원되지 않는 기능의 전체 목록은 [SQL 알려진 문제](../api/tds/sqlknownissues.md) 목록을 참조하세요.
 
-Kusto와 상호 작용 하는 주 언어는 KQL (Kusto 쿼리 언어)입니다. 전환 및 학습 환경을 보다 쉽게 만들기 위해 Kusto를 사용 하 여 SQL 쿼리를 KQL로 변환할 수 있습니다. ' 설명 ' 동사를 접두사로 사용 하 여 Kusto에 SQL 쿼리를 보냅니다.
+Kusto와 상호 작용하는 기본 언어는 KQL(Kusto 쿼리 언어)입니다. 전환 및 학습 환경을 보다 쉽게 만들기 위해 Kusto를 사용하여 SQL 쿼리를 KQL로 변환할 수 있습니다. 동사 'EXPLAIN'으로 접두사를 붙여 Kusto에 SQL 쿼리를 보냅니다.
 
-예:
+다음은 그 예입니다. 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -32,11 +32,11 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 |쿼리|
 |---|
-|StormEvents<br>| C = count () 요약<br>| 프로젝트 C|
+|StormEvents<br>| C=count() 요약<br>| 프로젝트 C|
 
 ## <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
-다음 표에서는 SQL의 예제 쿼리와 그에 해당 하는 KQL를 보여 줍니다.
+아래 표에서는 SQL의 예제 쿼리와 이에 상응하는 KQL를 보여줍니다.
 
 |범주 |SQL 쿼리 |Kusto 쿼리
 |---|---|---
@@ -44,19 +44,19 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 --|<code>SELECT name, resultCode FROM dependencies</code> |<code>dependencies &#124; project name, resultCode</code>
 --|<code>SELECT TOP 100 * FROM dependencies</code> | <code>dependencies &#124; take 100</code>
 Null 평가 |<code>SELECT * FROM dependencies<br>WHERE resultCode IS NOT NULL</code> | <code>dependencies<br>&#124; where isnotnull(resultCode)</code>
-비교 연산자 (date) |<code>SELECT * FROM dependencies<br>WHERE timestamp > getdate()-1</code>| <code>dependencies<br>&#124; where timestamp > ago(1d)</code>
+비교 연산자(날짜) |<code>SELECT * FROM dependencies<br>WHERE timestamp > getdate()-1</code>| <code>dependencies<br>&#124; where timestamp > ago(1d)</code>
 --|<code>SELECT * FROM dependencies<br>WHERE timestamp BETWEEN ... AND ...</code> |<code>dependencies<br>&#124; where timestamp > datetime(2016-10-01)<br>&nbsp;&nbsp;and timestamp <= datetime(2016-11-01)</code>
-비교 연산자 (string)|<code>SELECT * FROM dependencies<br>WHERE type = "Azure blob"</code> |<code>dependencies<br>&#124; where type == "Azure blob"</code>
+비교 연산자(문자열)|<code>SELECT * FROM dependencies<br>WHERE type = "Azure blob"</code> |<code>dependencies<br>&#124; where type == "Azure blob"</code>
 --|<code>-- substring<br>SELECT * FROM dependencies<br>WHERE type like "%blob%"</code> |<code>// substring<br>dependencies<br>&#124; where type contains "blob"</code>
 --|<code>-- wildcard<br>SELECT * FROM dependencies<br>WHERE type like "Azure%"</code> |<code>// wildcard<br>dependencies<br>&#124; where type startswith "Azure"<br>// or<br>dependencies<br>&#124; where type matches regex "^Azure.*"</code>
-비교 (부울) |<code>SELECT * FROM dependencies<br>WHERE !(success)</code> |<code>dependencies<br>&#124; where success == "False"</code>
+비교(부울) |<code>SELECT * FROM dependencies<br>WHERE !(success)</code> |<code>dependencies<br>&#124; where success == "False"</code>
 Distinct |<code>SELECT DISTINCT name, type  FROM dependencies</code> |<code>dependencies<br>&#124; summarize by name, type</code>
 그룹화, 집계 |<code>SELECT name, AVG(duration) FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize avg(duration) by name</code>
 열 별칭, 확장 |<code>SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize AvgD = avg(duration) by Name=operationName</code>
 순서 지정 |<code>SELECT name, timestamp FROM dependencies<br>ORDER BY timestamp ASC</code> |<code>dependencies<br>&#124; project name, timestamp<br>&#124; order by timestamp asc nulls last</code>
-측정값 별 상위 n |<code>SELECT TOP 100 name, COUNT(*) as Count FROM dependencies<br>GROUP BY name<br>ORDER BY Count DESC</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; top 100 by Count desc</code>
+측정값별 상위 n |<code>SELECT TOP 100 name, COUNT(*) as Count FROM dependencies<br>GROUP BY name<br>ORDER BY Count DESC</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; top 100 by Count desc</code>
 Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</code> |<code>union dependencies, exceptions</code>
 --|<code>SELECT * FROM dependencies<br>WHERE timestamp > ...<br>UNION<br>SELECT * FROM exceptions<br>WHERE timestamp > ...</code> |<code>dependencies<br>&#124; where timestamp > ago(1d)<br>&#124; union<br>&nbsp;&nbsp;(exceptions<br>&nbsp;&nbsp;&#124; where timestamp > ago(1d))</code>
 Join |<code>SELECT * FROM dependencies <br>LEFT OUTER JOIN exception<br>ON dependencies.operation_Id = exceptions.operation_Id</code> |<code>dependencies<br>&#124; join kind = leftouter<br>&nbsp;&nbsp;(exceptions)<br>on $left.operation_Id == $right.operation_Id</code>
 중첩 쿼리 |<code>SELECT * FROM dependencies<br>WHERE resultCode == <br>(SELECT TOP 1 resultCode FROM dependencies<br>WHERE resultId = 7<br>ORDER BY timestamp DESC)</code> |<code>dependencies<br>&#124; where resultCode == toscalar(<br>&nbsp;&nbsp;dependencies<br>&nbsp;&nbsp;&#124; where resultId == 7<br>&nbsp;&nbsp;&#124; top 1 by timestamp desc<br>&nbsp;&nbsp;&#124; project resultCode)</code>
-서 |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUNT(\*) > 3</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; where Count > 3</code>|
+Having |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUNT(\*) > 3</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; where Count > 3</code>|
