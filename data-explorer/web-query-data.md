@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/22/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 5ccae7e467b2ce41a36868cdad1b059aeec3ef9d
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 38b67a0843cc38c2cbce7d5a41a8eff85b25ebd5
+ms.sourcegitcommit: 7edce9d9d20f9c0505abda67bb8cc3d2ecd60d15
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95872478"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96524303"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
@@ -55,7 +55,7 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
 1. **클러스터 추가** 를 선택합니다.
 
-1. **클러스터 추가** 대화 상자에서 테스트 클러스터 URL을 `https://<ClusterName>.<Region>.kusto.windows.net/` 형식으로 입력하고, **추가** 를 선택합니다. 예를 들어 다음 이미지와 같이 https://mydataexplorercluster.westus.kusto.windows.net이 있습니다.
+1. **클러스터 추가** 대화 상자에서 테스트 클러스터 URL을 `https://<ClusterName>.<Region>.kusto.windows.net/` 형식으로 입력하고, **추가** 를 선택합니다. 예를 들어 다음 이미지와 같이 `https://mydataexplorercluster.westus.kusto.windows.net`이 있습니다.
 
     :::image type="content" source="media/web-query-data/server-uri.png" alt-text="테스트 클러스터 URL 입력":::
     
