@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/19/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 153b4265aade03e4059db0b38362d217cdad90df
-ms.sourcegitcommit: 2804e3fe40f6cf8e65811b00b7eb6a4f59c88a99
+ms.openlocfilehash: e92717e68794b21a0c991806aa7319e528433afb
+ms.sourcegitcommit: c6cb2b1071048daa872e2fe5a1ac7024762c180e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748419"
+ms.locfileid: "96774523"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>메트릭을 사용 하 여 Azure 데이터 탐색기 성능, 상태 및 사용 현황 모니터링
 
@@ -101,7 +101,7 @@ Azure 데이터 탐색기에 대 한 Azure Monitor 메트릭의 사전순 목록
 | 검색 대기 시간 | 초 | 평균, 최대값, 최소값 | 데이터 연결을 통해 검색 될 때까지 데이터 큐에서 대기 하는 시간입니다. 이 시간은 **Azure 데이터 탐색기 총 수집 기간** 또는 수집 **대기 시간 (KustoEventAge)** 에 포함 되지 않습니다. | 데이터베이스, 테이블, 데이터 연결 형식, 데이터 연결 이름 |
 | 이벤트 처리됨(Event/IoT Hubs의 경우) | 개수 | 최대, 최소, 합계 | Event hubs에서 읽어서 클러스터에서 처리 한 총 이벤트 수입니다. 이벤트는 거부 된 이벤트 및 클러스터 엔진에서 받은 이벤트로 분할 됩니다. | EventStatus |
 | 수집 대기 시간 | 초 | 평균, 최대값, 최소값 | 클러스터에서 데이터를 수신한 시점부터 쿼리 준비가 될 때까지 수집된 데이터의 지연 시간입니다. 수집 대기 시간은 수집 시나리오에 따라 달라집니다. | 없음 |
-| 수집 결과 | 개수 | 개수 | 실패 하 고 성공한 수집 작업의 총 수입니다. <br> <br> **분할 적용** 을 사용 하 여 성공 및 실패 결과 버킷을 만들고 크기 (**값**  >  **상태**)를 분석 합니다.| IngestionResultDetails |
+| 수집 결과 | 개수 | 개수 | 실패 하 고 성공한 수집 작업의 총 수입니다. <br> <br> **분할 적용** 을 사용 하 여 성공 및 실패 결과 버킷을 만들고 크기 (**값**  >  **상태**)를 분석 합니다.| Status |
 | 수집 볼륨(MB) | 개수 | 최대값, 합계 | 압축 전 클러스터에 수집 된 데이터의 총 크기 (MB)입니다. | 데이터베이스 |
 | 단계 대기 시간 | 초 | 평균, 최대값, 최소값 | 특정 구성 요소에서이 일괄 처리 데이터를 처리 하는 기간입니다. 데이터 일괄 처리의 모든 구성 요소에 대 한 총 단계 대기 시간은 수집 대기 시간과 같습니다. | 데이터베이스, 데이터 연결 형식, 데이터 연결 이름|
 

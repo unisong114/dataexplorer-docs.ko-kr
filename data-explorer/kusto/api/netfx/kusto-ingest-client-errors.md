@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
-ms.openlocfilehash: 61c183f11aa7658faba00c5dd3c4795f235e5467
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: a4da1c35d34a1677cc0608fdf70dcbdb5a3c7c73
+ms.sourcegitcommit: c6cb2b1071048daa872e2fe5a1ac7024762c180e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92337485"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96774608"
 ---
 # <a name="kustoingest-errors-and-exceptions"></a>Kusto. 수집 오류 및 예외
 클라이언트 쪽에서 수집을 처리 하는 동안 발생 하는 모든 오류는 c # 예외로 표시 됩니다.
@@ -67,40 +67,7 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 
 수집 오류를 프로그래밍 방식으로 처리 하는 데 도움이 되도록 오류 정보는 숫자 오류 코드 ()와 보강 됩니다 `IngestionErrorCode enumeration` .
 
-|오류 코드                                      |이유                                                        |
-|-----------------------------------------------|--------------------------------------------------------------|
-|알 수 없음                                        | 알 수 없는 오류 발생|
-|Stream_LowMemoryCondition                      | 작업에 메모리가 부족 합니다.|
-|Stream_WrongNumberOfFields                     | CSV 문서의 필드 수가 일치 하지 않습니다.|
-|Stream_InputStreamTooLarge                     | 수집을 위해 전송 된 문서가 허용 된 크기를 초과 했습니다.|
-|Stream_NoDataToIngest                          | 수집할 데이터 스트림이 없습니다.|
-|Stream_DynamicPropertyBagTooLarge              | 수집 데이터의 동적 열 중 하나에 고유한 속성이 너무 많습니다.|
-|Download_SourceNotFound                        | Azure storage에서 소스를 다운로드 하지 못했습니다. 소스를 찾을 수 없습니다.|
-|Download_AccessConditionNotSatisfied           | Azure storage에서 소스를 다운로드 하지 못했습니다.-액세스가 거부 되었습니다.|
-|Download_Forbidden                             | Azure storage에서 소스를 다운로드 하지 못했습니다. 액세스가 허용 되지 않습니다.|
-|Download_AccountNotFound                       | Azure storage에서 소스를 다운로드 하지 못했습니다. 계정을 찾을 수 없습니다.|
-|Download_BadRequest                            | Azure storage에서 소스를 다운로드 하지 못했습니다. 잘못 된 요청|
-|Download_NotTransient                          | Azure storage에서 소스를 다운로드 하지 못했습니다. 일시적인 오류가 아닙니다.|
-|Download_UnknownError                          | Azure storage에서 소스를 다운로드 하지 못했습니다. 알 수 없는 오류|
-|UpdatePolicy_QuerySchemaDoesNotMatchTableSchema| 업데이트 정책을 호출 하지 못했습니다. 쿼리 스키마가 테이블 스키마와 일치 하지 않습니다.|
-|UpdatePolicy_FailedDescendantTransaction       | 업데이트 정책을 호출 하지 못했습니다. 실패 한 하위 트랜잭션 업데이트 정책|
-|UpdatePolicy_IngestionError                    | 업데이트 정책을 호출 하지 못했습니다. 수집 오류가 발생 했습니다.|
-|UpdatePolicy_UnknownError                      | 업데이트 정책을 호출 하지 못했습니다. 알 수 없는 오류 발생|
-|BadRequest_MissingJsonMappingtFailure          | JSON 패턴이 jsonMapping 매개 변수를 사용 하 여 수집 되지 않았습니다.|
-|BadRequest_InvalidBlob                         | 엔진이 비 zip blob을 열고 읽지 못했습니다.|
-|BadRequest_EmptyBlob                           | 빈 blob|
-|BadRequest_EmptyArchive                        | Zip 파일에 보관 된 요소가 없습니다.|
-|BadRequest_EmptyBlobUri                        | 지정 된 blob URI가 비어 있습니다.|
-|BadRequest_DatabaseNotExist                    | 데이터베이스가 존재 하지 않습니다.|
-|BadRequest_TableNotExist                       | 테이블이 없습니다.|
-|BadRequest_InvalidKustoIdentityToken           | 잘못 된 Kusto id 토큰|
-|BadRequest_UriMissingSas                       | 알 수 없는 blob storage의 SAS가 없는 blob 경로|
-|BadRequest_FileTooLarge                        | 너무 많은 파일을 수집 하려고 합니다.|
-|BadRequest_NoValidResponseFromEngine           | 수집 명령의 유효한 회신이 없습니다.|
-|BadRequest_TableAccessDenied                   | 테이블에 대 한 액세스가 거부 되었습니다.|
-|BadRequest_MessageExhausted                    | 메시지가 모두 사용 됨|
-|General_BadRequest                             | 일반적인 잘못 된 요청입니다. 존재 하지 않는 데이터베이스/테이블에 대 한 수집 시 힌트를 적용할 수 있습니다.|
-|General_InternalServerError                    | 내부 서버 오류가 발생 했습니다.|
+수집 오류 코드의 전체 목록은 [Azure 데이터 탐색기의 수집 오류 코드](../../../error-codes.md)를 참조 하세요.
 
 ## <a name="detailed-exceptions-reference"></a>자세한 예외 참조
 
@@ -225,6 +192,4 @@ DataReader 원본을 사용 하는 동안 큐에 게시할 데이터는 기본 �
 |IngestionErrors | IList<IngestClientException>    | 수집 하려고 하는 동안 발생 하는 오류 및 해당 오류와 관련 된 소스
 |IsGlobalError   | bool                            | 모든 원본에 대 한 예외가 발생 했는지 여부를 나타냅니다.
 
-## <a name="next-steps"></a>다음 단계
 
-네이티브 코드의 오류에 대 한 자세한 내용은 [네이티브 코드의 오류](../../concepts/errorsinnativecode.md)를 참조 하세요.

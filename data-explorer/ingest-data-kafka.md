@@ -7,12 +7,12 @@ ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8274cd04dc2ecf588bf4771c06e3f8a760cac74d
-ms.sourcegitcommit: 898f67b83ae8cf55e93ce172a6fd3473b7c1c094
+ms.openlocfilehash: cc2f10570081fec3a5762ab3f2e23b9e22839063
+ms.sourcegitcommit: c6cb2b1071048daa872e2fe5a1ac7024762c180e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92343167"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96774659"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-data-explorer"></a>Apache Kafka에서 Azure 데이터 탐색기로 데이터 수집
  
@@ -89,7 +89,7 @@ Azure Active Directory 서비스 주체는 다음 예제와 같이 [Azure Portal
 1. 구성 가능한 수집 대기 시간에 대 한 테이블에서 일괄 처리 수집 정책을 만듭니다.
 
     > [!TIP]
-    > 수집 [일괄 처리 정책은](kusto/management/batchingpolicy.md) 성능 최적화 프로그램으로, 세 개의 매개 변수를 포함 합니다. 첫 번째 매개 변수는 Azure 데이터 탐색기 테이블로 수집 하는 트리거를 충족 합니다.
+    > 수집 [일괄 처리 정책은](kusto/management/batchingpolicy.md) 성능 최적화 프로그램으로, 세 개의 매개 변수를 포함 합니다. 첫 번째 조건을 충족 하는 트리거는 Azure 데이터 탐색기 테이블로 수집 합니다.
 
     ```kusto
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
@@ -322,7 +322,7 @@ services:
     | project StartTime, EndTime, Source, EventId
     ```
     
-1. 연산자를 사용 합니다 [`summarize`](./write-queries.md#summarize) .
+1. [`summarize`](./write-queries.md#summarize) 연산자를 사용합니다.
 
     ```kusto
     Storms
@@ -332,7 +332,7 @@ services:
     | render columnchart
     ```
     
-    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Azure 데이터 탐색기 포털에서 테이블 만들기 ":::
+    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Azure 데이터 탐색기의 kafka 쿼리 세로 막대형 차트 결과":::
 
 더 많은 쿼리 예제 및 지침은 [Azure 데이터 탐색기에 대 한 쿼리 작성](write-queries.md) 및 [kusto 쿼리 언어 설명서](./kusto/query/index.md)를 참조 하세요.
 
