@@ -7,16 +7,16 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/29/2020
+ms.date: 12/08/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 5670f3f9c7aa8b3d6b10f88433d19246e2daf6d6
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 8370e69914b2bc5e141321a6bc6722bba6f1fd4d
+ms.sourcegitcommit: 79d923d7b7e8370726974e67a984183905f323ff
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95783338"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96868606"
 ---
 # <a name="render-operator"></a>render 연산자
 
@@ -140,8 +140,6 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |`axes`    |단일 차트가 여러 y축으로 표시됩니다(계열당 하나씩).|
 |`panels`  |각 `ycolumn` 값에 대해 하나의 차트가 렌더링됩니다(특정 제한까지).|
 
-::: zone-end
-
 > [!NOTE]
 > render 연산자의 데이터 모델은 다음 세 가지 종류의 열이 있는 것처럼 테이블 형식 데이터를 검토합니다.
 >
@@ -167,10 +165,40 @@ range x from -2 to 2 step 0.1
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
 
-::: zone pivot="azuredataexplorer"
-
 [자습서의 렌더링 예제](./tutorial.md#displaychartortable)
 
 [이상 감지](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+> [!NOTE]
+> render 연산자의 데이터 모델은 다음 세 가지 종류의 열이 있는 것처럼 테이블 형식 데이터를 검토합니다.
+>
+> * x축 열(`xcolumn` 속성으로 표시됨)
+> * 계열 열(`series` 속성으로 표시되는 열 수).
+> * y축 열(`ycolumns` 속성으로 표시되는 열 수).
+  각 레코드에 대해 계열에는 y축 열 수만큼 많은 측정값(차트의 "점")이 포함됩니다.
+
+> [!TIP]
+> 
+> * `where`, `summarize` 및 `top`을 사용하여 표시되는 볼륨을 제한합니다.
+> * 데이터를 정렬하여 x축의 순서를 정의합니다.
+> * 사용자 에이전트는 쿼리에서 지정되지 않은 속성의 값을 자유롭게 "추측"합니다. 특히 결과의 스키마에 "관심 없는" 열이 포함되면 잘못된 추측으로 변환될 수 있습니다. 이러한 열이 발생하는 경우 해당 열을 프로젝션해 보세요. 
+
+## <a name="example"></a>예제
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+InsightsMetrics
+| where Computer == "DC00.NA.contosohotels.com"
+| where Namespace  == "Processor" and Name == "UtilizationPercentage"
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+| render timechart
+```
+
+[자습서의 렌더링 예제](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
+
 
 ::: zone-end
