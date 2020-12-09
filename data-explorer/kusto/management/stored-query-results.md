@@ -8,12 +8,12 @@ ms.reviewer: mispecto
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/3/2020
-ms.openlocfilehash: fb998499205be7645f011fe727f5e37495ff3697
-ms.sourcegitcommit: 2804e3fe40f6cf8e65811b00b7eb6a4f59c88a99
+ms.openlocfilehash: 352f82bdb11847574807f81bc63236127900ae94
+ms.sourcegitcommit: 202357f866801aafd92e3e29a84bb312e17aebc7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749311"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96933862"
 ---
 # <a name="stored-query-results-preview"></a>저장 된 쿼리 결과 (미리 보기)
 
@@ -29,7 +29,7 @@ ms.locfileid: "96749311"
 
 저장 된 쿼리 결과는 레코드의 순서가 유지 되지 않는 테이블 처럼 동작 합니다. 결과를 포함 하는 과정을 진행 하려면 쿼리에 고유 ID 열이 포함 되는 것이 좋습니다. 자세한 내용은 [예제](#examples)를 참조하세요. 쿼리에서 반환 된 결과 집합이 여러 개 있는 경우 첫 번째 결과 집합만 저장 됩니다. 
 
-저장 된 쿼리 결과를 사용 하려면 `Database User` 이상의 액세스 역할이 필요 합니다.
+저장 된 쿼리 결과를 사용 하려면 `Database Viewer` 이상의 액세스 역할이 필요 합니다.
 
 ## <a name="store-the-results-of-a-query"></a>쿼리 결과 저장
 
@@ -43,7 +43,7 @@ ms.locfileid: "96749311"
 * *쿼리*: 결과가 저장 되는 잠재적으로 고중량 KQL 쿼리입니다.
 * *PropertyName*: (모든 속성은 선택 사항입니다.)
     
-    | 속성       | 형식       | 설명       |
+    | 속성       | Type       | Description       |
     |----------------|------------|-------------------------------------------------------------------------------------|
     | `expiresAfter` | `timespan` | 저장 된 쿼리 결과가 만료 되는 시간 (최대 24 시간)을 나타내는 timespan 리터럴입니다. |
     | `previewCount` | `int`      | 미리 보기에 반환할 행의 수입니다. 이 속성을 `0` (기본값)로 설정 하면 명령에서 모든 쿼리 결과 행을 반환 합니다. |
@@ -142,7 +142,7 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 > * `DatabaseAdmin`또는 권한이 있는 사용자 `DatabaseMonitor` 는 데이터베이스의 컨텍스트에서 활성 저장 쿼리 결과가 있는지 검사할 수 있습니다.
 > * 또는 권한이 있는 사용자는 `DatabaseUser` `DatabaseViewer` 해당 보안 주체가 만든 활성 저장 쿼리 결과가 있는지 검사할 수 있습니다.
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>구문
 
 `.show` `stored_query_results`
 
@@ -156,11 +156,11 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 
 현재 사용자가 현재 데이터베이스에서 만든 활성 저장 쿼리 결과를 삭제 합니다.
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>구문
 
 `.drop``stored_query_result` *StoredQueryResultName*
 
-`Database User` 이 명령을 호출 하려면 권한이 필요 합니다.
+`Database Viewer` 이 명령을 호출 하려면 권한이 필요 합니다.
 
 #### <a name="returns"></a>반환
 
@@ -176,7 +176,7 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 
 `Database Admin` 이 명령을 호출 하려면 권한이 필요 합니다.
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>구문
 
 `.drop``stored_query_results` `created-by` *PrincipalName*
 

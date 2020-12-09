@@ -7,23 +7,23 @@ ms.reviewer: vladikbr
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/11/2020
-ms.openlocfilehash: aeef0c9295fbb22c225068fb240670fb7d637a98
-ms.sourcegitcommit: c6cb2b1071048daa872e2fe5a1ac7024762c180e
+ms.openlocfilehash: 18ac718edd50c804f71b9b82cbffb5b2b7bb2e24
+ms.sourcegitcommit: 202357f866801aafd92e3e29a84bb312e17aebc7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96776573"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96933778"
 ---
 # <a name="ingestion-error-codes-in-azure-data-explorer"></a>Azure 데이터 탐색기의 수집 오류 코드
 
-다음 목록에는 [수집 중에 발생 하는 오류](ingest-data-overview.md)코드가 포함 되어 있습니다. 클러스터에서 실패 한 수집 [진단 로그](using-diagnostic-logs.md#ingestion-logs-schema) 를 사용 하도록 설정 하면 **실패** 한 수집 작업 로그에서 오류 코드를 볼 수 있습니다. 또는 수집 **결과** [메트릭을](using-metrics.md#ingestion-metrics) 모니터링 하 여 수집 오류의 **범주** 를 볼 수 있지만 특정 오류 코드는 볼 수 없습니다. 아래 오류는 이러한 범주로 구성 됩니다. 
+다음 목록에는 [수집 중에 발생 하는 오류](ingest-data-overview.md)코드가 포함 되어 있습니다. 클러스터에서 실패 한 수집 [진단 로그](using-diagnostic-logs.md#ingestion-logs-schema) 를 사용 하도록 설정 하면 **실패** 한 수집 작업 로그에서 오류 코드를 볼 수 있습니다. 수집 **결과** [메트릭을](using-metrics.md#ingestion-metrics) 모니터링 하 여 수집 오류의 **범주** 를 볼 수도 있지만 특정 오류 코드는 볼 수 없습니다. 아래 오류는 이러한 범주로 구성 됩니다. 
 
 > [!NOTE]
 > 일시적인 오류일 경우 수집을 다시 시도 하면 성공할 수 있습니다.
 
 ## <a name="category-badformat"></a>범주: BadFormat
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |Stream_WrongNumberOfFields                        |입력 레코드의 필드 수가 일치 하지 않습니다. HRESULT: 0x80DA0008      |영구           |
 |Stream_ClosingQuoteMissing                        |CSV 형식이 잘못 되었습니다. 닫는 따옴표가 없습니다. HRESULT: 0x80DA000b            |영구           |
@@ -38,7 +38,7 @@ ms.locfileid: "96776573"
 
 ## <a name="category-badrequest"></a>범주: BadRequest
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |BadRequest_EmptyBlob                              |Blob이 비어 있습니다.                                                               |영구           |
 |BadRequest_EmptyBlobUri                           |Blob Uri가 비어 있습니다.                                                           |영구           |
@@ -63,7 +63,7 @@ ms.locfileid: "96776573"
 
 ## <a name="category-dataaccessnotauthorized"></a>범주: DataAccessNotAuthorized
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |Download_AccessConditionNotSatisfied              |Azure storage에서 소스를 다운로드 하지 못했습니다. 액세스 조건이 충족 되지 않았습니다.     |영구           |
 |Download_Forbidden                                |Azure storage에서 소스를 다운로드 하지 못했습니다. 액세스가 금지되었습니다.    |영구           |
@@ -73,7 +73,7 @@ ms.locfileid: "96776573"
 
 ## <a name="category-downloadfailed"></a>범주: DownloadFailed
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |Download_NotTransient                             |Azure storage에서 소스를 다운로드 하지 못했습니다. 일시적인 오류가 발생 했습니다.                   |영구           |
 |Download_UnknownError                             |Azure storage에서 소스를 다운로드 하지 못했습니다. 알 수 없는 오류 발생              |Transient           |
@@ -81,7 +81,7 @@ ms.locfileid: "96776573"
 
 ## <a name="category-entitynotfound"></a>범주: EntityNotFound
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |BadRequest_MappingReferenceWasNotFound            |매핑 참조를 찾을 수 없습니다.   |영구           |
 |BadRequest_DatabaseNotExist                       |데이터베이스가 존재 하지 않습니다.          |영구           |
@@ -90,14 +90,14 @@ ms.locfileid: "96776573"
 
 ## <a name="category-filetoolarge"></a>범주: FileTooLarge
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |Stream_InputStreamTooLarge                        |입력 데이터의 전체 크기 또는 데이터의 단일 필드가 너무 깁니다. HRESULT: 0x80DA0009                 |영구          |
 |BadRequest_FileTooLarge                           |Blob 크기가 수집에 허용 된 크기 제한을 초과 했습니다.<br>수집에 대 한 크기 제한에 대 한 자세한 내용은 [Azure 데이터 탐색기 데이터 수집 개요](ingest-data-overview.md#comparing-ingestion-methods-and-tools)를 참조 하세요. |영구           |
 
 ## <a name="category-internalserviceerror"></a>범주: InternalServiceError
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |General_InternalServerError                       |내부 서버 오류가 발생했습니다.                     |Transient          |
 |General_TransientSchemaMismatch                   |수집을 시작할 때 대상 테이블의 스키마가 수집을 커밋할 때 스키마와 일치 하지 않습니다.         |Transient           |
@@ -106,7 +106,7 @@ ms.locfileid: "96776573"
 
 ## <a name="category-updatepolicyfailure"></a>범주: UpdatePolicyFailure
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |UpdatePolicy_QuerySchemaDoesNotMatchTableSchema   |업데이트 정책을 호출 하지 못했습니다. 쿼리 스키마가 테이블 스키마와 일치 하지 않습니다.     |영구           |
 |UpdatePolicy_FailedDescendantTransaction          |업데이트 정책을 호출 하지 못했습니다. 실패 한 하위 트랜잭션 업데이트 정책입니다.    |Transient           |
@@ -116,13 +116,13 @@ ms.locfileid: "96776573"
 
 ## <a name="category-useraccessnotauthorized"></a>범주: UserAccessNotAuthorized 있음
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |BadRequest_InvalidKustoIdentityToken              |잘못 된 Kusto id 토큰입니다.                           |영구           |
 |사용할 수 없음                                          |요청을 실행 하는 데 필요한 보안 권한이 없습니다. | 영구|
 
 ## <a name="category-unknown"></a>범주: 알 수 없음
 
-|오류 메시지                                 |설명                                           |영구/임시|
+|오류 메시지                                 |Description                                           |영구/임시|
 |---|---|---|
 |알 수 없음                                            |알 수 없는 오류 발생.                             |Transient          |
