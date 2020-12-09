@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/10/2020
-ms.openlocfilehash: 5fc25c64eabfb9fa27b66b47d0443178e19b4e57
-ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
+ms.openlocfilehash: ae5cfcbc1011022da53933d4d3552fcd1007bd79
+ms.sourcegitcommit: 79d923d7b7e8370726974e67a984183905f323ff
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92902491"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96868623"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-go-sdk"></a>Azure 데이터 탐색기 Go SDK를 사용 하 여 데이터 수집 
 
@@ -27,7 +27,7 @@ Azure 데이터 탐색기는 로그 및 원격 분석 데이터에 사용 가능
 
 이 문서에서는 먼저 테스트 클러스터에서 테이블 및 데이터 매핑을 만듭니다. 그런 다음 Go SDK를 사용 하 여 클러스터에 대 한 수집을 큐에 대기 하 고 결과의 유효성을 검사 합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.
@@ -50,7 +50,7 @@ go get github.com/Azure/azure-kusto-go/kusto
 
 이 [검토 코드](#review-the-code) 섹션은 선택 사항입니다. 코드가 작동 하는 방식을 알아보려면 다음 코드 조각을 검토할 수 있습니다. 그렇지 않다면 [애플리케이션 실행](#run-the-application)으로 건너뛰어도 됩니다.
 
-### <a name="authenticate"></a>Authenticate
+### <a name="authenticate"></a>인증
 
 프로그램은 작업을 실행 하기 전에 Azure 데이터 탐색기 서비스에 인증 해야 합니다.
 
@@ -147,12 +147,12 @@ func ingestFile(kc *kusto.Client, blobStoreAccountName, blobStoreContainer, blob
 
     예제 코드를 실행 하면 다음 작업이 수행 됩니다.
     
-    1. **Drop table** : `StormEvents` 테이블이 있는 경우 삭제 됩니다.
-    1. **테이블 만들기** : `StormEvents` 테이블이 생성 됩니다.
-    1. **매핑 만들기** : `StormEvents_CSV_Mapping` 매핑이 만들어집니다.
+    1. **Drop table**: `StormEvents` 테이블이 있는 경우 삭제 됩니다.
+    1. **테이블 만들기**: `StormEvents` 테이블이 생성 됩니다.
+    1. **매핑 만들기**: `StormEvents_CSV_Mapping` 매핑이 만들어집니다.
     1. **파일** 수집: CSV 파일 (Azure Blob Storage)은 수집을 위해 큐에 대기 됩니다.
 
-1. 인증을 위한 서비스 주체를 만들려면 [az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령과 함께 Azure CLI를 사용 합니다. 프로그램에서 사용 되는 환경 변수 형식으로 클러스터 엔드포인트와 데이터베이스 이름을 사용 하 여 서비스 주체 정보를 설정 합니다.
+1. 인증을 위한 서비스 주체를 만들려면 [az ad sp create-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 명령과 함께 Azure CLI를 사용 합니다. 프로그램에서 사용 되는 환경 변수 형식으로 클러스터 엔드포인트와 데이터베이스 이름을 사용 하 여 서비스 주체 정보를 설정 합니다.
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"

@@ -7,12 +7,12 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: 9d2e50e54d4a33b0648760fc4df395c9686904e9
-ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
+ms.openlocfilehash: 60bafd05cd15ab4198d656d2c98a3915cd490e33
+ms.sourcegitcommit: 79d923d7b7e8370726974e67a984183905f323ff
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92902559"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96868674"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell을 사용하여 Azure Data Explorer 클러스터 및 데이터베이스 만들기
 
@@ -35,7 +35,7 @@ Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-Azure CLI를 로컬로 설치 하 고 사용 하도록 선택 하는 경우이 문서에서는 Azure CLI 버전 2.0.4 이상을 이상이 필요 합니다. `az --version`을 실행하여 버전을 확인합니다. 설치 또는 업그레이드가 필요한 경우, [Azure CLI 설치](/cli/azure/install-azure-cli?view=azure-cli-latest)를 참조하세요.
+Azure CLI를 로컬로 설치 하 고 사용 하도록 선택 하는 경우이 문서에서는 Azure CLI 버전 2.0.4 이상을 이상이 필요 합니다. `az --version`을 실행하여 버전을 확인합니다. 설치 또는 업그레이드가 필요한 경우, [Azure CLI 설치](/cli/azure/install-azure-cli)를 참조하세요.
 
 ## <a name="configure-parameters"></a>매개 변수 구성
 
@@ -68,7 +68,7 @@ Azure Cloud Shell에서 명령을 실행하는 경우에는 다음 단계가 필
 
    |**설정** | **제안 값** | **필드 설명**|
    |---|---|---|
-   | 이름 | *mykustocluster* | 원하는 클러스터 이름입니다.|
+   | Name | *mykustocluster* | 원하는 클러스터 이름입니다.|
    | SKU | *D13_v2* | 클러스터에 사용될 SKU입니다. |
    | ResourceGroupName | *testrg* | 클러스터가 만들어질 리소스 그룹 이름입니다. |
 
@@ -93,7 +93,7 @@ Azure Cloud Shell에서 명령을 실행하는 경우에는 다음 단계가 필
    |**설정** | **제안 값** | **필드 설명**|
    |---|---|---|
    | ClusterName | *mykustocluster* | 데이터베이스가 만들어지는 클러스터의 이름입니다.|
-   | 이름 | *mykustodatabase* | 데이터베이스의 이름입니다.|
+   | Name | *mykustodatabase* | 데이터베이스의 이름입니다.|
    | ResourceGroupName | *testrg* | 클러스터가 만들어질 리소스 그룹 이름입니다. |
    | SoftDeletePeriod | *3650:00:00:00* | 데이터를 쿼리할 수 있도록 유지되는 시간입니다. |
    | HotCachePeriod | *3650:00:00:00* | 데이터가 캐시에 유지되는 시간입니다. |

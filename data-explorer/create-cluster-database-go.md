@@ -7,12 +7,12 @@ ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 833a801e6455fd4d88fbbbab83010aea1d406f02
-ms.sourcegitcommit: 7edce9d9d20f9c0505abda67bb8cc3d2ecd60d15
+ms.openlocfilehash: 3a8133c42ad87ec7eec693be3109ce5e7aea4935
+ms.sourcegitcommit: 79d923d7b7e8370726974e67a984183905f323ff
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96524252"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96868640"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-using-go"></a>Go를 사용 하 여 Azure 데이터 탐색기 클러스터 및 데이터베이스 만들기
 
@@ -29,7 +29,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 이 문서에서는 [Go](https://golang.org/)를 사용 하 여 Azure 데이터 탐색기 클러스터와 데이터베이스를 만듭니다. 그런 다음 새 클러스터와 데이터베이스를 나열 하 고 삭제 하 고 리소스에 대 한 작업을 실행할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * Azure 구독이 아직 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free)을 만듭니다.
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)를 설치합니다.
@@ -195,7 +195,7 @@ func deleteCluster(sub, clusterName, rgName string) {
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. 프로그램은 클라이언트 자격 증명을 사용 하 여 인증 합니다. Azure CLI [az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 명령을 사용 하 여 서비스 주체를 만듭니다. 다음 단계에서 사용할 클라이언트 ID, 클라이언트 암호 및 테 넌 트 ID 정보를 저장 합니다.
+1. 프로그램은 클라이언트 자격 증명을 사용 하 여 인증 합니다. Azure CLI [az ad sp create-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 명령을 사용 하 여 서비스 주체를 만듭니다. 다음 단계에서 사용할 클라이언트 ID, 클라이언트 암호 및 테 넌 트 ID 정보를 저장 합니다.
 
 1. 서비스 사용자 정보를 포함 하 여 필요한 환경 변수를 내보냅니다. 구독 ID, 리소스 그룹 및 클러스터를 만들려는 지역을 입력 합니다.
 
