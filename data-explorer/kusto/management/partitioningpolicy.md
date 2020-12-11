@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: 30929e63c39be10d066815333ba6b277c0aeb5c9
-ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
+ms.openlocfilehash: fdf72c8c58ec8a9fb9c64ecea6219dcc3a736d18
+ms.sourcegitcommit: 2bdb904e6253c9ceb8f1eaa2da35fcf27e13a2cd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96321287"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97091354"
 ---
 # <a name="partitioning-policy"></a>분할 정책
 
@@ -47,7 +47,7 @@ ms.locfileid: "96321287"
 
 #### <a name="partition-properties"></a>파티션 속성
 
-|속성 | 설명 | 지원 되는 값| 권장되는 값 |
+|속성 | Description | 지원 되는 값| 권장되는 값 |
 |---|---|---|---|
 | `Function` | 사용할 hash 모듈로 함수의 이름입니다.| `XxHash64` | |
 | `MaxPartitionCount` | 기간을 만들 최대 파티션 수 (해시 모듈로 함수에 대 한 모듈로 인수)입니다. | 범위에 `(1,2048]` 있습니다. <br>  클러스터에 있는 노드 수의 5 배 보다 크고 열의 카디널리티 보다 작습니다. |  값이 높을수록 클러스터의 노드에서 데이터 분할 프로세스의 오버 헤드가 증가 하 고, 각 기간에 대 한 익스텐트 수가 커집니다. 50 노드 미만의 클러스터의 경우부터 시작 `256` 합니다. 이러한 고려 사항에 따라 또는 쿼리 성능 및 데이터 사후 수집을 분할 하는 오버 헤드의 장점에 따라 값을 조정 합니다.
@@ -83,7 +83,7 @@ ms.locfileid: "96321287"
 
 #### <a name="partition-properties"></a>파티션 속성
 
-|속성                | 설명                                                                                                                                                     | 권장되는 값                                                                                                                                                                                                                                                            |
+|속성                | Description                                                                                                                                                     | 권장되는 값                                                                                                                                                                                                                                                            |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `RangeSize`            | `timespan`각 datetime 파티션의 크기를 나타내는 스칼라 상수입니다.                                                                                | 값으로 시작 `1.00:00:00` 합니다 (1 일). 더 짧은 값을 설정 하지 마세요 .이로 인해 병합할 수 없는 작은 익스텐트가 여러 개 있을 수 있습니다.                                                                                                      |
 | `Reference`            | `datetime`정렬 된 datetime 파티션에 따라 고정 된 특정 시점을 나타내는 스칼라 상수입니다.                                          | `1970-01-01 00:00:00`를 시작합니다. Datetime 파티션 키에 값이 있는 레코드가 있는 경우 `null` 해당 파티션 값은의 값으로 설정 됩니다 `Reference` .                                                                                                      |
@@ -128,7 +128,8 @@ ms.locfileid: "96321287"
   * 이 속성은 선택 사항입니다. 지정 하지 않으면 정책이 적용 된 후에 정책이 데이터 수집 적용 됩니다.
   * 보존으로 인해 삭제 될 수 있는 유형이 아닌 (분할 되지 않은) 익스텐트는 모두 분할 프로세스에서 무시 됩니다. 범위는 생성 시간이 테이블의 효과적인 일시 삭제 기간의 90% 보다 이전 이므로 무시 됩니다.
     > [!NOTE]
-    > 과거에는 datetime 값을 설정 하 고 이미 수집 데이터를 분할할 수 있습니다. 그러나이 방법을 사용 하면 분할 프로세스에 사용 되는 리소스가 상당히 늘어날 수 있습니다. 
+    > 과거에는 datetime 값을 설정 하 고 이미 수집 데이터를 분할할 수 있습니다. 그러나이 방법을 사용 하면 분할 프로세스에 사용 되는 리소스가 상당히 늘어날 수 있습니다.
+    > 정책을 변경할 때마다 최대 며칠의 이전 단계에서 *EffectiveDateTime* 을 이전으로 설정 하 여 점차적으로 수행 하는 것이 좋습니다 `datetime` .
 
 ### <a name="data-partitioning-example"></a>데이터 분할 예
 
@@ -168,7 +169,7 @@ ms.locfileid: "96321287"
 
 다음 속성은 정책의 일부로 정의 될 수 있습니다. 이러한 속성은 선택 사항이 며 변경 하지 않는 것이 좋습니다.
 
-|속성 | 설명 | 권장되는 값 | 기본값 |
+|속성 | Description | 권장되는 값 | 기본값 |
 |---|---|---|---|
 | **MinRowCountPerOperation** |  단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최소 대상입니다. | | `0` |
 | **MaxRowCountPerOperation** |  단일 데이터 분할 작업의 원본 익스텐트의 행 수 합계에 대 한 최대 대상입니다. | 분할 작업에서 작업 당 많은 양의 메모리 또는 CPU를 사용 하는 경우 5M 보다 작은 값을 설정 합니다. 자세한 내용은 [monitoring](#monitor-partitioning)을 참조 하세요. | `0`이며 기본 대상은 500만 레코드입니다. |
@@ -195,7 +196,7 @@ ms.locfileid: "96321287"
     * 이 백분율이 지속적으로 90% 미만으로 유지 되 면 클러스터의 파티션 [용량](partitioningpolicy.md#partition-capacity)을 평가 합니다.
   * `TableWithMinPartitioningPercentage`: 분할 백분율이 위에 표시 된 테이블의 정규화 된 이름입니다.
 
-[`.show commands`](commands.md)분할 명령 및 해당 리소스 사용을 모니터링 하는 데 사용 합니다. 예:
+[`.show commands`](commands.md)분할 명령 및 해당 리소스 사용을 모니터링 하는 데 사용 합니다. 예를 들어:
 
 ```kusto
 .show commands 
@@ -211,7 +212,7 @@ ms.locfileid: "96321287"
 * 데이터 분할 프로세스로 인해 더 많은 익스텐트가 생성 됩니다. 클러스터는 익스텐트 [병합 용량](../management/capacitypolicy.md#extents-merge-capacity)을 점진적으로 늘릴 수 있으므로 [익스텐트](../management/extents-overview.md) 병합 프로세스가 계속 될 수 있습니다.
 * 수집 처리량이 많고 분할 정책이 정의 된 테이블이 충분히 많은 경우 클러스터는 범위 [파티션 용량](../management/capacitypolicy.md#extents-partition-capacity)을 점차적으로 늘릴 수 있으므로 [분할 익스텐트의 프로세스가](#the-data-partitioning-process) 계속 될 수 있습니다.
 * 리소스를 너무 많이 사용 하지 않도록 이러한 동적 증가가 더 이상 사용 되지 않습니다. 전체적으로 사용 되는 경우에는 캡을 넘어 점차 증가 하는 것이 필요할 수 있습니다.
-  * 용량을 [늘리면 클러스터의](../../manage-cluster-vertical-scaling.md)리소스 사용이 크게 증가 하는 경우 / [out](../../manage-cluster-horizontal-scaling.md)수동으로 또는 자동 크기 조정을 사용 하 여 클러스터를 확장할 수 있습니다.
+  * 용량을 [늘리면 클러스터의](../../manage-cluster-vertical-scaling.md)리소스 사용이 크게 증가 하는 경우 / [](../../manage-cluster-horizontal-scaling.md)수동으로 또는 자동 크기 조정을 사용 하 여 클러스터를 확장할 수 있습니다.
 
 ## <a name="outliers-in-partitioned-columns"></a>분할 된 열의 이상 값
 
