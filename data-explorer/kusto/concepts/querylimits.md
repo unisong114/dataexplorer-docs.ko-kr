@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: cbdebe75713bb7cd786941e7546ab477df497c20
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 3b230ea0ed8bba80741e18f24cd96cf271224f25
+ms.sourcegitcommit: e278dae04f12658d0907f7b6ba46c6a34c53dcd7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512913"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901106"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -83,6 +83,13 @@ MyTable | where User=="UserId1"
 Kusto는 결과를 호출자에게 스트리밍하여 "무한히 큰" 결과를 처리할 수 있는 여러 클라이언트 라이브러리를 제공합니다. 이러한 라이브러리 중 하나를 사용하고, 스트리밍 모드로 구성하세요. 예를 들어 .NET Framework 클라이언트(Microsoft.Azure.Kusto.Data)를 사용하고 연결 문자열의 스트리밍 속성을 *true* 로 설정하거나 항상 결과를 스트리밍하는 *ExecuteQueryV2Async()* 호출을 사용합니다.
 
 결과 잘림은 클라이언트에 반환되는 결과 스트림에만 적용되는 것이 아니라 기본적으로 적용됩니다. 또한 클러스터 간 쿼리에서 한 클러스터가 다른 클러스터에 대해 실행하는 모든 하위 쿼리에도 기본적으로 적용되며, 효과는 비슷합니다.
+
+### <a name="setting-multiple-result-truncation-properties"></a>여러 결과 잘림 속성 설정
+
+`set` 문을 사용하는 경우 및/또는 [클라이언트 요청 속성](../api/netfx/request-properties.md)에서 플래그를 지정하는 경우 다음이 적용됩니다.
+
+* `notruncation`이 설정되고 `truncationmaxsize`, `truncationmaxrecords` 또는 `query_take_max_records`도 설정된 경우 `notruncation`이 무시됩니다.
+* `truncationmaxsize`, `truncationmaxrecords` 및/또는 `query_take_max_records`가 여러 번 설정된 경우 각 속성에 대해 *더 낮은* 값이 적용됩니다.
 
 ## <a name="limit-on-memory-per-iterator"></a>반복기당 메모리 제한
 
