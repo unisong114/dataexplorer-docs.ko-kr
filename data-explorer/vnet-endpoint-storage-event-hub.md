@@ -7,12 +7,12 @@ ms.reviewer: gunjand
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/12/2020
-ms.openlocfilehash: 43f7705170228afa3d3f5e31086d40cea73c62db
-ms.sourcegitcommit: a7458819e42815a0376182c610aba48519501d92
+ms.openlocfilehash: a8e351dc04b77a41dd7ab793581a1f464f181f4e
+ms.sourcegitcommit: 724d3a3c817867b17a5a5853b6433818cbc97cf7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92906324"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97050521"
 ---
 # <a name="create-a-private-or-service-endpoint-to-event-hub-and-azure-storage"></a>Event Hub 및 Azure Storage에 대 한 개인 또는 서비스 엔드포인트 만들기
 
@@ -22,7 +22,7 @@ ms.locfileid: "92906324"
 
 이 문서에서는 Azure 데이터 탐색기와 [이벤트 허브](ingest-data-event-hub-overview.md) 또는 [Azure Storage](/azure/storage/)간에 연결을 만드는 방법을 보여 줍니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 * [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)
 * [Azure 데이터 탐색기 서브넷](vnet-deployment.md)
@@ -70,7 +70,7 @@ VNet (Virtual Network) [서비스 끝점](/azure/virtual-network/virtual-network
 
 ### <a name="add-networks-pane"></a>네트워크 창 추가
 
-:::image type="content" source="media/vnet-private-link-storage-event-hub/storage-add-networks.png" alt-text="Azure 데이터 탐색기에 기존 VNet 연결 Azure Storage 추가":::
+:::image type="content" source="media/vnet-private-link-storage-event-hub/storage-add-networks.png" alt-text="Azure Storage 계정에 가상 네트워크를 추가 하 여 Azure 데이터 탐색기에 연결":::
 
 1. 오른쪽 **네트워크 추가** 창에서 Azure 구독을 선택 합니다.
 
@@ -85,7 +85,7 @@ VNet (Virtual Network) [서비스 끝점](/azure/virtual-network/virtual-network
 
 1. 도구 모음에서 **저장** 을 선택하여 설정을 저장합니다. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-virtual-network.png" alt-text="Azure 데이터 탐색기에 기존 VNet 연결 Azure Storage 추가":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-virtual-network.png" alt-text="Azure 데이터 탐색기에 저장소 계정을 연결 하는 Vnet":::
 
     확인이 포털 알림에 표시 될 때까지 몇 분 정도 기다립니다.
 
@@ -100,18 +100,18 @@ VNet (Virtual Network) [서비스 끝점](/azure/virtual-network/virtual-network
 
 1. Azure Portal에서 보안을 유지할 **Event Hubs 네임 스페이스로** 이동 합니다.
 1. 왼쪽 메뉴에서 **네트워킹** 을 선택 합니다. 이 탭은 **표준** 네임 스페이스 또는 **전용** 네임 스페이스에만 표시 됩니다.
-1. **방화벽 및 가상 네트워크** 탭을 선택 합니다.
+1. **방화벽 및 가상 네트워크** 탭을 선택 합니다. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/networking.png" alt-text="Azure 데이터 탐색기에 기존 VNet 연결 Azure Storage 추가":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/networking.png" alt-text="이벤트 허브의 네트워킹":::
 
 1. **선택한 네트워크** 에서 액세스를 사용 하도록 설정 합니다.
 1. **가상 네트워크** 에서 **+ 기존 가상 네트워크 추가** 를 선택 합니다. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-add-existing-vnet.png" alt-text="Azure 데이터 탐색기에 기존 VNet 연결 Azure Storage 추가":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-add-existing-vnet.png" alt-text="Azure 데이터 탐색기의 기존 가상 네트워크 추가":::
 
 ### <a name="add-networks-pane"></a>네트워크 창 추가
 
-:::image type="content" source="media/vnet-private-link-storage-event-hub/add-networks.png" alt-text="Azure 데이터 탐색기에 기존 VNet 연결 Azure Storage 추가":::  
+:::image type="content" source="media/vnet-private-link-storage-event-hub/add-networks.png" alt-text="Azure 데이터 탐색기에 VNet을 연결 하는 네트워크 필드 추가":::  
 
 1. 오른쪽 **네트워크 추가** 창에서 Azure 구독을 선택 합니다.
 
@@ -124,7 +124,7 @@ VNet (Virtual Network) [서비스 끝점](/azure/virtual-network/virtual-network
 
 1. 도구 모음에서 **저장** 을 선택하여 설정을 저장합니다. 확인이 포털 알림에 표시 될 때까지 몇 분 정도 기다립니다.
     
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Azure 데이터 탐색기에 기존 VNet 연결 Azure Storage 추가"::: 
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Azure 데이터 탐색기에 연결 하려면 Event Hub의 가상 네트워크 및 서브넷을 추가 합니다."::: 
 
 ---
 
