@@ -7,12 +7,12 @@ ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
-ms.openlocfilehash: fed4027d946792448f2c564d8daa019c991b50d2
-ms.sourcegitcommit: 3af95ea6a6746441ac71b1a217bbb02ee23d5f28
+ms.openlocfilehash: 5dbd1aeb777b067e0c7bee15be838eb2f306086f
+ms.sourcegitcommit: d9e203a54b048030eeb6d05b01a65902ebe4e0b8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95473586"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371478"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-commands-and-queries-using-diagnostic-logs"></a>진단 로그를 사용 하 여 Azure 데이터 탐색기 수집, 명령 및 쿼리 모니터링
 
@@ -37,6 +37,9 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 > 수집 로그는 Sdk, 데이터 연결 및 커넥터를 사용 하 여 수집 끝점에 대 한 대기 중인 수집을 지원 합니다.
 >
 > 수집 로그는 스트리밍 수집, 엔진으로 직접 수집, 쿼리에서 수집 또는 설정 또는-추가 명령에 대해 지원 되지 않습니다.
+
+> [!NOTE]
+> 실패 한 수집 로그는 내부적으로 다시 시도 되는 일시적인 오류에 대해 내보내지는 (수집 결과) [사용-메트릭 # 수집-메트릭] 메트릭과 달리 수집 작업의 최종 상태에 대해서만 보고 됩니다.
 
 * 수집 **작업 성공**: 이러한 로그에 수집 작업을 성공적으로 완료 하는 방법에 대 한 정보가 있습니다.
 * **실패** 한 수집 작업: 이러한 로그는 오류 정보를 포함 하 여 실패 한 수집 작업에 대 한 자세한 정보를 포함 합니다. 
@@ -89,7 +92,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 로그 JSON 문자열에는 다음 표에 나열 된 요소가 포함 됩니다.
 
-|속성               |설명
+|Name               |설명
 |---                |---
 |time               |보고서의 시간
 |resourceId         |Azure Resource Manager 리소스 ID
@@ -123,7 +126,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 ```
 **성공한 작업 진단 로그의 속성**
 
-|속성               |설명
+|Name               |설명
 |---                |---
 |SucceededOn        |수집 완료 시간
 |OperationId        |Azure 데이터 탐색기 수집 작업 ID
@@ -164,7 +167,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 **실패 한 작업 진단 로그의 속성**
 
-|속성               |설명
+|Name               |설명
 |---                |---
 |FailedOn           |수집 완료 시간
 |OperationId        |Azure 데이터 탐색기 수집 작업 ID
@@ -206,7 +209,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 ```
 **수집 일괄 처리 작업 진단 로그의 속성**
 
-|속성               |Description
+|Name               |Description
 |---                   |---
 | TimeGenerated        | 이 이벤트가 생성 된 시간 (UTC)입니다. |
 | 데이터베이스             | 대상 테이블을 보유 하는 데이터베이스의 이름입니다. |
@@ -225,7 +228,7 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 로그 JSON 문자열에는 다음 표에 나열 된 요소가 포함 됩니다.
 
-|속성               |설명
+|Name               |설명
 |---                |---
 |time               |보고서의 시간
 |resourceId         |Azure Resource Manager 리소스 ID
@@ -265,13 +268,13 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 ```
 **명령 진단 로그의 속성**
 
-|속성               |설명
+|Name               |설명
 |---                |---
 |RootActivityId |루트 작업 ID
 |StartedOn        |이 명령이 시작 된 시간 (UTC)
 |LastUpdatedOn        |이 명령이 종료 된 시간 (UTC)
 |데이터베이스          |명령이 실행 된 데이터베이스의 이름입니다.
-|주              |명령이 종료 된 상태입니다.
+|시스템 상태              |명령이 종료 된 상태입니다.
 |FailureReason  |실패 이유
 |TotalCpu |총 CPU 기간
 |CommandType     |명령 유형
@@ -351,13 +354,13 @@ Azure Data Explorer는 애플리케이션, 웹 사이트, IoT 디바이스 등�
 
 **쿼리 진단 로그의 속성**
 
-|속성               |설명
+|Name               |설명
 |---                |---
 |RootActivityId |루트 작업 ID
 |StartedOn        |이 명령이 시작 된 시간 (UTC)
 |LastUpdatedOn           |이 명령이 종료 된 시간 (UTC)
 |데이터베이스              |명령이 실행 된 데이터베이스의 이름입니다.
-|주  |명령이 종료 된 상태입니다.
+|시스템 상태  |명령이 종료 된 상태입니다.
 |FailureReason|실패 이유
 |TotalCpu     |총 CPU 기간
 |ApplicationName            |쿼리를 호출한 응용 프로그램 이름

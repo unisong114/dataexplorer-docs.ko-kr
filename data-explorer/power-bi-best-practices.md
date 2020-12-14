@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/26/2019
-ms.openlocfilehash: 47a18e8b8a2ec34207acacfd508114955f28953f
-ms.sourcegitcommit: 88f8ad67711a4f614d65d745af699d013d01af32
+ms.openlocfilehash: 2abdc80a261980723b9f4535fed26758c4895ce6
+ms.sourcegitcommit: d9e203a54b048030eeb6d05b01a65902ebe4e0b8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639008"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371495"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI를 사용 하 여 Azure 데이터 탐색기 데이터를 쿼리하고 시각화 하는 방법에 대 한 모범 사례
 
@@ -26,7 +26,7 @@ Tb의 새로운 원시 데이터로 작업 하는 경우 다음 지침에 따라
 
 * **복합 모델** - [복합 모델](/power-bi/desktop-composite-models) 을 사용 하 여 최상위 대시보드에 대 한 집계 데이터를 필터링 된 작업 원시 데이터와 결합할 수 있습니다. 원시 데이터를 사용 하는 시기와 집계 뷰를 사용 하는 시기를 명확 하 게 정의할 수 있습니다. 
 
-* **가져오기 모드와 DirectQuery 모드 비교** -더 작은 데이터 집합의 상호 작용을 위해 **가져오기** 모드를 사용 합니다. 자주 업데이트 되는 크고 많은 데이터 집합에는 **DirectQuery** 모드를 사용 합니다. 예를 들어 **가져오기** 모드를 사용 하 여 차원 테이블이 작으며 자주 변경 되지 않으므로이를 사용 하 여 차원 테이블을 만듭니다. 데이터 업데이트의 예상 률에 따라 새로 고침 간격을 설정 합니다. **DirectQuery** 모드를 사용 하 여 팩트 테이블을 만듭니다. 이러한 테이블은 크고 원시 데이터를 포함 하기 때문입니다. Power BI [드릴스루](/power-bi/desktop-drillthrough)를 사용 하 여 필터링 된 데이터를 표시 하려면 다음 표를 사용 합니다.
+* **가져오기 모드와 [DirectQuery](/power-bi/connect-data/desktop-directquery-about) 모드 비교** -더 작은 데이터 집합의 상호 작용을 위해 **가져오기** 모드를 사용 합니다. 자주 업데이트 되는 크고 많은 데이터 집합에는 **DirectQuery** 모드를 사용 합니다. 예를 들어 **가져오기** 모드를 사용 하 여 차원 테이블이 작으며 자주 변경 되지 않으므로이를 사용 하 여 차원 테이블을 만듭니다. 데이터 업데이트의 예상 률에 따라 새로 고침 간격을 설정 합니다. **DirectQuery** 모드를 사용 하 여 팩트 테이블을 만듭니다. 이러한 테이블은 크고 원시 데이터를 포함 하기 때문입니다. Power BI [드릴스루](/power-bi/desktop-drillthrough)를 사용 하 여 필터링 된 데이터를 표시 하려면 다음 표를 사용 합니다. **DirectQuery** 를 사용 하는 경우 [**쿼리 축소**](/power-bi/connect-data/desktop-directquery-about#report-design-guidance) 를 사용 하 여 보고서가 준비 되기 전에 데이터를 로드 하지 못하게 할 수 있습니다.
 
 * **병렬 처리** – Azure 데이터 탐색기는 선형 확장 가능 데이터 플랫폼 이므로 다음과 같이 종단 간 흐름의 병렬 처리를 증가 시켜 대시보드 렌더링의 성능을 향상 시킬 수 있습니다.
 
@@ -137,7 +137,7 @@ in
     Source = AzureDataExplorer.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
 
-   예를 들면 다음과 같습니다.
+   예를 들어:
 
     ```m
     Source = AzureDataExplorer.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])

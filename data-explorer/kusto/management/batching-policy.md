@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-ms.openlocfilehash: 04c59b33d780db1c9731ac71d1f905315afbc302
-ms.sourcegitcommit: 4405ae34e119948778e0de5021077638d24da812
+ms.openlocfilehash: 2ff3578b055fd487f3d339dc9b7fb4aa1ad11e14
+ms.sourcegitcommit: d9e203a54b048030eeb6d05b01a65902ebe4e0b8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86448047"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371444"
 ---
 # <a name="ingestionbatching-policy-command"></a>IngestionBatching policy 명령
 
@@ -23,14 +23,20 @@ ms.locfileid: "86448047"
 
 특정 엔터티에 대해 정책이 설정 되지 않은 경우에는 더 높은 계층 구조 수준 정책을 검색 합니다. 모두 null로 설정 된 경우에는 기본값이 사용 됩니다. 
 
-정책의 제한은 10 초이 고 15 분 보다 큰 값은 사용 하지 않는 것이 좋습니다.
+**IngestionBatching 제한:**
+
+| Type | 기본값 | 최소 | 최대
+|---|---|---|---|
+| 항목 수 | 1000 | 1 | 2000 |
+| 데이터 크기 (MB) | 1000 | 100 | 1000 |
+| 시간 | 5분 | 10초 | 15분 |
 
 ## <a name="displaying-the-ingestionbatching-policy"></a>IngestionBatching 정책 표시
 
 이 정책은 데이터베이스 또는 테이블에 대해 설정할 수 있으며 다음 명령 중 하나를 사용 하 여 표시 됩니다.
 
-* `.show``database` *DatabaseName* DatabaseName `policy``ingestionbatching`
-* `.show``table` *DatabaseName* `.` *TableName* TableName `policy``ingestionbatching`
+* `.show``database`  DatabaseName `policy``ingestionbatching`
+* `.show``table` *DatabaseName* `.`  TableName `policy``ingestionbatching`
 
 ## <a name="altering-the-ingestionbatching-policy"></a>IngestionBatching 정책 변경
 
@@ -54,11 +60,11 @@ IngestionBatching 정책:
 }
 ```
 
-* `entity_type`: 테이블, 데이터베이스
+* `entity_type` : 테이블, 데이터베이스
 * `database_or_table`: 엔터티가 테이블 또는 데이터베이스인 경우 다음과 같이 명령에 이름을 지정 해야 합니다. 
   - `database_name` 또는 
   - `database_name.table_name` 또는 
-  - `table_name`(특정 데이터베이스의 컨텍스트에서 실행 하는 경우)
+  - `table_name` (특정 데이터베이스의 컨텍스트에서 실행 하는 경우)
 
 ## <a name="deleting-the-ingestionbatching-policy"></a>IngestionBatching 정책을 삭제 하는 중
 

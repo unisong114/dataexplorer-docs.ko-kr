@@ -8,18 +8,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 99a35b03a171147d5bb511a9eab657903e917d01
-ms.sourcegitcommit: 4d5628b52b84f7564ea893f621bdf1a45113c137
+ms.openlocfilehash: fde0e79fbe8a8080fa6e21dde12434de5c92353f
+ms.sourcegitcommit: d9e203a54b048030eeb6d05b01a65902ebe4e0b8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444131"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371461"
 ---
 # <a name="event-grid-data-connection"></a>Event Grid 데이터 연결
 
 Event Grid 수집은 Azure storage를 수신 하는 파이프라인이 며 등록 된 이벤트가 발생할 때 정보를 가져오도록 Azure 데이터 탐색기를 업데이트 합니다. Azure 데이터 탐색기는 blob 생성 또는 blob 이름 변경 알림을 위한 [Azure Event Grid](/azure/event-grid/overview) 구독과 함께 Azure Storage (blob Storage 및 ADLSv2)에서 지속적인 수집을 제공 하 고 이벤트 허브를 통해 이러한 알림을 Azure 데이터 탐색기로 스트리밍합니다.
 
-Event Grid 수집 파이프라인은 몇 가지 단계를 거칩니다. Azure 데이터 탐색기에서 [특정 형식의 데이터가](#data-format) 수집는 대상 테이블을 만듭니다. 그런 다음 Azure 데이터 탐색기에서 Event Grid 데이터 연결을 만듭니다. Event Grid 데이터 연결은 데이터를 보낼 테이블과 테이블 매핑을 비롯 한 [이벤트 라우팅](#events-routing) 정보를 알고 있어야 합니다. 또한 수집 데이터, 대상 테이블 및 매핑을 설명 하는 수집 [속성도](#ingestion-properties)지정 합니다. 샘플 데이터를 생성 하 고 [blob을 업로드](#upload-blobs) 하 여 연결을 테스트할 수 있습니다. 수집 후 [blob을 삭제](#delete-blobs-using-storage-lifecycle) 합니다. 이 프로세스는 [c #](data-connection-event-grid-csharp.md) 또는 [Python](data-connection-event-grid-python.md)을 사용 하 여 프로그래밍 방식으로 또는 [Azure Resource Manager 템플릿을](data-connection-event-grid-resource-manager.md)사용 하 여 [Azure Portal](ingest-data-event-grid.md)를 통해 관리할 수 있습니다.
+Event Grid 수집 파이프라인은 몇 가지 단계를 거칩니다. Azure 데이터 탐색기에서 [특정 형식의 데이터가](#data-format) 수집는 대상 테이블을 만듭니다. 그런 다음 Azure 데이터 탐색기에서 Event Grid 데이터 연결을 만듭니다. Event Grid 데이터 연결은 데이터를 보낼 테이블과 테이블 매핑을 비롯 한 [이벤트 라우팅](#events-routing) 정보를 알고 있어야 합니다. 또한 수집 데이터, 대상 테이블 및 매핑을 설명 하는 수집 [속성도](#ingestion-properties)지정 합니다. 샘플 데이터를 생성 하 고 [blob을 업로드](#upload-blobs) 하 여 연결을 테스트할 수 있습니다. 수집 후 [blob을 삭제](#delete-blobs-using-storage-lifecycle) 합니다. 이 프로세스는 [한 번 클릭](one-click-ingestion-new-table.md)수집, [c #](data-connection-event-grid-csharp.md) 또는 [Python](data-connection-event-grid-python.md)을 사용 하 여 프로그래밍 방식으로 또는 [Azure Resource Manager 템플릿을](data-connection-event-grid-resource-manager.md)사용 하 여 [Azure Portal](ingest-data-event-grid.md)를 통해 관리할 수 있습니다. 
 
 Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일반적인 내용은 [azure 데이터 탐색기 데이터 수집 개요](ingest-data-overview.md)를 참조 하세요.
 
