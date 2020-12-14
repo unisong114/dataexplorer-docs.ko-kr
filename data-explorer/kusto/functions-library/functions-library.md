@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
-ms.openlocfilehash: fb08edf4105c44a6be96cf6b2f314cf25887e69a
-ms.sourcegitcommit: 4d5628b52b84f7564ea893f621bdf1a45113c137
+ms.openlocfilehash: b7e066133817184664e37aec52a562525afa9504
+ms.sourcegitcommit: fcaf3056db2481f0e3f4c2324c4ac956a4afef38
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96443986"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97388956"
 ---
 # <a name="functions-library"></a>함수 라이브러리
 
@@ -27,6 +27,16 @@ ms.locfileid: "96443986"
 |[kmeans_fl()](kmeans-fl.md)|K를 사용 하는 것은 알고리즘을 사용 하는 것입니다. |
 |[predict_fl()](predict-fl.md)|기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
 |[predict_onnx_fl()](predict-onnx-fl.md)| ONNX 형식으로 기존의 학습 된 기계 학습 모델을 사용 하 여 예측 합니다. |
+
+## <a name="promql-functions"></a>PromQL 함수
+
+다음 섹션에는 일반적인 [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) 함수가 포함 되어 있습니다. 이러한 함수는 수집에 대 한 메트릭 분석에 사용할 수 있으며,이는 [프로메테우스](https://prometheus.io/) 모니터링 시스템에서 Azure 데이터 탐색기 합니다. 모든 함수는 Azure 데이터 탐색기의 메트릭이 [프로메테우스 데이터 모델](https://prometheus.io/docs/concepts/data_model/)을 사용 하 여 구성 되어 있다고 가정 합니다.
+
+
+|함수 이름     |설명                                          |
+|-------------------------|--------------------------------------------------------|
+|[series_metric_fl ()](series-metric-fl.md)|는 프로메테우스 데이터 모델을 사용 하 여 저장 된 시계열을 선택 하 고 검색 합니다. |
+|[series_rate_fl ()](series-rate-fl.md)|초당 카운터 메트릭의 평균 증가율을 계산 합니다. |
 
 ## <a name="series-processing-functions"></a>계열 처리 함수
 

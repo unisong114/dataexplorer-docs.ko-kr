@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.openlocfilehash: 8cd79b6f6531efd9621edf603b38d71bb074f6aa
-ms.sourcegitcommit: c815c6ccf33864e21e1d3daff26a4f077dff88f7
+ms.openlocfilehash: 8b549ca239dac0e88e0a8c0f0748eb86984f5cb4
+ms.sourcegitcommit: fcaf3056db2481f0e3f4c2324c4ac956a4afef38
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012187"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97389007"
 ---
 # <a name="export-data-to-an-external-table"></a>외부 테이블로 데이터 내보내기
 
@@ -23,7 +23,7 @@ ms.locfileid: "95012187"
 
 명령에는 [테이블 관리자 또는 데이터베이스 관리자 권한이](../access-control/role-based-authorization.md)필요 합니다.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `.export` [ `async` ] `to` `table` *Externaltablename* <br>
 [ `with` `(` *PropertyName* `=` *PropertyValue* `,` ... `)` ] <| *쿼리*
@@ -39,7 +39,7 @@ ms.locfileid: "95012187"
 
 ## <a name="output"></a>출력
 
-|출력 매개 변수 |형식 |Description
+|출력 매개 변수 |형식 |설명
 |---|---|---
 |ExternalTableName  |String |외부 테이블의 이름입니다.
 |경로|String|출력 경로입니다.
@@ -65,7 +65,7 @@ ms.locfileid: "95012187"
 
 * 외부 테이블에 문자열 열을 기준으로 하는 파티션이 포함 된 경우 내보낸 파일의 수는 파티션당 단일 파일 이어야 합니다 (또는에 도달 하 `sizeLimit` 는 경우). 모든 노드는 내보내기 (작업 분산)에 계속 참여 하지만 각 파티션은 특정 노드에 할당 됩니다. 을 `distributed` false로 설정 하면 단일 노드만 내보내기를 수행 하지만 동작은 동일 하 게 유지 됩니다 (파티션당 단일 파일 기록).
 
-## <a name="examples"></a>예제
+## <a name="examples"></a>예
 
 ### <a name="non-partitioned-external-table-example"></a>분할 되지 않은 외부 테이블 예제
 
@@ -86,9 +86,8 @@ PartitionedExternalBlob는 다음과 같이 정의 되는 외부 테이블입니
 ```kusto
 .create external table PartitionedExternalBlob (Timestamp:datetime, CustomerName:string) 
 kind=blob
-partition by 
-   "CustomerName="CustomerName,
-   bin(Timestamp, 1d)
+partition by (CustomerName:string=CustomerName, Date:datetime=startofday(Timestamp))   
+pathformat = ("CustomerName=" CustomerName "/" datetime_pattern("yyyy/MM/dd", Date))   
 dataformat=csv
 ( 
    h@'http://storageaccount.blob.core.windows.net/container1;secretKey'

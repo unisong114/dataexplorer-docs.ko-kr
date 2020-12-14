@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
-ms.openlocfilehash: df38761d7ffebdf5e36c14ea25b0d02377bfa128
-ms.sourcegitcommit: fdc1f917621e9b7286bba23903101298cccc4c95
+ms.openlocfilehash: 6af499d97e4733d0b8e099d02bec9573da6817d3
+ms.sourcegitcommit: fcaf3056db2481f0e3f4c2324c4ac956a4afef38
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93364125"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97389024"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>Azure Storage 또는 Azure Data Lake의 외부 테이블 만들기 및 변경
 
@@ -83,14 +83,14 @@ ms.locfileid: "93364125"
   *PartitionName* `:` `datetime` `=` ( `startofyear` \| `startofmonth` \| `startofweek` \| `startofday` ) `(` *ColumnName*`)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan*`)`
 
-분할 정의 정확성을 확인 하려면 `sampleUris` 외부 테이블을 만들 때 속성을 사용 합니다.
+분할 정의 정확성을 확인 하려면 `sampleUris` 외부 테이블을 만들 때 또는 속성을 사용 합니다 `filesPreview` .
 
 <a name="path-format"></a>
 *PathFormat*
 
 분할 외에도 지정할 수 있는 외부 데이터 URI 파일 경로 형식입니다. 경로 형식은 파티션 요소 및 텍스트 구분 기호의 시퀀스입니다.
 
-&nbsp;&nbsp;[ *Stringseparator* ] *파티션* [ *stringseparator* ] [ *파티션* [ *stringseparator* ] ...]  
+&nbsp;&nbsp;[*Stringseparator*] *파티션* [*stringseparator*] [*파티션* [*stringseparator*] ...]  
 
 여기서 *partition* 은 절에 선언 된 파티션을 참조 하 `partition` `by` 고 *stringseparator* 는 따옴표로 묶인 텍스트입니다. 연속 된 파티션 요소는 *Stringseparator* 를 사용 하 여 별도로 설정 해야 합니다.
 
@@ -138,7 +138,7 @@ ms.locfileid: "93364125"
 <a name="properties"></a>
 *선택적 속성*
 
-| 속성         | 유형     | Description       |
+| 속성         | 형식     | 설명       |
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | 테이블의 폴더                                                                     |
 | `docString`      | `string` | 테이블을 문서화 하는 문자열                                                       |
@@ -147,8 +147,10 @@ ms.locfileid: "93364125"
 | `namePrefix`     | `string` | 설정 하는 경우 파일의 접두사를 나타냅니다. 쓰기 작업 시 모든 파일이이 접두사로 작성 됩니다. 읽기 작업에서는이 접두사가 포함 된 파일만 읽습니다. |
 | `fileExtension`  | `string` | 설정 하는 경우 파일의 파일 확장명을 나타냅니다. 쓰기에서는 파일 이름이이 접미사로 종료 됩니다. 읽을 때이 파일 확장명을 가진 파일만 읽습니다.           |
 | `encoding`       | `string` | 텍스트를 인코딩하는 방법을 나타냅니다. `UTF8NoBOM` (기본값) 또는 `UTF8BOM` 입니다.             |
-| `sampleUris`     | `bool`   | 설정 하는 경우 명령 결과는 외부 테이블 정의에 예상 되는 외부 데이터 파일 URI의 몇 가지 예를 제공 합니다 (샘플이 두 번째 결과 테이블에 반환 됨). 이 옵션은 *[파티션](#partitions)* 및 *[pathformat](#path-format)* 매개 변수가 제대로 정의 되었는지 여부를 확인 하는 데 도움이 됩니다. |
+| `sampleUris`     | `bool`   | 설정 하는 경우 명령 결과에서 외부 테이블 정의에 예상 되는 외부 데이터 파일 URI의 몇 가지 예를 제공 합니다. 이 옵션은 *[파티션](#partitions)* 및 *[pathformat](#path-format)* 매개 변수가 제대로 정의 되었는지 여부를 확인 하는 데 도움이 됩니다. |
+| `filesPreview`   | `bool`   | 설정 하는 경우 명령 결과 테이블 중 하나에의 미리 보기가 포함 되어 [있습니다. 외부 테이블 아티팩트 표시](#show-external-table-artifacts) 명령입니다. 와 같이 `sampleUri` 옵션을 사용 하면 외부 테이블 정의의 *[파티션](#partitions)* 및 *[pathformat](#path-format)* 매개 변수에 대 한 유효성을 검사할 수 있습니다. |
 | `validateNotEmpty` | `bool`   | 설정 하는 경우 연결 문자열에 콘텐츠를 포함 하기 위해 연결 문자열의 유효성이 검사 됩니다. 지정 된 URI 위치가 존재 하지 않거나 액세스 권한이 부족 한 경우 명령이 실패 합니다. |
+| `dryRun` | `bool` | 설정 된 경우 외부 테이블 정의는 유지 되지 않습니다. 이 옵션은 특히 또는 매개 변수와 함께 외부 테이블 정의의 유효성을 검사 하는 데 유용 `filesPreview` `sampleUris` 합니다. |
 
 > [!TIP]
 > `namePrefix` `fileExtension` 쿼리 중 데이터 파일 필터링에서 실행 되는 역할 및 속성에 대 한 자세한 내용은 [파일 필터링 논리](#file-filtering) 섹션을 참조 하세요.
@@ -286,17 +288,17 @@ external_table("ExternalTable")
 
 **구문:** 
 
-`.show``external` `table` *TableName* `artifacts` [ `limit` *MaxResults* ]
+`.show``external` `table` *TableName* `artifacts` [ `limit` *MaxResults*]
 
 여기서 *MaxResults* 은 선택적 매개 변수 이며 결과 수를 제한 하도록 설정할 수 있습니다.
 
 **출력**
 
-| 출력 매개 변수 | 유형   | 설명                       |
+| 출력 매개 변수 | 형식   | 설명                       |
 |------------------|--------|-----------------------------------|
-| URI              | string | 외부 저장소 데이터 파일의 URI |
+| URI              | 문자열 | 외부 저장소 데이터 파일의 URI |
 | 크기             | long   | 파일 길이 (바이트)              |
-| 파티션        | 동적 | 분할 된 외부 테이블에 대 한 파일 파티션을 설명 하는 동적 개체 |
+| 파티션        | dynamic | 분할 된 외부 테이블에 대 한 파일 파티션을 설명 하는 동적 개체 |
 
 > [!TIP]
 > 외부 테이블에서 참조 하는 모든 파일에 대 한 반복은 파일 수에 따라 비용이 많이 들 수 있습니다. `limit`일부 URI 예제를 보려는 경우에는 매개 변수를 사용 해야 합니다.
@@ -325,72 +327,72 @@ external_table("ExternalTable")
 
 ## <a name="create-external-table-mapping"></a>. 외부 테이블 매핑 만들기
 
-`.create``external` `table` *Externaltablename* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.create``external` `table` *Externaltablename* `mapping` *MappingName* *MappingInJsonFormat*
 
 새 매핑을 만듭니다. 자세한 내용은 [데이터 매핑](./mappings.md#json-mapping)을 참조 하세요.
 
 **예제** 
  
 ```kusto
-.create external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.create external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **예제 출력**
 
-| 이름     | Kind | 매핑                                                           |
+| Name     | Kind | 매핑                                                           |
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
 ## <a name="alter-external-table-mapping"></a>. 외부 테이블 매핑 변경
 
-`.alter``external` `table` *Externaltablename* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.alter``external` `table` *Externaltablename* `mapping` *MappingName* *MappingInJsonFormat*
 
 기존 매핑을 변경 합니다. 
  
 **예제** 
  
 ```kusto
-.alter external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.alter external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **예제 출력**
 
-| 이름     | Kind | 매핑                                                                |
+| Name     | Kind | 매핑                                                                |
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
 ## <a name="show-external-table-mappings"></a>. 외부 테이블 매핑 표시
 
-`.show``external` `table` *Externaltablename* `json` `mapping` *MappingName* 
+`.show``external` `table` *Externaltablename* `mapping` *MappingName* 
 
-`.show``external` `table` *ExternalTableName* Externaltablename `json``mappings`
+`.show``external` `table` *Externaltablename*`mappings`
 
 매핑을 표시 합니다 (모두 또는 이름으로 지정 된 하나).
  
 **예제** 
  
 ```kusto
-.show external table MyExternalTable json mapping "Mapping1" 
+.show external table MyExternalTable mapping "Mapping1" 
 
-.show external table MyExternalTable json mappings 
+.show external table MyExternalTable mappings 
 ```
 
 **예제 출력**
 
-| 이름     | Kind | 매핑                                                                         |
+| Name     | Kind | 매핑                                                                         |
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName": "rownumber", "Properties": {"Path": "$. rownumber"}}, {"ColumnName": "rowguid", "Properties": {"Path": "$ rowguid"}}] |
 
 ## <a name="drop-external-table-mapping"></a>. 외부 테이블 매핑 삭제
 
-`.drop``external` `table` *Externaltablename* `json` `mapping` *MappingName* 
+`.drop``external` `table` *Externaltablename* `mapping` *MappingName* 
 
 데이터베이스에서 매핑을 삭제 합니다.
  
 **예제** 
  
 ```kusto
-.drop external table MyExternalTable json mapping "Mapping1" 
+.drop external table MyExternalTable mapping "Mapping1" 
 ```
 ## <a name="next-steps"></a>다음 단계
 
