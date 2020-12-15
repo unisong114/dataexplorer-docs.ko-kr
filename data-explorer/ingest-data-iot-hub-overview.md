@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 1ea8960b8d58ed9e549e042f8a4e64164952f32d
-ms.sourcegitcommit: 4f24d68f1ae4903a2885985aa45fd15948867175
+ms.openlocfilehash: b76321fd843efe915a6fd55797bd2dc68059b004
+ms.sourcegitcommit: 8ac4717dbff679991b122b09a0c1ed700562a736
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558192"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97488579"
 ---
 # <a name="iot-hub-data-connection"></a>IoT Hub 데이터 연결
 
@@ -36,7 +36,7 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
 
 수집 속성은 수집 프로세스에서 데이터를 라우팅하고 처리 하는 방법을 지시 합니다. [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties)를 사용 하 여 이벤트의 수집 [속성](ingestion-properties.md) 을 지정할 수 있습니다. 다음 속성을 설정할 수 있습니다.
 
-|속성 |설명|
+|속성 |Description|
 |---|---|
 | 테이블 | 기존 대상 테이블의 이름 (대/소문자 구분)입니다. `Table`창에서 집합을 재정의 합니다 `Data Connection` . |
 | 서식 | 데이터 형식입니다. `Data format`창에서 집합을 재정의 합니다 `Data Connection` . |
@@ -44,7 +44,7 @@ Azure 데이터 탐색기에서 데이터를 수집 하는 방법에 대 한 일
 | Encoding |  데이터 인코딩입니다. 기본값은 UTF8입니다. 은 [.net에서 지원 되는 인코딩을](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks)사용할 수 있습니다. |
 
 > [!NOTE]
-> 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집 됩니다.
+> 데이터 연결을 만든 후에 큐에 넣은 이벤트만 수집됩니다.
 
 ## <a name="events-routing"></a>이벤트 라우팅
 
@@ -65,11 +65,11 @@ Azure 데이터 탐색기 클러스터에 대 한 IoT Hub 연결을 설정 하�
 
 IoT Hub는 다음과 같은 시스템 속성을 노출 합니다.
 
-|속성 |설명|
+|속성 |Description|
 |---|---|
 | message-id | 사용자가 설정할 수 있는 메시지에 대한 식별자는 요청-회신 패턴에 사용됩니다. |
 | sequence-number | 숫자(디바이스 큐 별로 고유함)는 IoT Hub에서 각 클라우드-디바이스 메시지에 할당됩니다. |
-| 다음으로 변경: | 클라우드-디바이스 메시지에 지정된 대상입니다. |
+| to | 클라우드-디바이스 메시지에 지정된 대상입니다. |
 | absolute-expiry-time | 메시지 만료 날짜 및 시간입니다. |
 | iothub-enqueuedtime | IoT Hub에서 디바이스-클라우드 메시지를 수신한 날짜 및 시간입니다. |
 | correlation-id| 일반적으로 요청-응답 패턴으로 요청의 MessageId가 포함된 응답 메시지의 String 속성입니다. |
@@ -98,7 +98,7 @@ IoT Hub는 다음과 같은 시스템 속성을 노출 합니다.
 
 ## <a name="sending-events"></a>이벤트 전송
 
-장치를 시뮬레이션 하 고 데이터를 생성 하는 [샘플 프로젝트](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) 를 참조 하세요.
+장치를 시뮬레이션 하 고 데이터를 생성 하는 [샘플 프로젝트](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/SimulatedDevice) 를 참조 하세요.
 
 ## <a name="next-steps"></a>다음 단계
 
