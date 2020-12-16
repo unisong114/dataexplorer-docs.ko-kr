@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.openlocfilehash: b77fe78ec43bce775774ae95c1ea713d03873cf4
-ms.sourcegitcommit: c351c2c8ab6e184827c4702eb0ec8bf783c7bbd3
+ms.openlocfilehash: 4f3639aeb6e401aa37703bbef929af2275960a91
+ms.sourcegitcommit: 35236fefb52978ce9a09bc36affd5321acb039a4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874800"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513982"
 ---
 # <a name="show-database-schema-commands"></a>. 데이터베이스 스키마 명령 표시
 
@@ -25,7 +25,7 @@ ms.locfileid: "94874800"
 
 `.show``database` *DatabaseName* `schema` [ `details` ] [ `if_later_than` *"Version"*] 
 
-`.show``databases` `(` *DatabaseName1* `,` DatabaseName1 ... `)` `schema``details` 
+`.show``databases` `(`  `,` DatabaseName1 ... `)` `schema``details` 
  
 `.show``databases` `(` *DatabaseName1* if_later_than *"Version"* `,` ... `)` `schema``details`
 
@@ -50,11 +50,11 @@ ms.locfileid: "94874800"
 |DatabaseName|TableName|ColumnName|ColumnType|IsDefaultTable|IsDefaultColumn|PrettyName|버전
 |---|---|---|---|---|---|---|--- 
 |TestDB||||False|False||v. 1.1       
-|TestDB|이벤트|||True|거짓||       
-|TestDB|이벤트| Name|System.String|True|거짓||     
-|TestDB|이벤트| StartTime|  System.DateTime|True|거짓||    
-|TestDB|이벤트| EndTime|    System.DateTime|True|거짓||        
-|TestDB|이벤트| 구/군/시|   System.String|True| 거짓||     
+|TestDB|이벤트|||True|False||       
+|TestDB|이벤트| 이름|System.String|True|False||     
+|TestDB|이벤트| StartTime|  System.DateTime|True|False||    
+|TestDB|이벤트| EndTime|    System.DateTime|True|False||        
+|TestDB|이벤트| 구/군/시|   System.String|True| False||     
 |TestDB|이벤트| SessionId|  System.Int32|True|  True|| 
 
 **예제** 
@@ -70,11 +70,11 @@ ms.locfileid: "94874800"
 |DatabaseName|TableName|ColumnName|ColumnType|IsDefaultTable|IsDefaultColumn|PrettyName|버전
 |---|---|---|---|---|---|---|--- 
 |TestDB||||False|False||v. 1.1       
-|TestDB|이벤트|||True|거짓||       
-|TestDB|이벤트| Name|System.String|True|거짓||     
-|TestDB|이벤트| StartTime|  System.DateTime|True|거짓||    
-|TestDB|이벤트| EndTime|    System.DateTime|True|거짓||        
-|TestDB|이벤트| 구/군/시|   System.String|True| 거짓||     
+|TestDB|이벤트|||True|False||       
+|TestDB|이벤트| 이름|System.String|True|False||     
+|TestDB|이벤트| StartTime|  System.DateTime|True|False||    
+|TestDB|이벤트| EndTime|    System.DateTime|True|False||        
+|TestDB|이벤트| 구/군/시|   System.String|True| False||     
 |TestDB|이벤트| SessionId|  System.Int32|True|  True||  
 
 현재 데이터베이스 버전 보다 낮은 버전이 제공 되었으므로 ' TestDB ' 스키마가 반환 되었습니다. 같거나 더 높은 버전을 제공 하면 빈 결과가 생성 됩니다.
@@ -85,7 +85,7 @@ ms.locfileid: "94874800"
 
 `.show``database` *DatabaseName* `schema` [ `if_later_than` *"Version"*] `as``json`
  
-`.show``databases` `(` *DatabaseName1* `,` DatabaseName1 ... `)` `schema` `as``json`
+`.show``databases` `(`  `,` DatabaseName1 ... `)` `schema` `as``json`
  
 `.show``databases` `(` *DatabaseName1* if_later_than *"Version"* `,` `)` `schema` ... `as``json`
 
@@ -112,7 +112,7 @@ ms.locfileid: "94874800"
 
 **구문**
 
-`.show``database` *DatabaseName* `schema` DatabaseName `as` `csl` `script` [ `with(` *Options* `)` ]
+`.show``database`  `schema` DatabaseName `as` `csl` `script` [ `with(` *Options* `)` ]
 
 **인수**
 
@@ -129,8 +129,6 @@ ms.locfileid: "94874800"
 
 문자열로 반환 된 스크립트에는 다음이 포함 됩니다.
 
-* 데이터베이스를 만들고 해당 이름을 설정 하는 명령입니다 (있는 경우).
-  * 생성 된 명령은 휘발성 데이터베이스를 만들고 스크립트에 추가 될 때이를 주석으로 처리 합니다.
 * 데이터베이스의 모든 테이블을 만드는 명령입니다.
 * 모든 데이터베이스/테이블/열 정책을 원래 정책과 일치 하도록 설정 하는 명령입니다.
 * 데이터베이스의 모든 사용자 정의 함수를 만들거나 변경 하는 명령입니다.

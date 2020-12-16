@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/04/2020
-ms.openlocfilehash: 8f19606a75c388917a5195d0ac5cbb0ecf4335f9
-ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
+ms.openlocfilehash: 166d5f4f4d81957c49fb3fdedd3b2654985648ab
+ms.sourcegitcommit: 35236fefb52978ce9a09bc36affd5321acb039a4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96321134"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97514060"
 ---
 # <a name="update-policy-overview"></a>정책 업데이트 개요
 
@@ -40,6 +40,7 @@ ms.locfileid: "96321134"
 * `Source` `Query` 정책의 일부 또는 파트에서 참조 하는 함수에서 테이블을 참조할 때 `Query` :
    * 테이블의 정규화 된 이름을 사용 하지 마세요. 대신 `TableName` 을(를) 사용하세요. 
    * 또는를 사용 하지 마세요 `database("DatabaseName").TableName` `cluster("ClusterName").database("DatabaseName").TableName` .
+* 스트리밍 수집의 업데이트 정책 제한 사항은 스트리밍 수집 [제한](../../ingest-data-streaming.md#limitations)을 참조 하세요. 
 
 > [!WARNING]
 > 업데이트 정책에서 잘못 된 쿼리를 정의 하면 데이터가 원본 테이블로 수집 되지 않을 수 있습니다.
@@ -49,7 +50,7 @@ ms.locfileid: "96321134"
 테이블에는 0 개 이상의 업데이트 정책 개체가 연결 되어 있을 수 있습니다.
 이러한 각 개체는 다음과 같은 속성이 정의 된 JSON 속성 모음으로 표시 됩니다.
 
-|속성 |형식 |설명  |
+|속성 |유형 |Description  |
 |---------|---------|----------------|
 |IsEnabled                     |`bool`  |업데이트 정책 사용 (true) 또는 사용 안 함 (false)에 대 한 상태                                                                                                                               |
 |원본                        |`string`|호출할 업데이트 정책을 트리거하는 테이블의 이름입니다.                                                                                                                                 |
