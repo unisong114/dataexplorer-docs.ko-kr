@@ -51,7 +51,7 @@ ms.locfileid: "97513982"
 |---|---|---|---|---|---|---|--- 
 |TestDB||||False|False||v. 1.1       
 |TestDB|이벤트|||True|False||       
-|TestDB|이벤트| 이름|System.String|True|False||     
+|TestDB|이벤트| Name|System.String|True|False||     
 |TestDB|이벤트| StartTime|  System.DateTime|True|False||    
 |TestDB|이벤트| EndTime|    System.DateTime|True|False||        
 |TestDB|이벤트| 구/군/시|   System.String|True| False||     
@@ -71,7 +71,7 @@ ms.locfileid: "97513982"
 |---|---|---|---|---|---|---|--- 
 |TestDB||||False|False||v. 1.1       
 |TestDB|이벤트|||True|False||       
-|TestDB|이벤트| 이름|System.String|True|False||     
+|TestDB|이벤트| Name|System.String|True|False||     
 |TestDB|이벤트| StartTime|  System.DateTime|True|False||    
 |TestDB|이벤트| EndTime|    System.DateTime|True|False||        
 |TestDB|이벤트| 구/군/시|   System.String|True| False||     

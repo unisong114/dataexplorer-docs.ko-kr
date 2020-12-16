@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: 25c0bb4071c74c299ab69432ffc18ad50408be46
-ms.sourcegitcommit: f7bebd245081a5cdc08e88fa4f9a769c18e13e5d
+ms.openlocfilehash: e2c84649653d6d3762a82c1e4aa3c98c9ef8119d
+ms.sourcegitcommit: d9e203a54b048030eeb6d05b01a65902ebe4e0b8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94644724"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371681"
 ---
 # <a name="use-one-click-ingestion-to-ingest-csv-data-from-a-container-to-a-new-table-in-azure-data-explorer"></a>Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집
 
@@ -22,7 +22,7 @@ ms.locfileid: "94644724"
 
 [원클릭 수집](ingest-data-one-click.md)을 사용하면 JSON, CSV 및 기타 형식의 데이터를 신속하게 테이블로 수집하고 간단하게 매핑 구조를 만들 수 있습니다. 스토리지, 로컬 파일 또는 컨테이너의 데이터를 일회성 또는 지속적인 수집 프로세스로 수집할 수 있습니다.  
 
-이 문서에서는 직관적인 원클릭 마법사를 특정 사례에 사용하여 **컨테이너** 의 **CSV** 데이터를 **새 테이블** 에 수집하는 방법을 설명합니다. 동일한 프로세스를 살짝 변형하여 다양한 사용 사례를 처리할 수 있습니다.
+이 문서에서는 직관적인 원클릭 마법사를 특정 사례에 사용하여 **컨테이너** 의 **CSV** 데이터를 **새 테이블** 에 수집하는 방법을 설명합니다. 수집 후, 소스 컨테이너에서 새 파일을 수신하고 적격 데이터를 새 테이블로 수집하는 [Event Grid 수집 파이프라인을 설정](#create-continuous-ingestion-for-container)할 수 있습니다. 동일한 프로세스를 살짝 변형하여 다양한 사용 사례를 처리할 수 있습니다.
 
 원클릭 수집의 개요와 필수 조건 목록은 [원클릭 수집](ingest-data-one-click.md)을 참조하세요.
 Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 대한 자세한 내용은 [기존 테이블로 원클릭 수집](one-click-ingestion-existing-table.md)을 참조하세요.
@@ -46,7 +46,7 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 **수집 형식** 에서 다음 단계를 수행합니다.
    
-  1. **컨테이너에서** 를 선택합니다. 
+  1. **컨테이너에서**(blob 컨테이너, ADLS Gen1 컨테이너, ADLS Gen2 컨테이너)를 선택합니다.
   1. **스토리지에 연결** 필드에서 컨테이너의 [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)을 추가하고 필요한 대로 샘플 크기를 입력합니다. 이 컨테이너 내의 폴더에서 수집하려면 [컨테이너의 폴더에서 수집](#ingest-from-folder-in-a-container)을 참조하세요.
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="컨테이너에서 원클릭 수집":::
@@ -96,9 +96,11 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="원클릭 수집 필터":::
 
+시스템은 파일 중 하나를 임의로 선택하고 해당 **스키마 정의 파일** 을 기반으로 스키마가 생성됩니다. 다른 파일을 선택할 수 있습니다.
+
 ## <a name="edit-the-schema"></a>스키마 편집
 
-**스키마 편집** 을 선택하여 테이블 열 구성을 살펴보고 편집합니다. 시스템에서 BLOB 중 하나를 임의로 선택합니다. 그러면 해당 BLOB에 따라 스키마가 생성됩니다. 원본 이름을 살펴보면 원본의 압축 여부를 서비스가 자동으로 식별합니다.
+**스키마 편집** 을 선택하여 테이블 열 구성을 살펴보고 편집합니다.  원본 이름을 살펴보면 원본의 압축 여부를 서비스가 자동으로 식별합니다.
 
 **스키마** 탭에서 다음을 수행합니다.
 
@@ -121,14 +123,10 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 새 테이블에 수집하면 테이블을 만들 때 테이블의 다양한 측면을 변경합니다.
 
-테이블에서 다음을 수행합니다. 
- * 편집할 새 열 이름을 두 번 클릭합니다.
- * 새 열 헤더를 선택하고 다음 중 하나를 수행합니다.
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-    [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
-
-  > [!NOTE]
-  > 테이블 형식의 경우 각 열을 Azure Data Explorer의 한 열에 수집할 수 있습니다.
+> [!NOTE]
+> 테이블 형식의 경우 열을 두 번 매핑할 수 없습니다. 기존 열에 매핑하려면 먼저 새 열을 삭제합니다.
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
@@ -148,7 +146,7 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 ## <a name="create-continuous-ingestion-for-container"></a>컨테이너에 대한 지속적인 수집 만들기
 
-지속적인 수집을 사용하면 원본 컨테이너의 새 파일을 수신 대기하는 이벤트 그리드를 만들 수 있습니다. 미리 정의된 매개 변수 조건(접두사, 접미사 등)을 충족하는 새 파일이 자동으로 대상 테이블에 수집됩니다. 
+지속적인 수집을 사용하면 원본 컨테이너의 새 파일을 수신 대기하는 Event Grid를 만들 수 있습니다. 미리 정의된 매개 변수 조건(접두사, 접미사 등)을 충족하는 새 파일이 자동으로 대상 테이블에 수집됩니다. 
 
 1. **연속 수집** 타일에서 **Event Grid** 를 선택하여 Azure Portal을 엽니다. 데이터 연결 페이지가 열립니다. 이벤트 그리드 데이터 커넥터가 열리고 원본 및 대상 매개 변수(원본 컨테이너, 테이블 및 매핑)가 이미 입력되어 있습니다.
     
