@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 1fa4c303624c62b7c43d2ddd0de58977ed6e42aa
-ms.sourcegitcommit: 608539af6ab511aa11d82c17b782641340fc8974
+ms.openlocfilehash: f8ae6bc55df90dc27fc329e9b49f63430cd77aba
+ms.sourcegitcommit: 335e05864e18616c10881db4ef232b9cda285d6a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92241331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97596824"
 ---
 # <a name="pattern-statement"></a>pattern 문
 
@@ -35,7 +35,7 @@ ms.locfileid: "92241331"
 declare pattern app;
 ```
 
-이 문은 Kusto를 `app` 패턴으로 지시 하지만,이 패턴을 해결 하는 방법에 대해서는 kusto에 지시 하지 않습니다. 따라서 쿼리에서이 패턴을 호출 하려고 하면 특정 오류가 발생 하 고 이러한 모든 호출이 나열 됩니다. 예를 들면 다음과 같습니다.
+이 문은 Kusto를 `app` 패턴으로 지시 하지만,이 패턴을 해결 하는 방법에 대해서는 kusto에 지시 하지 않습니다. 따라서 쿼리에서이 패턴을 호출 하려고 하면 특정 오류가 발생 하 고 이러한 모든 호출이 나열 됩니다. 예:
 
 ```kusto
 declare pattern app;
@@ -46,13 +46,13 @@ app("ApplicationX").StartEvents
 
 이 쿼리는 Kusto에서 다음 패턴 호출을 확인할 수 없음을 나타내는 오류를 생성 합니다. `app("ApplicationX")["StartEvents"]` 및 `app("ApplicationX")["StopEvents"]` .
 
-## <a name="syntax"></a>구문
+## <a name="syntax-of-pattern-declaration"></a>패턴 선언 구문
 
 `declare``pattern` *PatternName*
 
 ## <a name="pattern-definition"></a>패턴 정의
 
-패턴 문은 패턴을 정의 하는 데도 사용할 수 있습니다. 패턴 정의에서는 패턴의 가능한 모든 호출을 명시적으로 배치 하 고 해당 하는 테이블 형식 식을 제공 합니다. Kusto는 쿼리를 실행할 때 각 패턴 호출을 해당 하는 패턴 본문으로 바꿉니다. 예를 들면 다음과 같습니다.
+패턴 문은 패턴을 정의 하는 데도 사용할 수 있습니다. 패턴 정의에서는 패턴의 가능한 모든 호출을 명시적으로 배치 하 고 해당 하는 테이블 형식 식을 제공 합니다. Kusto는 쿼리를 실행할 때 각 패턴 호출을 해당 하는 패턴 본문으로 바꿉니다. 예:
 
 ```kusto
 declare pattern app = (applicationId:string)[eventType:string]
@@ -67,9 +67,9 @@ app("ApplicationX").StartEvents
 
 일치 되는 각 패턴에 대해 제공 되는 식은 테이블 이름 이거나 [let 문에](letstatement.md)대 한 참조입니다.
 
-## <a name="syntax"></a>구문
+## <a name="syntax-of-pattern-definition"></a>패턴 정의 구문
 
-`declare``pattern` *PatternName*  =  PatternName `(` *ArgName* `:` *Argtype* [ `,` ...] `)` [ `[` *경로 이름* `:` *pathargtype* `]` ]`{`
+`declare``pattern`   =  PatternName `(` *ArgName* `:` *Argtype* [ `,` ...] `)` [ `[` *경로 이름* `:` *pathargtype* `]` ]`{`
 &nbsp;&nbsp;&nbsp;&nbsp;`(` *ArgValue1* [ `,` *ArgValue2* ] `)` [ `.[` * pathvalue `]` ] `=` `{` *식* `};` &nbsp; &nbsp; &nbsp; &nbsp; [ &nbsp; &nbsp; &nbsp; &nbsp; `(` *ArgValue1_2* [ `,` *ArgValue2_2* ...] `)` [ `.[` *PathValue_2* `]` ] `=` `{` *expression_2* `};` &nbsp; &nbsp; &nbsp; &nbsp; ... &nbsp; &nbsp; &nbsp; &nbsp; ]        `}`
 
 * *PatternName*: pattern 키워드의 이름입니다. 키워드를 정의 하는 구문은 지정 된 키워드를 사용 하 여 모든 패턴 참조를 검색 하는 데만 사용할 수 있습니다.
@@ -88,7 +88,7 @@ app("ApplicationX").StartEvents
 * *PatternName* `(` *ArgValue1* [ `,` *ArgValue2* ] `).` *Pathvalue*
 * *PatternName* `(` *ArgValue1* [ `,` *ArgValue2* ] `).["` *Pathvalue*`"]`
 
-## <a name="notes"></a>메모
+## <a name="notes"></a>참고
 
 **시나리오**
 
@@ -125,7 +125,7 @@ union app("ApplicationX").*
 
 Kusto는 누락 된 단일 패턴 호출을 보고 `app("ApplicationX").["*"]` 합니다.
 
-## <a name="examples"></a>예
+## <a name="examples"></a>예제
 
 단일 패턴 호출 이상으로 쿼리 합니다.
 
@@ -171,7 +171,7 @@ declare pattern App = (applicationId:string)[scope:string]
 union (App('a2').Metrics), (App('a3').Metrics) 
 ```
 
-**의미 오류가 반환**됨:
+**의미 오류가 반환** 됨:
 
 > SEM0036: 하나 이상의 패턴 참조가 선언 되지 않았습니다. 검색 된 패턴 참조: ["App (' a2 '). [' 메트릭 '] "," 앱 (' a3 '). [' 메트릭 '] "].
 

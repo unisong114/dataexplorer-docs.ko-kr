@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2020
 no-loc: LOWESS
-ms.openlocfilehash: da384b1a907e4b524fc40f1c4133be5cf8e21c9c
-ms.sourcegitcommit: 4d5628b52b84f7564ea893f621bdf1a45113c137
+ms.openlocfilehash: 9a72905820a55f2fbd6f200514cac69450aa9277
+ms.sourcegitcommit: 335e05864e18616c10881db4ef232b9cda285d6a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96469766"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97596806"
 ---
 # <a name="series_fit_lowess_fl"></a>series_fit_lowess_fl()
 
@@ -23,7 +23,7 @@ ms.locfileid: "96469766"
 > * `series_fit_lowess_fl()` 는 [UDF (사용자 정의 함수)](../query/functions/user-defined-functions.md)입니다.
 > * 이 함수는 인라인 Python을 포함 하며 클러스터에서 [python () 플러그 인을 사용 하도록 설정](../query/pythonplugin.md#enable-the-plugin) 해야 합니다. 자세한 내용은 [사용](#usage)을 참조 하세요.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>구문
 
 `T | invoke series_fit_lowess_fl(`*y_series* `,` *y_fit_series* `, [` *fit_size* `, ` *x_series* `,` *x_istime*]`)`
 
@@ -35,7 +35,7 @@ ms.locfileid: "96469766"
 * *x_series*: [독립 변수](https://www.wikipedia.org/wiki/Dependent_and_independent_variables)를 포함 하는 열의 이름입니다 (x 또는 time 축). 이 매개 변수는 선택 사항이 며 [균일 하지 않게 간격이](https://www.wikipedia.org/wiki/Unevenly_spaced_time_series)지정 된 계열에만 필요 합니다. 기본 값은 빈 문자열입니다. x는 균일 하 게 배치 된 계열의 회귀에 대해 중복 됩니다.
 * *x_istime*:이 부울 매개 변수는 *x_series* 를 지정 하 고 datetime의 벡터 인 경우에만 필요 합니다. 이 매개 변수는 선택 사항이 며 기본값은 *False* 입니다.
 
-## <a name="usage"></a>사용량
+## <a name="usage"></a>사용
 
 `series_fit_lowess_fl()`[호출 연산자](../query/invokeoperator.md)를 사용 하 여 적용 되는 사용자 정의 함수 [테이블 형식 함수](../query/functions/user-defined-functions.md#tabular-function)입니다. 쿼리에 해당 코드를 포함 하거나 데이터베이스에 설치할 수 있습니다. Ad hoc 및 영구 사용의 두 가지 사용 옵션이 있습니다. 예제는 아래 탭을 참조 하세요.
 
@@ -137,7 +137,7 @@ series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int
 }
 ```
 
-### <a name="usage"></a>사용량
+### <a name="usage"></a>사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -163,39 +163,39 @@ demo_make_series1
 ### <a name="test-irregular-time-series"></a>불규칙 한 시계열 테스트
 
 다음 예제에서는 불규칙 (균일 하지 않게) 시계열을 테스트 합니다.
-    
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
-    ```kusto
-    let max_t = datetime(2016-09-03);
-    demo_make_series1
-    | where TimeStamp between ((max_t-1d)..max_t)
-    | summarize num=count() by bin(TimeStamp, 5m), OsVer
-    | order by TimeStamp asc
-    | where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create irregular time series
-    | summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
-    | extend fnum = dynamic(null)
-    | invoke series_fit_lowess_fl('num', 'fnum', 9, 'TimeStamp', True)
-    | render timechart 
-    ```
-    
-    :::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series" border="false":::
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+let max_t = datetime(2016-09-03);
+demo_make_series1
+| where TimeStamp between ((max_t-1d)..max_t)
+| summarize num=count() by bin(TimeStamp, 5m), OsVer
+| order by TimeStamp asc
+| where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create irregular time series
+| summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
+| extend fnum = dynamic(null)
+| invoke series_fit_lowess_fl('num', 'fnum', 9, 'TimeStamp', True)
+| render timechart 
+```
+
+:::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points :::no-loc (LOWESS)::: 불규칙 한 시계열에 맞추기 "border =" false ":::
 
 비교 LOWESS 및 다항식 맞추기
 
 다음 예제에는 x 및 y 축에 노이즈가 있는 다섯 번째 순서 다항식이 포함 되어 있습니다. 비교와 다항식의 일치를 참조 하세요 LOWESS . 
 
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
-    ```kusto
-    range x from 1 to 200 step 1
-    | project x = rand()*5 - 2.3
-    | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
-    | extend y = y + (rand() - 0.5)*0.5*y
-    | summarize x=make_list(x), y=make_list(y)
-    | extend y_lowess = dynamic(null)
-    | invoke series_fit_lowess_fl('y', 'y_lowess', 15, 'x')
-    | extend series_fit_poly(y, x, 5)
-    | project x, y, y_lowess, y_polynomial=series_fit_poly_y_poly_fit
-    | render linechart
-    ```
-        
-    :::image type="content" source="images/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+range x from 1 to 200 step 1
+| project x = rand()*5 - 2.3
+| extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
+| extend y = y + (rand() - 0.5)*0.5*y
+| summarize x=make_list(x), y=make_list(y)
+| extend y_lowess = dynamic(null)
+| invoke series_fit_lowess_fl('y', 'y_lowess', 15, 'x')
+| extend series_fit_poly(y, x, 5)
+| project x, y, y_lowess, y_polynomial=series_fit_poly_y_poly_fit
+| render linechart
+```
+
+:::image type="content" source="images/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of :::no-loc (LOWESS)::: vs 다항식은 x & y 축에 노이즈가 있는 다섯 번째 순서 다항식에 적합 합니다. ":::

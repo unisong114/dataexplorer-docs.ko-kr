@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 98888ddd5dd6155c9476163337e7c031e0f84a1e
-ms.sourcegitcommit: afc369ab4c4bcc74f2dce22b397a340572db8ecf
+ms.openlocfilehash: 918d0f2f7fa8667a4cf90b2813bb3b80dd49fa78
+ms.sourcegitcommit: 335e05864e18616c10881db4ef232b9cda285d6a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528149"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97596858"
 ---
 # <a name="python-plugin"></a>Python 플러그 인
 
@@ -32,7 +32,7 @@ Python 플러그 인은 Python 스크립트를 사용 하 여 UDF (사용자 정
 
 * *output_schema*: `type` Python 코드에서 반환 하는 테이블 형식 데이터의 출력 스키마를 정의 하는 리터럴입니다.
     * 형식은 `typeof(` *ColumnName* `:` *ColumnType*[, ...] `)` 입니다. 예를 들면 `typeof(col1:string, col2:long)` 입니다.
-    * 입력 스키마를 확장 하려면 다음 구문을 사용 합니다.`typeof(*, col1:string, col2:long)`
+    * 입력 스키마를 확장 하려면 다음 구문을 사용 합니다. `typeof(*, col1:string, col2:long)`
 * *script*: `string` 실행할 유효한 Python 스크립트에 해당 하는 리터럴입니다.
 * *script_parameters*: 선택적 `dynamic` 리터럴입니다. 이름/값 쌍의 속성 모음으로 Python 스크립트에 예약 된 사전으로 전달 됩니다 `kargs` . 자세한 내용은 [예약 된 Python 변수](#reserved-python-variables)를 참조 하세요.
 * *힌트. 배포*: 여러 클러스터 노드에 분산 될 플러그 인의 실행에 대 한 선택적 힌트입니다.
@@ -134,7 +134,7 @@ print "This is an example for using 'external_artifacts'"
     * 또한 [partition 연산자](partitionoperator.md) 를 사용 하 여 입력 데이터 집합을 분할할 수 있습니다.
 * 가능 하면 Kusto의 쿼리 언어를 사용 하 여 Python 스크립트의 논리를 구현 합니다.
 
-    ## <a name="example"></a>예제
+    ### <a name="example"></a>예제
 
     ```kusto    
     .show operations
@@ -150,16 +150,16 @@ print "This is an example for using 'external_artifacts'"
 
 ## <a name="usage-tips"></a>사용 팁
 
-* 에서 Python 스크립트를 포함 하는 여러 줄 문자열을 생성 하려면 즐겨 사용 하는 `Kusto.Explorer` python 편집기 (*Jupyter*, *Visual Studio Code*, *PyCharm*등)에서 python 스크립트를 복사 합니다. 
+* 에서 Python 스크립트를 포함 하는 여러 줄 문자열을 생성 하려면 즐겨 사용 하는 `Kusto.Explorer` python 편집기 (*Jupyter*, *Visual Studio Code*, *PyCharm* 등)에서 python 스크립트를 복사 합니다. 
   이제 다음 중 하나를 수행 합니다.
-    * **F2** 키를 눌러 *Python에서 편집* 창을 엽니다. 이 창에 스크립트를 붙여 넣습니다. **확인**을 선택합니다. 스크립트는 따옴표와 새 줄로 데코 레이트 되므로 Kusto에서 유효 하 고 쿼리 탭에 자동으로 붙여 넣습니다.
-    * Python 코드를 쿼리 탭에 직접 붙여 넣습니다. 해당 줄을 선택 하 고 **ctrl + K**, **ctrl + S** 바로 가기 키를 눌러 위와 같이 데코 레이트 합니다. 반대로 하려면 **ctrl + K**, **ctrl + M** 바로 가기 키를 누릅니다. [쿼리 편집기 바로 가기](../tools/kusto-explorer-shortcuts.md#query-editor)의 전체 목록을 참조 하세요.
+    * **F2** 키를 눌러 *Python에서 편집* 창을 엽니다. 이 창에 스크립트를 붙여 넣습니다. **확인** 을 선택합니다. 스크립트는 따옴표와 새 줄로 데코 레이트 되므로 Kusto에서 유효 하 고 쿼리 탭에 자동으로 붙여 넣습니다.
+    * Python 코드를 쿼리 탭에 직접 붙여 넣습니다. 이러한 줄을 선택 하 고 **ctrl + K**, **ctrl + S** 바로 가기 키를 눌러 위와 같이 데코 레이트 합니다. 반대로 하려면 **ctrl + K**, **ctrl + M** 바로 가기 키를 누릅니다. [쿼리 편집기 바로 가기](../tools/kusto-explorer-shortcuts.md#query-editor)의 전체 목록을 참조 하세요.
 * Kusto 문자열 구분 기호와 Python 문자열 리터럴 사이의 충돌을 방지 하려면 다음을 사용 합니다.
      * `'`Kusto 쿼리의 kusto 문자열 리터럴에 대 한 작은따옴표 ()
      * Python `"` 스크립트의 python 문자열 리터럴에 대 한 큰따옴표 문자 ()
 * [ `externaldata` 연산자](externaldata-operator.md) 를 사용 하 여 Azure Blob storage와 같은 외부 위치에 저장 한 스크립트의 콘텐츠를 가져올 수 있습니다.
   
-    ## <a name="example"></a>예제
+    ### <a name="example"></a>예제
 
     ```kusto
     let script = 

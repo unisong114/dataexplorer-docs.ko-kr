@@ -7,14 +7,14 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/13/2020
-ms.openlocfilehash: 6678f17624225895734781f32782ed5b9bd79955
-ms.sourcegitcommit: fcaf3056db2481f0e3f4c2324c4ac956a4afef38
+ms.openlocfilehash: 9d34fa3d880b4888cd7f43913644e9cba8b4ca9d
+ms.sourcegitcommit: 335e05864e18616c10881db4ef232b9cda285d6a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97389175"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97596841"
 ---
-# <a name="series_rate_fl"></a>series_rate_fl ()
+# <a name="series_rate_fl"></a>series_rate_fl()
 
 
 함수는 `series_rate_fl()` 초당 평균 메트릭 증가율을 계산 합니다. 해당 논리는 PromQL [rate ()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) 함수를 따릅니다. 이는 수집 () [모니터링 시스템에서 Azure](https://prometheus.io/) 데이터 탐색기에 대 한 시간 일련의 카운터 메트릭에 사용 되며 [series_metric_fl ()](series-metric-fl.md)에서 검색 됩니다.
@@ -31,8 +31,9 @@ ms.locfileid: "97389175"
 ## <a name="arguments"></a>인수
 
 * *n_bins*: 요율 계산을 위해 추출 된 메트릭 값 사이의 간격을 지정 하는 bin 수입니다. 함수는 현재 샘플과 이전 *n_bins* 사이의 차이를 계산 하 고 해당 타임 스탬프의 차이 (초)로 나눕니다. 이 매개 변수는 선택 사항이 며 기본값은 하나의 bin입니다. 기본 설정은 [irate ()](https://prometheus.io/docs/prometheus/latest/querying/functions/#irate)를 계산 하 고, PromQL 즉각적인 rate 함수를 계산 합니다.
+* *fix_reset*: 카운터 다시 설정을 확인할 지 여부를 제어 하 고 PromQL [rate ()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) 함수 처럼 정확한 지 여부를 제어 하는 부울 플래그입니다. 이 매개 변수는 선택 사항이 며 기본값은 `true` 입니다. `false`재설정을 확인할 필요가 없는 경우 중복 분석을 저장 하려면로 설정 합니다.
 
-## <a name="usage"></a>사용량
+## <a name="usage"></a>사용
 
 `series_rate_fl()`[호출 연산자](../query/invokeoperator.md)를 사용 하 여 적용 되는 사용자 정의 [테이블 형식 함수](../query/functions/user-defined-functions.md#tabular-function)입니다. 쿼리에 해당 코드를 포함 하거나 데이터베이스에 설치할 수 있습니다. Ad hoc 및 영구 사용의 두 가지 사용 옵션이 있습니다. 예제는 아래 탭을 참조 하세요.
 
@@ -45,16 +46,22 @@ ms.locfileid: "97389175"
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_rate_fl=(tbl:(timestamp:dynamic, name:string, labels:string, value:dynamic), n_bins:int=1)
+let series_rate_fl=(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
 {
     tbl
+    | where fix_reset                                                   //  Prometheus counters can only go up
+    | mv-apply value to typeof(double) on   
+    ( extend correction = iff(value < prev(value), prev(value), 0.0)    // if the value decreases we assume it was reset to 0, so add last value
+    | extend cum_correction = row_cumsum(correction)
+    | extend corrected_value = value + cum_correction
+    | summarize value = make_list(corrected_value))
+    | union (tbl | where not(fix_reset))
     | extend timestampS = array_shift_right(timestamp, n_bins), valueS = array_shift_right(value, n_bins)
     | extend dt = series_subtract(timestamp, timestampS)
     | extend dt = series_divide(dt, 1e7)                              //  converts from ticks to seconds
     | extend dv = series_subtract(value, valueS)
-    | extend dv = array_iff(series_greater_equals(dv, 0), dv, value)  //  handles negative difference like PromQL
     | extend rate = series_divide(dv, dt)
-    | project timestamp, name, rate, labels
+    | project-away dt, dv, timestampS, value, valueS
 }
 ;
 //
@@ -73,20 +80,26 @@ demo_prometheus
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Simulate PromQL rate()")
-series_rate_fl(tbl:(timestamp:dynamic, name:string, labels:string, value:dynamic), n_bins:int=1)
+series_rate_fl(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
 {
     tbl
+    | where fix_reset                                                   //  Prometheus counters can only go up
+    | mv-apply value to typeof(double) on   
+    ( extend correction = iff(value < prev(value), prev(value), 0.0)    // if the value decreases we assume it was reset to 0, so add last value
+    | extend cum_correction = row_cumsum(correction)
+    | extend corrected_value = value + cum_correction
+    | summarize value = make_list(corrected_value))
+    | union (tbl | where not(fix_reset))
     | extend timestampS = array_shift_right(timestamp, n_bins), valueS = array_shift_right(value, n_bins)
     | extend dt = series_subtract(timestamp, timestampS)
     | extend dt = series_divide(dt, 1e7)                              //  converts from ticks to seconds
     | extend dv = series_subtract(value, valueS)
-    | extend dv = array_iff(series_greater_equals(dv, 0), dv, value)  //  handles negative difference like PromQL
     | extend rate = series_divide(dv, dt)
-    | project timestamp, name, rate, labels
+    | project-away dt, dv, timestampS, value, valueS
 }
 ```
 
-### <a name="usage"></a>사용량
+### <a name="usage"></a>사용
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -100,7 +113,7 @@ demo_prometheus
 
 :::image type="content" source="images/series-rate-fl/all-disks-write-rate-2-bins.png" alt-text="모든 디스크에 대 한 디스크 쓰기 메트릭의 초당 요율을 보여 주는 그래프" border="false":::
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
 
 다음 예에서는 두 호스트의 주 디스크를 선택 하 고 함수가 이미 설치 된 것으로 가정 합니다. 이 예에서는 첫 번째 매개 변수로 입력 테이블을 지정 하는 대체 직접 호출 구문을 사용 합니다.
     
