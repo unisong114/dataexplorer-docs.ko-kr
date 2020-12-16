@@ -8,18 +8,55 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
-ms.openlocfilehash: e05f8204ba1e81b9391b6b63f190b81e1db73338
-ms.sourcegitcommit: 80f0c8b410fa4ba5ccecd96ae3803ce25db4a442
+ms.openlocfilehash: efa7c3237ce85938634b1c8b31b1c3e10d01a6f8
+ms.sourcegitcommit: 35236fefb52978ce9a09bc36affd5321acb039a4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96321049"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97514091"
 ---
 # <a name="cluster-follower-commands"></a>클러스터 종동체 명령
 
 종동체 클러스터 구성을 관리 하기 위한 제어 명령이 아래에 나열 되어 있습니다. 이러한 명령은 동기적으로 실행 되지만 다음 정기 스키마 새로 고침에 적용 됩니다. 따라서 새 구성이 적용 될 때까지 몇 분 정도 지연 될 수 있습니다.
 
 종동체 명령에는 [데이터베이스 수준 명령과](#database-level-commands) [테이블 수준 명령이](#table-level-commands)있습니다.
+
+## <a name="database-policy-overrides"></a>데이터베이스 정책 재정의
+
+팔 로우 하는 데이터베이스에는 팔로 워 클러스터에서 재정의 된 [캐싱 정책](#caching-policy) 및 [권한 있는 사용자](#authorized-principals) 의 데이터베이스 수준 정책이 있을 수 있습니다.
+
+### <a name="caching-policy"></a>캐싱 정책
+
+종동체 클러스터에 대 한 기본 [캐싱 정책은](cachepolicy.md) 리더 클러스터 데이터베이스 및 테이블 수준 캐싱 정책을 유지 합니다.
+
+|옵션             |Description                                                                                                                                                                                                           |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|**없음**(기본값) |사용 되는 캐싱 정책은 원본 데이터베이스 (리더 클러스터)에 정의 된 캐싱 정책입니다.                                                                                                                           |
+|**replace**        |리더 클러스터 데이터베이스의 원본 데이터베이스 및 테이블 수준 캐싱 정책이 제거 됩니다 (로 설정 `null` ). 이러한 데이터베이스는 정의 된 경우 데이터베이스 및 테이블 수준 재정의 정책에 정의 된 것으로 대체 됩니다.|
+|**union**          |리더 클러스터 데이터베이스의 원본 데이터베이스 및 테이블 수준 캐싱 정책은 데이터베이스 및 테이블 수준 재정의 정책에 정의 된 데이터베이스와 결합 됩니다.                                              |
+
+> [!NOTE]
+>  * 재정의 데이터베이스 및 테이블 수준 캐싱 정책의 컬렉션이 *비어* 있는 경우 *모든 것* 이 기본적으로 캐시 됩니다.
+>  * 데이터베이스 수준 캐싱 정책 재정의를로 설정 하면 `0d` 기본적으로 캐시 되지 *않습니다* .
+
+### <a name="authorized-principals"></a>권한 있는 보안 주체
+
+권한이 부여 된 기본 [보안 주체](access-control/index.md#authorization) 는 리더 클러스터에 권한이 부여 된 보안 주체의 원본 데이터베이스를 유지 합니다.
+
+|옵션             |Description                                                                                                                              |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+|**없음**(기본값) |사용 되는 인증 된 보안 주체는 원본 데이터베이스 (리더 클러스터)에 정의 되어 있습니다.                                         |
+|**replace**        |리더 클러스터 인증 된 보안 주체의 원본 데이터베이스는 권한 부여 된 보안 주체에 정의 된 것으로 대체 됩니다.  |
+|**union**          |리더 클러스터 인증 된 보안 주체의 원본 데이터베이스는 결합 권한 부여 된 보안 주체에 정의 된 것과 같습니다. |
+
+> [!NOTE]
+> 권한 부여 된 보안 주체의 컬렉션이 *비어* 있는 경우에는 데이터베이스 수준 보안 주체가 없습니다.
+
+## <a name="table-policy-overrides"></a>테이블 정책 재정의
+
+팔 로우 하는 데이터베이스의 테이블에는 종동체 클러스터에서 재정의 된 테이블 수준 [캐싱 정책이](cachepolicy.md) 있을 수 있습니다.
+기본값은 원본 테이블의 캐싱 정책을 유지 하는 것입니다. 이 정책이 원본 데이터베이스에 있으면 종동체 클러스터에서 적용 됩니다.
+`replace`옵션은 지원 됨-이 옵션을 사용 하는 경우 원본 테이블의 캐싱 정책이 재정의로 정의 된 것으로 대체 됩니다.
 
 ## <a name="database-level-commands"></a>데이터베이스 수준 명령
 
@@ -35,7 +72,7 @@ ms.locfileid: "96321049"
 
 **출력** 
 
-| 출력 매개 변수                     | 형식    | 설명                                                                                                        |
+| 출력 매개 변수                     | 유형    | Description                                                                                                        |
 |--------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------|
 | DatabaseName                         | String  | 뒤에 오는 데이터베이스의 이름입니다.                                                                           |
 | LeaderClusterMetadataPath            | String  | 리더 클러스터의 메타 데이터 컨테이너에 대 한 경로입니다.                                                               |
@@ -84,7 +121,7 @@ ms.locfileid: "96321049"
 
 **구문**
 
-`.delete``follower` `database` *DatabaseName* DatabaseName `policy``caching`
+`.delete``follower` `database`  DatabaseName `policy``caching`
 
 **예제**
 
@@ -106,7 +143,7 @@ ms.locfileid: "96321049"
 
 **구문**
 
-`.add``follower` `database` *DatabaseName* ( `admins`  |  `users`  |  `viewers`  |  `monitors` ) Role `(` *principal1* `,` principal1 `,` ... *Principaln* `)` [ `'` *참고* `'` ]
+`.add``follower` `database` *DatabaseName* ( `admins`  |  `users`  |  `viewers`  |  `monitors` ) Role `(`  `,` principal1 `,` ... *Principaln* `)` [ `'` *참고* `'` ]
 
 **예제**
 
@@ -128,7 +165,7 @@ ms.locfileid: "96321049"
 
 **구문**
 
-`.drop``follower` `database` *DatabaseName* ( `admins`  |  `users`  |  `viewers`  |  `monitors` ) `(` *principal1* `,` principal1 `,` ... *Principaln*`)`
+`.drop``follower` `database` *DatabaseName* ( `admins`  |  `users`  |  `viewers`  |  `monitors` ) `(`  `,` principal1 `,` ... *Principaln*`)`
 
 **예제**
 
@@ -220,7 +257,7 @@ ms.locfileid: "96321049"
 
 `.alter``follower` `database` *DatabaseName* 테이블 *TableName* `policy` `caching` `hot` `=` *HotDataSpan*
 
-`.alter``follower` `database` *DatabaseName* tables `(` *TableName1* `,` TableName1 `,` ... *TableNameN* `)` `policy` `caching` `hot` `=` *HotDataSpan*
+`.alter``follower` `database` *DatabaseName* tables `(`  `,` TableName1 `,` ... *TableNameN* `)` `policy` `caching` `hot` `=` *HotDataSpan*
 
 **예제**
 
@@ -242,9 +279,9 @@ ms.locfileid: "96321049"
 
 **구문**
 
-`.delete``follower` `database` *DatabaseName* `table` *TableName* TableName `policy``caching`
+`.delete``follower` `database` *DatabaseName* `table`  TableName `policy``caching`
 
-`.delete``follower` `database` *DatabaseName* `tables` `(` *TableName1* `,` TableName1 `,` ... *TableNameN* `)` `policy``caching`
+`.delete``follower` `database` *DatabaseName* `tables` `(`  `,` TableName1 `,` ... *TableNameN* `)` `policy``caching`
 
 **예제**
 
@@ -297,7 +334,7 @@ ms.locfileid: "96321049"
 |LeaderClusterMetadataPath            | `https://storageaccountname.blob.core.windows.net/cluster` |
 |CachingPolicyOverride                | null                                                     |
 |AuthorizedPrincipalsOverride         | []                                                       |
-|AuthorizedPrincipalsModificationKind | 없음                                                     |
+|AuthorizedPrincipalsModificationKind | None                                                     |
 |IsAutoPrefetchEnabled                | False                                                    |
 |TableMetadataOverrides               |                                                          |
 |CachingPoliciesModificationKind      | Union                                                    |                                                                                                                      |
@@ -320,7 +357,7 @@ ms.locfileid: "96321049"
 .show database MyDatabase principals
 ```
 
-| Role                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 참고 |
+| 역할                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | 메모 |
 |----------------------------|---------------|---------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------|-------|
 | 데이터베이스 MyDatabase 관리자  | AAD 사용자      | 잭 Kusto (upn: jack@contoso.com )       | 12345678-abcd-efef-1234-350bf486087b | aaduser = 87654321-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
 | 데이터베이스 MyDatabase 뷰어 | AAD 사용자      | Jill Kusto (upn: jack@contoso.com )       | abcdefab-abcd-efef-1234-350bf486087b | aaduser = 54321789-abcd-efef-1234-350bf486087b; 55555555-4444-3333-2222-2d7cd011db47 |       |
@@ -338,7 +375,7 @@ ms.locfileid: "96321049"
 
 #### <a name="override-caching-policies"></a>캐싱 정책 재정의
 
-각 테이블에 데이터를 캐시 하지 않도록 설정 하 여에 대 한 데이터베이스 및 테이블 수준 캐싱 정책의 컬렉션을 대체 합니다 `MyDatabase` `MyFollowerCluster` . 즉, 두 개의 특정 테이블을 제외 하 *not* `MyTable1` `MyTable2` `1d` 고 각각 및의 기간에 대해 데이터를 캐시 합니다 `3d` .
+각 테이블에 데이터를 캐시 하지 않도록 설정 하 여에 대 한 데이터베이스 및 테이블 수준 캐싱 정책의 컬렉션을 대체 합니다 `MyDatabase` `MyFollowerCluster` . 즉, 두 개의 특정 테이블을 제외 하  `MyTable1` `MyTable2` `1d` 고 각각 및의 기간에 대해 데이터를 캐시 합니다 `3d` .
 
 ```kusto
 .alter follower database MyDatabase policy caching hot = 0d
