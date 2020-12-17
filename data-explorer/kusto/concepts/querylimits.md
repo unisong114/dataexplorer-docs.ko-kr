@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 3b230ea0ed8bba80741e18f24cd96cf271224f25
-ms.sourcegitcommit: e278dae04f12658d0907f7b6ba46c6a34c53dcd7
+ms.openlocfilehash: be8d6e9172364d4177e7421e524cc067e4d58d18
+ms.sourcegitcommit: 66577436bcd1106f10fc9c0f233ee17b94478323
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96901106"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97532190"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -128,6 +128,9 @@ T | where rand() < 0.1 | ...
 T | where hash(UserId, 10) == 1 | ...
 ```
 
+클라이언트 요청 속성과 `set`문을 사용할 때 `maxmemoryconsumptionperiterator`가 여러 번 설정된 경우 *더 낮은* 값이 적용됩니다.
+
+
 ## <a name="limit-on-memory-per-node"></a>노드당 메모리 제한
 
 **노드당 쿼리별 최대 메모리** 는 "런어웨이" 쿼리를 보호하는 데 사용하는 또 다른 제한입니다. 요청 옵션 `max_memory_consumption_per_query_per_node`로 표시되는 이 제한은 단일 노드에서 특정 쿼리에 사용할 수 있는 메모리 양의 상한을 설정합니다.
@@ -136,6 +139,8 @@ T | where hash(UserId, 10) == 1 | ...
 set max_memory_consumption_per_query_per_node=68719476736;
 MyTable | ...
 ```
+
+클라이언트 요청 속성과 `set`문을 사용할 때 `max_memory_consumption_per_query_per_node`가 여러 번 설정된 경우 *더 낮은* 값이 적용됩니다.
 
 ## <a name="limit-on-accumulated-string-sets"></a>누적 문자열 세트 제한
 
@@ -176,10 +181,19 @@ Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too
 Kusto에서는 쿼리를 실행하고 클러스터가 보유한 CPU 리소스를 모두 사용할 수 있습니다. Kusto는 두 개 이상의 쿼리가 실행 중일 때 쿼리 간에 공평한 라운드 로빈을 시도합니다. 이 방법은 임시 쿼리의 성능을 극대화합니다.
 특정 쿼리에 사용되는 CPU 리소스를 제한하고 싶은 경우가 있습니다. 예를 들어 "백그라운드 작업"을 실행할 때 시스템에서는 동시 임시 쿼리에 높은 우선 순위를 부여하기 위해 높은 대기 시간을 허용해야 할 수 있습니다.
 
-Kusto는 쿼리를 실행할 때 두 [클라이언트 요청 속성](../api/netfx/request-properties.md)을 지정할 수 있도록 지원합니다. 속성은 *query_fanout_threads_percent* 및 *query_fanout_nodes_percent* 입니다.
-두 속성은 기본적으로 최댓값(100)으로 지정되는 정수이지만, 쿼리에 따라 다른 값으로 줄일 수 있습니다. 
+Kusto는 쿼리를 실행할 때 두 [클라이언트 요청 속성](../api/netfx/request-properties.md)을 지정할 수 있도록 지원합니다.
+속성은 *query_fanout_threads_percent* 및 *query_fanout_nodes_percent* 입니다.
+두 속성은 기본적으로 최댓값(100)으로 지정되는 정수이지만, 쿼리에 따라 다른 값으로 줄일 수 있습니다.
 
-첫 번째 속성 *query_fanout_threads_percent* 는 스레드 사용에 대한 팬아웃 요소를 제어합니다. 100%이면 클러스터는 각 노드의 모든 CPU를 할당합니다. 예를 들어 한 클러스터의 CPU 16개가 Azure D14 노드에 배포됩니다. 50%이면 CPU의 절반이 사용됩니다. 숫자는 전체 CPU로 반올림되므로 0으로 설정하는 것이 안전합니다. 두 번째 속성 *query_fanout_nodes_percent* 는 하위 쿼리 배포 작업에 사용할 클러스터의 노드 수를 제어합니다. 작동 방식은 비슷합니다.
+첫 번째 속성 *query_fanout_threads_percent* 는 스레드 사용에 대한 팬아웃 요소를 제어합니다.
+100%이면 클러스터는 각 노드의 모든 CPU를 할당합니다. 예를 들어 한 클러스터의 CPU 16개가 Azure D14 노드에 배포됩니다.
+50%이면 CPU의 절반이 사용됩니다.
+숫자는 전체 CPU로 반올림되므로 0으로 설정하는 것이 안전합니다.
+
+두 번째 속성 *query_fanout_nodes_percent* 는 하위 쿼리 배포 작업에 사용할 클러스터의 노드 수를 제어합니다.
+작동 방식은 비슷합니다.
+
+클라이언트 요청 속성과 `set`문을 사용할 때 `query_fanout_nodes_percent` 또는 `query_fanout_threads_percent`가 여러 번 설정된 경우 *더 낮은* 값이 적용됩니다.
 
 ## <a name="limit-on-query-complexity"></a>쿼리 복잡성 제한
 
