@@ -11,12 +11,12 @@ ms.date: 02/13/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: b8ad39e8c1233acc2df6c30059a6926cea85f37a
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 449a5043d26013c8a41ab6fafe0b3c907a22686b
+ms.sourcegitcommit: 1530a38181ec92ed1c2c1f3aa2a75f69bd3e9045
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512811"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822766"
 ---
 # <a name="union-operator"></a>union 연산자
 
@@ -65,6 +65,10 @@ Table1 | union Table2, Table3
     *  테이블 이름입니다(예: `Events`).
     *  괄호로 묶어야 하는 쿼리 식입니다(예: `(Events | where id==42)`).
     *  와일드 카드를 사용하여 지정한 테이블 집합입니다. 예를 들어 `E*`는 데이터베이스에서 `E`로 시작하는 이름의 모든 테이블에 대한 합집합을 만듭니다.
+
+> [!NOTE]
+> 테이블 목록이 확인된 경우 항상 와일드카드를 사용하여 구체화합니다. 테이블이 매우 많아서 비효율적으로 실행될 수 있는 작업 영역도 있습니다. 또한 테이블이 점점 추가되어 예기치 못한 결과를 초래할 수도 있습니다.
+    
 * `kind`: 
     * `inner` - 결과에는 모든 입력 테이블에 공통인 열의 하위 집합이 있습니다.
     * `outer` - (기본값). 입력에서 발생하는 모든 열이 결과에 포함됩니다. 입력 행에서 정의되지 않은 셀은 `null`로 설정됩니다.
@@ -149,7 +153,7 @@ union isfuzzy=true
 |---|
 |2|
 
-쿼리 상태 관찰- `Failed to resolve entity 'View_3'`이라는 경고가 반환됩니다.
+쿼리 상태 관찰- `Failed to resolve entity 'View_3'`라는 경고가 반환됩니다.
 
 ```kusto
 // Using union isfuzzy=true and wildcard access:

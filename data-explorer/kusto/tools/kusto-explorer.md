@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 0086fb9f649d7bb3b7031521812c1dff0ca532f7
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 2c23633c13c2a58f3c6e6e9b9daf001942117bfb
+ms.sourcegitcommit: 1530a38181ec92ed1c2c1f3aa2a75f69bd3e9045
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95513066"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822834"
 ---
 # <a name="kustoexplorer-installation-and-user-interface"></a>Kusto.Explorer 설치 및 사용자 인터페이스
 
@@ -325,6 +325,11 @@ Kusto.Explorer는 결과 패널에서 각 행의 심각도 또는 세부 정보 
 출력 색 구성표를 수정하거나 이 동작을 해제하려면 **도구** 메뉴에서 **옵션** > **결과 뷰어** > **색 구성표 세부 정보 표시** 를 차례로 선택합니다.
 
 :::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer 색 구성표 수정":::
+
+
+**Excel** 색 구성표 범례| **비비드** 색 구성표 범례
+|---|---
+| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Kusto Explorer의 Excel 색 구성표 범례 스크린샷" border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Kusto Explorer의 비비드 색 구성표 범례 스크린샷" border="false":::
 
 ## <a name="next-steps"></a>다음 단계
 

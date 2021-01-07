@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/22/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 38b67a0843cc38c2cbce7d5a41a8eff85b25ebd5
-ms.sourcegitcommit: 7edce9d9d20f9c0505abda67bb8cc3d2ecd60d15
+ms.openlocfilehash: b20d9a3e6c01f59a9cde44d6462ffeb0072473ed
+ms.sourcegitcommit: 1530a38181ec92ed1c2c1f3aa2a75f69bd3e9045
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96524303"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822885"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
@@ -88,7 +88,8 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 1. 다음 쿼리를 복사하여 쿼리 창에서 첫 번째 쿼리 아래에 붙여넣습니다. 첫 번째 쿼리와 같이 별도의 줄에 형식이 지정되지 않는 방법을 확인합니다.
 
     ```kusto
-    StormEvents | sort by StartTime desc | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
+    StormEvents | sort by StartTime desc 
+    | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
     ```
 
 1. 새 쿼리를 선택합니다. *Shift+Alt+F* 를 눌러 쿼리 형식을 지정합니다. 이 쿼리는 다음 쿼리와 같습니다.
@@ -247,6 +248,7 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
 * [환경 설정 내보내기](#export-environment-settings)
 * [환경 설정 가져오기](#import-environment-settings)
+* [오류 수준 강조 표시](#highlight-error-levels)
 * [로컬 상태 지우기](#clean-up-resources)
 
 오른쪽 위에서 설정 아이콘(:::image type="icon" source="media/web-query-data/settings-icon.png" border="false":::)을 선택하여 **설정** 창을 엽니다.
@@ -277,6 +279,21 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
 > [!NOTE]
 > **가져오기** 는 모든 기존 환경 설정 및 데이터를 재정의합니다.
+
+### <a name="highlight-error-levels"></a>오류 수준 강조 표시
+
+Kusto는 결과 패널에서 각 행의 심각도 또는 세부 정보 표시 수준을 해석하고 이에 따라 색을 지정합니다. 이렇게 하려면 각 열의 고유 값을 알려진 패턴 세트("경고", "오류" 등)와 일치시킵니다. 
+
+오류 수준 강조 표시를 사용하려면 다음을 수행합니다.
+
+1. 사용자 이름 옆에 있는 **설정** 아이콘을 선택합니다.
+1. **모양** 탭을 선택하고 오른쪽에 있는 **오류 수준 강조 표시 사용** 옵션을 설정/해제합니다. 
+
+:::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="설정에서 오류 수준 강조 표시를 사용하도록 설정하는 방법을 보여 주는 애니메이션 GIF":::
+
+**밝게** 모드의 오류 수준 색 구성표 | **어둡게** 모드의 오류 수준 색 구성표
+|---|---|
+:::image type="content" source="media/web-query-data/light-mode.png" alt-text="밝게 모드의 색 범례 스크린샷"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="어둡게 모드의 색 범례 스크린샷":::
 
 ## <a name="provide-feedback"></a>피드백 제공
 

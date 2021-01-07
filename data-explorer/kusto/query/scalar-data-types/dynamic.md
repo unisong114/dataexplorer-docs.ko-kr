@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 582683a9261d84fa24d819b5234e58effaf90a97
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 2ef75f2249466a9796fb0313186546bd9088ff07
+ms.sourcegitcommit: 28f18c3500992fd7dcfd95dffe2bae0161a22ca3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512029"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97792934"
 ---
 # <a name="the-dynamic-data-type"></a>dynamic 데이터 형식
 
@@ -163,6 +163,8 @@ JSON 인코딩 규칙을 따르는 `string` 값을 `dynamic` 값으로 구문 �
 * [make_set_iffuel](../makesetif-aggfunction.md)는 모든 고유 값이 포함된 배열을 반환합니다(조건자 사용).
 
 ## <a name="operators-and-functions-over-dynamic-types"></a>동적 형식에 대한 연산자 및 함수
+
+스칼라 동적/배열 함수에 대한 전체 목록은 [동적/배열 함수](../scalarfunctions.md#dynamicarray-functions)를 참조하세요.
 
 |연산자 또는 함수|동적 데이터 형식 사용|
 |---|---|

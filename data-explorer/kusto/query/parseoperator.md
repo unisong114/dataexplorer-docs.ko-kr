@@ -9,17 +9,16 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 2b034719fa7c2f3714020c722b5717f5cf8590ff
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: a9da3735df9299b387188157bbae3d561f5de631
+ms.sourcegitcommit: f20619fac91f9bb2e6507cac10d41fb8425218e0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512964"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97811772"
 ---
 # <a name="parse-operator"></a>parse 연산자
 
-문자열 식을 평가하고 해당 값을 계산 열 하나 이상으로 구문 분석합니다. 구문 분석되지 않은 문자열의 경우 계산 열에 null이 포함됩니다.
-자세한 내용은 [parse-where 연산자](parsewhereoperator.md)를 참조하세요.
+문자열 식을 평가하고 해당 값을 계산 열 하나 이상으로 구문 분석합니다. 구문 분석되지 않은 문자열의 경우 계산 열에 null이 포함됩니다. 구문 분석에 실패한 행을 사용하지 않아도 되는 경우 [parse-where 연산자](parsewhereoperator.md)를 사용하는 것이 좋습니다.
 
 ```kusto
 T | parse Text with "ActivityName=" name ", ActivityType=" type
@@ -87,7 +86,7 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
 `parse` 연산자는 동일한 `string` 식에서 여러 `extract` 애플리케이션을 사용하여 테이블을 `extend`(확장)하는 효율적인 방식을 제공합니다. 이 결과는 테이블에 개별 열로 분할하려는 여러 값이 포함된 `string` 열이 있는 경우에 유용합니다. 예를 들어 개발자 추적("`printf`"/"`Console.WriteLine`") 문으로 생성된 열이 있습니다.
 
 아래 예제에서는 `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})` 형식의 문자열이 `Traces` 테이블의 `EventText` 열에 포함되어 있다고 가정합니다.
-이 작업을 수행하면 테이블이 6개의 열(`resourceName`, `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previousLockTime`, `Month` 및 `Day`)로 확장됩니다. 
+이 작업을 수행하면 테이블이 6개의 열(`resourceName`, `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime` 및 `previousLockTime`)로 확장됩니다. 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

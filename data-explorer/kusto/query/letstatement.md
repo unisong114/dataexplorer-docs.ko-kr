@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/09/2020
 ms.localizationpriority: high
-ms.openlocfilehash: c102637adfa1fd0340d28a67b52354956b511ada
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 7723a3ccd06963596744db9c73f499a882b54c3e
+ms.sourcegitcommit: 1530a38181ec92ed1c2c1f3aa2a75f69bd3e9045
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95513316"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822783"
 ---
 # <a name="let-statement"></a>Let 문
 
@@ -52,15 +52,15 @@ let 문으로 바인딩된 식은 다음과 같을 수 있습니다.
 
  또는
 
- [*TabularArgName* `:` `(` `*` `)`]
+ [*TabularArgName* `:` `(` `*` `)`] - 변수와 알 수 없는 열이 포함된 테이블 형식의 식을 나타냅니다.
 
 `ScalarArguments` - [*ArgName* `:` *ArgType*] [`,` ... ]
 
 
 |필드  |정의  |예제  |
 |---------|---------|---------|
-| **view** | 인수가 포함되지 않은 매개 변수가 없는 람다에만 표시될 수 있습니다. "모든 테이블"이 쿼리인 경우 바인딩된 이름이 포함됨을 나타냅니다. | 예를 들어 `union *`을 사용하는 경우입니다.|
-| ***TabularArguments** _ | 형식 테이블 형식 식 인수의 목록입니다. 
+| **view** | 인수가 포함되지 않은 매개 변수가 없는 let 문에만 표시될 수 있습니다. 'view' 키워드를 사용하는 경우 테이블/뷰의 와일드카드를 선택할 수 있는 `union` 연산자를 사용하는 쿼리에 let 문이 포함됩니다. |  |
+| **_TabularArguments_* _ | 형식 테이블 형식 식 인수의 목록입니다. 
 | 각 테이블 형식 인수에는 다음이 포함됩니다.||
 |<ul><li> _TabularArgName*</li></ul> | 형식 테이블 형식 인수의 이름입니다. 이 이름은 *FunctionBody* 에 표시될 수 있으며, 람다를 호출할 때 특정 값에 바인딩됩니다. ||
 |<ul><li>테이블 스키마 정의 </li></ul> | 해당 형식이 포함된 특성의 목록입니다.| AtrName : AtrType|

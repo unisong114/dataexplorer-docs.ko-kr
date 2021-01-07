@@ -11,12 +11,12 @@ ms.date: 10/08/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 0616c0d4dd2a44ba1d54ac83c699a1c0bac249b0
-ms.sourcegitcommit: f134d51e52504d3ca722bdf6d33baee05118173a
+ms.openlocfilehash: 56f6952be508a79f06077077f6ec479c7a17c13a
+ms.sourcegitcommit: c4ab6f07e2e5363e331ccd4ecfb6ed813edfbc48
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96563362"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706399"
 ---
 # <a name="tutorial-use-kusto-queries-in-azure-data-explorer-and-azure-monitor"></a>자습서: Azure Data Explorer 및 Azure Monitor에서 Kusto 쿼리 사용
 
@@ -165,7 +165,7 @@ print x=1
 
 ## <a name="aggregate-groups-of-rows-summarize"></a>행 그룹 집계: *summarize*
 
-다음과 같이 각 국가에서 발생하는 이벤트 수를 계산합니다.
+다음과 같이 각 상태에서 발생하는 이벤트 수를 계산합니다.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -242,7 +242,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/event-counts-state.png" alt-text="각 주의 폭풍 이벤트 수를 세로 막대형 차트로 보여주는 스크린샷":::
 
-`project` 작업에서 `mid`를 제거했지만, 차트에서 해당 순서로 국가를 표시하려면 여전히 mid가 필요합니다.
+`project` 작업에서 `mid`를 제거했지만, 차트에서 해당 순서로 상태를 표시하려면 여전히 mid가 필요합니다.
 
 엄밀하게 말해서, `render`는 쿼리 언어의 일부가 아니라 클라이언트의 기능입니다. 하지만 언어에 통합되어 있으며, 결과를 시각적으로 표시하는 유용합니다.
 
