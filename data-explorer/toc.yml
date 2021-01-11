@@ -368,7 +368,7 @@
         - name: 메트릭을 사용하여 Azure Data Explorer 모니터링
           displayName: 'health, performance'
           href: using-metrics.md
-        - name: '진단 로그를 사용하여 수집, 명령 및 쿼리 모니터링'
+        - name: '진단 로그를 사용하여 수집, 명령, 쿼리 및 테이블 모니터링'
           href: using-diagnostic-logs.md
         - name: 리소스 상태를 사용하여 클러스터 상태 모니터링
           href: monitor-with-resource-health.md
