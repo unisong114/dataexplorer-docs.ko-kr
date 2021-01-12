@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
 ms.localizationpriority: high
-ms.openlocfilehash: f14ec4fa24765053711d60f7d2365755b45adbab
-ms.sourcegitcommit: c6cb2b1071048daa872e2fe5a1ac7024762c180e
+ms.openlocfilehash: e439fff119e005e44a0649fe22cadf3614ce036d
+ms.sourcegitcommit: 555f3da35fe250fabd35fcc6014bf055ef8405db
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96774642"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972501"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
@@ -33,7 +33,7 @@ ms.locfileid: "96774642"
 * *ColumnName:* 결과적으로 명명된 열의 배열이 여러 행으로 확장됩니다. 
 * *ArrayExpression:* 배열을 생성하는 식입니다. 이 양식을 사용하면 새 열이 추가되며 기존 열은 보존됩니다.
 * *Name:* 새 열에 대한 이름입니다.
-* *Typename:* `mv-apply` 연산자에 의해 생성되는 열의 형식이 되는 배열 요소의 기본 형식을 나타냅니다. 형식 적용 작업은 캐스트 전용이며, 구문 분석 또는 형식 변환을 포함하지 않습니다. 선언된 형식을 따르지 않는 배열 요소는 `null` 값이 됩니다.
+* *Typename:* `mv-expand` 연산자에 의해 생성되는 열의 형식이 되는 배열 요소의 기본 형식을 나타냅니다. 형식 적용 작업은 캐스트 전용이며, 구문 분석 또는 형식 변환을 포함하지 않습니다. 선언된 형식을 따르지 않는 배열 요소는 `null` 값이 됩니다.
 * *RowLimit:* 각각의 원래 행에서 생성되는 최대 행 수입니다. 기본값은 2147483647입니다. 
 
   > [!NOTE]
