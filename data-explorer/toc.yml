@@ -1706,6 +1706,8 @@
               href: ./kusto/management/access-control/aad.md
             - name: 보안 주체 역할
               href: ./kusto/management/access-control/role-based-authorization.md
+            - name: 테넌트 간 쿼리 및 명령 허용
+              href: cross-tenant-query-and-commands.md
             - name: Azure Active Directory 인증 방법
               displayName: 'AAD, Azure AD'
               href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
