@@ -86,7 +86,7 @@
             - name: 한 번 클릭으로 수집 개요
               href: ingest-data-one-click.md
             - name: 컨테이너의 CSV 데이터를 새 테이블로
-              displayName: 'ingest data, ingestion, one click'
+              displayName: 'Event Grid, ingest data, ingestion, one click'
               href: one-click-ingestion-new-table.md
             - name: 로컬 파일의 JSON 데이터를 기존 테이블로
               displayName: 'ingest data, ingestion, one click'
