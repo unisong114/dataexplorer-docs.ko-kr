@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/19/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 845f0b5c9446f927fadf0141de4568cc28641c8d
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 13dac735127815c00ac8c1128c710e26208406d7
+ms.sourcegitcommit: d4b359e817e002fba7320132732ce6d9cee97415
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96320692"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541498"
 ---
 # <a name="string-operators"></a>문자열 연산자
 
@@ -30,7 +30,7 @@ Kusto는 `string` 형식의 열을 포함하여 모든 열을 인덱싱합니다
 예를 들어 다음 `string`에서 용어는 `Kusto`, `WilliamGates3rd`이고 부분 문자열은 `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`입니다.
 
 ```
-Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
+Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
 ```
 
 Kusto는 *4자 이상* 의 모든 용어로 구성된 용어 인덱스를 작성하고, 이 인덱스는 `has`, `!has` 등에서 사용됩니다. 쿼리에서 4자 미만의 용어를 찾거나 `contains` 연산자를 사용하는 경우 Kusto에서 일치 항목을 확인할 수 없으면 열의 값을 검사하도록 되돌립니다. 이 방법은 용어 인덱스에서 용어를 조회하는 것보다 훨씬 느립니다.
@@ -43,6 +43,9 @@ Kusto는 *4자 이상* 의 모든 용어로 구성된 용어 인덱스를 작성
 > * LHS = 식의 왼쪽
 > 
 > `_cs` 접미사가 있는 연산자는 대/소문자를 구분합니다.
+
+> [!NOTE]
+> 대/소문자를 구분하지 않는 연산자는 현재 ASCII 텍스트에 대해서만 지원됩니다. 비 ASCII 비교의 경우 [tolower()](tolowerfunction.md) 함수를 사용합니다.
 
 연산자        |설명                                                       |대/소문자 구분|예제(`true` 생성)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
@@ -91,7 +94,7 @@ Kusto는 *4자 이상* 의 모든 용어로 구성된 용어 인덱스를 작성
 다음은 그 예입니다. 
 
 * `=~` 대신 `==`를 사용합니다.
-* `in~` 대신 `in`을 사용합니다.
+* `in~` 대신 `in`를 사용합니다.
 * `contains` 대신 `contains_cs`를 사용합니다.
 
 더 빠른 결과를 얻으려면 영숫자가 아닌 문자로 바인딩된 기호 또는 영숫자 단어가 있는지 또는 필드의 시작 또는 끝이 있는지 테스트하는 경우 `has` 또는 `in`을 사용합니다. 

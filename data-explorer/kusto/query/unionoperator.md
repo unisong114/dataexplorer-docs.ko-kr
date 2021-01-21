@@ -11,12 +11,12 @@ ms.date: 02/13/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 449a5043d26013c8a41ab6fafe0b3c907a22686b
-ms.sourcegitcommit: 1530a38181ec92ed1c2c1f3aa2a75f69bd3e9045
+ms.openlocfilehash: 3ce7c2c09e9cd5449accfabc2a7e1cc21e4ed339
+ms.sourcegitcommit: d4b359e817e002fba7320132732ce6d9cee97415
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822766"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541481"
 ---
 # <a name="union-operator"></a>union 연산자
 
@@ -67,7 +67,7 @@ Table1 | union Table2, Table3
     *  와일드 카드를 사용하여 지정한 테이블 집합입니다. 예를 들어 `E*`는 데이터베이스에서 `E`로 시작하는 이름의 모든 테이블에 대한 합집합을 만듭니다.
 
 > [!NOTE]
-> 테이블 목록이 확인된 경우 항상 와일드카드를 사용하여 구체화합니다. 테이블이 매우 많아서 비효율적으로 실행될 수 있는 작업 영역도 있습니다. 또한 테이블이 점점 추가되어 예기치 못한 결과를 초래할 수도 있습니다.
+> 테이블 목록을 아는 경우 와일드카드를 사용하지 마세요. 테이블이 매우 많아서 비효율적으로 실행될 수 있는 작업 영역도 있습니다. 또한 테이블이 점점 추가되어 예기치 못한 결과를 초래할 수도 있습니다.
     
 * `kind`: 
     * `inner` - 결과에는 모든 입력 테이블에 공통인 열의 하위 집합이 있습니다.

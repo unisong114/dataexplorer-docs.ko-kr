@@ -11,12 +11,12 @@ ms.date: 10/08/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 56f6952be508a79f06077077f6ec479c7a17c13a
-ms.sourcegitcommit: c4ab6f07e2e5363e331ccd4ecfb6ed813edfbc48
+ms.openlocfilehash: 930936bd9839730ccb0c438cc96a67334ea7ac71
+ms.sourcegitcommit: 64b7b320875950dfee8eb1a23d36aa95e27d7297
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706399"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98207808"
 ---
 # <a name="tutorial-use-kusto-queries-in-azure-data-explorer-and-azure-monitor"></a>자습서: Azure Data Explorer 및 Azure Monitor에서 Kusto 쿼리 사용
 
@@ -416,7 +416,7 @@ StormEvents
 
 * 폭풍의 5%는 지속 시간이 5분 미만입니다.
 * 폭풍의 50%는 지속 시간이 1시간 25분 미만입니다.
-* 폭풍의 5%는 2시간 50분 이상 지속되었습니다.
+* 폭풍의 95%는 지속 시간이 2시간 50분 이상입니다.
 
 정보를 주별로 분류하려면 다음과 같이 `state` 열을 두 `summarize` 연산자에 별도로 사용합니다.
 
