@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 455b3cfc3976566d9c4383890bbd4c20c775cf15
-ms.sourcegitcommit: 4c6bd4cb1eb1f64d84f844d4e7aff2de3a46b009
+ms.openlocfilehash: 0a25e0a4354798780b652861ba93494135b6d581
+ms.sourcegitcommit: fd034cf3e3440dcbbbb8494eb4914572055afcee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756367"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98759718"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -27,7 +27,7 @@ Kusto는 큰 데이터 세트를 호스트하고 모든 관련 데이터를 메�
 
 * 쿼리 동시성 제한의 기본값은 실행 중인 SKU 클러스터에 따라 다르며, `Cores-Per-Node x 10`으로 계산합니다.
   * 예를 들어 머신마다 16개의 vCore가 있는 D14v2 SKU에 설정된 클러스터의 기본 쿼리 동시성 제한은 `16 cores x10 = 160`입니다.
-* 이 기본값은 [쿼리 제한 정책](../management/query-throttling-policy.md)을 구성하여 변경할 수 있습니다. 
+* 기본값은 `default` 작업 그룹의 [요청 속도 제한 정책](../management/request-rate-limit-policy.md)을 구성하여 변경할 수 있습니다.
   * 클러스터에서 동시에 실행할 수 있는 실제 쿼리 수는 다양한 요인에 따라 달라집니다. 가장 중요한 요소는 클러스터 SKU, 클러스터의 가용 리소스 및 쿼리 패턴입니다. 쿼리 제한 정책은 프로덕션과 유사한 쿼리 패턴에서 수행되는 부하 테스트에 따라 구성할 수 있습니다.
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>결과 세트 크기 제한(결과 잘림)

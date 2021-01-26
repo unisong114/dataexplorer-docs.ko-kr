@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/22/2020
 ms.localizationpriority: high
-ms.openlocfilehash: b20d9a3e6c01f59a9cde44d6462ffeb0072473ed
-ms.sourcegitcommit: 1530a38181ec92ed1c2c1f3aa2a75f69bd3e9045
+ms.openlocfilehash: e2c6a54e675c85d31b44b031f78629fd1afcf8a5
+ms.sourcegitcommit: 8c0674d2bc3c2e10eace5314c30adc7c9e4b3d44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822885"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571791"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
@@ -284,6 +284,8 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
 Kusto는 결과 패널에서 각 행의 심각도 또는 세부 정보 표시 수준을 해석하고 이에 따라 색을 지정합니다. 이렇게 하려면 각 열의 고유 값을 알려진 패턴 세트("경고", "오류" 등)와 일치시킵니다. 
 
+#### <a name="enable-error-level-highlighting"></a>오류 수준 강조 표시 사용
+
 오류 수준 강조 표시를 사용하려면 다음을 수행합니다.
 
 1. 사용자 이름 옆에 있는 **설정** 아이콘을 선택합니다.
@@ -295,6 +297,22 @@ Kusto는 결과 패널에서 각 행의 심각도 또는 세부 정보 표시 �
 |---|---|
 :::image type="content" source="media/web-query-data/light-mode.png" alt-text="밝게 모드의 색 범례 스크린샷"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="어둡게 모드의 색 범례 스크린샷":::
 
+#### <a name="column-requirements-for-highlighting"></a>강조 표시에 대한 열 요구 사항
+
+강조 표시된 오류 수준의 경우 열은 int, long 또는 string 유형이어야 합니다.
+
+* 열이 `long` 또는 `int` 유형인 경우:
+   * 열 이름은 *수준* 이어야 합니다.
+   * 값은 1~5의 숫자만 포함할 수 있습니다.
+* 열이 `string` 유형인 경우: 
+   * 열 이름은 성능 향상을 위해 선택적으로 *수준* 이 될 수 있습니다. 
+   * 열에는 다음 값만 포함될 수 있습니다.
+       * critical, crit, fatal, assert, high
+       * error, e
+       * warning, w, monitor
+       * 정보
+       * verbose, verb, d
+   
 ## <a name="provide-feedback"></a>피드백 제공
 
 1. 애플리케이션의 오른쪽 위에서 피드백 아이콘(:::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::)을 선택합니다.
