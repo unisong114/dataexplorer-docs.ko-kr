@@ -11,12 +11,12 @@ ms.date: 10/08/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 90c1f09710bcfcf9394113a9eca4764fa51c696e
-ms.sourcegitcommit: 3a2d2def8d6bf395bbbb3b84935bc58adae055b8
+ms.openlocfilehash: bb9df9abc14d26d5c9a6faebe9c9d619ec75262b
+ms.sourcegitcommit: d77e52909001f885d14c4d421098a2c492b8c8ac
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98636027"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772507"
 ---
 # <a name="tutorial-use-kusto-queries-in-azure-data-explorer-and-azure-monitor"></a>자습서: Azure Data Explorer 및 Azure Monitor에서 Kusto 쿼리 사용
 
@@ -527,7 +527,7 @@ InsightsMetrics | count
 
 [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) 테이블에는 Azure에서 발생한 구독 수준 또는 관리 그룹 수준 이벤트에 대한 인사이트를 제공하는 Azure 활동 로그의 항목이 들어 있습니다. 특정 주에 발생한 `Critical` 항목만 보도록 하겠습니다.
 
-[where](/azure/data-explorer/kusto/query/whereoperator) 연산자는 Kusto 쿼리 언어에서 공통적으로 사용됩니다. `where`는 테이블을 특정 조건과 일치하는 행으로 필터링합니다. 다음 예제에서는 여러 명령을 사용합니다. 먼저 쿼리는 테이블의 모든 레코드를 검색합니다. 그런 다음, 데이터를 필터링하여 시간 범위에 있는 레코드만 찾습니다. 마지막으로 결과를 필터링하여 `Critical` 수준의 레코드만 찾습니다.
+[where](./whereoperator.md) 연산자는 Kusto 쿼리 언어에서 공통적으로 사용됩니다. `where`는 테이블을 특정 조건과 일치하는 행으로 필터링합니다. 다음 예제에서는 여러 명령을 사용합니다. 먼저 쿼리는 테이블의 모든 레코드를 검색합니다. 그런 다음, 데이터를 필터링하여 시간 범위에 있는 레코드만 찾습니다. 마지막으로 결과를 필터링하여 `Critical` 수준의 레코드만 찾습니다.
 
 > [!NOTE]
 > `TimeGenerated` 열을 사용하여 쿼리에서 필터를 지정할 수 있을 뿐 아니라, Log Analytics에서 시간 범위를 지정할 수 있습니다. 자세한 내용은 [Azure Monitor Log Analytics의 로그 쿼리 범위 및 시간 범위](/azure/azure-monitor/log-query/scope)를 참조하세요.
@@ -661,11 +661,11 @@ InsightsMetrics
 
 ## <a name="join-data-from-two-tables"></a>두 테이블의 데이터 조인
 
-단일 쿼리에서 두 테이블의 데이터를 검색해야 하는 경우에는 어떻게 할까요? [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) 연산자를 사용하면 여러 테이블의 행을 단일 결과 세트에 결합할 수 있습니다. 매칭할 행을 join 연산자가 인식할 수 있도록 각 테이블에는 일치하는 값을 가진 열이 있어야 합니다.
+단일 쿼리에서 두 테이블의 데이터를 검색해야 하는 경우에는 어떻게 할까요? [join](./joinoperator.md?pivots=azuremonitor) 연산자를 사용하면 여러 테이블의 행을 단일 결과 세트에 결합할 수 있습니다. 매칭할 행을 join 연산자가 인식할 수 있도록 각 테이블에는 일치하는 값을 가진 열이 있어야 합니다.
 
 [VMComputer](/azure/azure-monitor/reference/tables/vmcomputer)는 Azure Monitor가 모니터링하는 VM에 대한 세부 정보를 저장하기 위해 가상 머신에 사용하는 테이블입니다. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics)는 이러한 가상 머신에서 수집한 성능 데이터가 들어 있습니다. *InsightsMetrics* 에서 수집한 값 하나는 사용 가능한 메모리이지만, 사용 가능한 백분율 메모리는 아닙니다. 백분율을 계산하려면 각 가상 머신의 실제 메모리가 필요합니다. 이 값은 `VMComputer`에 있습니다.
 
-다음 예제 쿼리에서는 join을 사용하여 이 계산을 수행합니다. 각 컴퓨터에서 세부 정보를 정기적으로 수집하기 때문에 [distinct](/azure/data-explorer/kusto/query/distinctoperator) 연산자는 `VMComputer`와 함께 사용됩니다. 따라서 테이블의 컴퓨터마다 여러 행이 생성됩니다. `Computer` 열을 사용하여 두 테이블을 조인합니다. 결과 세트에 행이 하나 생성되고, 이 행에는 `InsightsMetrics`의 각 행에 대한 두 테이블의 열이 포함됩니다. `Computer`의 값은 `VMComputer`에 있는 `Computer` 열의 값과 일치합니다.
+다음 예제 쿼리에서는 join을 사용하여 이 계산을 수행합니다. 각 컴퓨터에서 세부 정보를 정기적으로 수집하기 때문에 [distinct](./distinctoperator.md) 연산자는 `VMComputer`와 함께 사용됩니다. 따라서 테이블의 컴퓨터마다 여러 행이 생성됩니다. `Computer` 열을 사용하여 두 테이블을 조인합니다. 결과 세트에 행이 하나 생성되고, 이 행에는 `InsightsMetrics`의 각 행에 대한 두 테이블의 열이 포함됩니다. `Computer`의 값은 `VMComputer`에 있는 `Computer` 열의 값과 일치합니다.
 
 ```kusto
 VMComputer
