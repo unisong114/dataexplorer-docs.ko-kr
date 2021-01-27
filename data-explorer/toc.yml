@@ -1405,6 +1405,22 @@
         - name: 제어 명령 개요
           displayName: Management
           href: ./kusto/management/index.md
+        - name: 작업 그룹(미리 보기)
+          items:
+            - name: 작업 그룹 개요
+              href: ./kusto/management/workload-groups.md
+            - name: 작업 그룹 관리
+              href: ./kusto/management/workload-groups-commands.md
+            - name: 요청 분류 정책
+              items:
+                - name: 요청 분류 정책
+                  href: ./kusto/management/request-classification-policy.md
+                - name: 요청 분류 정책 명령
+                  href: ./kusto/management/request-classification-policy-commands.md
+            - name: 요청 제한 정책
+              href: ./kusto/management/request-limits-policy.md
+            - name: 요청 속도 제한 정책
+              href: ./kusto/management/request-rate-limit-policy.md
         - name: 스키마
           items:
             - name: 스키마 관리에 대한 모범 사례
@@ -1565,12 +1581,6 @@
                   href: ./kusto/management/partitioningpolicy.md
                 - name: 분할 정책 명령
                   href: ./kusto/management/partitioning-policy.md
-            - name: 쿼리 제한
-              items:
-                - name: 쿼리 제한 정책
-                  href: ./kusto/management/query-throttling-policy.md
-                - name: 쿼리 제한 정책 명령
-                  href: ./kusto/management/query-throttling-policy-commands.md
             - name: 보존
               items:
                 - name: 보존 정책
