@@ -1,6 +1,6 @@
 ---
-title: 사용자 정의 함수 - Azure Data Explorer | Microsoft Docs
-description: 이 문서에서는 Azure Data Explorer의 사용자 정의 함수에 대해 설명합니다.
+title: 사용자 정의 함수 - Azure Data Explorer
+description: 이 문서에서는 Azure Data Explorer의 사용자 정의 함수(스칼라 및 보기)에 대해 설명합니다.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 92627b3325a7a2ba8e2e4d58a82ebf6db3977221
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: c85fd5dc784747314fe843d8f2325db76ee18d2c
+ms.sourcegitcommit: c11e3871d600ecaa2824ad78bce9c8fc5226eef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512879"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99554668"
 ---
 # <a name="user-defined-functions"></a>사용자 정의 함수
 
@@ -23,7 +23,7 @@ ms.locfileid: "95512879"
 사용자 정의 함수는 다음 두 가지 범주 중 하나에 속합니다.
 
 * 스칼라 함수 
-* 테이블 형식 함수 
+* 보기라고도 하는 테이블 형식 함수
 
 함수의 입력 인수 및 출력에 따라 함수가 스칼라인지 아니면 테이블 형식인지가 결정되며, 함수 형식에 따라 함수 사용 방법이 설정됩니다. 
 
