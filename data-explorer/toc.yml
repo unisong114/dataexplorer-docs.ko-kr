@@ -507,6 +507,7 @@
         - name: 함수 형식
           href: ./kusto/query/functions/index.md
         - name: 사용자 정의 함수
+          displayName: 'Kusto view, views, Kusto function'
           href: ./kusto/query/functions/user-defined-functions.md
     - name: 쿼리 문
       items:
