@@ -9,26 +9,26 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 0a25e0a4354798780b652861ba93494135b6d581
-ms.sourcegitcommit: fd034cf3e3440dcbbbb8494eb4914572055afcee
+ms.openlocfilehash: 615b2f681c22237f9d14ad92e285a564c249857e
+ms.sourcegitcommit: d1c2433df183d0cfbfae4d3b869ee7f9cbf00fe4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98759718"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99586377"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
 Kusto는 큰 데이터 세트를 호스트하고 모든 관련 데이터를 메모리 내에 보관하여 쿼리를 충족하려고 시도하는 임시 쿼리 엔진입니다.
 쿼리가 서비스 리소스를 제한 없이 독점할 내재적 위험이 있습니다. Kusto는 기본 쿼리 제한의 형태로 여러 가지 기본 보호 기능을 제공합니다. 이러한 제한을 제거하여 얻을 수 있는 실질적인 이점이 있는지 확인한 후 제거하시기 바랍니다.
 
-## <a name="limit-on-query-concurrency"></a>쿼리 동시성 제한
+## <a name="limit-on-request-concurrency"></a>요청 동시성 제한
 
-**쿼리 동시성** 은 클러스터가 동시에 실행되는 여러 쿼리에 적용하는 제한입니다.
+**요청 동시성** 은 클러스터가 동시에 실행되는 여러 요청에 적용하는 제한입니다.
 
-* 쿼리 동시성 제한의 기본값은 실행 중인 SKU 클러스터에 따라 다르며, `Cores-Per-Node x 10`으로 계산합니다.
-  * 예를 들어 머신마다 16개의 vCore가 있는 D14v2 SKU에 설정된 클러스터의 기본 쿼리 동시성 제한은 `16 cores x10 = 160`입니다.
+* 제한의 기본값은 클러스터가 실행 중인 SKU에 따라 달라지며 `Cores-Per-Node x 10`으로 계산됩니다.
+  * 예를 들어 머신마다 16개의 vCore가 있는 D14v2 SKU에 설정된 클러스터의 기본 제한은 `16 cores x10 = 160`입니다.
 * 기본값은 `default` 작업 그룹의 [요청 속도 제한 정책](../management/request-rate-limit-policy.md)을 구성하여 변경할 수 있습니다.
-  * 클러스터에서 동시에 실행할 수 있는 실제 쿼리 수는 다양한 요인에 따라 달라집니다. 가장 중요한 요소는 클러스터 SKU, 클러스터의 가용 리소스 및 쿼리 패턴입니다. 쿼리 제한 정책은 프로덕션과 유사한 쿼리 패턴에서 수행되는 부하 테스트에 따라 구성할 수 있습니다.
+  * 클러스터에서 동시에 실행할 수 있는 실제 요청 수는 다양한 요인에 따라 달라집니다. 가장 중요한 요소는 클러스터 SKU, 클러스터의 가용 리소스 및 사용량 패턴입니다. 정책은 프로덕션과 유사한 사용량 패턴에서 수행되는 부하 테스트에 따라 구성할 수 있습니다.
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>결과 세트 크기 제한(결과 잘림)
 
@@ -167,7 +167,7 @@ Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too
 
 기본적으로 쿼리의 시간 제한은 4분, 제어 명령의 시간 제한은 10분으로 설정됩니다. 필요한 경우 이 값을 늘릴 수 있습니다(1시간으로 제한).
 
-* Kusto.Explorer를 사용하여 쿼리하는 경우 **도구** &gt; **옵션** _ &gt; _ *연결** &gt; **쿼리 서버 시간 제한** 을 사용합니다.
+* Kusto.Explorer를 사용하여 쿼리하는 경우 **도구** &gt; **옵션*** &gt; **연결** &gt; **쿼리 서버 시간 제한** 을 사용합니다.
 * `System.TimeSpan` 형식의 값인 `servertimeout` 클라이언트 요청 속성을 프로그래밍 방식으로 최대 1시간까지 설정합니다.
 
 **시간 제한에 대한 참고 사항**
