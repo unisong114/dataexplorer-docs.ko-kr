@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 615b2f681c22237f9d14ad92e285a564c249857e
-ms.sourcegitcommit: d1c2433df183d0cfbfae4d3b869ee7f9cbf00fe4
+ms.openlocfilehash: a50900a5ea0f0c3d8f25e68a606572093af07432
+ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99586377"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100359610"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -120,7 +120,9 @@ set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
 
-대부분의 경우 데이터 세트를 샘플링하면 이 제한을 초과하는 것을 방지할 수 있습니다. 아래의 두 쿼리는 샘플링 방법을 보여줍니다. 첫 번째는 임의의 숫자 생성기를 사용하는 통계 샘플링입니다. 두 번째는 데이터 세트의 일부 열(일반적으로 일부 ID)을 해시하여 수행되는 결정적 샘플링입니다.
+쿼리에서 `summarize`, `join` 또는 `make-series` 연산자를 사용하는 경우 [셔플 쿼리](../query/shufflequery.md) 전략을 사용하여 단일 머신에서 메모리 압력을 줄일 수 있습니다.
+
+다른 경우에는 이 제한을 초과하지 않도록 데이터 세트를 샘플링할 수 있습니다. 아래의 두 쿼리는 샘플링 방법을 보여줍니다. 첫 번째 쿼리는 임의의 숫자 생성기를 사용하는 통계 샘플링입니다. 두 번째 쿼리는 데이터 세트의 일부 열(일반적으로 일부 ID)을 해시하여 수행되는 결정적 샘플링입니다.
 
 ```kusto
 T | where rand() < 0.1 | ...
@@ -142,19 +144,7 @@ MyTable | ...
 
 클라이언트 요청 속성과 `set` 문을 사용할 때 `max_memory_consumption_per_query_per_node`가 여러 번 설정된 경우 더 낮은 값이 적용됩니다.
 
-## <a name="limit-on-accumulated-string-sets"></a>누적 문자열 세트 제한
-
-다양한 쿼리 작업에서 Kusto는 문자열 값을 "수집"하고 내부적으로 버퍼링해야만 결과 생성을 시작할 수 있습니다. 이러한 누적 문자열 세트의 크기와 보관할 수 있는 항목 수에 제한이 있습니다. 또한 각 문자열은 특정 제한을 초과하면 안 됩니다.
-이러한 제한 중 하나를 초과하면 다음 오류 중 하나가 발생합니다.
-
-```
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
-
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of ..GB items (see http://aka.ms/kustoquerylimits)')
-```
-
-현재는 최대 문자열 세트 크기를 늘리는 스위치가 없습니다.
-해결 방법으로, 버퍼링해야 하는 데이터 양을 줄이도록 쿼리를 다시 작성해야 합니다. 불필요한 열을 프로젝션한 후 join이나 summarize 같은 연산자에 사용할 수 있습니다. 또는 [쿼리 순서 섞기](../query/shufflequery.md) 전략을 사용할 수 있습니다.
+쿼리에서 `summarize`, `join` 또는 `make-series` 연산자를 사용하는 경우 [셔플 쿼리](../query/shufflequery.md) 전략을 사용하여 단일 머신에서 메모리 압력을 줄일 수 있습니다.
 
 ## <a name="limit-execution-timeout"></a>실행 시간 제한
 

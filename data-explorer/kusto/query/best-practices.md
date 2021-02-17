@@ -9,12 +9,13 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 762c3075c162ba35bdba539d0e86460c78f3297e
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+adobe-target: true
+ms.openlocfilehash: 87154368a033afe1da7669e71e269081865b689d
+ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95511791"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100359916"
 ---
 # <a name="query-best-practices"></a>쿼리 모범 사례
 
@@ -29,6 +30,7 @@ ms.locfileid: "95511791"
 |  | `contains_cs` 사용         | `contains`는 사용하지 마세요.        | `has`/`has_cs`를 사용할 수 있고 `contains`/`contains_cs`를 사용하지 않을 수 있다면 훨씬 더 좋습니다. |
 | **텍스트 검색**    |    특정 열에서 보기     |    `*`는 사용하지 마세요.    |   `*`는 모든 열에서 전체 텍스트 검색을 수행합니다.    |
 | **수백만 개의 행의 [동적 개체](./scalar-data-types/dynamic.md)에서 필드 추출**    |  대부분의 쿼리가 수백만 개의 행의 동적 개체에서 필드를 추출하는 경우 수집 시간에 열을 구체화합니다.      |         | 이렇게 하면 열 추출에 대해 한 번만 지불하면 됩니다.    |
+| **[동적 개체](./scalar-data-types/dynamic.md)에서 드문 키/값 조회**    |  `MyTable | where DynamicColumn has "Rare value" | where DynamicColumn.SomeKey == "Rare value"` 사용 | `MyTable | where DynamicColumn.SomeKey == "Rare value"` 사용 안 함 | 이렇게 하면 대부분의 레코드를 필터링하고 나머지 레코드만 JSON 구문 분석을 수행합니다. |
 | **두 번 이상 사용하는 값이 있는 `let` 문** | [materialize() 함수](./materializefunction.md) 사용 |  |   `materialize()`를 사용하는 방법에 대한 자세한 내용은 [materialize()](materializefunction.md)를 참조하세요.|
 | **10억 개를 초과하는 레코드에 변환 적용**| 쿼리를 변형하여 변환에 공급되는 데이터의 양을 줄입니다.| 피할 수 있는 경우에는 많은 양의 데이터를 변환하지 마세요. | |
 | **새 쿼리** | 마지막에 `limit [small number]` 또는 `count`를 사용합니다. | |     알 수 없는 데이터 세트에 대해 바인딩되지 않은 쿼리를 실행하면 GB의 결과가 클라이언트에 반환되어 응답이 느려지고 클러스터를 많이 사용하게 됩니다.|

@@ -9,48 +9,64 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
 ms.localizationpriority: high
-ms.openlocfilehash: e439fff119e005e44a0649fe22cadf3614ce036d
-ms.sourcegitcommit: 555f3da35fe250fabd35fcc6014bf055ef8405db
+ms.openlocfilehash: 956c24fa70df89f5bf99d4de12a8b07da6cb6912
+ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97972501"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100359984"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
-다중 값 배열 또는 속성 모음을 확장합니다.
+다중 값 동적 배열 또는 속성 모음을 여러 레코드로 확장합니다.
 
-`mv-expand`는 컬렉션의 각 값이 별도의 행을 갖도록 [동적](./scalar-data-types/dynamic.md) 형식의 배열 또는 속성 모음 열에 적용됩니다. 확장된 행의 다른 열은 모두 중복됩니다. 
+`mv-expand`는 `summarize` ... `make-list()` 및 `make-series`와 같이 여러 값을 단일 [동적](./scalar-data-types/dynamic.md) 유형의 배열 또는 속성 모음으로 압축하는 집계 연산자의 반대라고 설명할 수 있습니다.
+(스칼라) 배열 또는 속성 모음의 각 요소는 연산자의 출력에 새 레코드를 생성합니다. 확장되지 않은 입력의 모든 열은 출력의 모든 레코드에 복제됩니다.
 
 ## <a name="syntax"></a>Syntax
 
-*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
-*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] *Name* `=` *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
 ## <a name="arguments"></a>인수
 
-* *ColumnName:* 결과적으로 명명된 열의 배열이 여러 행으로 확장됩니다. 
-* *ArrayExpression:* 배열을 생성하는 식입니다. 이 양식을 사용하면 새 열이 추가되며 기존 열은 보존됩니다.
+* *ColumnName*, *ArrayExpression*: 배열 또는 속성 모음을 포함하는 `dynamic` 유형의 값을 가진 열 참조 또는 스칼라 식입니다. 배열 또는 속성 모음의 개별 최상위 요소는 여러 레코드로 확장됩니다.<br>
+  *ArrayExpression* 이 사용되고 *Name* 이 입력 열 이름과 같지 않으면 확장된 값이 출력의 새 열로 확장됩니다.
+  그렇지 않으면 기존 *ColumnName* 이 대체됩니다.
+
 * *Name:* 새 열에 대한 이름입니다.
+
 * *Typename:* `mv-expand` 연산자에 의해 생성되는 열의 형식이 되는 배열 요소의 기본 형식을 나타냅니다. 형식 적용 작업은 캐스트 전용이며, 구문 분석 또는 형식 변환을 포함하지 않습니다. 선언된 형식을 따르지 않는 배열 요소는 `null` 값이 됩니다.
+
 * *RowLimit:* 각각의 원래 행에서 생성되는 최대 행 수입니다. 기본값은 2147483647입니다. 
 
   > [!NOTE]
   > `mvexpand`는 `mv-expand` 연산자의 레거시 형식 및 사용되지 않는 형식입니다. 레거시 버전의 기본 행 제한은 128입니다.
 
-* *IndexColumnName:* `with_itemindex`가 지정된 경우 출력에는 원래 확장된 컬렉션에 있는 항목의 인덱스(0부터 시작)를 포함하는 추가 열(*IndexColumnName*)이 포함됩니다. 
+* *IndexColumnName:* `with_itemindex`가 지정된 경우 출력에는 원래 확장된 컬렉션에 있는 항목의 인덱스(0부터 시작)를 포함하는 다른 열(*IndexColumnName*)이 포함됩니다. 
 
 ## <a name="returns"></a>반환
 
-명명된 열의 배열 또는 배열 식에 있는 각 값에 대한 여러 행.
-여러 열 또는 식이 지정되면 병렬로 확장됩니다. 각 입력 행에 대해 가장 긴 확장 식에 있는 요소 수 만큼의 출력 행이 있습니다(짧은 목록은 null로 채워짐). 행의 값이 빈 배열인 경우 행은 아무 것도 확장되지 않습니다(결과 집합에 표시되지 않음). 그러나 행의 값이 배열이 아닌 경우 행은 결과 집합에 있는 그대로 유지됩니다. 
+입력의 각 레코드에 대해 연산자는 다음과 같은 방식으로 결정된 대로 0개, 1개 또는 많은 레코드를 출력에 반환합니다.
 
-확장된 열은 언제나 동적 형식을 가집니다. 값을 계산하거나 집계하려는 경우 `todatetime()` 또는 `tolong()`와 같은 캐스트를 사용합니다.
+1. 확장되지 않은 입력 열이 원래 값과 함께 출력에 나타납니다.
+   단일 입력 레코드를 여러 출력 레코드로 확장하면 값은 모든 레코드에 복제됩니다.
+
+1. 확장된 각 *ColumnName* 또는 *ArrayExpression* 에 대해 [아래](#modes-of-expansion)에 설명된 대로 각 값에 대해 출력 레코드 수가 결정됩니다. 각 입력 레코드에 대해 최대 출력 레코드 수가 계산됩니다. 모든 배열 또는 속성 모음이 "병렬"로 확장되어 누락된 값(있는 경우)은 null 값으로 대체됩니다.
+
+1. 동적 값이 null이면 해당 값(null)에 대해 단일 레코드가 생성됩니다.
+   동적 값이 빈 배열 또는 속성 모음인 경우 해당 값에 대한 레코드가 생성되지 않습니다.
+   그렇지 않으면, 동적 값에 요소가 있으므로 많은 레코드가 생성됩니다.
+
+`to typeof()` 절을 사용하여 명시적으로 입력하지 않는 한 확장 열은 `dynamic` 유형입니다.
+
+### <a name="modes-of-expansion"></a>확장 모드
 
 속성 모음 확장의 두 가지 모드가 지원됩니다.
-* `bagexpansion=bag` 또는 `kind=bag`: 속성 모음이 단일 항목 속성 모음으로 확장됩니다. 이 모드는 기본 확장입니다.
-* `bagexpansion=array` 또는 `kind=array`: 속성 모음이 두 요소로 이루어진 `[`*key*`,`*value*`]` 배열 구조로 확장되며 키 및 값에 대한 균일한 액세스가 가능합니다(또한 예를 들어 속성 이름에 대해 고유 카운트 집계 실행). 
+
+* `bagexpansion=bag` 또는 `kind=bag`: 속성 모음이 단일 항목 속성 모음으로 확장됩니다. 이 모드가 기본 모드입니다.
+* `bagexpansion=array` 또는 `kind=array`: 속성 모음이 두 요소로 이루어진 `[`*key*`,`*value*`]` 배열 구조로 확장되며 키 및 값에 대한 균일한 액세스가 가능합니다. 이 모드에서는 예를 들어 속성 이름에 대해 고유한 카운트 집계를 실행할 수도 있습니다. 
 
 ## <a name="examples"></a>예제
 
@@ -125,7 +141,7 @@ a|0|System.String|문자열
 b|1|System.Object|동적
 c|2|System.Int32|int
 
-`b` 열은 `dynamic`으로 표시되고 `c`는 `int`로 표시됩니다.
+`b` 열은 `dynamic`으로 반환되고 `c` 열은 `int`로 반환됩니다.
 
 ### <a name="using-with_itemindex"></a>With_itemindex 사용
 
@@ -144,7 +160,7 @@ range x from 1 to 4 step 1
 |2|1|
 |3|2|
 |4|3|
- 
+
 ## <a name="see-also"></a>참고 항목
 
 * 추가 예제는 [시간 경과에 따른 라이브 활동의 차트 수](./samples.md#chart-concurrent-sessions-over-time)를 참조하세요.

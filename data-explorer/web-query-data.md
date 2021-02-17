@@ -6,21 +6,23 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/22/2020
+ms.date: 02/09/2021
 ms.localizationpriority: high
-ms.openlocfilehash: e2c6a54e675c85d31b44b031f78629fd1afcf8a5
-ms.sourcegitcommit: 8c0674d2bc3c2e10eace5314c30adc7c9e4b3d44
+ms.openlocfilehash: d581ade4a9cbba083e8cebf39a30f01586d2635c
+ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98571791"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360207"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>빠른 시작: Azure Data Explorer Web UI에서 데이터 쿼리
 
 Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있는 빠른 완전 관리형 데이터 분석 서비스입니다. Azure Data Explorer는 Azure Data Explorer 클러스터에 연결하고 Kusto 쿼리 언어 명령과 쿼리를 작성, 실행 및 공유할 수 있는 웹 환경을 제공합니다. 웹 환경은 Azure Portal 및 독립 실행형 웹 애플리케이션인 [Azure Data Explorer 웹 UI](https://dataexplorer.azure.com)에서 사용할 수 있습니다. Azure Data Explorer 웹 UI는 HTML iframe의 다른 웹 포털에서도 호스팅할 수 있습니다. 웹 UI 및 사용되는 모나코 편집기를 호스팅하는 방법에 대한 자세한 내용은 [모나코 IDE 통합](kusto/api/monaco/monaco-kusto.md)을 참조하세요.
 이 빠른 시작에서는 독립 실행형 Azure Data Explorer 웹 UI에서 작업합니다.
 
-## <a name="prerequisites"></a>필수 조건
+:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Kusto Web Explorer 경험 연습":::
+
+## <a name="prerequisites"></a>사전 요구 사항
 
 * Azure 구독 구독이 없는 경우 시작하기 전에 [Azure 체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
 * 데이터가 있는 클러스터 및 데이터베이스. [사용자 고유의 클러스터를 만들거나](create-cluster-database-portal.md) Azure Data Explorer help 클러스터를 사용합니다.
@@ -65,7 +67,7 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
 ## <a name="run-queries"></a>쿼리 실행
 
-이제 두 클러스터 모두에서 대해 쿼리를 실행할 수 있습니다(테스트 클러스터에 데이터가 있다고 가정). 이 문서의 목적을 위해 여기서는 **help** 클러스터에 집중합니다.
+이제 두 클러스터 모두에서 대해 쿼리를 실행할 수 있습니다(테스트 클러스터에 데이터가 있다고 가정). 이 문서에서는 **help** 클러스터에 집중합니다.
 
 1. 왼쪽 창의 **help** 클러스터 아래에서 **Samples** 데이터베이스를 선택합니다.
 
@@ -123,11 +125,45 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
     > * 텍스트를 선택하지 않은 경우 쿼리나 명령이 빈 줄로 구분되어 있다고 가정합니다.
     > * 텍스트를 선택하면 선택한 텍스트가 실행됩니다.
 
-## <a name="work-with-the-table-grid"></a>테이블 모눈 사용
+## <a name="work-with-the-table-grid"></a>테이블 그리드 사용
 
-이제 기본 쿼리의 작동 방식을 확인했으므로 테이블 그리드를 사용하여 결과를 사용자 지정하고 추가 분석을 수행하는 방법을 살펴보겠습니다.
+이제 기본 쿼리의 작동 방식을 확인했으므로 테이블 그리드를 사용하여 결과를 사용자 지정하고 추가 분석을 수행할 수 있습니다. 
 
-1. 첫 번째 쿼리를 다시 실행합니다. **State** 열 위에 마우스를 놓고 메뉴를 선택한 다음 **그룹화 방법: State** 를 선택합니다.
+### <a name="expand-a-cell"></a>셀 확장
+
+셀 확장은 JSON과 같은 긴 문자열 또는 동적 필드를 보는 데 유용합니다. 
+
+1. 셀을 두 번 클릭하여 확장된 보기를 엽니다. 이 보기를 사용하면 긴 문자열을 읽을 수 있으며 동적 데이터에 대한 JSON 형식을 제공합니다.
+
+    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="긴 문자열을 표시하는 Azure Data Explorer WebUI 확장 셀":::
+
+1. 판독 창 모드를 전환하려면 결과 그리드의 오른쪽 위에 있는 아이콘을 클릭합니다. 확장 보기에 대해 읽기 창 모드인 인라인, 아래쪽 창, 오른쪽 창 중에서 선택합니다.
+
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="확장된 보기 모드의 읽기 창 변경 아이콘 - Azure Data Explorer WebUI 쿼리 결과":::
+
+### <a name="expand-a-row"></a>행 확장
+
+수십 개의 열이 있는 테이블로 작업할 때 전체 행을 확장하여 다른 열과 해당 내용의 개요를 쉽게 볼 수 있습니다. 
+
+1. 확장하려는 행의 왼쪽에 있는 화살표 **>** 를 클릭합니다.
+
+    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Azure Data Explorer WebUI에서 행 확장":::
+
+1. 확장된 행 내에서 일부 열은 확장(아래쪽 화살표)되고 일부 열은 축소(오른쪽 화살표)됩니다. 이 두 모드 사이를 전환하려면 이 화살표를 클릭합니다.
+
+### <a name="group-column-by-results"></a>결과를 기준으로 열 그룹화
+
+결과 내에서 열을 기준으로 결과를 그룹화할 수 있습니다.
+
+1. 다음 쿼리를 실행합니다.
+     
+    ```kusto
+    StormEvents
+    | sort by StartTime desc
+    | take 10
+    ```
+
+1. **State** 열 위에 마우스를 놓고 메뉴를 선택한 다음 **그룹화 방법: State** 를 선택합니다.
 
     ![그룹화 방법: State](media/web-query-data/group-by.png)
 
@@ -138,6 +174,34 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 1. **Group** 열 위에 마우스를 놓고 **열 다시 설정** 을 선택합니다. 이 설정은 그리드를 원래 상태로 되돌립니다.
 
     ![열 다시 설정](media/web-query-data/reset-columns.png)
+
+#### <a name="use-value-aggregation"></a>값 집계 사용
+
+열을 기준으로 그룹화한 후 값 집계 함수를 사용하여 그룹별 단순 통계를 계산할 수 있습니다.
+
+1. 평가하려는 열에 대한 메뉴를 선택합니다.
+1. **값 집계** 를 선택하고 이 열에서 수행할 함수의 유형을 선택합니다.
+
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="결과를 기준으로 열을 그룹화할 때 결과를 집계합니다.":::
+
+### <a name="filter-columns"></a>열 필터링
+
+하나 이상의 연산자를 사용하여 열 결과를 필터링할 수 있습니다.
+
+1. 특정 열을 필터링하려면 해당 열의 메뉴를 선택합니다.
+1. 필터 아이콘을 선택합니다.
+1. 필터 작성기에서 원하는 연산자를 선택합니다.
+1. 열을 필터링하려는 식을 입력합니다. 입력할 때 결과가 필터링됩니다.
+    
+    > [!NOTE] 
+    > 필터는 대/소문자를 구분하지 않습니다.
+
+1. 다중 조건 필터를 만들려면 부울 연산자를 선택하여 다른 조건을 추가합니다.
+1. 필터를 제거하려면 첫 번째 필터 조건에서 텍스트를 삭제합니다.
+
+    :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="Azure Data Explorer WebUI에서 열을 필터링하는 방법을 보여주는 GIF":::
+
+### <a name="run-cell-statistics"></a>셀 통계 실행
 
 1. 다음 쿼리를 실행합니다.
 
@@ -153,11 +217,30 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="함수 선택"::: 
 
-1. 그리드 오른쪽에서 **열** 을 선택하여 테이블 도구 패널을 표시합니다. Excel의 피벗 테이블 필드 목록과 비슷하게 작동하는 이 패널을 통해 모눈 자체에서 추가 분석을 수행할 수 있습니다.
+### <a name="filter-to-query-from-grid"></a>그리드에서 쿼리를 위한 필터
+
+그리드를 필터링하는 또 다른 쉬운 방법은 그리드에서 직접 쿼리에 필터 연산자를 추가하는 것입니다.
+
+1. 쿼리 필터를 만들 콘텐츠가 있는 셀을 선택합니다.
+1. 마우스 오른쪽 단추를 클릭하여 셀 작업 메뉴를 엽니다. **선택 항목을 필터로 추가** 를 선택합니다.
+    
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Azure Data Explorer WebUI의 그리드 결과에서 쿼리에 필터로 선택 항목 추가":::
+
+1. 쿼리 편집기의 쿼리에 쿼리 절이 추가됩니다.
+
+    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Azure Data Explorer WebUI의 그리드에서 필터링한 쿼리 절 추가":::
+
+### <a name="pivot"></a>피벗
+
+피벗 모드 기능은 Excel의 피벗 테이블과 비슷하며 그리드 자체에서 고급 분석을 수행할 수 있습니다.
+
+피벗을 사용하면 열 값을 열로 바꿀 수 있습니다. 예를 들어 *State* 를 피벗하여 플로리다, 미주리, 앨라배마 등에 대한 열을 만들 수 있습니다.
+
+1. 그리드 오른쪽에서 **열** 을 선택하여 테이블 도구 패널을 표시합니다.
 
     ![테이블 도구 패널](media/web-query-data/tool-panel.png)
 
-1. **피벗 모드** 를 선택한 다음, **State** 열을 **행 그룹** 으로, **DamageProperty** 열을 **값** 으로, **EventType** 열을 **열 레이블** 로 각각 끕니다.  
+1. **피벗 모드** 를 선택한 다음, **EventType** 열을 **행 그룹** 으로, **DamageProperty** 열을 **값** 으로, **State** 열을 **열 레이블** 로 각각 끕니다.  
 
     ![피벗 모드](media/web-query-data/pivot-mode.png)
 
@@ -165,13 +248,11 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
     ![피벗 테이블](media/web-query-data/pivot-table.png)
 
-    Vermont와 Alabama에는 각각 같은 범주 아래에 이벤트가 두 개씩 있는 반면 Texas에는 서로 다른 범주 아래에 이벤트가 두 개 있습니다. 피벗 테이블은 이러한 차이를 빠르게 파악할 수 있도록 하므로 빠른 분석에 유용한 도구입니다.
-
 ## <a name="search-in-the-results-table"></a>결과 테이블에서 검색
 
 결과 테이블에서 특정 식을 찾을 수 있습니다.
 
-1.  다음 쿼리를 실행합니다.
+1. 다음 쿼리를 실행합니다.
 
     ```Kusto
     StormEvents
@@ -195,7 +276,7 @@ Azure Data Explorer는 대량의 데이터를 실시간으로 분석할 수 있�
 
 1. 쿼리 창 위쪽에서 **공유** 를 선택합니다. 
 
-:::image type="content" source="media/web-query-data/share-menu.png" alt-text="공유 메뉴":::
+    :::image type="content" source="media/web-query-data/share-menu.png" alt-text="공유 메뉴":::
 
 드롭다운에서 사용할 수 있는 옵션은 다음과 같습니다.
 * 클립보드에 링크
@@ -291,7 +372,7 @@ Kusto는 결과 패널에서 각 행의 심각도 또는 세부 정보 표시 �
 1. 사용자 이름 옆에 있는 **설정** 아이콘을 선택합니다.
 1. **모양** 탭을 선택하고 오른쪽에 있는 **오류 수준 강조 표시 사용** 옵션을 설정/해제합니다. 
 
-:::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="설정에서 오류 수준 강조 표시를 사용하도록 설정하는 방법을 보여 주는 애니메이션 GIF":::
+    :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="설정에서 오류 수준 강조 표시를 사용하도록 설정하는 방법을 보여 주는 애니메이션 GIF":::
 
 **밝게** 모드의 오류 수준 색 구성표 | **어둡게** 모드의 오류 수준 색 구성표
 |---|---|
@@ -299,7 +380,7 @@ Kusto는 결과 패널에서 각 행의 심각도 또는 세부 정보 표시 �
 
 #### <a name="column-requirements-for-highlighting"></a>강조 표시에 대한 열 요구 사항
 
-강조 표시된 오류 수준의 경우 열은 int, long 또는 string 유형이어야 합니다.
+강조 표시된 오류 수준의 경우 열은 int, long 또는 string 유형이어야 합니다. 
 
 * 열이 `long` 또는 `int` 유형인 경우:
    * 열 이름은 *수준* 이어야 합니다.

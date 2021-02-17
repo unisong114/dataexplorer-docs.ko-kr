@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/19/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 13dac735127815c00ac8c1128c710e26208406d7
-ms.sourcegitcommit: d4b359e817e002fba7320132732ce6d9cee97415
+ms.openlocfilehash: 0dffa044ff47748d46b3ab4758bb61684bb8bb10
+ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541498"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100359729"
 ---
 # <a name="string-operators"></a>문자열 연산자
 
@@ -55,6 +55,7 @@ Kusto는 *4자 이상* 의 모든 용어로 구성된 용어 인덱스를 작성
 `!~`            |같지 않음                                                        |아니요            |`"aBc" !~ "xyz"`
 `has`           |오른쪽(RHS)이 왼쪽(LHS)의 전체 항임     |아니요            |`"North America" has "america"`
 `!has`          |RHS가 LHS에서 전체 용어가 아님                                     |아니요            |`"North America" !has "amer"` 
+[`has_all`](has-all-operator.md)       |`has`와 동일하지만 모든 요소에서 작동함                    |아니요            |`"North and South America" has_all("south", "north")`
 [`has_any`](has-anyoperator.md)       |`has`와 동일하지만 모든 요소에서 작동함                    |아니요            |`"North America" has_any("south", "north")`
 `has_cs`        |RHS가 LHS에서 전체 용어임                                        |예           |`"North America" has_cs "America"`
 `!has_cs`       |RHS가 LHS에서 전체 용어가 아님                                     |예           |`"North America" !has_cs "amer"` 
