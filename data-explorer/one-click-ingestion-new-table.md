@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/29/2020
-ms.openlocfilehash: e2c84649653d6d3762a82c1e4aa3c98c9ef8119d
-ms.sourcegitcommit: d9e203a54b048030eeb6d05b01a65902ebe4e0b8
+ms.openlocfilehash: 3ac9788eda7a75173778ce0533f59820cfd7e7dd
+ms.sourcegitcommit: abbcb27396c6d903b608e7b19edee9e7517877bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371681"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100528233"
 ---
 # <a name="use-one-click-ingestion-to-ingest-csv-data-from-a-container-to-a-new-table-in-azure-data-explorer"></a>Azure Data Explorer에서 원클릭 수집을 사용하여 컨테이너의 CSV 데이터를 새 테이블에 수집
 
@@ -33,9 +33,11 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="새 데이터 수집":::
 
-1. **새 데이터 수집** 창에서 **원본** 탭이 선택됩니다. 
+1. **새 데이터 수집** 창에서 **원본** 탭이 선택됩니다. **클러스터** 및 **데이터베이스** 필드는 자동으로 채워집니다.
 
-1. **새 테이블 만들기** 를 선택하고 새 테이블의 이름을 입력합니다. 영숫자, 하이픈 및 밑줄을 사용할 수 있습니다. 특수 문자는 지원되지 않습니다.
+    [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
+
+1. **테이블** > **새로 만들기** 를 선택하고 새 테이블의 이름을 입력합니다. 영숫자, 하이픈 및 밑줄을 사용할 수 있습니다. 특수 문자는 지원되지 않습니다.
 
     > [!NOTE]
     > 테이블은 1~1024자여야 합니다.
@@ -44,9 +46,9 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 ## <a name="select-an-ingestion-type"></a>수집 유형 선택
 
-**수집 형식** 에서 다음 단계를 수행합니다.
+**원본 유형** 에서 다음 단계를 수행합니다.
    
-  1. **컨테이너에서**(blob 컨테이너, ADLS Gen1 컨테이너, ADLS Gen2 컨테이너)를 선택합니다.
+  1. **From blob container(Blob 컨테이너에서)** (Blob 컨테이너, ADLS Gen1 컨테이너, ADLS Gen2 컨테이너)를 선택합니다. 단일 컨테이너에서 최대 1,000개의 Blob을 수집할 수 있습니다.
   1. **스토리지에 연결** 필드에서 컨테이너의 [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)을 추가하고 필요한 대로 샘플 크기를 입력합니다. 이 컨테이너 내의 폴더에서 수집하려면 [컨테이너의 폴더에서 수집](#ingest-from-folder-in-a-container)을 참조하세요.
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="컨테이너에서 원클릭 수집":::
@@ -56,7 +58,7 @@ Azure Data Explorer의 기존 테이블에 데이터를 수집하는 방법에 �
 
 ### <a name="ingest-from-folder-in-a-container"></a>컨테이너의 폴더에서 수집
 
-컨테이너 내의 특정 폴더에서 수집하려면 다음 형식의 문자열을 생성합니다.
+컨테이너 내의 특정 폴더에서 수집하려면 [다음 형식의 문자열을 생성합니다](kusto/api/connection-strings/storage.md#azure-data-lake-store).
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 
