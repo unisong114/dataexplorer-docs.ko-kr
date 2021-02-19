@@ -924,10 +924,14 @@
           href: ./kusto/query/ingestiontimefunction.md
         - name: ipv4_compare()
           href: ./kusto/query/ipv4-comparefunction.md
+        - name: ipv4_is_in_range()
+          href: ./kusto/query/ipv4-is-in-range-function.md
         - name: ipv4_is_match()
           href: ./kusto/query/ipv4-is-matchfunction.md
         - name: ipv4_is_private()
           href: ./kusto/query/ipv4-is-privatefunction.md
+        - name: ipv4_netmask_suffix()
+          href: ./kusto/query/ipv4-netmask-suffix-function.md
         - name: ipv6_compare()
           href: ./kusto/query/ipv6-comparefunction.md
         - name: ipv6_is_match()
@@ -1520,7 +1524,7 @@
                   href: ./kusto/management/materialized-views/materialized-view-alter-lookback.md
                 - name: .alter materialized-view autoUpdateSchema
                   href: ./kusto/management/materialized-views/materialized-view-alter-autoUpdateSchema.md
-                - name: .show materialized-view commands
+                - name: .show materialized-view 명령
                   href: ./kusto/management/materialized-views/materialized-view-show-commands.md
                 - name: .drop materialized-view
                   href: ./kusto/management/materialized-views/materialized-view-drop.md

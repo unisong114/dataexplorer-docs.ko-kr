@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/19/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 0dffa044ff47748d46b3ab4758bb61684bb8bb10
-ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
+ms.openlocfilehash: 9e8197d3af25da0b0e2488b4a5c70f5cfa2dde17
+ms.sourcegitcommit: abbcb27396c6d903b608e7b19edee9e7517877bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100359729"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100528074"
 ---
 # <a name="string-operators"></a>문자열 연산자
 
@@ -27,13 +27,16 @@ Kusto는 `string` 형식의 열을 포함하여 모든 열을 인덱싱합니다
 ### <a name="what-is-a-term"></a>용어란? 
 
 기본적으로 각 `string` 값은 ASCII 영숫자의 최대 시퀀스로 분할되며, 각 시퀀스는 용어로 만들어집니다.
-예를 들어 다음 `string`에서 용어는 `Kusto`, `WilliamGates3rd`이고 부분 문자열은 `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`입니다.
+예를 들어 다음 `string`에서 용어는 `Kusto`, `KustoExplorerQueryRun`이고 부분 문자열은 `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`입니다.
 
 ```
-Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
+Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;KustoExplorerQueryRun
 ```
 
-Kusto는 *4자 이상* 의 모든 용어로 구성된 용어 인덱스를 작성하고, 이 인덱스는 `has`, `!has` 등에서 사용됩니다. 쿼리에서 4자 미만의 용어를 찾거나 `contains` 연산자를 사용하는 경우 Kusto에서 일치 항목을 확인할 수 없으면 열의 값을 검사하도록 되돌립니다. 이 방법은 용어 인덱스에서 용어를 조회하는 것보다 훨씬 느립니다.
+Kusto는 *3자 이상* 의 모든 용어로 구성된 용어 인덱스를 작성하고, 이 인덱스는 `has`, `!has` 등과 같은 문자열 연산자에서 사용됩니다.  3자 미만의 용어를 찾거나 `contains` 연산자를 사용하는 쿼리는 열 값 검사로 돌아갑니다. 검사는 용어 인덱스에서 용어를 조회하는 것보다 훨씬 느립니다.
+
+> [!NOTE]
+> EngineV2에서 용어는 4자 이상으로 구성됩니다.
 
 ## <a name="operators-on-strings"></a>문자열에 대한 연산자
 

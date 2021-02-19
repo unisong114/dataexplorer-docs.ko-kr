@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ms.localizationpriority: high
-ms.openlocfilehash: a50900a5ea0f0c3d8f25e68a606572093af07432
-ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
+ms.openlocfilehash: 160846f1f543b5c5ae3e156c410551bd8d59a627
+ms.sourcegitcommit: abbcb27396c6d903b608e7b19edee9e7517877bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100359610"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100528057"
 ---
 # <a name="query-limits"></a>쿼리 제한
 
@@ -29,6 +29,10 @@ Kusto는 큰 데이터 세트를 호스트하고 모든 관련 데이터를 메�
   * 예를 들어 머신마다 16개의 vCore가 있는 D14v2 SKU에 설정된 클러스터의 기본 제한은 `16 cores x10 = 160`입니다.
 * 기본값은 `default` 작업 그룹의 [요청 속도 제한 정책](../management/request-rate-limit-policy.md)을 구성하여 변경할 수 있습니다.
   * 클러스터에서 동시에 실행할 수 있는 실제 요청 수는 다양한 요인에 따라 달라집니다. 가장 중요한 요소는 클러스터 SKU, 클러스터의 가용 리소스 및 사용량 패턴입니다. 정책은 프로덕션과 유사한 사용량 패턴에서 수행되는 부하 테스트에 따라 구성할 수 있습니다.
+
+요청 동시성 제한을 초과하면 다음과 같은 동작이 발생합니다.
+* 요청 속도 제한 정책 때문에 거부된 명령이 `ControlCommandThrottledException`(오류 코드 = 429)을 표시합니다.
+* 요청 속도 제한 정책 때문에 거부된 쿼리가 `QueryThrottledException`(오류 코드 = 429)을 표시합니다.
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>결과 세트 크기 제한(결과 잘림)
 

@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 6357afeb0a5673584e27b84a231e3c65f897b8fc
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 29fdacc9483c21c4a8a148d2134f4082d439bb89
+ms.sourcegitcommit: ee49cd8186d4aecd5de1ed6d24db6c7b7a079ac4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512369"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100549006"
 ---
 # <a name="make-series-operator"></a>make-series 연산자
 
@@ -87,6 +87,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[maxif()](maxif-aggfunction.md)|그룹에 대한 조건자를 사용하여 최댓값을 반환합니다.|
 |[min()](min-aggfunction.md)|그룹의 최솟값을 반환합니다.|
 |[minif()](minif-aggfunction.md)|그룹에 대한 조건자를 사용하여 최솟값을 반환합니다.|
+|[percentile()](percentiles-aggfunction.md)|그룹의 백분위수 값을 반환합니다.|
 |[stdev()](stdev-aggfunction.md)|그룹 전체의 표준 편차를 반환합니다.|
 |[sum()](sum-aggfunction.md)|그룹 내 요소의 합계를 반환합니다.|
 |[sumif()](sumif-aggfunction.md)|그룹에 대한 조건자를 사용하여 요소의 합계를 반환합니다.|
@@ -107,7 +108,9 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 |[series_periods_validate()](series-periods-validatefunction.md)|시계열에 지정된 길이의 정기적 패턴이 포함되어 있는지 여부를 확인합니다.|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|일반 통계(min/max/variance/stdev/average)를 사용하여 여러 열을 반환합니다.|
 |[series_stats()](series-statsfunction.md)|일반 통계(min/max/variance/stdev/average)를 사용하여 동적 값을 생성합니다.|
-  
+
+계열 분석 함수의 전체 목록은 다음을 참조하세요. [계열 처리 함수](scalarfunctions.md#series-processing-functions)
+
 ## <a name="list-of-series-interpolation-functions"></a>계열 보간 함수 목록
 
 |기능|설명|
