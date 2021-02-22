@@ -4,6 +4,8 @@
   items:
     - name: Azure 데이터 탐색기란?
       href: data-explorer-overview.md
+    - name: Azure Data Explorer의 새로운 기능
+      href: whats-new.md
 - name: 빠른 시작
   expanded: true
   items:
@@ -1524,7 +1526,7 @@
                   href: ./kusto/management/materialized-views/materialized-view-alter-lookback.md
                 - name: .alter materialized-view autoUpdateSchema
                   href: ./kusto/management/materialized-views/materialized-view-alter-autoUpdateSchema.md
-                - name: .show materialized-view 명령
+                - name: .show materialized-view commands
                   href: ./kusto/management/materialized-views/materialized-view-show-commands.md
                 - name: .drop materialized-view
                   href: ./kusto/management/materialized-views/materialized-view-drop.md
