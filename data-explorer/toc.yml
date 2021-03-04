@@ -4,7 +4,7 @@
   items:
     - name: Azure 데이터 탐색기란?
       href: data-explorer-overview.md
-    - name: Azure Data Explorer의 새로운 기능
+    - name: 새로운 기능
       href: whats-new.md
 - name: 빠른 시작
   expanded: true
