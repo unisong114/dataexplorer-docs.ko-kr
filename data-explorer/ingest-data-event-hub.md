@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 798a8b201ee87d5c43aeb31d6af515d41c516bef
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 3ffead54d87354b9c7f6a6a370fccfaeac670207
+ms.sourcegitcommit: d19b4214625eeb1ec7aec4fd6c92007a07c76ebc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512216"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "102472208"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Event Hub에서 Azure Data Explorer로 데이터 수집
 
@@ -128,7 +128,7 @@ Event Hub에서 Azure Data Explorer에 수집하는 방법에 대한 일반적�
     | 이벤트 허브 네임스페이스 | 고유한 네임스페이스 이름 | 앞에서 선택한 네임스페이스를 식별하는 이름입니다. |
     | 이벤트 허브 | *test-hub* | 사용자가 만든 이벤트 Hub입니다. |
     | 소비자 그룹 | *test-group* | 사용자가 만든 Event Hub에 정의된 소비자 그룹입니다. |
-    | 이벤트 시스템 속성 | 관련 속성 선택 | [Event Hub 시스템 속성](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). 이벤트 메시지마다 여러 레코드가 있는 경우 시스템 속성이 첫 번째 속성에 추가됩니다. 시스템 속성을 추가할 때 선택한 속성을 포함하도록 테이블 스키마를 [생성](kusto/management/create-table-command.md)하거나 [업데이트](kusto/management/alter-table-command.md)하고 [매핑](kusto/management/mappings.md)합니다. |
+    | 이벤트 시스템 속성 | 관련 속성 선택 | [Event Hub 시스템 속성](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). 시스템 속성을 추가할 때 선택한 속성을 포함하도록 테이블 스키마를 [생성](kusto/management/create-table-command.md)하거나 [업데이트](kusto/management/alter-table-command.md)하고 [매핑](kusto/management/mappings.md)합니다. 시스템 속성 제한에 대한 자세한 내용은 [이벤트 시스템 속성 매핑](#event-system-properties-mapping)을 참조하세요. |
     | 압축 | *없음* | Event Hub 메시지 페이로드의 압축 형식입니다. 지원되는 압축 형식: *없음, GZip*.|
     
 #### <a name="target-table"></a>대상 테이블
@@ -153,9 +153,7 @@ Event Hub에서 Azure Data Explorer에 수집하는 방법에 대한 일반적�
 
 ### <a name="event-system-properties-mapping"></a>이벤트 시스템 속성 매핑
 
-> [!Note]
-> * 시스템 속성은 단일 레코드 이벤트에 대해 지원됩니다.
-> * `csv` 매핑의 경우 레코드의 시작 부분에 속성이 추가됩니다. `json` 매핑의 경우 드롭다운 목록에 표시되는 이름에 따라 속성이 추가됩니다.
+[!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
 테이블의 **데이터 원본** 섹션에서 **이벤트 시스템 속성** 을 선택한 경우 테이블 스키마 및 매핑에 [시스템 속성](ingest-data-event-hub-overview.md#system-properties)을 포함해야 합니다.
 
@@ -215,7 +213,7 @@ Event Hub에서 Azure Data Explorer에 수집하는 방법에 대한 일반적�
     ![메시지 결과 집합](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Data Explorer에는 데이터 수집을 위한 집계(일괄 처리) 정책이 있으며, 이는 수집 프로세스를 최적화하도록 설계되었습니다. 이 정책은 기본적으로 5분 또는 데이터 500MB로 구성되므로 대기 시간이 발생할 수 있습니다. 집계 옵션에 대한 내용은 [일괄 처리 정책](kusto/management/batchingpolicy.md)을 참조하세요. 
+    > * Azure Data Explorer에는 데이터 수집을 위한 집계(일괄 처리) 정책이 있으며, 이는 수집 프로세스를 최적화하도록 설계되었습니다. 기본 일괄 처리 정책은 일괄 처리에 대해 최대 지연 시간 5분, 총 크기 1G 또는 1000개의 Blob 중 하나가 충족되면 일괄 처리를 봉인하도록 구성됩니다. 따라서 대기 시간이 발생할 수 있습니다. 자세한 내용은 [일괄 처리 정책](kusto/management/batchingpolicy.md)을 참조하세요. 
     > * Event Hub 수집에는 10초 또는 1MB의 Event Hub 응답 시간이 포함됩니다. 
     > * 스트리밍을 지원하고 응답 시간 지연을 제거하도록 테이블을 구성합니다. [스트리밍 정책](kusto/management/streamingingestionpolicy.md)을 참조하세요. 
 

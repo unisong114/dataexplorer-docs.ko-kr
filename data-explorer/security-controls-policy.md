@@ -1,18 +1,18 @@
 ---
 title: Azure Data Explorer에 대한 Azure Policy 규정 준수 컨트롤
 description: Azure Data Explorer에 사용할 수 있는 Azure Policy 규정 준수 컨트롤을 나열합니다. 이러한 기본 제공 정책 정의는 Azure 리소스의 규정 준수를 관리하는 일반적인 방법을 제공합니다.
-ms.date: 02/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 author: orspod
 ms.author: orspodek
 ms.service: data-explorer
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9f52935e235dcf64c5236d3fbdd58b95441aa5c9
-ms.sourcegitcommit: d1c2433df183d0cfbfae4d3b869ee7f9cbf00fe4
+ms.openlocfilehash: 359fea754419ec6df7fa54aedc7fa822af228158
+ms.sourcegitcommit: 4ec122b5142e57468b44aa06e0d6522d6dbd9868
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99586391"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102771722"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-explorer"></a>Azure Data Explorer에 대한 Azure Policy 규정 준수 컨트롤
 
