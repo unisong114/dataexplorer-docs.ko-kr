@@ -8,16 +8,16 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020
-ms.openlocfilehash: 95bb28c81ec3221569758ead8a289bdf81d32d3d
-ms.sourcegitcommit: 4f576c1b89513a9e16641800abd80a02faa0da1c
+ms.openlocfilehash: a7508866f85bb7edb5a6feee5cfe9d191b946a09
+ms.sourcegitcommit: c09cc374d5d1d8b396c466ef397690b4b7e4174f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85128651"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103481547"
 ---
 # <a name="scalar-data-types"></a>스칼라 데이터 형식
 
-모든 데이터 값(예: 식의 값 또는 함수에 대한 매개 변수)에는 **데이터 형식**이 있습니다. 데이터 형식은 **스칼라 데이터 형식**(아래에 나열된 기본 제공 미리 정의된 형식 중 하나) 또는 **사용자 정의 레코드**(테이블 행의 데이터 형식과 같이 순서가 지정된 이름/스칼라 데이터 형식 쌍의 시퀀스)입니다.
+모든 데이터 값(예: 식의 값 또는 함수에 대한 매개 변수)에는 **데이터 형식** 이 있습니다. 데이터 형식은 **스칼라 데이터 형식**(아래에 나열된 기본 제공 미리 정의된 형식 중 하나) 또는 **사용자 정의 레코드**(테이블 행의 데이터 형식과 같이 순서가 지정된 이름/스칼라 데이터 형식 쌍의 시퀀스)입니다.
 
 Kusto는 Kusto에서 사용할 수 있는 모든 형식의 데이터를 정의하는 시스템 데이터 형식 세트를 제공합니다.
 
@@ -31,7 +31,7 @@ Kusto는 Kusto에서 사용할 수 있는 모든 형식의 데이터를 정의�
 | `bool`     | `boolean`            | `System.Boolean`                  | `int8`      |
 | `datetime` | `date`               | `System.DateTime`                 | `datetime`  |
 | `dynamic`  |                      | `System.Object`                   | `array`, `dictionary` 또는 다른 값 중 하나 |
-| `guid`     | `uuid`, `uniqueid`   | `System.Guid`                     | `guid`      |
+| `guid`     |                      | `System.Guid`                     | `guid`      |
 | `int`      |                      | `System.Int32`                    | `int`       |
 | `long`     |                      | `System.Int64`                    | `long`      |
 | `real`     | `double`             | `System.Double`                   | `real`      |
