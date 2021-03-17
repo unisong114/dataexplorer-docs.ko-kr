@@ -1573,6 +1573,12 @@
                   href: ./kusto/management/show-function.md
         - name: 정책
           items:
+            - name: 자동 삭제
+              items:
+                - name: 자동 삭제 정책
+                  href: ./kusto/management/auto-delete-policy.md
+                - name: 자동 삭제 정책 명령
+                  href: ./kusto/management/auto-delete-policy-command.md
             - name: 수집 일괄 처리
               items:
                 - name: ingestionbatching 정책
