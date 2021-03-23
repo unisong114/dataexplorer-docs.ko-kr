@@ -82,7 +82,12 @@
         - name: Azure Resource Manager 템플릿
           href: create-cluster-database-resource-manager.md
     - name: 테이블 만들기
-      href: one-click-table.md
+      items:
+        - name: 테이블 만들기
+          href: one-click-table.md
+        - name: 외부 테이블 만들기
+          displayName: one-click
+          href: external-table.md
     - name: 데이터 수집
       items:
         - name: 한 번 클릭으로 수집
