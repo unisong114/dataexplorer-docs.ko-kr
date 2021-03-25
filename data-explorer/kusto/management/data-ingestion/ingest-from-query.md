@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 18959e2387a1a0faf92261dc3c35eca0db44c158
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: fe2d9b54970bbbd6ce9b5ee22fc6460c30b34a76
+ms.sourcegitcommit: 61f0c37a8c9aa97cc09715466cc639272174325c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512896"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103566302"
 ---
 # <a name="ingest-from-query-set-append-set-or-append-set-or-replace"></a>쿼리에서 수집(.set, .append, .set-or-append, .set-or-replace)
 
@@ -48,7 +48,7 @@ ms.locfileid: "95512896"
 
 |속성        |설명|
 |----------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`creationTime`   | 수집되는 데이터 범위를 만드는 시간에 사용할 ISO8601 문자열 형식의 날짜/시간 값입니다. 지정되지 않으면 현재 값(`now()`)이 사용됩니다.|
+|`creationTime`   | 수집되는 데이터 범위를 만드는 시간에 사용할 ISO8601 문자열 형식의 날짜/시간 값입니다. 지정하지 않으면 현재 값(`now()`)이 사용됩니다. 지정된 경우 대상 테이블의 유효한 [익스텐트 병합 정책](../mergepolicy.md)의 `Lookback` 속성이 지정된 값과 일치하는지 확인합니다.|
 |`extend_schema`  | 지정되면 테이블의 스키마를 확장하도록 명령에 지시하는 부울 값입니다. 기본값은 "false"입니다. 이 옵션은 `.append`, `.set-or-append` 및 `set-or-replace` 명령에만 적용됩니다. 허용되는 유일한 스키마 확장에는 테이블의 끝에 추가되는 추가 열이 있습니다.|
 |`recreate_schema`  | 부울 값입니다. 지정되면 명령에서 테이블의 스키마를 다시 만들 수 있는지 여부를 설명합니다. 기본값은 "false"입니다. 이 옵션은 *set-or-replace* 명령에만 적용됩니다. 이 옵션 및 extend_schema 속성이 모두 설정되면 이 옵션이 extend_schema 속성보다 우선적으로 적용됩니다.|
 |`folder`         | 테이블에 할당할 폴더입니다. 테이블이 이미 있으면 이 속성은 테이블의 폴더를 덮어씁니다.|

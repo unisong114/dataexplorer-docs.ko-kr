@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 23bd17b54a1910633baabf2b78a1015f31eead5a
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: e55ad9e69909b71537401f0a2a25a6f0aa1bbb9e
+ms.sourcegitcommit: 4afb883901e8935e0584441e946d5522a9b47f6a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95512777"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104796651"
 ---
 # <a name="visualize-data-with-azure-data-explorer-dashboardspreview"></a>Azure Data Explorer 대시보드를 사용하여 데이터 시각화(미리 보기)
 
@@ -106,7 +106,7 @@ Azure Data Explorer 대시보드에서 제공하는 세 가지 주요 이점은 
 
 ## <a name="share-dashboards"></a>대시보드 공유
 
-공유 메뉴를 사용하여 대시보드에 [권한을 부여](#grant-permissions)하고, [사용자 권한 수준을 변경](#change-a-user-permission-level)하고, [대시보드 링크를 공유](#share-the-dashboard-link)합니다.
+공유 메뉴를 사용하여 AAD(Azure Active Directory) 사용자 또는 AAD 그룹에 대시 보드에 액세스할 [권한을 부여하고](#grant-permissions), [사용자의 권한 수준을 변경하며](#change-a-user-permission-level), [대시 보드 링크를 공유합니다](#share-the-dashboard-link).
 
 > [!IMPORTANT]
 > 대시보드에 액세스하려면 대시보드 뷰어에 다음이 필요합니다.
