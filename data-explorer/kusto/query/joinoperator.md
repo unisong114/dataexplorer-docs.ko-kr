@@ -11,12 +11,12 @@ ms.date: 03/30/2020
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: b90e5f1c95ec75a946490cd75b5dd89ad2cb1aba
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 5ab13fc7f86849f65ede7e8f30370a1ef97f423d
+ms.sourcegitcommit: 7a94cdf8c07b15e594dd8abc10091afe5f716609
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95513338"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543127"
 ---
 # <a name="join-operator"></a>join 연산자
 
@@ -54,7 +54,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
     |매개 변수 이름           |값                                        |설명                                  |
     |---------------|----------------------------------------------|---------------------------------------------|
-    |`kind`         |조인의 다양한 특징|[조인의 다양한 특징](#join-flavors) 참조|                                             |
+    |`kind`         |조인의 다양한 특징|[조인의 다양한 특징](#join-flavors) 참조|
     |`hint.remote`  |`auto`, `left`, `local`, `right`              |[클러스터 간 조인](joincrosscluster.md) 참조|
     |`hint.strategy`|실행 힌트                               |[조인 힌트](#join-hints) 참조                |
 
@@ -64,7 +64,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
     |Name           |값                                        |설명                                  |
     |---------------|----------------------------------------------|---------------------------------------------|
-    |`kind`         |조인의 다양한 특징|[조인의 다양한 특징](#join-flavors) 참조|                                             |
+    |`kind`         |조인의 다양한 특징|[조인의 다양한 특징](#join-flavors) 참조|
     |`hint.remote`  |`auto`, `left`, `local`, `right`              |                                             |
     |`hint.strategy`|실행 힌트                               |[조인 힌트](#join-hints) 참조                |
 
