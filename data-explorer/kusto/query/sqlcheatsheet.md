@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 16a0c6ef7064ae5e16fb649f3cd089196533ec45
-ms.sourcegitcommit: f49e581d9156e57459bc69c94838d886c166449e
+ms.openlocfilehash: 02326317720cbcc209a21d7687e9597a9a586775
+ms.sourcegitcommit: 7a94cdf8c07b15e594dd8abc10091afe5f716609
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "95513372"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543076"
 ---
 # <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 
@@ -32,7 +32,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 |쿼리|
 |---|
-|StormEvents<br>| C=count() 요약<br>| 프로젝트 C|
+|StormEvents<br>\| C=count() 요약<br>\| 프로젝트 C|
 
 ## <a name="sql-to-kusto-cheat-sheet"></a>SQL 대 Kusto 참고 자료
 

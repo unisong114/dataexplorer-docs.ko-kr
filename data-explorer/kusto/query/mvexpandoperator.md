@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
 ms.localizationpriority: high
-ms.openlocfilehash: 956c24fa70df89f5bf99d4de12a8b07da6cb6912
-ms.sourcegitcommit: db99b9d0b5f34341ad3be38cc855c9b80b3c0b0e
+ms.openlocfilehash: 87f8bb5faecea32c24ab78b6844d3bba18a540bd
+ms.sourcegitcommit: 7a94cdf8c07b15e594dd8abc10091afe5f716609
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100359984"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543105"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 연산자
 
@@ -53,7 +53,7 @@ ms.locfileid: "100359984"
 1. 확장되지 않은 입력 열이 원래 값과 함께 출력에 나타납니다.
    단일 입력 레코드를 여러 출력 레코드로 확장하면 값은 모든 레코드에 복제됩니다.
 
-1. 확장된 각 *ColumnName* 또는 *ArrayExpression* 에 대해 [아래](#modes-of-expansion)에 설명된 대로 각 값에 대해 출력 레코드 수가 결정됩니다. 각 입력 레코드에 대해 최대 출력 레코드 수가 계산됩니다. 모든 배열 또는 속성 모음이 "병렬"로 확장되어 누락된 값(있는 경우)은 null 값으로 대체됩니다.
+1. 확장된 각 *ColumnName* 또는 *ArrayExpression* 에 대해 [아래](#modes-of-expansion)에 설명된 대로 각 값에 대해 출력 레코드 수가 결정됩니다. 각 입력 레코드에 대해 최대 출력 레코드 수가 계산됩니다. 모든 배열 또는 속성 모음이 "병렬"로 확장되어 누락된 값(있는 경우)은 null 값으로 대체됩니다. 요소는 원래 배열/모음에 표시되는 순서대로 행으로 확장됩니다.
 
 1. 동적 값이 null이면 해당 값(null)에 대해 단일 레코드가 생성됩니다.
    동적 값이 빈 배열 또는 속성 모음인 경우 해당 값에 대한 레코드가 생성되지 않습니다.
