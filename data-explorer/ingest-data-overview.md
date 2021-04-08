@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.localizationpriority: high
-ms.openlocfilehash: 147fe77b25229a4d2854fee5b7c15e05ec8a2f9f
-ms.sourcegitcommit: 40f86b7f085152c21b6a1ee877f3ab324b59b88b
+ms.openlocfilehash: bb5e6823527a40d817eb2c9945af5bc951712363
+ms.sourcegitcommit: 294130a8c44d26e62146dcc52a88e56d0f98a151
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "101838340"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106376371"
 ---
 # <a name="azure-data-explorer-data-ingestion-overview"></a>Azure Data Explorer 데이터 수집 개요 
 
@@ -114,11 +114,11 @@ KQL(Kusto 쿼리 언어) 명령을 통해 데이터를 엔진에 직접 수집�
 | [**ADX Kafka**](ingest-data-kafka.md) | | | | |
 | [**ADX-Apache Spark**](spark-connector.md) | | | | |
 | [**LogStash**](ingest-data-logstash.md) | | | | |
-| [**Azure 데이터 팩터리**](./data-factory-integration.md) | [지원되는 데이터 형식](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | 무제한 *(ADF마다 제한) | 일괄 처리 또는 ADF마다 트리거 | 일반적으로 지원되지 않는 형식 지원, 대량의 파일, 90개가 넘는 원본의 데이터를 온-프레미스에서 클라우드로 복사 가능 | 수집 시간 |
+| [**ADF(Azure Data Factory)**](./data-factory-integration.md) | [지원되는 데이터 형식](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | 무제한 *(ADF마다 제한) | 일괄 처리 또는 ADF마다 트리거 | 일반적으로 지원되지 않는 형식 지원, 대량의 파일, 90개가 넘는 원본의 데이터를 온-프레미스에서 클라우드로 복사 가능 | 이 메서드는 데이터가 수집될 때까지 상대적으로 더 많은 시간이 걸립니다. ADF는 모든 데이터를 메모리에 업로드한 다음, 수집을 시작합니다. |
 |[ **Azure Data Flow**](./flow.md) | | | | 수집 명령이 흐름에 포함| 응답 속도가 빨라야 함 |
 | [**IoT Hub**](ingest-data-iot-hub-overview.md) | [지원되는 데이터 형식](ingest-data-iot-hub-overview.md#data-format)  | 해당 없음 | 일괄 처리, 스트리밍 | IoT 메시지, IoT 이벤트, IoT 속성 | |
 | [**이벤트 허브**](ingest-data-event-hub-overview.md) | [지원되는 데이터 형식](ingest-data-event-hub-overview.md#data-format) | 해당 없음 | 일괄 처리, 스트리밍 | 메시지, 이벤트 | |
-| [**Event Grid**](ingest-data-event-grid-overview.md) | [지원되는 데이터 형식](ingest-data-event-grid-overview.md#data-format) | 1GB 미압축 | 일괄 처리 | Azure 스토리지에서 지속적으로 수집, Azure 스토리지의 외부 데이터 | 최적의 파일 크기는 100KB, BLOB 이름 바꾸기 및 BLOB 만들기에 사용 |
+| [**Event Grid**](ingest-data-event-grid-overview.md) | [지원되는 데이터 형식](ingest-data-event-grid-overview.md#data-format) | 1GB 미압축 | 일괄 처리 | Azure 스토리지에서 지속적으로 수집, Azure 스토리지의 외부 데이터 | 최적의 파일 크기는 100KB로, BLOB 이름 바꾸기 및 BLOB 만들기에 사용 |
 | [**.NET SDK**](./net-sdk-ingest-data.md) | 모든 형식 지원 | 1GB 미압축(참고 사항 참조) | 일괄 처리, 스트리밍, 직접 | 조직의 요구 사항에 맞게 사용자 고유의 코드 작성 |
 | [**Python**](python-ingest-data.md) | 모든 형식 지원 | 1GB 미압축(참고 사항 참조) | 일괄 처리, 스트리밍, 직접 | 조직의 요구 사항에 맞게 사용자 고유의 코드 작성 |
 | [**Node.js**](node-ingest-data.md) | 모든 형식 지원 | 1GB 미압축(참고 사항 참조) | 일괄 처리, 스트리밍, 직접 | 조직의 요구 사항에 맞게 사용자 고유의 코드 작성 |
