@@ -24,9 +24,9 @@ ms.locfileid: "90832665"
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 이벤트 수집 서비스인 이벤트 허브에서 데이터를 수집(로드)하는 기능을 제공합니다. [Event Hubs](/azure/event-hubs/event-hubs-about)에서는 초당 수백만 개의 이벤트를 거의 실시간으로 처리할 수 있습니다. 이 문서에서는 이벤트 허브를 만들고, Azure 데이터 탐색기에서 연결 하 고, 시스템을 통해 데이터 흐름을 확인 합니다.
+Azure 데이터 탐색기에서는 빅데이터 스트리밍 플랫폼이자 이벤트 수집 서비스인 이벤트 허브에서 데이터를 수집(로드)하는 기능을 제공합니다. [Event Hubs](/azure/event-hubs/event-hubs-about)에서는 초당 수백만 개의 이벤트를 거의 실시간으로 처리할 수 있습니다. 이 문서에서는 이벤트 허브를 만들고, Azure 데이터 탐색기에서 연결 하고, 시스템을 통해 데이터 흐름을 확인 합니다.
 
-이벤트 허브에서 Azure 데이터 탐색기에 수집 하는 방법에 대 한 일반적인 내용은 [이벤트 허브에 연결](ingest-data-event-hub-overview.md)을 참조 하세요.
+이벤트 허브에서 Azure 데이터 탐색기에 수집 하는 방법에 대한 일반적인 내용은 [이벤트 허브에 연결](ingest-data-event-hub-overview.md)을 참조 하세요.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
@@ -41,7 +41,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
 ## <a name="create-an-event-hub"></a>이벤트 허브 만들기
 
-이 문서에서는 샘플 데이터를 생성 하 고 이벤트 허브로 보냅니다. 첫 단계에서는 이벤트 허브를 만듭니다. 이렇게 하려면 Azure Portal에서 Azure Resource Manager 템플릿을 사용합니다.
+이 문서에서는 샘플 데이터를 생성 하고 이벤트 허브로 보냅니다. 첫 단계에서는 이벤트 허브를 만듭니다. 이렇게 하려면 Azure Portal에서 Azure Resource Manager 템플릿을 사용합니다.
 
 1. 이벤트 허브를 만들려면 다음 단추를 사용하여 배포를 시작합니다. 마우스 오른쪽 단추로 클릭하고 **새 창에서 열기**를 선택하면 이 문서의 나머지 단계를 수행할 수 있습니다.
 
@@ -176,7 +176,7 @@ Azure 데이터 탐색기에서는 빅 데이스트리터 밍 플랫폼이자 �
 
 1. Visual Studio에서 샘플 앱 솔루션을 엽니다.
 
-1. *Program.cs* 파일에서 `eventHubName` 상수를 이벤트 허브의 이름으로 업데이트 하 고 `connectionString` 상수를 이벤트 허브 네임 스페이스에서 복사한 연결 문자열로 업데이트 합니다.
+1. *Program.cs* 파일에서 `eventHubName` 상수를 이벤트 허브의 이름으로 업데이트 하고 `connectionString` 상수를 이벤트 허브 네임 스페이스에서 복사한 연결 문자열로 업데이트 합니다.
 
     ```csharp
     const string eventHubName = "test-hub";
